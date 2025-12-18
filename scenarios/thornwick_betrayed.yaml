@@ -1,0 +1,329 @@
+# scenarios/thornwick_betrayed.yaml
+# The Burned Home - Revenge
+
+id: thornwick_betrayed
+name: "The Burned Home"
+location: place_thornwick
+tagline: "Your brother took everything. Aldric stayed."
+tone: revenge
+
+starts_with:
+  - "Aldric — your father's man, oath-bound"
+  - "Your father's ring"
+  - "A grievance that won't quiet"
+
+# =============================================================================
+# PRE-EXISTING NODES (already in seed - reference only)
+# =============================================================================
+
+existing_nodes:
+  characters:
+    - char_edmund        # Reeve of Thornwick, your brother
+    - char_aldric        # Saxon warrior, companion
+  places:
+    - place_thornwick    # Your burned home
+    - place_stamford_bridge  # Where Aldric's brother died
+    - place_york         # Where Edmund may have fled
+  narratives:
+    - narr_edmund_reeve_thornwick   # "Edmund holds Thornwick"
+    - narr_aldric_brother_died      # "Brother fell at Stamford Bridge"
+  tensions:
+    - tension_thornwick_taxes    # Village hungry, Normans demanding
+    - tension_aldric_revenge     # Aldric's grudge against invaders
+
+# =============================================================================
+# NEW NODES (created by this scenario)
+# =============================================================================
+
+nodes:
+  # Player character
+  - type: character
+    id: char_player
+    # name: filled at runtime
+    # gender: filled at runtime
+    character_type: player
+    alive: true
+    face: young
+    skills:
+      fighting: trained
+      tracking: untrained
+      healing: untrained
+      persuading: untrained
+      sneaking: untrained
+      riding: trained
+      reading: untrained
+      leading: untrained
+    voice:
+      tone: bitter
+      style: direct
+    personality:
+      approach: confrontational
+      values: [justice, family]
+      flaw: vengeful
+    backstory:
+      family: "Son/daughter of the Thane of Thornwick, now dead"
+      childhood: "Raised at Thornwick, trained to inherit"
+      wound: "Brother's betrayal, father's death"
+      why_here: "To take back what was stolen"
+
+  # Things
+  - type: thing
+    id: thing_father_ring
+    name: "Father's Ring"
+    thing_type: token
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "A simple iron ring. Your father wore it until the day he died."
+
+  - type: thing
+    id: thing_thornwick_charter
+    name: "Thornwick Charter"
+    thing_type: document
+    portable: true
+    significance: political
+    quantity: 1
+    description: "The land grant proving your family's claim to Thornwick. Edmund has it now."
+    location: char_edmund  # Edmund carries it
+
+  - type: thing
+    id: thing_mother_brooch
+    name: "Mother's Brooch"
+    thing_type: token
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "Silver and garnet. You found it in the ashes. She didn't escape."
+
+  - type: thing
+    id: thing_aldric_brother_sword
+    name: "Aldric's Brother's Sword"
+    thing_type: weapon
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "The blade his brother carried to Stamford Bridge. Aldric brought it home. His brother didn't."
+
+  # Narratives about things
+  - type: narrative
+    id: narr_charter_stolen
+    name: "The Stolen Charter"
+    content: "Edmund took the charter when he fled. Without it, you have no proof the land was ever yours."
+    interpretation: "I need that charter back."
+    narrative_type: claim
+    about:
+      characters: [char_player, char_edmund]
+      things: [thing_thornwick_charter]
+    tone: bitter
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "The charter is real and Edmund has it. But will the Normans honor a Saxon land grant?"
+
+  - type: narrative
+    id: narr_mother_dead
+    name: "Mother's Death"
+    content: "You found her brooch in the ashes. She didn't get out. Or couldn't."
+    interpretation: "She's gone. Like everything else."
+    narrative_type: memory
+    about:
+      characters: [char_player]
+      things: [thing_mother_brooch]
+    tone: mournful
+    focus: 1.5
+    truth: 1.0
+    narrator_notes: "The brooch is proof. The player carries their grief."
+
+  # Scenario-specific narratives
+  - type: narrative
+    id: narr_edmund_betrayal
+    name: "Edmund's Betrayal"
+    content: "Edmund sold the family to the Normans while father lay dying. He took the land, the title, everything."
+    interpretation: "My brother is a traitor who stole my birthright."
+    narrative_type: blood
+    about:
+      characters: [char_player, char_edmund]
+    tone: bitter
+    focus: 3.0
+    truth: 0.7
+    narrator_notes: "Edmund believes he saved the family by cooperating. The truth is complicated. Father may have chosen Edmund."
+
+  - type: narrative
+    id: narr_thornwick_burned
+    name: "Thornwick Burns"
+    content: "The hall burned three days ago. Norman retribution, they said. But Edmund's new holdings were spared."
+    interpretation: "The Normans burned my home. Edmund let it happen."
+    narrative_type: memory
+    about:
+      characters: [char_player]
+      places: [place_thornwick]
+    tone: bitter
+    focus: 2.5
+    truth: 0.5
+    narrator_notes: "Who really burned it? Normans? Resistance? Edmund himself to erase the past?"
+
+  - type: narrative
+    id: narr_father_dead
+    name: "Father's Death"
+    content: "Father died in the burning. Or before. The smoke was thick. You weren't there."
+    interpretation: "Father is dead. Edmund let it happen."
+    narrative_type: memory
+    about:
+      characters: [char_player]
+    tone: mournful
+    focus: 2.0
+    truth: 0.8
+    narrator_notes: "Player wasn't there. What really happened? Was father already dying?"
+
+  - type: narrative
+    id: narr_aldric_oath
+    name: "Aldric's Oath"
+    content: "Aldric swore to your father he would protect you. He's the only one who stayed."
+    interpretation: "Aldric is loyal. He's all I have left."
+    narrative_type: oath
+    about:
+      characters: [char_aldric, char_player]
+    tone: warm
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "The oath is real. But what exactly did he promise? To protect? To avenge? To restrain?"
+
+# =============================================================================
+# LINKS
+# =============================================================================
+
+links:
+  # Player links
+  - type: present
+    from: char_player
+    to: place_thornwick
+
+  - type: carries
+    from: char_player
+    to: thing_father_ring
+
+  - type: carries
+    from: char_player
+    to: thing_mother_brooch
+
+  - type: carries
+    from: char_edmund
+    to: thing_thornwick_charter
+
+  - type: carries
+    from: char_aldric
+    to: thing_aldric_brother_sword
+
+  - type: belief
+    character: char_player
+    narrative: narr_charter_stolen
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_mother_dead
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_aldric
+    narrative: narr_charter_stolen
+    believes: 1.0
+    heard: 1.0
+    source: told
+
+  - type: belief
+    character: char_player
+    narrative: narr_edmund_betrayal
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_thornwick_burned
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_father_dead
+    believes: 1.0
+    source: assumed
+
+  - type: belief
+    character: char_player
+    narrative: narr_aldric_oath
+    believes: 1.0
+    heard: 1.0
+    source: told
+
+  - type: belief
+    character: char_player
+    narrative: narr_edmund_reeve_thornwick
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_aldric_brother_died
+    believes: 0.8
+    heard: 1.0
+    source: told
+
+  # Companion links
+  - type: present
+    from: char_aldric
+    to: place_thornwick
+
+  - type: belief
+    character: char_aldric
+    narrative: narr_aldric_oath
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_aldric
+    narrative: narr_edmund_betrayal
+    believes: 0.6
+    source: inferred
+    narrator_notes: "Aldric isn't sure Edmund is entirely to blame. He saw more than player did."
+
+  - type: belief
+    character: char_aldric
+    narrative: narr_aldric_brother_died
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+# =============================================================================
+# COMPANION
+# =============================================================================
+
+companion:
+  id: char_aldric
+  relationship: "oath-bound protector"
+  why_stays: "He swore to your father. Oaths don't break because the world does."
+  starting_disposition: loyal
+  voice_note: "Quiet. Practical. Grief sits behind his eyes but he doesn't speak of it."
+
+# =============================================================================
+# OPENING
+# =============================================================================
+
+opening:
+  time: dawn
+  weather: cold, grey
+  place: place_thornwick
+  characters_present: [char_aldric]
+  narration: |
+    The ashes are cold now. Three days cold.
+    Aldric sits by what was the door, sharpening a blade
+    that doesn't need sharpening. He hasn't slept either.
+
+    Your father's ring is heavy on your finger.
+    Edmund is out there somewhere. Alive. Comfortable.
+
+    "We should move," Aldric says, not looking up.
+    "Before someone comes to see who's picking through the bones."

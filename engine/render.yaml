@@ -1,0 +1,31 @@
+# Render Blueprint for Blood Ledger Backend
+# https://render.com/docs/blueprint-spec
+
+services:
+  # Main API Service
+  - type: web
+    name: blood-ledger-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: FALKORDB_HOST
+        fromService:
+          type: redis
+          name: blood-ledger-db
+          property: host
+      - key: FALKORDB_PORT
+        fromService:
+          type: redis
+          name: blood-ledger-db
+          property: port
+    healthCheckPath: /health
+    autoDeploy: true
+
+  # FalkorDB (Redis-compatible graph database)
+  - type: redis
+    name: blood-ledger-db
+    plan: starter
+    ipAllowList: []  # Allow all IPs (configure for production)

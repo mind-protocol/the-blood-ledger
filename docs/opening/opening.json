@@ -1,0 +1,401 @@
+{
+  "id": "opening_fireside",
+  "setting": {
+    "location": "camp_roadside",
+    "time": "night",
+    "atmosphere": [
+      "Night. The kind of cold that gets into your bones.",
+      "You've been walking for three days — sleeping rough, talking little.",
+      "Aldric's been watching you. You've been watching him.",
+      "The fire's the first real warmth in hours."
+    ],
+    "characters": ["char_aldric"]
+  },
+  "beats": [
+    {
+      "id": "beat_opening",
+      "setting": {
+        "time": "night",
+        "activity": "fire",
+        "mood": "evaluating"
+      },
+      "narration": [
+        "The fire pops. Aldric pokes at it with a stick, not looking at you directly. When he speaks, his voice is low.",
+        "\"Three days now. You said York. You said Edmund. You haven't said why.\"",
+        "He glances at you.",
+        "\"I've followed men before. Some I believed in. Some I didn't. Haven't decided about you yet.\"",
+        "A long pause. He turns the stick in the embers."
+      ],
+      "questions": [
+        {
+          "id": "q_drive",
+          "speaker": "char_aldric",
+          "text": "So tell me — what is it, really? The thing that gets you out of your bedroll before dawn? Vengeance? You want to see Edmund's face when he knows it's over? Or is it something else — duty, a promise you made? Maybe you just want what's yours back.",
+          "probes": ["drive", "stakes_preference"]
+        },
+        {
+          "id": "q_fantasy",
+          "speaker": "char_aldric",
+          "transition": "He waits.",
+          "text": "And when we find him — when it's done — what then? What does the world look like when you've won?",
+          "probes": ["fantasy", "drive"]
+        }
+      ]
+    },
+    {
+      "id": "beat_levity",
+      "setting": {
+        "time": "morning",
+        "activity": "breaking_camp",
+        "mood": "light"
+      },
+      "narration": [
+        "Morning. Breaking camp. He's trying to get his boot on.",
+        "\"I hate the cold. I hate mud. I hate walking.\"",
+        "He gets the boot on.",
+        "\"I hate Edmund already and I've never met him.\"",
+        "Almost a smile."
+      ],
+      "questions": [
+        {
+          "id": "q_hate",
+          "speaker": "char_aldric",
+          "text": "What about you? What do you hate?",
+          "probes": ["emotional_range", "drive"]
+        }
+      ]
+    },
+    {
+      "id": "beat_authority",
+      "setting": {
+        "time": "later_night",
+        "activity": "fire_low",
+        "mood": "serious"
+      },
+      "narration": [
+        "Later. The fire's burned lower. He's been quiet a while.",
+        "\"You give the orders. That's how it is. But I need to know — when we're in it, when the moment comes... do you want me at your shoulder, or at your back? Do I speak my mind, or hold my tongue 'til you ask?\"",
+        "His eyes are steady."
+      ],
+      "questions": [
+        {
+          "id": "q_authority",
+          "speaker": "char_aldric",
+          "text": "What do you actually need? From this. From me.",
+          "probes": ["authority_style", "companion_dynamic", "loneliness"]
+        }
+      ]
+    },
+    {
+      "id": "beat_conflict",
+      "setting": {
+        "time": "later_night",
+        "activity": "whetstone",
+        "mood": "casual"
+      },
+      "narration": [
+        "He pulls out a whetstone, starts working his blade. Casual now.",
+        "\"You've got a way about you. When that merchant tried to shortchange us yesterday — the way you handled it. Was that... enjoyment? Or just necessity?\"",
+        "Scrape. Scrape.",
+        "\"I've known men who need to be feared. Others who need to be clever. Some poor bastards need everyone to think they're good, even when they're cutting throats.\"",
+        "He looks up."
+      ],
+      "questions": [
+        {
+          "id": "q_power_fantasy",
+          "speaker": "char_aldric",
+          "text": "What do you need?",
+          "probes": ["power_fantasy", "conflict_style", "moral_self_image"]
+        }
+      ]
+    },
+    {
+      "id": "beat_darkness",
+      "setting": {
+        "time": "later_night",
+        "activity": "talking",
+        "mood": "heavy"
+      },
+      "narration": [
+        "The conversation drifts. He talks about a village they passed — burned, still smoking. Norman work.",
+        "\"Doesn't bother you? Or does it?\"",
+        "He watches your face.",
+        "\"Some men... they think the world is dark. Blood and consequence, nothing else. Others need to believe the sun comes up.\""
+      ],
+      "questions": [
+        {
+          "id": "q_darkness",
+          "speaker": "char_aldric",
+          "text": "Doesn't bother you? Or does it?",
+          "probes": ["darkness_tolerance", "emotional_range"]
+        }
+      ]
+    },
+    {
+      "id": "beat_aldric_shares",
+      "setting": {
+        "time": "later_night",
+        "activity": "fire",
+        "mood": "vulnerable"
+      },
+      "narration": [
+        "He's quiet for a long time. Staring at the fire.",
+        "\"I had a brother. Younger. Couldn't fight worth a damn but he could make anyone laugh.\"",
+        "He doesn't look at you.",
+        "\"Stamford Bridge. He was on the wrong side. I was on the right one.\"",
+        "Beat.",
+        "\"Funny how that works.\""
+      ],
+      "questions": [
+        {
+          "id": "q_aldric_brother",
+          "speaker": "char_aldric",
+          "text": "",
+          "type": "statement",
+          "note": "Aldric has shared. The player can respond however they want — sympathy, silence, relating their own loss, changing the subject.",
+          "probes": ["emotional_range", "loneliness", "trust_betrayal"]
+        }
+      ]
+    },
+    {
+      "id": "beat_aldric_want",
+      "setting": {
+        "time": "later",
+        "activity": "quiet",
+        "mood": "honest"
+      },
+      "narration": [
+        "Later. He's been quiet.",
+        "\"You want to know why I said yes? Back in that village?\"",
+        "He shrugs.",
+        "\"I'm tired of being alone. Tired of selling my sword to men I don't believe in. I want to be part of something that's actually worth a damn.\"",
+        "He glances at you.",
+        "\"Thought maybe this was it. Don't know yet.\""
+      ],
+      "questions": [
+        {
+          "id": "q_aldric_want",
+          "speaker": "char_aldric",
+          "text": "",
+          "type": "statement",
+          "note": "Another moment of Aldric vulnerability. Player responds.",
+          "probes": ["companion_dynamic", "loneliness", "trust_betrayal"]
+        }
+      ]
+    },
+    {
+      "id": "beat_romance",
+      "setting": {
+        "time": "walking",
+        "activity": "walking_silence",
+        "mood": "quiet"
+      },
+      "narration": [
+        "You've been walking in silence. He breaks it.",
+        "\"You ever been in love?\"",
+        "He laughs at your reaction — or lack of it.",
+        "\"I'm not asking to be a gossip. I'm asking because we might die in York. And I don't know if you've got someone waiting. Someone you think about. Or if you're the type who keeps all that... far away.\"",
+        "Quieter now."
+      ],
+      "questions": [
+        {
+          "id": "q_love",
+          "speaker": "char_aldric",
+          "text": "Some men fight better when they've got something to protect. Others fight better when they've got nothing to lose.",
+          "probes": ["sexual_romantic", "loneliness", "stakes_preference"]
+        }
+      ]
+    },
+    {
+      "id": "beat_complexity",
+      "setting": {
+        "time": "night_sleepless",
+        "activity": "lying_awake",
+        "mood": "thoughtful"
+      },
+      "narration": [
+        "Night. He can't sleep either.",
+        "\"You know how any of this works? The old rules — who owes what to whom, who can kill who and call it justice. The Normans broke it all but the bones are still there.\"",
+        "He gestures vaguely north.",
+        "\"I know some of it. York's a nest of all that. Old oaths, new lords, everyone calculating.\""
+      ],
+      "questions": [
+        {
+          "id": "q_complexity",
+          "speaker": "char_aldric",
+          "text": "You want me to explain as we go? Or you already know the game?",
+          "probes": ["complexity_appetite", "historical_literacy"]
+        }
+      ]
+    },
+    {
+      "id": "beat_risk",
+      "setting": {
+        "time": "night_late",
+        "activity": "testing",
+        "mood": "probing"
+      },
+      "narration": [
+        "He's testing you now. You can tell.",
+        "\"What if it goes wrong? What if we get there and Edmund's got thirty men and we've got... this?\"",
+        "He gestures between you."
+      ],
+      "questions": [
+        {
+          "id": "q_plan",
+          "speaker": "char_aldric",
+          "text": "Should we make a plan?",
+          "probes": ["mortality_comfort", "control_vs_chaos", "competence_fantasy"]
+        }
+      ]
+    },
+    {
+      "id": "beat_trust",
+      "setting": {
+        "time": "morning",
+        "activity": "crossing_stream",
+        "mood": "testing"
+      },
+      "narration": [
+        "Crossing a stream. He offers his hand to help you over, then pulls it back at the last second. Half-smile.",
+        "He extends it again.",
+        "Waits."
+      ],
+      "questions": [
+        {
+          "id": "q_trust",
+          "speaker": "char_aldric",
+          "text": "",
+          "type": "action",
+          "note": "Physical moment. Does the player take his hand?",
+          "probes": ["trust_betrayal", "authority_style"]
+        }
+      ]
+    },
+    {
+      "id": "beat_desire",
+      "setting": {
+        "time": "evening",
+        "activity": "inn",
+        "mood": "casual"
+      },
+      "narration": [
+        "A woman at an inn looked at you. He noticed."
+      ],
+      "questions": [
+        {
+          "id": "q_desire",
+          "speaker": "char_aldric",
+          "text": "You going to do something about that? Or is that not what this is about?",
+          "note": "No judgment in his voice. Just curiosity.",
+          "probes": ["sexual_romantic", "social_status", "secret_desires"]
+        }
+      ]
+    },
+    {
+      "id": "beat_final",
+      "setting": {
+        "time": "dawn",
+        "activity": "breaking_camp",
+        "mood": "serious"
+      },
+      "narration": [
+        "Dawn. You're about to break camp.",
+        "\"One more thing.\"",
+        "He's serious now."
+      ],
+      "questions": [
+        {
+          "id": "q_truth",
+          "speaker": "char_aldric",
+          "text": "When I think we're about to die — do you want to know? Or do you want me to shut up and follow?",
+          "probes": ["companion_dynamic", "trust_betrayal", "authority_style"]
+        }
+      ],
+      "close": {
+        "narration": [
+          "He shoulders his pack."
+        ],
+        "text": "I need to know what kind of man I'm riding with."
+      }
+    }
+  ],
+  "pause": {
+    "narration": [
+      "The fire's dead. The road waits. He hasn't moved.",
+      "When he speaks, his voice is different."
+    ]
+  },
+  "payoff": {
+    "trigger": "after_all_beats",
+    "tone_matching": {
+      "principle": "Mirror the player's language throughout the payoff",
+      "rules": [
+        "If player swore, Aldric can swear",
+        "If player was formal, Aldric is formal",
+        "If player was terse, Aldric is direct",
+        "If player was verbose, Aldric can expand",
+        "Use their exact words/phrases when reflecting back"
+      ]
+    },
+    "structure": [
+      {
+        "id": "seeing",
+        "purpose": "Names what they said back. The underneath, not the surface.",
+        "guidance": "Not summary. Reflection. Name the underneath, not the surface. Use their words."
+      },
+      {
+        "id": "path",
+        "purpose": "Concrete next steps. York, Edmund, who we find.",
+        "guidance": "Specific. Not poetic. Where do we go, who do we find, what do we do."
+      },
+      {
+        "id": "build",
+        "purpose": "Specific, measurable. Numbers, assets, achievements.",
+        "guidance": "Specific numbers, physical assets, countable achievements.",
+        "examples": [
+          "First us, then five, then ten.",
+          "Our own place.",
+          "You want to be a lord? We make you a lord."
+        ]
+      },
+      {
+        "id": "validation",
+        "purpose": "Commitment, not asking permission.",
+        "guidance": "Confident he understood. Player can still correct, but Aldric isn't hesitant.",
+        "examples": [
+          "If that's what we're doing — God be my witness — I'll be with you at each step.",
+          "I've waited my whole life for someone to say that out loud. So yeah. I'm yours."
+        ]
+      }
+    ],
+    "player_response": {
+      "yes": "Partnership sealed. Game begins.",
+      "correction": "Aldric adjusts. Correction is also data. Game begins.",
+      "note": "Either way, the player has agency. They can shape or confirm."
+    }
+  },
+  "probes_reference": [
+    "drive",
+    "authority_style",
+    "fantasy",
+    "companion_dynamic",
+    "power_fantasy",
+    "darkness_tolerance",
+    "emotional_range",
+    "conflict_style",
+    "stakes_preference",
+    "mortality_comfort",
+    "trust_betrayal",
+    "detail_appetite",
+    "secret_desires",
+    "historical_literacy",
+    "complexity_appetite",
+    "competence_fantasy",
+    "social_status",
+    "sexual_romantic",
+    "moral_self_image",
+    "loneliness",
+    "control_vs_chaos"
+  ]
+}

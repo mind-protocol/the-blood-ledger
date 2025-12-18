@@ -1,0 +1,153 @@
+# Example Moment Graph Mutation File
+# Shows the new moment graph architecture for potential dialogue
+
+# Thinking (for debugging, not applied to graph)
+thinking: |
+  Aldric has a story about Edmund he's been holding back.
+  When the player asks about the past, this conversation tree
+  should surface. Weight starts at 0.6 - present but not urgent.
+
+# Event summary (optional, for logging)
+event:
+  summary: "Seeding Aldric's Edmund story conversation tree"
+  location: place_camp
+  witnesses: []
+  caused_by: ["narr_aldric_history"]
+
+# New nodes
+nodes:
+  # Root moment - the hook
+  - type: moment
+    id: moment_aldric_edmund_hook
+    text: "Aldric's eyes darken when you mention Edmund's name."
+    moment_type: narration
+    status: possible
+    weight: 0.6
+    tone: guarded
+    tick: 0
+
+  # Dialogue option 1 - player asks
+  - type: moment
+    id: moment_aldric_ask_edmund
+    text: "You knew Edmund before all this?"
+    moment_type: player_click
+    status: possible
+    weight: 0.3
+    tick: 0
+
+  # Aldric's response - bitter
+  - type: moment
+    id: moment_aldric_edmunds_past
+    text: "Knew him. We all knew him. Before the fire, before the taking. He was one of us once."
+    moment_type: dialogue
+    status: possible
+    weight: 0.3
+    tone: bitter
+    tick: 0
+
+  # Alternative response - dismissive
+  - type: moment
+    id: moment_aldric_dismiss
+    text: "Some things are better left buried."
+    moment_type: dialogue
+    status: possible
+    weight: 0.3
+    tone: cold
+    tick: 0
+
+  # Deep path - what happened
+  - type: moment
+    id: moment_aldric_what_happened
+    text: "What changed him?"
+    moment_type: player_click
+    status: possible
+    weight: 0.2
+    tick: 0
+
+  # Aldric's wound revealed
+  - type: moment
+    id: moment_aldric_wound
+    text: "Power. The Normans offered him power, and he took it. Traded our blood for their silver."
+    moment_type: dialogue
+    status: possible
+    weight: 0.2
+    tone: wounded
+    tick: 0
+
+# Links - the graph structure
+links:
+  # Who can speak what
+  - type: can_speak
+    character: char_aldric
+    moment: moment_aldric_edmunds_past
+    weight: 1.0
+
+  - type: can_speak
+    character: char_aldric
+    moment: moment_aldric_dismiss
+    weight: 0.7
+
+  - type: can_speak
+    character: char_aldric
+    moment: moment_aldric_wound
+    weight: 1.0
+
+  # Attachments - when these surface
+  - type: attached_to
+    moment: moment_aldric_edmund_hook
+    target: char_aldric
+    presence_required: true
+    persistent: true
+
+  - type: attached_to
+    moment: moment_aldric_edmund_hook
+    target: narr_edmund_betrayal
+    presence_required: false
+    persistent: true
+
+  # Traversal links - dialogue flow
+  - type: can_lead_to
+    from: moment_aldric_edmund_hook
+    to: moment_aldric_ask_edmund
+    trigger: click
+    require_words: ["Edmund", "knew", "before"]
+    weight_transfer: 0.4
+    consumes_origin: false
+
+  - type: can_lead_to
+    from: moment_aldric_ask_edmund
+    to: moment_aldric_edmunds_past
+    trigger: auto
+    weight_transfer: 0.5
+    consumes_origin: true
+
+  - type: can_lead_to
+    from: moment_aldric_ask_edmund
+    to: moment_aldric_dismiss
+    trigger: auto
+    weight_transfer: 0.3
+    consumes_origin: true
+
+  - type: can_lead_to
+    from: moment_aldric_edmunds_past
+    to: moment_aldric_what_happened
+    trigger: click
+    require_words: ["changed", "happened", "why"]
+    weight_transfer: 0.4
+    consumes_origin: false
+
+  - type: can_lead_to
+    from: moment_aldric_what_happened
+    to: moment_aldric_wound
+    trigger: auto
+    weight_transfer: 0.6
+    consumes_origin: true
+
+# Updates (optional)
+updates: []
+
+# Movements (optional)
+movements: []
+
+# Cascades - tensions to re-check (none for this example)
+cascades: []

@@ -1,0 +1,217 @@
+# Blood Ledger — Initial Game State
+# Apply with: write.apply(path="data/init/initial_state.yaml")
+
+nodes:
+  # Player Character
+  - type: character
+    id: char_rolf
+    name: Rolf
+    character_type: player
+    backstory_wound: "Thornwick burned. Edmund took everything."
+    backstory_why_here: "To find Edmund and reclaim what was stolen."
+    values: [justice, family]
+
+  # Companion
+  - type: character
+    id: char_aldric
+    name: Aldric
+    character_type: companion
+    face: scarred
+    voice_tone: quiet
+    voice_style: blunt
+    values: [loyalty, survival]
+    flaw: doubt
+    backstory_wound: "Lost his brother Wulfric. The blade was his."
+    backstory_why_here: "Follows Rolf by choice, not obligation."
+
+  # Antagonist
+  - type: character
+    id: char_edmund
+    name: Edmund
+    character_type: major
+    face: noble
+    voice_tone: measured
+    voice_style: questioning
+    values: [family, survival]
+    flaw: pride
+    backstory_wound: "Believes he did what he had to do."
+    backstory_why_here: "Building power in York under Norman patronage."
+
+  # Places
+  - type: place
+    id: place_camp
+    name: The Camp
+    place_type: camp
+    mood: watchful
+    weather: [cold, clear]
+    details:
+      - "Fire burning low"
+      - "Stars visible through bare branches"
+      - "Horses hobbled nearby"
+
+  - type: place
+    id: place_york
+    name: York
+    place_type: city
+    mood: tense
+    details:
+      - "Norman banners on the walls"
+      - "Market busy despite tension"
+      - "Soldiers patrol the streets"
+
+  - type: place
+    id: place_thornwick
+    name: Thornwick
+    place_type: ruin
+    mood: mournful
+    details:
+      - "Blackened timbers"
+      - "The hall where you grew up, now ash"
+
+  # Core Narratives
+  - type: narrative
+    id: narr_oath
+    name: "Rolf's Oath"
+    content: "I swore to find Edmund and reclaim what he stole. Thornwick will be answered."
+    narrative_type: oath
+    about:
+      characters: [char_rolf, char_edmund]
+      places: [place_thornwick]
+    tone: cold
+    truth: 1.0
+    weight: 0.9
+    focus: 1.5
+
+  - type: narrative
+    id: narr_edmund_betrayal
+    name: "Edmund's Betrayal"
+    content: "Edmund stole Thornwick, forged documents, and left Rolf to burn. Or so Rolf believes."
+    narrative_type: enmity
+    about:
+      characters: [char_edmund, char_rolf]
+      places: [place_thornwick]
+    tone: bitter
+    truth: 0.6
+    weight: 0.85
+
+  - type: narrative
+    id: narr_aldric_loyalty
+    name: "Aldric's Loyalty"
+    content: "Aldric follows by choice, not obligation. He has never explained why."
+    narrative_type: bond
+    about:
+      characters: [char_aldric, char_rolf]
+    tone: warm
+    truth: 1.0
+    weight: 0.7
+
+  - type: narrative
+    id: narr_thornwick_memory
+    name: "Thornwick Burned"
+    content: "The flames took everything. The hall where generations lived, now ash and memory."
+    narrative_type: memory
+    about:
+      characters: [char_rolf]
+      places: [place_thornwick]
+    tone: mournful
+    truth: 1.0
+    weight: 0.5
+
+  # Tension
+  - type: tension
+    id: tension_confrontation
+    narratives: [narr_oath, narr_edmund_betrayal]
+    description: "Edmund draws closer. The reckoning approaches."
+    pressure: 0.3
+    pressure_type: hybrid
+    breaking_point: 0.9
+    base_rate: 0.001
+    narrator_notes: "This is the main tension of Act 1. Build slowly."
+
+links:
+  # Rolf's beliefs
+  - type: belief
+    character: char_rolf
+    narrative: narr_oath
+    heard: 1.0
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_rolf
+    narrative: narr_edmund_betrayal
+    heard: 1.0
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_rolf
+    narrative: narr_aldric_loyalty
+    heard: 1.0
+    believes: 0.8
+    source: inferred
+
+  - type: belief
+    character: char_rolf
+    narrative: narr_thornwick_memory
+    heard: 1.0
+    believes: 1.0
+    source: witnessed
+
+  # Aldric's beliefs
+  - type: belief
+    character: char_aldric
+    narrative: narr_oath
+    heard: 1.0
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_aldric
+    narrative: narr_edmund_betrayal
+    heard: 1.0
+    believes: 0.7
+    doubts: 0.3
+    source: told
+
+  # Presence at camp
+  - type: presence
+    character: char_rolf
+    place: place_camp
+    present: 1.0
+    visible: 1.0
+
+  - type: presence
+    character: char_aldric
+    place: place_camp
+    present: 1.0
+    visible: 1.0
+
+  # Edmund is in York (hidden)
+  - type: presence
+    character: char_edmund
+    place: place_york
+    present: 1.0
+    visible: 0.0
+
+  # Geography
+  - type: geography
+    from: place_camp
+    to: place_york
+    path: 1.0
+    path_distance: "2 days"
+    path_difficulty: moderate
+
+  - type: geography
+    from: place_camp
+    to: place_thornwick
+    path: 1.0
+    path_distance: "1 day"
+    path_difficulty: easy
+
+  # Narrative links
+  - type: narrative_link
+    from: narr_edmund_betrayal
+    to: narr_oath
+    supports: 0.9

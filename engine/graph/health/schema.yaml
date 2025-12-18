@@ -1,0 +1,316 @@
+# Graph Schema Definition
+# Derived from agents/narrator/CLAUDE.md
+# Used by check_health.py to validate graph data
+
+nodes:
+  Character:
+    required:
+      - id
+      - name
+    optional:
+      - type           # player, companion, major, minor, background
+      - gender         # female, male (default: male)
+      - alive          # boolean
+      - face           # young, scarred, weathered, gaunt, hard, noble
+      - skills         # JSON: { fighting, tracking, healing, persuading, sneaking, riding, reading, leading }
+      - voice_tone     # quiet, sharp, warm, bitter, measured, fierce
+      - voice_style    # direct, questioning, sardonic, gentle, blunt
+      - approach       # direct, cunning, cautious, impulsive, deliberate
+      - values         # JSON array: loyalty, survival, honor, ambition, faith, etc.
+      - flaw           # pride, fear, greed, wrath, doubt, etc.
+      - backstory_family
+      - backstory_childhood
+      - backstory_wound
+      - backstory_why_here
+      - modifiers      # JSON array
+      - detail         # Extended narrative text for rich descriptions
+    enums:
+      type:
+        - player
+        - companion
+        - major
+        - minor
+        - background
+      gender:
+        - male
+        - female
+      face:
+        - young
+        - scarred
+        - weathered
+        - gaunt
+        - hard
+        - noble
+      voice_tone:
+        - quiet
+        - sharp
+        - warm
+        - bitter
+        - measured
+        - fierce
+      voice_style:
+        - direct
+        - questioning
+        - sardonic
+        - gentle
+        - blunt
+      approach:
+        - direct
+        - cunning
+        - cautious
+        - impulsive
+        - deliberate
+      flaw:
+        - pride
+        - fear
+        - greed
+        - wrath
+        - doubt
+        - null
+
+  Place:
+    required:
+      - id
+      - name
+    optional:
+      - historical_name
+      - type           # region, city, hold, village, monastery, crossing, road, wilderness, forest, ruin, camp, etc.
+      - lat
+      - lng
+      - weather
+      - mood
+      - details        # JSON array (legacy)
+      - modifiers      # JSON array
+      - detail         # Extended narrative text for rich descriptions
+    enums:
+      type:
+        - region
+        - city
+        - town
+        - hold
+        - village
+        - monastery
+        - abbey
+        - crossing
+        - road
+        - wilderness
+        - forest
+        - ruin
+        - camp
+        - holy_well
+        - standing_stones
+        - hill
+        - crossroads
+
+  Thing:
+    required:
+      - id
+      - name
+    optional:
+      - type           # weapon, armor, document, letter, relic, treasure, title, land, token, provisions
+      - portable       # boolean
+      - significance   # mundane, personal, political, sacred, legendary
+      - quantity       # integer
+      - description
+      - modifiers      # JSON array
+      - detail         # Extended narrative text for rich descriptions
+    enums:
+      type:
+        - weapon
+        - armor
+        - document
+        - letter
+        - relic
+        - treasure
+        - title
+        - land
+        - token
+        - provisions
+      significance:
+        - mundane
+        - personal
+        - political
+        - sacred
+        - legendary
+
+  Narrative:
+    required:
+      - id
+      - name
+      - content
+    optional:
+      - interpretation
+      - type           # memory, account, rumor, reputation, identity, bond, oath, debt, blood, enmity, love, service, ownership, claim, control, origin, belief, prophecy, lie, secret
+      - about_characters  # JSON array
+      - about_places      # JSON array
+      - about_things      # JSON array
+      - about_relationship # JSON array
+      - tone           # bitter, proud, shameful, defiant, mournful, cold, righteous, hopeful, fearful, warm, dark, sacred
+      - voice_style
+      - voice_phrases  # JSON array
+      - weight         # float 0-1 (computed)
+      - focus          # float 0.1-3.0
+      - truth          # float 0-1 (director only)
+      - narrator_notes
+      - occurred_at    # When the event occurred (e.g., "Day 12, dawn")
+      # NOTE: occurred_where is now OCCURRED_AT link to Place, not an attribute
+      - detail         # Extended narrative text for rich descriptions
+    enums:
+      type:
+        - memory
+        - account
+        - rumor
+        - rumour
+        - reputation
+        - identity
+        - bond
+        - oath
+        - debt
+        - blood
+        - enmity
+        - love
+        - service
+        - ownership
+        - claim
+        - control
+        - origin
+        - belief
+        - prophecy
+        - lie
+        - secret
+      tone:
+        - bitter
+        - proud
+        - shameful
+        - defiant
+        - mournful
+        - cold
+        - righteous
+        - hopeful
+        - fearful
+        - warm
+        - dark
+        - sacred
+
+  Tension:
+    required:
+      - id
+    optional:
+      - narratives     # JSON array
+      - description
+      - narrator_notes
+      - pressure_type  # gradual, scheduled, hybrid, event
+      - pressure       # float 0-1
+      - breaking_point # float (default 0.9)
+      - base_rate      # float (for gradual)
+      - trigger_at     # string (for scheduled)
+      - progression    # JSON array (for scheduled/hybrid)
+      - detail         # Extended narrative text for rich descriptions
+    enums:
+      pressure_type:
+        - gradual
+        - scheduled
+        - hybrid
+        - event
+
+links:
+  BELIEVES:
+    from: Character
+    to: Narrative
+    required: []
+    optional:
+      - heard          # float 0-1
+      - believes       # float 0-1
+      - doubts         # float 0-1
+      - denies         # float 0-1
+      - hides          # float 0-1
+      - spreads        # float 0-1
+      - originated     # float 0-1
+      - source         # witnessed, told, inferred, assumed, taught
+      - where          # place_id where they learned this
+      - detail         # Extended narrative text
+    enums:
+      source:
+        - witnessed
+        - told
+        - inferred
+        - assumed
+        - taught
+        - none
+
+  NARRATIVE_LINK:
+    from: Narrative
+    to: Narrative
+    required: []
+    optional:
+      - contradicts    # float 0-1
+      - supports       # float 0-1
+      - elaborates     # float 0-1
+      - subsumes       # float 0-1
+      - supersedes     # float 0-1
+      - detail         # Extended narrative text
+
+  OCCURRED_AT:
+    from: Narrative
+    to: Place
+    required: []
+    optional: []
+    # No properties - just indicates where the narrative event took place
+
+  AT:
+    from: Character
+    to: Place
+    required: []
+    optional:
+      - present        # float 0-1
+      - visible        # float 0-1
+      - traveling_to   # place_id string
+      - travel_progress # float 0-1
+      - travel_eta_hours # float
+      - detail         # Extended narrative text
+
+  CARRIES:
+    from: Character
+    to: Thing
+    required: []
+    optional:
+      - carries        # float 0-1
+      - carries_hidden # float 0-1
+      - detail         # Extended narrative text
+
+  LOCATED_AT:
+    from: Thing
+    to: Place
+    required: []
+    optional:
+      - located        # float 0-1
+      - hidden         # float 0-1
+      - specific_location # string
+      - detail         # Extended narrative text
+
+  CONNECTS:
+    from: Place
+    to: Place
+    required: []
+    optional:
+      - contains       # float 0-1
+      - path           # float 0-1
+      - path_km        # float
+      - path_hours     # float
+      - path_terrain   # roman_road, moor, forest, river_crossing, track
+      - detail         # Extended narrative text
+    enums:
+      path_terrain:
+        - roman_road
+        - moor
+        - forest
+        - river_crossing
+        - track
+        - marsh
+
+# Skill levels for character skills
+skill_levels:
+  - untrained
+  - capable
+  - skilled
+  - master

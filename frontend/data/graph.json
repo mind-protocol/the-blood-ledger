@@ -1,0 +1,506 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "created": "1067-12-12",
+    "description": "Narrative graph for Rolf's journey to York"
+  },
+
+  "nodes": {
+    "characters": [
+      {
+        "id": "char_rolf",
+        "type": "CHARACTER",
+        "name": "Rolf",
+        "tags": ["player", "norman", "dispossessed"],
+        "traits": {
+          "drive": "BLOOD",
+          "determination": 0.9,
+          "mercy": 0.4
+        },
+        "backstory": {
+          "father": "Godric of Wessex, a minor thegn who bent the knee to William",
+          "mother": "Aelith, died in childbirth with a third son who also died",
+          "childhood": "Raised to inherit. Trained with sword and ledger both.",
+          "wound": "Edmund's betrayal. The moment Father died, Edmund produced a 'new' will."
+        }
+      },
+      {
+        "id": "char_aldric",
+        "type": "CHARACTER",
+        "name": "Aldric",
+        "tags": ["companion", "saxon", "warrior", "oathbound"],
+        "traits": {
+          "loyalty": 0.95,
+          "honor": 0.9,
+          "warmth": 0.5,
+          "grief": 0.7
+        },
+        "backstory": {
+          "family": "The Thornwick Aldrics. Farmers who became fighters when the Normans came.",
+          "grandmother": "Wulfhild. She told him stories of the old kings. Died before the Harrying.",
+          "loss": "His brother Oswin died at Hastings. His parents in the Harrying.",
+          "why_with_rolf": "Rolf spared him at the bridge when he could have killed him. Aldric saw something.",
+          "oath_meaning": "An oath is sacred. His father taught him that. Break an oath, break yourself."
+        }
+      },
+      {
+        "id": "char_edmund",
+        "type": "CHARACTER",
+        "name": "Edmund",
+        "tags": ["antagonist", "brother", "betrayer", "ambitious"],
+        "traits": {
+          "ambition": 0.95,
+          "cunning": 0.8,
+          "guilt": 0.3,
+          "fear": 0.6
+        },
+        "backstory": {
+          "position": "Second son. Always second.",
+          "resentment": "Father favored Rolf. Everyone favored Rolf.",
+          "justification": "The will was real. Father changed his mind. Rolf was too soft for these times.",
+          "current_plan": "Curry favor with Sheriff Malet. Become indispensable. Rise."
+        }
+      },
+      {
+        "id": "char_malet",
+        "type": "CHARACTER",
+        "name": "William Malet",
+        "tags": ["authority", "norman", "sheriff"],
+        "traits": {
+          "pragmatism": 0.9,
+          "cruelty": 0.5,
+          "intelligence": 0.8
+        },
+        "backstory": {
+          "position": "Sheriff of Yorkshire. One of the Conqueror's men.",
+          "reputation": "Fair, for a Norman. But still a Norman.",
+          "concern": "The north is restless. Edgar Atheling stirs. Gospatric plots."
+        }
+      },
+      {
+        "id": "char_wulfric",
+        "type": "CHARACTER",
+        "name": "Wulfric",
+        "tags": ["potential_ally", "saxon", "survivor"],
+        "traits": {
+          "bitterness": 0.7,
+          "survival": 0.9,
+          "hope": 0.2
+        },
+        "backstory": {
+          "past": "Was a reeve before the conquest. Now scrapes by in York.",
+          "knowledge": "Knows everyone's business. Information is currency.",
+          "price": "Everything has a price. His is survival."
+        }
+      }
+    ],
+
+    "places": [
+      {
+        "id": "place_camp",
+        "type": "PLACE",
+        "name": "The Camp",
+        "region": "The North",
+        "tags": ["temporary", "safe"],
+        "description": "Three days from York. A clearing in bare woods."
+      },
+      {
+        "id": "place_york",
+        "type": "PLACE",
+        "name": "York",
+        "region": "The North",
+        "tags": ["city", "power", "danger"],
+        "description": "The great city of the north. Norman garrison. Saxon resentment. Where Edmund is."
+      },
+      {
+        "id": "place_thornwick",
+        "type": "PLACE",
+        "name": "Thornwick",
+        "region": "The North",
+        "tags": ["village", "harried", "memory"],
+        "description": "A village half-emptied by the Harrying. Aldric's family came from here."
+      },
+      {
+        "id": "place_durham",
+        "type": "PLACE",
+        "name": "Durham",
+        "region": "The North",
+        "tags": ["church", "power", "bishop"],
+        "description": "The bishop's seat. Another center of power in the north."
+      },
+      {
+        "id": "place_wessex_home",
+        "type": "PLACE",
+        "name": "Father's Hall",
+        "region": "The South",
+        "tags": ["memory", "lost", "home"],
+        "description": "Where Rolf grew up. Now Edmund's. Or sold. Rolf doesn't know."
+      }
+    ],
+
+    "things": [
+      {
+        "id": "thing_fathers_will",
+        "type": "THING",
+        "name": "The Will",
+        "tags": ["document", "contested", "key"],
+        "description": "The document Edmund produced. Is it real? Forged? Does it matter now?"
+      },
+      {
+        "id": "thing_aldrics_blade",
+        "type": "THING",
+        "name": "Aldric's Blade",
+        "tags": ["weapon", "saxon", "inheritance"],
+        "description": "His father's sword. The only thing left from before."
+      },
+      {
+        "id": "thing_rolf_ring",
+        "type": "THING",
+        "name": "Father's Ring",
+        "tags": ["heirloom", "proof", "identity"],
+        "description": "The ring Father gave Rolf before he died. Edmund doesn't know he has it."
+      }
+    ],
+
+    "narratives": [
+      {
+        "id": "narr_edmund_betrayal",
+        "type": "NARRATIVE",
+        "category": "debt",
+        "summary": "Edmund stole Rolf's inheritance",
+        "content": "While Father lay dying, Edmund produced a will naming himself sole heir. Everything was taken. The land, the hall, the future.",
+        "truth": 0.7,
+        "weight": 0.95,
+        "tags": ["foundational", "grievance", "blood"],
+        "voiceText": "Three days to York. He's close now."
+      },
+      {
+        "id": "narr_aldric_oath",
+        "type": "NARRATIVE",
+        "category": "oath",
+        "summary": "Aldric swore to serve Rolf",
+        "content": "At the fire on Day 1, Aldric swore an oath: to serve until released, to follow where Rolf leads, to keep faith. He has never broken an oath.",
+        "truth": 1.0,
+        "weight": 0.85,
+        "tags": ["binding", "sacred", "companion"],
+        "voiceText": "I swore to see Aldric home."
+      },
+      {
+        "id": "narr_rolf_oath_vengeance",
+        "type": "NARRATIVE",
+        "category": "oath",
+        "summary": "Rolf swore to reclaim what's his",
+        "content": "Before leaving the south, Rolf swore to find Edmund and take back his birthright. By word or by blood.",
+        "truth": 1.0,
+        "weight": 0.9,
+        "tags": ["drive", "purpose", "vengeance"],
+        "voiceText": "Find him. Take back what's yours. That's why we came north."
+      },
+      {
+        "id": "narr_blood_brothers",
+        "type": "NARRATIVE",
+        "category": "blood",
+        "summary": "Rolf and Edmund are brothers",
+        "content": "Same father. Same blood. That makes the betrayal worse. Or does it make forgiveness possible?",
+        "truth": 1.0,
+        "weight": 0.7,
+        "tags": ["family", "complication", "weight"],
+        "voiceText": "He's still your brother."
+      },
+      {
+        "id": "narr_aldric_thornwick",
+        "type": "NARRATIVE",
+        "category": "memory",
+        "summary": "Thornwick reminds Aldric of his loss",
+        "content": "Aldric knew a family in Thornwick before the Harrying. They're gone now. He won't say more.",
+        "truth": 1.0,
+        "weight": 0.65,
+        "tags": ["trauma", "companion", "silence"],
+        "voiceText": "He hasn't spoken since Thornwick. The village reminded him of something."
+      },
+      {
+        "id": "narr_harrying_memory",
+        "type": "NARRATIVE",
+        "category": "memory",
+        "summary": "The Harrying devastated the north",
+        "content": "William's response to northern rebellion. Villages burned. Crops destroyed. Thousands starved. Aldric lost everyone.",
+        "truth": 1.0,
+        "weight": 0.5,
+        "tags": ["historical", "trauma", "context"],
+        "voiceText": "The north remembers what was done."
+      },
+      {
+        "id": "narr_edmund_in_york",
+        "type": "NARRATIVE",
+        "category": "rumor",
+        "summary": "Edmund is in York, seeking favor",
+        "content": "Word is Edmund has been seen in York, speaking with men close to Sheriff Malet. He's building something.",
+        "truth": 0.9,
+        "weight": 0.75,
+        "tags": ["intel", "target", "urgency"],
+        "voiceText": "He's in York. Building alliances. Growing stronger."
+      },
+      {
+        "id": "narr_rolf_spared_aldric",
+        "type": "NARRATIVE",
+        "category": "memory",
+        "summary": "Rolf spared Aldric at the bridge",
+        "content": "They met as enemies. Rolf had Aldric beaten. Could have killed him. Didn't. Aldric has wondered why ever since.",
+        "truth": 1.0,
+        "weight": 0.6,
+        "tags": ["origin", "bond", "mystery"],
+        "voiceText": "You could have killed me. You didn't."
+      },
+      {
+        "id": "narr_will_contested",
+        "type": "NARRATIVE",
+        "category": "debt",
+        "summary": "The will may be forged",
+        "content": "Rolf believes the will is false. Father would never have disinherited him. But proving it is another matter.",
+        "truth": 0.5,
+        "weight": 0.6,
+        "tags": ["uncertainty", "hope", "evidence"],
+        "voiceText": "Father would never. The will is a lie."
+      },
+      {
+        "id": "narr_edmund_justification",
+        "type": "NARRATIVE",
+        "category": "belief",
+        "summary": "Edmund believes he deserves the inheritance",
+        "content": "To Edmund, the will is real and just. Rolf was soft, unsuited to hard times. Edmund saved the family legacy.",
+        "truth": 0.3,
+        "weight": 0.4,
+        "tags": ["perspective", "antagonist", "hidden"],
+        "voiceText": null
+      },
+      {
+        "id": "narr_malet_useful",
+        "type": "NARRATIVE",
+        "category": "rumor",
+        "summary": "Sheriff Malet rewards useful men",
+        "content": "Malet needs men who can keep the peace. Those who prove useful rise. Those who cause trouble disappear.",
+        "truth": 0.85,
+        "weight": 0.45,
+        "tags": ["opportunity", "danger", "politics"],
+        "voiceText": "The sheriff rewards those who serve. And destroys those who don't."
+      }
+    ]
+  },
+
+  "edges": {
+    "beliefs": [
+      {
+        "id": "belief_rolf_betrayal",
+        "believer": "char_rolf",
+        "narrative": "narr_edmund_betrayal",
+        "strength": 1.0,
+        "certainty": 0.95
+      },
+      {
+        "id": "belief_rolf_oath_self",
+        "believer": "char_rolf",
+        "narrative": "narr_rolf_oath_vengeance",
+        "strength": 1.0,
+        "certainty": 1.0
+      },
+      {
+        "id": "belief_rolf_aldric_oath",
+        "believer": "char_rolf",
+        "narrative": "narr_aldric_oath",
+        "strength": 1.0,
+        "certainty": 1.0
+      },
+      {
+        "id": "belief_aldric_oath",
+        "believer": "char_aldric",
+        "narrative": "narr_aldric_oath",
+        "strength": 1.0,
+        "certainty": 1.0
+      },
+      {
+        "id": "belief_aldric_thornwick",
+        "believer": "char_aldric",
+        "narrative": "narr_aldric_thornwick",
+        "strength": 1.0,
+        "certainty": 1.0
+      },
+      {
+        "id": "belief_rolf_edmund_york",
+        "believer": "char_rolf",
+        "narrative": "narr_edmund_in_york",
+        "strength": 0.9,
+        "certainty": 0.8
+      },
+      {
+        "id": "belief_edmund_justified",
+        "believer": "char_edmund",
+        "narrative": "narr_edmund_justification",
+        "strength": 1.0,
+        "certainty": 0.7
+      },
+      {
+        "id": "belief_rolf_will_false",
+        "believer": "char_rolf",
+        "narrative": "narr_will_contested",
+        "strength": 1.0,
+        "certainty": 0.85
+      },
+      {
+        "id": "belief_aldric_spared",
+        "believer": "char_aldric",
+        "narrative": "narr_rolf_spared_aldric",
+        "strength": 1.0,
+        "certainty": 1.0
+      },
+      {
+        "id": "belief_rolf_brothers",
+        "believer": "char_rolf",
+        "narrative": "narr_blood_brothers",
+        "strength": 1.0,
+        "certainty": 1.0
+      }
+    ],
+
+    "presence": [
+      {
+        "id": "pres_rolf_camp",
+        "character": "char_rolf",
+        "place": "place_camp",
+        "status": "present"
+      },
+      {
+        "id": "pres_aldric_camp",
+        "character": "char_aldric",
+        "place": "place_camp",
+        "status": "present"
+      },
+      {
+        "id": "pres_edmund_york",
+        "character": "char_edmund",
+        "place": "place_york",
+        "status": "present"
+      },
+      {
+        "id": "pres_malet_york",
+        "character": "char_malet",
+        "place": "place_york",
+        "status": "present"
+      },
+      {
+        "id": "pres_wulfric_york",
+        "character": "char_wulfric",
+        "place": "place_york",
+        "status": "present"
+      }
+    ],
+
+    "connections": [
+      {
+        "id": "conn_rolf_aldric",
+        "from": "char_rolf",
+        "to": "char_aldric",
+        "type": "companion",
+        "strength": 0.85,
+        "nature": "Aldric serves Rolf. Bound by oath. Growing into trust."
+      },
+      {
+        "id": "conn_rolf_edmund",
+        "from": "char_rolf",
+        "to": "char_edmund",
+        "type": "blood",
+        "strength": -0.8,
+        "nature": "Brothers. Rolf believes Edmund betrayed him. Hunting him."
+      },
+      {
+        "id": "conn_edmund_rolf",
+        "from": "char_edmund",
+        "to": "char_rolf",
+        "type": "blood",
+        "strength": -0.5,
+        "nature": "Fears Rolf. Knows he's coming. Preparing."
+      },
+      {
+        "id": "conn_edmund_malet",
+        "from": "char_edmund",
+        "to": "char_malet",
+        "type": "political",
+        "strength": 0.3,
+        "nature": "Edmund is cultivating Malet. Seeking protection and advancement."
+      },
+      {
+        "id": "conn_aldric_thornwick",
+        "from": "char_aldric",
+        "to": "place_thornwick",
+        "type": "memory",
+        "strength": 0.9,
+        "nature": "Aldric's family came from here. They're gone now. The Harrying."
+      }
+    ],
+
+    "ownership": [
+      {
+        "id": "own_aldric_blade",
+        "character": "char_aldric",
+        "thing": "thing_aldrics_blade"
+      },
+      {
+        "id": "own_rolf_ring",
+        "character": "char_rolf",
+        "thing": "thing_rolf_ring"
+      },
+      {
+        "id": "own_edmund_will",
+        "character": "char_edmund",
+        "thing": "thing_fathers_will"
+      }
+    ]
+  },
+
+  "tensions": [
+    {
+      "id": "tension_confrontation",
+      "narratives": ["narr_edmund_betrayal", "narr_rolf_oath_vengeance", "narr_edmund_in_york"],
+      "pressure": 0.85,
+      "description": "Rolf is three days from York. Edmund is there. Confrontation is inevitable."
+    },
+    {
+      "id": "tension_aldric_loyalty",
+      "narratives": ["narr_aldric_oath", "narr_aldric_thornwick", "narr_harrying_memory"],
+      "pressure": 0.4,
+      "description": "Aldric is bound by oath, but the north's wounds are his wounds. What if Rolf's path leads to more suffering?"
+    },
+    {
+      "id": "tension_brotherhood",
+      "narratives": ["narr_edmund_betrayal", "narr_blood_brothers"],
+      "pressure": 0.5,
+      "description": "Edmund is the enemy. Edmund is also blood. Can Rolf kill his brother? Should he?"
+    },
+    {
+      "id": "tension_truth",
+      "narratives": ["narr_will_contested", "narr_edmund_justification"],
+      "pressure": 0.3,
+      "description": "Both brothers believe they're right. The truth may be more complicated than either knows."
+    }
+  ],
+
+  "director": {
+    "currentFocus": ["narr_edmund_betrayal", "narr_aldric_thornwick"],
+    "setups": [
+      {
+        "id": "setup_york_arrival",
+        "description": "Rolf will reach York soon. The confrontation with Edmund approaches.",
+        "payoff": "The meeting with Edmund"
+      },
+      {
+        "id": "setup_aldric_past",
+        "description": "Aldric's silence about Thornwick. There's more there.",
+        "payoff": "Aldric reveals what happened to his family"
+      }
+    ],
+    "playerPatterns": {
+      "talksToAldric": true,
+      "asksAboutPast": true,
+      "prefersDiplomacy": null
+    }
+  }
+}

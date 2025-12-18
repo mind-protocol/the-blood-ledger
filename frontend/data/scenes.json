@@ -1,0 +1,228 @@
+{
+  "scenes": [
+    {
+      "id": "scene_camp_night",
+      "type": "CAMP",
+      "name": "THE CAMP",
+      "location": "The North, three days from York",
+      "timeOfDay": "NIGHT",
+      "weather": "CLEAR",
+      "bannerImage": "/playthrough/default/images/camp_night.png",
+      "atmosphere": [
+        "Cold night. Stars visible through bare branches.",
+        "The fire crackles, throwing shadows on the tents.",
+        "Aldric hasn't spoken since the village."
+      ],
+      "hotspots": [
+        {
+          "id": "aldric",
+          "type": "person",
+          "name": "Aldric",
+          "description": "Sitting apart from the fire. Sharpening his blade.",
+          "position": { "x": 70, "y": 60 },
+          "icon": "🧍",
+          "imageUrl": "/playthrough/default/images/aldric.png",
+          "actions": [
+            { "id": "talk_aldric", "label": "Talk", "description": "Speak with Aldric" },
+            { "id": "observe_aldric", "label": "Observe", "description": "Watch him without speaking" }
+          ]
+        }
+      ],
+      "actions": [
+        { "id": "wait_dawn", "label": "Wait until dawn", "description": "Rest and let the night pass" },
+        { "id": "leave_camp", "label": "Leave camp", "description": "Set out into the darkness" },
+        { "id": "keep_watch", "label": "Keep watch", "description": "Stay alert through the night" }
+      ],
+      "voices": [
+        {
+          "id": "voice_debt_edmund",
+          "type": "debt",
+          "source": "THE DEBT TO EDMUND",
+          "content": "Three days to York. He's close now.",
+          "weight": 0.9
+        },
+        {
+          "id": "voice_oath",
+          "type": "oath",
+          "source": "THE OATH",
+          "content": "Find him. Take back what's yours. That's why we came north.",
+          "weight": 0.7
+        },
+        {
+          "id": "voice_aldric_silence",
+          "type": "companion",
+          "source": "ALDRIC",
+          "content": "He hasn't spoken since Thornwick. The village reminded him of something.",
+          "weight": 0.6
+        }
+      ]
+    },
+    {
+      "id": "scene_road_encounter",
+      "type": "ROAD",
+      "name": "THE ROAD TO YORK",
+      "location": "Two days from York",
+      "timeOfDay": "DAY",
+      "weather": "CLOUDY",
+      "bannerImage": "/playthrough/default/images/road_dusk.png",
+      "atmosphere": [
+        "Grey sky. Mud. The rain stopped an hour ago but the trees still drip.",
+        "Aldric walks ahead, hand on his sword.",
+        "A figure on the road. Coming toward you. Alone."
+      ],
+      "hotspots": [
+        {
+          "id": "aldric_road",
+          "type": "person",
+          "name": "Aldric",
+          "description": "Walking point. Tense. His hand hasn't left his sword hilt.",
+          "position": { "x": 35, "y": 55 },
+          "icon": "🧍",
+          "actions": [
+            { "id": "signal_aldric", "label": "Signal", "description": "Get his attention" },
+            { "id": "join_aldric", "label": "Join", "description": "Move up beside him" }
+          ]
+        },
+        {
+          "id": "stranger",
+          "type": "person",
+          "name": "Hooded Figure",
+          "description": "Cloak, hood up. Walking stick. No visible weapon. Getting closer.",
+          "position": { "x": 70, "y": 35 },
+          "icon": "🧥",
+          "actions": [
+            { "id": "watch_stranger", "label": "Watch", "description": "Observe as they approach" },
+            { "id": "ready_weapon", "label": "Ready weapon", "description": "Put your hand on your sword" }
+          ]
+        }
+      ],
+      "actions": [
+        { "id": "wait_approach", "label": "Wait", "description": "Let them approach" },
+        { "id": "call_out", "label": "Call out", "description": "Hail the stranger" },
+        { "id": "avoid", "label": "Avoid", "description": "Take to the trees, let them pass" }
+      ],
+      "voices": [
+        {
+          "id": "voice_aldric_warning",
+          "type": "companion",
+          "source": "ALDRIC",
+          "content": "One man. Could be bait.",
+          "weight": 0.9
+        },
+        {
+          "id": "voice_debt_close",
+          "type": "debt",
+          "source": "THE DEBT TO EDMUND",
+          "content": "Every day wasted is a day he breathes easy.",
+          "weight": 0.8
+        },
+        {
+          "id": "voice_road_instinct",
+          "type": "memory",
+          "source": "THE ROAD",
+          "content": "Travelers alone are rare these days. The Harrying taught people to travel in groups.",
+          "weight": 0.6
+        }
+      ]
+    },
+    {
+      "id": "scene_hall_council",
+      "type": "HALL",
+      "name": "THE HALL",
+      "location": "Wulfric's Hold, The North",
+      "timeOfDay": "DAY",
+      "weather": "CLEAR",
+      "bannerImage": "/playthrough/default/images/hall_council.png",
+      "atmosphere": [
+        "Smoke rises from the central hearth. Light falls through narrow windows.",
+        "Your banner hangs behind the high seat. It still feels borrowed.",
+        "They're waiting for you to speak."
+      ],
+      "hotspots": [
+        {
+          "id": "aldric_council",
+          "type": "person",
+          "name": "Aldric",
+          "description": "Standing at your right. Arms crossed. He doesn't like politics, but he's here.",
+          "position": { "x": 30, "y": 45 },
+          "icon": "⚔️",
+          "actions": [
+            { "id": "ask_aldric_military", "label": "Ask", "description": "Get his assessment" },
+            { "id": "nod_aldric", "label": "Acknowledge", "description": "Show you value his presence" }
+          ]
+        },
+        {
+          "id": "mildred_council",
+          "type": "person",
+          "name": "Mildred",
+          "description": "Your quartermaster. She knows every grain of wheat, every sword, every debt. Her ledger is open.",
+          "position": { "x": 70, "y": 45 },
+          "icon": "📒",
+          "actions": [
+            { "id": "ask_mildred_supplies", "label": "Supplies", "description": "Ask about resources" },
+            { "id": "ask_mildred_debts", "label": "Debts", "description": "Ask about what's owed" }
+          ]
+        },
+        {
+          "id": "father_edric",
+          "type": "person",
+          "name": "Father Edric",
+          "description": "The priest. He speaks for the Church's interests — and sometimes for conscience.",
+          "position": { "x": 25, "y": 65 },
+          "icon": "✝️",
+          "actions": [
+            { "id": "ask_edric_blessing", "label": "Blessing", "description": "Ask for the Church's support" },
+            { "id": "ask_edric_counsel", "label": "Counsel", "description": "Seek his advice" }
+          ]
+        },
+        {
+          "id": "osric",
+          "type": "person",
+          "name": "Osric",
+          "description": "A Saxon thegn who bent the knee. His loyalty is... practical. He watches everything.",
+          "position": { "x": 75, "y": 65 },
+          "icon": "👁️",
+          "actions": [
+            { "id": "ask_osric_saxons", "label": "Saxons", "description": "Ask about local sentiment" },
+            { "id": "ask_osric_rumors", "label": "Rumors", "description": "What has he heard?" }
+          ]
+        }
+      ],
+      "actions": [
+        { "id": "begin_council", "label": "Begin the council", "description": "Call them to order" },
+        { "id": "dismiss_council", "label": "Dismiss", "description": "Send them away for now" },
+        { "id": "private_word", "label": "Private word", "description": "Ask to speak with someone alone" }
+      ],
+      "voices": [
+        {
+          "id": "voice_power_weight",
+          "type": "memory",
+          "source": "THE WEIGHT OF IT",
+          "content": "Every decision here ripples. People will live or die by what you say next.",
+          "weight": 0.85
+        },
+        {
+          "id": "voice_wulfric_ghost",
+          "type": "memory",
+          "source": "WULFRIC'S GHOST",
+          "content": "He sat where you sit. He thought he was safe too.",
+          "weight": 0.7
+        },
+        {
+          "id": "voice_oath_aldric",
+          "type": "oath",
+          "source": "ALDRIC'S OATH",
+          "content": "He's still here. After everything. That means something.",
+          "weight": 0.6
+        },
+        {
+          "id": "voice_debt_osric",
+          "type": "debt",
+          "source": "OSRIC'S LOYALTY",
+          "content": "He serves because it's useful. When it stops being useful...",
+          "weight": 0.5
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Map - the-blood-ledger</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .map-container {
+            position: relative;
+            width: 100%;
+            min-height: 800px;
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: visible;
+        }
+        .module-box {
+            position: absolute;
+            z-index: 10;
+            width: 160px;
+            background: #16213e;
+            border: 2px solid #0f3460;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .module-box:hover {
+            border-color: #e94560;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+        }
+        .module-box.monolith {
+            border-color: #ff6b6b;
+        }
+        .module-box.full-docs {
+            border-color: #4ecdc4;
+        }
+        .module-name {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+        .module-lines {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        .module-lines.warning {
+            color: #ff6b6b;
+        }
+        .doc-coverage {
+            display: flex;
+            gap: 2px;
+            flex-wrap: wrap;
+        }
+        .doc-badge {
+            font-size: 10px;
+            padding: 2px 4px;
+            border-radius: 3px;
+            background: #0f3460;
+            color: #666;
+        }
+        .doc-badge.present {
+            background: #4ecdc4;
+            color: #000;
+        }
+        .doc-badge.missing {
+            background: #333;
+            color: #555;
+        }
+        .legend {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #16213e;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+        .legend h3 {
+            margin-bottom: 8px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px 0;
+        }
+        .legend-color {
+            width: 20px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .summary {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #16213e;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+        .layer-label {
+            position: absolute;
+            left: 10px;
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project Map: the-blood-ledger</h1>
+
+    <div class="map-container">
+        <svg id="arrows" style="height: 740px;"></svg>
+        <div class="layer-label" style="top: 70px">Foundation</div>
+        <div class="layer-label" style="top: 250px">Layer 1</div>
+        <div class="layer-label" style="top: 430px">Layer 2</div>
+
+        <div class="module-box" style="left: 50px; top: 100px" data-module="orchestration">
+            <div class="module-name">orchestration</div>
+            <div class="module-lines ">0 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+        <div class="module-box" style="left: 50px; top: 280px" data-module="characters">
+            <div class="module-name">characters</div>
+            <div class="module-lines ">0 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+        <div class="module-box" style="left: 50px; top: 460px" data-module="actions">
+            <div class="module-name">actions</div>
+            <div class="module-lines ">0 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+        <div class="module-box" style="left: 250px; top: 100px" data-module="mechanisms">
+            <div class="module-name">mechanisms</div>
+            <div class="module-lines ">0 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+        <div class="module-box" style="left: 250px; top: 460px" data-module="graph">
+            <div class="module-name">graph</div>
+            <div class="module-lines ">0 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+        <div class="module-box" style="left: 450px; top: 100px" data-module="engine-tools">
+            <div class="module-name">engine-tools</div>
+            <div class="module-lines ">0 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+        <div class="module-box" style="left: 450px; top: 460px" data-module="app">
+            <div class="module-name">app</div>
+            <div class="module-lines ">38 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+        <div class="module-box" style="left: 250px; top: 280px" data-module="components">
+            <div class="module-name">components</div>
+            <div class="module-lines ">992 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+        <div class="module-box" style="left: 650px; top: 100px" data-module="frontend-types">
+            <div class="module-name">frontend-types</div>
+            <div class="module-lines ">157 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+        <div class="module-box" style="left: 850px; top: 100px" data-module="frontend-data">
+            <div class="module-name">frontend-data</div>
+            <div class="module-lines ">0 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+        <div class="module-box" style="left: 1050px; top: 100px" data-module="tools">
+            <div class="module-name">tools</div>
+            <div class="module-lines ">237 lines</div>
+            <div class="doc-coverage"><span class="doc-badge missing">P</span><span class="doc-badge missing">B</span><span class="doc-badge missing">A</span><span class="doc-badge missing">V</span><span class="doc-badge missing">T</span><span class="doc-badge missing">S</span></div>
+        </div>
+
+    </div>
+
+    <div class="summary">
+        <strong>Summary</strong><br>
+        Modules: 11<br>
+        Files: 21<br>
+        Lines: 1424<br>
+        
+    </div>
+
+    <div class="legend">
+        <h3>Legend</h3>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #4ecdc4"></div>
+            <span>Full documentation</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #ff6b6b"></div>
+            <span>Monolith (>1000L)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #0f3460"></div>
+            <span>Normal module</span>
+        </div>
+    </div>
+
+    <script>
+        // Draw arrows
+        const edges = [["characters", "orchestration"], ["actions", "characters"], ["actions", "mechanisms"], ["graph", "characters"], ["app", "components"], ["app", "frontend-types"], ["components", "frontend-types"]];
+        const positions = {"orchestration": {"x": 50, "y": 100}, "mechanisms": {"x": 250, "y": 100}, "engine-tools": {"x": 450, "y": 100}, "frontend-types": {"x": 650, "y": 100}, "frontend-data": {"x": 850, "y": 100}, "tools": {"x": 1050, "y": 100}, "characters": {"x": 50, "y": 280}, "components": {"x": 250, "y": 280}, "actions": {"x": 50, "y": 460}, "graph": {"x": 250, "y": 460}, "app": {"x": 450, "y": 460}};
+
+        const svg = document.getElementById('arrows');
+        const ns = 'http://www.w3.org/2000/svg';
+
+        // Add arrow marker
+        const defs = document.createElementNS(ns, 'defs');
+        defs.innerHTML = `
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#4a5568" />
+            </marker>
+        `;
+        svg.appendChild(defs);
+
+        edges.forEach(([from, to]) => {
+            const fromPos = positions[from];
+            const toPos = positions[to];
+            if (!fromPos || !toPos) return;
+
+            // Draw curved path from bottom of 'from' box to top of 'to' box
+            const x1 = fromPos.x + 80;
+            const y1 = fromPos.y + 90;  // bottom of from box
+            const x2 = toPos.x + 80;
+            const y2 = toPos.y;  // top of to box
+
+            const path = document.createElementNS(ns, 'path');
+            const midY = (y1 + y2) / 2;
+            const d = `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`;
+            path.setAttribute('d', d);
+            path.setAttribute('stroke', '#4a5568');
+            path.setAttribute('stroke-width', '2');
+            path.setAttribute('fill', 'none');
+            path.setAttribute('marker-end', 'url(#arrowhead)');
+            svg.appendChild(path);
+        });
+    </script>
+</body>
+</html>

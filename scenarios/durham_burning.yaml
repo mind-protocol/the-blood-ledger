@@ -1,0 +1,420 @@
+# scenarios/durham_burning.yaml
+# The Witness - Slow Revenge
+
+id: durham_burning
+name: "The Witness"
+location: place_durham
+tagline: "Cumin's cruelty builds a fire. You're here to watch it burn."
+tone: revenge
+
+starts_with:
+  - "A grudge against Robert Cumin"
+  - "Ligulf — a thegn who lost everything"
+  - "The knowledge that Durham will burn"
+
+# =============================================================================
+# PRE-EXISTING NODES (already in seed - reference only)
+# =============================================================================
+
+existing_nodes:
+  characters:
+    - char_cumin          # Robert Cumin - cruel Earl, WILL DIE IN FIRE (1069)
+    - char_ligulf         # Saxon thegn in Durham - companion
+    - char_aethelwine     # Bishop, dreams of Saxon freedom
+    - char_gospatric      # Claims Northumbria
+  places:
+    - place_durham        # The city
+    - place_durham_castle # Norman hold
+    - place_durham_cathedral  # Bishop's seat, Cuthbert's bones
+  narratives:
+    - narr_cumin_earl_durham     # "Cumin controls Durham"
+    - narr_cumin_cruel           # His cruelty (exists in tensions)
+  tensions:
+    - tension_cumin_cruelty      # 0.65! "Durham will burn before long"
+    - tension_durham_claim       # Morcar hasn't forgotten
+    - tension_aethelwine_resistance  # Bishop dreams of freedom
+    - tension_gospatric_ambition # Bought what Morcar lost
+
+# =============================================================================
+# NEW NODES (created by this scenario)
+# =============================================================================
+
+nodes:
+  # Player character
+  - type: character
+    id: char_player
+    character_type: player
+    alive: true
+    face: hard
+    skills:
+      fighting: trained
+      tracking: trained
+      healing: untrained
+      persuading: untrained
+      sneaking: trained
+      riding: trained
+      reading: untrained
+      leading: untrained
+    voice:
+      tone: cold
+      style: patient
+    personality:
+      approach: watchful
+      values: [justice, patience]
+      flaw: obsessive
+    backstory:
+      family: "Cumin killed them. Or had them killed. Same thing."
+      childhood: "You had a home once. A family. Land."
+      wound: "You watched them die. You couldn't stop it."
+      why_here: "To see Cumin fall. However long it takes."
+
+  # Things
+  - type: thing
+    id: thing_family_knife
+    name: "Family Knife"
+    thing_type: weapon
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "Your father's knife. The only thing left. You've thought about using it on Cumin."
+
+  - type: thing
+    id: thing_durham_map
+    name: "Map of Durham"
+    thing_type: document
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "Streets, gates, guard rotations. You've been watching for months."
+
+  - type: thing
+    id: thing_burned_timber
+    name: "Burned Timber"
+    thing_type: token
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "A piece of charred wood from your family's hall. You carry it everywhere. A reminder."
+
+  - type: thing
+    id: thing_cumin_tax_writ
+    name: "Cumin's Tax Writ"
+    thing_type: document
+    portable: true
+    significance: political
+    quantity: 1
+    description: "A copy of Cumin's demands. Triple the legal rate. Proof of his cruelty, if anyone cared to look."
+
+  - type: thing
+    id: thing_ligulf_seal
+    name: "Ligulf's Old Seal"
+    thing_type: token
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "Ligulf's thegn's seal. Useless now - the Normans don't recognize Saxon authority. But he keeps it."
+
+  - type: thing
+    id: thing_tinder_box
+    name: "Tinder Box"
+    thing_type: tool
+    portable: true
+    significance: mundane
+    quantity: 1
+    description: "Flint, steel, dry cloth. Fire starts easy if you know how. You know how."
+
+  # Narratives about things
+  - type: narrative
+    id: narr_knife_intent
+    name: "The Knife's Purpose"
+    content: "You've thought about walking up to Cumin and putting this knife in his throat. You've dreamed about it."
+    interpretation: "One blade. One moment. It could end."
+    narrative_type: memory
+    about:
+      characters: [char_player, char_cumin]
+      things: [thing_family_knife]
+    tone: dark
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "The player has imagined assassination. But Cumin is guarded. It would be suicide. Unless..."
+
+  - type: narrative
+    id: narr_timber_memory
+    name: "What the Timber Remembers"
+    content: "This wood was your doorframe. You walked through it every day of your childhood. Now you carry what's left."
+    interpretation: "This is all that remains of home."
+    narrative_type: memory
+    about:
+      characters: [char_player]
+      things: [thing_burned_timber]
+    tone: mournful
+    focus: 1.5
+    truth: 1.0
+    narrator_notes: "The timber is grief made physical. It grounds the player's motivation."
+
+  - type: narrative
+    id: narr_tax_evidence
+    name: "Evidence of Tyranny"
+    content: "Cumin's tax writs demand triple the legal rate. The people of Durham are being bled dry."
+    interpretation: "If anyone saw this... but who would care?"
+    narrative_type: secret
+    about:
+      characters: [char_cumin]
+      things: [thing_cumin_tax_writ]
+      places: [place_durham]
+    tone: bitter
+    focus: 1.5
+    truth: 1.0
+    narrator_notes: "The writ is evidence. Could be used to turn opinion against Cumin. Or to justify what's coming."
+
+  - type: narrative
+    id: narr_ligulf_fall
+    name: "Ligulf's Lost Authority"
+    content: "Ligulf was a thegn. His seal meant something once. Now it's a reminder of everything the Normans took."
+    interpretation: "He was someone. Now he's no one. Like all of us."
+    narrative_type: memory
+    about:
+      characters: [char_ligulf]
+      things: [thing_ligulf_seal]
+    tone: bitter
+    focus: 1.0
+    truth: 1.0
+    narrator_notes: "The seal connects Ligulf to his lost status. It's why he fights - to be someone again."
+
+  # Narratives
+  - type: narrative
+    id: narr_cumin_killed_family
+    name: "Cumin's Crime"
+    content: "Robert Cumin killed your family when he took Durham. Your father resisted. Cumin made an example."
+    interpretation: "He will pay. I will be there when he does."
+    narrative_type: blood
+    about:
+      characters: [char_player, char_cumin]
+    tone: bitter
+    focus: 3.0
+    truth: 1.0
+    narrator_notes: "This is true. Cumin is genuinely cruel. But revenge won't bring them back."
+
+  - type: narrative
+    id: narr_durham_will_burn
+    name: "Durham Will Burn"
+    content: "The city simmers with hatred. Cumin doesn't see it. Or doesn't care. One day it will boil over."
+    interpretation: "The fire is coming. I just have to wait."
+    narrative_type: prophecy
+    about:
+      characters: [char_cumin]
+      places: [place_durham]
+    tone: dark
+    focus: 2.5
+    truth: 1.0
+    narrator_notes: "Historical fact: Cumin dies in the burning of Durham, 1069. Player knows this is coming."
+
+  - type: narrative
+    id: narr_ligulf_alliance
+    name: "Ligulf's Purpose"
+    content: "Ligulf was a thegn. Cumin took his lands. Now he gathers the dispossessed, waiting for the moment."
+    interpretation: "We want the same thing. That makes us allies."
+    narrative_type: bond
+    about:
+      characters: [char_player, char_ligulf]
+    tone: cold
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "Ligulf is historical. He's organizing resistance. He's more political than player - he wants power back, not just revenge."
+
+  - type: narrative
+    id: narr_bishop_watching
+    name: "The Bishop Watches"
+    content: "Bishop Æthelwine guards Cuthbert's bones and hates the Normans. He won't act openly. But he watches."
+    interpretation: "The Church might help. When the time comes."
+    narrative_type: rumor
+    about:
+      characters: [char_aethelwine, char_cumin]
+      places: [place_durham_cathedral]
+    tone: hopeful
+    focus: 1.5
+    truth: 0.9
+    narrator_notes: "Æthelwine will eventually flee with Cuthbert's bones. He's a potential ally but cautious."
+
+# =============================================================================
+# LINKS
+# =============================================================================
+
+links:
+  # Player links
+  - type: present
+    from: char_player
+    to: place_durham
+
+  - type: carries
+    from: char_player
+    to: thing_family_knife
+
+  - type: carries
+    from: char_player
+    to: thing_durham_map
+
+  - type: carries
+    from: char_player
+    to: thing_burned_timber
+
+  - type: carries
+    from: char_player
+    to: thing_cumin_tax_writ
+
+  - type: carries
+    from: char_player
+    to: thing_tinder_box
+
+  - type: carries
+    from: char_ligulf
+    to: thing_ligulf_seal
+
+  - type: belief
+    character: char_player
+    narrative: narr_knife_intent
+    believes: 1.0
+    originated: 1.0
+    hides: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_timber_memory
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_tax_evidence
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_ligulf_fall
+    believes: 0.8
+    heard: 1.0
+    source: told
+
+  - type: belief
+    character: char_ligulf
+    narrative: narr_ligulf_fall
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_ligulf
+    narrative: narr_knife_intent
+    believes: 0.5
+    source: inferred
+    narrator_notes: "Ligulf suspects player's darker thoughts. He's not sure if he approves or not."
+
+  - type: belief
+    character: char_player
+    narrative: narr_cumin_killed_family
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_durham_will_burn
+    believes: 1.0
+    source: inferred
+
+  - type: belief
+    character: char_player
+    narrative: narr_ligulf_alliance
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_bishop_watching
+    believes: 0.6
+    heard: 0.8
+    source: rumor
+
+  - type: belief
+    character: char_player
+    narrative: narr_cumin_earl_durham
+    believes: 1.0
+    source: witnessed
+
+  # Companion links (Ligulf)
+  - type: present
+    from: char_ligulf
+    to: place_durham
+
+  - type: belief
+    character: char_ligulf
+    narrative: narr_ligulf_alliance
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_ligulf
+    narrative: narr_durham_will_burn
+    believes: 0.9
+    source: inferred
+    narrator_notes: "Ligulf believes it but he's working to make it happen, not just waiting."
+
+  - type: belief
+    character: char_ligulf
+    narrative: narr_cumin_killed_family
+    believes: 1.0
+    heard: 1.0
+    source: told
+    narrator_notes: "He knows your story. It's why he trusts you."
+
+  - type: belief
+    character: char_ligulf
+    narrative: narr_bishop_watching
+    believes: 0.8
+    source: inferred
+
+  # Cumin links
+  - type: present
+    from: char_cumin
+    to: place_durham_castle
+
+# =============================================================================
+# COMPANION
+# =============================================================================
+
+companion:
+  id: char_ligulf
+  relationship: "fellow dispossessed"
+  why_stays: "You both lost everything to Cumin. He's organizing. You're watching. Together you wait."
+  starting_disposition: cold_alliance
+  voice_note: "Speaks little. Watches everything. A thegn's bearing under peasant clothes. He's planning something."
+
+# =============================================================================
+# OPENING
+# =============================================================================
+
+opening:
+  time: evening
+  weather: cold, clear
+  place: place_durham
+  characters_present: [char_ligulf]
+  narration: |
+    Durham crouches under Cumin's shadow.
+    You've been here three months. Watching.
+    Counting guards. Noting routines.
+    Waiting for the fire you know is coming.
+
+    Ligulf finds you in the alley by the cathedral.
+    He was a thegn once. Now he's something else.
+    Something patient. Something dangerous.
+
+    "Cumin hanged two men today," he says quietly.
+    "For stealing bread their own farms grew."
+    He looks toward the castle.
+    "The city won't forget. They never do."
+
+    In the distance, smoke rises from the castle kitchens.
+    Ordinary smoke. For now.

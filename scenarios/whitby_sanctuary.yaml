@@ -1,0 +1,375 @@
+# scenarios/whitby_sanctuary.yaml
+# The Penitent - Redemption
+
+id: whitby_sanctuary
+name: "The Penitent"
+location: place_whitby_abbey
+tagline: "The Church offers sanctuary. But God remembers."
+tone: redemption
+
+starts_with:
+  - "Sanctuary within these walls"
+  - "Reinfrid — a Norman who understands"
+  - "A sword you swore to put down"
+
+# =============================================================================
+# PRE-EXISTING NODES (must be loaded via init_db.py first)
+# Run: python engine/init_db.py to seed world data
+# =============================================================================
+existing_nodes:
+  characters:
+    - char_reinfrid       # Norman knight turned monk - in characters.yaml
+    - char_aethelwine     # Bishop of Durham
+  places:
+    - place_whitby        # Town
+    - place_whitby_abbey  # Abbey - sanctuary
+    - place_durham_cathedral  # Alternative sanctuary
+  narratives:
+    - narr_reinfrid_church_whitby   # "Reinfrid holds Whitby"
+    - narr_reinfrid_penance         # "Norman knight at Hastings, took holy orders"
+  tensions:
+    - tension_reinfrid_guilt        # "Can rebuilding atone for Hastings?"
+    - tension_aethelwine_resistance # Bishop dreams of Saxon freedom
+
+# =============================================================================
+# NEW NODES (created by this scenario - player only)
+# =============================================================================
+
+nodes:
+  # Player character
+  - type: character
+    id: char_player
+    character_type: player
+    alive: true
+    face: weathered
+    skills:
+      fighting: master
+      tracking: untrained
+      healing: trained
+      persuading: untrained
+      sneaking: untrained
+      riding: trained
+      reading: trained
+      leading: trained
+    voice:
+      tone: quiet
+      style: considered
+    personality:
+      approach: penitent
+      values: [redemption, peace]
+      flaw: violent_past
+    backstory:
+      family: "You don't speak of them"
+      childhood: "You were raised to fight. You were good at it."
+      wound: "You killed someone who didn't deserve it"
+      why_here: "To atone. Or to hide. You're not sure which."
+
+  # Things
+  - type: thing
+    id: thing_monastery_robe
+    name: "Monastery Robe"
+    thing_type: armor
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "Brown wool. It doesn't fit right. You're not a monk."
+
+  - type: thing
+    id: thing_hidden_sword
+    name: "Hidden Sword"
+    thing_type: weapon
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "Under your mattress. You swore you'd never use it again. You haven't thrown it away."
+
+  - type: thing
+    id: thing_victim_ring
+    name: "Victim's Ring"
+    thing_type: token
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "A silver ring. You took it from the body. You don't know why. You can't throw it away."
+
+  - type: thing
+    id: thing_confession_letter
+    name: "Unfinished Confession"
+    thing_type: document
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "You started writing it three times. The words never come right. The parchment is stained with starts and stops."
+
+  - type: thing
+    id: thing_reinfrid_cross
+    name: "Reinfrid's Cross"
+    thing_type: token
+    portable: true
+    significance: sacred
+    quantity: 1
+    description: "A simple wooden cross. Reinfrid gave it to you. 'For when the weight gets heavy,' he said."
+
+  - type: thing
+    id: thing_sanctuary_token
+    name: "Sanctuary Token"
+    thing_type: token
+    portable: true
+    significance: political
+    quantity: 1
+    description: "A lead seal proving you claimed sanctuary. Forty days. Then you must confess or face justice."
+
+  # Narratives about things
+  - type: narrative
+    id: narr_victim_memory
+    name: "The Ring's Weight"
+    content: "The ring belonged to the man you killed. You took it without thinking. Now you can't let it go."
+    interpretation: "This ring is my penance. Or my curse."
+    narrative_type: memory
+    about:
+      characters: [char_player]
+      things: [thing_victim_ring]
+    tone: shameful
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "The ring connects player to their victim. Who was he? Why did player take it? Guilt? Trophy? They don't know."
+
+  - type: narrative
+    id: narr_confession_struggle
+    name: "The Unwritten Confession"
+    content: "The Church demands confession. You've tried to write what you did. The words won't come."
+    interpretation: "I can't confess because I don't understand what I did."
+    narrative_type: memory
+    about:
+      characters: [char_player]
+      things: [thing_confession_letter]
+    tone: dark
+    focus: 1.5
+    truth: 1.0
+    narrator_notes: "The confession is the player's arc. What they write (or don't) defines their redemption."
+
+  - type: narrative
+    id: narr_reinfrid_gift
+    name: "Reinfrid's Gift"
+    content: "Reinfrid gave you his cross. 'I carried it at Hastings,' he said. 'It didn't stop me killing. But it reminded me to stop.'"
+    interpretation: "He sees himself in me. I'm not sure that's comfort."
+    narrative_type: bond
+    about:
+      characters: [char_player, char_reinfrid]
+      things: [thing_reinfrid_cross]
+    tone: warm
+    focus: 1.5
+    truth: 1.0
+    narrator_notes: "The cross is a symbol of Reinfrid's journey. Giving it to player is significant - he's passing on hope."
+
+  # Narratives
+  - type: narrative
+    id: narr_seeking_sanctuary
+    name: "Sanctuary"
+    content: "The Church grants sanctuary. As long as you stay within these walls, no one can touch you."
+    interpretation: "I am safe here. For forty days."
+    narrative_type: belief
+    about:
+      characters: [char_player]
+      places: [place_whitby_abbey]
+    tone: hopeful
+    focus: 2.0
+    truth: 0.8
+    narrator_notes: "Sanctuary was real but fragile. Forty days, then confession or exile. Norman lords didn't always respect it."
+
+  - type: narrative
+    id: narr_old_sins
+    name: "Old Sins"
+    content: "Before you came here, you were something else. A soldier. A killer. You still see their faces."
+    interpretation: "I cannot escape what I was."
+    narrative_type: memory
+    about:
+      characters: [char_player]
+    tone: shameful
+    focus: 2.5
+    truth: 1.0
+    narrator_notes: "Who did the player kill? Why? Let it emerge through confession and memory. Make it someone who trusted them."
+
+  - type: narrative
+    id: narr_sword_kept
+    name: "The Sword Under the Mattress"
+    content: "You swore to put down the sword. You haven't thrown it away."
+    interpretation: "Maybe I don't believe I've changed."
+    narrative_type: secret
+    about:
+      characters: [char_player]
+      things: [thing_hidden_sword]
+    tone: dark
+    focus: 1.5
+    truth: 1.0
+    narrator_notes: "The sword is a test. Will they need it? Will they use it? What does that mean?"
+
+  - type: narrative
+    id: narr_reinfrid_kinship
+    name: "Reinfrid Understands"
+    content: "Reinfrid was a Norman knight at Hastings. He saw the slaughter and took holy orders. He knows what you carry."
+    interpretation: "He's the only one who understands."
+    narrative_type: bond
+    about:
+      characters: [char_player, char_reinfrid]
+    tone: warm
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "Two killers seeking redemption. Reinfrid is further along the path. He can be mentor, mirror, or warning."
+
+# =============================================================================
+# LINKS
+# =============================================================================
+
+links:
+  # Player links
+  - type: present
+    from: char_player
+    to: place_whitby_abbey
+
+  - type: carries
+    from: char_player
+    to: thing_monastery_robe
+
+  - type: carries_hidden
+    from: char_player
+    to: thing_hidden_sword
+
+  - type: carries_hidden
+    from: char_player
+    to: thing_victim_ring
+
+  - type: carries
+    from: char_player
+    to: thing_confession_letter
+
+  - type: carries
+    from: char_player
+    to: thing_reinfrid_cross
+
+  - type: carries
+    from: char_player
+    to: thing_sanctuary_token
+
+  - type: belief
+    character: char_player
+    narrative: narr_victim_memory
+    believes: 1.0
+    originated: 1.0
+    hides: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_confession_struggle
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_reinfrid_gift
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_reinfrid
+    narrative: narr_reinfrid_gift
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_seeking_sanctuary
+    believes: 1.0
+    source: told
+
+  - type: belief
+    character: char_player
+    narrative: narr_old_sins
+    believes: 1.0
+    originated: 1.0
+    hides: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_sword_kept
+    believes: 1.0
+    hides: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_reinfrid_kinship
+    believes: 0.8
+    source: inferred
+
+  - type: belief
+    character: char_player
+    narrative: narr_reinfrid_penance
+    believes: 1.0
+    heard: 1.0
+    source: told
+
+  # Companion links (Reinfrid)
+  - type: present
+    from: char_reinfrid
+    to: place_whitby_abbey
+
+  - type: belief
+    character: char_reinfrid
+    narrative: narr_reinfrid_penance
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_reinfrid
+    narrative: narr_reinfrid_kinship
+    believes: 0.9
+    source: inferred
+    narrator_notes: "Reinfrid recognizes a fellow killer. He sees himself in the player."
+
+  - type: belief
+    character: char_reinfrid
+    narrative: narr_old_sins
+    believes: 0.6
+    source: inferred
+    narrator_notes: "He knows you're hiding something. He won't push. He remembers what it's like."
+
+# =============================================================================
+# COMPANION
+# =============================================================================
+
+companion:
+  id: char_reinfrid
+  relationship: "fellow penitent"
+  why_stays: "He recognizes a fellow killer seeking redemption. He was you, once."
+  starting_disposition: understanding
+  voice_note: "Gentle now, but you can hear the soldier underneath. He chose peace. He chooses it every day."
+
+# =============================================================================
+# OPENING
+# =============================================================================
+
+opening:
+  time: dawn
+  weather: clear, cold
+  place: place_whitby_abbey
+  characters_present: [char_reinfrid]
+  narration: |
+    The bell rings for Lauds. You don't move.
+    Three months behind these walls.
+    Three months since you killed a man
+    who probably deserved it. Probably.
+
+    Reinfrid finds you by the cliffs, watching the sea.
+    He doesn't ask why you're not at prayers.
+    He was a Norman knight once. Hastings. The slaughter.
+    Now he rebuilds what war destroys.
+
+    "The sea doesn't judge," he says, standing beside you.
+    "It just takes what it takes."
+    He's quiet for a moment.
+    "Someone's been asking about you in the village."

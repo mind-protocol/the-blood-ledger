@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build
+.next/
+out/
+build/
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Generated images (uncomment to ignore)
+# frontend/public/playthrough/*/images/
+
+# Data
+/data/
+
+# Misc
+*.tsbuildinfo
+next-env.d.ts
+*:Zone.Identifier
+
+# Runtime data
+playthroughs/
+
+# External tools
+falkordb-browser/
+
+# Generated screenshots
+screenshots/

@@ -1,0 +1,323 @@
+# Vision — Algorithm: Systems That Create Engagement
+
+```
+CREATED: 2024-12-16
+STATUS: Draft — preliminary mapping, will evolve
+LINKS_TO:
+  - docs/engine/ (detailed specs, not yet written)
+  - docs/views/ (presentation specs, not yet written)
+```
+
+---
+
+## Purpose
+
+This document is a **preliminary mapping** of systems to behaviors.
+
+It is NOT:
+- A complete list (we'll discover more as we build)
+- Fully specified (detailed specs live in module docs)
+- Final (this evolves as we learn)
+
+It IS:
+- A first pass at structure
+- A way to see the shape of what we're building
+- A place to capture questions and uncertainties
+
+**The real specifications will live in `docs/engine/` and `docs/views/`.** This document provides orientation, not detail.
+
+---
+
+## Architecture: Two Layers
+
+I see two distinct layers:
+
+### Engine Layer
+The core simulation — what's true, what happens, what changes.
+
+Lives in: `docs/engine/` and `engine/`
+
+### Presentation Layer
+How the player experiences the engine — what they see, hear, interact with.
+
+Lives in: `docs/views/` and the frontend
+
+**My opinion:** This separation matters. The engine should be complete without any presentation — you could run world updates, process breaks, evolve the graph, all in headless mode. The presentation is a window into the engine, not part of it.
+
+**Open question:** Where does the Director fit? It reads player behavior (presentation) but affects the engine (focus adjustments). Is it engine? Presentation? A bridge?
+
+---
+
+## Engine Systems (Preliminary)
+
+These create the simulation. Presentation reads from them.
+
+### The Graph
+> *Links to: `docs/engine/graph/` (not yet written)*
+
+**What it does:** Holds all state — characters, places, things, narratives, beliefs, connections.
+
+**Why it matters for engagement:**
+- Creates memory (everything persists)
+- Creates relationships (narratives between entities)
+- Creates traceability (you can query why anything happened)
+
+**Open questions:**
+- What's the exact schema? (→ will be in ALGORITHM_Schema.md)
+- How do we handle graph growth over time?
+- What about archiving/pruning distant narratives?
+
+**My uncertainty:** The design doc describes four node types (CHARACTER, PLACE, THING, NARRATIVE). Is that complete? What about FACTION? EVENT? Or do those emerge from narratives?
+
+---
+
+### Weight / Energy
+> *Links to: `docs/engine/graph/` or `docs/engine/mechanisms/` (TBD)*
+
+**What it does:** Computes importance of narratives based on beliefs, connections, contradictions.
+
+**Why it matters for engagement:**
+- Creates focus (only high-weight enters context)
+- Creates emergence (what matters is computed, not declared)
+- Prevents diffusion (energy clusters around player)
+
+**Open questions:**
+- What's the actual computation? Recursive? Iterative?
+- How does focus (narrator-set) interact with computed weight?
+- What are the decay rates for distant narratives?
+
+**My uncertainty:** The engine spec talks about weight but doesn't give a formula. Is that intentional (LLM judges) or a gap to fill?
+
+---
+
+### Tension / Breaks
+> *Links to: `docs/engine/mechanisms/` (not yet written)*
+
+**What it does:** Detects narratives under unsustainable pressure; processes their resolution into events.
+
+**Why it matters for engagement:**
+- Creates drama (contradictions become confrontations)
+- Creates inevitability (unresolved tension builds until it breaks)
+- Creates emergence (events from structure, not scripts)
+
+**Open questions:**
+- How does the LLM identify "must break"? What's the prompt structure?
+- How do we prevent cascade runaway?
+- What's the relationship between tension detection and weight?
+
+**My opinion:** This is the highest-risk system. If break detection doesn't work well, the game feels random. If break resolution isn't specific, it feels generic. This needs careful validation.
+
+---
+
+### World Update
+> *Links to: `docs/engine/orchestration/` (not yet written)*
+
+**What it does:** When time passes, processes all active narratives. Parallel storylines advance. News propagates.
+
+**Why it matters for engagement:**
+- Creates living world ("what happened while I was away?")
+- Creates organic urgency (situations evolve)
+- Creates scale (you're part of something larger)
+
+**Open questions:**
+- How do we scale this? Processing ALL narratives could be expensive.
+- How detailed are distant events vs nearby events?
+- How does news propagation actually work?
+
+---
+
+### Scene Creation
+> *Links to: `docs/engine/orchestration/` (not yet written)*
+
+**What it does:** Gathers high-weight context + physical grounding → generates the present moment.
+
+**Why it matters for engagement:**
+- Creates presence (you're HERE)
+- Creates choices (options emerge from situation)
+- Creates character (characters speak from their beliefs)
+
+**Open questions:**
+- What's the context window budget?
+- How do we ensure brevity?
+- How do choices emerge? Generated? Template + fill?
+
+**My opinion:** Scene creation is where everything collapses into experience. This is the craft layer — the writing quality matters as much as the system.
+
+---
+
+### The Director
+> *Links to: `docs/engine/narrator/` (not yet written)*
+
+**What it does:** Maintains Story Document (arcs, setups, payoffs) and Player Document (preferences, patterns). Adjusts focus.
+
+**Why it matters for engagement:**
+- Creates personalization (learns what you care about)
+- Creates pacing (slow builds, explosive releases)
+- Creates coherence (setups pay off)
+
+**Open questions:**
+- How much autonomy does the Director have?
+- How do we prevent the Director from railroading?
+- Where's the line between "tuning" and "scripting"?
+
+**My uncertainty:** The Director feels like the least specified system. It's mentioned in the engine spec but with less detail than others. Is that intentional (emergent from LLM) or a gap?
+
+---
+
+## Presentation Systems (Preliminary)
+
+These create the player experience. They read from the engine.
+
+### The Views
+> *Links to: `docs/views/` (not yet written)*
+
+Five views that present different aspects of state:
+
+| View | Shows | Engine Source |
+|------|-------|---------------|
+| **Scene** | The present moment | Scene Creation output |
+| **Map** | Spatial state, fog of war | Graph (places, player knowledge) |
+| **Chronicle** | History as player believes it | Graph (player's believed narratives, chronological) |
+| **Ledger** | Obligations — debts, oaths, blood | Graph (obligation-type narratives) |
+| **Faces** | People and relationships | Graph (characters + narratives about them) |
+
+**Open questions:**
+- Are these five views complete? Will we need more?
+- How do views update in real-time vs on navigation?
+- What's the visual language? (pure text? ASCII? rendered UI?)
+
+**My opinion:** The Ledger and Faces views feel most important for the "deep relationships" success metric. If those are great, a lot else can be rough. If those are weak, nothing else saves us.
+
+---
+
+### The Voices (Graph Speaks)
+> *Links to: `docs/views/scene/` (not yet written)*
+
+**What it does:** High-weight narratives speak as internal monologue — debts, oaths, companions commenting.
+
+**Why it matters for engagement:**
+- Creates presence of history (your past speaks)
+- Creates internal conflict (voices pull different directions)
+- Creates the unique mechanic (no other game does this)
+
+**Open questions:**
+- How many voices per scene? Too many = noise.
+- How do we vary voice "tone" by narrative type?
+- Do companions speak AS themselves or AS your perception of them?
+
+**My opinion:** This is THE differentiator. If we nail this, we have something genuinely new. If we don't, we're just another text game. Deserves significant attention.
+
+---
+
+## What's Missing?
+
+This list is incomplete. Systems I suspect we'll need but haven't worked out:
+
+- **Character Depth Generation** — How do we create backstories rich enough for deep questioning? Is this pre-authored? Generated? Hybrid?
+
+- **Conversation System** — Talking to characters seems core ("ask about grandmother"). How does that work technically?
+
+- **Action System** — Player actions beyond dialogue. Move, take, give, wait. How do these integrate?
+
+- **Combat/Conflict** — The design doc says "to develop." Is this a system or handled narratively?
+
+- **Image Generation** — Core to grounding. Every scene needs an image. Every character needs a face. Images adapt to context (time of day, weather, emotion). Need: coherent style, dynamic generation, context awareness. Where does this fit architecturally? Presentation layer, but tightly coupled to scene creation.
+
+- **Character Portraits** — Subset of image gen, but specific: faces that are consistent across the game. Aldric always looks like Aldric. Expressions can vary. Need: style consistency, expression variation, memory of character appearance.
+
+- **Voice Generation (Key Characters)** — Actual audio voices for companions and major characters. Not every line, but key moments. Creates presence and memorability. V1 maybe, future definitely. Need: voice consistency per character, emotional variation, integration with dialogue.
+
+- **Ambient Sound (Future)** — Soundscapes for scene types. Not V1. But architecturally, where would it fit?
+
+- **Persistence/Save** — How do we save/load? What's the DB schema?
+
+---
+
+## Systems → Drives (Preliminary Mapping)
+
+This is approximate. Will refine as we understand better.
+
+| System | Primary Drives Served |
+|--------|----------------------|
+| Graph | Ownership, Social Influence |
+| Weight | Unpredictability, Focus |
+| Breaks | Loss Avoidance, Unpredictability |
+| World Update | Scarcity, Epic Meaning |
+| Scene Creation | Creativity, Social Influence |
+| Director | All (tuning) |
+| Views (Ledger) | Ownership (primary) |
+| Views (Faces) | Social Influence (primary) |
+| Voices | Ownership, Social Influence, Loss Avoidance |
+
+---
+
+## Implementation Thinking (Very Preliminary)
+
+**Dependency order (what needs what):**
+```
+Graph (foundation — nothing depends on nothing)
+  └── Weight (needs graph to compute from)
+        └── Tension (needs weight to identify high-pressure)
+              └── Breaks (needs tension to know what breaks)
+                    └── World Update (needs breaks to process)
+                          └── Scene Creation (needs world state)
+
+Director (parallel — reads everything, writes focus)
+
+Views (read from graph/scene)
+Voices (part of scene creation? or separate?)
+```
+
+**What to build first for POC:**
+1. Graph schema + basic operations
+2. Load starter story (Rolf)
+3. Render one scene
+4. See if voices work
+
+**Open question:** Should POC include world update? Or just static scene from graph?
+
+---
+
+## Links to Detailed Documentation
+
+When we write them, these should exist:
+
+| Area | Expected Docs |
+|------|---------------|
+| `docs/engine/graph/` | PATTERNS, BEHAVIORS, ALGORITHM_Schema, ALGORITHM_CRUD, ALGORITHM_Queries, ALGORITHM_Weight, VALIDATION, SYNC |
+| `docs/engine/mechanisms/` | PATTERNS, ALGORITHM_Belief, ALGORITHM_Tension, ALGORITHM_Breaks, ALGORITHM_Cascade, ALGORITHM_Propagation, VALIDATION, SYNC |
+| `docs/engine/orchestration/` | PATTERNS, ALGORITHM_Loop, ALGORITHM_World_Update, ALGORITHM_Scene_Creation, VALIDATION, SYNC |
+| `docs/engine/narrator/` | PATTERNS, ALGORITHM_Story_Doc, ALGORITHM_Player_Doc, ALGORITHM_Prompts, VALIDATION, SYNC |
+| `docs/views/` | PATTERNS, then per-view: scene/, map/, chronicle/, ledger/, faces/ |
+
+---
+
+## My Current Uncertainties
+
+Being honest about what I don't yet understand:
+
+1. **Weight computation** — The design docs describe it conceptually but not algorithmically. Is that intentional?
+
+2. **Director scope** — How much does it do? Is it active (generates events) or passive (adjusts focus)?
+
+3. **Character depth** — The success metric requires asking about grandmother. Where does that knowledge come from?
+
+4. **Conversation model** — How do open-ended character conversations work? Pure LLM? Structured + LLM?
+
+5. **Scale** — How big can the graph get? What happens at hour 50?
+
+---
+
+## Evolution Notes
+
+This document should evolve as we:
+- [ ] Write detailed engine module docs
+- [ ] Write detailed view docs
+- [ ] Build POC and learn what's missing
+- [ ] Discover systems we didn't anticipate
+
+When something here is superseded by detailed docs, we should note that and link to the authoritative source.
+
+---
+
+*"This is a map of territory we haven't fully explored. It will be wrong in places. That's fine — maps are for navigation, not truth."*

@@ -1,0 +1,251 @@
+{
+  "id": "scene_camp_night",
+  "location": {
+    "place": "place_camp",
+    "name": "THE CAMP",
+    "region": "The North, three days from York",
+    "time": "night"
+  },
+
+  "present": ["char_rolf", "char_aldric"],
+
+  "atmosphere": [
+    "Cold night. Stars visible through bare branches.",
+    "The fire crackles, throwing shadows on the tents."
+  ],
+
+  "narration": [
+    {
+      "text": "He looks at you across the fire. The blade catches the light.",
+      "clickable": {
+        "fire": {
+          "speaks": "Let me gather some wood.",
+          "intent": "action_tend_fire",
+          "response": {
+            "type": "narration",
+            "text": "You rise. Aldric watches but says nothing."
+          }
+        },
+        "blade": {
+          "speaks": "That edge is fine. Stop.",
+          "intent": "dialogue_about_blade",
+          "response": {
+            "speaker": "Aldric",
+            "text": "Keeps my hands busy.",
+            "then": {
+              "text": "He doesn't look up. The whetstone rasps.",
+              "clickable": {
+                "hands": {
+                  "speaks": "What are you thinking about?",
+                  "intent": "dialogue_aldric_state"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "speaker": "Aldric",
+      "text": "\"Can't sleep either?\"",
+      "clickable": {
+        "sleep": {
+          "speaks": "You need rest. We both do.",
+          "intent": "dialogue_about_rest",
+          "response": {
+            "speaker": "Aldric",
+            "text": "Rest comes when it comes. Not before."
+          }
+        }
+      }
+    },
+    {
+      "text": "He doesn't wait for an answer. His eyes go back to the steel.",
+      "clickable": {
+        "eyes": {
+          "speaks": "What are you thinking about?",
+          "intent": "dialogue_aldric_inner",
+          "response": {
+            "speaker": "Aldric",
+            "text": "Nothing worth saying.",
+            "then": {
+              "text": "A lie. You both know it.",
+              "clickable": {
+                "lie": {
+                  "speaks": "Tell me anyway.",
+                  "intent": "dialogue_push_aldric"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+
+  "voices": [
+    {
+      "source": "narr_edmund_betrayal",
+      "text": "Three days to York. He's close now.",
+      "weight": 0.9,
+      "clickable": {
+        "York": {
+          "speaks": "When we reach York...",
+          "intent": "dialogue_about_york",
+          "response": {
+            "speaker": "Aldric",
+            "text": "We find your brother. Then what?",
+            "then": {
+              "text": "The question hangs. You haven't decided.",
+              "clickable": {
+                "brother": {
+                  "speaks": "I'll know when I see him.",
+                  "intent": "dialogue_uncertain"
+                },
+                "decided": {
+                  "speaks": "I take back what's mine.",
+                  "intent": "dialogue_determined"
+                }
+              }
+            }
+          }
+        },
+        "He": {
+          "speaks": "Edmund.",
+          "intent": "dialogue_about_edmund",
+          "response": {
+            "speaker": "Aldric",
+            "text": "Your brother.",
+            "then": {
+              "text": "He says it flat. No judgment. Just fact."
+            }
+          }
+        },
+        "close": {
+          "speaks": "Three days. Maybe less if we push.",
+          "intent": "dialogue_about_pace",
+          "response": {
+            "speaker": "Aldric",
+            "text": "Horses need rest. So do we.",
+            "then": {
+              "text": "He's right. But the waiting burns."
+            }
+          }
+        }
+      }
+    },
+    {
+      "source": "narr_rolf_oath_vengeance",
+      "text": "Find him. Take back what's yours. That's why we came north.",
+      "weight": 0.7,
+      "clickable": {
+        "Find": {
+          "speaks": "I will find him.",
+          "intent": "reaffirm_oath",
+          "response": {
+            "text": "The words feel heavier each time you say them."
+          }
+        },
+        "yours": {
+          "speaks": "My birthright.",
+          "intent": "dialogue_about_inheritance",
+          "response": {
+            "speaker": "Aldric",
+            "text": "Land? Title? Or something else?",
+            "then": {
+              "text": "He's asking what this is really about.",
+              "clickable": {
+                "else": {
+                  "speaks": "Justice.",
+                  "intent": "dialogue_justice"
+                }
+              }
+            }
+          }
+        },
+        "north": {
+          "speaks": "The north has cost us.",
+          "intent": "dialogue_about_journey",
+          "response": {
+            "speaker": "Aldric",
+            "text": "Everything costs.",
+            "then": {
+              "text": "He looks at the fire. Somewhere else."
+            }
+          }
+        }
+      }
+    },
+    {
+      "source": "narr_aldric_thornwick",
+      "text": "He hasn't spoken since Thornwick. The village reminded him of something.",
+      "weight": 0.65,
+      "clickable": {
+        "spoken": {
+          "speaks": "You've been quiet.",
+          "intent": "dialogue_aldric_silence",
+          "response": {
+            "speaker": "Aldric",
+            "text": "Nothing to say.",
+            "then": {
+              "text": "The whetstone pauses. Resumes."
+            }
+          }
+        },
+        "Thornwick": {
+          "speaks": "What happened in Thornwick?",
+          "intent": "dialogue_aldric_thornwick",
+          "response": {
+            "speaker": "Aldric",
+            "text": "The Harrying happened. Everyone knows what the Harrying was.",
+            "then": {
+              "text": "His voice is flat. Controlled.",
+              "clickable": {
+                "Harrying": {
+                  "speaks": "Did you lose someone?",
+                  "intent": "dialogue_aldric_loss",
+                  "response": {
+                    "speaker": "Aldric",
+                    "text": "Everyone.",
+                    "then": {
+                      "text": "One word. All the weight of the world."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "village": {
+          "speaks": "Did you know someone there?",
+          "intent": "dialogue_aldric_past",
+          "response": {
+            "speaker": "Aldric",
+            "text": "Knew. Past tense.",
+            "then": {
+              "text": "He doesn't elaborate. The blade catches firelight."
+            }
+          }
+        }
+      }
+    }
+  ],
+
+  "freeInput": {
+    "enabled": true,
+    "handler": "llm_dialogue_aldric",
+    "context": ["char_aldric.backstory", "narr_aldric_oath", "narr_aldric_thornwick"]
+  },
+
+  "exits": {
+    "travel": {
+      "speaks": "We should move.",
+      "destinations": ["place_york", "place_thornwick"]
+    },
+    "wait": {
+      "speaks": "Get some rest. I'll keep watch.",
+      "advances_time": true,
+      "next_scene": "scene_camp_dawn"
+    }
+  }
+}

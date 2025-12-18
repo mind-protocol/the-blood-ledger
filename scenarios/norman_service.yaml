@@ -1,0 +1,447 @@
+# scenarios/norman_service.yaml
+# The Turncoat - Infiltration
+
+id: norman_service
+name: "The Turncoat"
+location: place_york_castle
+tagline: "You serve the enemy. They don't know what you are."
+tone: infiltration
+
+starts_with:
+  - "A position in Malet's household"
+  - "Cynewise — a fellow spy"
+  - "Orders you haven't received yet"
+
+# =============================================================================
+# PRE-EXISTING NODES (already in seed - reference only)
+# =============================================================================
+
+existing_nodes:
+  characters:
+    - char_malet           # Half-English Sheriff - conflicted master
+    - char_hugh_fitzbaldric  # Another Sheriff
+    - char_waltheof        # Saxon Earl serving Normans - model
+  places:
+    - place_york_castle    # Norman HQ
+    - place_york           # The city
+    - place_york_minster   # Church
+  narratives:
+    - narr_malet_sheriff_york    # "Malet holds York"
+    - narr_malet_buried_harold   # SECRET: He knew Harold
+    - narr_resistance_forming    # "Thegns meeting in secret"
+  tensions:
+    - tension_malet_identity     # "Can he serve harsh orders?"
+    - tension_waltheof_oath      # "Serving two masters"
+    - tension_york_whispers      # "York whispers of resistance"
+
+# =============================================================================
+# NEW NODES (created by this scenario)
+# =============================================================================
+
+nodes:
+  # Player character
+  - type: character
+    id: char_player
+    character_type: player
+    alive: true
+    face: unremarkable
+    skills:
+      fighting: trained
+      tracking: untrained
+      healing: untrained
+      persuading: trained
+      sneaking: master
+      riding: untrained
+      reading: trained
+      leading: untrained
+    voice:
+      tone: careful
+      style: deferential
+    personality:
+      approach: calculating
+      values: [loyalty, survival]
+      flaw: divided
+    backstory:
+      family: "Saxon. That's all you'll say."
+      childhood: "You learned to watch and wait"
+      wound: "You've been pretending so long you're not sure what's real"
+      why_here: "Orders. Or maybe belief. The line blurs."
+
+  # Companion - Cynewise
+  - type: character
+    id: char_cynewise
+    name: "Cynewise"
+    gender: female
+    character_type: companion
+    alive: true
+    face: young
+    skills:
+      fighting: untrained
+      tracking: untrained
+      healing: trained
+      persuading: master
+      sneaking: trained
+      riding: untrained
+      reading: trained
+      leading: untrained
+    voice:
+      tone: warm
+      style: careful
+    personality:
+      approach: patient
+      values: [freedom, family]
+      flaw: hatred
+    backstory:
+      family: "Her father was a thegn. The Normans took everything."
+      childhood: "She learned to smile while hating."
+      wound: "She watched her brother hang for stealing back his own horse."
+      why_here: "The resistance placed her here. She's been waiting two years."
+
+  # Things
+  - type: thing
+    id: thing_servant_clothes
+    name: "Servant's Clothes"
+    thing_type: armor
+    portable: true
+    significance: mundane
+    quantity: 1
+    description: "Clean. Mended. The clothes of someone trusted to be near the lord."
+
+  - type: thing
+    id: thing_hidden_message
+    name: "Hidden Message"
+    thing_type: document
+    portable: true
+    significance: political
+    quantity: 1
+    description: "Sewn into your hem. Instructions from the resistance. You haven't read it yet."
+
+  - type: thing
+    id: thing_malet_cup
+    name: "Malet's Wine Cup"
+    thing_type: tool
+    portable: false
+    significance: mundane
+    quantity: 1
+    description: "The cup you pour wine into every morning. Silver, with a dent where Malet dropped it once. He laughed about it."
+    location: place_york_castle
+
+  - type: thing
+    id: thing_cynewise_poison
+    name: "Cynewise's Poison"
+    thing_type: weapon
+    portable: true
+    significance: political
+    quantity: 1
+    description: "A small vial. She showed it to you once. 'For emergencies,' she said. Her eyes were cold."
+
+  - type: thing
+    id: thing_castle_key
+    name: "Store Room Key"
+    thing_type: tool
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "You have access to the stores. Trust, earned over months. Or the appearance of it."
+
+  - type: thing
+    id: thing_harold_coin
+    name: "Harold's Coin"
+    thing_type: token
+    portable: true
+    significance: political
+    quantity: 1
+    description: "A coin minted under King Harold. Malet keeps it hidden in his chambers. Why?"
+    location: char_malet
+
+  # Narratives about things
+  - type: narrative
+    id: narr_poison_option
+    name: "Cynewise's Solution"
+    content: "Cynewise carries poison. She's had opportunities to use it. She hasn't. Yet."
+    interpretation: "She's waiting for the right moment. Or the right order."
+    narrative_type: secret
+    about:
+      characters: [char_cynewise]
+      things: [thing_cynewise_poison]
+    tone: dark
+    focus: 1.5
+    truth: 1.0
+    narrator_notes: "The poison is real. The question is whether player approves of this method. It could end things quickly. Or destroy everything."
+
+  - type: narrative
+    id: narr_malet_harold_memory
+    name: "Malet's Secret Token"
+    content: "Malet keeps a coin from Harold's reign hidden in his chambers. He thinks no one knows."
+    interpretation: "He can't let go of the old king. What does that mean?"
+    narrative_type: secret
+    about:
+      characters: [char_malet]
+      things: [thing_harold_coin]
+    tone: dark
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "Malet buried Harold. He keeps the coin as... what? Guilt? Loyalty? The player discovering this changes everything."
+
+  - type: narrative
+    id: narr_keys_trust
+    name: "The Key's Meaning"
+    content: "They gave you a key to the stores. Servants don't usually get keys. You've earned trust. Or they think you have."
+    interpretation: "Every lock I can open is a door the resistance might need."
+    narrative_type: memory
+    about:
+      characters: [char_player]
+      things: [thing_castle_key]
+    tone: cold
+    focus: 1.0
+    truth: 1.0
+    narrator_notes: "The key is practical power. Access. It represents how deep the player has gotten."
+
+  # Narratives
+  - type: narrative
+    id: narr_serving_normans
+    name: "In Norman Service"
+    content: "You serve William Malet. You pour his wine. You hear his councils. He trusts you."
+    interpretation: "I am inside the enemy's house."
+    narrative_type: identity
+    about:
+      characters: [char_player, char_malet]
+    tone: cold
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "The service is real. Malet genuinely likes the player. He sees them as 'one of the good ones.'"
+
+  - type: narrative
+    id: narr_true_loyalty
+    name: "True Loyalty"
+    content: "The resistance sent you here. You're supposed to wait, watch, report. The signal will come."
+    interpretation: "I know who I really serve."
+    narrative_type: secret
+    about:
+      characters: [char_player]
+    tone: righteous
+    focus: 2.5
+    truth: 0.7
+    narrator_notes: "The resistance has its own agenda. Some want freedom. Some want power. The player is a pawn."
+
+  - type: narrative
+    id: narr_cynewise_ally
+    name: "Cynewise Is Resistance"
+    content: "Cynewise has been in the castle longer. She's resistance too. She's your contact."
+    interpretation: "I'm not alone in this."
+    narrative_type: bond
+    about:
+      characters: [char_player, char_cynewise]
+    tone: warm
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "Cynewise is loyal to the cause. But she's also lonely. The connection with player is real."
+
+  - type: narrative
+    id: narr_growing_doubt
+    name: "Growing Doubt"
+    content: "Malet isn't what you expected. He's fair to servants. He mourns Harold. He's building something."
+    interpretation: "What if I'm on the wrong side?"
+    narrative_type: belief
+    about:
+      characters: [char_player, char_malet]
+    tone: dark
+    focus: 1.5
+    truth: 1.0
+    narrator_notes: "This is the core tension. The enemy is human. What does betraying him mean?"
+
+# =============================================================================
+# LINKS
+# =============================================================================
+
+links:
+  # Player links
+  - type: present
+    from: char_player
+    to: place_york_castle
+
+  - type: carries
+    from: char_player
+    to: thing_servant_clothes
+
+  - type: carries_hidden
+    from: char_player
+    to: thing_hidden_message
+
+  - type: carries
+    from: char_player
+    to: thing_castle_key
+
+  - type: carries_hidden
+    from: char_cynewise
+    to: thing_cynewise_poison
+
+  - type: carries_hidden
+    from: char_malet
+    to: thing_harold_coin
+
+  - type: located
+    from: thing_malet_cup
+    to: place_york_castle
+
+  - type: belief
+    character: char_player
+    narrative: narr_keys_trust
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_poison_option
+    believes: 0.8
+    source: told
+    narrator_notes: "Cynewise showed player the poison. Player knows it exists."
+
+  - type: belief
+    character: char_player
+    narrative: narr_malet_harold_memory
+    believes: 0.0
+    narrator_notes: "Player doesn't know about the coin yet. Discovering it is a revelation."
+
+  - type: belief
+    character: char_cynewise
+    narrative: narr_poison_option
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_cynewise
+    narrative: narr_malet_harold_memory
+    believes: 0.9
+    source: witnessed
+    narrator_notes: "Cynewise discovered the coin. She's saving this information."
+
+  - type: belief
+    character: char_player
+    narrative: narr_serving_normans
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_true_loyalty
+    believes: 1.0
+    originated: 1.0
+    hides: 1.0
+    source: told
+
+  - type: belief
+    character: char_player
+    narrative: narr_cynewise_ally
+    believes: 1.0
+    source: told
+
+  - type: belief
+    character: char_player
+    narrative: narr_growing_doubt
+    believes: 0.3
+    source: inferred
+
+  - type: belief
+    character: char_player
+    narrative: narr_malet_sheriff_york
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_malet_buried_harold
+    believes: 0.0
+    narrator_notes: "Player doesn't know this yet. Discovering it is a major plot point."
+
+  - type: belief
+    character: char_player
+    narrative: narr_resistance_forming
+    believes: 1.0
+    source: told
+
+  # Companion links (Cynewise)
+  - type: present
+    from: char_cynewise
+    to: place_york_castle
+
+  - type: belief
+    character: char_cynewise
+    narrative: narr_cynewise_ally
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_cynewise
+    narrative: narr_true_loyalty
+    believes: 1.0
+    source: told
+
+  - type: belief
+    character: char_cynewise
+    narrative: narr_resistance_forming
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_cynewise
+    narrative: narr_growing_doubt
+    believes: 0.0
+    narrator_notes: "Cynewise has no doubts. Her hatred is pure. This creates tension with player."
+
+  - type: belief
+    character: char_cynewise
+    narrative: narr_malet_buried_harold
+    believes: 0.8
+    heard: 1.0
+    source: overheard
+    narrator_notes: "She knows Malet's secret. She's saving it for when it's useful."
+
+  # Malet links
+  - type: present
+    from: char_malet
+    to: place_york_castle
+
+  - type: belief
+    character: char_malet
+    narrative: narr_serving_normans
+    believes: 1.0
+    source: witnessed
+
+# =============================================================================
+# COMPANION
+# =============================================================================
+
+companion:
+  id: char_cynewise
+  relationship: "fellow infiltrator"
+  why_stays: "You're both resistance. You need each other to survive."
+  starting_disposition: cautious_ally
+  voice_note: "Warm smile, cold eyes. She's been doing this longer. She's harder than you."
+
+# =============================================================================
+# OPENING
+# =============================================================================
+
+opening:
+  time: morning
+  weather: overcast
+  place: place_york_castle
+  characters_present: [char_cynewise, char_malet]
+  narration: |
+    Lord Malet takes his breakfast in silence.
+    You pour the wine. You've done it a hundred times.
+    He trusts you now. Says you're "one of the good ones."
+
+    The message sewn in your hem itches against your skin.
+    Your people are ready. Waiting for your signal.
+
+    Cynewise catches your eye from across the hall.
+    A slight nod. Tonight. The cellar.
+    She's been here longer. She knows things.
+
+    Malet looks up from his food. "You seem distracted today."
+    His voice is gentle. Concerned.
+    "Is something troubling you?"

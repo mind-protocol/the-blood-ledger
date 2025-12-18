@@ -1,0 +1,202 @@
+# Example World Runner Mutation File
+# Shows what World Runner outputs when a tension flips
+# File naming: wr_{flip_id}.yaml
+
+thinking: |
+  Tension tension_rolf_edmund broke at 0.92 pressure.
+  Rolf and Edmund were both in York. The confrontation happened.
+
+  Resolution choice: Public confrontation in the market.
+  Why: Creates maximum drama, involves witnesses, player can hear about it.
+
+  Narrative outcomes:
+  - narr_rolf_edmund_feud: Superseded by the confrontation
+  - narr_edmund_denies: New narrative - Edmund denies wrongdoing publicly
+  - narr_rolf_accused: New narrative - Rolf made the accusation
+  - New tension: Will witnesses support Rolf or Edmund?
+
+event:
+  summary: "Rolf publicly accused Edmund of burning Thornwick in York's market."
+  location: place_york_market
+  witnesses: ["char_merchant_harald", "char_girl_anna", "char_guard_osbert"]
+  caused_by: ["narr_rolf_oath", "narr_edmund_betrayal"]
+
+nodes:
+  # New narratives born from the event
+  - type: narrative
+    id: narr_rolf_accusation
+    name: "Rolf's Public Accusation"
+    content: "Rolf named Edmund as the one who burned Thornwick and took its silver."
+    narrative_type: account
+    interpretation: "The feud is now public. Everyone in York knows."
+    about_characters: ["char_rolf", "char_edmund"]
+    about_places: ["place_york_market", "place_thornwick"]
+    tone: righteous
+    occurred_at: "Day 12, midday"
+    occurred_where: place_york_market
+    weight: 0.8
+    truth: 1.0
+
+  - type: narrative
+    id: narr_edmund_denial
+    name: "Edmund's Denial"
+    content: "Edmund laughed and called Rolf a liar before the crowd."
+    narrative_type: account
+    interpretation: "Edmund chose defiance over silence."
+    about_characters: ["char_edmund", "char_rolf"]
+    tone: defiant
+    occurred_at: "Day 12, midday"
+    occurred_where: place_york_market
+    weight: 0.7
+    truth: 0.3
+
+  - type: narrative
+    id: narr_york_divided
+    name: "York's Division"
+    content: "The market crowd split - some believe Rolf, others fear Edmund's Norman friends."
+    narrative_type: rumor
+    interpretation: "York cannot ignore this anymore."
+    about_places: ["place_york"]
+    about_characters: ["char_rolf", "char_edmund"]
+    tone: fearful
+    weight: 0.6
+
+  # Moment nodes - what happened, for history
+  - type: moment
+    id: moment_accusation_d12
+    text: "Rolf's voice cut through the market noise: 'This man burned Thornwick! He took our silver to the Normans!'"
+    moment_type: dialogue
+    status: spoken
+    tick: 4320
+    tick_spoken: 4320
+    tone: righteous
+
+  - type: moment
+    id: moment_edmund_laughs_d12
+    text: "Edmund's laugh was cold. 'You always were a fool, Rolf. Who will believe you?'"
+    moment_type: dialogue
+    status: spoken
+    tick: 4321
+    tick_spoken: 4321
+    tone: mocking
+
+  # Potential future moments - seeds
+  - type: moment
+    id: moment_witness_approaches
+    text: "The merchant Harald catches your eye across the square."
+    moment_type: narration
+    status: possible
+    weight: 0.5
+    tone: uncertain
+
+  - type: moment
+    id: moment_guard_watching
+    text: "A Norman guard takes note of the disturbance, hand on his sword."
+    moment_type: narration
+    status: possible
+    weight: 0.4
+    tone: tense
+
+  # New tension node
+  - type: tension
+    id: tension_york_witnesses
+    narratives: ["narr_rolf_accusation", "narr_edmund_denial", "narr_york_divided"]
+    description: "The witnesses saw everything. Who will speak for Rolf? Who fears Edmund?"
+    pressure: 0.3
+    pressure_type: gradual
+    base_rate: 0.002
+    breaking_point: 0.85
+    narrator_notes: "Build toward a witness coming forward or being silenced."
+
+links:
+  # Belief updates - who knows what
+  - type: belief
+    character: char_merchant_harald
+    narrative: narr_rolf_accusation
+    heard: 1.0
+    believes: 0.6
+    source: witnessed
+
+  - type: belief
+    character: char_merchant_harald
+    narrative: narr_edmund_denial
+    heard: 1.0
+    believes: 0.3
+    doubts: 0.5
+    source: witnessed
+
+  - type: belief
+    character: char_guard_osbert
+    narrative: narr_rolf_accusation
+    heard: 1.0
+    believes: 0.2
+    source: witnessed
+
+  - type: belief
+    character: char_guard_osbert
+    narrative: narr_edmund_denial
+    heard: 1.0
+    believes: 0.7
+    source: witnessed
+
+  # Narrative relationships
+  - type: narrative_link
+    from: narr_rolf_accusation
+    to: narr_edmund_denial
+    contradicts: 0.9
+
+  - type: narrative_link
+    from: narr_rolf_accusation
+    to: narr_rolf_oath
+    elaborates: 0.8
+
+  # Moment history links
+  - type: said
+    character: char_rolf
+    moment: moment_accusation_d12
+
+  - type: said
+    character: char_edmund
+    moment: moment_edmund_laughs_d12
+
+  - type: moment_at
+    moment: moment_accusation_d12
+    place: place_york_market
+
+  - type: moment_at
+    moment: moment_edmund_laughs_d12
+    place: place_york_market
+
+  - type: moment_then
+    from: moment_accusation_d12
+    to: moment_edmund_laughs_d12
+
+  # Potential future attachments
+  - type: attached_to
+    moment: moment_witness_approaches
+    target: char_merchant_harald
+    presence_required: true
+    persistent: true
+
+  - type: attached_to
+    moment: moment_guard_watching
+    target: place_york_market
+    presence_required: false
+    persistent: true
+
+updates:
+  # Mark original tension as resolved
+  - tension: tension_rolf_edmund
+    pressure: 1.0
+    resolved: true
+
+movements:
+  # Edmund flees to his Norman protectors
+  - character: char_edmund
+    to: place_norman_garrison
+    visible: true
+
+# Report potential cascades
+cascades:
+  - tension_york_witnesses  # New tension we just created
+  - tension_malet_suspicion  # This might be affected

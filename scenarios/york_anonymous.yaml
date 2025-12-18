@@ -1,0 +1,366 @@
+# scenarios/york_anonymous.yaml
+# The Anonymous - Intrigue
+
+id: york_anonymous
+name: "The Anonymous"
+location: place_york
+tagline: "No one knows your name. That's how you'll survive."
+tone: intrigue
+
+starts_with:
+  - "A false name"
+  - "A sealed letter"
+  - "Sigewulf — a thief who knows too much"
+
+# =============================================================================
+# PRE-EXISTING NODES (already in seed - reference only)
+# =============================================================================
+
+existing_nodes:
+  characters:
+    - char_malet          # Sheriff, half-English, buried Harold
+    - char_waltheof       # Saxon Earl serving Normans
+    - char_archil         # Saxon thegn in York
+    - char_thorkel        # Saxon in York
+    - char_wulfstan       # Saxon in York
+    - char_hugh_fitzbaldric  # Sheriff
+  places:
+    - place_york          # The city
+    - place_york_castle   # Norman hold
+    - place_york_minster  # Church, offers sanctuary
+  narratives:
+    - narr_malet_sheriff_york    # "Malet holds York for Normans"
+    - narr_resistance_forming    # "Saxon thegns meeting in secret"
+    - narr_malet_buried_harold   # SECRET: Malet knew Harold
+  tensions:
+    - tension_york_whispers      # "York whispers of resistance"
+    - tension_malet_identity     # "Can Malet serve harsh orders?"
+    - tension_waltheof_oath      # "Serving two masters"
+
+# =============================================================================
+# NEW NODES (created by this scenario)
+# =============================================================================
+
+nodes:
+  # Player character
+  - type: character
+    id: char_player
+    character_type: player
+    alive: true
+    face: unremarkable
+    skills:
+      fighting: untrained
+      tracking: untrained
+      healing: untrained
+      persuading: trained
+      sneaking: trained
+      riding: untrained
+      reading: trained
+      leading: untrained
+    voice:
+      tone: careful
+      style: measured
+    personality:
+      approach: cautious
+      values: [survival, knowledge]
+      flaw: secretive
+    backstory:
+      family: "You don't speak of them"
+      childhood: "Somewhere south. It doesn't matter now."
+      wound: "Something happened. You ran."
+      why_here: "To disappear. Or to deliver something. Maybe both."
+
+  # Companion - Sigewulf the thief
+  - type: character
+    id: char_sigewulf
+    name: "Sigewulf"
+    gender: male
+    character_type: companion
+    alive: true
+    face: young
+    skills:
+      fighting: untrained
+      tracking: trained
+      healing: untrained
+      persuading: trained
+      sneaking: master
+      riding: untrained
+      reading: untrained
+      leading: untrained
+    voice:
+      tone: quick
+      style: sardonic
+    personality:
+      approach: opportunistic
+      values: [survival, loyalty]
+      flaw: greedy
+    backstory:
+      family: "Orphan. York raised him."
+      childhood: "The streets. The shadows. The things people drop."
+      wound: "Trusted someone once. They sold him to the Normans."
+      why_here: "York is home. He knows every shadow."
+
+  # Things
+  - type: thing
+    id: thing_coin_purse
+    name: "Coin Purse"
+    thing_type: treasure
+    portable: true
+    significance: mundane
+    quantity: 1
+    description: "Enough silver to last a month. If you're careful."
+
+  - type: thing
+    id: thing_sealed_letter
+    name: "Sealed Letter"
+    thing_type: document
+    portable: true
+    significance: political
+    quantity: 1
+    description: "Heavy vellum, unmarked seal. You were told not to open it. The wax is warm against your skin."
+
+  - type: thing
+    id: thing_forged_papers
+    name: "Forged Papers"
+    thing_type: document
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "Papers claiming you're a merchant from Lincoln. The ink is fresh. Don't let anyone look too closely."
+
+  - type: thing
+    id: thing_resistance_token
+    name: "Resistance Token"
+    thing_type: token
+    portable: true
+    significance: political
+    quantity: 1
+    description: "A carved wooden disc. A wolf's head. Show it to the right person, and doors open. Show it to the wrong person, and you hang."
+
+  - type: thing
+    id: thing_sigewulf_lockpicks
+    name: "Sigewulf's Lockpicks"
+    thing_type: tool
+    portable: true
+    significance: personal
+    quantity: 1
+    description: "Thin iron rods, wrapped in cloth. Sigewulf's trade. He's never without them."
+
+  # Narratives about things
+  - type: narrative
+    id: narr_letter_contents
+    name: "What the Letter Contains"
+    content: "The letter contains Norman troop movements. Patrol routes. Garrison strengths. In the wrong hands, it's a death sentence."
+    interpretation: "I don't know what's in it. I don't want to know."
+    narrative_type: secret
+    about:
+      things: [thing_sealed_letter]
+    tone: dark
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "The letter is genuine intelligence. The question is: who sent it, and who is meant to receive it?"
+
+  - type: narrative
+    id: narr_resistance_network
+    name: "The Resistance Network"
+    content: "The carved wolf's head identifies members of the resistance. Each token is unique. Traceable."
+    interpretation: "This token could save me. Or damn me."
+    narrative_type: secret
+    about:
+      things: [thing_resistance_token]
+    tone: dark
+    focus: 1.5
+    truth: 1.0
+    narrator_notes: "The resistance is real but fractured. Some want freedom. Some want power. The player doesn't know which faction gave them the token."
+
+  # Narratives
+  - type: narrative
+    id: narr_hidden_identity
+    name: "Hidden Identity"
+    content: "No one in York knows who you really are. The name you gave is not your own."
+    interpretation: "My true name would get me killed."
+    narrative_type: secret
+    about:
+      characters: [char_player]
+    tone: fearful
+    focus: 3.0
+    truth: 1.0
+    narrator_notes: "What is the player's real identity? Let them discover it through play. Were they noble? Criminal? Both?"
+
+  - type: narrative
+    id: narr_the_letter
+    name: "The Letter"
+    content: "Someone gave you a letter to deliver. You don't know who sent it or who it's for. Only that it's worth dying to protect."
+    interpretation: "This letter is dangerous. And valuable."
+    narrative_type: secret
+    about:
+      characters: [char_player]
+      things: [thing_sealed_letter]
+    tone: dark
+    focus: 2.5
+    truth: 1.0
+    narrator_notes: "The letter contains information about Norman troop movements. Treasonous. The recipient is in York but player must find them."
+
+  - type: narrative
+    id: narr_sigewulf_debt
+    name: "Sigewulf's Debt"
+    content: "You saved Sigewulf from Norman soldiers. He doesn't forget debts."
+    interpretation: "He owes me. That's why he stays."
+    narrative_type: debt
+    about:
+      characters: [char_player, char_sigewulf]
+    tone: warm
+    focus: 1.5
+    truth: 1.0
+    narrator_notes: "The debt is real, but Sigewulf also genuinely likes the player. He's lonely."
+
+# =============================================================================
+# LINKS
+# =============================================================================
+
+links:
+  # Player links
+  - type: present
+    from: char_player
+    to: place_york
+
+  - type: carries
+    from: char_player
+    to: thing_coin_purse
+
+  - type: carries_hidden
+    from: char_player
+    to: thing_sealed_letter
+
+  - type: carries
+    from: char_player
+    to: thing_forged_papers
+
+  - type: carries_hidden
+    from: char_player
+    to: thing_resistance_token
+
+  - type: carries
+    from: char_sigewulf
+    to: thing_sigewulf_lockpicks
+
+  - type: belief
+    character: char_player
+    narrative: narr_letter_contents
+    believes: 0.0
+    narrator_notes: "Player hasn't opened it. Doesn't know what's inside."
+
+  - type: belief
+    character: char_player
+    narrative: narr_resistance_network
+    believes: 0.5
+    heard: 0.7
+    source: told
+
+  - type: belief
+    character: char_sigewulf
+    narrative: narr_resistance_network
+    believes: 0.9
+    source: witnessed
+    narrator_notes: "Sigewulf knows about the tokens. He's sold information about them before."
+
+  - type: belief
+    character: char_player
+    narrative: narr_hidden_identity
+    believes: 1.0
+    originated: 1.0
+    hides: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_the_letter
+    believes: 1.0
+    hides: 1.0
+    source: told
+
+  - type: belief
+    character: char_player
+    narrative: narr_sigewulf_debt
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_player
+    narrative: narr_malet_sheriff_york
+    believes: 1.0
+    heard: 1.0
+    source: told
+
+  - type: belief
+    character: char_player
+    narrative: narr_resistance_forming
+    believes: 0.3
+    heard: 0.5
+    source: rumor
+
+  # Companion links
+  - type: present
+    from: char_sigewulf
+    to: place_york
+
+  - type: belief
+    character: char_sigewulf
+    narrative: narr_sigewulf_debt
+    believes: 1.0
+    originated: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_sigewulf
+    narrative: narr_hidden_identity
+    believes: 0.7
+    source: inferred
+    narrator_notes: "Sigewulf knows you're hiding something. He doesn't ask. That's the code."
+
+  - type: belief
+    character: char_sigewulf
+    narrative: narr_malet_sheriff_york
+    believes: 1.0
+    source: witnessed
+
+  - type: belief
+    character: char_sigewulf
+    narrative: narr_resistance_forming
+    believes: 0.8
+    heard: 1.0
+    source: witnessed
+    narrator_notes: "Sigewulf has seen the secret meetings. He sells information but has limits."
+
+# =============================================================================
+# COMPANION
+# =============================================================================
+
+companion:
+  id: char_sigewulf
+  relationship: "debt-bound guide"
+  why_stays: "You saved his life from Norman soldiers. He pays his debts."
+  starting_disposition: cautious_loyal
+  voice_note: "Quick words, quicker eyes. Always watching the exits. Makes jokes when nervous."
+
+# =============================================================================
+# OPENING
+# =============================================================================
+
+opening:
+  time: evening
+  weather: rain
+  place: place_york
+  characters_present: [char_sigewulf]
+  narration: |
+    York swallows people. That's why you came.
+    The Norman guards at the gate didn't look twice.
+    Just another Saxon with somewhere to be.
+
+    The letter is hidden in your boot. Heavy as a stone.
+    You don't know what it says. You were told not to look.
+
+    Sigewulf appears from an alley, rain dripping from his hood.
+    "You're still alive. Good. I know a place we can talk."
+    He glances at the Norman patrol passing by.
+    "Somewhere with fewer ears."

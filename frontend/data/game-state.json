@@ -1,0 +1,243 @@
+{
+  "player": {
+    "name": "Rolf",
+    "title": null,
+    "day": 12,
+    "location": "The North"
+  },
+  "currentScene": {
+    "id": "scene_camp_night_1",
+    "type": "CAMP",
+    "name": "THE CAMP",
+    "location": "The North, three days from York",
+    "timeOfDay": "NIGHT",
+    "weather": "CLEAR",
+    "atmosphere": [
+      "Cold night. Stars visible through bare branches.",
+      "The fire crackles, throwing shadows on the tents.",
+      "Aldric hasn't spoken since the village."
+    ],
+    "hotspots": [
+      {
+        "id": "aldric",
+        "type": "person",
+        "name": "Aldric",
+        "description": "Sitting apart from the fire. Sharpening his blade. The whetstone rasps in the silence.",
+        "position": { "x": 70, "y": 55 },
+        "icon": "🧍",
+        "imageUrl": "/playthrough/default/images/aldric.png",
+        "actions": [
+          { "id": "talk_aldric", "label": "Talk", "description": "Speak with Aldric" },
+          { "id": "observe_aldric", "label": "Observe", "description": "Watch him without speaking" }
+        ]
+      }
+    ],
+    "actions": [
+      { "id": "wait_dawn", "label": "Wait until dawn", "description": "Rest and let the night pass" },
+      { "id": "leave_camp", "label": "Leave camp", "description": "Set out into the darkness" },
+      { "id": "keep_watch", "label": "Keep watch", "description": "Stay alert through the night" }
+    ]
+  },
+  "characters": [
+    {
+      "id": "char_rolf",
+      "name": "Rolf",
+      "title": null,
+      "description": "Scarred. Determined. Hunting a brother who took everything.",
+      "face": null,
+      "location": "The Camp",
+      "isCompanion": false,
+      "isPresent": true
+    },
+    {
+      "id": "char_aldric",
+      "name": "Aldric",
+      "title": null,
+      "description": "Saxon. Warrior. Was your enemy. Now your sword. He swore an oath at the fire, and he's never broken one.",
+      "face": null,
+      "location": "The Camp",
+      "isCompanion": true,
+      "isPresent": true
+    },
+    {
+      "id": "char_edmund",
+      "name": "Edmund",
+      "title": null,
+      "description": "Your brother. The one who took your inheritance while your father lay dying. He's in York now, currying favor with the sheriff.",
+      "face": null,
+      "location": "York",
+      "isCompanion": false,
+      "isPresent": false
+    }
+  ],
+  "voices": [
+    {
+      "id": "voice_debt_edmund",
+      "type": "debt",
+      "source": "THE DEBT TO EDMUND",
+      "content": "Three days to York. He's close now.",
+      "weight": 0.9
+    },
+    {
+      "id": "voice_oath",
+      "type": "oath",
+      "source": "THE OATH",
+      "content": "Find him. Take back what's yours. That's why we came north.",
+      "weight": 0.7
+    },
+    {
+      "id": "voice_aldric_silence",
+      "type": "companion",
+      "source": "ALDRIC",
+      "content": "He hasn't spoken since Thornwick. The village reminded him of something.",
+      "weight": 0.6
+    }
+  ],
+  "chronicle": [
+    {
+      "id": "chron_1",
+      "day": 1,
+      "location": "The South",
+      "content": "We set out. Aldric swore his oath at the fire. I told him about Edmund, about what was taken. He listened. He didn't judge.",
+      "isPlayerWritten": false
+    },
+    {
+      "id": "chron_5",
+      "day": 5,
+      "location": "The Midlands",
+      "content": "Passed through lands held by Earl Edwin. Norman patrols everywhere. We kept to the woods.",
+      "isPlayerWritten": false
+    },
+    {
+      "id": "chron_10",
+      "day": 10,
+      "location": "Thornwick",
+      "content": "The village was half-empty. The Harrying's mark. Thin faces watched us pass. Aldric wouldn't look at them.",
+      "isPlayerWritten": false
+    },
+    {
+      "id": "chron_12",
+      "day": 12,
+      "location": "The North",
+      "content": "Three days from York now. Edmund is close. I can feel it.",
+      "isPlayerWritten": false
+    }
+  ],
+  "ledger": [
+    {
+      "id": "ledger_debt_edmund",
+      "type": "debt",
+      "subject": "Edmund",
+      "content": "Edmund owes me my inheritance — my birthright, stolen while Father lay dying.",
+      "resolved": false
+    },
+    {
+      "id": "ledger_oath_aldric",
+      "type": "oath",
+      "subject": "Aldric",
+      "content": "Aldric swore to serve me until released from service. He made this oath at the fire, Day 1.",
+      "resolved": false
+    },
+    {
+      "id": "ledger_oath_find",
+      "type": "oath",
+      "subject": "Myself",
+      "content": "I swore to find Edmund and take back what's mine.",
+      "resolved": false
+    },
+    {
+      "id": "ledger_blood_brothers",
+      "type": "blood",
+      "subject": "Edmund",
+      "content": "Edmund is my brother. Sons of the same father. That makes this worse.",
+      "resolved": false
+    }
+  ],
+  "conversations": [
+    {
+      "id": "conv_aldric_thornwick",
+      "characterId": "char_aldric",
+      "characterName": "Aldric",
+      "messages": [
+        {
+          "id": "msg_1",
+          "speaker": "player",
+          "content": "You've been quiet.",
+          "timestamp": 1
+        },
+        {
+          "id": "msg_2",
+          "speaker": "Aldric",
+          "content": "The village. Thornwick. I knew a family there. Before.",
+          "timestamp": 2
+        },
+        {
+          "id": "msg_3",
+          "speaker": "player",
+          "content": "What happened to them?",
+          "timestamp": 3
+        },
+        {
+          "id": "msg_4",
+          "speaker": "Aldric",
+          "content": "The Harrying happened. Everyone knows what the Harrying was.",
+          "timestamp": 4
+        }
+      ],
+      "isActive": false
+    }
+  ],
+  "map": [
+    {
+      "id": "region_north",
+      "name": "The North",
+      "locations": [
+        {
+          "id": "loc_camp",
+          "name": "The Camp",
+          "type": "CAMP",
+          "position": { "x": 45, "y": 60 },
+          "discovered": true,
+          "current": true,
+          "connected": ["loc_road_york", "loc_thornwick"]
+        },
+        {
+          "id": "loc_york",
+          "name": "York",
+          "type": "GATE",
+          "position": { "x": 65, "y": 40 },
+          "discovered": true,
+          "current": false,
+          "connected": ["loc_road_york"]
+        },
+        {
+          "id": "loc_road_york",
+          "name": "The Road to York",
+          "type": "ROAD",
+          "position": { "x": 55, "y": 50 },
+          "discovered": true,
+          "current": false,
+          "connected": ["loc_camp", "loc_york"]
+        },
+        {
+          "id": "loc_thornwick",
+          "name": "Thornwick",
+          "type": "VILLAGE",
+          "position": { "x": 35, "y": 70 },
+          "discovered": true,
+          "current": false,
+          "connected": ["loc_camp"]
+        },
+        {
+          "id": "loc_durham",
+          "name": "Durham",
+          "type": "HOLD",
+          "position": { "x": 30, "y": 30 },
+          "discovered": false,
+          "current": false,
+          "connected": []
+        }
+      ]
+    }
+  ]
+}
