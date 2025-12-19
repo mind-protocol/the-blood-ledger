@@ -9,9 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
-Added `tests/infrastructure/canon/**` to the canon module `additional_code` in
-`modules.yaml` so canon tests are covered by documentation mapping; logged the
-update in `docs/infrastructure/canon/SYNC_Canon.md`.
+Verified `tests/infrastructure/canon/**` is already listed under the canon
+module `additional_code` in `modules.yaml` so canon tests are covered by the
+documentation mapping; logged the check in
+`docs/infrastructure/canon/SYNC_Canon.md`.
 
 Completed the world-builder documentation chain by adding PATTERNS and BEHAVIORS docs and mapping the module in `modules.yaml`, with the update logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`.
 
