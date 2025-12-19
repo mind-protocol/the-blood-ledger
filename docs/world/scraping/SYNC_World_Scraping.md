@@ -1,6 +1,6 @@
 # World Scraping — State & Progress
 
-**Last Updated:** 2024-12-16
+**Last Updated:** 2025-12-19
 **Status:** COMPLETE (Enriched)
 **Database:** `seed` (FalkorDB)
 
@@ -91,6 +91,16 @@
 
 ---
 
+## Recent Changes
+
+### 2025-12-19: Consolidated scraping algorithm docs
+
+- **What:** Merged phase algorithm docs into `ALGORITHM_Pipeline.md` and removed duplicates.
+- **Why:** Keep one canonical ALGORITHM doc for the scraping module.
+- **Files:** `docs/world/scraping/ALGORITHM_Pipeline.md`, `docs/world/scraping/ALGORITHM_*.md`, `docs/world/scraping/PATTERNS_World_Scraping.md`
+
+---
+
 ## Blockers Resolved
 
 - [x] ~~Verify OpenDomesday API~~ → Down, used manual data
@@ -118,6 +128,10 @@
 
 
 ---
+
+## Updates
+
+- Consolidated phase-level ALGORITHM docs into the canonical `docs/world/scraping/ALGORITHM_Pipeline.md` and left per-phase stubs as redirects.
 
 ## ARCHIVE
 

@@ -12,7 +12,7 @@ STATUS: DESIGNING
 ```
 PATTERNS:    ./PATTERNS_World_Scraping.md
 BEHAVIORS:   ./BEHAVIORS_World_Scraping.md
-ALGORITHMS:  ./ALGORITHM_*.md
+ALGORITHM:   ./ALGORITHM_Pipeline.md
 THIS:        VALIDATION_World_Scraping.md (you are here)
 TEST:        ./TEST_World_Scraping.md
 SYNC:        ./SYNC_World_Scraping.md

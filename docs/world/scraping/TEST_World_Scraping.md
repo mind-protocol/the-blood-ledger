@@ -12,7 +12,7 @@ STATUS: TODO
 ```
 PATTERNS:    ./PATTERNS_World_Scraping.md
 BEHAVIORS:   ./BEHAVIORS_World_Scraping.md
-ALGORITHMS:  ./ALGORITHM_*.md
+ALGORITHM:   ./ALGORITHM_Pipeline.md
 VALIDATION:  ./VALIDATION_World_Scraping.md
 THIS:        TEST_World_Scraping.md (you are here)
 SYNC:        ./SYNC_World_Scraping.md
