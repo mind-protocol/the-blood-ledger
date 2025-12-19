@@ -34,20 +34,6 @@ The world materializes as you move through it. No skeleton. No pre-authored wayp
 
 ---
 
-## CHAIN
-
-```
-BEHAVIORS:      ./BEHAVIORS_Travel_Experience.md
-ALGORITHM:      ./ALGORITHM_Async_Architecture.md
-VALIDATION:     ./VALIDATION_Async_Architecture.md
-IMPLEMENTATION: ./IMPLEMENTATION_Async_Architecture.md
-TEST:           ./TEST_Async_Architecture.md
-THIS:           PATTERNS_Async_Architecture.md
-SYNC:           ./SYNC_Async_Architecture.md
-```
-
----
-
 ## Component Responsibilities
 
 ### Graph — Source of Truth
@@ -117,58 +103,7 @@ Hooks are for interruptions ONLY. Not for Runner completion.
 
 ## Data Flow Diagram
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                         GRAPH                               │
-│                   (source of truth)                         │
-│                                                             │
-│   places ─── characters ─── narratives ─── tensions         │
-│                                                             │
-│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    │
-│   │ SSE stream  │    │ write API   │    │ read API    │    │
-│   └──────┬──────┘    └──────┬──────┘    └──────┬──────┘    │
-└──────────┼──────────────────┼──────────────────┼────────────┘
-           │                  │                  │
-           ▼                  │                  │
-┌─────────────────┐           │                  │
-│    FRONTEND     │           │                  │
-│                 │           │                  │
-│  map ← position │           │                  │
-│  fog ← visibility           │                  │
-│  img ← place.image          │                  │
-│        │                    │                  │
-│        └──────── writes ────┼──→ injection_queue.jsonl
-└─────────────────┘           │                  │
-                              │                  │
-                ┌─────────────┘                  │
-                │                                │
-                ▼                                │
-         ┌─────────────┐                         │
-         │   RUNNER    │                         │
-         │ (background)│                         │
-         │             │                         │
-         │  creates    │                         │
-         │  places     │─────writes─────────────→│
-         │  ticks      │                         │
-         └──────┬──────┘                         │
-                │                                │
-                │ (main output)                  │
-                ▼                                │
-         ┌─────────────┐                         │
-         │ TaskOutput  │                         │
-         │ (on system  │                         │
-         │  reminder)  │                         │
-         └──────┬──────┘                         │
-                │                                │
-                ▼                                │
-         ┌─────────────────┐                     │
-         │    NARRATOR     │←───reads────────────┘
-         │                 │
-         │  streams        │←─── PostToolUse Hook
-         │  responds       │     (interruptions only)
-         │  spawns Runner  │
-         └─────────────────┘
-```
+Detailed diagram archived in `docs/infrastructure/async/archive/SYNC_archive_2024-12.md`.
 
 ---
 

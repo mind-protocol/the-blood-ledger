@@ -137,9 +137,10 @@ This unlocks real-time updates for all other phases.
 - Updated async implementation doc to replace runtime-only file references with configured script paths so all references point to tracked files.
 - Refreshed the async implementation doc to match current queue file formats/paths (JSONL default queue, JSON array per playthrough) and updated entry point lines and config table; noted the playthrough initialization mismatch as a gap.
 - Reverified `IMPLEMENTATION_Async_Architecture.md` after the broken-link report; no additional path corrections were needed.
-- Consolidated async algorithm docs into `ALGORITHM_Async_Architecture.md` and removed per-topic algorithm files to keep a single canonical algorithm reference.
+- Split async algorithm docs into `docs/infrastructure/async/ALGORITHM/` with an overview and focused parts (Runner, Hook, Graph SSE, Waypoints/Fog, Image Generation, Discussion Trees), added `ALGORITHM_Async_Architecture.md` as the entry point, and updated CHAIN references.
 - Added `IMPLEMENTATION_Async_Architecture.md`, linked CHAIN references, and added DOCS pointer in `engine/scripts/check_injection.py`.
 - Added DOCS pointer in `engine/scripts/inject_to_narrator.py` so the manual injector resolves to the async implementation chain.
+- Archived verbose discussion tree details and the data flow diagram to `docs/infrastructure/async/archive/SYNC_archive_2024-12.md` to keep module docs under size limits.
 
 ---
 
@@ -155,4 +156,19 @@ This unlocks real-time updates for all other phases.
 
 ## ARCHIVE
 
-Older content archived to: `SYNC_Async_Architecture_archive_2025-12.md`
+Older content archived to:
+- `docs/infrastructure/async/SYNC_Async_Architecture_archive_2025-12.md`
+- `docs/infrastructure/async/archive/SYNC_archive_2024-12.md`
+
+---
+
+## Agent Observations
+
+### Remarks
+- The discussion tree details and data flow diagram were valuable but pushed the module over size limits, so they are now stored in the archive file.
+
+### Suggestions
+- [ ] If this module grows again, consider splitting other large docs (like `PATTERNS_Async_Architecture.md`) into overview + parts to keep the chain lean.
+
+### Propositions
+- A dedicated `docs/infrastructure/async/diagrams/` folder could host future visual assets without bloating core docs.
