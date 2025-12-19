@@ -34,11 +34,19 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
-### 2025-12-19: Revalidated node helper implementations (repair 07)
+### 2025-12-19: Revalidated link helper implementations with line refs (repair 06)
 
-- **What:** Confirmed `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` are already implemented in `engine/models/nodes.py`; no code changes made.
+- **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` remain implemented in `engine/models/links.py` (`engine/models/links.py:66`, `engine/models/links.py:120`, `engine/models/links.py:140`, `engine/models/links.py:160`); no code changes made.
+- **Why:** Current INCOMPLETE_IMPL repair run required validation for link helper properties.
+- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task remains stale; verification only.
+
+### 2025-12-19: Revalidated node helper implementations with line refs (repair 07)
+
+- **What:** Confirmed `Narrative.is_core_type` and Moment helpers (`tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) are implemented in `engine/models/nodes.py` (`Narrative.is_core_type` at `engine/models/nodes.py:185`, Moment helpers starting at `engine/models/nodes.py:249`); no code changes made.
 - **Why:** Current INCOMPLETE_IMPL repair required validation of node helper properties.
 - **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Test:** `pytest engine/tests/test_models.py` (failed: missing `pytest_xprocess` dependency).
 - **Struggles/Insights:** Repair task appears stale relative to current code.
 
 ### 2025-12-19: Verified GameTimestamp comparison helpers (repair 05)
@@ -214,6 +222,7 @@ pytest engine/tests/test_models.py
 - Attempted `pytest engine/tests/test_models.py`; missing `pytest_xprocess` prevented the test run.
 - Reconfirmed link helper properties for the current repair run; no code changes required.
 - Rechecked link helper implementations for the latest repair run; no code changes required.
+- Revalidated link helper implementations for the current repair run; no code changes required.
 
 ### Suggestions
 - [ ] Consider adding explicit tests for `GameTimestamp` ordering in `engine/tests/test_models.py`.
