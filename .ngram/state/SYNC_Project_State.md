@@ -21,6 +21,11 @@ Reviewed moment graph query helpers (`get_dormant_moments`, `get_wait_triggers`,
 implementations were already present, so no code changes were required. Logged
 the verification in `docs/engine/moment-graph-engine/SYNC_Moment_Graph_Engine.md`.
 
+Reconfirmed `engine/physics/graph/graph_ops_types.py` helper implementations
+(`SimilarNode.__str__`, `ApplyResult.success`) for the current repair run; no
+code changes required. Updated `docs/physics/graph/SYNC_Graph.md` and ran
+`ngram validate` (pre-existing schema/tempo/world-builder doc gaps remain).
+
 Revalidated `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) with line references (`engine/models/links.py:66`, `engine/models/links.py:120`, `engine/models/links.py:140`, `engine/models/links.py:160`); implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
 
 Updated `docs/schema/models/SYNC_Schema_Models.md` to note the current repair run verification for link helper properties.
