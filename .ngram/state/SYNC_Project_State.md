@@ -19,6 +19,7 @@ Added a reconfirmation entry in `docs/infrastructure/scene-memory/SYNC_Scene_Mem
 Added `NEXT_PUBLIC_API_URL=http://localhost:8000` to `.env` so the frontend uses the expected local backend by default.
 
 Hardened `TempoController.stop` and `update_display_queue_size` with input cleanup, queue-size validation, and logging; documented the updates in tempo implementation/SYNC.
+Added tempo SYNC observations for backpressure validation and testing gaps.
 
 Reconfirmed ConversationThread helper implementations in `engine/infrastructure/history/conversations.py` for the repair run; no code changes required.
 
