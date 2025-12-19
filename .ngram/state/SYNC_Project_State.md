@@ -14,6 +14,9 @@ Confirmed `engine/models/base.py` comparison helpers were already implemented; n
 Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py`; repair task is stale.
 Validated moment processor implementations; repair task appears stale.
 Verified moment graph query helpers in `engine/moment_graph/queries.py` are already implemented; repair task appears stale.
+Verified moment graph traversal helpers in `engine/moment_graph/traversal.py` are already implemented; repair task appears stale.
+Verified moment query helpers in `engine/physics/graph/graph_queries_moments.py`; repair task appears stale.
+Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still reports pre-existing docs/schema gaps and broken CHAIN links.
 Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.md`.
 
 ---
@@ -77,6 +80,17 @@ Repair task appears stale relative to current code.
 ### Backlog
 
 - IDEA: Audit placeholder sync templates for updates.
+
+---
+
+## Agent Observations
+
+### Remarks
+- Moment traversal helper implementations already exist; no code changes required.
+
+### Suggestions
+
+### Propositions
 
 ---
 
