@@ -95,6 +95,7 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 ## Recent Changes
 
 ### 2025-12-19
+- Added module mapping for `engine/physics/graph/**` and linked `graph_ops.py` to the graph docs via a DOCS reference.
 - Confirmed tick.py, orchestrator.py are complete
 - Identified gap: no API endpoint calls orchestrator.process_action()
 - Created task spec for agents to add endpoint
@@ -102,3 +103,4 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 - Verified `engine/physics/graph/graph_ops_types.py` helpers (`SimilarNode.__str__`, `ApplyResult.success`) are already implemented; repair flagged as INCOMPLETE_IMPL is stale.
 - Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers are implemented; repair flagged as INCOMPLETE_IMPL is stale.
 - Removed duplicate graph algorithm doc by consolidating weight computation into `docs/physics/graph/ALGORITHM_Energy_Flow.md` and dropping `docs/physics/graph/ALGORITHM_Weight.md`.
+- Added `engine/physics/graph/**` module mapping to `modules.yaml` and linked `engine/physics/graph/graph_ops.py` to the graph docs via DOCS reference.

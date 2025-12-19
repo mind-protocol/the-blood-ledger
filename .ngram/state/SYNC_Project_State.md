@@ -9,10 +9,17 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Revalidated the ops-scripts documentation chain for `engine/scripts` and noted the
+verification in `docs/infrastructure/ops-scripts/SYNC_Ops_Scripts.md`.
+
 Documented the moment graph module by mapping `engine/moments/**` to
 `docs/engine/moments/` in `modules.yaml`, adding PATTERNS/SYNC docs, and
 aligning `engine/moments/__init__.py` DOCS references. Ran `ngram validate`;
 failures remain in pre-existing schema/tempo/world-builder docs.
+
+Mapped `engine/physics/graph/**` to `docs/physics/graph/` in `modules.yaml` and
+linked `engine/physics/graph/graph_ops.py` to the graph documentation via a
+DOCS reference.
 
 Documented the ops-scripts module for `engine/scripts`, added a module mapping in
 `modules.yaml`, and linked `seed_moment_sample.py` to the new docs with a DOCS

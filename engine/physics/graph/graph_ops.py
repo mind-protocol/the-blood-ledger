@@ -20,6 +20,8 @@ Docs:
 - docs/engine/moments/SCHEMA_Moments.md — node/link schema for the moment graph
 - docs/engine/moments/ALGORITHM_Transitions.md — how mutations should behave
 - docs/engine/GRAPH_OPERATIONS_GUIDE.md — mutation file format
+
+DOCS: docs/physics/graph/PATTERNS_Graph.md
 """
 
 import json
