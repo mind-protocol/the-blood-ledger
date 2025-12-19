@@ -9,10 +9,14 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Applied the physics implementation doc anti-pattern update (hidden writes in query helpers) for repair #16 and verified it against the DESIGN PATTERNS template.
+
 Expanded `docs/design/SYNC_Vision.md` with the missing template sections
 (maturity, current state, in progress, recent changes, known issues, handoffs,
 todo, consciousness trace, pointers) and lengthened entries to resolve the
 DOC_TEMPLATE_DRIFT warning for repair #16.
+Added a RECENT CHANGES note to `docs/design/SYNC_Vision.md` to log the
+template verification for repair #16.
 
 Updated the graph health SYNC RECENT CHANGES entry to record the template
 section restoration (`docs/schema/graph-health/SYNC_Graph_Health.md`).
