@@ -12,7 +12,7 @@ CREATED: 2025-12-19
 ```
 PATTERNS:       ./PATTERNS_Map.md
 BEHAVIORS:      ./BEHAVIORS_Map.md
-ALGORITHM:      ./ALGORITHM_Rendering.md
+ALGORITHM:      ./ALGORITHM_Map.md
 VALIDATION:     ./VALIDATION_Map_Invariants.md
 THIS:           IMPLEMENTATION_Map_Code_Architecture.md
 TEST:           ./TEST_Map_Test_Coverage.md

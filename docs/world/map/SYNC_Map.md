@@ -11,7 +11,7 @@ STATUS: Partial implementation - semantic search complete, visual map pending
 
 PATTERNS:        ./PATTERNS_Map.md
 BEHAVIORS:       ./BEHAVIORS_Map.md
-ALGORITHM:       ./ALGORITHM_Rendering.md
+ALGORITHM:       ./ALGORITHM_Map.md
 VALIDATION:      ./VALIDATION_Map_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Map_Code_Architecture.md
 TEST:            ./TEST_Map_Test_Coverage.md
@@ -22,78 +22,16 @@ IMPL:            engine/world/map/semantic.py
 
 ## Current State
 
-**Documentation complete.** Map system fully specified, with places/routes consolidated into a single algorithm doc. Consolidation verified during repair 17:
-- Place schema and hierarchy
-- Route computation and movement rules
-- Canvas rendering with 7 layers
-- Visibility system with 4 levels
-- Interaction behaviors
-Documentation repair 65: fixed implementation doc references to point at `engine/world/map/semantic.py` methods and removed the broken `DOCS:` path label.
+### Implemented
+- **Semantic search** via `engine/world/map/semantic.py`.
+- **FalkorDB integration** through GraphQueries.
 
-Documentation chain completed for validation, implementation, and test coverage.
+### Not Implemented
+- Visual map rendering (canvas layers, fog, icons).
+- Visibility/knowledge tracking per playthrough.
+- Place/route data loading for the frontend map UI.
 
-Frontend map view exists as a read-only UI using sample data under
-`frontend/components/map`, but it is not yet wired to this backend map system.
-The frontend map SYNC now redirects here to keep map status in one place.
-
-**Partial implementation:**
-
-Frontend map view is documented and implemented with a read-only canvas UI
-(`MapClient`, `MapCanvas`) that uses sample data for terrain, routes, and
-places. It currently provides hover and selection affordances without travel
-integration.
-
-| Component | Status | Notes |
-|-----------|--------|-------|
-| Semantic Search | **Implemented** | `engine/world/map/semantic.py` |
-| FalkorDB Integration | **Available** | Used via GraphQueries |
-| Visual Map Rendering | Not started | Canvas layers, fog of war |
-| Place/Route Display | Not started | Requires frontend setup |
-| Visibility System | Not started | Player knowledge tracking |
-
----
-
-## What's Implemented
-
-### SemanticSearch (`engine/world/map/semantic.py`)
-
-Natural language query layer for finding world content:
-
-- `find(query, node_types, limit)` — Search by natural language
-- `find_similar(node_id)` — Find nodes similar to given node
-- `find_narratives_like(text)` — Find matching narratives
-- `find_characters_like(description)` — Find matching characters
-- `answer_question(question)` — Find nodes that answer a question
-
-Uses FalkorDB vector search with fallback to brute-force similarity computation.
-
-**Integration:**
-- Uses `engine.infrastructure.embeddings` for embedding generation
-- Uses `engine.physics.graph.GraphQueries` for database access
-
----
-
-## What's NOT Implemented
-
-### Visual Map System
-
-The documented map features remain unimplemented:
-- Canvas-based rendering with 7 layers
-- Parchment aesthetic with hand-drawn feel
-- Fog of war using multiply blend
-- Place icons and labels
-- Route visualization with waypoints
-- Player position tracking
-- Click-to-travel interaction
-Frontend has a placeholder map UI, but it uses static seed data and does not
-connect to the backend map system yet.
-
-### Visibility/Knowledge System
-
-Player-specific knowledge tracking:
-- Unknown/Rumored/Known/Familiar states
-- Fog of war reveal
-- Discovery mechanics
+Frontend map UI exists under `frontend/components/map` but is static demo data.
 
 ---
 
@@ -101,55 +39,52 @@ Player-specific knowledge tracking:
 
 | Doc | Purpose | Status |
 |-----|---------|--------|
-| `PATTERNS_Map.md` | Why this design | Complete |
-| `BEHAVIORS_Map.md` | Visibility, interaction | Complete |
-| `ALGORITHM_Rendering.md` | Rendering, places, routes, movement | Complete |
-| `VALIDATION_Map_Invariants.md` | Semantic search invariants | Complete |
-| `IMPLEMENTATION_Map_Code_Architecture.md` | Code architecture | Complete |
-| `TEST_Map_Test_Coverage.md` | Test coverage | Complete (no tests yet) |
+| `PATTERNS_Map.md` | Why this design | Updated, concise |
+| `BEHAVIORS_Map.md` | Visibility, interaction | Updated, concise |
+| `ALGORITHM_Map.md` | Entry point | New split |
+| `ALGORITHM/ALGORITHM_Rendering_Pipeline.md` | Rendering pipeline | New split |
+| `ALGORITHM/ALGORITHM_Places.md` | Places | New split |
+| `ALGORITHM/ALGORITHM_Routes.md` | Routes | New split |
+| `VALIDATION_Map_Invariants.md` | Semantic search invariants | Current |
+| `IMPLEMENTATION_Map_Code_Architecture.md` | Code architecture | Current |
+| `TEST_Map_Test_Coverage.md` | Test coverage | Current |
 | `SYNC_Map.md` | Current state | This file |
 
 ---
 
 ## Recent Changes
 
-### 2025-12-19: Repaired semantic search references
+### 2025-12-19: Reduced map documentation size
 
-- **What:** Updated implementation doc references to use concrete semantic search file paths instead of method-qualified paths.
-- **Why:** Eliminate broken implementation links in the map implementation documentation.
-- **Files:** `docs/world/map/IMPLEMENTATION_Map_Code_Architecture.md`
+- Split large algorithm doc into focused parts.
+- Removed duplicated and verbose sections; kept canonical logic.
+- Updated CHAIN references to new algorithm entry point.
 
-### 2025-12-19: Consolidated frontend map patterns
-
-- **What:** Merged the frontend map view PATTERNS docs into the parchment map
-  doc, expanded the visibility/read-only details, and removed the duplicate
-  file.
-- **Why:** Keep a single canonical PATTERNS doc for the frontend map view.
-- **Files:** `docs/frontend/map/PATTERNS_Parchment_Map_View.md`, `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
-
-### 2025-12-19: Consolidated map SYNC documentation
-
-- **What:** Moved frontend map view status into this canonical map SYNC and redirected the frontend map SYNC to this file.
-- **Why:** Remove duplicate SYNC docs for the map system while preserving frontend-specific status.
-- **Files:** `docs/world/map/SYNC_Map.md`, `docs/frontend/map/SYNC_Map_View.md`
+Files:
+- `docs/world/map/ALGORITHM_Map.md`
+- `docs/world/map/ALGORITHM/ALGORITHM_Rendering_Pipeline.md`
+- `docs/world/map/ALGORITHM/ALGORITHM_Places.md`
+- `docs/world/map/ALGORITHM/ALGORITHM_Routes.md`
+- `docs/world/map/PATTERNS_Map.md`
+- `docs/world/map/BEHAVIORS_Map.md`
+- `docs/world/map/SYNC_Map.md`
 
 ---
 
-## Dependencies for Visual Map
+## Agent Observations
 
-To implement the visual map system:
-1. **Frontend canvas component** — React component with layered Canvas2D
-2. **Place/Route data loading** — Query places from graph
-3. **Visibility state storage** — Per-playthrough player knowledge
-4. **Travel event handling** — Integration with Narrator
+### Remarks
+- The algorithm spec was duplicated and overly verbose, obscuring canonical rules.
 
----
+### Suggestions
+- [ ] Add automated tests for semantic search to match VALIDATION invariants.
+- [ ] Revisit frontend map integration once backend visibility state exists.
 
-*"Semantic search is ready. The visual map awaits."*
-
+### Propositions
+- Consider a shared map data loader service to connect graph data to UI.
 
 ---
 
 ## ARCHIVE
 
-Older content archived to: `SYNC_Map_archive_2025-12.md`
+Older content archived to: `docs/world/map/archive/SYNC_archive_2024-12.md`

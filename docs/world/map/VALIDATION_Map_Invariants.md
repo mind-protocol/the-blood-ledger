@@ -13,7 +13,7 @@ VERIFIED: 2025-12-19 against workspace
 ```
 PATTERNS:        ./PATTERNS_Map.md
 BEHAVIORS:       ./BEHAVIORS_Map.md
-ALGORITHM:       ./ALGORITHM_Rendering.md
+ALGORITHM:       ./ALGORITHM_Map.md
 THIS:            VALIDATION_Map_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Map_Code_Architecture.md
 TEST:            ./TEST_Map_Test_Coverage.md
