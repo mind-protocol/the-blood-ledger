@@ -9,7 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reconfirmed `engine/infrastructure/memory/moment_processor.py` helper implementations for the repair run; no code changes required and logged the verification in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
+
 Reverified `ConversationThread` path helpers in `engine/infrastructure/history/conversations.py` for the current repair run; implementations already present, no code changes required.
+Logged the repair 01-INCOMPLETE_IMPL-history-conversations verification in `docs/infrastructure/history/SYNC_History.md`.
 Reconfirmed `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) for the 06-INCOMPLETE_IMPL-models-base repair run; implementations are already present, so no code changes were required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
 
 Verified `engine/infrastructure/world_builder/world_builder.py` helper implementations (`_hash_query`, `clear_cache`) for the incomplete-impl repair; task was stale with no code changes (logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`).
@@ -29,6 +32,7 @@ Added tempo SYNC observations for backpressure validation and testing gaps.
 Reconfirmed ConversationThread helper implementations in `engine/infrastructure/history/conversations.py` for the repair run; no code changes required.
 
 Verified the graph health report helpers in `engine/graph/health/check_health.py`; the incomplete-impl task was stale and required no code changes (logged in `docs/schema/graph-health/SYNC_Graph_Health.md`).
+Revalidated the health check helper implementations for the current repair run and refreshed `docs/schema/graph-health/SYNC_Graph_Health.md`; no code changes required.
 
 Aligned tempo API calls with the shared frontend `API_BASE` so speed controls and tempo SSE respect `NEXT_PUBLIC_API_URL`. Verified via `cd frontend && npm run build`.
 
