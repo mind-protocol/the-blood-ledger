@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/infrastructure/api/IMPLEMENTATION_Api.md` with the missing
+implementation template sections (code structure, design patterns, schema,
+entry points, data flow, logic chains, dependencies, state management, runtime
+behavior, concurrency model, configuration, bidirectional links, gaps) and
+logged the update in `docs/infrastructure/api/SYNC_Api.md` for repair #16.
+
 Expanded `docs/infrastructure/api/BEHAVIORS_Api.md` with the missing template
 sections (behaviors, inputs/outputs, edge cases, anti-behaviors, gaps) to
 resolve DOC_TEMPLATE_DRIFT for repair #16 and logged the update in
