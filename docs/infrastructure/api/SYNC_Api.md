@@ -41,6 +41,23 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Re-verify API PATTERNS template completeness (repair 16)
+
+- **What:** Confirmed `PATTERNS_Api.md` retains a single, complete template
+  block with required sections populated.
+- **Why:** The repair task targets PATTERNS drift; re-verification closes the
+  audit trail without further content changes.
+- **Files:**
+  - `docs/infrastructure/api/PATTERNS_Api.md`
+  - `docs/infrastructure/api/SYNC_Api.md`
+
+### 2025-12-19: Expand API implementation template details (repair 16)
+
+- **What:** Added structured code-architecture sections (file responsibilities, schemas, flows, dependencies, runtime, config, and bidirectional links).
+- **Why:** Ensure `IMPLEMENTATION_Api.md` fully matches the implementation template expectations for DOC_TEMPLATE_DRIFT.
+- **Files:**
+  - `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+
 ### 2025-12-19: Refresh API implementation coverage (repair 16)
 
 - **What:** Expanded `IMPLEMENTATION_Api.md` with the missing template sections

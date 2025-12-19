@@ -9,6 +9,15 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Re-verified `docs/infrastructure/api/PATTERNS_Api.md` retains a single complete
+template block and logged the confirmation in `docs/infrastructure/api/SYNC_Api.md`
+for repair #16.
+
+Expanded `docs/infrastructure/api/IMPLEMENTATION_Api.md` with structured
+code-architecture detail (file responsibilities, schema blocks, data flows,
+dependencies, runtime/concurrency tables, config entries, and link mapping) to
+fully align with the implementation template for repair #16.
+
 Expanded `docs/infrastructure/async/ALGORITHM_Async_Architecture.md` with the
 missing template sections (overview, data structures, primary algorithm,
 decisions, data flow, complexity, helpers, interactions, gaps) to resolve
