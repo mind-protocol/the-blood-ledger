@@ -46,6 +46,13 @@ No active work on embeddings module.
 - **Files:** `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`, `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Overview.md`, `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Indexing.md`, `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Search.md`, `docs/infrastructure/embeddings/TEST_Embeddings.md`, `docs/infrastructure/embeddings/TEST/TEST_Overview.md`, `docs/infrastructure/embeddings/TEST/TEST_Cases.md`, `docs/infrastructure/embeddings/archive/SYNC_archive_2024-12.md`
 - **Struggles/Insights:** Moved vector index details plus fixture/performance examples into the archive to keep the entry docs concise.
 
+### 2025-12-19: Verify doc size threshold
+
+- **What:** Recounted module docs after the split; total size is now under 50K characters.
+- **Why:** Close the LARGE_DOC_MODULE repair requirement for embeddings.
+- **Files:** `docs/infrastructure/embeddings/`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Normalize embeddings implementation references
 
 - **What:** Replaced method-only tokens with concrete file paths in the embeddings implementation doc.
