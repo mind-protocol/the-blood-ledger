@@ -121,6 +121,15 @@ Focus stays on clarity and traceability. This repair is intentionally small, emp
 
 ## RECENT CHANGES
 
+### 2025-12-19: Filled missing narrator behaviors template sections
+
+- **What:** Added the missing CHAIN, BEHAVIORS, INPUTS / OUTPUTS, EDGE CASES,
+  ANTI-BEHAVIORS, and GAPS / IDEAS / QUESTIONS sections to the narrator
+  behaviors doc and expanded the new sections to meet template length rules.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for `BEHAVIORS_Narrator.md` while keeping
+  narrator behavior unchanged.
+- **Files:** `docs/agents/narrator/BEHAVIORS_Narrator.md`
+
 ### 2025-12-19: Completed validation SYNC status and expansion
 
 - **What:** Added the missing SYNC STATUS block and expanded short validation
@@ -129,6 +138,7 @@ Focus stays on clarity and traceability. This repair is intentionally small, emp
   the documentation chain aligned.
 - **Files:** `docs/agents/narrator/VALIDATION_Narrator.md`,
   `docs/agents/narrator/SYNC_Narrator.md`
+- **Validation:** `ngram validate` (fails due to pre-existing missing VIEW/doc-chain gaps).
 
 ### 2025-12-19: Expanded narrator patterns template sections
 
@@ -279,6 +289,7 @@ Older content archived to: `docs/agents/narrator/archive/SYNC_archive_2024-12.md
 - `time_elapsed` requirements were inconsistent between TOOL_REFERENCE and BEHAVIORS; aligned to conversational/significant split.
 - Scene generation algorithm now includes the full template sections to avoid drift.
 - Implementation template gaps were filled to prevent narrator docs from drifting again.
+- Narrator behaviors doc now includes the full template sections to avoid future drift checks.
 
 ### Suggestions
 - [ ] Review mutation type lists across narrator docs and `engine/models/` for canonical alignment.
