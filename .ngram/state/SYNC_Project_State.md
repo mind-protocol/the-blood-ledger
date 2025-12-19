@@ -21,6 +21,8 @@ The Blood Ledger is a narrative game engine set in Norman England (1067), using 
 - `engine/infrastructure/api/moments.py` reads `player.yaml` under router `playthroughs_dir` when available
 - Falls back to `get_playthrough_graph_name()` to preserve existing behavior
 
+**Just completed:** Implemented API health check logic, cached graph helpers, and created API doc chain under `docs/infrastructure/api/`.
+
 All Python imports updated and verified working.
 
 ---
@@ -170,6 +172,7 @@ Check `modules.yaml` (project root) for full manifest.
 - Repair task appears to be stale relative to the current `engine/graph/health/check_health.py` implementation.
 - Repair task appears to be stale relative to the current `engine/infrastructure/api/playthroughs.py` implementation.
 - Repair task appears to be stale relative to the current `engine/infrastructure/history/conversations.py` implementation.
+- Repair task appears to be stale relative to the current `engine/infrastructure/api/moments.py` implementation.
 
 ### Suggestions
 - [ ] Consider adding DOCS: references for `engine/graph/health/check_health.py` to link it into the documentation chain.
