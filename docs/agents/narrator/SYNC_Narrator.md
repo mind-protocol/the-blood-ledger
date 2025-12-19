@@ -121,12 +121,13 @@ Focus stays on clarity and traceability. This repair is intentionally small, emp
 
 ## RECENT CHANGES
 
-### 2025-12-19: Verified narrator SYNC template completeness
+### 2025-12-19: Completed missing narrator SYNC template sections
 
-- **What:** Confirmed required SYNC sections (maturity, state, handoffs,
-  todo, consciousness trace, pointers) are present and sufficiently detailed.
-- **Why:** Close DOC_TEMPLATE_DRIFT for `SYNC_Narrator.md` without changing behavior.
+- **What:** Added maturity, current state, in-progress, known issues, handoffs,
+  todo, consciousness trace, and pointers sections to the narrator SYNC.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for `SYNC_Narrator.md` while keeping behavior unchanged.
 - **Files:** `docs/agents/narrator/SYNC_Narrator.md`
+- **Validation:** `ngram validate` (fails due to pre-existing missing VIEW/doc-chain gaps in schema/product/network/storms).
 
 ### 2025-12-19: Verified narrator implementation template completeness
 
