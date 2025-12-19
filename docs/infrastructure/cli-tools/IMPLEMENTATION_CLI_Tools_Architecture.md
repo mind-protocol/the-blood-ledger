@@ -67,7 +67,7 @@ tools/image_generation/README.md         # Usage and flags
 
 ### Anti-Patterns to Avoid
 
-- **God Script:** Avoid adding unrelated workflows to `stream_dialogue.py` or `generate_image.py`. Create a new CLI script instead.
+- **God Script:** Avoid adding unrelated workflows to `tools/stream_dialogue.py` or `tools/image_generation/generate_image.py`. Create a new CLI script instead.
 - **Hidden Side Effects:** Keep file paths and graph writes explicit; avoid implicit globals beyond PROJECT_ROOT.
 - **Premature Abstraction:** Extract helpers only when there are multiple call sites.
 
@@ -141,8 +141,8 @@ tools/image_generation/README.md         # Usage and flags
 
 ```
 tools/stream_dialogue.py
-    └── imports → engine/physics/graph/graph_ops.py:GraphOps
-    └── imports → engine/physics/graph/graph_queries.py:GraphQueries
+    └── imports → GraphOps (`engine/physics/graph/graph_ops.py`)
+    └── imports → GraphQueries (`engine/physics/graph/graph_queries.py`)
 ```
 
 ### External Dependencies

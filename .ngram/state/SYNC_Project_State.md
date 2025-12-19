@@ -13,7 +13,7 @@ Repaired the engine tests implementation doc by replacing bare filenames and
 glob references with full `engine/tests/...` paths, then logged the update in
 `docs/engine/tests/SYNC_Engine_Test_Suite.md`.
 
-Repaired cli-tools implementation doc references by swapping bare filenames/module tokens for concrete paths and removing the non-existent extraction target filename. Logged in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
+Repaired cli-tools implementation doc references by replacing remaining bare filename mentions and clarifying GraphOps/GraphQueries import paths. Logged in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
 
 Noted in the image-generation implementation doc that code-to-docs references use the path only (no `# DOCS:`) to avoid broken-link checks; logged in `docs/infrastructure/image-generation/SYNC_Image_Generation.md`.
 

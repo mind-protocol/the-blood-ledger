@@ -52,6 +52,13 @@ Both CLI tools are functional and actively used by agents:
 
 ## RECENT CHANGES
 
+### 2025-12-19: Normalize cli-tools implementation references
+
+- **What:** Updated remaining bare filename references in the cli-tools implementation doc and clarified GraphOps/GraphQueries import locations
+- **Why:** Broken-link repair still flagged unqualified filenames as missing files
+- **Files:**
+  - `docs/infrastructure/cli-tools/IMPLEMENTATION_CLI_Tools_Architecture.md`
+
 ### 2025-12-19: Repair implementation doc link paths
 
 - **What:** Replaced bare filename/module tokens with concrete paths and removed the nonexistent extraction target filename
