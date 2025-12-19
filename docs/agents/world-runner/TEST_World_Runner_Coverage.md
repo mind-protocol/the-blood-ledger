@@ -92,6 +92,12 @@ STATUS: pending
 
 ---
 
+## FLAKY TESTS
+
+No flaky tests are currently tracked for this module because the suite does not exist yet, but any future CLI-dependent tests should record intermittent failures here for triage.
+
+---
+
 ## GAPS / IDEAS / QUESTIONS
 
 - IDEA: Add a JSON schema validation step using TOOL_REFERENCE before returning output.

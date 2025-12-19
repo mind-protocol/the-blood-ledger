@@ -81,6 +81,11 @@ What's proposed (v2):
 
 - Added missing template sections to this SYNC file and expanded short entries
   to meet minimum length requirements without changing module behavior.
+- Verified the required template headings remain present and descriptive for the
+  World Runner sync record as part of repair #16 tracking.
+- Added the missing FLAKY TESTS section in
+  `docs/agents/world-runner/TEST_World_Runner_Coverage.md` to satisfy the test
+  template coverage for repair #16.
 
 ## Updates
 
