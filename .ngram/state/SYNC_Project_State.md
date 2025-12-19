@@ -9,6 +9,15 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Documented the moment graph module by mapping `engine/moments/**` to
+`docs/engine/moments/` in `modules.yaml`, adding PATTERNS/SYNC docs, and
+aligning `engine/moments/__init__.py` DOCS references. Ran `ngram validate`;
+failures remain in pre-existing schema/tempo/world-builder docs.
+
+Documented the ops-scripts module for `engine/scripts`, added a module mapping in
+`modules.yaml`, and linked `seed_moment_sample.py` to the new docs with a DOCS
+reference.
+
 Documented the graph health module (`engine/graph/health/**`) with new PATTERNS/SYNC docs, mapped it in `modules.yaml`, and linked `check_health.py` to the doc chain.
 
 Verified the `tools/` documentation mapping (cli-tools + image-generation) already covers `tools/stream_dialogue.py` and `tools/image_generation/*`, and recorded the verification in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
@@ -151,8 +160,9 @@ Reconfirmed moment graph query helper implementations in `engine/moment_graph/qu
 Removed the deprecated narrator patterns doc (`docs/agents/narrator/PATTERNS_World_Building.md`) and cleaned duplicate PATTERNS chain references in narrator docs.
 Removed duplicate graph algorithm doc `docs/physics/graph/ALGORITHM_Weight.md` after consolidating weight computation into `docs/physics/graph/ALGORITHM_Energy_Flow.md` and updated the design doc listing.
 
-Documented the moment graph module with new PATTERNS + SYNC docs, a module
-mapping in `modules.yaml`, and a DOCS reference in `engine/moments/__init__.py`.
+Documented the moment graph module with a full documentation chain, a DOCS
+reference in `engine/moments/__init__.py`, and aligned the module docs with the
+existing `modules.yaml` entry.
 
 ---
 
