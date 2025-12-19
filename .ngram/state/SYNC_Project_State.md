@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/schema/VALIDATION_Graph.md` with the missing validation
+template sections (CHAIN, invariants, properties, error conditions, test
+coverage, verification procedure, sync status, gaps) and preserved the
+redirect to the canonical living-graph validation doc for repair #16. Ran
+`ngram validate`; remaining failures are pre-existing (missing VIEW and
+schema/product/network/storms doc-chain gaps).
+
 Expanded `docs/schema/models/SYNC_Schema_Models.md` with missing template
 sections (in progress, known issues, human handoff, consciousness trace,
 pointers) for repair #16 and ran `ngram validate`; remaining failures are
