@@ -34,6 +34,13 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Rechecked link helper implementations (repair 05, latest run)
+
+- **What:** Reconfirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` remain implemented in `engine/models/links.py`; no code changes made.
+- **Why:** Current INCOMPLETE_IMPL repair run required verification for link helper properties.
+- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task remains stale; verification only.
+
 ### 2025-12-19: Revalidated link helper implementations (repair 05, current run)
 
 - **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` in `engine/models/links.py` remain implemented; no code changes made.
@@ -191,6 +198,7 @@ pytest engine/tests/test_models.py
 - Confirmed the current repair run for `engine/models/base.py` remains a verification-only update; no code changes needed.
 - Attempted `pytest engine/tests/test_models.py`; missing `pytest_xprocess` prevented the test run.
 - Reconfirmed link helper properties for the current repair run; no code changes required.
+- Rechecked link helper implementations for the latest repair run; no code changes required.
 
 ### Suggestions
 - [ ] Consider adding explicit tests for `GameTimestamp` ordering in `engine/tests/test_models.py`.

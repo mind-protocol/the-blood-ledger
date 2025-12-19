@@ -9,6 +9,9 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Revalidated `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) for the repair run; no code changes required and logged in `docs/schema/models/SYNC_Schema_Models.md`.
+Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder docs and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
+
 Verified `engine/models/base.py` GameTimestamp comparison helpers for the
 INCOMPLETE_IMPL repair and attempted `pytest engine/tests/test_models.py`; the
 run failed due to missing `pytest_xprocess` in the environment. Ran
