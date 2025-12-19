@@ -9,6 +9,19 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing MATURITY and CONSCIOUSNESS TRACE sections and expanded the
+IN PROGRESS entry in `docs/infrastructure/embeddings/SYNC_Embeddings.md` to
+resolve the remaining DOC_TEMPLATE_DRIFT warning for repair #16. Ran
+`ngram validate`; failures remain pre-existing (missing VIEW and doc-chain gaps
+in schema/product/network/storms modules).
+
+Expanded the archive embeddings SYNC sections (current state, in progress,
+known issues, handoffs, todo, consciousness trace, pointers) to resolve
+DOC_TEMPLATE_DRIFT for repair #16 and logged the change in
+`docs/infrastructure/embeddings/SYNC_Embeddings.md`. Ran `ngram validate`;
+failures remain pre-existing (missing VIEW and doc-chain gaps in
+schema/product/network/storms modules).
+
 Filled missing template sections in
 `docs/infrastructure/embeddings/SYNC_Embeddings_archive_2025-12.md` and logged
 the update in `docs/infrastructure/embeddings/SYNC_Embeddings.md` for #16. Ran

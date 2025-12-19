@@ -8,6 +8,21 @@ STATUS: CANONICAL
 
 ---
 
+## MATURITY
+
+STATUS: CANONICAL
+
+What's canonical (v1):
+- EmbeddingService API surface (embed, embed_batch, similarity, singleton)
+  is stable and in active use for semantic search helpers.
+
+What's still being designed:
+- The attribute-based indexing flow (detail > 20 fallback) remains a planned
+  alignment task and is not yet reflected in the runtime implementation.
+
+What's proposed (v2):
+- Optional automated indexing hooks that update embeddings on graph writes.
+
 ## CURRENT STATE
 
 **Implementation Location:** `engine/infrastructure/embeddings/service.py`
@@ -35,9 +50,18 @@ updated IMPL paths.
 
 ## IN PROGRESS
 
-No active work on embeddings module.
+No active work on embeddings module, but the next planned step is aligning
+runtime indexing behavior with the documented detail-first embedding spec.
 
 ## RECENT CHANGES
+
+### 2025-12-19: Add maturity and consciousness trace
+
+- **What:** Added MATURITY and CONSCIOUSNESS TRACE sections and expanded the
+  IN PROGRESS entry for template alignment.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT warning for missing/short sections.
+- **Files:** `docs/infrastructure/embeddings/SYNC_Embeddings.md`
+- **Struggles/Insights:** None.
 
 ### 2025-12-19: Expand archive SYNC template sections
 
@@ -186,6 +210,13 @@ Embeddings module is canonical and working. Core service provides embed(), embed
 - [ ] Implement new `search()` with vector index queries
 - [ ] Add `index_world()` batch function
 - [ ] Hook into graph_ops for automatic indexing
+
+---
+
+## CONSCIOUSNESS TRACE
+
+This update focuses only on template alignment (adding maturity/trace and
+expanding the in-progress note) without changing the module's behavior.
 
 ---
 
