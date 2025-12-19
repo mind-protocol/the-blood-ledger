@@ -9,6 +9,9 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Clarified the TEST_Vision test strategy with explicit playtest log fields and
+recorded the update in `docs/design/SYNC_Vision.md` for repair #16.
+
 Expanded `docs/design/opening/PATTERNS_Opening.md` with the missing template
 sections (problem, pattern, principles, dependencies, inspirations, scope) and
 recorded the update in `docs/design/opening/SYNC_Opening.md` for repair #16.
