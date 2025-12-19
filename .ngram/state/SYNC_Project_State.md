@@ -17,6 +17,8 @@ Reconfirmed `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__
 
 Verified `engine/infrastructure/world_builder/world_builder.py` helper implementations (`_hash_query`, `clear_cache`) for the incomplete-impl repair; task was stale with no code changes (logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`).
 
+Revalidated `engine/infrastructure/world_builder/world_builder.py` helper implementations (`_hash_query`, `clear_cache`) for the current repair run; no code changes were needed and the update is recorded in `docs/infrastructure/world-builder/SYNC_World_Builder.md`. Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder doc gaps and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
+
 Verified `engine/models/nodes.py` helper properties (`is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) are already implemented; repair task was stale and required no code changes (logged in `docs/schema/models/SYNC_Schema_Models.md`).
 
 Implemented missing playthrough helper logic in `engine/infrastructure/api/playthroughs.py` (branch counting, per-playthrough GraphQueries caching, and embedding service fallback) and updated API implementation docs.

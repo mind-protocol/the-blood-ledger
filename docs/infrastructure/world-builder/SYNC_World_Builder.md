@@ -27,6 +27,10 @@ All core files are complete and ready for integration testing:
 
 ## Recent Changes
 
+### 2025-12-19 — Repair revalidation (world_builder.py)
+
+- Rechecked `_hash_query` and `clear_cache` in `engine/infrastructure/world_builder/world_builder.py`; both are already implemented, so no code changes were needed for this repair run.
+
 ### 2025-12-19 — Repair verification (world_builder.py)
 
 - Verified `_hash_query` and `clear_cache` implementations in `engine/infrastructure/world_builder/world_builder.py`; repair task was stale and required no code changes.
