@@ -9,9 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Logged the 04-INCOMPLETE_IMPL-models-base repair verification for `engine/models/base.py` comparison helpers in `docs/schema/models/SYNC_Schema_Models.md`; no code changes required.
+
 Rechecked `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) for the current incomplete-impl repair; implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
 
-Revalidated `engine/infrastructure/world_builder/world_builder.py` helpers (`_hash_query`, `clear_cache`) for the current repair run; implementations already present and logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`.
+Revalidated `engine/infrastructure/world_builder/world_builder.py` helpers (`_hash_query`, `clear_cache`) for repair 03-INCOMPLETE_IMPL-world_builder-world_builder; implementations already present and logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`.
 
 Revalidated moment processor helpers for the current repair run; no code changes
 needed and logged in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.

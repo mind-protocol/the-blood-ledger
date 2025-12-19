@@ -34,6 +34,13 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Rechecked GameTimestamp comparison helpers (current run)
+
+- **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` are already implemented in `engine/models/base.py`; no code changes made.
+- **Why:** Current INCOMPLETE_IMPL repair run required validation of these helpers.
+- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task is stale relative to the current implementation.
+
 ### 2025-12-19: Logged repair 04 verification (current run)
 
 - **What:** Recorded the current repair run verification for `GameTimestamp` helpers in `engine/models/base.py`; no code changes needed.
@@ -159,6 +166,7 @@ pytest engine/tests/test_models.py
 - Logged the current repair run verification for `GameTimestamp` helpers; no code changes required.
 - Revalidated link helper implementations in `engine/models/links.py`; no changes required.
 - Revalidated node helper implementations in `engine/models/nodes.py`; no changes required.
+- Confirmed the current repair run for `engine/models/base.py` remains a verification-only update; no code changes needed.
 
 ### Suggestions
 - [ ] Consider adding explicit tests for `GameTimestamp` ordering in `engine/tests/test_models.py`.
