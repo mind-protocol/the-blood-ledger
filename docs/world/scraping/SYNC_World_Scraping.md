@@ -119,6 +119,18 @@ THIS:            SYNC_World_Scraping.md (you are here)
 - **Why:** Confirmed the documentation chain is complete for the module.
 - **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`, `docs/world/scraping/PATTERNS_World_Scraping.md`
 
+### 2025-12-19: Repaired implementation file references
+
+- **What:** Updated the scraping implementation doc to use concrete paths for world YAML outputs and GraphOps, and removed non-existent file targets from extraction notes.
+- **Why:** Fix broken link checks for the pipeline implementation doc.
+- **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
+
+### 2025-12-19: Normalized remaining implementation paths
+
+- **What:** Replaced remaining glob-style YAML references in the scraping implementation doc with concrete directory paths.
+- **Why:** Ensure all implementation references resolve to existing paths.
+- **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
+
 ---
 
 ## Blockers Resolved

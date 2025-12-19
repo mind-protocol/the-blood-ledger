@@ -24,24 +24,20 @@ IMPL:            data/scripts/scrape/phase1_geography.py
 ## CODE STRUCTURE
 
 ```
-data/
-  scripts/
-    inject_world.py
-    scrape/
-      phase1_geography.py
-      phase2_political.py
-      phase3_events.py
-      phase4_narratives.py
-      phase5_tensions.py
-  world/
-    places.yaml
-    routes.yaml
-    characters.yaml
-    holdings.yaml
-    events.yaml
-    narratives.yaml
-    beliefs.yaml
-    tensions.yaml
+data/scripts/inject_world.py
+data/scripts/scrape/phase1_geography.py
+data/scripts/scrape/phase2_political.py
+data/scripts/scrape/phase3_events.py
+data/scripts/scrape/phase4_narratives.py
+data/scripts/scrape/phase5_tensions.py
+data/world/places.yaml
+data/world/routes.yaml
+data/world/characters.yaml
+data/world/holdings.yaml
+data/world/events.yaml
+data/world/narratives.yaml
+data/world/beliefs.yaml
+data/world/tensions.yaml
 ```
 
 ---
@@ -50,12 +46,12 @@ data/
 
 | File | Purpose | Lines | Status |
 |------|---------|------:|:------:|
-| `data/scripts/scrape/phase1_geography.py` | Pulls OSM/Nominatim data, defines historical places, computes routes and travel times, writes `places.yaml` and `routes.yaml`. | ~435 | WATCH |
-| `data/scripts/scrape/phase2_political.py` | Defines historical characters and holdings, writes `characters.yaml` and `holdings.yaml`. | ~792 | SPLIT |
-| `data/scripts/scrape/phase3_events.py` | Curates events list and writes `events.yaml`. | ~332 | OK |
-| `data/scripts/scrape/phase4_narratives.py` | Generates narratives and belief network from prior phases, writes `narratives.yaml` and `beliefs.yaml`. | ~431 | WATCH |
-| `data/scripts/scrape/phase5_tensions.py` | Generates tensions from narrative contradictions, writes `tensions.yaml`. | ~361 | OK |
-| `data/scripts/inject_world.py` | Loads `data/world/*.yaml` and injects into FalkorDB via `engine/db/graph_ops.py`. | ~476 | WATCH |
+| `data/scripts/scrape/phase1_geography.py` | Pulls OSM/Nominatim data, defines historical places, computes routes and travel times, writes `data/world/places.yaml` and `data/world/routes.yaml`. | ~435 | WATCH |
+| `data/scripts/scrape/phase2_political.py` | Defines historical characters and holdings, writes `data/world/characters.yaml` and `data/world/holdings.yaml`. | ~792 | SPLIT |
+| `data/scripts/scrape/phase3_events.py` | Curates events list and writes `data/world/events.yaml`. | ~332 | OK |
+| `data/scripts/scrape/phase4_narratives.py` | Generates narratives and belief network from prior phases, writes `data/world/narratives.yaml` and `data/world/beliefs.yaml`. | ~431 | WATCH |
+| `data/scripts/scrape/phase5_tensions.py` | Generates tensions from narrative contradictions, writes `data/world/tensions.yaml`. | ~361 | OK |
+| `data/scripts/inject_world.py` | Loads `data/world/` YAML and injects into FalkorDB via `engine/physics/graph/graph_ops.py`. | ~476 | WATCH |
 
 ---
 
@@ -70,17 +66,17 @@ data/
 
 ```
 OSM / manual sources
-  -> phase1_geography.py -> data/world/places.yaml, routes.yaml
-  -> phase2_political.py -> data/world/characters.yaml, holdings.yaml
-  -> phase3_events.py -> data/world/events.yaml
-  -> phase4_narratives.py -> data/world/narratives.yaml, beliefs.yaml
-  -> phase5_tensions.py -> data/world/tensions.yaml
-  -> inject_world.py -> FalkorDB (GraphOps)
+  -> data/scripts/scrape/phase1_geography.py -> data/world/places.yaml, data/world/routes.yaml
+  -> data/scripts/scrape/phase2_political.py -> data/world/characters.yaml, data/world/holdings.yaml
+  -> data/scripts/scrape/phase3_events.py -> data/world/events.yaml
+  -> data/scripts/scrape/phase4_narratives.py -> data/world/narratives.yaml, data/world/beliefs.yaml
+  -> data/scripts/scrape/phase5_tensions.py -> data/world/tensions.yaml
+  -> data/scripts/inject_world.py -> FalkorDB (GraphOps)
 ```
 
 Notes:
 - Each phase reads prior phase outputs from `data/world/`.
-- `inject_world.py` maps YAML fields into graph nodes/edges and normalizes values (e.g., travel difficulty).
+- `data/scripts/inject_world.py` maps YAML fields into graph nodes/edges and normalizes values (e.g., travel difficulty).
 
 ---
 
@@ -96,7 +92,7 @@ Notes:
 
 | Pattern | Applied To | Purpose |
 |---------|------------|---------|
-| Batch phase script | `data/scripts/scrape/phase1_geography.py` | Single-shot generation from sources into `data/world/*.yaml`. |
+| Batch phase script | `data/scripts/scrape/phase1_geography.py` | Single-shot generation from sources into `data/world/` YAML. |
 | Data-as-code constants | `data/scripts/scrape/phase2_political.py` | Captures historical data in one place for deterministic output. |
 | Distance-decay rule | `data/scripts/scrape/phase4_narratives.py` | Spreads beliefs based on geography with a simple decay function. |
 | Injection adapter | `data/scripts/inject_world.py` | Maps YAML records onto GraphOps calls and normalizes fields. |
@@ -104,15 +100,15 @@ Notes:
 ### Anti-Patterns to Avoid
 
 - **Cross-phase mutation without versioning**: makes runs non-deterministic → only update YAML via the phase that owns it.
-- **Mixing scraping with injection**: complicates auditability → keep graph writes in `inject_world.py`.
+- **Mixing scraping with injection**: complicates auditability → keep graph writes in `data/scripts/inject_world.py`.
 - **Bypassing YAML intermediates**: breaks traceability → always persist phase outputs to `data/world/`.
 
 ### Boundaries
 
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
-| Scrape pipeline | `data/scripts/scrape/*.py` | `engine/` runtime | `data/world/*.yaml` outputs |
-| Injection layer | `data/scripts/inject_world.py` | `engine/db/graph_ops.py` | `GraphOps` API |
+| Scrape pipeline | `data/scripts/scrape/` | `engine/` runtime | `data/world/` outputs |
+| Injection layer | `data/scripts/inject_world.py` | `engine/physics/graph/graph_ops.py` | `GraphOps` API |
 
 ---
 
@@ -120,7 +116,7 @@ Notes:
 
 - OSM/Nominatim API (phase 1 geocoding)
 - YAML serialization (`pyyaml`)
-- FalkorDB via `engine/db/graph_ops.py`
+- FalkorDB via `engine/physics/graph/graph_ops.py`
 
 ---
 
@@ -130,7 +126,7 @@ Notes:
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `data/scripts/scrape/phase2_political.py` | ~792L | <400L | `data/manual/characters.yaml` + `data/manual/holdings.yaml` | `HISTORICAL_CHARACTERS`, `HOLDINGS`, helper mappings. |
-| `data/scripts/scrape/phase1_geography.py` | ~435L | <400L | `data/manual/places.yaml` + `data/scripts/scrape/osm_utils.py` | `HISTORICAL_PLACES`, OSM fetch helpers, terrain rules. |
-| `data/scripts/scrape/phase4_narratives.py` | ~431L | <400L | `data/scripts/scrape/narrative_rules.py` | Narrative templates and belief spread rules. |
-| `data/scripts/inject_world.py` | ~476L | <400L | `data/scripts/inject/` | Per-entity injectors (places, narratives, beliefs, tensions). |
+| `data/scripts/scrape/phase2_political.py` | ~792L | <400L | `data/manual/` (planned YAML split) | `HISTORICAL_CHARACTERS`, `HOLDINGS`, helper mappings. |
+| `data/scripts/scrape/phase1_geography.py` | ~435L | <400L | `data/manual/` (planned YAML split) + `data/scripts/scrape/` (new helpers) | `HISTORICAL_PLACES`, OSM fetch helpers, terrain rules. |
+| `data/scripts/scrape/phase4_narratives.py` | ~431L | <400L | `data/scripts/scrape/` (new rules module) | Narrative templates and belief spread rules. |
+| `data/scripts/inject_world.py` | ~476L | <400L | `data/scripts/` (planned inject split) | Per-entity injectors (places, narratives, beliefs, tensions). |

@@ -9,9 +9,14 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Repaired broken embeddings implementation doc links by replacing method-only references with concrete file paths in `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md`, and logged the update in `docs/infrastructure/embeddings/SYNC_Embeddings.md`.
+
 Repaired broken file references in `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md` by swapping method/attribute-only mentions to concrete file paths and removing references to non-existent extraction target files.
 
 Repaired broken method-qualified references in the map implementation doc by pointing semantic search mentions at `engine/world/map/semantic.py` and logged the change in `docs/world/map/SYNC_Map.md`.
+
+Repaired broken file references in the world scraping implementation doc by normalizing YAML output paths, GraphOps location, and extraction targets, then logged the update in `docs/world/scraping/SYNC_World_Scraping.md`.
+Normalized remaining glob-style YAML references in the world scraping implementation doc to concrete directory paths, and logged the update in `docs/world/scraping/SYNC_World_Scraping.md`.
 
 Repaired broken narrator implementation references by removing the nonexistent `narrator_prompt.py` mention and clarifying the NarratorService entry point in `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, then logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
 
