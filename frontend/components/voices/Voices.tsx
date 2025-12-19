@@ -1,5 +1,7 @@
 'use client';
 
+// DOCS: docs/frontend/PATTERNS_Presentation_Layer.md
+
 import { Voice } from '@/types/game';
 
 interface VoicesProps {
