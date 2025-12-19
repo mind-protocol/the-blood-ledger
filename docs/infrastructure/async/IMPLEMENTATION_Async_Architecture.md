@@ -1,4 +1,4 @@
-# Async Architecture — Implementation: Injection Hooks and Queue Integration
+# Async Architecture - Implementation: Injection Hooks and Queue Integration
 
 ```
 STATUS: DESIGNING
@@ -38,10 +38,10 @@ engine/
 
 ### Related Integration Points (Outside This Module)
 
-- `engine/infrastructure/api/app.py` — `/api/inject` endpoint writes to `injection_queue.jsonl`.
-- `engine/infrastructure/api/playthroughs.py` — playthrough bootstrapping creates `injection_queue.json`.
-- `agents/narrator/CLAUDE.md` — Narrator instructions for consuming injections.
-- `agents/world_runner/CLAUDE.md` — World Runner instructions for emitting injections.
+- `engine/infrastructure/api/app.py` - `/api/inject` endpoint writes to `injection_queue.jsonl`.
+- `engine/infrastructure/api/playthroughs.py` - playthrough bootstrapping creates `injection_queue.json`.
+- `agents/narrator/CLAUDE.md` - Narrator instructions for consuming injections.
+- `agents/world_runner/CLAUDE.md` - World Runner instructions for emitting injections.
 
 ### File Responsibilities
 
@@ -111,14 +111,14 @@ InjectionEvent:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| Hook injection reader | `engine/scripts/check_injection.py:18` | Claude Code PostToolUse hook for Narrator session |
+| Hook injection reader | `engine/scripts/check_injection.py:20` | Claude Code PostToolUse hook for Narrator session |
 | Manual injection CLI | `engine/scripts/inject_to_narrator.py:109` | Developer/operator CLI call |
 
 ---
 
 ## DATA FLOW
 
-### Hook Injection: API/Runner → Queue → Narrator
+### Hook Injection: API/Runner -> Queue -> Narrator
 
 ```
 ┌─────────────────┐
@@ -141,11 +141,11 @@ InjectionEvent:
 └─────────────────────────┘
 ```
 
-### Manual Injection: CLI → Queue or Direct Call
+### Manual Injection: CLI -> Queue or Direct Call
 
 ```
 CLI command
-  → inject_to_narrator.py
+  -> inject_to_narrator.py
      ├─ if narrator running: write injection_queue.json
      └─ else: subprocess call to claude -p
 ```
@@ -158,12 +158,11 @@ CLI command
 
 ```
 check_injection.py
-    └── uses → injection_queue.jsonl (playthroughs/default)
+    └── uses -> injection_queue.jsonl (playthroughs/default)
 
-aaa
 inject_to_narrator.py
-    ├── reads → playthroughs/narrator_state.json
-    └── writes → playthroughs/{id}/injection_queue.json
+    ├── reads -> playthroughs/narrator_state.json
+    └── writes -> playthroughs/{id}/injection_queue.json
 ```
 
 ### External Dependencies
@@ -206,17 +205,17 @@ File-backed queues are append/read in separate processes. There is no locking or
 
 ## BIDIRECTIONAL LINKS
 
-### Code → Docs
+### Code -> Docs
 
 | File | Line | Reference |
 |------|------|-----------|
-| `engine/scripts/check_injection.py` | 2 | `DOCS: docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md` |
+| `engine/scripts/check_injection.py` | 7 | `DOCS: docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md` |
 
-### Docs → Code
+### Docs -> Code
 
 | Doc Section | Implemented In |
 |-------------|----------------|
-| Hook injection reader | `engine/scripts/check_injection.py:18` |
+| Hook injection reader | `engine/scripts/check_injection.py:20` |
 | Manual injection CLI | `engine/scripts/inject_to_narrator.py:109` |
 
 ---

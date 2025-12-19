@@ -6,6 +6,20 @@
 
 ---
 
+## CHAIN
+
+```
+BEHAVIORS:      ./BEHAVIORS_Travel_Experience.md
+ALGORITHM:      ./ALGORITHM_Async_Architecture.md
+VALIDATION:     ./VALIDATION_Async_Architecture.md
+IMPLEMENTATION: ./IMPLEMENTATION_Async_Architecture.md
+TEST:           ./TEST_Async_Architecture.md
+SYNC:           ./SYNC_Async_Architecture.md
+THIS:           PATTERNS_Async_Architecture.md (you are here)
+```
+
+---
+
 ## Core Principle
 
 **Travel is not a loading screen. Travel is play.**

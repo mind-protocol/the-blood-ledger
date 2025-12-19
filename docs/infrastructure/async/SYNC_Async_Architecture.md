@@ -134,8 +134,17 @@ This unlocks real-time updates for all other phases.
 ## Recent Changes
 
 - Consolidated async algorithm docs into `ALGORITHM_Async_Architecture.md` and removed per-topic algorithm files to keep a single canonical algorithm reference.
-- Added `IMPLEMENTATION_Async_Architecture.md` and linked the async doc chain; documented current code surface for queues, SSE, and injections.
+- Added `IMPLEMENTATION_Async_Architecture.md`, linked CHAIN references, and added DOCS pointer in `engine/scripts/check_injection.py`.
 
+---
+
+## CONFLICTS
+
+### DECISION: Injection queue format split
+- Conflict: `engine/scripts/check_injection.py` and `/api/inject` use `injection_queue.jsonl`, while `engine/scripts/inject_to_narrator.py` and `engine/infrastructure/api/playthroughs.py` use `injection_queue.json`.
+- Resolution: Treat `injection_queue.jsonl` as the async hook queue for interruptions; `injection_queue.json` is legacy/manual tooling and should be reconciled in a follow-up.
+- Reasoning: The hook reader and API endpoint already operate on JSONL, which matches the async architecture design docs.
+- Updated: `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`, `docs/infrastructure/async/SYNC_Async_Architecture.md`.
 
 ---
 

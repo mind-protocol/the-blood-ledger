@@ -3,6 +3,8 @@
 Hook script for Claude Code PostToolUse.
 Checks injection_queue.jsonl for pending interruptions.
 Returns injection to Narrator via additionalContext.
+
+DOCS: docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md
 """
 
 import json
