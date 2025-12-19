@@ -2,13 +2,14 @@
 
 ```
 LAST_UPDATED: 2025-12-19
-UPDATED_BY: Codex (repair agent)
+UPDATED_BY: Claude Opus 4.5
 ```
 
 ---
 
 ## CURRENT STATE
 
+Regenerated global repository map (`docs/map.md`). Fixed `modules.yaml` world-runner code pattern from list to string (ngram CLI bug workaround).
 Consolidated physics algorithm docs into `docs/physics/ALGORITHM_Physics.md`, removed standalone physics ALGORITHM files, and updated physics/schema doc chains to the consolidated algorithm.
 Repair 13 verified physics tick energy helpers in `engine/physics/tick.py`; repair task marked stale with no code changes.
 Revalidated playthroughs API helper implementations; documentation updated for the stale repair task.
@@ -21,6 +22,7 @@ Verified moment query helpers in `engine/physics/graph/graph_queries_moments.py`
 Verified graph health report helpers in `engine/graph/health/check_health.py` are already implemented; repair task appears stale.
 Reconfirmed health check helpers for repair 00-INCOMPLETE_IMPL-health-check_health; no code changes required.
 Re-verified ConversationThread path helpers in `engine/infrastructure/history/conversations.py`; repair task was stale and required no code changes.
+Logged this repair run's verification of ConversationThread helpers in `docs/infrastructure/history/SYNC_History.md`.
 Implemented markdown formatting and cosine similarity helpers in `engine/physics/graph/graph_queries_search.py` to complete the search mixin methods.
 Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still reports pre-existing docs/schema gaps and broken CHAIN links.
 Recorded moment query verification in `docs/physics/graph/SYNC_Graph.md`.

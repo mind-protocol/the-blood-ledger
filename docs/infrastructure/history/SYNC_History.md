@@ -155,6 +155,7 @@ History module now has full implementation. HistoryService provides query_histor
 ### Remarks
 - Repair task appears stale relative to `engine/infrastructure/history/conversations.py`.
 - Re-verified ConversationThread path helpers are implemented; no code changes required.
+- Logged this repair run's verification of conversation helpers; no code changes required.
 
 ### Suggestions
 - None.
