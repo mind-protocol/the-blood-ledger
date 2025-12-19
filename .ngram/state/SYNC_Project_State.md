@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Logged the current repair 05 verification for `engine/models/links.py` in `docs/schema/models/SYNC_Schema_Models.md`; no code changes required.
+
 Revalidated `engine/models/nodes.py` helper properties (`is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) for the current incomplete-impl repair; implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
 
 Revalidated `engine/models/nodes.py` helper properties (`is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) for the current incomplete-impl repair run; implementations already present and logged in `docs/schema/models/SYNC_Schema_Models.md`.
