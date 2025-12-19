@@ -28,6 +28,7 @@ Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still repo
 Recorded moment query verification in `docs/physics/graph/SYNC_Graph.md`.
 Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.md`.
 Reconfirmed playthroughs helper implementations for repair 01; no code changes required.
+Verified playthroughs helper implementations for repair 01-INCOMPLETE_IMPL-api-playthroughs; no code changes required.
 Logged the repair-01 reconfirmation entry in `docs/infrastructure/api/SYNC_Api.md`.
 Consolidated narrator algorithm docs into `docs/agents/narrator/ALGORITHM_Prompt_Structure.md` and updated narrator doc chains.
 Reconfirmed traversal helper implementations for repair 08-INCOMPLETE_IMPL-moment_graph-traversal; no code changes required.
@@ -119,6 +120,7 @@ Repair task appears stale relative to current code.
 - Moment traversal helper implementations already exist; no code changes required.
 - Physics tick energy helper implementations already exist; no code changes required.
 - Graph health report helper implementations already exist; no code changes required.
+- Health check helpers in `engine/graph/health/check_health.py` verified; repair task was stale.
 - `ngram validate` still reports pre-existing missing docs in `docs/schema/` and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 ### Suggestions
