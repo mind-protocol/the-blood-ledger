@@ -12,6 +12,8 @@ UPDATED_BY: Codex (repair agent)
 Expanded `docs/design/opening/ALGORITHM_Opening.md` with longer descriptions in
 each template section to resolve the DOC_TEMPLATE_DRIFT warning for repair #16,
 and recorded the change in `docs/design/opening/SYNC_Opening.md`.
+Ran `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
+gaps in schema/product/network/storms modules).
 
 Expanded `docs/design/opening/VALIDATION_Opening.md` with missing template
 sections (properties, error conditions, test coverage, verification procedure,

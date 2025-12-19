@@ -84,6 +84,8 @@ to avoid drift warnings in the doc health checks.
   noted current gaps for repair #16.
 - 2025-12-19: Expanded VALIDATION_Opening.md with properties, error conditions,
   test coverage, verification procedure, and sync status for repair #16.
+- 2025-12-19: Restored BEHAVIORS_Opening.md template sections (behaviors,
+  inputs/outputs, anti-behaviors) to resolve doc drift for repair #16.
 
 ---
 
@@ -152,6 +154,7 @@ opening behavior, avoiding changes that would imply unverified behavior.
 ### Remarks
 - TEST_Opening.md now reflects intended coverage but remains unimplemented in code.
 - ALGORITHM_Opening.md now documents the opening SceneTree construction flow.
+- BEHAVIORS_Opening.md now includes the required template sections.
 
 ### Suggestions
 - [ ] Add a lightweight test harness for opening.json replay in engine/tests.
