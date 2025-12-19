@@ -13,13 +13,7 @@ UPDATED: 2024-12-18
 PATTERNS:       ./PATTERNS_Physics.md
 THIS:           BEHAVIORS_Physics.md (you are here)
 ALGORITHMS:
-  - ./ALGORITHM_Physics.md      (M2: Physics Tick)
-  - ./ALGORITHM_Handlers.md     (M3: Character Handlers)
-  - ./ALGORITHM_Canon.md        (M4: Canon Holder)
-  - ./ALGORITHM_Input.md        (M5: Player Input)
-  - ./ALGORITHM_Actions.md      (M7: Action Processing)
-  - ./ALGORITHM_Questions.md    (M8: Question Answering)
-  - ./ALGORITHM_Speed.md        (M12: Speed Controller)
+  - ./ALGORITHM_Physics.md      (Consolidated: energy, tick, canon, handlers, input, actions, QA, speed)
 SCHEMA:         ../schema/SCHEMA_Moments.md
 API:            ./API_Physics.md
 VALIDATION:     ./VALIDATION_Physics.md

@@ -27,6 +27,11 @@ UPDATED: 2025-12-19
 - `engine/infrastructure/api/moments.py` now reads `player.yaml` under the router's `playthroughs_dir` when resolving graph names
 - Falls back to `get_playthrough_graph_name()` if no playthrough metadata is present
 
+**2025-12-19: Consolidated physics algorithm docs**
+- Merged physics algorithm content into `docs/physics/ALGORITHM_Physics.md`
+- Removed standalone ALGORITHM_* docs to keep one canonical algorithm file
+- Updated doc references to point at the consolidated algorithm
+
 **2025-12-19: Split graph_ops.py monolith (1094 → 792 lines)**
 - Extracted image generation helpers to `graph_ops_image.py` (163 lines)
   - `generate_node_image()`, `get_image_path()`, `_generate_node_image_async()`
@@ -84,9 +89,7 @@ UPDATED: 2025-12-19
 THIS:            SYNC_Physics.md (you are here)
 PATTERNS:        ./PATTERNS_Physics.md
 BEHAVIORS:       ./BEHAVIORS_Physics.md
-ALGORITHMS:      ./ALGORITHM_Physics.md, ./ALGORITHM_Energy.md (M1-M6, M11-M13),
-                 ./ALGORITHM_Handlers.md, ./ALGORITHM_Input.md, ./ALGORITHM_Actions.md,
-                 ./ALGORITHM_Questions.md, ./ALGORITHM_Speed.md
+ALGORITHMS:      ./ALGORITHM_Physics.md (consolidated: energy, tick, canon, handlers, input, actions, QA, speed)
 SCHEMA:         ../schema/SCHEMA_Moments.md
 API:             ./API_Physics.md
 VALIDATION:      ./VALIDATION_Physics.md
@@ -104,13 +107,13 @@ IMPL (planned):  ../../engine/handlers/, ../../engine/canon/, ../../engine/infra
 
 | Component | Purpose | Status |
 |-----------|---------|--------|
-| Energy System | Characters pump, links route, decay drains | ALGORITHM_Energy.md ✓ |
-| Physics Tick | Pump, transfer, decay, detect flips | ALGORITHM_Physics.md ✓ |
-| Character Handlers | One handler per character, triggered on flip | ALGORITHM_Handlers.md ✓ |
-| Flip Detection (M11) | Status progression, salience threshold | ALGORITHM_Energy.md ✓ |
-| Canon Holder (M12) | Record what becomes real, THEN links | ALGORITHM_Energy.md ✓ |
-| Agent Dispatch (M13) | Runner/Narrator/Citizen/Canon coordination | ALGORITHM_Energy.md ✓ |
-| Speed Controller | 1x/2x/3x display modes | ALGORITHM_Speed.md ✓ |
+| Energy System | Characters pump, links route, decay drains | ALGORITHM_Physics.md (Energy Mechanics section) ✓ |
+| Physics Tick | Pump, transfer, decay, detect flips | ALGORITHM_Physics.md (Physics Tick section) ✓ |
+| Character Handlers | One handler per character, triggered on flip | ALGORITHM_Physics.md (Character Handlers section) ✓ |
+| Flip Detection (M11) | Status progression, salience threshold | ALGORITHM_Physics.md (Energy Mechanics section) ✓ |
+| Canon Holder (M12) | Record what becomes real, THEN links | ALGORITHM_Physics.md (Canon Holder section) ✓ |
+| Agent Dispatch (M13) | Runner/Narrator/Citizen/Canon coordination | ALGORITHM_Physics.md (Energy Mechanics section) ✓ |
+| Speed Controller | 1x/2x/3x display modes | ALGORITHM_Physics.md (Speed Controller section) ✓ |
 
 ---
 
@@ -122,7 +125,7 @@ IMPL (planned):  ../../engine/handlers/, ../../engine/canon/, ../../engine/infra
 
 3. **Montage moment generation** — Same handlers or dedicated montage handler?
 
-4. **Energy constants** — What values for PUMP_RATE, transfer factors, etc.? Need playtesting. See ALGORITHM_Energy.md.
+4. **Energy constants** — What values for PUMP_RATE, transfer factors, etc.? Need playtesting. See ALGORITHM_Physics.md (Energy Mechanics section).
 
 5. **Question answerer priority** — When multiple questions queued, which first?
 
@@ -130,11 +133,11 @@ IMPL (planned):  ../../engine/handlers/, ../../engine/canon/, ../../engine/infra
 
 ## Next Steps
 
-1. ~~**Create ALGORITHM_Speed.md** — Speed controller with The Snap~~ ✓ DONE
+1. ~~**Document Speed Controller section** — Speed controller with The Snap~~ ✓ DONE
 2. ~~**Update VALIDATION_Physics.md** — Align with v2 invariants~~ ✓ DONE
 3. ~~**Deprecate legacy files**~~ ✓ DONE
 4. ~~**Update SCHEMA_Moments.md** — Add energy/weight fields~~ ✓ DONE
-5. ~~**Create ALGORITHM_Energy.md** — Energy mechanics, conservation, link transfers~~ ✓ DONE
+5. ~~**Consolidate algorithm docs into ALGORITHM_Physics.md** — Energy mechanics, conservation, link transfers~~ ✓ DONE
 6. ~~**Remove TENSION node** — Tension is now computed, not stored~~ ✓ DONE
 7. **Begin implementation** — Create handlers/, canon/, physics/energy.py
 
@@ -145,7 +148,7 @@ IMPL (planned):  ../../engine/handlers/, ../../engine/canon/, ../../engine/infra
 For next session:
 
 - v2 architecture is fully documented in ALGORITHM files
-- **ALGORITHM_Energy.md** is the master document, containing:
+- **ALGORITHM_Physics.md** is the master document, containing:
   - **M1-M6**: Strength Mechanics (Activation, Evidence, Association, Source, Commitment, Intensity)
   - **M11**: Flip Detection — status progression, salience threshold, detection queries
   - **M12**: Canon Holder — record, link, time, trigger, strength, notify

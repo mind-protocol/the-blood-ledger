@@ -12,7 +12,7 @@ UPDATED: 2024-12-18
 ```
 PATTERNS:    ./PATTERNS_Moments.md
 BEHAVIORS:   ./BEHAVIORS_Moments.md
-ALGORITHMS:  ./ALGORITHM_Physics.md, ./ALGORITHM_Energy.md, ./ALGORITHM_Handlers.md, ./ALGORITHM_Canon.md
+ALGORITHMS:  ./ALGORITHM_Physics.md
 THIS:        SCHEMA_Moments.md (you are here)
 API:         ./API_Physics.md
 VALIDATION:  ./VALIDATION_Moments.md
@@ -54,9 +54,9 @@ name: string        # Display name: "Aldric" or "The Guards"
 type: string        # See type table below
 gender: string      # female | male — affects pronouns in generation
 alive: boolean      # Dead characters can still be referenced, just can't act
-state: string       # awake | sleeping | unconscious | dead — affects pump rate (see ALGORITHM_Energy.md)
-weight: float       # Importance to story (0.01 - 1.0). Slow, event-driven. (see ALGORITHM_Energy.md)
-energy: float       # Current activation (0.01 - 10.0). Pumps into believed narratives. (see ALGORITHM_Energy.md)
+state: string       # awake | sleeping | unconscious | dead — affects pump rate (see ALGORITHM_Physics.md (Energy Mechanics section))
+weight: float       # Importance to story (0.01 - 1.0). Slow, event-driven. (see ALGORITHM_Physics.md (Energy Mechanics section))
+energy: float       # Current activation (0.01 - 10.0). Pumps into believed narratives. (see ALGORITHM_Physics.md (Energy Mechanics section))
 ```
 
 | Type | When to use |
@@ -202,8 +202,8 @@ about: {            # What nodes this narrative concerns
   relationships: []  # char_id pairs
 }
 tone: string        # bitter, proud, shameful, defiant, mournful, cold, righteous, hopeful, fearful, warm, dark, sacred
-weight: float       # Importance over time (0.01 - 1.0). Slow, reinforced by use. (see ALGORITHM_Energy.md)
-energy: float       # Current activation (0.01 - 5.0). Receives from believers, transfers via links. (see ALGORITHM_Energy.md)
+weight: float       # Importance over time (0.01 - 1.0). Slow, reinforced by use. (see ALGORITHM_Physics.md (Energy Mechanics section))
+energy: float       # Current activation (0.01 - 5.0). Receives from believers, transfers via links. (see ALGORITHM_Physics.md (Energy Mechanics section))
 focus: float        # 0.1-3.0, how much attention narrator gives this
 truth: float        # 0-1, director's knowledge of actual truth
 narrator_notes: string  # Guidance for generation
@@ -268,8 +268,8 @@ id: string          # Pattern: {place}_{day}_{time}_{type}_{random}
 text: string        # The actual content shown to player
 type: string        # See type table
 status: string      # See status flow below
-weight: float       # Importance over time (0.01 - 1.0). Slow, reinforced by use. (see ALGORITHM_Energy.md)
-energy: float       # Current activation (0.01 - 5.0). Flow-driven. salience = weight × energy. (see ALGORITHM_Energy.md)
+weight: float       # Importance over time (0.01 - 1.0). Slow, reinforced by use. (see ALGORITHM_Physics.md (Energy Mechanics section))
+energy: float       # Current activation (0.01 - 5.0). Flow-driven. salience = weight × energy. (see ALGORITHM_Physics.md (Energy Mechanics section))
 tone: string        # curious, defiant, warm, cold, tense, vulnerable
 duration: integer   # Time units this takes (for time passage)
 tick_created: integer
@@ -364,7 +364,7 @@ detail: string
 
 ### CHARACTER -[BELIEVES]-> NARRATIVE
 
-**Purpose:** What a character knows, believes, or has heard. The substrate of conversation and conflict. **Energy pump:** Characters inject energy into narratives via this link (see ALGORITHM_Energy.md).
+**Purpose:** What a character knows, believes, or has heard. The substrate of conversation and conflict. **Energy pump:** Characters inject energy into narratives via this link (see ALGORITHM_Physics.md (Energy Mechanics section)).
 
 **When to create:** When character learns/hears/believes something.
 
@@ -408,7 +408,7 @@ detail: string
 
 ### CHARACTER -[CAN_SPEAK]-> MOMENT
 
-**Purpose:** Who could speak this moment. Multiple characters can have CAN_SPEAK to same moment; highest weight present character speaks. **Weight contribution:** Character energy flows into moment weight (see ALGORITHM_Energy.md).
+**Purpose:** Who could speak this moment. Multiple characters can have CAN_SPEAK to same moment; highest weight present character speaks. **Weight contribution:** Character energy flows into moment weight (see ALGORITHM_Physics.md (Energy Mechanics section)).
 
 **When to create:** Handler generates moment for character.
 
@@ -486,7 +486,7 @@ detail: string
 
 ### NARRATIVE -[ABOUT]-> CHARACTER | PLACE | THING
 
-**Purpose:** What the narrative concerns. Focal point for energy — subjects pull energy from narratives about them (see ALGORITHM_Energy.md).
+**Purpose:** What the narrative concerns. Focal point for energy — subjects pull energy from narratives about them (see ALGORITHM_Physics.md (Energy Mechanics section)).
 
 **When to create:** When narrative references specific entities. Can be derived from `about` field on Narrative node.
 
@@ -513,7 +513,7 @@ role: string        # subject, location, object — semantic context
 
 ### NARRATIVE -[CONTRADICTS/SUPPORTS/ELABORATES/SUBSUMES/SUPERSEDES]-> NARRATIVE
 
-**Purpose:** How narratives relate to each other. **Energy routing:** These links transfer energy between narratives (see ALGORITHM_Energy.md).
+**Purpose:** How narratives relate to each other. **Energy routing:** These links transfer energy between narratives (see ALGORITHM_Physics.md (Energy Mechanics section)).
 
 ```yaml
 strength: float     # 0-1, affects energy transfer rate
@@ -536,7 +536,7 @@ detail: string
 
 ### MOMENT -[ATTACHED_TO]-> CHARACTER | PLACE | THING | NARRATIVE
 
-**Purpose:** What the moment is bound to. Determines visibility. **Weight contribution:** Target's energy flows into moment weight (see ALGORITHM_Energy.md).
+**Purpose:** What the moment is bound to. Determines visibility. **Weight contribution:** Target's energy flows into moment weight (see ALGORITHM_Physics.md (Energy Mechanics section)).
 
 **When to create:** Every moment must attach to at least one node.
 

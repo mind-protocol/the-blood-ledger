@@ -13,9 +13,7 @@ STATUS: Canonical
 ```
 PATTERNS:       ./PATTERNS_Physics.md
 BEHAVIORS:      ./BEHAVIORS_Physics.md
-ALGORITHMS:     ./ALGORITHM_Physics.md, ./ALGORITHM_Handlers.md, ./ALGORITHM_Canon.md,
-                ./ALGORITHM_Input.md, ./ALGORITHM_Actions.md, ./ALGORITHM_Questions.md,
-                ./ALGORITHM_Speed.md
+ALGORITHMS:     ./ALGORITHM_Physics.md
 SCHEMA:         ../schema/SCHEMA_Moments.md
 API:            ./API_Physics.md
 THIS:           VALIDATION_Physics.md (you are here)

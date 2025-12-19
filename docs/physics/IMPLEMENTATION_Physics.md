@@ -12,9 +12,7 @@ CREATED: 2024-12-18
 ```
 PATTERNS:        ./PATTERNS_Physics.md
 BEHAVIORS:       ./BEHAVIORS_Physics.md
-ALGORITHM:       ./ALGORITHM_Energy.md (M1-M6, M11-M13), ./ALGORITHM_Physics.md,
-                 ./ALGORITHM_Handlers.md, ./ALGORITHM_Input.md, ./ALGORITHM_Actions.md,
-                 ./ALGORITHM_Questions.md, ./ALGORITHM_Speed.md
+ALGORITHM:       ./ALGORITHM_Physics.md (consolidated: energy, tick, canon, handlers, input, actions, QA, speed)
 SCHEMA:         ../schema/SCHEMA_Moments.md
 VALIDATION:      ./VALIDATION_Physics.md
 THIS:            IMPLEMENTATION_Physics.md (you are here)
@@ -554,9 +552,9 @@ Files that reference this documentation:
 
 | Doc Section | Planned Module |
 |-------------|----------------|
-| ALGORITHM_Handlers: dispatch | handlers module |
-| ALGORITHM_Canon: record | canon module |
-| ALGORITHM_Speed: controller | speed controller |
+| ALGORITHM_Physics (Character Handlers section): dispatch | handlers module |
+| ALGORITHM_Physics (Canon Holder section): record | canon module |
+| ALGORITHM_Physics (Speed Controller section): controller | speed controller |
 | VALIDATION I2 (THEN after) | canon module |
 
 ---
