@@ -12,6 +12,26 @@ STATUS: Canonical
 
 The Runner returns a structured **Injection** for the Narrator.
 
+## BEHAVIORS
+
+- Reads graph state, advances time, and emits a structured Injection that
+  mirrors actual graph mutations and detected flips.
+- Interrupts immediately when a player-affecting flip occurs, returning the
+  event payload and remaining minutes for a resume call.
+- Completes cleanly when time elapses without player-facing flips, returning
+  world changes and news for narration context.
+- Emits low-urgency beats to the injection queue without interrupting the
+  current scene, keeping narration flow smooth.
+
+## INPUTS / OUTPUTS
+
+Inputs come from the orchestrator (action context, elapsed minutes, player
+context, and graph state); see `docs/agents/world-runner/INPUT_REFERENCE.md`
+for the full contract. Outputs are the Injection payload (plus queued
+injections when appropriate) documented in `docs/agents/world-runner/TOOL_REFERENCE.md`.
+
+## OUTPUTS
+
 ```typescript
 interface Injection {
   interrupted: boolean;
@@ -28,6 +48,30 @@ interface Injection {
 ```
 
 See `docs/agents/world-runner/TOOL_REFERENCE.md` for canonical schemas.
+
+---
+
+## BEHAVIORS
+
+- Emits an Injection for every run, marking `interrupted` or `completed`
+  explicitly so the Narrator can branch the response.
+- Stops on player-affecting flips and returns the triggering `event` payload.
+- Applies graph mutations during the run and summarizes them in `world_changes`.
+- Packages low-urgency beats as `news_available` for optional narration.
+
+---
+
+## INPUTS / OUTPUTS
+
+**Inputs:**
+- Long action intent + expected duration from the Narrator.
+- Playthrough context (id, player identity, location, current scene).
+- Graph state and tension records queried at tick time.
+
+**Outputs:**
+- Injection payload describing interrupt/completion and elapsed time.
+- Graph mutations already applied in the engine store.
+- Optional queued injections for in-scene beats or reactions.
 
 ---
 
@@ -94,7 +138,31 @@ interface News {
 }
 ```
 
----
+## EDGE CASES
+
+- No flips occur during the full duration: returns `completed` with
+  `time_elapsed` and empty `world_changes`/`news_available` arrays as needed.
+- Multiple flips in a single tick: only the first player-affecting flip
+  interrupts; remaining flips become background changes or news.
+- Optional fields stay absent rather than populated with placeholders when
+  there is no interrupt or completion payload to provide.
+
+## ANTI-BEHAVIORS
+
+- Must not invent events or world changes that are not anchored in graph
+  mutations produced by the tick loop.
+- Must not interrupt for non-player-facing flips; those remain background
+  updates or queued injections.
+- Must not author narrative prose or override the Narrator’s scene writing.
+
+## GAPS / IDEAS / QUESTIONS
+
+- Should the Injection include a compact trace summary for debugging long
+  actions without rehydrating full tick logs?
+- Is there a single canonical schema artifact we can link to, rather than
+  repeating partial examples across docs?
+
+--- 
 
 ## Resume Pattern (Narrator)
 
@@ -104,6 +172,31 @@ interface News {
 3. Narrator calls Runner with remaining time
 4. Runner continues until next interrupt or completion
 ```
+
+---
+
+## EDGE CASES
+
+- No flips occur: Runner still returns `completed: true` with `time_elapsed`.
+- Multiple flips: first player-affecting flip interrupts; later ones wait.
+- Empty `world_changes`: Injection still returns structural fields for caller.
+- Zero or near-zero duration: may immediately complete with no mutations.
+
+---
+
+## ANTI-BEHAVIORS
+
+- Does not author prose or resolve player choices; Narrator owns narration.
+- Does not invent non-graph facts; reads and writes through graph APIs only.
+- Does not interrupt on non-player-facing flips; those become background news.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- Should the Runner attach a concise tick trace for debugging interruptions?
+- Is there a canonical JSON schema artifact we can link instead of duplicates?
+- How should partial tick progress be represented when resuming mid-action?
 
 ---
 

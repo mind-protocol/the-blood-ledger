@@ -86,6 +86,9 @@ What's proposed (v2):
 - Added the missing FLAKY TESTS section in
   `docs/agents/world-runner/TEST_World_Runner_Coverage.md` to satisfy the test
   template coverage for repair #16.
+- Expanded `docs/agents/world-runner/BEHAVIORS_World_Runner.md` with required
+  sections (behaviors, inputs/outputs, edge cases, anti-behaviors, gaps) for
+  the doc-template drift repair.
 - Expanded `docs/agents/world-runner/PATTERNS_World_Runner.md` with the missing
   template sections (problem, pattern, principles, dependencies, inspirations,
   scope, gaps) for repair #16.
@@ -107,6 +110,8 @@ What's proposed (v2):
 - The doc chain repeated large schema/examples across multiple files; consolidating references reduced redundancy.
 - The algorithm doc now carries explicit helper and data-flow sections to
   keep the procedural description aligned with orchestration behavior.
+- The behaviors doc now calls out inputs/outputs and edge cases explicitly to
+  keep runner contracts obvious without re-reading the tool schema.
 
 ### Suggestions
 - [ ] Consider adding a short link in `agents/world_runner/CLAUDE.md` pointing to the archived full JSON schema if prompt usage needs it.
@@ -170,3 +175,17 @@ most salient risk is future drift if template expectations change again.
   `agents/world_runner/CLAUDE.md` for behavior and prompt contracts.
 - Archive context: `docs/agents/world-runner/archive/SYNC_archive_2024-12.md`
   for verbose schemas/examples kept out of the main chain.
+
+---
+
+## GAPS
+
+What was completed:
+- Added a RECENT CHANGES note to affirm template coverage for repair #16.
+
+What remains:
+- Commit the SYNC and project state updates once worktree state is clarified.
+
+Why incomplete:
+- Detected unexpected, unrelated working tree changes that require guidance
+  before proceeding with a commit.

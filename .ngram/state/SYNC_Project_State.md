@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/agents/world-runner/BEHAVIORS_World_Runner.md` with the missing
+template sections (behaviors, inputs/outputs, edge cases, anti-behaviors,
+gaps) for repair #16 and logged the change in
+`docs/agents/world-runner/SYNC_World_Runner.md`. Ran `ngram validate`; failures
+remain pre-existing (missing VIEW and doc-chain gaps in schema/product/network/
+storms modules).
+
 Expanded the flaky-test note in
 `docs/world/map/TEST_Map_Test_Coverage.md` to meet template length guidance
 and logged the update in `docs/world/map/SYNC_Map.md` for repair #16. Ran
