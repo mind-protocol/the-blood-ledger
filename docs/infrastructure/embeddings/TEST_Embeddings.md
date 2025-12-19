@@ -15,8 +15,9 @@ BEHAVIORS:   ./BEHAVIORS_Embeddings.md
 ALGORITHM:   ./ALGORITHM_Embeddings.md
 VALIDATION:  ./VALIDATION_Embeddings.md
 THIS:        TEST_Embeddings.md (you are here)
+IMPLEMENTATION: ./IMPLEMENTATION_Embeddings.md
 SYNC:        ./SYNC_Embeddings.md
-IMPL:        ../../engine/embeddings/service.py
+IMPL:        ../../../engine/infrastructure/embeddings/service.py
 ```
 
 ---

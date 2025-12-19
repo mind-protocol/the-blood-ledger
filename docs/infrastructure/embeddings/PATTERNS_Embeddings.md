@@ -15,9 +15,10 @@ THIS:        PATTERNS_Embeddings.md (you are here)
 BEHAVIORS:   ./BEHAVIORS_Embeddings.md
 ALGORITHM:   ./ALGORITHM_Embeddings.md
 VALIDATION:  ./VALIDATION_Embeddings.md
+IMPLEMENTATION: ./IMPLEMENTATION_Embeddings.md
 TEST:        ./TEST_Embeddings.md
 SYNC:        ./SYNC_Embeddings.md
-IMPL:        ../../engine/embeddings/
+IMPL:        ../../../engine/infrastructure/embeddings/
 ```
 
 ---
