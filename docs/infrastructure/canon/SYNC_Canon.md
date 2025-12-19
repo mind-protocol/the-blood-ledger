@@ -131,6 +131,12 @@ Tests cover:
 
 ## Recent Changes
 
+### 2025-12-19: Fixed canon implementation doc file references
+
+- **What:** Replaced bare file names in `IMPLEMENTATION_Canon.md` with full repo paths, removed stray `# DOCS:` labels, and clarified missing module items.
+- **Why:** The broken-link checker flags bare filenames and doc header strings as missing files.
+- **Files:** `docs/infrastructure/canon/IMPLEMENTATION_Canon.md`
+
 ### 2025-12-19: Verified canon docs mapping
 
 - **What:** Confirmed `modules.yaml` mapping and DOCS references already cover `engine/infrastructure/canon/**`.

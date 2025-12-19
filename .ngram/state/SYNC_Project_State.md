@@ -9,9 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Repaired broken canon implementation doc references by switching to full-path file entries and removing stray `# DOCS:` labels, then logged the update in `docs/infrastructure/canon/SYNC_Canon.md`.
+
 Repaired broken implementation doc links in `docs/world/map/IMPLEMENTATION_Map_Code_Architecture.md` by qualifying method references with the semantic search file path and cleaning the DOCS reference; noted in `docs/world/map/SYNC_Map.md`.
 
 Updated the world-runner implementation doc to remove method-name file references so broken-link checks resolve cleanly, and logged the change in `docs/agents/world-runner/SYNC_World_Runner.md`.
+Updated the World Runner implementation doc tables to use concrete file path/line references for entry points, configuration, and state fields, and logged the change in `docs/agents/world-runner/SYNC_World_Runner.md`.
 Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Repaired broken narrator implementation links in `docs/agents/narrator/IMPLEMENTATION_Narrator.md` by pinning prompt ownership and playthrough file references to existing paths, and logged the update in `docs/agents/narrator/SYNC_Narrator.md`. Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
