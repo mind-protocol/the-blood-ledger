@@ -9,7 +9,7 @@ STATUS: Partial implementation - semantic search complete, visual map pending
 
 ## Current State
 
-**Documentation complete.** Map system fully specified:
+**Documentation complete.** Map system fully specified, with places/routes consolidated into a single algorithm doc:
 - Place schema and hierarchy
 - Route computation and movement rules
 - Canvas rendering with 7 layers
@@ -75,9 +75,7 @@ Player-specific knowledge tracking:
 | Doc | Purpose | Status |
 |-----|---------|--------|
 | `PATTERNS_Map.md` | Why this design | Complete |
-| `ALGORITHM_Places.md` | Place schema, scale, hierarchy | Complete |
-| `ALGORITHM_Routes.md` | Routes, computation, movement | Complete |
-| `ALGORITHM_Rendering.md` | Canvas layers, projection, fog | Complete |
+| `ALGORITHM_Rendering.md` | Rendering, places, routes, movement | Complete |
 | `BEHAVIORS_Map.md` | Visibility, interaction | Complete |
 | `SYNC_Map.md` | Current state | This file |
 
