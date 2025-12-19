@@ -18,6 +18,13 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Verify playthroughs helper implementations (repair 01-INCOMPLETE_IMPL-api-playthroughs)
+
+- **What:** Rechecked `_count_branches` and `_get_playthrough_queries` in `engine/infrastructure/api/playthroughs.py`; no code changes required.
+- **Why:** Repair task flagged empty implementations, but the functions already contain logic.
+- **Files:**
+  - `docs/infrastructure/api/SYNC_Api.md`
+
 ### 2025-12-19: Fill API helper implementations
 
 - **What:** Implemented cached graph helpers, expanded health check, and hardened debug SSE payloads.
