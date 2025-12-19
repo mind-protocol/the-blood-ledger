@@ -16,6 +16,7 @@ Mapped `engine/infrastructure/api/**` to `docs/infrastructure/api/` in `modules.
 Added a `# DOCS:` reference in `engine/infrastructure/memory/__init__.py` to
 align the scene-memory mapping with the package entrypoint (the processor
 module already included a DOCS pointer).
+Noted the package DOCS reference in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
 
 Verified the history module already has documentation and a `modules.yaml`
 mapping; no code changes required beyond logging this verification.
