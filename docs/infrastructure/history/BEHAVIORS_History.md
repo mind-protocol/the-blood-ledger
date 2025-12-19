@@ -12,10 +12,10 @@ CREATED: 2024-12-16
 ```
 PATTERNS:    ./PATTERNS_History.md
 THIS:        BEHAVIORS_History.md (you are here)
-ALGORITHM:   ./ALGORITHM_History.md
+ALGORITHM:   ./ALGORITHM/ALGORITHM_Overview.md
 VALIDATION:  ./VALIDATION_History.md
 IMPLEMENTATION: ./IMPLEMENTATION_History_Service_Architecture.md
-TEST:        ./TEST_History.md
+TEST:        ./TEST/TEST_Overview.md
 SYNC:        ./SYNC_History.md
 ```
 

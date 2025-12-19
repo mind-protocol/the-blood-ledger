@@ -12,10 +12,10 @@ CREATED: 2025-12-19
 ```
 PATTERNS:       ./PATTERNS_History.md
 BEHAVIORS:      ./BEHAVIORS_History.md
-ALGORITHM:      ./ALGORITHM_History.md
+ALGORITHM:      ./ALGORITHM/ALGORITHM_Overview.md
 VALIDATION:     ./VALIDATION_History.md
 THIS:           IMPLEMENTATION_History_Service_Architecture.md
-TEST:           ./TEST_History.md
+TEST:           ./TEST/TEST_Overview.md
 SYNC:           ./SYNC_History.md
 
 IMPL:           engine/infrastructure/history/service.py

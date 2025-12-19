@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reduced `docs/infrastructure/history` below the 50K character threshold by splitting ALGORITHM and TEST docs into subfiles with entry-point stubs, condensing long-form sections, and moving archives into `docs/infrastructure/history/archive/`. Ran `ngram validate`; remaining failures are pre-existing missing VIEW/doc-chain gaps in other modules.
+
 Reduced the `docs/world/map` module size by splitting the algorithm overview
 into `docs/world/map/ALGORITHM_Map.md` with focused parts under
 `docs/world/map/ALGORITHM/`, condensed PATTERNS/BEHAVIORS/SYNC, and added a
@@ -18,10 +20,11 @@ pre-existing missing VIEW/doc-chain gaps in schema/product/network/storms and
 missing history ALGORITHM/TEST docs.
 
 Reduced the design vision docs (PATTERNS/BEHAVIORS/ALGORITHM) to keep the module under the 50K character threshold, archived detailed CK3 and Octalysis notes in `docs/design/archive/SYNC_archive_2024-12.md`, and updated `docs/design/IMPLEMENTATION_Vision.md` and `docs/design/SYNC_Vision.md` with new sizes and notes.
+Further condensed `docs/design/BEHAVIORS_Vision.md` (key experience moments + engagement levers), created the archive summary in `docs/design/archive/SYNC_archive_2024-12.md`, updated `docs/design/IMPLEMENTATION_Vision.md` line counts, and added the archive file to `modules.yaml` to keep the vision module under 50K chars.
 
 Reduced `docs/infrastructure/embeddings` below the 50K character threshold by splitting ALGORITHM and TEST docs into subfiles (including `ALGORITHM/ALGORITHM_Search.md` and `TEST/TEST_Cases.md`) with entry-point stubs, moving verbose examples to `docs/infrastructure/embeddings/archive/SYNC_archive_2024-12.md`, and updating chains/pointers. Ran `ngram validate`; remaining failures are pre-existing missing VIEW/doc-chain gaps in other modules.
 
-Reduced frontend documentation size by splitting the implementation doc into an overview entry point with focused parts under `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/`, moved the prior SYNC archive to `docs/frontend/archive/SYNC_archive_2024-12.md`, and updated frontend DOCS pointers to the new entry point. Ran `ngram validate`; remaining failures are pre-existing missing VIEW/doc-chain gaps (schema/product/network/storms/embeddings) and unrelated module chain issues.
+Reduced frontend documentation size by splitting the implementation doc into an overview entry point with focused parts under `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/`, moved the prior SYNC archive to `docs/frontend/archive/SYNC_archive_2024-12.md`, and updated frontend DOCS pointers to the new entry point. Verified the module doc chain is ~32K chars (below the 50K threshold). Ran `ngram validate`; remaining failures are pre-existing missing VIEW/doc-chain gaps (schema/product/network/storms/embeddings) and unrelated module chain issues.
 
 Reduced the `docs/infrastructure/scene-memory` module size to ~32K chars by
 replacing legacy 2024-12 content with concise summaries, adding

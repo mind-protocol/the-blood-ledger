@@ -10,20 +10,9 @@ STATUS: CANONICAL
 
 ## CURRENT STATE
 
-**Implementation complete.** The History module is fully functional.
-Verified `ConversationThread` path helper implementations for repair 02-INCOMPLETE_IMPL-history-conversations; no code changes required.
-Revalidated ConversationThread helper implementations for repair 01-INCOMPLETE_IMPL-history-conversations; no code changes required.
-Revalidated ConversationThread helper implementations for the current repair run; no code changes required.
-Reverified `ConversationThread` path helpers for the current repair run; implementations already present, no code changes made.
-Reconfirmed ConversationThread helper implementations for the current repair run; no code changes required.
-Repair 02-INCOMPLETE_IMPL-history-conversations confirmed ConversationThread path helpers already implemented; no code changes required.
-Re-verified `__init__`, `_get_file_path`, and `_get_relative_path` in `engine/infrastructure/history/conversations.py`; still implemented.
-Repair 01-INCOMPLETE_IMPL-history-conversations reconfirmed helper implementations; no code changes required.
-Updated the implementation doc chain, added a DOCS reference in `engine/infrastructure/history/service.py`, and mapped the history module in `modules.yaml`.
-Added implementation architecture doc and linked the history doc chain.
-Verified repair 57-UNDOCUMENTED-infrastructure-history is already resolved; docs and module mapping exist, no code changes required.
-Repaired broken implementation doc references by replacing method-only tokens and planned file paths with concrete file paths or planned-module labels.
-Updated the implementation doc CODE STRUCTURE listing to use full paths for the module files so file references align with the actual directory.
+**Implementation complete.** No code changes in this repair.
+Condensed history documentation and split ALGORITHM/TEST into subfolders to reduce module size.
+Moved archived material into `docs/infrastructure/history/archive/` and added a condensed archive note.
 
 ## IN PROGRESS
 
@@ -117,9 +106,9 @@ History module now has full implementation. HistoryService provides query_histor
 |------|-------|
 | Pattern philosophy | ./PATTERNS_History.md |
 | Observable behaviors | ./BEHAVIORS_History.md |
-| Query/record procedures | ./ALGORITHM_History.md |
+| Query/record procedures | ./ALGORITHM/ALGORITHM_Overview.md |
 | Test invariants | ./VALIDATION_History.md |
-| Test cases | ./TEST_History.md |
+| Test cases | ./TEST/TEST_Overview.md |
 | Implementation architecture | ./IMPLEMENTATION_History_Service_Architecture.md |
 | Implementation code | engine/infrastructure/history/ |
 | Module registration | modules.yaml (history) |
@@ -128,24 +117,18 @@ History module now has full implementation. HistoryService provides query_histor
 
 PATTERNS: ./PATTERNS_History.md
 BEHAVIORS: ./BEHAVIORS_History.md
-ALGORITHM: ./ALGORITHM_History.md
+ALGORITHM: ./ALGORITHM/ALGORITHM_Overview.md
 VALIDATION: ./VALIDATION_History.md
 IMPLEMENTATION: ./IMPLEMENTATION_History_Service_Architecture.md
-TEST: ./TEST_History.md
+TEST: ./TEST/TEST_Overview.md
 SYNC: ./SYNC_History.md
 
 ## Agent Observations
 
 ### Remarks
-- Repair task appears stale relative to `engine/infrastructure/history/conversations.py`.
-- Re-verified ConversationThread path helpers are implemented; no code changes required.
-- Logged this repair run's verification of conversation helpers; no code changes required.
- - Re-verified `__init__`, `_get_file_path`, and `_get_relative_path`; no implementation gaps found.
-- Reconfirmed the helper implementations in this run; no code changes required.
-- Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder doc gaps and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
-- Reverified ConversationThread path helper implementations for this repair; no code changes required.
-- Revalidated ConversationThread helper implementations for this repair; no code changes required.
-- Reconfirmed the ConversationThread path helpers remain implemented for this repair run; no code changes required.
+- Split large history docs into ALGORITHM/ and TEST/ with overview entry points.
+- Archived and condensed long-form examples to keep core docs current and short.
+- Ran `ngram validate`; remaining failures are in other modules (pre-existing).
 
 ### Suggestions
 - None.
@@ -157,18 +140,6 @@ SYNC: ./SYNC_History.md
 
 ## ARCHIVE
 
-Older content archived to: `SYNC_History_archive_2025-12.md`
-
-
----
-
-## ARCHIVE
-
-Older content archived to: `SYNC_History_archive_2025-12.md`
-
-
----
-
-## ARCHIVE
-
-Older content archived to: `SYNC_History_archive_2025-12.md`
+Older content archived to:
+- `archive/SYNC_History_archive_2025-12.md`
+- `archive/SYNC_archive_2024-12.md`
