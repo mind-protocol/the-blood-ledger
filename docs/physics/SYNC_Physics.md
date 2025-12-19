@@ -11,6 +11,13 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
+### 2025-12-19: Completed physics behaviors template sections
+
+- **What:** Filled BEHAVIORS, INPUTS/OUTPUTS, EDGE CASES, ANTI-BEHAVIORS, and
+  GAPS/IDEAS/QUESTIONS sections in `docs/physics/BEHAVIORS_Physics.md`.
+- **Why:** Resolve doc-template drift for the physics behaviors spec.
+- **Files:** `docs/physics/BEHAVIORS_Physics.md`
+
 ### 2025-12-19: Completed physics tick energy flow for repair 13
 
 - **What:** Normalized belief-based injection and enforced zero-sum propagation with supersedes drain, clamping to `MIN_WEIGHT`.

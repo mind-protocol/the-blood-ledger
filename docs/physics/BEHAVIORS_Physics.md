@@ -45,6 +45,14 @@ Observable behaviors of the moment graph system:
 
 ---
 
+## BEHAVIORS
+
+The physics system exposes the B1–B12 behaviors below; each section describes
+what the player observes and the internal energy/graph conditions that make it
+repeatable during ticks, flips, and action processing.
+
+---
+
 ## B1: Instant Display, Eventual Depth
 
 **What player sees:** Response appears quickly after input.
@@ -410,6 +418,50 @@ Unless something important needs to be said.
 ```
 
 No separate "montage system." Same handlers, context-aware output.
+
+---
+
+## INPUTS / OUTPUTS
+
+**Inputs:** player input text, current graph state (moments, links, weights),
+tick cadence (speed 1x/2x/3x), and handler output moments generated on flips.
+
+**Outputs:** updated graph weights/energies, new or actualized moments,
+queued actions (travel, take, attack), and frontend-visible moments/events
+produced by the canon and display pipeline.
+
+---
+
+## EDGE CASES
+
+- **No relevant potentials:** energy returns to the player character and the
+  handler produces a narrated silence instead of dropping the input.
+- **Simultaneous incompatible actions by same character:** higher weight wins
+  this tick; the lower-weight action remains potential for later ticks.
+- **Empty action queue after a tick:** the UI shows waiting state or narrates
+  the absence of response rather than faking progress.
+
+---
+
+## ANTI-BEHAVIORS
+
+- **No "nothing happens":** inputs must always land in a narrated response or
+  a visible lack-of-response moment, never a silent UI stall.
+- **No single-speaker monopoly:** multi-participant replies should surface by
+  weight order instead of forcing one NPC to respond exclusively.
+- **No parallel world-state writes:** concurrent location physics must not
+  mutate the same nodes; remote updates arrive via news moments.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- QUESTION: How should energy routing behave when a named character is present
+  but asleep or otherwise unavailable to respond?
+- QUESTION: Should action queue pacing slow under 1x to keep responses legible
+  while still honoring sequential action resolution?
+- IDEA: Add a visible "waiting" affordance that explains when no potentials
+  are above threshold, instead of relying solely on narrated silence.
 
 ---
 

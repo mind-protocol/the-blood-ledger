@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/physics/BEHAVIORS_Physics.md` with missing behavior template
+sections (BEHAVIORS, INPUTS/OUTPUTS, EDGE CASES, ANTI-BEHAVIORS, GAPS) and
+logged the update in `docs/physics/SYNC_Physics.md` for repair #16.
+
 Expanded `docs/world/scraping/TEST_World_Scraping.md` with missing test
 template sections (strategy, unit/integration coverage, edge cases, run
 guidance, gaps, flaky tracking) and logged the update in
