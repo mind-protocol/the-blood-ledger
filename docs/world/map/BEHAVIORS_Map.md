@@ -20,6 +20,34 @@ SYNC:            ./SYNC_Map.md
 IMPL:            engine/world/map/semantic.py
 ---
 
+## BEHAVIORS
+
+The map presents discovered geography in tiers of certainty, updates visibility
+based on playthrough events, and enables selection or travel only when the
+player has enough knowledge to act safely.
+
+## INPUTS / OUTPUTS
+
+Inputs include place/route catalogs, per-playthrough visibility states, and
+player location or travel intent. Outputs include rendered map layers, hover
+or selection UI state, and travel request events emitted to the engine.
+
+## EDGE CASES
+
+If visibility data is missing or stale, the map should default to `unknown`
+and avoid enabling travel. If a place is known but its routes are not, the UI
+should allow selection while preventing travel requests.
+
+## ANTI-BEHAVIORS
+
+Do not reveal undiscovered place names, routes, or travel times. Do not allow
+travel requests when the route is unknown or when endpoints are still hidden.
+
+## GAPS / IDEAS / QUESTIONS
+
+How should partial route discovery behave when only one endpoint is known?
+Should rumors expire or decay back to `unknown` over time or after travel?
+
 ## Visibility System
 
 Player knowledge of places and routes, stored per playthrough.
@@ -140,4 +168,3 @@ interface MapProps {
 
 Narrator emits visibility updates (e.g., `told_about`, `detailed_description`).
 Engine applies updates after each response.
-

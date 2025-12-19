@@ -20,7 +20,24 @@ THIS:            ./SYNC_Map.md
 IMPL:            engine/world/map/semantic.py
 ---
 
-## Current State
+## MATURITY
+
+STATUS: DESIGNING
+
+What's canonical (v1):
+- Semantic search entry points and graph query hooks are implemented.
+- Documentation chain exists and is kept within size limits via archives.
+
+What's still being designed:
+- Player-visible map rendering and knowledge/visibility persistence.
+- Backend-to-frontend contract for map discovery state.
+
+What's proposed (v2):
+- Unified map data loader service shared by backend and UI layers.
+
+---
+
+## CURRENT STATE
 
 ### Implemented
 - **Semantic search** via `engine/world/map/semantic.py`.
@@ -52,7 +69,30 @@ Frontend map UI exists under `frontend/components/map` but is static demo data.
 
 ---
 
-## Recent Changes
+## IN PROGRESS
+
+- Aligning the map module SYNC template with required sections while keeping
+  the implementation status unchanged; visual map rendering remains pending.
+
+## RECENT CHANGES
+
+### 2025-12-19: Expanded map behaviors template sections
+
+- Added missing BEHAVIORS template sections (behaviors, inputs/outputs, edge
+  cases, anti-behaviors, gaps/questions) and expanded entries to meet template
+  length guidance.
+
+Files:
+- `docs/world/map/BEHAVIORS_Map.md`
+
+### 2025-12-19: Expanded map patterns template sections
+
+- Added missing PATTERNS template sections (problem, pattern, principles,
+  dependencies, inspirations, scope, gaps) to bring the map module into
+  DOC_TEMPLATE_DRIFT compliance.
+
+Files:
+- `docs/world/map/PATTERNS_Map.md`
 
 ### 2025-12-19: Reduced map documentation size
 
@@ -97,6 +137,49 @@ Files:
 
 ---
 
+## GAPS
+
+- Completed: Expanded `docs/world/map/PATTERNS_Map.md` with missing template
+  sections and recorded the change here for repair #16.
+- Remaining: Commit the doc updates once the worktree scope is clarified.
+- Blocker: Pre-existing uncommitted changes make it unsafe to commit without
+  confirmation on which files to include.
+
+---
+
 ## ARCHIVE
 
 Older content archived to: `docs/world/map/archive/SYNC_archive_2024-12.md`
+
+---
+
+## KNOWN ISSUES
+
+- No functional regressions noted, but the visual map is still a static demo
+  on the frontend and the backend visibility state remains unimplemented.
+
+## HANDOFF: FOR AGENTS
+
+Use VIEW_Implement_Write_Or_Modify_Code. Focus on keeping the map doc chain
+aligned with `engine/world/map/semantic.py` and plan the visibility state
+contract before wiring the frontend map to live data.
+
+## HANDOFF: FOR HUMAN
+
+No immediate decision required, but confirm whether visibility state should
+live in the graph or in a per-playthrough store before backend work begins.
+
+## TODO
+
+- [ ] Define the map visibility/knowledge storage location and schema so the
+  frontend can transition from demo data to live graph-backed responses.
+
+## CONSCIOUSNESS TRACE
+
+The module feels stable at the semantic search layer, but uncertainty remains
+around where discovery state should live; that decision gates integration.
+
+## POINTERS
+
+- Implementation entry: `engine/world/map/semantic.py` for current map queries.
+- Frontend surface: `frontend/components/map/MapClient.tsx` for UI integration.

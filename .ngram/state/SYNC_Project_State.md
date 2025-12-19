@@ -9,6 +9,25 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/world/map/SYNC_Map.md` with the missing template sections
+(maturity, current state, in progress, recent changes, known issues, handoffs,
+todo, consciousness trace, pointers) to resolve DOC_TEMPLATE_DRIFT for
+repair #16.
+
+Expanded `docs/world/map/BEHAVIORS_Map.md` with the missing template sections
+(behaviors, inputs/outputs, edge cases, anti-behaviors, gaps/questions) and
+logged the update in `docs/world/map/SYNC_Map.md` for repair #16.
+
+Expanded `docs/world/map/PATTERNS_Map.md` with the missing template sections
+(problem, pattern, principles, dependencies, inspirations, scope, gaps) and
+logged the update in `docs/world/map/SYNC_Map.md` for repair #16.
+
+Updated `docs/agents/world-runner/SYNC_World_Runner.md` GAPS notes to reflect
+completion of the behaviors template repair for #16. Ran `ngram validate`;
+failures remain pre-existing (missing VIEW and doc-chain gaps in schema/
+product/network/storms modules). Commit is pending because the worktree has
+unrelated pre-existing changes that need confirmation.
+
 Expanded `docs/agents/world-runner/BEHAVIORS_World_Runner.md` with the missing
 template sections (behaviors, inputs/outputs, edge cases, anti-behaviors,
 gaps) for repair #16 and logged the change in
@@ -16,7 +35,7 @@ gaps) for repair #16 and logged the change in
 remain pre-existing (missing VIEW and doc-chain gaps in schema/product/network/
 storms modules).
 
-Expanded the flaky-test note in
+Expanded the FLAKY TESTS section in
 `docs/world/map/TEST_Map_Test_Coverage.md` to meet template length guidance
 and logged the update in `docs/world/map/SYNC_Map.md` for repair #16. Ran
 `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
