@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Repaired broken narrator implementation references by removing the nonexistent `narrator_prompt.py` mention and clarifying the NarratorService entry point in `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, then logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
+
 Completed the tempo documentation chain (PATTERNS/BEHAVIORS/VALIDATION/TEST),
 updated `docs/infrastructure/tempo/SYNC_Tempo.md`, and added an
 `infrastructure-tempo` mapping in `modules.yaml`.

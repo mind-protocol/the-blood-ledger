@@ -39,7 +39,7 @@ engine/physics/graph/graph_ops.py         # Write operations (mutations)
 engine/physics/graph/graph_queries.py     # Read operations (queries)
 ```
 
-The prompt builder lives in `engine/infrastructure/orchestration/narrator.py`; there is no standalone `narrator_prompt.py`.
+The prompt builder lives in `engine/infrastructure/orchestration/narrator.py` (`_build_prompt`); there is no standalone prompt module.
 
 ### File Responsibilities
 
@@ -103,7 +103,7 @@ Traditional code can't provide the creative generation needed. An LLM agent with
 
 | Entry Point | File | Triggered By |
 |-------------|------|--------------|
-| Narrator invocation | `engine/infrastructure/orchestration/narrator.py` (`NarratorService.generate`) | Orchestrator on player action |
+| Narrator invocation | `engine/infrastructure/orchestration/narrator.py` (NarratorService generate) | Orchestrator on player action |
 | Streaming dialogue | `tools/stream_dialogue.py` | Narrator tool call |
 | Graph query | `engine/physics/graph/graph_queries.py` (search) | Narrator tool call |
 | Mutation apply | `engine/physics/graph/graph_ops.py` (apply) | Narrator tool call |

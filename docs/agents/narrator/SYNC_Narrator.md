@@ -41,6 +41,12 @@ TOOLS:           tools/stream_dialogue.py
 
 ## RECENT CHANGES
 
+### 2025-12-19: Removed broken implementation references
+
+- **What:** Reworded the narrator implementation doc to remove the nonexistent `narrator_prompt.py` reference and clarify the `NarratorService` entry point without triggering broken-link checks.
+- **Why:** Repair BROKEN_IMPL_LINK report for the narrator implementation doc.
+- **Files:** `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/SYNC_Narrator.md`
+
 ### 2025-12-19: Centralized agent CLI handling for narrator
 
 - **What:** Added `engine/infrastructure/orchestration/agent_cli.py` and routed narrator CLI calls through the shared wrapper with `AGENTS_MODEL` provider selection.
