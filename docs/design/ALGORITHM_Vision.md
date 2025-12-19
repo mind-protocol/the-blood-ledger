@@ -10,6 +10,91 @@ LINKS_TO:
 
 ---
 
+## CHAIN
+
+- `docs/design/PATTERNS_Vision.md` (design intent and scope)
+- `docs/design/BEHAVIORS_Vision.md` (player-facing experience outcomes)
+- `docs/design/ALGORITHM_Vision.md` (this doc, system mapping)
+- `docs/design/VALIDATION_Vision.md` (validation criteria and proof)
+- `docs/design/IMPLEMENTATION_Vision.md` (doc architecture and ownership)
+- `docs/design/TEST_Vision.md` (vision validation checklist)
+- `docs/design/SYNC_Vision.md` (current state and handoffs)
+
+---
+
+## OVERVIEW
+
+This algorithm doc maps the vision into named systems and their relations, so
+future module specs can be built from a shared structural outline rather than
+from scattered narratives or ad hoc assumptions.
+
+---
+
+## DATA STRUCTURES
+
+- **System Map:** A list of engine and presentation systems with short goals,
+  dependencies, and known unknowns to keep orientation stable over time.
+- **Drive Matrix:** A table that links each system to player drives so we can
+  verify engagement coverage as systems evolve and move to implementation.
+- **Open Questions Register:** A scoped list of unresolved decisions that
+  should be promoted into module docs once they become tractable.
+
+---
+
+## ALGORITHM: map_vision_systems
+
+1. Enumerate core engine systems (graph, weight, tension, world update, scene).
+2. Enumerate presentation systems (views, voices) and their dependencies.
+3. Link each system to its engagement purpose and known open questions.
+4. Record system-to-drive mappings for coverage and future validation.
+5. Capture missing systems and uncertainties for follow-up documentation.
+
+---
+
+## KEY DECISIONS
+
+- Separate engine from presentation so the simulation can run headless while
+  views remain a window into state rather than a driver of state.
+- Treat voices and ledger/faces views as primary engagement levers, since they
+  best realize the "people who remember you" success metric.
+- Keep this document high-level and defer formulas and prompts to module docs
+  to avoid premature specificity before validation.
+
+---
+
+## DATA FLOW
+
+Graph state feeds weight computation, which drives tension detection and world
+updates; scene creation then materializes the active context for the views and
+voices, which present the player-facing experience loop.
+
+---
+
+## COMPLEXITY
+
+This mapping is qualitative rather than computational, but the intent is to
+keep algorithmic hotspots (weight, tension, world update) in module specs so
+their complexity can be measured and optimized once implemented.
+
+---
+
+## HELPER FUNCTIONS
+
+- `list_engine_systems()` returns the named engine subsystems and purpose.
+- `list_presentation_systems()` returns the view and voice subsystems.
+- `record_open_questions()` stores unresolved topics for module doc follow-up.
+
+---
+
+## INTERACTIONS
+
+- `docs/physics/graph/` for the graph and weight computation mechanics.
+- `docs/agents/narrator/` for director and scene generation responsibilities.
+- `docs/frontend/scene/` for voice presentation and player-facing outputs.
+- `docs/world/map/` for the map view presentation and world awareness.
+
+---
+
 ## Purpose
 
 This document is a **preliminary mapping** of systems to behaviors.
@@ -264,6 +349,16 @@ This document should evolve as we:
 - [ ] Discover systems we didn't anticipate
 
 When something here is superseded by detailed docs, we should note that and link to the authoritative source.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- What is the canonical weight computation and how does focus override it?
+- How should the Director scope be bounded to avoid railroading?
+- Where does character depth data originate (schema, generation, or memory)?
+- What is the conversation model for open-ended player interactions?
+- What limits keep the graph performant at long play durations?
 
 ---
 

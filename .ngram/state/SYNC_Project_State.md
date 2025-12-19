@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/design/ALGORITHM_Vision.md` with missing template sections
+(chain, overview, data structures, algorithm, decisions, data flow, complexity,
+helpers, interactions, gaps) for repair #16 and logged the update in
+`docs/design/SYNC_Vision.md`. Ran `ngram validate`; failures remain
+pre-existing (missing VIEW and doc-chain gaps in schema/product/network/storms
+modules).
+
 Expanded `docs/design/BEHAVIORS_Vision.md` with the missing template sections
 (CHAIN, behaviors summary, inputs/outputs, edge cases, anti-behaviors, gaps)
 for repair #16 and logged the update in `docs/design/SYNC_Vision.md`. Ran
