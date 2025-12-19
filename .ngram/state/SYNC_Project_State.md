@@ -9,7 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
-Revalidated `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) for the current incomplete-impl repair; implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
+Reviewed moment graph query helpers (`get_dormant_moments`, `get_wait_triggers`,
+`get_moments_attached_to_tension`) in `engine/moment_graph/queries.py`; the
+implementations were already present, so no code changes were required. Logged
+the verification in `docs/engine/moment-graph-engine/SYNC_Moment_Graph_Engine.md`.
+
+Revalidated `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) with line references (`engine/models/links.py:66`, `engine/models/links.py:120`, `engine/models/links.py:140`, `engine/models/links.py:160`); implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
 
 Revalidated `engine/models/nodes.py` helper properties (`is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) for the current incomplete-impl repair; implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
 

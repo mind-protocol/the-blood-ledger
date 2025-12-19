@@ -63,6 +63,14 @@ The module relies on physics graph ops/queries and is treated as a hot path.
 - **Why:** Avoid false broken-link reports from health checks.
 - **Files:** `docs/engine/moment-graph-engine/IMPLEMENTATION_Moment_Graph_Runtime_Layout.md`
 
+### 2025-12-19: Verified moment graph query helpers
+
+- **What:** Reviewed `get_dormant_moments`, `get_wait_triggers`, and
+  `get_moments_attached_to_tension` in `engine/moment_graph/queries.py`.
+- **Why:** Repair task flagged incomplete implementations.
+- **Files:** `engine/moment_graph/queries.py`
+- **Result:** Implementations already present; no code changes required.
+
 ---
 
 ## HANDOFF: FOR AGENTS
@@ -91,3 +99,15 @@ assumptions; validate against real graph benchmarks before tightening.
 pytest engine/tests/test_moment_graph.py -v
 pytest engine/tests/test_e2e_moment_graph.py -v -s
 ```
+
+## Agent Observations
+
+### Remarks
+- Repair task identified incomplete functions, but the current
+  `engine/moment_graph/queries.py` implementations are already in place.
+
+### Suggestions
+- None.
+
+### Propositions
+- None.
