@@ -14,9 +14,9 @@ Repaired broken implementation doc links in `docs/world/map/IMPLEMENTATION_Map_C
 Updated the world-runner implementation doc to remove method-name file references so broken-link checks resolve cleanly, and logged the change in `docs/agents/world-runner/SYNC_World_Runner.md`.
 Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
-Repaired broken narrator implementation links in `docs/agents/narrator/IMPLEMENTATION_Narrator.md` by pinning prompt ownership and playthrough file references to existing paths, and logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
+Repaired broken narrator implementation links in `docs/agents/narrator/IMPLEMENTATION_Narrator.md` by pinning prompt ownership and playthrough file references to existing paths, and logged the update in `docs/agents/narrator/SYNC_Narrator.md`. Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
-Reworded the debug stream entry in `docs/infrastructure/api/IMPLEMENTATION_Api.md` to avoid an `asyncio.Queue` file reference; logged the fix in `docs/infrastructure/api/SYNC_Api.md`.
+Reworded the debug stream entry in `docs/infrastructure/api/IMPLEMENTATION_Api.md` to avoid an `asyncio.Queue` file reference; logged the fix in `docs/infrastructure/api/SYNC_Api.md`. Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder docs and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Repaired broken file references in `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md` by aligning paths to `frontend/**`, removing the missing playthrough route, and logging the change in `docs/frontend/SYNC_Frontend.md`. Ran `ngram validate`; failures remain in pre-existing `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` gaps.
 
