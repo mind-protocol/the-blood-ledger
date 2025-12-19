@@ -76,8 +76,8 @@ STATUS: CANONICAL
   missing OVERVIEW section and lengthened template sections to meet drift checks
   for repair #16.
 - Added LOGIC CHAINS and CONCURRENCY MODEL sections to
-  `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md` to resolve
-  the remaining DOC_TEMPLATE_DRIFT warnings for repair #16.
+  `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md` describing
+  ordered persistence and single-playthrough serialization for repair #16.
 
 ===============================================================================
 ## OPEN QUESTIONS

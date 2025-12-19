@@ -9,11 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
-Added LOGIC CHAINS and CONCURRENCY MODEL sections to
-`docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md` to resolve
-remaining DOC_TEMPLATE_DRIFT for repair #16. Ran `ngram validate`; failures
-remain pre-existing (missing VIEW and doc-chain gaps in schema/product/network/
-storms modules).
+Expanded the LOGIC CHAINS and CONCURRENCY MODEL sections in
+`docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md` to document
+ordered persistence and single-playthrough serialization for repair #16. Ran
+`ngram validate`; failures remain pre-existing (missing VIEW and doc-chain gaps
+in schema/product/network/storms modules).
 
 Expanded `docs/infrastructure/scene-memory/SYNC_Scene_Memory_archive_2025-12.md`
 with the missing SYNC template sections (maturity, current state, in progress,
