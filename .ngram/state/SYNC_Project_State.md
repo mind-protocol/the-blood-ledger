@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Verified physics tick helper implementations (`_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, `_update_narrative_weights`) in `engine/physics/tick.py` for repair 13; functions already implemented, so no code changes required (logged in `docs/physics/SYNC_Physics.md`).
+
 Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers (`get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, `get_clickable_words`) are already implemented for the current incomplete-impl repair; no code changes required (logged in `docs/physics/graph/SYNC_Graph.md`).
 
 Revalidated traversal helpers (`make_dormant`, `process_wait_triggers`) in

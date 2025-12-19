@@ -13,6 +13,12 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
+### 2025-12-19: Verified physics tick energy helpers for repair 13
+
+- **What:** Confirmed `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` already have concrete implementations; no code changes required.
+- **Why:** Repair task flagged incomplete implementations; verified the helpers are implemented.
+- **Files:** `engine/physics/tick.py`, `docs/physics/SYNC_Physics.md`
+
 ### 2025-12-19: Documented physics module mapping
 
 - **What:** Added `modules.yaml` entry for `engine/physics/**` and linked `engine/physics/tick.py` to the physics doc chain.
@@ -97,6 +103,19 @@ For next session:
   - **Energy IS proximity** — no separate proximity calculation
   - **Physical gating is link attributes** (presence_required, AT), not functions
   - Transfer types: T1-T6 (narrative links), T7 (CAN_LEAD_TO), T8 (CAN_SPEAK), T9 (ATTACHED_TO)
+
+---
+
+## Agent Observations
+
+### Remarks
+- The physics tick energy helpers already contain concrete logic; repair task appears stale.
+
+### Suggestions
+- [ ] Add integration coverage for physics tick helpers once a FalkorDB test harness is available.
+
+### Propositions
+- None.
 
 ---
 
