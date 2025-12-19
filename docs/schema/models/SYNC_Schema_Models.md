@@ -34,6 +34,13 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Revalidated node helper implementations (repair 06)
+
+- **What:** Rechecked `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` in `engine/models/nodes.py`; implementations already present.
+- **Why:** Current INCOMPLETE_IMPL repair run required verification.
+- **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task appears stale; no code changes required.
+
 ### 2025-12-19: Reconfirmed link helper implementations (repair 05)
 
 - **What:** Verified `belief_intensity`, `is_present`, `has_item`, and `is_here` remain implemented in `engine/models/links.py`.
