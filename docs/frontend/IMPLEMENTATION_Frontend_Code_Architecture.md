@@ -110,6 +110,8 @@ frontend/
 | `components/moment/ClickableText.tsx` | Text with clickable words | ~137 | OK |
 | `components/moment/MomentStream.tsx` | Moment list/stream | ~122 | OK |
 
+Docs for moment components live with the Scene module (`docs/frontend/scene/`), since Scene owns the moment display experience.
+
 ---
 
 ## DESIGN PATTERNS
