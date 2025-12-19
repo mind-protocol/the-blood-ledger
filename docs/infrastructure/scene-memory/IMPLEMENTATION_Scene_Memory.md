@@ -79,6 +79,24 @@ GraphOps.add_moment()              # persist Moment node + links
 
 ---
 
+## LOGIC CHAINS
+
+Moment ingestion follows a strict sequence: set context, normalize speaker
+identity, append transcript, optional embed, then graph insert and linking. The
+chain deliberately orders persistence before linking so transcript line numbers
+are stable for downstream attribution and replay tooling.
+
+---
+
+## CONCURRENCY MODEL
+
+MomentProcessor is designed for single-playthrough use and assumes serialized
+calls per playthrough. File-backed transcript writes are not locked across
+processes, so concurrent writes must be prevented by orchestration to avoid
+interleaved line numbers or partial JSON writes.
+
+---
+
 ## MODULE DEPENDENCIES
 
 ### Internal
