@@ -27,6 +27,11 @@ All core files are complete and ready for integration testing:
 
 ## Recent Changes
 
+### 2025-12-19 — Fix world-builder implementation doc file links
+
+- Normalized world-builder IMPLEMENTATION file references to full `engine/infrastructure/world_builder/**` paths.
+- Updated semantic search reference to `engine/world/map/semantic.py` and removed backticks from numeric defaults to avoid broken link checks.
+
 ### 2025-12-19 — Documentation mapping verification (repair 23)
 
 - Confirmed `engine/infrastructure/world_builder/**` is mapped in `modules.yaml`.

@@ -134,6 +134,7 @@ This unlocks real-time updates for all other phases.
 ## Recent Changes
 
 - Updated async implementation doc to replace runtime-only file references with configured script paths so all references point to tracked files.
+- Reverified `IMPLEMENTATION_Async_Architecture.md` after the broken-link report; no additional path corrections were needed.
 - Consolidated async algorithm docs into `ALGORITHM_Async_Architecture.md` and removed per-topic algorithm files to keep a single canonical algorithm reference.
 - Added `IMPLEMENTATION_Async_Architecture.md`, linked CHAIN references, and added DOCS pointer in `engine/scripts/check_injection.py`.
 - Added DOCS pointer in `engine/scripts/inject_to_narrator.py` so the manual injector resolves to the async implementation chain.

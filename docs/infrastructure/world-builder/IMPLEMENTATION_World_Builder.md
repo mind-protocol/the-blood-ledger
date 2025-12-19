@@ -47,23 +47,23 @@ query("What about Edmund?")
 
 ```
 engine/infrastructure/world_builder/
-├── __init__.py              # Exports query(), WorldBuilder
-├── world_builder.py         # Main WorldBuilder class, LLM calls
-├── sparsity.py              # Semantic sparsity detection
-├── query_moment.py          # Record queries as moments
-├── enrichment.py            # Build prompts, apply enrichment
-└── query.py                 # Universal query() function
+├── engine/infrastructure/world_builder/__init__.py        # Exports query(), WorldBuilder
+├── engine/infrastructure/world_builder/world_builder.py   # Main WorldBuilder class, LLM calls
+├── engine/infrastructure/world_builder/sparsity.py        # Semantic sparsity detection
+├── engine/infrastructure/world_builder/query_moment.py    # Record queries as moments
+├── engine/infrastructure/world_builder/enrichment.py      # Build prompts, apply enrichment
+└── engine/infrastructure/world_builder/query.py           # Universal query() function
 ```
 
 ### File Responsibilities
 
 | File | Purpose | Key Functions | Lines | Status |
 |------|---------|---------------|-------|--------|
-| `query.py` | Universal query interface | `query()`, `query_sync()` | ~200 | IMPL |
-| `query_moment.py` | Record queries as thought moments | `record_query_moment()`, `link_results_to_moment()` | ~186 | IMPL |
-| `sparsity.py` | Semantic sparsity detection | `is_sparse()`, `SparsityResult` | ~207 | IMPL |
-| `world_builder.py` | Enrichment service | `WorldBuilder.enrich()` | ~189 | IMPL |
-| `enrichment.py` | Prompts and mutations | `build_enrichment_prompt()`, `apply_enrichment()` | ~478 | IMPL |
+| `engine/infrastructure/world_builder/query.py` | Universal query interface | `query()`, `query_sync()` | ~200 | IMPL |
+| `engine/infrastructure/world_builder/query_moment.py` | Record queries as thought moments | `record_query_moment()`, `link_results_to_moment()` | ~186 | IMPL |
+| `engine/infrastructure/world_builder/sparsity.py` | Semantic sparsity detection | `is_sparse()`, `SparsityResult` | ~207 | IMPL |
+| `engine/infrastructure/world_builder/world_builder.py` | Enrichment service | `WorldBuilder.enrich()` | ~189 | IMPL |
+| `engine/infrastructure/world_builder/enrichment.py` | Prompts and mutations | `build_enrichment_prompt()`, `apply_enrichment()` | ~478 | IMPL |
 
 ---
 
@@ -651,14 +651,14 @@ query.py
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
 | `AGENTS_MODEL` | env | `claude` | CLI provider (`claude` or `codex`, loaded from `.env` if present) |
-| `SPARSITY_PROXIMITY_THRESHOLD` | `sparsity.py` | `0.6` | Min embedding similarity |
-| `SPARSITY_MIN_CLUSTER` | `sparsity.py` | `2` | Min results |
-| `SPARSITY_MIN_DIVERSITY` | `sparsity.py` | `0.3` | Min result variety |
-| `SPARSITY_MIN_CONNECTEDNESS` | `sparsity.py` | `1.5` | Min avg links |
-| `QUERY_MOMENT_WEIGHT` | `query_moment.py` | `0.2` | Weight for query moments |
-| `QUERY_MOMENT_ENERGY` | `query_moment.py` | `0.3` | Energy for query moments |
-| `ENRICHMENT_CACHE_SECONDS` | `world_builder.py` | `60` | Cache duration |
-| `LLM_MODEL` | `world_builder.py` | `claude-sonnet-4-20250514` | Model |
+| `SPARSITY_PROXIMITY_THRESHOLD` | `engine/infrastructure/world_builder/sparsity.py` | 0.6 | Min embedding similarity |
+| `SPARSITY_MIN_CLUSTER` | `engine/infrastructure/world_builder/sparsity.py` | 2 | Min results |
+| `SPARSITY_MIN_DIVERSITY` | `engine/infrastructure/world_builder/sparsity.py` | 0.3 | Min result variety |
+| `SPARSITY_MIN_CONNECTEDNESS` | `engine/infrastructure/world_builder/sparsity.py` | 1.5 | Min avg links |
+| `QUERY_MOMENT_WEIGHT` | `engine/infrastructure/world_builder/query_moment.py` | 0.2 | Weight for query moments |
+| `QUERY_MOMENT_ENERGY` | `engine/infrastructure/world_builder/query_moment.py` | 0.3 | Energy for query moments |
+| `ENRICHMENT_CACHE_SECONDS` | `engine/infrastructure/world_builder/world_builder.py` | 60 | Cache duration |
+| `LLM_MODEL` | `engine/infrastructure/world_builder/world_builder.py` | claude-sonnet-4-20250514 | Model |
 
 ---
 
@@ -752,7 +752,7 @@ def test_moments_always_thought_type():
 - LLM failures: Returns `None`, caller decides what to do
 - Generated content: Marked with `generated: true` property on nodes
 - Query moments: Low weight (0.2), can surface but unlikely unless boosted
-- Uses `SemanticSearch` from `engine.world.map.semantic` for vector search
+- Uses `SemanticSearch` from `engine/world/map/semantic.py` for vector search
 - LLM transport: Agent CLI only (set `AGENTS_MODEL=claude` or `AGENTS_MODEL=codex`)
 
 ### Questions (Resolved)

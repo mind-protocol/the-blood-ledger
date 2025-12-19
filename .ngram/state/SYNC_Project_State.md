@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Repaired broken world-builder implementation doc links by normalizing file paths, correcting the semantic search reference to `engine/world/map/semantic.py`, and removing inline numeric defaults that were misread as file links. Logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`.
+
 Repaired async architecture implementation doc references by pointing runtime queue mentions to configured script files in `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`, and logged the update in `docs/infrastructure/async/SYNC_Async_Architecture.md`.
 
 Resolved repair 30-BROKEN_IMPL_LINK for embeddings by updating implementation doc references to concrete file paths in `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md` and logging the change in `docs/infrastructure/embeddings/SYNC_Embeddings.md`.
@@ -16,6 +18,8 @@ Resolved repair 30-BROKEN_IMPL_LINK for embeddings by updating implementation do
 Normalized the scene-memory implementation doc code-structure tree to use full paths, avoiding bare filename references that trigger broken-link checks.
 
 Repaired broken embeddings implementation doc links by replacing method-only references with concrete file paths in `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md`, and logged the update in `docs/infrastructure/embeddings/SYNC_Embeddings.md`.
+
+Reverified `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md` after the broken-link report; no additional path corrections were needed beyond existing fixes (noted in `docs/infrastructure/async/SYNC_Async_Architecture.md`).
 
 Repaired broken file references in `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md` by swapping method/attribute-only mentions to concrete file paths and removing references to non-existent extraction target files.
 
