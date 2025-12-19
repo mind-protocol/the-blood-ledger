@@ -63,6 +63,19 @@ modules:
 
 # Add more modules as they emerge...
 
+  design-vision:
+    code: "docs/design/**"
+    docs: "docs/design/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/design/PATTERNS_Vision.md
+      - docs/design/SYNC_Vision.md
+    patterns:
+      - "Documentation chain for vision and experience goals"
+    notes: |
+      Vision and experience design documentation for The Blood Ledger.
+
   world-map:
     code: "engine/world/map/**"
     docs: "docs/world/map/"

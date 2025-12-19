@@ -14,6 +14,7 @@ PATTERNS:    ./PATTERNS_Vision.md
 BEHAVIORS:   ./BEHAVIORS_Vision.md
 ALGORITHM:   ./ALGORITHM_Vision.md
 VALIDATION:  ./VALIDATION_Vision.md
+IMPLEMENTATION: ./IMPLEMENTATION_Vision.md
 THIS:        TEST_Vision.md (you are here)
 SYNC:        ./SYNC_Vision.md
 ```

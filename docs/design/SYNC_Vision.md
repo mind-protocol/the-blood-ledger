@@ -1,8 +1,8 @@
 # Vision — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-16
-UPDATED_BY: Claude + Nicolas (collaborative session)
+LAST_UPDATED: 2025-12-19
+UPDATED_BY: Codex (repair agent)
 ```
 
 ---
@@ -17,6 +17,7 @@ Vision documentation complete (draft). Full protocol chain created:
 | BEHAVIORS_Vision.md | Player experience, arc, Octalysis drives, anti-patterns | Draft |
 | ALGORITHM_Vision.md | Systems that create behaviors, dependencies, priority | Draft |
 | VALIDATION_Vision.md | Testing approach, POC milestones, ultimate test | Draft |
+| IMPLEMENTATION_Vision.md | Documentation architecture, file responsibilities, data flow | Draft |
 
 All documents ready for validation.
 
