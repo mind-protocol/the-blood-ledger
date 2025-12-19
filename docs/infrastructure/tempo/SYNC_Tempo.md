@@ -138,6 +138,15 @@ None.
 
 ## Recent Changes
 
+### 2025-12-19: Repair broken implementation links
+
+- Normalized `IMPLEMENTATION_Tempo.md` references to full paths for
+  `engine/infrastructure/tempo/tempo_controller.py`.
+- Removed inline attribute tokens from the patterns table so only real files
+  are referenced.
+- Replaced the inline salience literal in the diagram with
+  `SALIENCE_THRESHOLD`.
+
 ### 2025-12-19: Repair 22 verification
 
 - Confirmed `engine/infrastructure/tempo/**` is mapped in `modules.yaml`.

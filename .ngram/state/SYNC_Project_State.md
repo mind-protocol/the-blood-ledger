@@ -28,6 +28,11 @@ Normalized remaining glob-style YAML references in the world scraping implementa
 
 Repaired broken narrator implementation references by removing the nonexistent `narrator_prompt.py` mention and clarifying the NarratorService entry point in `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, then logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
 
+Repaired broken tempo implementation doc references by normalizing
+`engine/infrastructure/tempo/tempo_controller.py` paths and removing inline
+attribute tokens that were treated as file links; logged in
+`docs/infrastructure/tempo/SYNC_Tempo.md`.
+
 Repaired broken implementation doc links in `docs/design/IMPLEMENTATION_Vision.md` by switching to concrete file paths and removing placeholder extraction target filenames; logged the update in `docs/design/SYNC_Vision.md`.
 Verified the vision implementation doc references already resolve to existing `docs/design/**` files for the BROKEN_IMPL_LINK repair; logged in `docs/design/SYNC_Vision.md`.
 Logged the BROKEN_IMPL_LINK-design-IMPLEMENTATION_Vision verification outcome; no additional doc changes required beyond the SYNC note.

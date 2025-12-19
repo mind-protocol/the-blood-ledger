@@ -30,16 +30,16 @@ IMPL:           engine/infrastructure/tempo/tempo_controller.py
 
 ```
 engine/infrastructure/tempo/
-├── __init__.py              # Exports TempoController
-└── tempo_controller.py      # Main loop and speed management
+├── engine/infrastructure/tempo/__init__.py            # Exports TempoController
+└── engine/infrastructure/tempo/tempo_controller.py    # Main loop and speed management
 ```
 
 ### File Responsibilities
 
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|----------------------|-------|--------|
-| `__init__.py` | Module exports | - | ~10 | OK |
-| `tempo_controller.py` | Main loop, speed mgmt | `TempoController` | ~320 | OK |
+| `engine/infrastructure/tempo/__init__.py` | Module exports | - | ~10 | OK |
+| `engine/infrastructure/tempo/tempo_controller.py` | Main loop, speed mgmt | `TempoController` | ~320 | OK |
 
 ---
 
@@ -59,8 +59,8 @@ engine/infrastructure/tempo/
 
 | Pattern | Applied To | Purpose |
 |---------|------------|---------|
-| State Machine | `self.speed` | Clean transitions between modes |
-| Event Signal | `self._input_event` | Wake up pause mode on player input |
+| State Machine | speed state | Clean transitions between modes |
+| Event Signal | input event | Wake up pause mode on player input |
 | Lazy Import | SSE broadcast | Avoid circular dependency |
 | Backpressure | 1x mode | Prevent queue overflow |
 
@@ -99,10 +99,10 @@ Speed:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| `TempoController.__init__()` | `tempo_controller.py:43` | API on playthrough start |
-| `TempoController.run()` | `tempo_controller.py:69` | asyncio.create_task() |
-| `TempoController.on_player_input()` | `tempo_controller.py:104` | `/api/tempo/input` |
-| `TempoController.set_speed()` | `tempo_controller.py:90` | `/api/tempo/speed` |
+| `TempoController.__init__()` | `engine/infrastructure/tempo/tempo_controller.py:43` | API on playthrough start |
+| `TempoController.run()` | `engine/infrastructure/tempo/tempo_controller.py:69` | asyncio.create_task() |
+| `TempoController.on_player_input()` | `engine/infrastructure/tempo/tempo_controller.py:104` | `/api/tempo/input` |
+| `TempoController.set_speed()` | `engine/infrastructure/tempo/tempo_controller.py:90` | `/api/tempo/speed` |
 
 ---
 
@@ -146,7 +146,7 @@ Speed:
 │ MATCH (m:Moment)    │
 │ WHERE status =      │
 │   'possible'        │
-│ AND salience >= 0.3 │
+│ AND salience >= SALIENCE_THRESHOLD │
 └──────────┬──────────┘
            │ candidates
            ▼
@@ -171,7 +171,7 @@ Speed:
 ### Internal Dependencies
 
 ```
-tempo_controller.py
+engine/infrastructure/tempo/tempo_controller.py
     └── imports → GraphQueries (engine.physics.graph)
     └── imports → GraphTick (engine.physics)
     └── imports → CanonHolder (engine.infrastructure.canon)
@@ -182,9 +182,9 @@ tempo_controller.py
 
 | Package | Used For | Imported By |
 |---------|----------|-------------|
-| `asyncio` | Async loop, Event | tempo_controller.py |
-| `time` | Tick timing | tempo_controller.py |
-| `logging` | Logging | tempo_controller.py |
+| `asyncio` | Async loop, Event | engine/infrastructure/tempo/tempo_controller.py |
+| `time` | Tick timing | engine/infrastructure/tempo/tempo_controller.py |
+| `logging` | Logging | engine/infrastructure/tempo/tempo_controller.py |
 
 ---
 
@@ -273,9 +273,9 @@ pause ──set_speed('1x')──▶ 1x
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `SALIENCE_THRESHOLD` | `tempo_controller.py:24` | `0.3` | Min salience for surfacing |
-| `MAX_MOMENTS_PER_TICK` | `tempo_controller.py:25` | `3` | Max moments recorded per tick |
-| `BACKPRESSURE_LIMIT` | `tempo_controller.py:26` | `5` | Queue size before slowdown |
+| `SALIENCE_THRESHOLD` | `engine/infrastructure/tempo/tempo_controller.py:24` | 0.3 | Min salience for surfacing |
+| `MAX_MOMENTS_PER_TICK` | `engine/infrastructure/tempo/tempo_controller.py:25` | `3` | Max moments recorded per tick |
+| `BACKPRESSURE_LIMIT` | `engine/infrastructure/tempo/tempo_controller.py:26` | `5` | Queue size before slowdown |
 
 ---
 
@@ -285,17 +285,17 @@ pause ──set_speed('1x')──▶ 1x
 
 | File | Line | Reference |
 |------|------|-----------|
-| `tempo_controller.py` | 1 | `# DOCS: docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md` |
-| `__init__.py` | 1 | `# DOCS: docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md` |
+| `engine/infrastructure/tempo/tempo_controller.py` | 1 | DOCS pointer to `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md` |
+| `engine/infrastructure/tempo/__init__.py` | 1 | DOCS pointer to `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md` |
 
 ### Docs → Code
 
 | Doc Section | Implemented In |
 |-------------|----------------|
-| ALGORITHM: Main Loop | `tempo_controller.py:69` (`run`) |
-| ALGORITHM: Speed Modes | `tempo_controller.py:178` (`_tick_interval`) |
-| ALGORITHM: Q1+Q2 | `tempo_controller.py:188` (`_detect_ready_moments`) |
-| ALGORITHM: Interrupt | `tempo_controller.py:265` (`_check_interrupt`) |
+| ALGORITHM: Main Loop | `engine/infrastructure/tempo/tempo_controller.py:69` (`run`) |
+| ALGORITHM: Speed Modes | `engine/infrastructure/tempo/tempo_controller.py:178` (`_tick_interval`) |
+| ALGORITHM: Q1+Q2 | `engine/infrastructure/tempo/tempo_controller.py:188` (`_detect_ready_moments`) |
+| ALGORITHM: Interrupt | `engine/infrastructure/tempo/tempo_controller.py:265` (`_check_interrupt`) |
 
 ---
 
