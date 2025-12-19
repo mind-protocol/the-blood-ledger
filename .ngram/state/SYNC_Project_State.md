@@ -16,11 +16,13 @@ Frontend-backend integration fixes for playthrough flow:
 - Implemented free text input in CenterStage.tsx (calls `sendMoment` API)
 - Added emoji fallbacks for player/character avatars (👤/🗣️)
 - Updated API IMPLEMENTATION and SYNC docs
+Revalidated moment graph traversal helpers in `engine/moment_graph/traversal.py` for repair 08; `make_dormant` and `process_wait_triggers` are already implemented, so no code changes were needed.
 Verified `engine/models/nodes.py` moment/narrative helper properties for repair 06; implementations already present, no code changes required.
 Re-verified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) are implemented; no code changes required for repair 04-INCOMPLETE_IMPL-models-base.
 Verified `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) are already implemented; repair 05-INCOMPLETE_IMPL-models-links required no code changes.
 Verified health check helper implementations in `engine/graph/health/check_health.py` for repair 00-INCOMPLETE_IMPL-health-check_health; no code changes required.
 Verified moment processor functions for repair 03-INCOMPLETE_IMPL-memory-moment_processor; no code changes required.
+Rechecked moment graph traversal helpers `make_dormant` and `process_wait_triggers` in `engine/moment_graph/traversal.py`; implementations already present, no code changes required.
 
 Previous: Regenerated global repository map (`docs/map.md`). Fixed `modules.yaml` world-runner code pattern.
 Logged repair 02-INCOMPLETE_IMPL-history-conversations verification in `docs/infrastructure/history/SYNC_History.md` (no code changes).
@@ -143,6 +145,7 @@ Repair task appears stale relative to current code.
 
 ### Remarks
 - Moment traversal helper implementations already exist; no code changes required.
+- Rechecked `engine/moment_graph/traversal.py` and confirmed `make_dormant` and `process_wait_triggers` are implemented.
 - Physics tick energy helper implementations already exist; no code changes required.
 - Graph health report helper implementations already exist; no code changes required.
 - Health check helpers in `engine/graph/health/check_health.py` verified; repair task was stale.
