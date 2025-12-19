@@ -11,6 +11,7 @@ UPDATED_BY: Codex (repair agent)
 
 World scraping documentation chain finalized with implementation details and extraction candidates; DOCS references remain absent because `data/` is gitignored.
 Completed docs/design chain by adding IMPLEMENTATION_Vision.md, updating TEST_Vision.md chain, and refreshing SYNC_Vision.md; mapped design-vision in modules.yaml.
+Mapped frontend module in `modules.yaml` to cover `frontend/**`, aligning docs with `docs/frontend/` and closing the unmapped `frontend/components` gap.
 
 Frontend-backend integration fixes for playthrough flow:
 - Added scene-memory IMPLEMENTATION/TEST docs, updated doc chains, and added a DOCS reference in `engine/infrastructure/memory/moment_processor.py`.

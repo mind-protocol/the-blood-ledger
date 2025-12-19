@@ -86,7 +86,7 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ### 2025-12-19: Map frontend module in manifest
 
-- **What:** Added frontend module mapping in modules.yaml
+- **What:** Added frontend module mapping in modules.yaml for `frontend/**` (covers `frontend/components`)
 - **Why:** Ensure code/docs are linked and validated by ngram
 - **Files:** `modules.yaml`
 
