@@ -61,7 +61,7 @@ engine/infrastructure/
 | Pattern | Applied To | Purpose |
 |---------|------------|---------|
 | Singleton | `service.py:get_embedding_service` | Avoid repeated model loading |
-| Lazy initialization | `EmbeddingService._load_model` | Load large model only when needed |
+| Lazy initialization | `engine/infrastructure/embeddings/service.py:EmbeddingService._load_model` | Load large model only when needed |
 
 ### Anti-Patterns to Avoid
 
@@ -81,10 +81,10 @@ engine/infrastructure/
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| `EmbeddingService.embed` | `engine/infrastructure/embeddings/service.py:48` | Any call needing a single embedding |
-| `EmbeddingService.embed_batch` | `engine/infrastructure/embeddings/service.py:64` | Batch embedding for multiple texts |
-| `EmbeddingService.embed_node` | `engine/infrastructure/embeddings/service.py:84` | Node embedding request |
-| `EmbeddingService.similarity` | `engine/infrastructure/embeddings/service.py:135` | Similarity scoring |
+| `engine/infrastructure/embeddings/service.py:EmbeddingService.embed` | `engine/infrastructure/embeddings/service.py:48` | Any call needing a single embedding |
+| `engine/infrastructure/embeddings/service.py:EmbeddingService.embed_batch` | `engine/infrastructure/embeddings/service.py:64` | Batch embedding for multiple texts |
+| `engine/infrastructure/embeddings/service.py:EmbeddingService.embed_node` | `engine/infrastructure/embeddings/service.py:84` | Node embedding request |
+| `engine/infrastructure/embeddings/service.py:EmbeddingService.similarity` | `engine/infrastructure/embeddings/service.py:135` | Similarity scoring |
 | `get_embedding_service` | `engine/infrastructure/embeddings/service.py:147` | Shared singleton access |
 
 ---
@@ -132,8 +132,8 @@ None.
 
 | Package | Used For | Imported By |
 |---------|----------|-------------|
-| `sentence-transformers` | Embedding model and encoding | `service.py` |
-| `numpy` | Cosine similarity math | `service.py` |
+| `sentence-transformers` | Embedding model and encoding | `engine/infrastructure/embeddings/service.py` |
+| `numpy` | Cosine similarity math | `engine/infrastructure/embeddings/service.py` |
 
 ---
 
@@ -143,9 +143,9 @@ None.
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| `_embedding_service` | `service.py` module global | Module | Process lifetime |
-| `model` | `EmbeddingService.model` | Instance | Loaded on first call |
-| `dimension` | `EmbeddingService.dimension` | Instance | Set on model load |
+| `_embedding_service` | `engine/infrastructure/embeddings/service.py` module global | Module | Process lifetime |
+| `model` | `engine/infrastructure/embeddings/service.py:EmbeddingService.model` | Instance | Loaded on first call |
+| `dimension` | `engine/infrastructure/embeddings/service.py:EmbeddingService.dimension` | Instance | Set on model load |
 
 ---
 
@@ -174,7 +174,7 @@ None.
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `model_name` | `EmbeddingService.__init__` | `sentence-transformers/all-mpnet-base-v2` | HuggingFace model selection |
+| `model_name` | `engine/infrastructure/embeddings/service.py:EmbeddingService.__init__` | `sentence-transformers/all-mpnet-base-v2` | HuggingFace model selection |
 
 ---
 

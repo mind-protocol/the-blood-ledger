@@ -39,6 +39,13 @@ No active work on embeddings module.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Normalize embeddings implementation references
+
+- **What:** Replaced method-only tokens with concrete file paths in the embeddings implementation doc.
+- **Why:** Resolve broken implementation links flagged for the embeddings module.
+- **Files:** `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Link module init to docs
 
 - **What:** Added a DOCS reference in the embeddings module initializer.
