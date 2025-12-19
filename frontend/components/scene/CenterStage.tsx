@@ -265,14 +265,14 @@ export function CenterStage({
   };
 
   // Handle free text input - sends player freeform action to backend
+  // SSE subscription in useGameState handles updates reactively
   const handleSubmit = async () => {
     if (inputValue.trim()) {
       const text = inputValue.trim();
       setInputValue('');
       try {
         await sendMoment(playthroughId, text, 'player_freeform');
-        // Refresh moments after sending - narrator will process async
-        setTimeout(() => refresh(), 1000);
+        // No polling needed - SSE subscription in useGameState will trigger refresh
       } catch (err) {
         console.error('Failed to send moment:', err);
       }

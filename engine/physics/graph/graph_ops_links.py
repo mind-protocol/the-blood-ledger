@@ -571,3 +571,68 @@ class LinkCreationMixin:
             "props": props
         })
         logger.info(f"[GraphOps] Added geography: {from_place_id} -> {to_place_id}")
+
+    def add_contains(
+        self,
+        parent_place_id: str,
+        child_place_id: str
+    ) -> None:
+        """
+        Add CONTAINS link from parent Place to child Place.
+
+        Hierarchical containment - this place is inside that place.
+        Binary relationship, no attributes.
+
+        Example:
+            place_york CONTAINS place_york_market
+            place_york_market CONTAINS place_merchants_hall
+
+        Args:
+            parent_place_id: The containing place
+            child_place_id: The place inside it
+        """
+        cypher = """
+        MATCH (parent:Place {id: $parent_id})
+        MATCH (child:Place {id: $child_id})
+        MERGE (parent)-[r:CONTAINS]->(child)
+        """
+        self._query(cypher, {
+            "parent_id": parent_place_id,
+            "child_id": child_place_id
+        })
+        logger.info(f"[GraphOps] Added contains: {parent_place_id} -> {child_place_id}")
+
+    # =========================================================================
+    # QUERY/ATTENTION LINKS
+    # =========================================================================
+
+    def add_about(
+        self,
+        moment_id: str,
+        target_id: str,
+        weight: float = 0.5
+    ) -> None:
+        """
+        Add ABOUT link from Moment to any node.
+
+        Used by World Builder to connect query moments to results.
+        Physics flows energy through ABOUT links - what gets thought about
+        becomes more salient.
+
+        Args:
+            moment_id: The query/thought moment
+            target_id: What the moment is about (character, place, thing, narrative, moment)
+            weight: Connection strength (default 0.5)
+        """
+        cypher = """
+        MATCH (m:Moment {id: $moment_id})
+        MATCH (t {id: $target_id})
+        MERGE (m)-[r:ABOUT]->(t)
+        SET r.weight = $weight
+        """
+        self._query(cypher, {
+            "moment_id": moment_id,
+            "target_id": target_id,
+            "weight": weight
+        })
+        logger.debug(f"[GraphOps] Added about: {moment_id} -> {target_id}")

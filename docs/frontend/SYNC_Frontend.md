@@ -62,6 +62,30 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ## RECENT CHANGES
 
+### 2025-12-19: Align tempo API base with shared frontend client
+
+- **What:** Exported `API_BASE` from the shared API client and used it in `SpeedControl` and `useTempo`.
+- **Why:** Ensure tempo fetches respect `NEXT_PUBLIC_API_URL` and the same backend base as other frontend calls.
+- **Files:** `frontend/lib/api.ts`, `frontend/components/SpeedControl.tsx`, `frontend/hooks/useTempo.ts`
+- **Struggles/Insights:** None.
+- **Verification:** `cd frontend && npm run build`
+
+### 2025-12-19: Relocate speed controls into the chronicle panel footer
+
+- **What:** Moved speed controls into the Chronicle journal footer, passed the playthrough id through the layout, and added wrapping for narrow widths; removed the fixed bottom-left speed control.
+- **Why:** Ensure the speed buttons appear directly beneath the journal input and stay within the right panel on narrow screens.
+- **Files:** `frontend/components/chronicle/ChroniclePanel.tsx`, `frontend/components/GameLayout.tsx`, `frontend/components/GameClient.tsx`, `frontend/components/SpeedControl.tsx`
+- **Struggles/Insights:** None.
+- **Verification:** `cd frontend && npm run build`
+
+### 2025-12-19: Normalize frontend code structure paths
+
+- **What:** Updated the CODE STRUCTURE tree in the frontend implementation doc to list module-relative paths under `frontend/`.
+- **Why:** Align tree paths with actual frontend layout to avoid stale file references during doc validation.
+- **Files:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
+- **Struggles/Insights:** None.
+- **Verification:** Not run (doc-only change).
+
 ### 2025-12-19: Fix broken implementation doc file references
 
 - **What:** Updated file paths in the frontend implementation doc to point at `frontend/**`, removed the non-existent playthrough route reference, and adjusted proposed extraction targets to non-path labels.

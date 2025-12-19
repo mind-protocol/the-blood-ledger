@@ -8,7 +8,7 @@
 import type { DialogueChunk, GraphMutation, SceneTree } from '@/types/game';
 import { showToast } from '@/components/ui/Toast';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+export const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 // Track if we've shown the backend down toast recently (debounce)
 let lastBackendErrorTime = 0;
@@ -67,7 +67,7 @@ export async function createPlaythrough(
   playerGender: string = 'male'
 ): Promise<{ playthrough_id: string; scenario: string; scene: SceneTree }> {
   try {
-    const res = await fetch(`${API_BASE}/api/playthrough/create`, {
+    const res = await fetch(`${API_BASE}/api/playthrough/scenario`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

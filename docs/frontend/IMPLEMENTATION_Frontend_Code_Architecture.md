@@ -29,39 +29,39 @@ IMPL:           frontend/app/page.tsx
 
 ```
 frontend/
-├── frontend/app/                          # Next.js App Router pages
-│   ├── frontend/app/page.tsx              # Main entry - loads GameClient
-│   ├── frontend/app/layout.tsx            # Root layout with providers
-│   ├── frontend/app/start/page.tsx        # Opening/start screen
-│   ├── frontend/app/map/page.tsx          # Map view
-│   └── frontend/app/scenarios/page.tsx    # Scenario selection
-├── frontend/components/                   # React components
-│   ├── frontend/components/GameClient.tsx # Main game wrapper, handles loading
-│   ├── frontend/components/GameLayout.tsx # Layout: scene + right panel
-│   ├── frontend/components/Providers.tsx  # Context providers
-│   ├── frontend/components/scene/         # Scene rendering components
-│   ├── frontend/components/moment/        # Moment system components
-│   ├── frontend/components/map/           # Map display components
-│   ├── frontend/components/panel/         # Right panel tabs
-│   ├── frontend/components/voices/        # Internal thoughts display
-│   ├── frontend/components/chronicle/     # Chronicle display
-│   ├── frontend/components/minimap/       # Minimap component
-│   ├── frontend/components/debug/         # Debug panel
-│   └── frontend/components/ui/            # Generic UI components
-├── frontend/hooks/                        # Custom React hooks
-│   ├── frontend/hooks/useGameState.ts     # Main game state management
-│   └── frontend/hooks/useMoments.ts       # Moment system state
-├── frontend/lib/                          # Utilities
-│   ├── frontend/lib/api.ts                # API client functions
-│   └── frontend/lib/map/                  # Map utilities
-├── frontend/types/                        # TypeScript definitions
-│   ├── frontend/types/game.ts             # Core game types
-│   ├── frontend/types/moment.ts           # Moment types
-│   └── frontend/types/map.ts              # Map types
-├── frontend/data/                         # Static data
-│   └── frontend/data/game-state.json      # Fallback static state
-└── frontend/public/                       # Static assets
-    └── frontend/public/playthroughs/      # Playthrough images
+├── app/                          # Next.js App Router pages
+│   ├── page.tsx                  # Main entry - loads GameClient
+│   ├── layout.tsx                # Root layout with providers
+│   ├── start/page.tsx            # Opening/start screen
+│   ├── map/page.tsx              # Map view
+│   └── scenarios/page.tsx        # Scenario selection
+├── components/                   # React components
+│   ├── GameClient.tsx            # Main game wrapper, handles loading
+│   ├── GameLayout.tsx            # Layout: scene + right panel
+│   ├── Providers.tsx             # Context providers
+│   ├── scene/                    # Scene rendering components
+│   ├── moment/                   # Moment system components
+│   ├── map/                      # Map display components
+│   ├── panel/                    # Right panel tabs
+│   ├── voices/                   # Internal thoughts display
+│   ├── chronicle/                # Chronicle display
+│   ├── minimap/                  # Minimap component
+│   ├── debug/                    # Debug panel
+│   └── ui/                       # Generic UI components
+├── hooks/                        # Custom React hooks
+│   ├── useGameState.ts           # Main game state management
+│   └── useMoments.ts             # Moment system state
+├── lib/                          # Utilities
+│   ├── api.ts                    # API client functions
+│   └── map/                      # Map utilities
+├── types/                        # TypeScript definitions
+│   ├── game.ts                   # Core game types
+│   ├── moment.ts                 # Moment types
+│   └── map.ts                    # Map types
+├── data/                         # Static data
+│   └── game-state.json           # Fallback static state
+└── public/                       # Static assets
+    └── playthroughs/             # Playthrough images
 ```
 
 ### File Responsibilities

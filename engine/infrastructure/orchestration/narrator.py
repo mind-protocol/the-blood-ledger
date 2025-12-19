@@ -1,22 +1,24 @@
 """
 Blood Ledger — Narrator Service
 
-Calls Claude CLI to generate scenes.
+Calls agent CLI to generate scenes.
 Uses --continue for persistent session across playthrough.
 """
 
-import subprocess
 import json
 import logging
+import subprocess
 from typing import Dict, Any, Optional
 from pathlib import Path
+
+from .agent_cli import extract_claude_text, parse_claude_json_output, run_agent
 
 logger = logging.getLogger(__name__)
 
 
 class NarratorService:
     """
-    Service for calling the Narrator agent via Claude CLI.
+    Service for calling the Narrator agent via agent CLI.
     Runs from agents/narrator/ directory where CLAUDE.md is located.
     """
 
@@ -58,7 +60,7 @@ class NarratorService:
         # Build prompt
         prompt = self._build_prompt(scene_context, world_injection, instruction)
 
-        # Call Claude CLI
+        # Call agent CLI
         result = self._call_claude(prompt)
 
         return result
@@ -111,82 +113,49 @@ class NarratorService:
         return "\n".join(parts)
 
     def _call_claude(self, prompt: str) -> Dict[str, Any]:
-        """Call Claude CLI and parse response."""
-        # Use -c to continue conversation (persistent session)
-        # --dangerously-skip-permissions for non-interactive execution
-        # --add-dir ../../ to include project context
-        base_flags = [
-            "--dangerously-skip-permissions",
-            "--output-format", "json",
-            "--verbose",
-            "--add-dir", "../.."
-        ]
-
-        if self.session_started:
-            cmd = ["claude", "-c", "-p", prompt] + base_flags
-        else:
-            cmd = ["claude", "-p", prompt] + base_flags
-            self.session_started = True
-
-        logger.info(f"[NarratorService] Calling Claude from {self.working_dir}")
+        """Call agent CLI and parse response."""
+        logger.info(f"[NarratorService] Calling agent CLI from {self.working_dir}")
 
         try:
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
+            result = run_agent(
+                prompt,
+                working_dir=self.working_dir,
                 timeout=self.timeout,
-                cwd=self.working_dir
+                continue_session=self.session_started,
+                output_format="json",
+                add_dir="../..",
             )
+            self.session_started = True
 
             if result.returncode != 0:
-                logger.error(f"[NarratorService] Claude CLI failed: {result.stderr}")
+                logger.error(f"[NarratorService] Agent CLI failed: {result.stderr}")
                 return self._fallback_response()
 
-            # Parse JSON response - Claude CLI wraps result in envelope
             response_text = result.stdout.strip()
             logger.debug(f"[NarratorService] Raw response: {response_text[:500]}...")
 
             try:
-                envelope = json.loads(response_text)
+                parsed = parse_claude_json_output(response_text)
+            except json.JSONDecodeError as e:
+                logger.error(f"[NarratorService] Failed to parse response: {e}")
+                logger.error(f"[NarratorService] Response was: {response_text[:500]}")
+                return self._fallback_response()
 
-                # Extract actual result from envelope
-                if isinstance(envelope, dict) and 'result' in envelope:
-                    actual_result = envelope['result']
-
-                    # Handle markdown code blocks in result
-                    if isinstance(actual_result, str):
-                        if actual_result.startswith("```json"):
-                            lines = actual_result.split("\n")
-                            actual_result = "\n".join(lines[1:-1])
-                        elif actual_result.startswith("```"):
-                            lines = actual_result.split("\n")
-                            actual_result = "\n".join(lines[1:-1])
-
-                        return json.loads(actual_result)
-                    return actual_result
-                else:
-                    # Direct response (no envelope)
-                    return envelope
-
-            except json.JSONDecodeError:
-                # Maybe it's a plain text response, try to extract JSON
-                if "```json" in response_text:
-                    start = response_text.find("```json") + 7
-                    end = response_text.find("```", start)
-                    if end > start:
-                        return json.loads(response_text[start:end].strip())
-                raise
+            if isinstance(parsed, dict):
+                return parsed
+            if isinstance(parsed, str):
+                try:
+                    return json.loads(extract_claude_text(parsed))
+                except json.JSONDecodeError as e:
+                    logger.error(f"[NarratorService] Failed to parse JSON result: {e}")
+                    return self._fallback_response()
+            return self._fallback_response()
 
         except subprocess.TimeoutExpired:
-            logger.error("[NarratorService] Claude CLI timed out")
-            return self._fallback_response()
-        except json.JSONDecodeError as e:
-            logger.error(f"[NarratorService] Failed to parse response: {e}")
-            logger.error(f"[NarratorService] Response was: {result.stdout[:500] if result else 'None'}")
+            logger.error("[NarratorService] Agent CLI timed out")
             return self._fallback_response()
         except FileNotFoundError:
-            logger.error("[NarratorService] Claude CLI not found")
+            logger.error("[NarratorService] Agent CLI not found")
             return self._fallback_response()
         except Exception as e:
             logger.error(f"[NarratorService] Unexpected error: {e}")

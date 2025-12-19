@@ -1,22 +1,26 @@
 """
 Blood Ledger — World Runner Service
 
-Calls Claude CLI to resolve flips (tension breaks).
+Calls agent CLI to resolve flips (tension breaks).
 Stateless - no --continue, each call is independent.
 """
 
-import subprocess
+# DOCS: docs/agents/world-runner/PATTERNS_World_Runner.md
+
 import json
+import subprocess
 import logging
 from typing import Dict, Any, List
 from pathlib import Path
+
+from .agent_cli import parse_claude_json_output, run_agent
 
 logger = logging.getLogger(__name__)
 
 
 class WorldRunnerService:
     """
-    Service for calling the World Runner agent via Claude CLI.
+    Service for calling the World Runner agent via agent CLI.
     """
 
     def __init__(
@@ -51,7 +55,7 @@ class WorldRunnerService:
         # Build prompt
         prompt = self._build_prompt(flips, graph_context, player_context, time_span)
 
-        # Call Claude CLI (stateless, no --continue)
+        # Call agent CLI (stateless, no --continue)
         result = self._call_claude(prompt)
 
         return result
@@ -95,41 +99,30 @@ class WorldRunnerService:
         return "\n".join(parts)
 
     def _call_claude(self, prompt: str) -> Dict[str, Any]:
-        """Call Claude CLI and parse response."""
+        """Call agent CLI and parse response."""
         # Stateless - no --continue
-        cmd = ["claude", "-p", prompt, "--dangerously-skip-permissions", "--output-format", "json", "--verbose"]
-
         try:
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
+            result = run_agent(
+                prompt,
+                working_dir=self.working_dir,
                 timeout=self.timeout,
-                cwd=self.working_dir
+                output_format="json",
             )
 
             if result.returncode != 0:
-                logger.error(f"[WorldRunnerService] Claude CLI failed: {result.stderr}")
+                logger.error(f"[WorldRunnerService] Agent CLI failed: {result.stderr}")
                 return self._fallback_response()
 
-            # Parse JSON response
-            response_text = result.stdout.strip()
-
-            # Handle potential markdown code blocks
-            if response_text.startswith("```"):
-                lines = response_text.split("\n")
-                response_text = "\n".join(lines[1:-1])
-
-            return json.loads(response_text)
+            return parse_claude_json_output(result.stdout)
 
         except subprocess.TimeoutExpired:
-            logger.error("[WorldRunnerService] Claude CLI timed out")
+            logger.error("[WorldRunnerService] Agent CLI timed out")
             return self._fallback_response()
         except json.JSONDecodeError as e:
             logger.error(f"[WorldRunnerService] Failed to parse response: {e}")
             return self._fallback_response()
         except FileNotFoundError:
-            logger.error("[WorldRunnerService] Claude CLI not found")
+            logger.error("[WorldRunnerService] Agent CLI not found")
             return self._fallback_response()
 
     def _fallback_response(self) -> Dict[str, Any]:

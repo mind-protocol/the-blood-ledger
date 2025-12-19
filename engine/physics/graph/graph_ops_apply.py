@@ -338,11 +338,31 @@ class ApplyOperationsMixin:
                         consumes_origin=link.get('consumes_origin', True)
                     )
 
+                elif link_type == 'contains':
+                    parent_id = link.get('from') or link.get('parent')
+                    child_id = link.get('to') or link.get('child')
+                    self._validate_link_targets(parent_id, child_id, existing_ids, new_node_ids)
+                    linked_ids.add(parent_id)
+                    linked_ids.add(child_id)
+                    self.add_contains(parent_id, child_id)
+
+                elif link_type == 'about':
+                    moment_id = link.get('from') or link.get('moment')
+                    target_id = link.get('to') or link.get('target')
+                    self._validate_link_targets(moment_id, target_id, existing_ids, new_node_ids)
+                    linked_ids.add(moment_id)
+                    linked_ids.add(target_id)
+                    self.add_about(
+                        moment_id,
+                        target_id,
+                        weight=link.get('weight', 0.5)
+                    )
+
                 else:
                     result.errors.append({
                         'item': link_id,
                         'message': f'Invalid link type: {link_type}',
-                        'fix': 'Valid types: belief, present, carries, carries_hidden, located, geography, narrative_link, said, moment_at, moment_then, narrative_from, can_speak, attached_to, can_lead_to'
+                        'fix': 'Valid types: belief, present, carries, carries_hidden, located, geography, narrative_link, said, moment_at, moment_then, narrative_from, can_speak, attached_to, can_lead_to, contains, about'
                     })
                     result.rejected.append(link_id)
                     continue
@@ -494,6 +514,10 @@ class ApplyOperationsMixin:
             return f"attached:{link.get('moment')}->{link.get('target')}"
         elif link_type == 'can_lead_to':
             return f"can_lead:{link.get('from')}->{link.get('to')}"
+        elif link_type == 'contains':
+            return f"contains:{link.get('from') or link.get('parent')}->{link.get('to') or link.get('child')}"
+        elif link_type == 'about':
+            return f"about:{link.get('from') or link.get('moment')}->{link.get('to') or link.get('target')}"
         else:
             return f"link:{link_type}"
 

@@ -31,9 +31,10 @@ The Narrator is an AI agent, not traditional code. Its "implementation" is a CLA
 
 ```
 agents/narrator/CLAUDE.md                 # Agent instructions (878 lines)
-agents/narrator/.claude/                  # Claude CLI state directory
+agents/narrator/.claude/                  # Claude CLI state directory (when using Claude)
 tools/stream_dialogue.py                  # Streaming tool for narrator output
-engine/infrastructure/orchestration/narrator.py  # Claude CLI + prompt builder
+engine/infrastructure/orchestration/agent_cli.py   # Shared agent CLI wrapper
+engine/infrastructure/orchestration/narrator.py    # Agent CLI caller + prompt builder
 engine/physics/graph/graph_ops.py         # Write operations (mutations)
 engine/physics/graph/graph_queries.py     # Read operations (queries)
 ```
@@ -46,7 +47,8 @@ The prompt builder lives in `engine/infrastructure/orchestration/narrator.py`; t
 |------|---------|-------|--------|
 | `agents/narrator/CLAUDE.md` | AI agent instructions and behavior rules | ~878 | OK |
 | `tools/stream_dialogue.py` | Stream dialogue chunks via SSE | ~200 | OK |
-| `engine/infrastructure/orchestration/narrator.py` | Claude CLI wrapper service + prompt builder (`_build_prompt`) | ~150 | OK |
+| `engine/infrastructure/orchestration/agent_cli.py` | Agent CLI command builder + parsing helpers | ~140 | OK |
+| `engine/infrastructure/orchestration/narrator.py` | Narrator caller + prompt builder (`_build_prompt`) | ~150 | OK |
 
 **Size Thresholds:**
 - **OK** (<400 lines): Healthy size
@@ -91,7 +93,7 @@ Traditional code can't provide the creative generation needed. An LLM agent with
 
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
-| Agent Instructions | agents/narrator/CLAUDE.md | Orchestrator, tools | Claude CLI invocation |
+| Agent Instructions | agents/narrator/CLAUDE.md | Orchestrator, tools | Agent CLI invocation |
 | Graph Access | engine/physics/graph/graph_ops.py, engine/physics/graph/graph_queries.py | CLAUDE.md | Python tool calls |
 | Output Streaming | tools/stream_dialogue.py | Frontend | SSE events |
 
@@ -126,7 +128,7 @@ Traditional code can't provide the creative generation needed. An LLM agent with
            │ prompt + context
            ▼
 ┌─────────────────────┐
-│  Claude CLI         │ ← claude --continue -p "..."
+│  Agent CLI          │ ← AGENTS_MODEL=claude/codex
 │  (Narrator Agent)   │
 │  reads: CLAUDE.md   │
 └──────────┬──────────┘
@@ -181,7 +183,7 @@ agents/narrator/CLAUDE.md
     └── uses → engine/physics/graph/graph_ops.py (Python)
 
 engine/infrastructure/orchestration/narrator.py
-    └── imports → subprocess (Claude CLI)
+    └── calls → orchestration/agent_cli.py (agent CLI wrapper)
     └── builds → prompt in _build_prompt
 ```
 
@@ -228,7 +230,7 @@ populate the recent action field.
 2. On first player action:
    a. Build scene context (orchestrator)
    b. Build prompt (`engine/infrastructure/orchestration/narrator.py` `_build_prompt`)
-   c. Invoke Claude CLI (first call, no --continue)
+   c. Invoke agent CLI (first call, no --continue)
    d. Claude loads CLAUDE.md as system instructions
    e. Session established
 3. System ready for subsequent calls with --continue
@@ -270,6 +272,7 @@ The --continue flag means:
 | Agent instructions | `agents/narrator/CLAUDE.md` | N/A | Full narrator behavior spec |
 | Streaming tool | `tools/stream_dialogue.py` | graph-native | Output mode |
 | Playthrough data | Playthrough directory on disk (created under `playthroughs/`) | N/A | Per-game state |
+| Agent provider | `AGENTS_MODEL` env | `claude` | CLI provider (`claude` or `codex`, loaded from `.env` if present) |
 
 ---
 

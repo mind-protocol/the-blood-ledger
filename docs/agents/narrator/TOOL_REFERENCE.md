@@ -8,7 +8,7 @@ Definitive JSON schemas for Narrator output. Use in prompts via `@docs/agents/na
 
 ### 1. From Orchestrator (Production)
 
-The orchestrator calls the Narrator via Claude CLI:
+The orchestrator calls the Narrator via the agent CLI:
 
 ```bash
 # First call (starts persistent session)
@@ -75,10 +75,10 @@ for mutation in output.get('mutations', []):
 ### 4. Script Locations
 
 ```
-engine/orchestration/narrator.py       # Narrator caller (Claude CLI wrapper)
-engine/orchestration/narrator_prompt.py # Prompt builder
-engine/orchestration/mutations.py       # Mutation applier
-engine/models/                          # Pydantic models
+engine/infrastructure/orchestration/agent_cli.py    # Agent CLI wrapper
+engine/infrastructure/orchestration/narrator.py     # Narrator caller + prompt builder
+engine/physics/graph/graph_ops.py                   # Mutation applier
+engine/models/                                      # Pydantic models
 ```
 
 ---

@@ -2,16 +2,18 @@
 
 // DOCS: docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
+import { SpeedControl } from '@/components/SpeedControl';
 import { ChronicleEntry, Player } from '@/types/game';
 
 interface ChroniclePanelProps {
   chronicle: ChronicleEntry[];
   player: Player;
   onWrite: (text: string) => void;
+  playthroughId?: string;
 }
 
-export function ChroniclePanel({ chronicle, player, onWrite }: ChroniclePanelProps) {
+export function ChroniclePanel({ chronicle, player, onWrite, playthroughId }: ChroniclePanelProps) {
   const [writeText, setWriteText] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -92,22 +94,29 @@ export function ChroniclePanel({ chronicle, player, onWrite }: ChroniclePanelPro
 
       {/* Write input - like writing in the journal */}
       <div className="px-5 py-4 border-t border-amber-900/30 relative">
-        <textarea
-          value={writeText}
-          onChange={(e) => setWriteText(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Write in your journal..."
-          rows={2}
-          className="w-full bg-transparent text-amber-200/80 text-sm placeholder-amber-900/40 resize-none outline-none italic"
-          style={{ fontFamily: 'Georgia, serif' }}
-        />
-        {writeText.trim() && (
-          <button
-            onClick={handleSubmit}
-            className="absolute bottom-4 right-5 text-xs text-amber-700/60 hover:text-amber-600 transition-colors"
-          >
-            [write]
-          </button>
+        <div className="relative">
+          <textarea
+            value={writeText}
+            onChange={(e) => setWriteText(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Write in your journal..."
+            rows={2}
+            className="w-full bg-transparent text-amber-200/80 text-sm placeholder-amber-900/40 resize-none outline-none italic"
+            style={{ fontFamily: 'Georgia, serif' }}
+          />
+          {writeText.trim() && (
+            <button
+              onClick={handleSubmit}
+              className="absolute bottom-1 right-0 text-xs text-amber-700/60 hover:text-amber-600 transition-colors"
+            >
+              [write]
+            </button>
+          )}
+        </div>
+        {playthroughId && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            <SpeedControl playthroughId={playthroughId} />
+          </div>
         )}
       </div>
     </div>

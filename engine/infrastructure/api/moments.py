@@ -23,6 +23,12 @@ from pydantic import BaseModel, Field
 
 from engine.moment_graph import MomentTraversal, MomentQueries, MomentSurface
 from engine.physics.graph import GraphQueries, get_playthrough_graph_name
+from .sse_broadcast import (
+    broadcast_moment_event,
+    register_sse_client,
+    unregister_sse_client,
+    get_sse_clients
+)
 
 logger = logging.getLogger(__name__)
 
@@ -165,18 +171,8 @@ def create_moments_router(
     _port = port
     _playthroughs_dir = Path(playthroughs_dir)
 
-    # Per-playthrough SSE client queues (defined early for use by endpoints)
-    _moment_sse_clients: Dict[str, List[asyncio.Queue]] = {}
-
-    def broadcast_moment_event(playthrough_id: str, event_type: str, data: Dict[str, Any]):
-        """Broadcast a moment event to all SSE clients for a playthrough."""
-        if playthrough_id not in _moment_sse_clients:
-            return
-        for queue in _moment_sse_clients[playthrough_id]:
-            try:
-                queue.put_nowait({"type": event_type, "data": data})
-            except asyncio.QueueFull:
-                pass  # Drop if queue is full
+    # SSE client management now uses shared sse_broadcast module
+    # broadcast_moment_event, register_sse_client, unregister_sse_client imported from sse_broadcast
 
     # =========================================================================
     # GET CURRENT MOMENTS
@@ -434,10 +430,8 @@ def create_moments_router(
         async def event_generator() -> AsyncGenerator[str, None]:
             queue: asyncio.Queue = asyncio.Queue(maxsize=100)
 
-            # Register this client
-            if playthrough_id not in _moment_sse_clients:
-                _moment_sse_clients[playthrough_id] = []
-            _moment_sse_clients[playthrough_id].append(queue)
+            # Register this client using shared module
+            register_sse_client(playthrough_id, queue)
 
             try:
                 # Send initial connection event
@@ -459,12 +453,8 @@ def create_moments_router(
                         yield f"event: ping\ndata: {{}}\n\n"
 
             finally:
-                # Unregister client
-                if playthrough_id in _moment_sse_clients:
-                    if queue in _moment_sse_clients[playthrough_id]:
-                        _moment_sse_clients[playthrough_id].remove(queue)
-                    if not _moment_sse_clients[playthrough_id]:
-                        del _moment_sse_clients[playthrough_id]
+                # Unregister client using shared module
+                unregister_sse_client(playthrough_id, queue)
 
         return StreamingResponse(
             event_generator(),

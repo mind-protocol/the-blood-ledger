@@ -44,7 +44,7 @@ engine/
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|----------------------|-------|--------|
 | `agents/world_runner/CLAUDE.md` | Agent instructions and output contract | — | ~650 | WATCH |
-| `engine/infrastructure/orchestration/world_runner.py` | Build prompt, call Claude CLI, parse JSON | `WorldRunnerService` | ~156 | OK |
+| `engine/infrastructure/orchestration/world_runner.py` | Build prompt, call agent CLI, parse JSON | `WorldRunnerService` | ~156 | OK |
 
 **Size Thresholds:**
 - **OK** (<400 lines): Healthy size, easy to understand
@@ -59,14 +59,14 @@ engine/
 
 **Pattern:** Adapter + Service Wrapper (within layered orchestration)
 
-**Why this pattern:** The module isolates Claude CLI interaction behind a small service interface (`process_flips`), so orchestrator logic stays decoupled from prompt formatting, subprocess handling, and JSON parsing while keeping the LLM boundary replaceable.
+**Why this pattern:** The module isolates agent CLI interaction behind a small service interface (`process_flips`), so orchestrator logic stays decoupled from prompt formatting, subprocess handling, and JSON parsing while keeping the LLM boundary replaceable.
 
 ### Code Patterns in Use
 
 | Pattern | Applied To | Purpose |
 |---------|------------|---------|
 | Builder | `engine/infrastructure/orchestration/world_runner.py:_build_prompt` | Assemble structured prompt text from YAML fragments |
-| Adapter | `engine/infrastructure/orchestration/world_runner.py:WorldRunnerService` | Wraps the external Claude CLI into a stable Python interface |
+| Adapter | `engine/infrastructure/orchestration/world_runner.py:WorldRunnerService` | Wraps the external agent CLI into a stable Python interface |
 | Fail-safe fallback (Null Object) | `engine/infrastructure/orchestration/world_runner.py:_fallback_response` | Guarantees output shape even on failures |
 
 ### Anti-Patterns to Avoid
@@ -129,7 +129,7 @@ WorldRunnerOutput:
                ▼
 ┌─────────────────────────┐
 │ WorldRunnerService._call_claude │
-│ subprocess Claude CLI    │
+│ subprocess agent CLI     │
 └──────────────┬──────────┘
                │ JSON response
                ▼
@@ -145,7 +145,7 @@ WorldRunnerOutput:
 
 ### LC1: Prompt Build → CLI Call → Parse
 
-**Purpose:** Resolve flips through Claude CLI and return structured output.
+**Purpose:** Resolve flips through the agent CLI and return structured output.
 
 ```
 flips/context
@@ -178,7 +178,7 @@ agents/world_runner/CLAUDE.md
 
 | Package | Used For | Imported By |
 |---------|----------|-------------|
-| `subprocess` | Calling Claude CLI | `engine/infrastructure/orchestration/world_runner.py` |
+| `subprocess` | Calling agent CLI | `engine/infrastructure/orchestration/world_runner.py` |
 | `json` | Parse CLI output | `engine/infrastructure/orchestration/world_runner.py` |
 | `yaml` | Serialize prompt sections | `engine/infrastructure/orchestration/world_runner.py` |
 | `logging` | Service logging | `engine/infrastructure/orchestration/world_runner.py` |
@@ -213,7 +213,7 @@ agents/world_runner/CLAUDE.md
 ```
 1. Orchestrator detects flips
 2. process_flips() builds prompt
-3. Claude CLI runs and returns JSON
+3. Agent CLI runs and returns JSON
 4. JSON parsed or fallback returned
 5. Orchestrator applies mutations + stores injection
 ```
@@ -236,6 +236,7 @@ Synchronous subprocess call with a timeout. Orchestrator call blocks until CLI r
 |--------|----------|---------|-------------|
 | `working_dir` | `engine/infrastructure/orchestration/world_runner.py:26` | `Path.cwd()` | Working directory for CLI invocation |
 | `timeout` | `engine/infrastructure/orchestration/world_runner.py:27` | `600` | CLI timeout in seconds |
+| `AGENTS_MODEL` | env | `claude` | CLI provider (`claude` or `codex`, loaded from `.env` if present) |
 
 ---
 

@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useGameState } from '@/hooks/useGameState';
+import { useTempo } from '@/hooks/useTempo';
 import { GameLayout } from '@/components/GameLayout';
 import { GameState } from '@/types/game';
 
@@ -23,6 +24,7 @@ const LOADING_MESSAGES = [
 export function GameClient({ fallbackState, playthroughId: propPlaythroughId }: GameClientProps) {
   const router = useRouter();
   const { gameState, playthroughId, isLoading, error, isConnected, needsOpening, loadingMessage, sendAction } = useGameState(propPlaythroughId);
+  const { speed, tick } = useTempo(playthroughId);
 
   // Redirect to start screen if no scene exists
   useEffect(() => {
@@ -76,7 +78,7 @@ export function GameClient({ fallbackState, playthroughId: propPlaythroughId }: 
 
   return (
     <>
-      {/* Connection status indicator */}
+      {/* Top right: Connection status */}
       <div className="fixed top-2 right-2 z-50">
         <div
           className={`px-2 py-1 rounded text-xs ${
@@ -100,6 +102,8 @@ export function GameClient({ fallbackState, playthroughId: propPlaythroughId }: 
         initialState={state}
         playthroughId={playthroughId}
         onAction={handleAction}
+        tick={tick}
+        speed={speed}
       />
     </>
   );

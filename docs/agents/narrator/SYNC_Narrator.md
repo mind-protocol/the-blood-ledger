@@ -41,6 +41,12 @@ TOOLS:           tools/stream_dialogue.py
 
 ## RECENT CHANGES
 
+### 2025-12-19: Centralized agent CLI handling for narrator
+
+- **What:** Added `engine/infrastructure/orchestration/agent_cli.py` and routed narrator CLI calls through the shared wrapper with `AGENTS_MODEL` provider selection.
+- **Why:** Standardize command construction and response parsing across agent CLI usage.
+- **Files:** `engine/infrastructure/orchestration/agent_cli.py`, `engine/infrastructure/orchestration/narrator.py`, `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/SYNC_Narrator.md`
+
 ### 2025-12-19: Clarified narrator implementation file references
 
 - **What:** Removed colon-qualified file references, standardized full paths in boundary/chain tables, and noted that the prompt builder lives in `engine/infrastructure/orchestration/narrator.py`.

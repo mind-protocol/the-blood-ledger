@@ -2,9 +2,6 @@
 # Paths listed here are excluded from doctor health checks
 # Syntax is similar to .gitignore
 
-# External/third-party directories (not our code)
-falkordb-browser/
-
 # Dependencies
 node_modules/
 vendor/
@@ -76,25 +73,3 @@ temp/
 site/
 _site/
 docs/_build/
-
-# =============================================================================
-# PROJECT-SPECIFIC IGNORES
-# =============================================================================
-
-# Data directories (runtime data, not code)
-playthroughs/
-mutations/
-screenshots/
-
-# Scripts and tests (utilities, not core modules)
-engine/scripts/
-engine/tests/
-
-# External tools
-falkordb-browser/
-
-# Init files (boilerplate)
-**/__init__.py
-
-# Index files (re-exports)
-**/index.ts

@@ -1,70 +1,125 @@
 # Repository Map: the-blood-ledger
 
-*Generated: 2025-12-19 07:06*
+*Generated: 2025-12-19 10:53*
 
-- **Files:** 233
-- **Directories:** 68
-- **Total Size:** 2.4M
-- **Doc Files:** 131
-- **Code Files:** 97
-- **Areas:** 7 (docs/ subfolders)
-- **Modules:** 15 (subfolders in areas)
-- **DOCS Links:** 9 (0.09 avg per code file)
+- **Files:** 327
+- **Directories:** 90
+- **Total Size:** 3.0M
+- **Doc Files:** 204
+- **Code Files:** 118
+- **Areas:** 8 (docs/ subfolders)
+- **Modules:** 28 (subfolders in areas)
+- **DOCS Links:** 58 (0.49 avg per code file)
 
-- markdown: 131
-- python: 56
-- tsx: 30
-- typescript: 8
+- markdown: 204
+- python: 73
+- tsx: 33
+- typescript: 9
 - css: 1
 - html: 1
 - shell: 1
 
 ```mermaid
 graph TD
+    design_vision[design-vision]
+    moment_graph[moment-graph]
     world_map[world-map]
+    graph_health[graph-health]
+    world_scraping[world-scraping]
     world_runner[world-runner]
+    scene_memory[scene-memory]
+    async_architecture[async-architecture]
+    cli_tools[cli-tools]
+    history[history]
+    canon[canon]
+    image_generation[image-generation]
+    embeddings[embeddings]
+    infrastructure_async[infrastructure-async]
+    infrastructure_api[infrastructure-api]
+    ops_scripts[ops-scripts]
+    frontend[frontend]
+    frontend_types[frontend-types]
+    frontend_right_panel[frontend-right-panel]
+    frontend_moment_components[frontend-moment-components]
+    frontend_minimap[frontend-minimap]
+    frontend_map[frontend-map]
+    frontend_scenarios[frontend-scenarios]
+    frontend_scene[frontend-scene]
+    schema_models[schema-models]
+    moment_graph_engine[moment-graph-engine]
+    engine_test_suite[engine-test-suite]
+    physics[physics]
+    physics_graph[physics-graph]
 ```
 
 | Module | Code | Docs | Lines | Files | Dependencies |
 |--------|------|------|-------|-------|--------------|
+| design-vision | `docs/design/**` | `docs/design/` | 0 | 0 | - |
+| moment-graph | `engine/moments/**` | `docs/engine/moments/` | 25 | 1 | - |
 | world-map | `engine/world/map/**` | `docs/world/map/` | 267 | 2 | - |
-| world-runner | `engine/infrastructure/orchestration/world_runner.py` | `docs/agents/world-runner/` | 134 | 1 | - |
+| graph-health | `engine/graph/health/**` | `docs/schema/graph-health/` | 1393 | 3 | - |
+| world-scraping | `data/scripts/scrape/**` | `docs/world/scraping/` | 2070 | 5 | - |
+| world-runner | `engine/infrastructure/orchestration/world_runner.py` | `docs/agents/world-runner/` | 127 | 1 | - |
+| scene-memory | `engine/infrastructure/memory/**` | `docs/infrastructure/scene-memory/` | 512 | 2 | - |
+| async-architecture | `engine/scripts/check_injection.py` | `docs/infrastructure/async/` | 40 | 1 | - |
+| cli-tools | `tools/**` | `docs/infrastructure/cli-tools/` | 579 | 2 | - |
+| history | `engine/infrastructure/history/**` | `docs/infrastructure/history/` | 688 | 3 | - |
+| canon | `engine/infrastructure/canon/**` | `docs/infrastructure/canon/` | 389 | 3 | - |
+| image-generation | `tools/image_generation/**` | `docs/infrastructure/image-generation/` | 247 | 1 | - |
+| embeddings | `engine/infrastructure/embeddings/**` | `docs/infrastructure/embeddings/` | 150 | 2 | - |
+| infrastructure-async | `engine/infrastructure/api/playthroughs.py` | `docs/infrastructure/async/` | 477 | 1 | - |
+| infrastructure-api | `engine/infrastructure/api/**` | `docs/infrastructure/api/` | 1831 | 6 | - |
+| ops-scripts | `engine/scripts/**` | `docs/infrastructure/ops-scripts/` | 414 | 4 | - |
+| frontend | `frontend/**` | `docs/frontend/` | 3007511 | 14081 | - |
+| frontend-types | `frontend/types/**` | `docs/frontend/` | 485 | 3 | - |
+| frontend-right-panel | `frontend/components/panel/**` | `docs/frontend/right-panel/` | 239 | 4 | - |
+| frontend-moment-components | `frontend/components/moment/**` | `docs/frontend/scene/` | 632 | 5 | - |
+| frontend-minimap | `frontend/components/minimap/**` | `docs/frontend/minimap/` | 213 | 2 | - |
+| frontend-map | `frontend/components/map/**` | `docs/frontend/map/` | 828 | 3 | - |
+| frontend-scenarios | `frontend/app/scenarios/**` | `docs/frontend/scenarios/` | 194 | 1 | - |
+| frontend-scene | `frontend/components/scene/**` | `docs/frontend/scene/` | 1051 | 12 | - |
+| schema-models | `engine/models/**` | `docs/schema/models/` | 965 | 5 | - |
+| moment-graph-engine | `engine/moment_graph/**` | `docs/engine/moment-graph-engine/` | 858 | 4 | - |
+| engine-test-suite | `engine/tests/**` | `docs/engine/tests/` | 5517 | 14 | - |
+| physics | `engine/physics/**` | `docs/physics/` | 4897 | 15 | - |
+| physics-graph | `engine/physics/graph/**` | `docs/physics/graph/` | 4361 | 12 | - |
 
 ```
-├── agents/ (63.7K)
+├── agents/ (85.9K)
 │   ├── developer/ (6.4K)
 │   │   └── CLAUDE.md (6.4K)
-│   ├── narrator/ (33.5K)
-│   │   └── CLAUDE.md (33.5K)
+│   ├── narrator/ (43.2K)
+│   │   ├── CLAUDE.md (9.8K)
+│   │   └── CLAUDE_old.md (33.5K)
+│   ├── world-builder/ (12.4K)
+│   │   └── CLAUDE.md (12.4K)
 │   └── world_runner/ (23.9K)
 │       └── CLAUDE.md (23.9K)
-├── docs/ (1.3M)
-│   ├── agents/ (198.3K)
-│   │   ├── narrator/ (106.3K)
+├── docs/ (1.7M)
+│   ├── agents/ (187.5K)
+│   │   ├── narrator/ (102.1K)
 │   │   │   ├── ALGORITHM_Scene_Generation.md (28.3K)
 │   │   │   ├── BEHAVIORS_Narrator.md (9.1K)
 │   │   │   ├── HANDOFF_Rolling_Window_Architecture.md (6.8K)
-│   │   │   ├── IMPLEMENTATION_Narrator.md (11.3K)
+│   │   │   ├── IMPLEMENTATION_Narrator.md (12.1K)
 │   │   │   ├── INPUT_REFERENCE.md (6.8K)
-│   │   │   ├── PATTERNS_Narrator.md (8.4K)
-│   │   │   ├── SYNC_Narrator.md (2.6K)
+│   │   │   ├── PATTERNS_Narrator.md (2.1K)
+│   │   │   ├── SYNC_Narrator.md (4.5K)
 │   │   │   ├── TEST_Narrator.md (9.0K)
 │   │   │   ├── TOOL_REFERENCE.md (12.6K)
 │   │   │   ├── VALIDATION_Narrator.md (7.5K)
-│   │   │   └── (..3 more files)
-│   │   └── world-runner/ (92.1K)
+│   │   │   └── (..2 more files)
+│   │   └── world-runner/ (85.4K)
 │   │       ├── ALGORITHM_World_Runner.md (19.4K)
 │   │       ├── BEHAVIORS_World_Runner.md (14.4K)
-│   │       ├── IMPLEMENTATION_World_Runner_Service.md (7.9K)
-│   │       ├── IMPLEMENTATION_World_Runner_Service_Architecture.md (8.2K)
+│   │       ├── IMPLEMENTATION_World_Runner_Service_Architecture.md (9.1K)
 │   │       ├── INPUT_REFERENCE.md (6.6K)
 │   │       ├── PATTERNS_World_Runner.md (8.9K)
-│   │       ├── SYNC_World_Runner.md (3.0K)
+│   │       ├── SYNC_World_Runner.md (3.8K)
 │   │       ├── TEST_World_Runner_Coverage.md (2.2K)
 │   │       ├── TOOL_REFERENCE.md (17.0K)
-│   │       ├── VALIDATION_World_Runner_Invariants.md (3.8K)
-│   │       └── (..1 more files)
-│   ├── design/ (135.5K)
+│   │       └── VALIDATION_World_Runner_Invariants.md (3.8K)
+│   ├── design/ (142.9K)
 │   │   ├── opening/ (70.5K)
 │   │   │   ├── ALGORITHM_Opening.md (915)
 │   │   │   ├── BEHAVIORS_Opening.md (6.8K)
@@ -79,164 +134,267 @@ graph TD
 │   │   │   └── README.md (10.3K)
 │   │   ├── ALGORITHM_Vision.md (12.5K)
 │   │   ├── BEHAVIORS_Vision.md (17.2K)
+│   │   ├── IMPLEMENTATION_Vision.md (7.3K)
 │   │   ├── PATTERNS_Vision.md (13.9K)
-│   │   ├── SYNC_Vision.md (3.8K)
-│   │   ├── TEST_Vision.md (996)
+│   │   ├── SYNC_Vision.md (3.9K)
+│   │   ├── TEST_Vision.md (1.0K)
 │   │   └── VALIDATION_Vision.md (6.2K)
-│   ├── frontend/ (64.2K)
-│   │   ├── scene/ (14.8K)
+│   ├── engine/ (46.7K)
+│   │   ├── moment-graph-engine/ (18.3K)
+│   │   │   ├── ALGORITHM_Click_Wait_Surfacing.md (3.1K)
+│   │   │   ├── BEHAVIORS_Traversal_And_Surfacing.md (2.4K)
+│   │   │   ├── IMPLEMENTATION_Moment_Graph_Runtime_Layout.md (2.4K)
+│   │   │   ├── PATTERNS_Instant_Traversal_Moment_Graph.md (3.7K)
+│   │   │   ├── SYNC_Moment_Graph_Engine.md (2.7K)
+│   │   │   ├── TEST_Moment_Graph_Runtime_Coverage.md (1.8K)
+│   │   │   └── VALIDATION_Moment_Traversal_Invariants.md (2.2K)
+│   │   ├── moments/ (11.8K)
+│   │   │   ├── ALGORITHM_Moment_Graph_Operations.md (1.3K)
+│   │   │   ├── BEHAVIORS_Moment_Lifecycle.md (1.4K)
+│   │   │   ├── IMPLEMENTATION_Moment_Graph_Stub.md (868)
+│   │   │   ├── PATTERNS_Moments.md (3.7K)
+│   │   │   ├── SYNC_Moments.md (2.1K)
+│   │   │   ├── TEST_Moment_Graph_Coverage.md (1.3K)
+│   │   │   └── VALIDATION_Moment_Graph_Invariants.md (1.1K)
+│   │   └── tests/ (16.6K)
+│   │       ├── ALGORITHM_Test_Run_Flow.md (1.7K)
+│   │       ├── BEHAVIORS_Test_Coverage_Layers.md (2.1K)
+│   │       ├── IMPLEMENTATION_Test_File_Layout.md (1.9K)
+│   │       ├── PATTERNS_Spec_Linked_Test_Suite.md (3.8K)
+│   │       ├── SYNC_Engine_Test_Suite.md (3.7K)
+│   │       ├── TEST_Test_Suite_Coverage.md (1.8K)
+│   │       └── VALIDATION_Test_Suite_Invariants.md (1.5K)
+│   ├── frontend/ (85.5K)
+│   │   ├── map/ (6.6K)
+│   │   │   ├── PATTERNS_Interactive_Travel_Map.md (1.9K)
+│   │   │   ├── PATTERNS_Parchment_Map_View.md (1.9K)
+│   │   │   └── SYNC_Map_View.md (2.8K)
+│   │   ├── minimap/ (3.6K)
+│   │   │   ├── PATTERNS_Discovered_Location_Minimap.md (1.8K)
+│   │   │   └── SYNC_Minimap.md (1.8K)
+│   │   ├── right-panel/ (3.7K)
+│   │   │   ├── PATTERNS_Tabbed_Right_Panel.md (2.0K)
+│   │   │   └── SYNC_Right_Panel.md (1.7K)
+│   │   ├── scenarios/ (3.7K)
+│   │   │   ├── PATTERNS_Scenario_Selection.md (1.8K)
+│   │   │   └── SYNC_Scenario_Selection.md (1.8K)
+│   │   ├── scene/ (15.6K)
 │   │   │   ├── ALGORITHM_Scene.md (1.3K)
 │   │   │   ├── BEHAVIORS_Scene.md (1.3K)
 │   │   │   ├── PATTERNS_Scene.md (5.7K)
-│   │   │   ├── SYNC_Scene.md (4.7K)
+│   │   │   ├── SYNC_Scene.md (5.5K)
 │   │   │   ├── TEST_Scene.md (839)
 │   │   │   └── VALIDATION_Scene.md (1.0K)
-│   │   ├── ALGORITHM_Frontend_Data_Flow.md (8.6K)
+│   │   ├── ALGORITHM_Frontend_Data_Flow.md (4.2K)
 │   │   ├── BEHAVIORS_Frontend_State_And_Interaction.md (6.6K)
-│   │   ├── IMPLEMENTATION_Frontend_Code_Architecture.md (13.5K)
+│   │   ├── IMPLEMENTATION_Frontend_Code_Architecture.md (14.1K)
 │   │   ├── PATTERNS_Presentation_Layer.md (4.5K)
-│   │   ├── SYNC_Frontend.md (5.6K)
+│   │   ├── SYNC_Frontend.md (9.0K)
+│   │   ├── SYNC_Frontend_archive_2025-12.md (3.4K)
 │   │   ├── TEST_Frontend_Coverage.md (4.9K)
 │   │   └── VALIDATION_Frontend_Invariants.md (5.7K)
-│   ├── infrastructure/ (236.1K)
-│   │   ├── api/ (7.5K)
-│   │   │   ├── ALGORITHM_Api.md (1.2K)
+│   ├── infrastructure/ (484.8K)
+│   │   ├── api/ (26.3K)
+│   │   │   ├── ALGORITHM_Api.md (14.4K)
 │   │   │   ├── BEHAVIORS_Api.md (711)
-│   │   │   ├── IMPLEMENTATION_Api.md (913)
+│   │   │   ├── IMPLEMENTATION_Api.md (1.9K)
 │   │   │   ├── PATTERNS_Api.md (784)
-│   │   │   ├── SYNC_Api.md (2.6K)
+│   │   │   ├── SYNC_Api.md (6.8K)
 │   │   │   ├── TEST_Api.md (627)
-│   │   │   └── VALIDATION_Api.md (716)
-│   │   ├── async/ (43.9K)
-│   │   │   ├── ALGORITHM_Async_Architecture.md (23.4K)
-│   │   │   ├── BEHAVIORS_Travel_Experience.md (2.9K)
-│   │   │   ├── PATTERNS_Async_Architecture.md (10.5K)
-│   │   │   ├── SYNC_Async_Architecture.md (4.8K)
+│   │   │   ├── VALIDATION_Api.md (716)
+│   │   │   └── (..1 more files)
+│   │   ├── async/ (54.0K)
+│   │   │   ├── ALGORITHM_Async_Architecture.md (23.5K)
+│   │   │   ├── BEHAVIORS_Travel_Experience.md (3.3K)
+│   │   │   ├── IMPLEMENTATION_Async_Architecture.md (7.5K)
+│   │   │   ├── PATTERNS_Async_Architecture.md (11.3K)
+│   │   │   ├── SYNC_Async_Architecture.md (6.2K)
 │   │   │   ├── TEST_Async_Architecture.md (1.1K)
 │   │   │   └── VALIDATION_Async_Architecture.md (1.1K)
-│   │   ├── cli-tools/ (8.2K)
-│   │   │   ├── PATTERNS_CLI_Agent_Utilities.md (5.1K)
-│   │   │   └── SYNC_CLI_Tools.md (3.1K)
-│   │   ├── embeddings/ (43.6K)
-│   │   │   ├── ALGORITHM_Embeddings.md (8.2K)
+│   │   ├── canon/ (48.5K)
+│   │   │   ├── ALGORITHM_Canon_Holder.md (7.4K)
+│   │   │   ├── BEHAVIORS_Canon.md (5.2K)
+│   │   │   ├── IMPLEMENTATION_Canon.md (11.6K)
+│   │   │   ├── PATTERNS_Canon.md (4.2K)
+│   │   │   ├── SYNC_Canon.md (5.0K)
+│   │   │   ├── TEST_Canon.md (8.9K)
+│   │   │   └── VALIDATION_Canon.md (6.1K)
+│   │   ├── cli-tools/ (33.9K)
+│   │   │   ├── ALGORITHM_CLI_Tool_Flows.md (4.8K)
+│   │   │   ├── BEHAVIORS_CLI_Streaming_And_Image_Output.md (4.9K)
+│   │   │   ├── IMPLEMENTATION_CLI_Tools_Architecture.md (7.3K)
+│   │   │   ├── PATTERNS_CLI_Agent_Utilities.md (5.4K)
+│   │   │   ├── SYNC_CLI_Tools.md (4.7K)
+│   │   │   ├── TEST_CLI_Tool_Coverage.md (2.9K)
+│   │   │   └── VALIDATION_CLI_Tool_Invariants.md (3.9K)
+│   │   ├── embeddings/ (50.3K)
+│   │   │   ├── ALGORITHM_Embeddings.md (8.3K)
 │   │   │   ├── BEHAVIORS_Embeddings.md (6.5K)
+│   │   │   ├── IMPLEMENTATION_Embeddings.md (5.9K)
 │   │   │   ├── PATTERNS_Embeddings.md (6.1K)
-│   │   │   ├── SYNC_Embeddings.md (4.6K)
+│   │   │   ├── SYNC_Embeddings.md (5.1K)
 │   │   │   ├── SYNC_Embeddings_archive_2025-12.md (2.5K)
-│   │   │   ├── TEST_Embeddings.md (8.7K)
+│   │   │   ├── TEST_Embeddings.md (8.8K)
 │   │   │   └── VALIDATION_Embeddings.md (7.1K)
-│   │   ├── history/ (49.5K)
+│   │   ├── history/ (58.8K)
 │   │   │   ├── ALGORITHM_History.md (10.6K)
-│   │   │   ├── BEHAVIORS_History.md (7.0K)
-│   │   │   ├── PATTERNS_History.md (5.5K)
-│   │   │   ├── SYNC_History.md (5.1K)
-│   │   │   ├── SYNC_History_archive_2025-12.md (4.2K)
-│   │   │   ├── TEST_History.md (9.5K)
+│   │   │   ├── BEHAVIORS_History.md (7.1K)
+│   │   │   ├── IMPLEMENTATION_History_Service_Architecture.md (6.5K)
+│   │   │   ├── PATTERNS_History.md (5.6K)
+│   │   │   ├── SYNC_History.md (5.6K)
+│   │   │   ├── SYNC_History_archive_2025-12.md (6.1K)
+│   │   │   ├── TEST_History.md (9.6K)
 │   │   │   └── VALIDATION_History.md (7.6K)
-│   │   ├── image-generation/ (16.3K)
-│   │   │   ├── ALGORITHM_Image_Generation.md (1.1K)
-│   │   │   ├── BEHAVIORS_Image_Generation.md (1.1K)
-│   │   │   ├── PATTERNS_Image_Generation.md (9.9K)
-│   │   │   ├── SYNC_Image_Generation.md (2.6K)
-│   │   │   ├── TEST_Image_Generation.md (824)
-│   │   │   └── VALIDATION_Image_Generation.md (803)
-│   │   └── scene-memory/ (67.1K)
-│   │       ├── ALGORITHM_Scene_Memory.md (18.8K)
-│   │       ├── BEHAVIORS_Scene_Memory.md (12.4K)
-│   │       ├── PATTERNS_Scene_Memory.md (6.6K)
-│   │       ├── SYNC_Scene_Memory.md (8.6K)
-│   │       └── VALIDATION_Scene_Memory.md (20.6K)
-│   ├── physics/ (331.5K)
-│   │   ├── graph/ (91.3K)
+│   │   ├── image-generation/ (25.8K)
+│   │   │   ├── ALGORITHM_Image_Generation.md (1.2K)
+│   │   │   ├── BEHAVIORS_Image_Generation.md (1.2K)
+│   │   │   ├── IMPLEMENTATION_Image_Generation.md (8.1K)
+│   │   │   ├── PATTERNS_Image_Generation.md (10.2K)
+│   │   │   ├── SYNC_Image_Generation.md (3.4K)
+│   │   │   ├── TEST_Image_Generation.md (877)
+│   │   │   └── VALIDATION_Image_Generation.md (856)
+│   │   ├── ops-scripts/ (11.9K)
+│   │   │   ├── ALGORITHM_Seeding_And_Backfill_Flows.md (1.3K)
+│   │   │   ├── BEHAVIORS_Operational_Script_Runbooks.md (1.5K)
+│   │   │   ├── IMPLEMENTATION_Engine_Scripts_Layout.md (1.5K)
+│   │   │   ├── PATTERNS_Operational_Seeding_And_Backfill_Scripts.md (2.5K)
+│   │   │   ├── SYNC_Ops_Scripts.md (3.0K)
+│   │   │   ├── TEST_Operational_Scripts.md (887)
+│   │   │   └── VALIDATION_Operational_Script_Safety.md (1.2K)
+│   │   ├── scene-memory/ (82.0K)
+│   │   │   ├── ALGORITHM_Scene_Memory.md (18.9K)
+│   │   │   ├── BEHAVIORS_Scene_Memory.md (12.5K)
+│   │   │   ├── IMPLEMENTATION_Scene_Memory.md (8.7K)
+│   │   │   ├── PATTERNS_Scene_Memory.md (6.7K)
+│   │   │   ├── SYNC_Scene_Memory.md (7.9K)
+│   │   │   ├── SYNC_Scene_Memory_archive_2025-12.md (3.3K)
+│   │   │   ├── TEST_Scene_Memory.md (3.3K)
+│   │   │   └── VALIDATION_Scene_Memory.md (20.7K)
+│   │   ├── tempo/ (26.7K)
+│   │   │   ├── ALGORITHM_Tempo_Controller.md (12.3K)
+│   │   │   ├── IMPLEMENTATION_Tempo.md (9.6K)
+│   │   │   └── SYNC_Tempo.md (4.8K)
+│   │   └── world-builder/ (66.5K)
+│   │       ├── ALGORITHM_World_Builder.md (16.4K)
+│   │       ├── IMPLEMENTATION_World_Builder.md (23.1K)
+│   │       ├── SYNC_World_Builder.md (6.0K)
+│   │       ├── TEST_World_Builder.md (11.0K)
+│   │       └── VALIDATION_World_Builder.md (10.0K)
+│   ├── physics/ (333.5K)
+│   │   ├── graph/ (91.9K)
 │   │   │   ├── ALGORITHM_Energy_Flow.md (15.3K)
 │   │   │   ├── BEHAVIORS_Graph.md (6.6K)
 │   │   │   ├── PATTERNS_Graph.md (2.3K)
-│   │   │   ├── SYNC_Graph.md (2.7K)
+│   │   │   ├── SYNC_Graph.md (3.5K)
 │   │   │   ├── SYNC_Graph_archive_2025-12.md (23.8K)
-│   │   │   ├── VALIDATION_Living_Graph.md (40.3K)
-│   │   │   └── (..1 more files)
+│   │   │   └── VALIDATION_Living_Graph.md (40.3K)
 │   │   ├── ALGORITHM_Physics.md (138.7K)
 │   │   ├── API_Physics.md (6.9K)
 │   │   ├── BEHAVIORS_Physics.md (11.5K)
 │   │   ├── IMPLEMENTATION_Physics.md (35.7K)
 │   │   ├── PATTERNS_Physics.md (6.6K)
-│   │   ├── SYNC_Physics.md (10.5K)
+│   │   ├── SYNC_Physics.md (4.8K)
+│   │   ├── SYNC_Physics_archive_2025-12.md (7.1K)
 │   │   ├── TEST_Physics.md (16.6K)
 │   │   └── VALIDATION_Physics.md (13.8K)
-│   ├── schema/ (70.4K)
+│   ├── schema/ (87.0K)
+│   │   ├── graph-health/ (6.6K)
+│   │   │   ├── PATTERNS_Graph_Health_Validation.md (2.8K)
+│   │   │   └── SYNC_Graph_Health.md (3.8K)
+│   │   ├── models/ (10.0K)
+│   │   │   ├── PATTERNS_Pydantic_Schema_Models.md (2.1K)
+│   │   │   └── SYNC_Schema_Models.md (7.9K)
 │   │   ├── SCHEMA.md (48.2K)
 │   │   ├── SCHEMA_Moments.md (22.0K)
 │   │   └── (..1 more files)
-│   ├── world/ (115.3K)
-│   │   ├── map/ (95.0K)
+│   ├── world/ (122.5K)
+│   │   ├── map/ (95.3K)
 │   │   │   ├── ALGORITHM_Rendering.md (57.6K)
 │   │   │   ├── BEHAVIORS_Map.md (13.8K)
-│   │   │   ├── IMPLEMENTATION_Map_Code_Architecture.md (7.4K)
+│   │   │   ├── IMPLEMENTATION_Map_Code_Architecture.md (7.5K)
 │   │   │   ├── PATTERNS_Map.md (6.7K)
-│   │   │   ├── SYNC_Map.md (3.6K)
+│   │   │   ├── SYNC_Map.md (3.7K)
 │   │   │   ├── TEST_Map_Test_Coverage.md (2.5K)
 │   │   │   └── VALIDATION_Map_Invariants.md (3.6K)
-│   │   └── scraping/ (20.2K)
+│   │   └── scraping/ (27.2K)
 │   │       ├── ALGORITHM_Pipeline.md (8.8K)
-│   │       ├── BEHAVIORS_World_Scraping.md (1.1K)
-│   │       ├── PATTERNS_World_Scraping.md (2.4K)
-│   │       ├── SYNC_World_Scraping.md (4.2K)
-│   │       ├── TEST_World_Scraping.md (858)
-│   │       └── VALIDATION_World_Scraping.md (2.8K)
-│   └── map.md (159.9K)
-├── engine/ (833.4K)
+│   │       ├── BEHAVIORS_World_Scraping.md (1.2K)
+│   │       ├── IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md (5.1K)
+│   │       ├── PATTERNS_World_Scraping.md (3.0K)
+│   │       ├── SYNC_World_Scraping.md (5.2K)
+│   │       ├── TEST_World_Scraping.md (932)
+│   │       └── VALIDATION_World_Scraping.md (2.9K)
+│   └── map.md (224.5K)
+├── engine/ (922.9K)
 │   ├── graph/ (119.2K)
 │   │   └── health/ (119.2K)
 │   │       ├── README.md (3.4K)
-│   │       ├── check_health.py (14.0K)
+│   │       ├── check_health.py (14.1K) →
 │   │       ├── example_queries.cypher (18.1K)
 │   │       ├── lint_terminology.py (14.9K)
 │   │       ├── query_outputs.md (23.3K)
 │   │       ├── query_results.md (16.2K)
 │   │       └── test_schema.py (29.3K)
-│   ├── infrastructure/ (162.6K)
-│   │   ├── api/ (69.7K)
-│   │   │   ├── app.py (29.4K) →
-│   │   │   ├── moments.py (18.0K)
-│   │   │   ├── playthroughs.py (22.1K)
+│   ├── infrastructure/ (248.2K)
+│   │   ├── api/ (80.1K)
+│   │   │   ├── app.py (30.6K) →
+│   │   │   ├── moments.py (17.3K)
+│   │   │   ├── playthroughs.py (22.5K)
+│   │   │   ├── sse_broadcast.py (2.8K)
+│   │   │   ├── tempo.py (6.7K) →
 │   │   │   └── (..1 more files)
-│   │   ├── embeddings/ (6.0K)
-│   │   │   ├── service.py (5.6K)
-│   │   │   └── (..1 more files)
+│   │   ├── canon/ (14.5K)
+│   │   │   ├── __init__.py (805) →
+│   │   │   ├── canon_holder.py (10.2K) →
+│   │   │   └── speaker.py (3.5K) →
+│   │   ├── embeddings/ (6.1K)
+│   │   │   ├── __init__.py (501) →
+│   │   │   └── service.py (5.6K) →
 │   │   ├── history/ (34.7K)
 │   │   │   ├── README.md (6.7K)
 │   │   │   ├── __init__.py (1.6K)
 │   │   │   ├── conversations.py (6.7K)
-│   │   │   └── service.py (19.7K)
-│   │   ├── memory/ (19.5K)
-│   │   │   ├── moment_processor.py (19.3K)
+│   │   │   └── service.py (19.8K) →
+│   │   ├── memory/ (19.6K)
+│   │   │   ├── moment_processor.py (19.4K) →
 │   │   │   └── (..1 more files)
-│   │   ├── orchestration/ (32.6K)
+│   │   ├── orchestration/ (37.1K)
 │   │   │   ├── __init__.py (522)
-│   │   │   ├── narrator.py (7.9K)
+│   │   │   ├── agent_cli.py (6.2K)
+│   │   │   ├── narrator.py (6.5K)
 │   │   │   ├── orchestrator.py (19.2K)
-│   │   │   └── world_runner.py (5.0K) →
+│   │   │   └── world_runner.py (4.7K) →
+│   │   ├── tempo/ (14.4K)
+│   │   │   ├── tempo_controller.py (14.1K) →
+│   │   │   └── (..1 more files)
+│   │   ├── world_builder/ (41.6K)
+│   │   │   ├── __init__.py (1.5K) →
+│   │   │   ├── enrichment.py (13.5K) →
+│   │   │   ├── query.py (8.1K) →
+│   │   │   ├── query_moment.py (5.3K) →
+│   │   │   ├── sparsity.py (6.6K) →
+│   │   │   └── world_builder.py (6.6K) →
 │   │   └── (..1 more files)
-│   ├── models/ (37.9K)
-│   │   ├── __init__.py (2.3K)
+│   ├── models/ (38.0K)
+│   │   ├── __init__.py (2.4K) →
 │   │   ├── base.py (12.8K)
 │   │   ├── links.py (7.2K)
 │   │   ├── nodes.py (11.0K) →
 │   │   └── tensions.py (4.6K)
-│   ├── moment_graph/ (32.3K)
+│   ├── moment_graph/ (32.4K)
+│   │   ├── __init__.py (541) →
 │   │   ├── queries.py (15.2K)
 │   │   ├── surface.py (9.0K)
-│   │   ├── traversal.py (7.7K)
-│   │   └── (..1 more files)
-│   ├── moments/ (1.1K)
-│   │   └── __init__.py (1.1K)
-│   ├── physics/ (196.7K)
-│   │   ├── graph/ (174.8K)
-│   │   │   ├── graph_ops.py (28.6K)
-│   │   │   ├── graph_ops_apply.py (29.1K)
+│   │   └── traversal.py (7.7K)
+│   ├── moments/ (896)
+│   │   └── __init__.py (896) →
+│   ├── physics/ (200.2K)
+│   │   ├── graph/ (178.2K)
+│   │   │   ├── graph_ops.py (28.6K) →
+│   │   │   ├── graph_ops_apply.py (30.4K)
 │   │   │   ├── graph_ops_events.py (2.0K)
 │   │   │   ├── graph_ops_image.py (5.0K)
-│   │   │   ├── graph_ops_links.py (17.8K)
+│   │   │   ├── graph_ops_links.py (19.9K)
 │   │   │   ├── graph_ops_moments.py (20.0K)
 │   │   │   ├── graph_queries.py (29.7K)
 │   │   │   ├── graph_queries_moments.py (17.7K) →
@@ -244,14 +402,14 @@ graph TD
 │   │   │   ├── graph_query_utils.py (8.7K) →
 │   │   │   └── (..2 more files)
 │   │   ├── constants.py (3.7K)
-│   │   ├── tick.py (17.7K)
+│   │   ├── tick.py (17.7K) →
 │   │   └── (..1 more files)
-│   ├── scripts/ (18.0K)
-│   │   ├── check_injection.py (1.4K)
-│   │   ├── generate_images_for_existing.py (11.3K)
-│   │   ├── inject_to_narrator.py (3.6K)
-│   │   └── seed_moment_sample.py (1.8K)
-│   ├── tests/ (243.0K)
+│   ├── scripts/ (18.4K)
+│   │   ├── check_injection.py (1.4K) →
+│   │   ├── generate_images_for_existing.py (11.4K) →
+│   │   ├── inject_to_narrator.py (3.6K) →
+│   │   └── seed_moment_sample.py (1.9K) →
+│   ├── tests/ (243.1K)
 │   │   ├── test_behaviors.py (18.3K)
 │   │   ├── test_e2e_moment_graph.py (16.7K)
 │   │   ├── test_history.py (15.1K)
@@ -274,29 +432,30 @@ graph TD
 │   ├── init_db.py (8.7K)
 │   ├── run.py (1.8K)
 │   └── (..1 more files)
-├── frontend/ (191.8K)
-│   ├── app/ (16.5K)
-│   │   ├── map/ (124)
+├── frontend/ (208.2K)
+│   ├── app/ (17.2K)
+│   │   ├── map/ (182)
 │   │   │   └── (..1 more files)
 │   │   ├── scenarios/ (7.0K)
-│   │   │   └── page.tsx (7.0K)
+│   │   │   └── page.tsx (7.0K) →
 │   │   ├── start/ (6.6K)
-│   │   │   └── page.tsx (6.6K)
+│   │   │   └── page.tsx (6.6K) →
 │   │   ├── globals.css (1.6K)
-│   │   ├── layout.tsx (861)
-│   │   └── (..1 more files)
-│   ├── components/ (124.8K)
-│   │   ├── chronicle/ (3.9K)
-│   │   │   └── ChroniclePanel.tsx (3.9K)
-│   │   ├── debug/ (13.0K)
-│   │   │   └── DebugPanel.tsx (13.0K)
+│   │   ├── layout.tsx (916) →
+│   │   └── page.tsx (778) →
+│   ├── components/ (135.5K)
+│   │   ├── chronicle/ (4.3K)
+│   │   │   └── ChroniclePanel.tsx (4.3K) →
+│   │   ├── debug/ (13.1K)
+│   │   │   └── DebugPanel.tsx (13.1K) →
 │   │   ├── map/ (27.4K)
 │   │   │   ├── MapCanvas.tsx (22.7K)
-│   │   │   ├── MapClient.tsx (4.6K)
+│   │   │   ├── MapClient.tsx (4.7K) →
 │   │   │   └── (..1 more files)
-│   │   ├── minimap/ (2.8K)
-│   │   │   └── Minimap.tsx (2.8K)
-│   │   ├── moment/ (19.3K)
+│   │   ├── minimap/ (7.8K)
+│   │   │   ├── Minimap.tsx (3.8K) →
+│   │   │   └── SunArc.tsx (4.0K) →
+│   │   ├── moment/ (19.4K)
 │   │   │   ├── ClickableText.tsx (3.6K)
 │   │   │   ├── MomentDebugPanel.tsx (6.6K)
 │   │   │   ├── MomentDisplay.tsx (5.4K)
@@ -306,9 +465,9 @@ graph TD
 │   │   │   ├── ChronicleTab.tsx (1.6K)
 │   │   │   ├── ConversationsTab.tsx (3.1K)
 │   │   │   ├── LedgerTab.tsx (2.3K)
-│   │   │   └── RightPanel.tsx (2.3K)
-│   │   ├── scene/ (38.7K)
-│   │   │   ├── CenterStage.tsx (14.4K)
+│   │   │   └── RightPanel.tsx (2.3K) →
+│   │   ├── scene/ (39.1K)
+│   │   │   ├── CenterStage.tsx (14.8K)
 │   │   │   ├── CharacterRow.tsx (2.4K)
 │   │   │   ├── Hotspot.tsx (2.6K)
 │   │   │   ├── HotspotRow.tsx (2.8K)
@@ -316,38 +475,48 @@ graph TD
 │   │   │   ├── SceneBanner.tsx (2.5K)
 │   │   │   ├── SceneHeader.tsx (1.1K)
 │   │   │   ├── SceneImage.tsx (3.2K)
-│   │   │   ├── SceneView.tsx (4.0K)
+│   │   │   ├── SceneView.tsx (4.1K) →
 │   │   │   ├── SettingStrip.tsx (2.1K)
 │   │   │   └── (..2 more files)
 │   │   ├── ui/ (3.1K)
-│   │   │   └── Toast.tsx (3.1K)
-│   │   ├── voices/ (1.6K)
-│   │   │   └── Voices.tsx (1.6K)
-│   │   ├── GameClient.tsx (3.6K)
-│   │   ├── GameLayout.tsx (2.0K)
+│   │   │   └── Toast.tsx (3.1K) →
+│   │   ├── voices/ (1.7K)
+│   │   │   └── Voices.tsx (1.7K) →
+│   │   ├── GameClient.tsx (3.7K)
+│   │   ├── GameLayout.tsx (2.9K)
+│   │   ├── SpeedControl.tsx (3.5K)
 │   │   └── (..1 more files)
-│   ├── hooks/ (18.7K)
-│   │   ├── useGameState.ts (13.2K)
-│   │   └── useMoments.ts (5.5K)
-│   ├── lib/ (14.9K)
-│   │   ├── map/ (3.4K)
-│   │   │   ├── projection.ts (2.7K)
-│   │   │   ├── random.ts (722)
+│   ├── hooks/ (23.2K)
+│   │   ├── useGameState.ts (15.0K) →
+│   │   ├── useMoments.ts (5.5K) →
+│   │   └── useTempo.ts (2.7K) →
+│   ├── lib/ (15.1K)
+│   │   ├── map/ (3.6K)
+│   │   │   ├── projection.ts (2.7K) →
+│   │   │   ├── random.ts (781) →
 │   │   │   └── (..1 more files)
-│   │   └── api.ts (11.5K)
-│   ├── types/ (15.8K)
-│   │   ├── game.ts (9.9K)
-│   │   ├── map.ts (4.0K)
-│   │   └── moment.ts (1.8K)
+│   │   └── api.ts (11.5K) →
+│   ├── types/ (15.9K)
+│   │   ├── game.ts (9.9K) →
+│   │   ├── map.ts (4.1K) →
+│   │   └── moment.ts (1.9K) →
 │   └── (..4 more files)
 ├── prompts/ (4.4K)
 │   └── discussion_generator.md (4.4K)
-├── tools/ (25.0K)
-│   ├── image_generation/ (11.3K)
-│   │   ├── README.md (2.2K)
-│   │   └── generate_image.py (9.1K) →
+├── tests/ (50.8K)
+│   └── infrastructure/ (50.8K)
+│       ├── canon/ (17.6K)
+│       │   ├── test_canon_holder.py (17.5K) →
+│       │   └── (..1 more files)
+│       └── world_builder/ (33.2K)
+│           ├── test_world_builder.py (33.2K) →
+│           └── (..1 more files)
+├── tools/ (25.2K)
+│   ├── image_generation/ (11.4K)
+│   │   ├── README.md (2.3K)
+│   │   └── generate_image.py (9.2K) →
 │   └── stream_dialogue.py (13.7K) →
-├── .gitignore (617)
+├── .gitignore (690)
 ├── .ngramignore (806)
 ├── AGENTS.md (22.0K)
 ├── CLAUDE.md (4.0K)
@@ -367,6 +536,42 @@ graph TD
 - ## Before Any Task
 - ## Choose Your VIEW
 - ## After Any Change
+
+**Code refs:**
+- `stream_dialogue.py`
+
+**Sections:**
+- # Narrator Agent
+- ## Quick Reference
+- ## When You're Called
+- ## Tool Calls
+- # Semantic search - returns markdown for LLM consumption
+- # Direct Cypher for complex queries
+- # playthroughs/default/mutations/flip_aldric_edmund.yaml
+- # New narratives (relationships ARE narratives)
+- # New moments (type is always "thought")
+- # Belief links
+- # CAN_SPEAK links (who can voice each moment)
+- # ATTACHED_TO links (presence requirements)
+- ## Schema Reference
+- # Family relationship
+- # Sworn oath
+- # Enmity
+- # NARRATIVE (relationships, memories, knowledge)
+- # MOMENT (always type: thought)
+- # BELIEF (character believes narrative)
+- # CAN_SPEAK (character can voice moment)
+- # ATTACHED_TO (moment attached to entity)
+- # CAN_LEAD_TO (moment can trigger another)
+- # NARRATIVE_LINK (narrative relationships)
+- # PRESENT (character at place)
+- # CONTAINS (place hierarchy)
+- # ABOUT (query→result connections)
+- ## The Core Loop
+- ## Moment Generation Guidelines
+- ## Flip Types
+- ## What You Don't Do
+- ## File Locations
 
 **Code refs:**
 - `stream_dialogue.py`
@@ -402,6 +607,47 @@ graph TD
 - # For action moments:
 - # For query moments:
 - ## Key Links
+
+**Sections:**
+- # World Builder Agent
+- ## Quick Reference
+- ## Core Insight
+- ## When You're Called
+- ## Tool Calls
+- # Get character info
+- # Direct Cypher
+- # playthroughs/default/mutations/enrich_aldric_relatives.yaml
+- # New characters
+- # New place
+- # New thing
+- # RELATIONSHIPS AS NARRATIVES (not RELATED_TO links!)
+- # Thought moments (type is always "thought")
+- # BELIEF links (characters believe the relationship narratives)
+- # PRESENT links (where characters are)
+- # LOCATED links (where things are)
+- # CAN_SPEAK links
+- # ATTACHED_TO links
+- # ABOUT links (connect all created content to query moment)
+- ## Schema Reference
+- # CHARACTER
+- # PLACE
+- # THING
+- # NARRATIVE (includes relationships!)
+- # MOMENT (always type: thought)
+- # BELIEF (how characters know narratives/relationships)
+- # PRESENT (character at place)
+- # LOCATED (thing at place)
+- # CAN_SPEAK
+- # ATTACHED_TO
+- # NARRATIVE_LINK (narrative relationships)
+- # GEOGRAPHY (place connections)
+- # CONTAINS (place hierarchy)
+- # ABOUT (query→result connections - used by World Builder)
+- ## The Setting
+- ## Sparsity Triggers
+- ## What You Don't Do
+- ## File Locations
+- ## Caching
 
 **Sections:**
 - # World Runner Agent
@@ -512,16 +758,17 @@ graph TD
 - ## Next Steps
 
 **Code refs:**
+- `engine/infrastructure/api/playthroughs.py`
+- `engine/infrastructure/orchestration/agent_cli.py`
 - `engine/infrastructure/orchestration/narrator.py`
-- `engine/infrastructure/orchestration/narrator_prompt.py`
-- `graph_ops.py`
-- `narrator.py`
+- `engine/physics/graph/graph_ops.py`
+- `engine/physics/graph/graph_queries.py`
 - `narrator_prompt.py`
-- `stream_dialogue.py`
 - `tools/stream_dialogue.py`
 
 **Doc refs:**
 - `agents/narrator/CLAUDE.md`
+- `playthroughs/kl/PROFILE_NOTES.md`
 
 **Sections:**
 - # Narrator — Implementation: Code Architecture and Structure
@@ -547,27 +794,28 @@ graph TD
 - ## Handling World Injection
 - ## Query Patterns
 
+**Doc refs:**
+- `docs/agents/narrator/HANDOFF_Rolling_Window_Architecture.md`
+
 **Sections:**
 - # Narrator — Patterns: Why This Design
-- ## The Core Insight
-- ## The Five Principles
-- ## The Authorial Model
-- ## Pre-Baked Scene Trees
-- ## Generation Strategy
-- ## The Schema
+- ## Core Insight
+- ## Design Principles
+- ## Pre-Generation Model
 - ## What the Narrator Controls
-- ## Free Input: The Exception
-- ## The Narrator's Workflow
-- ## Why This Matters
-- ## Connection to Graph
+- ## Free Input (Exception)
+- ## Workflow (High Level)
 - ## CHAIN
 
 **Code refs:**
+- `engine/infrastructure/orchestration/agent_cli.py`
+- `engine/infrastructure/orchestration/narrator.py`
 - `engine/physics/graph_tick.py`
 
 **Doc refs:**
 - `docs/agents/narrator/ALGORITHM_Scene_Generation.md`
 - `docs/agents/narrator/IMPLEMENTATION_Narrator.md`
+- `docs/agents/narrator/PATTERNS_World_Building.md`
 - `docs/agents/narrator/SYNC_Narrator.md`
 - `docs/agents/narrator/TEST_Narrator.md`
 - `docs/agents/narrator/VALIDATION_Narrator.md`
@@ -724,29 +972,6 @@ graph TD
 
 **Doc refs:**
 - `agents/world_runner/CLAUDE.md`
-
-**Sections:**
-- # World Runner — Implementation: Service and Agent Wiring
-- ## CHAIN
-- ## CODE STRUCTURE
-- ## DESIGN PATTERNS
-- ## ENTRY POINTS
-- ## DATA FLOW
-- ## LOGIC CHAINS
-- ## MODULE DEPENDENCIES
-- ## STATE MANAGEMENT
-- ## RUNTIME BEHAVIOR
-- ## CONCURRENCY MODEL
-- ## CONFIGURATION
-- ## BIDIRECTIONAL LINKS
-- ## GAPS / IDEAS / QUESTIONS
-
-**Code refs:**
-- `engine/infrastructure/orchestration/world_runner.py`
-
-**Doc refs:**
-- `agents/world_runner/CLAUDE.md`
-- `agents/world_runner/CLAUDE_PROMPT.md`
 
 **Sections:**
 - # World Runner — Implementation: Service Architecture and Boundaries
@@ -1030,6 +1255,43 @@ graph TD
 - ## Engagement Levers
 - ## Metrics (If We Could Measure)
 
+**Doc refs:**
+- `docs/design/ALGORITHM_Vision.md`
+- `docs/design/BEHAVIORS_Drives_And_Metrics.md`
+- `docs/design/BEHAVIORS_Vision.md`
+- `docs/design/IMPLEMENTATION_Vision.md`
+- `docs/design/PATTERNS_Vision.md`
+- `docs/design/SYNC_Vision.md`
+- `docs/design/TEST_Vision.md`
+- `docs/design/VALIDATION_Vision.md`
+- `docs/design/opening/ALGORITHM_Opening.md`
+- `docs/design/opening/BEHAVIORS_Opening.md`
+- `docs/design/opening/CLAUDE.md`
+- `docs/design/opening/CLAUDE_Core_Loop.md`
+- `docs/design/opening/CLAUDE_Tool_Reference.md`
+- `docs/design/opening/CONTENT.md`
+- `docs/design/opening/GUIDE.md`
+- `docs/design/opening/PATTERNS_Opening.md`
+- `docs/design/opening/SYNC_Opening.md`
+- `docs/design/opening/TEST_Opening.md`
+- `docs/design/opening/VALIDATION_Opening.md`
+- `docs/design/scenarios/README.md`
+
+**Sections:**
+- # Vision - Implementation: Documentation Architecture
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
 **Sections:**
 - # Vision — Patterns: Why This Design
 - ## The Core Insight
@@ -1072,6 +1334,421 @@ graph TD
 - ## Red Flags to Watch
 - ## The Ultimate Test
 
+**Code refs:**
+- `engine/moment_graph/traversal.py`
+
+**Sections:**
+- # Moment Graph Engine — Algorithm: Click, Wait, Surfacing
+- ## CHAIN
+- ## CLICK TRAVERSAL
+- ## WAIT TRIGGER TRAVERSAL
+- ## SURFACING AND DECAY
+- ## SCENE CHANGE
+- ## TENSION BOOST
+
+**Code refs:**
+- `engine/moment_graph/__init__.py`
+
+**Sections:**
+- # Moment Graph Engine — Behaviors: Traversal And Surfacing
+- ## CHAIN
+- ## OBSERVABLE BEHAVIORS
+- ## INPUTS AND OUTPUTS
+- ## SIDE EFFECTS
+
+**Code refs:**
+- `engine/moment_graph/__init__.py`
+- `engine/moment_graph/queries.py`
+- `engine/moment_graph/surface.py`
+- `engine/moment_graph/traversal.py`
+- `engine/physics/graph/graph_ops.py`
+- `engine/physics/graph/graph_queries.py`
+
+**Sections:**
+- # Moment Graph Engine — Implementation: Runtime Layout
+- ## CHAIN
+- ## FILES AND ROLES
+- ## DATA FLOW
+- ## DEPENDENCIES
+
+**Code refs:**
+- `engine/moment_graph/__init__.py`
+
+**Sections:**
+- # Moment Graph Engine — Patterns: Instant Traversal Hot Path
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/moment_graph/__init__.py`
+
+**Sections:**
+- # Moment Graph Engine — Sync: Current State
+- ## CHAIN
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+
+**Code refs:**
+- `engine/moment_graph/traversal.py`
+- `engine/tests/test_e2e_moment_graph.py`
+- `engine/tests/test_moment_graph.py`
+
+**Sections:**
+- # Moment Graph Engine — Tests: Runtime Coverage
+- ## CHAIN
+- ## EXISTING TESTS
+- ## HOW TO RUN
+- # Requires FalkorDB running on localhost:6379
+- ## GAPS
+
+**Code refs:**
+- `engine/moment_graph/traversal.py`
+
+**Sections:**
+- # Moment Graph Engine — Validation: Traversal Invariants
+- ## CHAIN
+- ## INVARIANTS
+- ## PERFORMANCE EXPECTATIONS
+- ## FAILURE MODES TO WATCH
+
+**Code refs:**
+- `engine/moments/__init__.py`
+
+**Doc refs:**
+- `docs/schema/SCHEMA_Moments.md`
+
+**Sections:**
+- # Moment Graph — Algorithm: Graph Operations
+- ## CHAIN
+- ## OVERVIEW
+- ## TARGET FLOW
+- ## DATA SOURCES
+
+**Code refs:**
+- `engine/moments/__init__.py`
+
+**Doc refs:**
+- `docs/schema/SCHEMA_Moments.md`
+
+**Sections:**
+- # Moment Graph — Behaviors: Moment Lifecycle
+- ## CHAIN
+- ## BEHAVIOR SUMMARY
+- ## EXPECTED BEHAVIORS
+- ## NOTES
+
+**Code refs:**
+- `engine/moments/__init__.py`
+
+**Sections:**
+- # Moment Graph — Implementation: Stub Layout
+- ## CHAIN
+- ## FILES
+- ## CURRENT IMPLEMENTATION NOTES
+
+**Code refs:**
+- `engine/moments/__init__.py`
+
+**Sections:**
+- # Moment Graph — Patterns
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/moments/__init__.py`
+
+**Doc refs:**
+- `docs/engine/moments/PATTERNS_Moments.md`
+- `docs/engine/moments/SYNC_Moments.md`
+- `docs/schema/SCHEMA_Moments.md`
+
+**Sections:**
+- # Moment Graph — Sync: Current State
+- ## CHAIN
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+
+**Code refs:**
+- `engine/moments/__init__.py`
+- `engine/tests/test_e2e_moment_graph.py`
+- `engine/tests/test_moment_graph.py`
+- `engine/tests/test_moment_lifecycle.py`
+- `engine/tests/test_moments_api.py`
+
+**Sections:**
+- # Moment Graph — Test Coverage
+- ## CHAIN
+- ## CURRENT COVERAGE
+- ## GAPS
+- ## HOW TO RUN
+
+**Code refs:**
+- `engine/moments/__init__.py`
+
+**Doc refs:**
+- `docs/schema/SCHEMA_Moments.md`
+
+**Sections:**
+- # Moment Graph — Validation: Invariants
+- ## CHAIN
+- ## INVARIANTS
+- ## VERIFICATION NOTES
+
+**Code refs:**
+- `engine/tests/__init__.py`
+
+**Sections:**
+- # Engine Test Suite — Algorithm: Test Run Flow
+- ## CHAIN
+- ## RUN FLOW
+- ## COMMON RUN MODES
+- # Full suite (unit + integration; integration may skip)
+- # Unit/spec only (exclude integration)
+- # Integration only
+
+**Code refs:**
+- `engine/tests/__init__.py`
+
+**Sections:**
+- # Engine Test Suite — Behaviors: Coverage Layers
+- ## CHAIN
+- ## OBSERVABLE BEHAVIOR
+- ## INPUTS AND OUTPUTS
+
+**Code refs:**
+- `engine/tests/__init__.py`
+- `test_behaviors.py`
+- `test_implementation.py`
+- `test_integration_scenarios.py`
+- `test_spec_consistency.py`
+
+**Sections:**
+- # Engine Test Suite — Implementation: File Layout
+- ## CHAIN
+- ## DIRECTORY STRUCTURE
+- ## ENTRY POINTS
+
+**Code refs:**
+- `engine/tests/__init__.py`
+
+**Sections:**
+- # Engine Test Suite — Patterns: Spec-Linked Layered Tests
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/tests/__init__.py`
+- `test_implementation.py`
+
+**Doc refs:**
+- `docs/engine/SCHEMA.md`
+- `docs/engine/tests/ALGORITHM_Test_Run_Flow.md`
+- `docs/engine/tests/BEHAVIORS_Test_Coverage_Layers.md`
+- `docs/engine/tests/IMPLEMENTATION_Test_File_Layout.md`
+- `docs/engine/tests/PATTERNS_Spec_Linked_Test_Suite.md`
+- `docs/engine/tests/SYNC_Engine_Test_Suite.md`
+- `docs/engine/tests/TEST_Test_Suite_Coverage.md`
+- `docs/engine/tests/VALIDATION_Test_Suite_Invariants.md`
+- `docs/schema/SCHEMA.md`
+
+**Sections:**
+- # Engine Test Suite — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Code refs:**
+- `engine/tests/__init__.py`
+- `test_behaviors.py`
+- `test_history.py`
+- `test_implementation.py`
+- `test_narrator_integration.py`
+- `test_spec_consistency.py`
+
+**Sections:**
+- # Engine Test Suite — Test Coverage
+- ## CHAIN
+- ## COVERAGE SUMMARY
+- ## HOW TO RUN
+- # Full suite (integration tests may skip)
+- # Unit/spec only
+- # Integration only (requires FalkorDB)
+
+**Code refs:**
+- `engine/tests/__init__.py`
+
+**Sections:**
+- # Engine Test Suite — Validation: Test Invariants
+- ## CHAIN
+- ## INVARIANTS
+- ## VALIDATION STEPS
+- # Ensure unit/spec tests pass without DB
+- # Verify integration tests fail fast or skip when DB is missing
+
+**Code refs:**
+- `frontend/components/map/MapClient.ts`
+
+**Sections:**
+- # Map View — Patterns: Interactive Travel Map
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `frontend/components/map/MapClient.ts`
+
+**Sections:**
+- # Map View — Patterns: Parchment Map With Fog Of War
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `frontend/app/map/page.tsx`
+- `frontend/components/map/MapClient.ts`
+- `frontend/components/map/MapClient.tsx`
+- `frontend/lib/map/index.ts`
+- `frontend/lib/map/projection.ts`
+- `frontend/lib/map/random.ts`
+
+**Doc refs:**
+- `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
+- `docs/frontend/map/SYNC_Map_View.md`
+
+**Sections:**
+- # Map View — Sync: Current State
+- ## CHAIN
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+
+**Code refs:**
+- `frontend/components/minimap/Minimap.ts`
+
+**Sections:**
+- # Minimap — Patterns: Discovered Location Snapshot
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `frontend/components/minimap/Minimap.ts`
+- `frontend/components/minimap/Minimap.tsx`
+
+**Doc refs:**
+- `docs/frontend/minimap/PATTERNS_Discovered_Location_Minimap.md`
+- `docs/frontend/minimap/SYNC_Minimap.md`
+
+**Sections:**
+- # Minimap — Sync: Current State
+- ## CHAIN
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+
+**Code refs:**
+- `frontend/components/panel/ChronicleTab.tsx`
+- `frontend/components/panel/ConversationsTab.tsx`
+- `frontend/components/panel/LedgerTab.tsx`
+- `frontend/components/panel/RightPanel.ts`
+
+**Sections:**
+- # Right Panel — Patterns: Tabbed Sidebar For Chronicle And Ledger
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `frontend/components/panel/RightPanel.ts`
+- `frontend/components/panel/RightPanel.tsx`
+
+**Sections:**
+- # Right Panel — Sync: Current State
+- ## CHAIN
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+
+**Code refs:**
+- `frontend/app/scenarios/page.ts`
+
+**Sections:**
+- # Scenario Selection - Patterns: Curated Starting Point Picker
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `frontend/app/scenarios/page.ts`
+- `frontend/app/scenarios/page.tsx`
+
+**Doc refs:**
+- `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md`
+- `docs/frontend/scenarios/SYNC_Scenario_Selection.md`
+
+**Sections:**
+- # Scenario Selection - Sync: Current State
+- ## CHAIN
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+
 **Sections:**
 - # Scene View — Algorithm
 - ## CHAIN
@@ -1109,6 +1786,8 @@ graph TD
 - `SceneImage.tsx`
 - `SceneView.tsx`
 - `SettingStrip.tsx`
+- `frontend/components/moment/index.ts`
+- `frontend/components/scene/SceneView.tsx`
 - `frontend/hooks/useMoments.ts`
 - `frontend/types/game.ts`
 
@@ -1121,10 +1800,12 @@ graph TD
 - # Scene View — Sync: Current State
 - ## MATURITY
 - ## CURRENT STATE
+- ## RECENT CHANGES
 - ## DESIGN QUESTIONS (from PATTERNS)
 - ## INTEGRATION
 - ## HANDOFF: FOR AGENTS
 - ## HANDOFF: FOR HUMAN
+- ## RECENT CHANGES
 - ## POINTERS
 
 **Sections:**
@@ -1140,22 +1821,27 @@ graph TD
 - ## Checks
 
 **Code refs:**
+- `engine/infrastructure/api/moments.py`
+- `frontend/components/scene/CenterStage.tsx`
 - `frontend/hooks/useGameState.ts`
+- `frontend/lib/api.ts`
+
+**Doc refs:**
+- `docs/frontend/BEHAVIORS_Frontend_State_And_Interaction.md`
+- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
+- `docs/frontend/PATTERNS_Frontend.md`
+- `docs/frontend/SYNC_Frontend.md`
 
 **Sections:**
-- # Frontend — Algorithm: Data Flow and State Transformation
-- ## CHAIN
-- ## OVERVIEW
-- ## DATA STRUCTURES
-- ## ALGORITHM: Initial State Loading
-- ## ALGORITHM: View to Scene Transformation
-- ## ALGORITHM: Moment Click Traversal
-- ## KEY DECISIONS
-- ## DATA FLOW
-- ## COMPLEXITY
-- ## HELPER FUNCTIONS
-- ## INTERACTIONS
-- ## GAPS / IDEAS / QUESTIONS
+- # Frontend Data Flow — Algorithm
+- ## Overview
+- ## Two Paths
+- ## Moment Updates: Current vs Desired
+- ## SSE Event Types
+- ## Implementation Checklist
+- ## Migration Path
+- ## Files
+- ## Chain
 
 **Code refs:**
 - `frontend/app/page.ts`
@@ -1170,36 +1856,35 @@ graph TD
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `app/page.tsx`
-- `components/GameClient.tsx`
-- `components/GameLayout.tsx`
-- `components/moment/ClickableText.tsx`
-- `components/moment/MomentDebugPanel.tsx`
-- `components/moment/MomentDisplay.tsx`
-- `components/moment/MomentStream.tsx`
-- `components/scene/Atmosphere.tsx`
-- `components/scene/CenterStage.tsx`
-- `components/scene/CenterStageContent.tsx`
-- `components/scene/CharacterRow.tsx`
-- `components/scene/Hotspot.tsx`
-- `components/scene/HotspotRow.tsx`
-- `components/scene/ObjectRow.tsx`
-- `components/scene/SceneActions.tsx`
-- `components/scene/SceneBanner.tsx`
-- `components/scene/SceneHeader.tsx`
-- `components/scene/SceneImage.tsx`
-- `components/scene/SceneView.tsx`
-- `components/scene/SettingStrip.tsx`
 - `frontend/app/page.ts`
 - `frontend/app/page.tsx`
-- `hooks/transformers.ts`
-- `hooks/useGameState.ts`
-- `hooks/useMoments.ts`
-- `lib/api.ts`
-- `lib/api/moments.ts`
-- `types/game.ts`
-- `types/map.ts`
-- `types/moment.ts`
+- `frontend/components/GameClient.tsx`
+- `frontend/components/GameLayout.tsx`
+- `frontend/components/moment/ClickableText.tsx`
+- `frontend/components/moment/MomentDebugPanel.tsx`
+- `frontend/components/moment/MomentDisplay.tsx`
+- `frontend/components/moment/MomentStream.tsx`
+- `frontend/components/scene/Atmosphere.tsx`
+- `frontend/components/scene/CenterStage.tsx`
+- `frontend/components/scene/CharacterRow.tsx`
+- `frontend/components/scene/Hotspot.tsx`
+- `frontend/components/scene/HotspotRow.tsx`
+- `frontend/components/scene/ObjectRow.tsx`
+- `frontend/components/scene/SceneActions.tsx`
+- `frontend/components/scene/SceneBanner.tsx`
+- `frontend/components/scene/SceneHeader.tsx`
+- `frontend/components/scene/SceneImage.tsx`
+- `frontend/components/scene/SceneView.tsx`
+- `frontend/components/scene/SettingStrip.tsx`
+- `frontend/hooks/useGameState.ts`
+- `frontend/hooks/useMoments.ts`
+- `frontend/lib/api.ts`
+- `frontend/types/game.ts`
+- `frontend/types/map.ts`
+- `frontend/types/moment.ts`
+
+**Doc refs:**
+- `docs/frontend/PATTERNS_Presentation_Layer.md`
 
 **Sections:**
 - # Frontend — Implementation: Code Architecture and Structure
@@ -1232,6 +1917,7 @@ graph TD
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
+- `frontend/app/layout.tsx`
 - `frontend/app/map/page.tsx`
 - `frontend/app/page.ts`
 - `frontend/app/page.tsx`
@@ -1239,20 +1925,24 @@ graph TD
 - `frontend/app/start/page.tsx`
 - `frontend/components/GameClient.tsx`
 - `frontend/components/GameLayout.tsx`
+- `frontend/components/SpeedControl.tsx`
+- `frontend/components/chronicle/ChroniclePanel.tsx`
+- `frontend/components/ui/Toast.tsx`
 - `frontend/hooks/useGameState.ts`
 - `frontend/hooks/useMoments.ts`
+- `frontend/hooks/useTempo.ts`
 - `frontend/lib/api.ts`
 - `frontend/types/game.ts`
+- `frontend/types/map.ts`
+- `frontend/types/moment.ts`
 
 **Doc refs:**
-- `docs/frontend/PATTERNS_Presentation_Layer.md`
-- `docs/frontend/SYNC_Frontend.md`
+- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
 - `docs/physics/API_Physics.md`
 
 **Sections:**
 - # Frontend — Sync: Current State
 - ## CHAIN
-- ## MATURITY
 - ## CURRENT STATE
 - ## RECENT CHANGES
 - ## KNOWN ISSUES
@@ -1260,6 +1950,24 @@ graph TD
 - ## HANDOFF: FOR HUMAN
 - ## TODO
 - ## POINTERS
+- ## ARCHIVE
+
+**Code refs:**
+- `frontend/components/chronicle/ChroniclePanel.tsx`
+- `frontend/components/debug/DebugPanel.tsx`
+- `frontend/components/scene/CenterStage.tsx`
+- `frontend/components/voices/Voices.tsx`
+- `frontend/hooks/useGameState.ts`
+
+**Doc refs:**
+- `docs/frontend/ALGORITHM_Frontend_Data_Flow.md`
+- `docs/frontend/PATTERNS_Presentation_Layer.md`
+- `docs/frontend/SYNC_Frontend.md`
+
+**Sections:**
+- # Archived: SYNC_Frontend.md
+- ## MATURITY
+- ## RECENT CHANGES
 
 **Code refs:**
 - `hooks/useGameState.ts`
@@ -1303,11 +2011,20 @@ graph TD
 - ## SYNC STATUS
 - ## GAPS / IDEAS / QUESTIONS
 
+**Code refs:**
+- `engine/infrastructure/api/playthroughs.py`
+- `engine/init_db.py`
+- `engine/physics/graph/graph_ops.py`
+- `frontend/app/scenarios/page.tsx`
+- `frontend/app/start/page.tsx`
+- `frontend/hooks/useGameState.ts`
+
 **Sections:**
 - # API — Algorithm
 - ## Graph Helpers
 - ## Health Check
 - ## Debug Mutation Stream
+- ## Playthrough Creation
 - ## CHAIN
 
 **Sections:**
@@ -1321,6 +2038,8 @@ graph TD
 - ## Graph Access Helpers
 - ## Health Check
 - ## Debug Mutation Stream
+- ## Action Endpoint
+- ## Playthrough Creation
 - ## CHAIN
 
 **Sections:**
@@ -1335,6 +2054,8 @@ graph TD
 - `engine/infrastructure/api/playthroughs.py`
 
 **Doc refs:**
+- `docs/infrastructure/api/ALGORITHM_Api.md`
+- `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`
 - `docs/infrastructure/api/BEHAVIORS_Api.md`
 - `docs/infrastructure/api/IMPLEMENTATION_Api.md`
 - `docs/infrastructure/api/SYNC_Api.md`
@@ -1399,6 +2120,7 @@ graph TD
 
 **Sections:**
 - # Travel Experience — Behaviors
+- ## CHAIN
 - ## Core Behavior
 - ## What the Player Sees
 - ## Player Input During Travel
@@ -1406,10 +2128,40 @@ graph TD
 - ## Anti-Patterns
 - ## Success Metrics
 
+**Code refs:**
+- `check_injection.py`
+- `engine/infrastructure/api/app.py`
+- `engine/infrastructure/api/injection_queue.py`
+- `engine/infrastructure/api/playthroughs.py`
+- `engine/scripts/check_injection.py`
+- `engine/scripts/inject_to_narrator.py`
+- `inject_to_narrator.py`
+
+**Doc refs:**
+- `agents/narrator/CLAUDE.md`
+- `agents/world_runner/CLAUDE.md`
+
+**Sections:**
+- # Async Architecture - Implementation: Injection Hooks and Queue Integration
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
 **Sections:**
 - # Async Architecture — Design Patterns
+- ## CHAIN
 - ## Core Principle
 - ## The Architecture in One Sentence
+- ## CHAIN
 - ## Component Responsibilities
 - ## Data Flow Diagram
 - ## Key Design Decisions
@@ -1420,6 +2172,9 @@ graph TD
 
 **Code refs:**
 - `check_injection.py`
+- `engine/infrastructure/api/playthroughs.py`
+- `engine/scripts/check_injection.py`
+- `engine/scripts/inject_to_narrator.py`
 - `generate_images_for_existing.py`
 - `graph_ops.py`
 - `graph_queries.py`
@@ -1427,14 +2182,20 @@ graph TD
 - `physics/tick.py`
 - `world_runner.py`
 
+**Doc refs:**
+- `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`
+- `docs/infrastructure/async/SYNC_Async_Architecture.md`
+
 **Sections:**
 - # Async Architecture — State & Implementation Plan
 - ## Overview
+- ## CHAIN
 - ## Current State vs Target State
 - ## Key Decisions Made
 - ## Open Questions
 - ## Next Action
 - ## Recent Changes
+- ## CONFLICTS
 - ## ARCHIVE
 
 **Code refs:**
@@ -1455,9 +2216,218 @@ graph TD
 - ## Invariants
 - ## Verification Steps
 
+**Doc refs:**
+- `docs/infrastructure/canon/BEHAVIORS_Canon.md`
+- `docs/infrastructure/canon/IMPLEMENTATION_Canon.md`
+- `docs/infrastructure/canon/PATTERNS_Canon.md`
+- `docs/infrastructure/canon/SYNC_Canon.md`
+- `docs/infrastructure/canon/VALIDATION_Canon.md`
+
+**Sections:**
+- # Canon Holder — Algorithm
+- ## Overview
+- ## Constants
+- ## Q1: Detect Ready Moments (possible → active)
+- ## Q2: Check Presence Requirements
+- ## Q3: Get Player Location
+- ## Q4: Flip Moment to Active
+- ## Q5: Determine Speaker
+- ## Q6: Record Moment to Canon (active → spoken)
+- ## Q7: Get Last Spoken Moment
+- ## Q8: Flip to Dormant (player leaves)
+- ## Q9: Reactivate Dormant (player returns)
+- ## Q10: Decay Check
+- ## Process Flow
+- # Find ready moments
+- # Check presence
+- # Check speaker for dialogue
+- # Flip to active
+- # Determine speaker
+- # Record to canon
+- # Broadcast
+- ## SSE Events
+- ## Integration Points
+- ## Chain
+
+**Sections:**
+- # Canon Holder — Behaviors
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## SSE EVENTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/infrastructure/canon/__init__.py`
+- `engine/infrastructure/canon/canon_holder.py`
+- `engine/infrastructure/canon/speaker.py`
+
+**Doc refs:**
+- `docs/infrastructure/canon/IMPLEMENTATION_Canon.md`
+
+**Sections:**
+- # Canon Holder — Implementation: Code Architecture
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `docs/infrastructure/canon/ALGORITHM_Canon_Holder.md`
+- `docs/infrastructure/canon/BEHAVIORS_Canon.md`
+- `docs/infrastructure/canon/IMPLEMENTATION_Canon.md`
+- `docs/infrastructure/canon/SYNC_Canon.md`
+- `docs/infrastructure/canon/VALIDATION_Canon.md`
+
+**Sections:**
+- # Canon Holder — Patterns
+- ## Overview
+- ## Core Design Principle: Single Gatekeeper
+- ## Why This Shape
+- ## Integration Pattern: Option A (Integrated)
+- # In orchestrator.py
+- ## Why Speaker Resolution is Part of Recording
+- ## Invariants This Design Enforces
+- ## What Canon Holder Does NOT Do
+- ## Chain
+
+**Code refs:**
+- `__init__.py`
+- `canon_holder.py`
+- `engine/infrastructure/api/playthroughs.py`
+- `engine/infrastructure/canon/__init__.py`
+- `engine/infrastructure/canon/canon_holder.py`
+- `engine/infrastructure/canon/speaker.py`
+- `orchestrator.py`
+- `playthroughs.py`
+- `speaker.py`
+- `strength.py`
+- `tests/infrastructure/canon/__init__.py`
+- `tests/infrastructure/canon/test_canon_holder.py`
+- `time.py`
+
+**Doc refs:**
+- `docs/infrastructure/canon/ALGORITHM_Canon_Holder.md`
+- `docs/infrastructure/canon/BEHAVIORS_Canon.md`
+- `docs/infrastructure/canon/IMPLEMENTATION_Canon.md`
+- `docs/infrastructure/canon/PATTERNS_Canon.md`
+- `docs/infrastructure/canon/TEST_Canon.md`
+- `docs/infrastructure/canon/VALIDATION_Canon.md`
+
+**Sections:**
+- # Canon Holder — Sync
+- ## Current State
+- ## Resolved Issues
+- # Creates ATTACHED_TO link to location with presence_required=false
+- ## Implementation Summary
+- ## Remaining Work
+- ## Test Results
+- ## Recent Changes
+- ## Chain
+
+**Code refs:**
+- `tests/infrastructure/canon/test_canon_holder.py`
+
+**Sections:**
+- # Canon Holder — Test
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## BEHAVIOR TESTS
+- ## EDGE CASE TESTS
+- ## INTEGRATION TESTS
+- ## TEST FIXTURES
+- # ... extended fixture with 5 moments, CAN_LEAD_TO links
+- ## HOW TO RUN
+- # Run all canon tests
+- # Run specific behavior
+- # Run with coverage
+- # Run integration only
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Canon Holder — Validation
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `generate_image.py`
+- `stream_dialogue.py`
+- `tools/image_generation/generate_image.py`
+- `tools/stream_dialogue.py`
+
+**Sections:**
+- # CLI Tools — Algorithm: Stream Events and Image Requests
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: Stream Dialogue/Narration
+- ## ALGORITHM: Stream Scene/Mutation/Time
+- ## ALGORITHM: Generate Image
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `tools/image_generation/generate_image.py`
+- `tools/stream_dialogue.py`
+
+**Sections:**
+- # CLI Tools — Behaviors: Streaming Dialogue and Image Output
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `generate_image.py`
+- `stream_dialogue.py`
+- `tools/image_generation/generate_image.py`
+- `tools/stream_clickables.py`
+- `tools/stream_dialogue.py`
+
+**Doc refs:**
+- `tools/image_generation/README.md`
+
+**Sections:**
+- # CLI Tools — Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## MODULE DEPENDENCIES
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
 **Code refs:**
 - `engine/db/graph_ops.py`
 - `engine/db/graph_queries.py`
+- `tools/image_generation/generate_image.py`
 - `tools/stream_dialogue.py`
 
 **Sections:**
@@ -1485,6 +2455,7 @@ graph TD
 
 **Sections:**
 - # CLI Tools — Sync: Current State
+- ## CHAIN
 - ## MATURITY
 - ## CURRENT STATE
 - ## RECENT CHANGES
@@ -1494,7 +2465,38 @@ graph TD
 - ## POINTERS
 
 **Code refs:**
-- `engine/embeddings/service.py`
+- `engine/tests/test_narrator_integration.py`
+
+**Sections:**
+- # CLI Tools — Tests: Coverage and Gaps
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS
+
+**Code refs:**
+- `tools/image_generation/generate_image.py`
+- `tools/stream_dialogue.py`
+
+**Sections:**
+- # CLI Tools — Validation: Streaming and Image Invariants
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/infrastructure/embeddings/service.py`
 
 **Sections:**
 - # Embeddings — Algorithm: Indexing and Search Procedures
@@ -1529,7 +2531,7 @@ graph TD
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `engine/embeddings/service.py`
+- `engine/infrastructure/embeddings/service.py`
 
 **Sections:**
 - # Embeddings — Behaviors: Observable Indexing and Search Effects
@@ -1553,6 +2555,24 @@ graph TD
 - # - place/place_humber: "Norman patrols check travelers..."
 - ## GAPS / IDEAS / QUESTIONS
 
+**Code refs:**
+- `engine/infrastructure/embeddings/service.py`
+- `service.py`
+
+**Sections:**
+- # Embeddings - Implementation: Embedding Service Architecture
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
 **Sections:**
 - # Embeddings — Patterns: Per-Field String Embedding
 - ## CHAIN
@@ -1566,12 +2586,14 @@ graph TD
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
+- `engine/infrastructure/embeddings/__init__.py`
 - `engine/infrastructure/embeddings/service.py`
 
 **Sections:**
 - # Embeddings — Sync: Current State
 - ## CURRENT STATE
 - ## IN PROGRESS
+- ## RECENT CHANGES
 - ## KNOWN ISSUES
 - ## HANDOFF: FOR AGENTS
 - ## HANDOFF: FOR HUMAN
@@ -1586,7 +2608,7 @@ graph TD
 - ## IMPLEMENTATION PLAN
 
 **Code refs:**
-- `engine/embeddings/service.py`
+- `engine/infrastructure/embeddings/service.py`
 
 **Sections:**
 - # Embeddings — Test: Test Cases and Coverage
@@ -1619,7 +2641,7 @@ graph TD
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `engine/embeddings/service.py`
+- `engine/infrastructure/embeddings/service.py`
 
 **Sections:**
 - # Embeddings — Validation: Invariants and Verification
@@ -1667,6 +2689,31 @@ graph TD
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
 
+**Code refs:**
+- `conversations.py`
+- `engine/infrastructure/history/__init__.py`
+- `engine/infrastructure/history/conversations.py`
+- `engine/infrastructure/history/queries.py`
+- `engine/infrastructure/history/recording.py`
+- `engine/infrastructure/history/service.py`
+- `service.py`
+
+**Doc refs:**
+- `engine/infrastructure/history/README.md`
+
+**Sections:**
+- # History — Implementation: Service and Conversation Architecture
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
 **Sections:**
 - # History — Patterns: Distributed Memory Through Narratives
 - ## CHAIN
@@ -1680,9 +2727,11 @@ graph TD
 
 **Code refs:**
 - `engine/infrastructure/history/conversations.py`
+- `engine/infrastructure/history/service.py`
 
 **Doc refs:**
 - `docs/infrastructure/history/SYNC_History.md`
+- `docs/schema/SCHEMA_Moments.md`
 
 **Sections:**
 - # History — Sync: Current State
@@ -1694,12 +2743,17 @@ graph TD
 - ## HANDOFF: FOR HUMAN
 - ## TODO
 - ## POINTERS
+- ## CHAIN
 - ## Agent Observations
+- ## ARCHIVE
 - ## ARCHIVE
 - ## ARCHIVE
 
 **Code refs:**
 - `engine/infrastructure/history/conversations.py`
+
+**Doc refs:**
+- `docs/infrastructure/history/SYNC_History.md`
 
 **Sections:**
 - # Archived: SYNC_History.md
@@ -1707,6 +2761,8 @@ graph TD
 - ## RECENT CHANGES
 - # Archived: SYNC_History.md
 - ## MATURITY
+- ## RECENT CHANGES
+- # Archived: SYNC_History.md
 - ## RECENT CHANGES
 
 **Sections:**
@@ -1762,8 +2818,31 @@ graph TD
 **Code refs:**
 - `tools/image_generation/generate_image.py`
 
+**Doc refs:**
+- `tools/image_generation/README.md`
+
+**Sections:**
+- # Image Generation — Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `tools/image_generation/generate_image.py`
+
 **Sections:**
 - # Blood Ledger Image Prompting Guide
+- ## CHAIN
 - ## Core Principles
 - ## Scene Banner Philosophy
 - ## The 8-Part Prompt Structure
@@ -1784,6 +2863,7 @@ graph TD
 **Sections:**
 - # SYNC: Image Generation
 - ## Status
+- ## CHAIN
 - ## What's Canonical (v2)
 - ## What's Working
 - ## Approach
@@ -1791,6 +2871,7 @@ graph TD
 - ## Files
 - ## Open Questions
 - ## Next Steps
+- ## Recent Changes
 - ## Last Updated
 
 **Code refs:**
@@ -1807,6 +2888,78 @@ graph TD
 - # Image Generation — Validation
 - ## CHAIN
 - ## Invariants
+
+**Sections:**
+- # Ops Scripts — Algorithm: Seeding And Backfill Flows
+- ## CHAIN
+- ## SEED MOMENT SAMPLE
+- ## GENERATE IMAGES FOR EXISTING
+
+**Code refs:**
+- `generate_images_for_existing.py`
+- `seed_moment_sample.py`
+
+**Sections:**
+- # Ops Scripts — Behaviors: Operational Script Runbooks
+- ## CHAIN
+- ## EXPECTED BEHAVIOR
+- ## INPUTS
+- ## OUTPUTS
+
+**Code refs:**
+- `engine/physics/graph/graph_ops.py`
+- `engine/scripts/check_injection.py`
+- `engine/scripts/generate_images_for_existing.py`
+- `engine/scripts/inject_to_narrator.py`
+- `engine/scripts/seed_moment_sample.py`
+
+**Sections:**
+- # Ops Scripts — Implementation: Engine Scripts Layout
+- ## CHAIN
+- ## FILES
+- ## ENTRY POINTS
+- ## DEPENDENCIES
+
+**Code refs:**
+- `engine/physics/graph/graph_ops.py`
+- `engine/scripts/seed_moment_sample.py`
+
+**Sections:**
+- # Ops Scripts — Patterns: Operational Seeding And Backfill Scripts
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/scripts/generate_images_for_existing.py`
+- `engine/scripts/seed_moment_sample.py`
+
+**Sections:**
+- # Ops Scripts — Sync: Current State
+- ## CHAIN
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+
+**Sections:**
+- # Ops Scripts — Tests: Operational Scripts
+- ## CHAIN
+- ## AUTOMATED COVERAGE
+- ## MANUAL CHECKS
+- ## GAPS
+
+**Sections:**
+- # Ops Scripts — Validation: Operational Script Safety
+- ## CHAIN
+- ## INVARIANTS
+- ## SAFETY CHECKS
+- ## FAILURE MODES
 
 **Sections:**
 - # Scene Memory System — Algorithm
@@ -1869,6 +3022,28 @@ graph TD
 - ## EDGE CASES
 - ## NEXT IN CHAIN
 
+**Code refs:**
+- `engine/infrastructure/memory/__init__.py`
+- `engine/infrastructure/memory/moment_ids.py`
+- `engine/infrastructure/memory/moment_processor.py`
+- `engine/infrastructure/memory/transcript_store.py`
+- `moment_processor.py`
+
+**Sections:**
+- # Scene Memory System — Implementation: Moment Processing Architecture
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
 **Sections:**
 - # Scene Memory System — Pattern
 - ## CHAIN
@@ -1883,32 +3058,63 @@ graph TD
 
 **Code refs:**
 - `engine/infrastructure/api/moments.py`
+- `engine/infrastructure/memory/__init__.py`
 - `engine/infrastructure/memory/moment_processor.py`
-- `engine/models/nodes.py`
 - `engine/physics/graph/graph_ops_moments.py`
 - `engine/physics/graph/graph_queries_moments.py`
-- `moment_processor.py`
 
 **Sections:**
 - # Scene Memory System — Sync
 - ## DOCUMENT CHAIN
 - ## ARCHITECTURE EVOLUTION
 - ## IMPLEMENTATION STATUS
+- ## LINK TYPES (IMPLEMENTED)
+- ## INTEGRATION POINTS
+- ## DECISIONS MADE (HISTORICAL)
+- ## OPEN QUESTIONS
+- ## CONFLICTS
+- ## Agent Observations
+- ## RECENT CHANGES
+- ## ARCHIVE
+
+**Code refs:**
+- `engine/infrastructure/memory/moment_processor.py`
+- `engine/models/nodes.py`
+- `moment_processor.py`
+
+**Sections:**
+- # Archived: SYNC_Scene_Memory.md
 - ## MOMENT NODE TYPE
 - # Moment Graph fields
 - # Tick tracking
 - # Transcript reference
-- ## LINK TYPES (IMPLEMENTED)
 - ## MOMENT PROCESSOR API
 - # Immediate moments (added to transcript)
 - # Potential moments (graph only)
 - # Links
-- ## INTEGRATION POINTS
-- ## DECISIONS MADE (HISTORICAL)
-- ## OPEN QUESTIONS
 - ## CHANGELOG
-- ## CONFLICTS
-- ## Agent Observations
+
+**Code refs:**
+- `engine/tests/test_e2e_moment_graph.py`
+- `engine/tests/test_moment.py`
+- `engine/tests/test_moment_graph.py`
+- `engine/tests/test_moment_lifecycle.py`
+- `engine/tests/test_moments_api.py`
+
+**Sections:**
+- # Scene Memory System — Test: Moment Processing Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run MomentProcessor unit tests
+- # Run full moment-related suite
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # Scene Memory System — Validation
@@ -1945,6 +3151,274 @@ graph TD
 - ## MANUAL VERIFICATION
 - ## RED FLAGS
 - ## SYNC STATUS
+
+**Sections:**
+- # Tempo Controller — Algorithm
+- ## Overview
+- ## Speed Modes
+- ## Pause Mode (⏸)
+- ## 1x Mode (🗣️)
+- ## 2x Mode (🚶)
+- ## 3x Mode (⏩)
+- ## Interrupt Conditions
+- ## The Snap (3x → 1x)
+- ## Main Loop
+- # Components
+- # Create player moment
+- # Tick once, surface one response
+- # Player input interrupts 3x
+- # Run physics
+- # Detect and surface ready moments
+- # Process only first (highest salience)
+- # SSE broadcast happens inside record_to_canon
+- # Run physics
+- # Detect ready moments
+- # Record to canon
+- # Check interrupt
+- # At 2x/3x, SSE still fires but frontend filters display
+- # Backpressure at 1x
+- # Salience threshold check
+- # Filter by presence requirements
+- # Additional interrupt detection
+- # (Could check for combat, arrivals, etc.)
+- ## SSE Events
+- ## API Endpoints
+- ## Startup / Shutdown
+- # On playthrough start
+- # On playthrough end / disconnect
+- ## Integration Points
+- ## Chain
+- ## Gaps / Questions
+- ## Future UI: Minimap + Sun Arc
+
+**Code refs:**
+- `__init__.py`
+- `engine/infrastructure/tempo/tempo_controller.py`
+- `tempo_controller.py`
+
+**Sections:**
+- # Tempo Controller — Implementation: Code Architecture
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `GameClient.tsx`
+- `SpeedControl.tsx`
+- `engine/infrastructure/api/app.py`
+- `engine/infrastructure/api/tempo.py`
+- `engine/infrastructure/orchestration/orchestrator.py`
+- `engine/infrastructure/tempo/__init__.py`
+- `engine/infrastructure/tempo/tempo_controller.py`
+- `frontend/components/GameClient.tsx`
+- `frontend/components/SpeedControl.tsx`
+- `tempo.py`
+- `tempo_controller.py`
+
+**Doc refs:**
+- `docs/infrastructure/tempo/ALGORITHM_Tempo_Controller.md`
+- `docs/infrastructure/tempo/BEHAVIORS_Tempo.md`
+- `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md`
+- `docs/infrastructure/tempo/PATTERNS_Tempo.md`
+- `docs/infrastructure/tempo/TEST_Tempo.md`
+- `docs/infrastructure/tempo/VALIDATION_Tempo.md`
+
+**Sections:**
+- # Tempo Controller — Sync
+- ## Current State
+- ## Implementation Summary
+- ## Architecture Clarification
+- ## Remaining Work
+- ## Files Changed This Session
+- ## Chain
+- ## Agent Observations
+
+**Sections:**
+- # World Builder — Algorithm
+- ## Overview
+- ## Core Insight: Attention IS Energy
+- ## Core Flow
+- ## Every Query Is A Moment
+- # 1. Record query as moment (this IS the energy source)
+- # 2. Execute query (embeddings use 'detail' or 'name' field)
+- # 3. Link moment to results (weight=similarity, physics will flow energy)
+- # 4. Check sparsity
+- # Apply and link back to query moment
+- # Re-query
+- # Link new results
+- ## Sparsity Detection
+- # 1. Proximity - are results semantically close to query?
+- # 2. Cluster size - how many results?
+- # 3. Diversity - are results varied or all the same?
+- # 4. Connectedness - do results link to other things?
+- # Sparse if any dimension is weak
+- ## World Builder Enrichment
+- ## Apply Enrichment
+- # Characters
+- # Places
+- # Things
+- # Narratives
+- # Links
+- # Link ALL created nodes back to query moment
+- # Moments - always type "thought"
+- # Link to speaker
+- # Link to place
+- # Link enriched moment back to query moment
+- ## Integration
+- # Record
+- # Execute
+- # Link results
+- # Enrich if sparse
+- # Re-query
+- ## Caching / Rate Limiting
+- # Skip if recently enriched
+- # Prevent recursion
+- ## Chain
+- ## Summary
+- ## Gaps / Questions
+
+**Code refs:**
+- `engine/infrastructure/orchestration/agent_cli.py`
+- `enrichment.py`
+- `query.py`
+- `query_moment.py`
+- `sparsity.py`
+- `world_builder.py`
+
+**Sections:**
+- # World Builder — Implementation
+- ## CHAIN
+- ## CORE INSIGHT
+- ## CODE STRUCTURE
+- ## SCHEMA
+- ## KEY FUNCTIONS
+- # engine/infrastructure/world_builder/query.py
+- # 1. Record query as thought moment (this IS the energy source)
+- # 2. Execute semantic search (embeddings use 'detail' or 'name')
+- # 3. Link moment to results (weight=similarity, physics flows energy)
+- # 4. Check sparsity
+- # 5. Enrich
+- # 6. Apply enrichment (links back to query moment)
+- # 7. Re-query
+- # Link new results
+- # engine/infrastructure/world_builder/query_moment.py
+- # Create moment node
+- # Link to character (they can voice this thought)
+- # Link to place
+- # engine/infrastructure/world_builder/sparsity.py
+- # Get query embedding
+- # Get result embeddings (uses 'detail' or 'name' - already implemented)
+- # Fallback: compute embeddings
+- # Proximity: best match to query
+- # Cluster size
+- # Diversity: average pairwise distance
+- # Connectedness: average outgoing links per result
+- # Determine sparsity
+- # engine/infrastructure/world_builder/world_builder.py
+- # Skip if recently enriched
+- # Prevent recursion
+- # Parse YAML from response
+- # engine/infrastructure/world_builder/enrichment.py
+- # Characters
+- # Places
+- # Things
+- # Narratives
+- # Links (just weight, physics handles energy)
+- # Link ALL created nodes back to query moment
+- # Moments - always type "thought"
+- # Link to speaker
+- # Link to place
+- # Link back to query moment
+- # engine/infrastructure/world_builder/enrichment.py
+- ## DATA FLOW
+- ## MODULE DEPENDENCIES
+- ## CONFIGURATION
+- ## INTEGRATION
+- # Old - bypasses recording and enrichment
+- # New - recorded as thought, enriched if sparse, energy flows via physics
+- ## TESTS
+- # Should have created new content
+- # Should include enriched nodes
+- ## GAPS / TODO
+
+**Code refs:**
+- `__init__.py`
+- `engine/infrastructure/orchestration/agent_cli.py`
+- `engine/infrastructure/world_builder/world_builder.py`
+- `enrichment.py`
+- `query.py`
+- `query_moment.py`
+- `sparsity.py`
+- `tests/infrastructure/world_builder/test_world_builder.py`
+- `world_builder.py`
+
+**Sections:**
+- # World Builder — SYNC
+- ## Current State
+- ## Recent Changes
+- ## Integration Points
+- ## Usage Example
+- # Async with enrichment (creates content if sparse)
+- # Sync without enrichment (just search + record)
+- ## Configuration
+- ## Next Steps
+- ## Known Issues
+- ## Handoff Notes
+- ## Chain
+- ## Agent Observations
+
+**Code refs:**
+- `enrichment.py`
+- `query.py`
+- `query_moment.py`
+- `sparsity.py`
+- `tests/infrastructure/test_world_builder.py`
+- `world_builder.py`
+
+**Sections:**
+- # World Builder — Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all world builder tests
+- # Run with coverage
+- # Run specific test category
+- # Run integration tests only (requires FalkorDB)
+- ## TEST FIXTURES
+- # Cleanup test data
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # World Builder — Validation: Invariants and Verification
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- # Run world builder tests
+- # Run with coverage
+- # Run sparsity tests only
+- ## INTEGRATION TESTS
+- ## PERFORMANCE BENCHMARKS
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # Graph — Algorithm: Energy Flow
@@ -2038,16 +3512,32 @@ graph TD
 - ## Criticality
 - ## What Agents Never Do
 
+**Code refs:**
+- `engine/infrastructure/api/app.py`
+- `engine/infrastructure/orchestration/narrator.py`
+- `engine/infrastructure/orchestration/orchestrator.py`
+- `engine/infrastructure/orchestration/world_runner.py`
+- `engine/physics/graph/graph_ops_events.py`
+- `engine/physics/graph/graph_ops_types.py`
+- `engine/physics/graph/graph_queries_moments.py`
+- `engine/physics/tick.py`
+- `graph_ops.py`
+- `graph_ops_events.py`
+- `orchestrator.py`
+- `tick.py`
+
+**Doc refs:**
+- `docs/physics/graph/ALGORITHM_Energy_Flow.md`
+- `docs/physics/graph/ALGORITHM_Weight.md`
+
 **Sections:**
 - # Graph — Current State
-- ## What Exists
-- ## What's Missing
-- ## Parameters
-- ## Criticality Targets
-- ## Open Questions
+- ## What Exists ✓
+- ## What's Missing: ONE ENDPOINT
+- # TODO: SSE streaming version
+- ## Two Paths (Both Valid)
+- ## Known False Positives
 - ## Recent Changes
-- ## ARCHIVE
-- ## ARCHIVE
 
 **Code refs:**
 - `engine/graph/health/check_health.py`
@@ -2579,6 +4069,21 @@ graph TD
 - ## The Philosophy
 
 **Code refs:**
+- `engine/moment_graph/queries.py`
+- `engine/physics/tick.py`
+
+**Sections:**
+- # Physics — Current State
+- ## GAPS
+- ## Recent Changes
+- ## CHAIN
+- ## Architecture Summary
+- ## Open Questions
+- ## Next Steps
+- ## Handoff Notes
+- ## ARCHIVE
+
+**Code refs:**
 - `engine/handlers/base.py`
 - `engine/infrastructure/api/moments.py`
 - `engine/moment_graph/queries.py`
@@ -2596,13 +4101,8 @@ graph TD
 - `docs/physics/ALGORITHM_Physics.md`
 
 **Sections:**
-- # Physics — Current State
+- # Archived: SYNC_Physics.md
 - ## Recent Changes
-- ## CHAIN
-- ## Architecture Summary
-- ## Open Questions
-- ## Next Steps
-- ## Handoff Notes
 - ## Agent Observations
 
 **Code refs:**
@@ -2718,6 +4218,83 @@ graph TD
 - # 4 characters flip simultaneously
 - # Should be ~1 LLM call time, not 4
 - ## Verification Checklist
+
+**Code refs:**
+- `check_health.py`
+- `engine/graph/health/check_health.py`
+- `test_schema.py`
+
+**Sections:**
+- # Graph Health — Patterns: Schema-Driven Validation And Query Artifacts
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `check_health.py`
+- `engine/graph/health/check_health.py`
+- `engine/graph/health/lint_terminology.py`
+- `engine/graph/health/test_schema.py`
+- `test_schema.py`
+
+**Sections:**
+- # Graph Health — Sync: Current State
+- ## CHAIN
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+- ## POINTERS
+- ## Agent Observations
+
+**Code refs:**
+- `__init__.py`
+- `base.py`
+- `engine/models/__init__.py`
+- `engine/tests/test_models.py`
+- `links.py`
+- `nodes.py`
+- `tensions.py`
+
+**Doc refs:**
+- `docs/schema/SCHEMA.md`
+
+**Sections:**
+- # Schema Models — Patterns: Pydantic Graph Schema Models
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/models/__init__.py`
+- `engine/models/base.py`
+- `engine/models/links.py`
+- `engine/models/nodes.py`
+- `engine/tests/test_models.py`
+
+**Doc refs:**
+- `docs/schema/SCHEMA.md`
+- `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`
+- `docs/schema/models/SYNC_Schema_Models.md`
+
+**Sections:**
+- # Schema Models — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+- ## Agent Observations
 
 **Sections:**
 - # THE BLOOD LEDGER — Complete Schema
@@ -3228,6 +4805,9 @@ graph TD
 - `engine/world/map/__init__.py`
 - `engine/world/map/semantic.py`
 
+**Doc refs:**
+- `docs/world/map/PATTERNS_Map.md`
+
 **Sections:**
 - # Map System — Implementation: Semantic Search Code Architecture
 - ## CHAIN
@@ -3337,8 +4917,35 @@ graph TD
 - # World Scraping — Behaviors
 - ## CHAIN
 
+**Code refs:**
+- `data/scripts/inject_world.py`
+- `data/scripts/scrape/narrative_rules.py`
+- `data/scripts/scrape/osm_utils.py`
+- `data/scripts/scrape/phase1_geography.py`
+- `data/scripts/scrape/phase2_political.py`
+- `data/scripts/scrape/phase3_events.py`
+- `data/scripts/scrape/phase4_narratives.py`
+- `data/scripts/scrape/phase5_tensions.py`
+- `engine/db/graph_ops.py`
+- `inject_world.py`
+
+**Sections:**
+- # World Scraping — Implementation (Pipeline Architecture)
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## FILE RESPONSIBILITIES
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## DESIGN PATTERNS
+- ## EXTERNAL DEPENDENCIES
+- ## GAPS
+
+**Code refs:**
+- `data/scripts/scrape/phase1_geography.py`
+
 **Sections:**
 - # World Scraping — Design Patterns
+- ## CHAIN
 - ## Core Principle
 - ## Pattern: Authentic England 1067
 - ## Behaviors: What The Player Experiences
@@ -3347,10 +4954,12 @@ graph TD
 
 **Doc refs:**
 - `docs/world/scraping/ALGORITHM_Pipeline.md`
+- `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
 - `docs/world/scraping/PATTERNS_World_Scraping.md`
 
 **Sections:**
 - # World Scraping — State & Progress
+- ## CHAIN
 - ## Phase Status
 - ## Current Counts (YAML)
 - ## New Content: Characters
@@ -3390,6 +4999,7 @@ graph TD
 - `CenterStage.tsx`
 - `CharacterRow.tsx`
 - `ClickableText.tsx`
+- `GameClient.tsx`
 - `Hotspot.tsx`
 - `HotspotRow.tsx`
 - `MomentDebugPanel.tsx`
@@ -3402,12 +5012,14 @@ graph TD
 - `SceneImage.tsx`
 - `SceneView.tsx`
 - `SettingStrip.tsx`
+- `SpeedControl.tsx`
 - `__init__.py`
 - `api/app.py`
 - `api/moments.py`
 - `app/page.tsx`
 - `base.py`
 - `canon/holder.py`
+- `canon_holder.py`
 - `check_health.py`
 - `check_injection.py`
 - `companion.py`
@@ -3430,6 +5042,15 @@ graph TD
 - `components/scene/SceneImage.tsx`
 - `components/scene/SceneView.tsx`
 - `components/scene/SettingStrip.tsx`
+- `conversations.py`
+- `data/scripts/inject_world.py`
+- `data/scripts/scrape/narrative_rules.py`
+- `data/scripts/scrape/osm_utils.py`
+- `data/scripts/scrape/phase1_geography.py`
+- `data/scripts/scrape/phase2_political.py`
+- `data/scripts/scrape/phase3_events.py`
+- `data/scripts/scrape/phase4_narratives.py`
+- `data/scripts/scrape/phase5_tensions.py`
 - `engine/api/app.py`
 - `engine/api/moments.py`
 - `engine/canon/holder.py`
@@ -3438,24 +5059,44 @@ graph TD
 - `engine/db/graph_queries.py`
 - `engine/embeddings/service.py`
 - `engine/graph/health/check_health.py`
+- `engine/graph/health/lint_terminology.py`
+- `engine/graph/health/test_schema.py`
 - `engine/handlers/__init__.py`
 - `engine/handlers/base.py`
 - `engine/history/conversations.py`
 - `engine/history/service.py`
 - `engine/infrastructure/api/app.py`
+- `engine/infrastructure/api/injection_queue.py`
 - `engine/infrastructure/api/moments.py`
 - `engine/infrastructure/api/playthroughs.py`
+- `engine/infrastructure/api/tempo.py`
+- `engine/infrastructure/canon/__init__.py`
+- `engine/infrastructure/canon/canon_holder.py`
+- `engine/infrastructure/canon/speaker.py`
+- `engine/infrastructure/embeddings/__init__.py`
 - `engine/infrastructure/embeddings/service.py`
+- `engine/infrastructure/history/__init__.py`
 - `engine/infrastructure/history/conversations.py`
+- `engine/infrastructure/history/queries.py`
+- `engine/infrastructure/history/recording.py`
+- `engine/infrastructure/history/service.py`
+- `engine/infrastructure/memory/__init__.py`
+- `engine/infrastructure/memory/moment_ids.py`
 - `engine/infrastructure/memory/moment_processor.py`
+- `engine/infrastructure/memory/transcript_store.py`
+- `engine/infrastructure/orchestration/agent_cli.py`
 - `engine/infrastructure/orchestration/narrator.py`
 - `engine/infrastructure/orchestration/narrator_prompt.py`
 - `engine/infrastructure/orchestration/opening.py`
 - `engine/infrastructure/orchestration/orchestrator.py`
 - `engine/infrastructure/orchestration/speed.py`
 - `engine/infrastructure/orchestration/world_runner.py`
+- `engine/infrastructure/tempo/__init__.py`
+- `engine/infrastructure/tempo/tempo_controller.py`
+- `engine/infrastructure/world_builder/world_builder.py`
 - `engine/init_db.py`
 - `engine/memory/moment_processor.py`
+- `engine/models/__init__.py`
 - `engine/models/base.py`
 - `engine/models/links.py`
 - `engine/models/nodes.py`
@@ -3465,6 +5106,7 @@ graph TD
 - `engine/moment_graph/queries.py`
 - `engine/moment_graph/surface.py`
 - `engine/moment_graph/traversal.py`
+- `engine/moments/__init__.py`
 - `engine/orchestration/narrator.py`
 - `engine/orchestration/opening.py`
 - `engine/orchestration/orchestrator.py`
@@ -3491,6 +5133,7 @@ graph TD
 - `engine/scripts/generate_images_for_existing.py`
 - `engine/scripts/inject_to_narrator.py`
 - `engine/scripts/seed_moment_sample.py`
+- `engine/tests/__init__.py`
 - `engine/tests/test_behaviors.py`
 - `engine/tests/test_e2e_moment_graph.py`
 - `engine/tests/test_history.py`
@@ -3504,30 +5147,39 @@ graph TD
 - `engine/tests/test_moments_api.py`
 - `engine/tests/test_narrator_integration.py`
 - `engine/tests/test_spec_consistency.py`
+- `engine/world/map/__init__.py`
 - `engine/world/map/semantic.py`
+- `enrichment.py`
+- `frontend/app/layout.tsx`
 - `frontend/app/map/page.tsx`
 - `frontend/app/page.ts`
 - `frontend/app/page.tsx`
+- `frontend/app/scenarios/page.ts`
 - `frontend/app/scenarios/page.tsx`
 - `frontend/app/start/page.tsx`
 - `frontend/components/GameClient.tsx`
 - `frontend/components/GameLayout.tsx`
 - `frontend/components/Providers.tsx`
+- `frontend/components/SpeedControl.tsx`
 - `frontend/components/chronicle/ChroniclePanel.tsx`
 - `frontend/components/debug/DebugPanel.tsx`
 - `frontend/components/map/FogOfWar.tsx`
 - `frontend/components/map/MapCanvas.tsx`
+- `frontend/components/map/MapClient.ts`
 - `frontend/components/map/MapClient.tsx`
 - `frontend/components/map/MapView.tsx`
 - `frontend/components/map/PlayerToken.tsx`
+- `frontend/components/minimap/Minimap.ts`
 - `frontend/components/minimap/Minimap.tsx`
 - `frontend/components/moment/ClickableText.tsx`
 - `frontend/components/moment/MomentDebugPanel.tsx`
 - `frontend/components/moment/MomentDisplay.tsx`
 - `frontend/components/moment/MomentStream.tsx`
+- `frontend/components/moment/index.ts`
 - `frontend/components/panel/ChronicleTab.tsx`
 - `frontend/components/panel/ConversationsTab.tsx`
 - `frontend/components/panel/LedgerTab.tsx`
+- `frontend/components/panel/RightPanel.ts`
 - `frontend/components/panel/RightPanel.tsx`
 - `frontend/components/scene/Atmosphere.tsx`
 - `frontend/components/scene/CenterStage.tsx`
@@ -3545,29 +5197,41 @@ graph TD
 - `frontend/components/voices/Voices.tsx`
 - `frontend/hooks/useGameState.ts`
 - `frontend/hooks/useMoments.ts`
+- `frontend/hooks/useTempo.ts`
 - `frontend/lib/api.ts`
+- `frontend/lib/map/index.ts`
 - `frontend/lib/map/projection.ts`
 - `frontend/lib/map/random.ts`
 - `frontend/types/game.ts`
+- `frontend/types/map.ts`
 - `frontend/types/moment.ts`
 - `generate_image.py`
 - `generate_images_for_existing.py`
 - `graph_ops.py`
+- `graph_ops_apply.py`
+- `graph_ops_events.py`
+- `graph_ops_image.py`
+- `graph_ops_types.py`
 - `graph_queries.py`
+- `graph_queries_search.py`
 - `handlers/__init__.py`
 - `handlers/base.py`
 - `handlers/companion.py`
 - `hooks/transformers.ts`
 - `hooks/useGameState.ts`
 - `hooks/useMoments.ts`
+- `inject_to_narrator.py`
+- `inject_world.py`
 - `lib/api.ts`
 - `lib/api/moments.ts`
+- `links.py`
 - `lint_terminology.py`
 - `moment_graph/queries.py`
 - `moment_graph/traversal.py`
 - `moment_processor.py`
 - `narrator.py`
 - `narrator_prompt.py`
+- `nodes.py`
 - `orchestration/narrator.py`
 - `orchestration/orchestrator.py`
 - `orchestration/speed.py`
@@ -3578,39 +5242,61 @@ graph TD
 - `physics/graph/health/lint_terminology.py`
 - `physics/graph/health/test_schema.py`
 - `physics/tick.py`
+- `playthroughs.py`
+- `query.py`
+- `query_moment.py`
 - `run.py`
 - `scripts/check_chain.py`
+- `seed_moment_sample.py`
+- `service.py`
+- `sparsity.py`
+- `speaker.py`
 - `stream_dialogue.py`
+- `strength.py`
+- `tempo.py`
+- `tempo_controller.py`
+- `tensions.py`
 - `test_behaviors.py`
 - `test_history.py`
 - `test_implementation.py`
 - `test_integration_scenarios.py`
 - `test_models.py`
 - `test_moment.py`
+- `test_narrator_integration.py`
 - `test_schema.py`
 - `test_spec_consistency.py`
 - `tests/api/test_health.py`
 - `tests/async/test_hook_injection.py`
 - `tests/async/test_runner_protocol.py`
 - `tests/async/test_sse_queue.py`
+- `tests/infrastructure/canon/__init__.py`
+- `tests/infrastructure/canon/test_canon_holder.py`
+- `tests/infrastructure/test_world_builder.py`
+- `tests/infrastructure/world_builder/test_world_builder.py`
 - `tests/tools/test_generate_image.py`
 - `tests/tools/test_graphops_images.py`
 - `tests/tools/test_retry_policy.py`
+- `tests/world/test_map_semantic.py`
 - `tests/world/test_narratives.py`
 - `tests/world/test_pipeline.py`
 - `tests/world/test_positions.py`
 - `tests/world/test_routes.py`
+- `tick.py`
+- `time.py`
 - `tools/image_generation/generate_image.py`
+- `tools/stream_clickables.py`
 - `tools/stream_dialogue.py`
 - `types/game.ts`
 - `types/map.ts`
 - `types/moment.ts`
+- `world_builder.py`
 - `world_runner.py`
 
 **Doc refs:**
 - `agents/developer/CLAUDE.md`
 - `agents/narrator/CLAUDE.md`
 - `agents/world_runner/CLAUDE.md`
+- `agents/world_runner/CLAUDE_PROMPT.md`
 - `data/init/BLOOD_LEDGER_DESIGN_DOCUMENT.md`
 - `docs/agents/narrator/ALGORITHM_Prompt_Structure.md`
 - `docs/agents/narrator/ALGORITHM_Rolling_Window.md`
@@ -3618,6 +5304,7 @@ graph TD
 - `docs/agents/narrator/ALGORITHM_Thread.md`
 - `docs/agents/narrator/BEHAVIORS_Narrator.md`
 - `docs/agents/narrator/HANDOFF_Rolling_Window_Architecture.md`
+- `docs/agents/narrator/IMPLEMENTATION_Narrator.md`
 - `docs/agents/narrator/INPUT_REFERENCE.md`
 - `docs/agents/narrator/PATTERNS_Narrator.md`
 - `docs/agents/narrator/PATTERNS_World_Building.md`
@@ -3635,9 +5322,13 @@ graph TD
 - `docs/agents/narrator/SYNC_Narrator_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12.md`
 - `docs/agents/narrator/TEMPLATE_Player_Notes.md`
 - `docs/agents/narrator/TEMPLATE_Story_Notes.md`
+- `docs/agents/narrator/TEST_Narrator.md`
 - `docs/agents/narrator/TOOL_REFERENCE.md`
+- `docs/agents/narrator/VALIDATION_Narrator.md`
 - `docs/design/ALGORITHM_Vision.md`
+- `docs/design/BEHAVIORS_Drives_And_Metrics.md`
 - `docs/design/BEHAVIORS_Vision.md`
+- `docs/design/IMPLEMENTATION_Vision.md`
 - `docs/design/PATTERNS_Vision.md`
 - `docs/design/SYNC_Vision.md`
 - `docs/design/TEST_Vision.md`
@@ -3645,6 +5336,8 @@ graph TD
 - `docs/design/opening/ALGORITHM_Opening.md`
 - `docs/design/opening/BEHAVIORS_Opening.md`
 - `docs/design/opening/CLAUDE.md`
+- `docs/design/opening/CLAUDE_Core_Loop.md`
+- `docs/design/opening/CLAUDE_Tool_Reference.md`
 - `docs/design/opening/CONTENT.md`
 - `docs/design/opening/GUIDE.md`
 - `docs/design/opening/PATTERNS_Opening.md`
@@ -3674,14 +5367,33 @@ graph TD
 - `docs/engine/UI_API_CHANGES_Moment_Graph.md`
 - `docs/engine/VALIDATION_Complete_Spec.md`
 - `docs/engine/WORLD_RUNNER_INTEGRATION_Moment_Graph.md`
+- `docs/engine/moments/PATTERNS_Moments.md`
 - `docs/engine/moments/SCHEMA_Moments.md`
+- `docs/engine/moments/SYNC_Moments.md`
 - `docs/engine/scene_memory/ALGORITHM_Scene_Memory.md`
 - `docs/engine/scene_memory/BEHAVIORS_Scene_Memory.md`
 - `docs/engine/scene_memory/PATTERNS_Scene_Memory.md`
 - `docs/engine/scene_memory/SYNC_Scene_Memory.md`
 - `docs/engine/scene_memory/VALIDATION_Scene_Memory.md`
+- `docs/engine/tests/ALGORITHM_Test_Run_Flow.md`
+- `docs/engine/tests/BEHAVIORS_Test_Coverage_Layers.md`
+- `docs/engine/tests/IMPLEMENTATION_Test_File_Layout.md`
+- `docs/engine/tests/PATTERNS_Spec_Linked_Test_Suite.md`
+- `docs/engine/tests/SYNC_Engine_Test_Suite.md`
+- `docs/engine/tests/TEST_Test_Suite_Coverage.md`
+- `docs/engine/tests/VALIDATION_Test_Suite_Invariants.md`
+- `docs/frontend/ALGORITHM_Frontend_Data_Flow.md`
+- `docs/frontend/BEHAVIORS_Frontend_State_And_Interaction.md`
+- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
+- `docs/frontend/PATTERNS_Frontend.md`
 - `docs/frontend/PATTERNS_Presentation_Layer.md`
 - `docs/frontend/SYNC_Frontend.md`
+- `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
+- `docs/frontend/map/SYNC_Map_View.md`
+- `docs/frontend/minimap/PATTERNS_Discovered_Location_Minimap.md`
+- `docs/frontend/minimap/SYNC_Minimap.md`
+- `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md`
+- `docs/frontend/scenarios/SYNC_Scenario_Selection.md`
 - `docs/frontend/scene/ALGORITHM_Scene.md`
 - `docs/frontend/scene/BEHAVIORS_Scene.md`
 - `docs/frontend/scene/PATTERNS_Scene.md`
@@ -3689,6 +5401,8 @@ graph TD
 - `docs/frontend/scene/TEST_Scene.md`
 - `docs/frontend/scene/VALIDATION_Scene.md`
 - `docs/history/PATTERNS_History.md`
+- `docs/infrastructure/api/ALGORITHM_Api.md`
+- `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`
 - `docs/infrastructure/api/BEHAVIORS_Api.md`
 - `docs/infrastructure/api/IMPLEMENTATION_Api.md`
 - `docs/infrastructure/api/SYNC_Api.md`
@@ -3700,8 +5414,16 @@ graph TD
 - `docs/infrastructure/async/ALGORITHM_Runner_Protocol.md`
 - `docs/infrastructure/async/ALGORITHM_Waypoint_Creation.md`
 - `docs/infrastructure/async/BEHAVIORS_Travel_Experience.md`
+- `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`
 - `docs/infrastructure/async/PATTERNS_Async_Architecture.md`
 - `docs/infrastructure/async/SYNC_Async_Architecture.md`
+- `docs/infrastructure/canon/ALGORITHM_Canon_Holder.md`
+- `docs/infrastructure/canon/BEHAVIORS_Canon.md`
+- `docs/infrastructure/canon/IMPLEMENTATION_Canon.md`
+- `docs/infrastructure/canon/PATTERNS_Canon.md`
+- `docs/infrastructure/canon/SYNC_Canon.md`
+- `docs/infrastructure/canon/TEST_Canon.md`
+- `docs/infrastructure/canon/VALIDATION_Canon.md`
 - `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
 - `docs/infrastructure/embeddings/BEHAVIORS_Embeddings.md`
 - `docs/infrastructure/embeddings/PATTERNS_Embeddings.md`
@@ -3710,10 +5432,17 @@ graph TD
 - `docs/infrastructure/embeddings/VALIDATION_Embeddings.md`
 - `docs/infrastructure/history/ALGORITHM_History.md`
 - `docs/infrastructure/history/BEHAVIORS_History.md`
+- `docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md`
 - `docs/infrastructure/history/PATTERNS_History.md`
 - `docs/infrastructure/history/SYNC_History.md`
 - `docs/infrastructure/history/TEST_History.md`
 - `docs/infrastructure/history/VALIDATION_History.md`
+- `docs/infrastructure/tempo/ALGORITHM_Tempo_Controller.md`
+- `docs/infrastructure/tempo/BEHAVIORS_Tempo.md`
+- `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md`
+- `docs/infrastructure/tempo/PATTERNS_Tempo.md`
+- `docs/infrastructure/tempo/TEST_Tempo.md`
+- `docs/infrastructure/tempo/VALIDATION_Tempo.md`
 - `docs/physics/ALGORITHM_Actions.md`
 - `docs/physics/ALGORITHM_Canon.md`
 - `docs/physics/ALGORITHM_Energy.md`
@@ -3728,6 +5457,7 @@ graph TD
 - `docs/physics/IMPLEMENTATION_Moments.md`
 - `docs/physics/IMPLEMENTATION_Physics.md`
 - `docs/physics/PATTERNS_Moments.md`
+- `docs/physics/PATTERNS_Physics.md`
 - `docs/physics/SCHEMA_Moments.md`
 - `docs/physics/SYNC_Physics.md`
 - `docs/physics/TEST_Moments.md`
@@ -3747,6 +5477,8 @@ graph TD
 - `docs/schema/SCHEMA_Moments.md`
 - `docs/schema/VALIDATION_Graph.md`
 - `docs/schema/VALIDATION_Living_Graph.md`
+- `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`
+- `docs/schema/models/SYNC_Schema_Models.md`
 - `docs/world/map/ALGORITHM_Places.md`
 - `docs/world/map/ALGORITHM_Rendering.md`
 - `docs/world/map/ALGORITHM_Routes.md`
@@ -3771,12 +5503,15 @@ graph TD
 - `docs/world/scraping/ALGORITHM_Political.md`
 - `docs/world/scraping/ALGORITHM_Tensions.md`
 - `docs/world/scraping/BEHAVIORS_World_Scraping.md`
+- `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
 - `docs/world/scraping/PATTERNS_World_Scraping.md`
 - `docs/world/scraping/SYNC_World_Scraping.md`
 - `docs/world/scraping/VALIDATION_World_Scraping.md`
 - `engine/history/README.md`
+- `engine/infrastructure/history/README.md`
 - `graph/VALIDATION.md`
 - `physics/graph/health/README.md`
+- `playthroughs/kl/PROFILE_NOTES.md`
 - `tools/image_generation/README.md`
 - `views/VIEW_Analyze_Structural_Analysis.md`
 - `views/VIEW_Collaborate_Pair_Program_With_Human.md`
@@ -3812,6 +5547,8 @@ graph TD
 - ## Schema Tests
 - ## Using Queries
 - # Run a query
+
+**Docs:** `docs/schema/graph-health/PATTERNS_Graph_Health_Validation.md`
 
 **Definitions:**
 - `class Issue`
@@ -3937,6 +5674,7 @@ graph TD
 - `async def health_check()`
 - `async def create_playthrough()`
 - `async def create_scenario_playthrough()`
+- `async def player_action()`
 - `async def get_playthrough()`
 - `class MomentClickRequest`
 - `class MomentClickResponse`
@@ -3968,7 +5706,6 @@ graph TD
 - `class ClickResponse`
 - `class SurfaceRequest`
 - `def create_moments_router()`
-- `def broadcast_moment_event()`
 - `async def get_current_moments()`
 - `async def click_word()`
 - `async def get_moment_stats()`
@@ -3990,9 +5727,58 @@ graph TD
 - `def _get_playthrough_queries()`
 - `async def create_playthrough()`
 - `async def send_moment()`
+- `def dummy_embed()`
 - `async def get_discussion_topics()`
 - `async def get_discussion_topic()`
 - `async def use_discussion_branch()`
+
+**Definitions:**
+- `def get_sse_clients()`
+- `def register_sse_client()`
+- `def unregister_sse_client()`
+- `def broadcast_moment_event()`
+
+**Docs:** `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md`
+
+**Definitions:**
+- `class SetSpeedRequest`
+- `class PlayerInputRequest`
+- `class TempoStateResponse`
+- `class QueueSizeUpdate`
+- `def create_tempo_router()`
+- `async def set_speed()`
+- `async def get_tempo_state()`
+- `async def player_input()`
+- `async def update_queue_size()`
+- `async def start_tempo()`
+- `async def stop_tempo()`
+- `def _get_or_create_controller()`
+- `def get_tempo_controller()`
+
+**Docs:** `docs/infrastructure/canon/IMPLEMENTATION_Canon.md`
+
+**Docs:** `docs/infrastructure/canon/IMPLEMENTATION_Canon.md`
+
+**Definitions:**
+- `class CanonHolder`
+- `def __init__()`
+- `def record_to_canon()`
+- `def process_ready_moments()`
+- `def _get_moment()`
+- `def _create_said_link()`
+- `def _create_then_link()`
+- `def _get_last_spoken_moment_id()`
+- `def record_to_canon()`
+
+**Docs:** `docs/infrastructure/canon/IMPLEMENTATION_Canon.md`
+
+**Definitions:**
+- `def determine_speaker()`
+- `def get_moment_type()`
+
+**Docs:** `docs/infrastructure/embeddings/`
+
+**Docs:** `docs/infrastructure/embeddings/`
 
 **Definitions:**
 - `class EmbeddingService`
@@ -4055,6 +5841,8 @@ graph TD
 - `def get_full_thread()`
 - `def search_sections()`
 
+**Docs:** `docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md`
+
 **Definitions:**
 - `class HistoryService`
 - `def __init__()`
@@ -4069,6 +5857,8 @@ graph TD
 - `def _create_narrative_node()`
 - `def _create_belief_edge()`
 - `def _propagate_beliefs()`
+
+**Docs:** `docs/infrastructure/scene-memory/`
 
 **Definitions:**
 - `class MomentProcessor`
@@ -4089,6 +5879,17 @@ graph TD
 - `def last_moment_id()`
 - `def transcript_line_count()`
 - `def get_moment_processor()`
+
+**Definitions:**
+- `class AgentCliResult`
+- `def get_agent_model()`
+- `def _load_dotenv_if_needed()`
+- `def build_agent_command()`
+- `def run_agent()`
+- `def parse_claude_json_output()`
+- `def extract_claude_text()`
+- `def _strip_code_fence()`
+- `def parse_codex_stream_output()`
 
 **Definitions:**
 - `class NarratorService`
@@ -4132,6 +5933,87 @@ graph TD
 - `def _build_prompt()`
 - `def _call_claude()`
 - `def _fallback_response()`
+
+**Docs:** `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md`
+
+**Definitions:**
+- `class TempoController`
+- `def __init__()`
+- `async def run()`
+- `def stop()`
+- `def set_speed()`
+- `async def on_player_input()`
+- `def update_display_queue_size()`
+- `async def _wait_for_input()`
+- `async def _tick_once()`
+- `async def _tick_continuous()`
+- `def _tick_interval()`
+- `def _detect_ready_moments()`
+- `def _check_presence()`
+- `def _get_player_location()`
+- `def _check_interrupt()`
+- `def _create_player_moment()`
+- `def _broadcast_speed_change()`
+
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+
+**Definitions:**
+- `def build_enrichment_prompt()`
+- `def apply_enrichment()`
+- `def _format_results()`
+- `def _create_character()`
+- `def _create_place()`
+- `def _create_thing()`
+- `def _create_narrative()`
+- `def _create_link()`
+- `def _create_moment()`
+- `def _link_moment_to_speaker()`
+- `def _link_moment_to_place()`
+- `def _link_to_query_moment()`
+
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+
+**Definitions:**
+- `async def query()`
+- `def query_sync()`
+- `def _get_default_semantic_search()`
+- `def _create_count_links_fn()`
+- `def count_links()`
+- `def _build_enrichment_context()`
+
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+
+**Definitions:**
+- `def record_query_moment()`
+- `def link_results_to_moment()`
+- `def _link_to_character()`
+- `def _link_to_place()`
+
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+
+**Definitions:**
+- `class SparsityResult`
+- `def cosine_similarity()`
+- `def node_to_text()`
+- `def is_sparse()`
+- `def _default_embed()`
+
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+
+**Definitions:**
+- `class WorldBuilder`
+- `def __init__()`
+- `async def enrich()`
+- `async def _call_llm()`
+- `async def _call_agent_cli()`
+- `def _parse_response()`
+- `def _hash_query()`
+- `def clear_cache()`
+- `def get_default_world_builder()`
+
+**Docs:** `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`
 
 **Definitions:**
 - `class CharacterType`
@@ -4220,6 +6102,8 @@ graph TD
 - `def add_event_pressure()`
 - `def reset()`
 
+**Docs:** `docs/engine/moment-graph-engine/PATTERNS_Instant_Traversal_Moment_Graph.md`
+
 **Definitions:**
 - `class MomentQueries`
 - `def __init__()`
@@ -4258,9 +6142,13 @@ graph TD
 - `def _boost_weight()`
 - `def _create_then_link()`
 
+**Docs:** `docs/engine/moments/PATTERNS_Moments.md`
+
 **Definitions:**
 - `class Moment`
 - `def not_implemented()`
+
+**Docs:** `docs/physics/graph/PATTERNS_Graph.md`
 
 **Definitions:**
 - `class GraphOps`
@@ -4326,6 +6214,8 @@ graph TD
 - `def add_narrative_link()`
 - `def add_thing_location()`
 - `def add_geography()`
+- `def add_contains()`
+- `def add_about()`
 
 **Definitions:**
 - `class MomentOperationsMixin`
@@ -4408,6 +6298,8 @@ graph TD
 **Definitions:**
 - `def distance_to_proximity()`
 
+**Docs:** `docs/physics/PATTERNS_Physics.md`
+
 **Definitions:**
 - `class TickResult`
 - `class GraphTick`
@@ -4428,13 +6320,19 @@ graph TD
 - `def _tick_pressures()`
 - `def _detect_flips()`
 
+**Docs:** `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`
+
 **Definitions:**
 - `def main()`
+
+**Docs:** `docs/infrastructure/ops-scripts/PATTERNS_Operational_Seeding_And_Backfill_Scripts.md`
 
 **Definitions:**
 - `def create_character_prompt()`
 - `def create_place_prompt()`
 - `def main()`
+
+**Docs:** `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`
 
 **Definitions:**
 - `def is_narrator_running()`
@@ -4442,6 +6340,8 @@ graph TD
 - `def inject_via_direct_call()`
 - `def inject()`
 - `def main()`
+
+**Docs:** `docs/infrastructure/ops-scripts/PATTERNS_Operational_Seeding_And_Backfill_Scripts.md`
 
 **Definitions:**
 - `def main()`
@@ -4933,17 +6833,29 @@ graph TD
 **Definitions:**
 - `def main()`
 
+**Docs:** `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md`
+
 **Definitions:**
 - `handleBegin()`
+
+**Docs:** `docs/frontend/PATTERNS_Presentation_Layer.md`
 
 **Definitions:**
 - `rollRandomName()`
 - `handleBegin()`
 
+**Docs:** `docs/frontend/PATTERNS_Presentation_Layer.md`
+
+**Docs:** `docs/frontend/PATTERNS_Presentation_Layer.md`
+
+**Docs:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
+
 **Definitions:**
 - `ChroniclePanel()`
 - `handleSubmit()`
 - `handleKeyDown()`
+
+**Docs:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
 
 **Definitions:**
 - `DebugPanel()`
@@ -4974,12 +6886,23 @@ graph TD
 - `drawUILayer()`
 - `MapCanvas()`
 
+**Docs:** `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
+
 **Definitions:**
 - `MapClient()`
 - `updateDimensions()`
 
+**Docs:** `docs/frontend/minimap/PATTERNS_Discovered_Location_Minimap.md`
+
 **Definitions:**
 - `Minimap()`
+
+**Docs:** `docs/infrastructure/tempo/ALGORITHM_Tempo_Controller.md (Future UI: Minimap + Sun Arc)`
+
+**Definitions:**
+- `SunArc()`
+- `dayProgress()`
+- `getPeriod()`
 
 **Definitions:**
 - `ClickableText()`
@@ -5013,6 +6936,8 @@ graph TD
 **Definitions:**
 - `LedgerTab()`
 - `renderSection()`
+
+**Docs:** `docs/frontend/right-panel/PATTERNS_Tabbed_Right_Panel.md`
 
 **Definitions:**
 - `RightPanel()`
@@ -5055,17 +6980,23 @@ graph TD
 - `SceneImage()`
 - `handleBackgroundClick()`
 
+**Docs:** `docs/frontend/scene/PATTERNS_Scene.md`
+
 **Definitions:**
 - `SceneView()`
 
 **Definitions:**
 - `SettingStrip()`
 
+**Docs:** `docs/frontend/PATTERNS_Presentation_Layer.md`
+
 **Definitions:**
 - `showToast()`
 - `useToast()`
 - `ToastProvider()`
 - `ToastItem()`
+
+**Docs:** `docs/frontend/PATTERNS_Presentation_Layer.md`
 
 **Definitions:**
 - `Voices()`
@@ -5078,7 +7009,14 @@ graph TD
 - `GameLayout()`
 
 **Definitions:**
+- `SpeedControl()`
+- `fetchSpeed()`
+
+**Docs:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
+
+**Definitions:**
 - `useGameState()`
+- `moments()`
 - `mapPlaceType()`
 - `transformScene()`
 - `clickables()`
@@ -5087,8 +7025,18 @@ graph TD
 - `transformMomentsToVoices()`
 - `createFallbackScene()`
 
+**Docs:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
+
 **Definitions:**
 - `useMoments()`
+
+**Docs:** `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md`
+
+**Definitions:**
+- `useTempo()`
+- `fetchState()`
+
+**Docs:** `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
 
 **Definitions:**
 - `project()`
@@ -5105,9 +7053,13 @@ graph TD
 - `getPositionAtProgress()`
 - `t()`
 
+**Docs:** `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
+
 **Definitions:**
 - `seededRandom()`
 - `hashString()`
+
+**Docs:** `docs/frontend/PATTERNS_Presentation_Layer.md`
 
 **Definitions:**
 - `handleApiError()`
@@ -5126,6 +7078,12 @@ graph TD
 - `getCurrentView()`
 - `checkHealth()`
 
+**Docs:** `docs/frontend/PATTERNS_Presentation_Layer.md`
+
+**Docs:** `docs/frontend/PATTERNS_Presentation_Layer.md`
+
+**Docs:** `docs/frontend/PATTERNS_Presentation_Layer.md`
+
 **Sections:**
 - # Discussion Tree Generator
 - ## Input
@@ -5136,8 +7094,122 @@ graph TD
 - ## Example
 - ## Invocation
 
+**Docs:** `docs/infrastructure/canon/TEST_Canon.md`
+
+**Definitions:**
+- `def mock_graph_queries()`
+- `def mock_canon_holder()`
+- `def mock_broadcast()`
+- `class TestDetermineSpeaker`
+- `def test_q5_speaker_present_and_awake()`
+- `def test_q5_no_speaker_returns_none()`
+- `class TestRecordToCanon`
+- `def test_q6_moment_not_found()`
+- `def test_q6_already_spoken()`
+- `def test_q6_dialogue_no_speaker()`
+- `def mock_query()`
+- `def test_q6_narration_succeeds()`
+- `def mock_query()`
+- `class TestGetLastSpokenMoment`
+- `def test_q7_returns_latest()`
+- `def test_q7_no_spoken_returns_none()`
+- `class TestBehaviorB3EnergyConservation`
+- `def test_energy_reduced_on_record()`
+- `def mock_query()`
+- `class TestBehaviorB4HighestSpeakerWins`
+- `def test_highest_strength_selected()`
+- `class TestBehaviorB9DialogueWithoutSpeakerWaits`
+- `def test_dialogue_stays_active_without_speaker()`
+- `def mock_query()`
+- `class TestEdgeCaseE1FirstMoment`
+- `def test_first_moment_no_then_link()`
+- `def mock_query()`
+- `class TestEdgeCaseE2NarrationMoment`
+- `def test_narration_no_said_link()`
+- `def mock_query()`
+- `class TestEdgeCaseE4PlayerCaused`
+- `def test_player_caused_flag_on_then_link()`
+- `def mock_query()`
+- `class TestSSEBroadcast`
+- `def test_moment_spoken_event_sent()`
+- `def mock_query()`
+- `class TestInvariantV4EnergyConservation`
+- `def test_energy_formula()`
+- `def mock_query()`
+
+**Docs:** `docs/infrastructure/world-builder/TEST_World_Builder.md`
+
+**Definitions:**
+- `def mock_graph()`
+- `def mock_semantic_search()`
+- `def mock_embed_fn()`
+- `def embed()`
+- `def mock_count_links_fn()`
+- `def count_links()`
+- `def sample_enrichment()`
+- `def mock_llm_yaml_response()`
+- `class TestSparsityDetection`
+- `def test_empty_results_sparse()`
+- `def test_single_result_sparse()`
+- `def test_rich_results_not_sparse()`
+- `def high_links()`
+- `def test_sparsity_result_complete()`
+- `def test_cosine_similarity()`
+- `def test_cosine_similarity_none_input()`
+- `def test_node_to_text_priority()`
+- `def test_no_embeddings_fallback()`
+- `class TestQueryMomentRecording`
+- `def test_record_creates_moment()`
+- `def test_moment_type_thought_with_char()`
+- `def test_moment_type_query_without_char()`
+- `def test_moment_links_to_character()`
+- `def test_moment_links_to_place()`
+- `def test_link_results_to_moment()`
+- `def test_link_weight_from_similarity()`
+- `class TestWorldBuilderClass`
+- `def test_init_with_api_key()`
+- `def test_init_from_env()`
+- `def test_init_no_key_warning()`
+- `def test_cache_key_generation()`
+- `async def test_cache_prevents_reenrichment()`
+- `async def test_no_api_key_returns_none()`
+- `def test_parse_yaml_from_code_fence()`
+- `def test_parse_plain_yaml()`
+- `def test_parse_invalid_yaml()`
+- `def test_clear_cache()`
+- `async def test_recursion_prevention()`
+- `class TestEnrichmentApplication`
+- `def test_apply_creates_characters()`
+- `def test_apply_creates_places()`
+- `def test_apply_creates_things()`
+- `def test_apply_creates_narratives()`
+- `def test_apply_creates_links()`
+- `def test_apply_creates_moments()`
+- `def test_generated_flag_set()`
+- `def test_link_to_query_moment()`
+- `def test_moment_links_to_speaker()`
+- `def test_build_enrichment_prompt()`
+- `def _get_query_module()`
+- `class TestQueryInterface`
+- `async def test_query_records_moment()`
+- `async def test_query_executes_search()`
+- `async def test_query_returns_results()`
+- `def test_query_sync_no_enrichment()`
+- `async def test_query_enriches_sparse_results()`
+- `class TestEdgeCases`
+- `def test_empty_enrichment()`
+- `def test_enrichment_missing_id()`
+- `def test_moment_missing_text()`
+- `async def test_search_failure_graceful()`
+- `def test_graph_failure_graceful()`
+- `class TestInvariants`
+- `def test_v1_query_creates_moment()`
+- `def test_v5_moments_always_thought()`
+- `def test_v6_sparsity_thresholds()`
+
 **Sections:**
 - # Image Generation Tool
+- # DOCS: docs/infrastructure/image-generation/PATTERNS_Image_Generation.md
 - ## Setup
 - ## Usage
 - ## Image Types
@@ -5146,7 +7218,7 @@ graph TD
 - ## Output
 - ## Style
 
-**Docs:** `docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md`
+**Docs:** `docs/infrastructure/image-generation/PATTERNS_Image_Generation.md`
 
 **Definitions:**
 - `def generate_image()`

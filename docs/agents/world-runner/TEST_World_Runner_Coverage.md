@@ -46,7 +46,7 @@ No automated tests are present for the World Runner service. The current strateg
 
 ## INTEGRATION TESTS
 
-### Claude CLI Round-Trip
+### Agent CLI Round-Trip
 
 ```
 GIVEN:  a known flip payload and deterministic CLI stub

@@ -42,7 +42,7 @@ WorldRunnerService.process_flips() returns a dict containing:
 ### V2: Runner Calls Are Stateless
 
 ```
-Claude CLI is invoked without --continue, and calls do not depend on
+Agent CLI is invoked without --continue, and calls do not depend on
 prior state outside the graph/context passed in the prompt.
 ```
 
@@ -74,12 +74,12 @@ FORALL error in {timeout, parse_error, cli_missing, nonzero_exit}:
 
 ## ERROR CONDITIONS
 
-### E1: Claude CLI Returns Non-Zero
+### E1: Agent CLI Returns Non-Zero
 
 ```
 WHEN:    subprocess.run() returns returncode != 0
 THEN:    fallback response is returned
-SYMPTOM: logged error "[WorldRunnerService] Claude CLI failed"
+SYMPTOM: logged error "[WorldRunnerService] Agent CLI failed"
 ```
 
 **Tested by:** NOT YET TESTED — manual review only.
@@ -99,7 +99,7 @@ SYMPTOM: logged error "[WorldRunnerService] Failed to parse response"
 ```
 WHEN:    subprocess.TimeoutExpired OR FileNotFoundError
 THEN:    fallback response is returned
-SYMPTOM: logged timeout or "Claude CLI not found"
+SYMPTOM: logged timeout or "Agent CLI not found"
 ```
 
 **Tested by:** NOT YET TESTED — manual review only.

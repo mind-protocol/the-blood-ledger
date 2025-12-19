@@ -58,3 +58,8 @@ falkordb-browser/
 
 # Generated screenshots
 screenshots/
+
+# ngram agent working directories
+.ngram/agents/repair/
+
+.ngram/traces/

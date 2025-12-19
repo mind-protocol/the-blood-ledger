@@ -2,6 +2,8 @@
 Blood Ledger — Semantic Search
 
 Natural language queries using embeddings + FalkorDB vector search.
+
+DOCS: docs/world/map/PATTERNS_Map.md
 """
 
 import logging

@@ -50,7 +50,7 @@ class TempoController:
         host: str = "localhost",
         port: int = 6379
     ):
-        from engine.physics.graph.graph_queries import get_playthrough_graph_name
+        from engine.physics.graph import get_playthrough_graph_name
 
         self.playthrough_id = playthrough_id
         self.graph_name = graph_name or get_playthrough_graph_name(playthrough_id)

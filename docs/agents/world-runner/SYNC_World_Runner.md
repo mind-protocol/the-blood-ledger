@@ -13,7 +13,7 @@ STATUS: CANONICAL — fully implemented and documented
 
 **Components:**
 - `agents/world_runner/CLAUDE.md` — AI agent instructions (650 lines, comprehensive)
-- `engine/infrastructure/orchestration/world_runner.py` — Python service that invokes the agent via Claude CLI
+- `engine/infrastructure/orchestration/world_runner.py` — Python service that invokes the agent via the agent CLI (`AGENTS_MODEL`)
 - Full documentation suite in `docs/agents/world-runner/`
 
 **Design Summary:**
@@ -54,6 +54,7 @@ The INPUT_REFERENCE.md references `engine/orchestration/world_runner.py` but the
 
 ## Updates
 
+- Routed the World Runner service through the shared agent CLI wrapper and documented `AGENTS_MODEL` provider selection.
 - Consolidated the graph tick vs narrative flip description into `docs/agents/world-runner/ALGORITHM_World_Runner.md`.
 - Removed deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` after consolidating its content into the canonical algorithm doc.
 - Added VALIDATION, IMPLEMENTATION, and TEST docs to complete the documentation chain.

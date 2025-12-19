@@ -1,0 +1,40 @@
+# Repair Task
+
+**Issue Type:** BROKEN_IMPL_LINK
+**Severity:** critical
+**Target:** docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md
+
+## Instructions
+## Task: Fix Broken Implementation Links
+
+**Target:** `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md`
+**Problem:** References 4 non-existent file(s)
+**Missing files:** ['WorldRunnerService.__init__', '# DOCS: docs/agents/world-runner/PATTERNS_World_Runner.md', 'agents/world_runner/CLAUDE_PROMPT.md', 'WorldRunnerService.process_flips']
+
+## Steps:
+
+1. Read the IMPLEMENTATION doc
+2. For each missing file reference:
+   - Search the codebase for the actual file location
+   - If file was moved: update the path in the doc
+   - If file was renamed: update the reference
+   - If file was deleted: remove the reference or note it's deprecated
+3. Verify all remaining file references point to existing files
+4. Update SYNC with what you fixed
+
+## Success Criteria:
+- All file references in IMPLEMENTATION doc point to existing files
+- No broken links remain
+- SYNC updated
+
+Report "REPAIR COMPLETE" when done, or "REPAIR FAILED: <reason>" if you cannot complete.
+
+MANDATORY FINAL LINE:
+- End your response with a standalone line: `REPAIR COMPLETE`
+- If you fail, end with: `REPAIR FAILED: <reason>`
+
+
+
+## Docs to Read
+- .ngram/views/VIEW_Document_Create_Module_Documentation.md
+- docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md

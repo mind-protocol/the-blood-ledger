@@ -320,7 +320,8 @@ def create_app(
         import yaml
 
         # Validate scenario exists
-        scenarios_dir = Path(__file__).parent.parent.parent / "scenarios"
+        scenarios_dir = _project_root / "scenarios"
+        logger.info(f"Calculated scenarios_dir: {scenarios_dir}")
         scenario_file = scenarios_dir / f"{request.scenario_id}.yaml"
 
         if not scenario_file.exists():
@@ -343,13 +344,14 @@ def create_app(
             "name": request.player_name,
             "gender": request.player_gender,
             "scenario": request.scenario_id,
-            "created": datetime.utcnow().isoformat()
+            "created": datetime.utcnow().isoformat(),
+            "graph_name": playthrough_id # Save the generated playthrough_id as the graph_name
         }
         (playthrough_dir / "player.yaml").write_text(yaml.dump(player_data))
 
         # Apply scenario to graph
         from engine.physics.graph import GraphOps
-        graph_ops = GraphOps(graph_name=graph_name, host=host, port=port)
+        graph_ops = GraphOps(graph_name=playthrough_id, host=host, port=port)
 
         # Update player node with name/gender in scenario data
         for node in scenario.get("nodes", []):

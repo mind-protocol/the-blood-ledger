@@ -58,7 +58,7 @@ engine/
 |   +-- orchestration/
 |   |   +-- __init__             # Exports Orchestrator
 |   |   +-- orchestrator         # Main coordinator
-|   |   +-- narrator             # Claude CLI caller
+|   |   +-- narrator             # Agent CLI caller
 |   |   \-- world_runner         # Background world
 |   |
 |   +-- api/
@@ -145,7 +145,7 @@ The following modules are designed but not yet created. These are DESIGN DOCUMEN
 | `engine/moment_graph/traversal.py` | - | Click/wait/status transitions |
 | `engine/moment_graph/surface.py` | - | Surfacing algorithm |
 | `engine/infrastructure/orchestration/orchestrator.py` | - | Ties physics together (needs v2 update for handlers/canon) |
-| `engine/infrastructure/orchestration/narrator.py` | - | Claude CLI caller |
+| `engine/infrastructure/orchestration/narrator.py` | - | Agent CLI caller |
 | `engine/infrastructure/orchestration/world_runner.py` | - | Background world runner |
 | `engine/infrastructure/api/moments.py` | - | REST endpoints for frontend; resolves graph name via playthroughs_dir/player.yaml |
 | `engine/infrastructure/api/app.py` | - | FastAPI entry point |
@@ -310,7 +310,7 @@ THEN:
            │
            ▼
 ┌─────────────────────┐
-│  Handler for X      │ ← Claude CLI with scope
+│  Handler for X      │ ← Agent CLI with scope
 │  handlers/X.py      │
 │  (async, parallel)  │
 └──────────┬──────────┘
@@ -379,7 +379,7 @@ player_input
 flip_info
   → handlers/__init__.py:dispatch()     # Select handler
     → handlers/{type}.py:run()          # Run with scope
-      → Claude CLI call                 # LLM generation
+      → Agent CLI call                  # LLM generation
         → HandlerOutput                 # Moment + attachments
 
 ```
@@ -426,7 +426,7 @@ When integrating with orchestrator:
 | `falkordb` | Graph database | All graph modules in engine/physics/graph/ |
 | `pydantic` | Model validation | All models in engine/models/ |
 | `fastapi` | REST API | engine/infrastructure/api/app.py |
-| `subprocess` | Claude CLI calls | engine/infrastructure/orchestration/narrator.py |
+| `subprocess` | Agent CLI calls | engine/infrastructure/orchestration/narrator.py |
 
 ---
 
