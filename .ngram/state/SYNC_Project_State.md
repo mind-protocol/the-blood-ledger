@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/agents/world-runner/SYNC_World_Runner.md` with the missing
+template sections (maturity, in-progress, recent changes, known issues,
+handoffs, todo, consciousness trace, pointers) and kept content aligned to the
+existing world-runner behavior for repair #16. Ran `ngram validate`; remaining
+failures are pre-existing missing VIEW and doc-chain gaps in schema/product/
+network/storms modules.
+
 Filled missing template sections in `docs/agents/world-runner/ALGORITHM_World_Runner.md` (overview, data structures, key decisions, data flow, complexity, helpers, interactions, gaps) and logged the update in `docs/agents/world-runner/SYNC_World_Runner.md` for repair #16.
 
 Filled missing template sections in `docs/agents/narrator/BEHAVIORS_Narrator.md` (CHAIN, behaviors, inputs/outputs, edge cases, anti-behaviors, gaps/ideas/questions) and logged the update in `docs/agents/narrator/SYNC_Narrator.md` for repair #16.
