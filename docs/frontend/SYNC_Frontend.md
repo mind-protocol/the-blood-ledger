@@ -62,6 +62,13 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ## RECENT CHANGES
 
+### 2025-12-19: Link frontend hooks to documentation chain
+
+- **What:** Added DOCS references in `frontend/hooks/useGameState.ts` and `frontend/hooks/useMoments.ts`.
+- **Why:** Ensure the core state hooks are discoverable via `ngram context` and mapped to the frontend docs.
+- **Files:** `frontend/hooks/useGameState.ts`, `frontend/hooks/useMoments.ts`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Link toast UI component to frontend docs
 
 - **What:** Added a DOCS reference in `frontend/components/ui/Toast.tsx` and listed it as an entry point in `modules.yaml`.

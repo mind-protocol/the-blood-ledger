@@ -1,3 +1,4 @@
+// DOCS: docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';

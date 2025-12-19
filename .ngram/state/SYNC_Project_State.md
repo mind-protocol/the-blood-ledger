@@ -9,7 +9,9 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
-Documented the frontend map view module with new docs, a modules.yaml mapping, and a DOCS reference in `frontend/components/map/MapClient.tsx`.
+Linked `frontend/hooks/useGameState.ts` and `frontend/hooks/useMoments.ts` to the frontend documentation chain via DOCS references to close the hooks documentation gap.
+
+Documented the frontend map view module with new docs in `docs/frontend/map/` and a DOCS reference in `frontend/components/map/MapClient.tsx` (module mapping already existed).
 
 Mapped `frontend/components/moment/**` to existing Scene docs in `modules.yaml` and added a DOCS reference in `frontend/components/moment/index.ts` to close the moment UI documentation gap.
 

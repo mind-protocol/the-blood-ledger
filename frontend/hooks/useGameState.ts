@@ -1,3 +1,4 @@
+// DOCS: docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
@@ -189,6 +190,46 @@ export function useGameState(playthroughId: string = DEFAULT_PLAYTHROUGH): UseGa
   useEffect(() => {
     fetchGameState();
   }, [fetchGameState]);
+
+  // SSE subscription for real-time moment updates
+  useEffect(() => {
+    if (!playthroughId || playthroughId === DEFAULT_PLAYTHROUGH) return;
+
+    console.log('[SSE] Subscribing to moment stream for', playthroughId);
+
+    const unsubscribe = api.subscribeToMomentStream(playthroughId, {
+      onMomentActivated: (data) => {
+        console.log('[SSE] Moment activated:', data.moment_id);
+        // Refresh to get full moment data
+        fetchGameState();
+      },
+      onMomentSpoken: (data) => {
+        console.log('[SSE] Moment spoken:', data.moment_id);
+        // Update moment status in local state if needed
+        fetchGameState();
+      },
+      onMomentDecayed: (data) => {
+        console.log('[SSE] Moment decayed:', data.moment_id);
+        fetchGameState();
+      },
+      onWeightUpdated: (data) => {
+        console.log('[SSE] Weight updated:', data.moment_id, data.weight);
+        // Could update weight in place, but full refresh is simpler
+      },
+      onClickTraversed: (data) => {
+        console.log('[SSE] Click traversed:', data.word, data.from_moment_id, '->', data.to_moment_id);
+        fetchGameState();
+      },
+      onError: (error) => {
+        console.warn('[SSE] Stream error (will reconnect):', error);
+      }
+    });
+
+    return () => {
+      console.log('[SSE] Unsubscribing from moment stream');
+      unsubscribe();
+    };
+  }, [playthroughId, fetchGameState]);
 
   return {
     gameState,
