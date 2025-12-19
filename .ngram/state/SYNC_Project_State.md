@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`
+for repair #16 (maturity, current state, in progress, known issues, handoffs,
+todo, consciousness trace, pointers) to resolve DOC_TEMPLATE_DRIFT.
+
 Expanded `docs/infrastructure/scene-memory/VALIDATION_Scene_Memory.md` with the
 missing validation template sections (properties, error conditions, test
 coverage, verification procedure, gaps/questions) and logged the update in
