@@ -127,6 +127,13 @@ See `docs/physics/` for current Moment Graph documentation.
 ## RECENT CHANGES
 ===============================================================================
 
+### 2025-12-19: Updated scene-memory test path in modules.yaml
+- **What:** Switched the scene-memory `tests` entry from a glob to the concrete
+  file `engine/tests/test_moment.py`.
+- **Why:** `ngram validate` treats glob strings as literal paths; pointing to an
+  existing test file avoids YAML drift.
+- **Files:** `modules.yaml`
+
 ### 2025-12-19: Rechecked moment processor helpers for current repair run
 - **What:** Confirmed `_write_transcript`, `last_moment_id`,
   `transcript_line_count`, and `get_moment_processor` are already implemented in

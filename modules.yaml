@@ -158,7 +158,7 @@ modules:
   scene-memory:
     code: "engine/infrastructure/memory/**"
     docs: "docs/infrastructure/scene-memory/"
-    tests: "engine/tests/test_moment*.py"
+    tests: "engine/tests/test_moment.py"
     maturity: CANONICAL
     owner: agent
     entry_points:
@@ -596,3 +596,181 @@ modules:
       Graph operations and query helpers layered under the physics engine.
       Provides GraphOps write helpers and GraphQueries read helpers for the
       living graph.
+
+  voyager-system:
+    code: "docs/network/voyager-system/**"
+    docs: "docs/network/voyager-system/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/network/voyager-system/PATTERNS_Trauma_Without_Memory.md
+      - docs/network/voyager-system/SYNC_Voyager_System.md
+    patterns:
+      - "Refugee export/import with trauma-preserving transposition"
+      - "Local canon preserved via memory stripping"
+    notes: |
+      Voyager System (renamed refugee system) for cross-world character import.
+      Merges behavioral scars, export formats, and conflict handling.
+
+  bleed-through:
+    code: "docs/network/bleed-through/**"
+    docs: "docs/network/bleed-through/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/network/bleed-through/PATTERNS_Scars_Cross_Worlds.md
+      - docs/network/bleed-through/SYNC_Bleed_Through.md
+    patterns:
+      - "Cross-world ghosts and rumor bleed"
+      - "Marketing vocabulary shields internal caching"
+    notes: |
+      Cross-world bleed-through framing and system boundaries for ghosts,
+      rumors, and bleed reports.
+
+  transposition:
+    code: "docs/network/transposition/**"
+    docs: "docs/network/transposition/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/network/transposition/PATTERNS_Local_Canon_Primary.md
+      - docs/network/transposition/SYNC_Transposition.md
+    patterns:
+      - "Local canon primacy with conflict-resolution cascade"
+    notes: |
+      Conflict detection + resolution pipeline for importing external entities
+      without violating local canon.
+
+  world-scavenger:
+    code: "docs/network/world-scavenger/**"
+    docs: "docs/network/world-scavenger/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/network/world-scavenger/PATTERNS_Scavenge_Before_Generate.md
+      - docs/network/world-scavenger/SYNC_World_Scavenger.md
+    patterns:
+      - "Priority stack: cache → ghost → rumor → synthesize → generate"
+      - "Topology reuse with state reset"
+    notes: |
+      World Scavenger content network that reuses topology and NPCs to reduce
+      generation costs and increase narrative depth.
+
+  shadow-feed:
+    code: "docs/network/shadow-feed/**"
+    docs: "docs/network/shadow-feed/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/network/shadow-feed/PATTERNS_Shadow_Feed_Rumor_Cache.md
+      - docs/network/shadow-feed/SYNC_Shadow_Feed.md
+    patterns:
+      - "Rumor-only caching for distant events"
+    notes: |
+      Cluster state cache and rumor import rules (Shadow Feed) for safe
+      cross-world content reuse.
+
+  ghost-dialogue:
+    code: "docs/network/ghost-dialogue/**"
+    docs: "docs/network/ghost-dialogue/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/network/ghost-dialogue/PATTERNS_Ghost_Dialogue_Index.md
+      - docs/network/ghost-dialogue/SYNC_Ghost_Dialogue.md
+    patterns:
+      - "Vector-indexed dialogue reuse with reaction scoring"
+    notes: |
+      Ghost Dialogue index for reusing real lines across worlds.
+
+  storms:
+    code: "docs/infrastructure/storms/**"
+    docs: "docs/infrastructure/storms/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/infrastructure/storms/PATTERNS_Storms_As_Crisis_Overlays.md
+      - docs/infrastructure/storms/SYNC_Storms.md
+    patterns:
+      - "Layered world instantiation (Scavenger → Bleed → Storm → Tick)"
+    notes: |
+      Storm scenario overlays that inject tensions, secrets, and energy floods
+      into the base world.
+
+  storm-loader:
+    code: "docs/infrastructure/storm-loader/**"
+    docs: "docs/infrastructure/storm-loader/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/infrastructure/storm-loader/PATTERNS_Storm_Loader_As_Diff.md
+      - docs/infrastructure/storm-loader/SYNC_Storm_Loader.md
+    patterns:
+      - "Declarative, idempotent storm application"
+    notes: |
+      Storm Loader module for applying storm diffs with validation rules.
+
+  billing:
+    code: "docs/product/billing/**"
+    docs: "docs/product/billing/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/product/billing/PATTERNS_Pay_To_Preserve_History.md
+      - docs/product/billing/SYNC_Billing.md
+    patterns:
+      - "Metered usage billing with narrative invoices"
+    notes: |
+      Billing architecture for metered pay-as-you-go narrative moments.
+
+  ledger-lock:
+    code: "docs/product/ledger-lock/**"
+    docs: "docs/product/ledger-lock/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/product/ledger-lock/PATTERNS_Ledger_Lock_Crisis.md
+      - docs/product/ledger-lock/SYNC_Ledger_Lock.md
+    patterns:
+      - "Conversion moment framed as narrative crisis"
+    notes: |
+      Ledger Lock UX and trigger heuristics for pay-to-preserve history.
+
+  chronicle-system:
+    code: "docs/product/chronicle-system/**"
+    docs: "docs/product/chronicle-system/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/product/chronicle-system/PATTERNS_Chronicle_Flywheel.md
+      - docs/product/chronicle-system/SYNC_Chronicle_System.md
+    patterns:
+      - "Session/weekly/life chronicle pipeline"
+    notes: |
+      Blood Chronicle system for generating shareable story recaps.
+
+  business-model:
+    code: "docs/product/business-model/**"
+    docs: "docs/product/business-model/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/product/business-model/PATTERNS_Whale_Economics.md
+      - docs/product/business-model/SYNC_Business_Model.md
+    patterns:
+      - "Unit economics + stress test playbook"
+    notes: |
+      Business model stress test and margin defense documentation.
+
+  gtm-strategy:
+    code: "docs/product/gtm-strategy/**"
+    docs: "docs/product/gtm-strategy/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/product/gtm-strategy/PATTERNS_Direct_Whale_Acquisition.md
+      - docs/product/gtm-strategy/SYNC_GTM_Strategy.md
+    patterns:
+      - "Direct acquisition + chronicle flywheel"
+    notes: |
+      Go-to-market strategy for direct acquisition and weekly storm programs.

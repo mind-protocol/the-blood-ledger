@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Updated the scene-memory module tests mapping in `modules.yaml` to point at the
+concrete `engine/tests/test_moment.py` file so `ngram validate` no longer flags
+the glob path as missing. Logged the change in
+`docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
+
 Consolidated map SYNC documentation by moving frontend map view status into
 `docs/world/map/SYNC_Map.md` and redirecting
 `docs/frontend/map/SYNC_Map_View.md` to the canonical map SYNC.
