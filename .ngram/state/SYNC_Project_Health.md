@@ -67,9 +67,9 @@ The project has critical issues that will significantly impact agent effectivene
 **Files:**
 
 - `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md` - References 21 non-existent file(s)
-  - Update or remove references: useMoments.ts, api.ts, env.local
+  - Update or remove references: page.tsx, GameClient.tsx, lib/api/moments.ts
 - `docs/agents/narrator/IMPLEMENTATION_Narrator.md` - References 7 non-existent file(s)
-  - Update or remove references: playthroughs/{id}/PROFILE_NOTES.md, narrator.py, playthroughs/{id}/current_action.json
+  - Update or remove references: graph_ops.py, playthroughs/{id}/PROFILE_NOTES.md, narrator.py
 - `docs/infrastructure/api/IMPLEMENTATION_Api.md` - References 1 non-existent file(s)
   - Update or remove references: asyncio.Queue
 
@@ -184,9 +184,9 @@ The project has critical issues that will significantly impact agent effectivene
 - `engine/physics/graph/graph_queries.py` - Contains hardcoded configuration values
 - `engine/physics/graph/graph_ops.py` - Contains hardcoded configuration values
 - `engine/infrastructure/api/app.py` - Contains hardcoded configuration values
-- `frontend/lib/api.ts` - Contains hardcoded configuration values
 - `frontend/components/chronicle/ChroniclePanel.tsx` - Contains hardcoded configuration values
 - `frontend/components/debug/DebugPanel.tsx` - Contains hardcoded configuration values
+- `frontend/app/scenarios/page.tsx` - Contains hardcoded configuration values
 - ... and 2 more
 
 ---
