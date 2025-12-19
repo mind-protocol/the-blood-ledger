@@ -40,6 +40,21 @@ current canonical flow lives in `MomentProcessor` and the Moment Graph docs.
 6. **Append transcript** entries for every displayed line/action.
 
 ===============================================================================
+## OVERVIEW
+===============================================================================
+
+This legacy algorithm captures how the pre-Moment-Graph Scene Memory pipeline
+turned narration and player actions into Moment records, linked them to scene
+context, and persisted a transcript for replay. It is retained for historical
+traceability while the canonical flow now lives in `MomentProcessor` and the
+Moment Graph docs.
+
+The flow normalizes identifiers, records events as moments, derives narrative
+and belief edges from mutations, and appends player-visible text to the
+transcript log. These steps mirror the original intent without redefining the
+current canonical implementation.
+
+===============================================================================
 ## DATA STRUCTURES
 ===============================================================================
 
@@ -47,21 +62,24 @@ current canonical flow lives in `MomentProcessor` and the Moment Graph docs.
 
 ```
 Legacy container that grouped Moments, present characters, and place/time
-metadata before the Moment Graph became the canonical store.
+metadata before the Moment Graph became the canonical store. This structure
+anchored name expansion and ensured moment links referenced a stable scene.
 ```
 
 ### Moment Record (legacy)
 
 ```
 Event record for narration, hint, or action; stored as a graph node with links
-to scene context, speaker, and downstream narrative/belief nodes.
+to scene context, speaker, and downstream narrative/belief nodes. The record
+acted as the canonical anchor for transcripts and narrative derivation.
 ```
 
 ### Transcript Entry
 
 ```
 Append-only line with text, speaker, and timestamp identifiers for audit and
-playback; persisted in transcript.json for the scene/session.
+playback; persisted in transcript.json for the scene/session. Entries were
+stored in order and referenced the originating Moment record.
 ```
 
 ===============================================================================
@@ -71,22 +89,26 @@ playback; persisted in transcript.json for the scene/session.
 ### Step 1: Normalize identifiers
 
 Legacy pipeline expanded short names with `{place}_{day}_{time}` prefixes and
-tracked duplicates to keep node identities unique across repeated scenes.
+tracked duplicates to keep node identities unique across repeated scenes. The
+alias map preserved short-form display while keeping graph IDs explicit.
 
 ### Step 2: Emit Moment nodes
 
 For each narration line, hint, or player action, create a Moment node and link
-it to the scene context plus any present character nodes.
+it to the scene context plus any present character nodes. This ensures the
+record is queryable by both context and participant.
 
 ### Step 3: Derive narratives and beliefs
 
 When mutations occur, create Narrative nodes and `FROM` edges to source Moments,
 then attach Belief nodes for each present character who witnessed the change.
+This modeled inferred knowledge without extra narrator steps.
 
 ### Step 4: Append transcript
 
 Persist every displayed line/action into the append-only transcript log so the
-session can be reconstructed or replayed verbatim.
+session can be reconstructed or replayed verbatim, preserving ordering and
+linking each entry back to the originating Moment.
 
 ===============================================================================
 ## KEY DECISIONS
@@ -128,9 +150,11 @@ Transcript append + graph persistence
 ## COMPLEXITY
 ===============================================================================
 
-**Time:** O(N + M) — N lines processed, M related graph links per line.
+**Time:** O(N + M) — N lines processed, M related graph links per line, plus
+name-expansion scans across the local scene alias registry.
 
-**Space:** O(N) — transcript entries plus per-line Moment nodes.
+**Space:** O(N) — transcript entries plus per-line Moment nodes and temporary
+alias mappings for name expansion.
 
 **Bottlenecks:**
 - Graph writes for dense scenes with many present characters.
@@ -145,13 +169,15 @@ Transcript append + graph persistence
 **Purpose:** Generate globally unique identifiers from short names.
 
 **Logic:** Prefixes with `{place}_{day}_{time}` and adds numeric suffixes on
-collisions tracked in the current scene context.
+collisions tracked in the current scene context, while storing an alias for
+display and lookup.
 
 ### `append_transcript_entry()`
 
 **Purpose:** Persist the rendered line/action into the transcript log.
 
-**Logic:** Writes an append-only record with speaker, timestamp, and text.
+**Logic:** Writes an append-only record with speaker, timestamp, text, and a
+pointer to the originating Moment for later reconstruction.
 
 ===============================================================================
 ## INTERACTIONS

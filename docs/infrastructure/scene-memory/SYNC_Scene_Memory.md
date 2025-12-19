@@ -69,6 +69,9 @@ STATUS: CANONICAL
   clarified legacy context for repair #16.
 - Ran `ngram validate`; pre-existing failures remain in schema/embeddings/network
   and missing VIEW files.
+- Expanded `docs/infrastructure/scene-memory/ALGORITHM_Scene_Memory.md` with the
+  missing OVERVIEW section and lengthened template sections to meet drift checks
+  for repair #16.
 
 ===============================================================================
 ## OPEN QUESTIONS
@@ -84,6 +87,8 @@ STATUS: CANONICAL
 ### Remarks
 - The module was dominated by legacy Scene Memory docs that are superseded by
   Moment Graph documentation.
+- The legacy algorithm doc now carries the full template sections to reduce
+  drift while keeping the canonical Moment Graph references explicit.
 
 ### Suggestions
 - [ ] Consider moving remaining legacy Scene Memory docs into the archive folder

@@ -10,9 +10,10 @@ UPDATED_BY: Codex (repair agent)
 ## CURRENT STATE
 
 Expanded `docs/infrastructure/scene-memory/ALGORITHM_Scene_Memory.md` with the
-missing template sections (data structures, algorithm steps, decisions, data
-flow, complexity, helpers, interactions, gaps) and logged the update in
-`docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` for repair #16.
+missing OVERVIEW section and lengthened the template sections (data structures,
+algorithm steps, decisions, data flow, complexity, helpers, interactions, gaps)
+to satisfy DOC_TEMPLATE_DRIFT for repair #16, then logged the update in
+`docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
 
 Expanded `docs/infrastructure/scene-memory/PATTERNS_Scene_Memory.md` with the
 missing template sections (principles, dependencies, inspirations, scope) and
