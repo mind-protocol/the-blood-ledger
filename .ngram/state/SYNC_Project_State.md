@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Added DOCS references for `frontend/app` route files (layout, start, scenarios, map, playthroughs) to close the undocumented frontend/app gap.
+
+Extended the frontend map module mapping to include `frontend/app/map/**` and linked the map route to the map view documentation.
+
 Linked `frontend/hooks/useGameState.ts` and `frontend/hooks/useMoments.ts` to the frontend documentation chain via DOCS references to close the hooks documentation gap.
 
 Documented the frontend map view module with new docs in `docs/frontend/map/` and a DOCS reference in `frontend/components/map/MapClient.tsx` (module mapping already existed). Ran `ngram validate`; failures are pre-existing in `docs/schema/` and `docs/infrastructure/tempo/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.

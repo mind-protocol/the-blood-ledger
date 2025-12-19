@@ -323,6 +323,8 @@ modules:
   frontend-map:
     code: "frontend/components/map/**"
     docs: "docs/frontend/map/"
+    additional_code:
+      - "frontend/app/map/**"
     maturity: DESIGNING
     owner: agent
     entry_points:

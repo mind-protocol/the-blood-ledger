@@ -50,6 +50,12 @@ interactions.
 - **Why:** Repair task flagged map components as undocumented.
 - **Files:** `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`, `docs/frontend/map/SYNC_Map_View.md`, `modules.yaml`, `frontend/components/map/MapClient.tsx`
 
+### 2025-12-19: Mapped map route entrypoint
+
+- **What:** Added the app route (`frontend/app/map/**`) to the map module mapping and linked the route to map docs.
+- **Why:** Ensure the map view entrypoint is discoverable from docs and manifest.
+- **Files:** `modules.yaml`, `frontend/app/map/page.tsx`
+
 ---
 
 ## HANDOFF: FOR AGENTS
