@@ -75,22 +75,40 @@ workflows and debugging stay repeatable.
 
 ## INSPIRATIONS
 
-- Database schema validation patterns from data pipelines.
-- Test-first data quality checks used in ETL workflows.
-- Curated query collections used in Cypher graph tooling.
+- Database schema validation patterns from data pipelines that enforce
+  repeatable, versioned checks against evolving data.
+- Test-first data quality checks used in ETL workflows to catch bad records
+  before they leak into production dashboards or reports.
+- Curated query collections used in Cypher tooling that standardize how teams
+  inspect graph health and share investigative recipes.
+
+---
+
+## SCOPE
+
+This pattern covers schema-aligned validation and query artifacts for the
+graph health tooling only. It includes the CLI check, pytest validation,
+terminology linting, and curated Cypher query files, but not broader graph
+engineering workflows outside the health module.
 
 ---
 
 ## WHAT THIS DOES NOT SOLVE
 
-- Automatic fixes or migrations for invalid data.
-- Full schema evolution tooling (versioning, diffs, migrations).
-- Performance tuning for very large graphs.
+- Automatic fixes or migrations for invalid data; remediation remains a
+  separate manual or scripted workflow outside the health checks.
+- Full schema evolution tooling such as versioned diffs, migrations, or
+  compatibility layers between schema revisions.
+- Performance tuning for very large graphs, including index planning or query
+  optimization beyond the current diagnostic focus.
 
 ---
 
 ## GAPS / IDEAS / QUESTIONS
 
-- [ ] Should link property validation expand beyond enum checks?
-- [ ] Decide if health checks should run in CI with a seeded graph.
-- IDEA: Add a report export format (CSV or markdown) for audits.
+- [ ] Should link property validation expand beyond enum checks for required
+  metadata and relationship-level invariants?
+- [ ] Decide if health checks should run in CI with a seeded graph so schema
+  drift is caught before integration tests.
+- IDEA: Add a report export format (CSV or markdown) that includes summaries,
+  query outputs, and timestamped audit metadata.

@@ -169,7 +169,8 @@ See "Planned Modules" section above for the design of modules that don't exist y
 **Why this pattern:** Physics logic stays in the graph and tick loop while the
 orchestrator only sequences calls and never owns narrative state. This keeps
 storage authoritative and prevents split-brain behavior between runtime
-services and the graph.
+services and the graph. It also keeps orchestration testable without
+duplicating graph state in memory.
 
 ### Code Patterns in Use
 

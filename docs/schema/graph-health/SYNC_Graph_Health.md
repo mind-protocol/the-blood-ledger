@@ -42,9 +42,32 @@ suite for schema invariants, and a terminology linter for NPC/character naming.
 Query artifacts include a rated Cypher library plus expected/actual outputs to
 make inspection repeatable.
 
+## IN PROGRESS
+
+No active implementation work is underway for graph health; the current effort
+is limited to documentation hygiene to align the SYNC template with required
+sections and keep the status record complete and traceable.
+
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-19: Expanded patterns template sections
+
+- **What:** Lengthened inspirations and non-scope notes in the graph health
+  patterns doc to meet template guidance.
+- **Why:** The doc template drift check flagged short sections for the patterns
+  file; expansion keeps the module description complete.
+- **Files:** `docs/schema/graph-health/PATTERNS_Graph_Health_Validation.md`
+- **Struggles/Insights:** Kept the change purely descriptive; no behavior edits.
+
+### 2025-12-19: Filled graph health patterns scope
+
+- **What:** Added the missing SCOPE section and expanded short gaps entries.
+- **Why:** Resolve doc-template drift for the graph health PATTERNS file.
+- **Files:** `docs/schema/graph-health/PATTERNS_Graph_Health_Validation.md`,
+  `docs/schema/graph-health/SYNC_Graph_Health.md`
+- **Struggles/Insights:** Kept scope limited to validation and query artifacts.
 
 ### 2025-12-19: Documented graph health module
 
@@ -102,6 +125,14 @@ make inspection repeatable.
 
 ---
 
+## KNOWN ISSUES
+
+No known functional defects are reported in the graph health tooling at this
+time; any remaining concerns are limited to documentation completeness and
+potential future CI integration decisions.
+
+---
+
 ## HANDOFF: FOR AGENTS
 
 **Your likely VIEW:** VIEW_Implement_Write_Or_Modify_Code
@@ -118,6 +149,13 @@ this module becomes a frequent touchpoint.
 
 ---
 
+## HANDOFF: FOR HUMAN
+
+No human decision is required for this repair; the update only fills missing
+SYNC sections to satisfy the doc template drift check and does not alter code.
+
+---
+
 ## TODO
 
 ### Tests to Run
@@ -131,6 +169,13 @@ python engine/graph/health/lint_terminology.py --graph seed
 ### Immediate
 
 - [ ] Decide whether to add full doc chain (BEHAVIORS/ALGORITHM/etc.).
+
+---
+
+## CONSCIOUSNESS TRACE
+
+Focused on restoring template completeness with minimal edits; avoided altering
+module intent and noted that this change is purely documentation alignment.
 
 ---
 

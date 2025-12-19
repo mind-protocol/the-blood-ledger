@@ -30,9 +30,9 @@ are captured in TODO so the scope stays explicit.
 
 ### 2025-12-19: Expanded physics implementation design patterns
 
-- **What:** Added an observer/event-emitter row to the DESIGN PATTERNS table and
-  expanded the code-structure note about `.py` extensions to meet length guidance.
-- **Why:** Keep the implementation doc aligned with the full template requirements.
+- **What:** Added a testability note to the architecture-pattern rationale so the
+  DESIGN PATTERNS section explains why orchestration stays stateless.
+- **Why:** Keep the implementation doc aligned with template expectations and clarity.
 - **Files:** `docs/physics/IMPLEMENTATION_Physics.md`
 
 ### 2025-12-19: Updated physics patterns template sections

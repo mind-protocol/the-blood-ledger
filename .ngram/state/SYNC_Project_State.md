@@ -9,12 +9,21 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
-Filled missing INSPIRATIONS and SCOPE sections in
-`docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`, expanded the non-goals
-text to meet template length guidance, and logged the update plus observations
-in `docs/schema/models/SYNC_Schema_Models.md` for repair #16. Ran
-`ngram validate`; failures remain pre-existing (missing VIEW file and doc-chain
-gaps in schema/product/network/storms modules).
+Filled the missing SYNC template sections (in progress, known issues, human
+handoff, consciousness trace) in `docs/schema/graph-health/SYNC_Graph_Health.md`
+to resolve doc-template drift for repair #16.
+
+Expanded `docs/schema/graph-health/PATTERNS_Graph_Health_Validation.md` with
+the missing SCOPE section and lengthened short gaps entries for repair #16,
+then updated `docs/schema/graph-health/SYNC_Graph_Health.md`. Ran
+`ngram validate`; remaining failures are pre-existing missing VIEW and doc
+chain gaps in schema/product/network/storms modules.
+
+Expanded the INSPIRATIONS and SCOPE content in
+`docs/schema/models/PATTERNS_Pydantic_Schema_Models.md` to meet template length
+guidance, and recorded the update in `docs/schema/models/SYNC_Schema_Models.md`
+for repair #16. Ran `ngram validate`; failures remain pre-existing (missing
+VIEW file and doc-chain gaps in schema/product/network/storms modules).
 
 Expanded `docs/schema/VALIDATION_Graph.md` with the missing validation
 template sections (CHAIN, invariants, properties, error conditions, test
