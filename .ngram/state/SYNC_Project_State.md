@@ -9,6 +9,7 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Verified physics tick energy helpers in `engine/physics/tick.py`; repair task marked stale with no code changes.
 Revalidated playthroughs API helper implementations; documentation updated for the stale repair task.
 Confirmed `engine/models/base.py` comparison helpers were already implemented; no code change required.
 Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py`; repair task is stale.
@@ -16,6 +17,7 @@ Validated moment processor implementations; repair task appears stale.
 Verified moment graph query helpers in `engine/moment_graph/queries.py` are already implemented; repair task appears stale.
 Verified moment graph traversal helpers in `engine/moment_graph/traversal.py` are already implemented; repair task appears stale.
 Verified moment query helpers in `engine/physics/graph/graph_queries_moments.py`; repair task appears stale.
+Verified graph search helpers in `engine/physics/graph/graph_queries_search.py` already implement `_to_markdown` and `_cosine_similarity`; repair task appears stale.
 Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still reports pre-existing docs/schema gaps and broken CHAIN links.
 Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.md`.
 
@@ -87,6 +89,7 @@ Repair task appears stale relative to current code.
 
 ### Remarks
 - Moment traversal helper implementations already exist; no code changes required.
+- Physics tick energy helper implementations already exist; no code changes required.
 
 ### Suggestions
 

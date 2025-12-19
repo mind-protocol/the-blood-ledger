@@ -7,6 +7,10 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
+**2025-12-19: Verified physics tick energy helpers already implemented**
+- Confirmed `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` contain concrete logic
+- Repair task marked as stale; no runtime changes
+
 **2025-12-19: Verified moment graph traversal helpers already implemented**
 - Confirmed `make_dormant` and `process_wait_triggers` in `engine/moment_graph/traversal.py` already have concrete logic
 - Repair task marked as stale; no runtime changes
@@ -163,6 +167,7 @@ For next session:
 - Moments API now resolves graph names from the router-configured `playthroughs_dir` before falling back to `get_playthrough_graph_name()`.
 - Moment graph query helpers now normalize FalkorDB dict/list row shapes for traversal workflows.
 - Moment graph traversal helpers in `engine/moment_graph/traversal.py` were already implemented; repair task was stale.
+- Physics tick energy helper implementations in `engine/physics/tick.py` were already present; repair task was stale.
 
 ### Suggestions
 
