@@ -1,3 +1,5 @@
+// DOCS: docs/frontend/scenarios/PATTERNS_Scenario_Selection.md
+
 'use client';
 
 import { useState, useEffect } from 'react';

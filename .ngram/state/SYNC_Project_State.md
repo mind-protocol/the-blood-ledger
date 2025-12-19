@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Documented the frontend scenario selection module with new docs, a modules.yaml mapping, and a DOCS reference in `frontend/app/scenarios/page.tsx`.
+
 Added DOCS references for `frontend/app` route files (layout, start, scenarios, map, playthroughs) to close the undocumented frontend/app gap.
 
 Extended the frontend map module mapping to include `frontend/app/map/**` and linked the map route to the map view documentation.

@@ -337,6 +337,21 @@ modules:
       Full map view and canvas renderer for locations, routes, fog of war, and
       player markers. Uses static seed data and placeholder travel actions.
 
+  frontend-scenarios:
+    code: "frontend/app/scenarios/**"
+    docs: "docs/frontend/scenarios/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - frontend/app/scenarios/page.tsx
+    patterns:
+      - "Curated scenario list with preview panel"
+      - "Session-gated playthrough creation"
+    notes: |
+      Scenario selection page that mirrors scenario IDs from `scenarios/*.yaml`
+      and triggers playthrough creation. See `docs/design/scenarios/README.md`
+      for scenario system details.
+
   frontend-scene:
     code: "frontend/components/scene/**"
     docs: "docs/frontend/scene/"
