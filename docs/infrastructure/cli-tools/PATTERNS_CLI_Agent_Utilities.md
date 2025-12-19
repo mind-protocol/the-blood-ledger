@@ -12,12 +12,18 @@ VERIFIED: 2025-12-19 against current code
 
 ```
 THIS:            PATTERNS_CLI_Agent_Utilities.md (you are here)
+BEHAVIORS:       ./BEHAVIORS_CLI_Streaming_And_Image_Output.md
+ALGORITHM:       ./ALGORITHM_CLI_Tool_Flows.md
+VALIDATION:      ./VALIDATION_CLI_Tool_Invariants.md
+IMPLEMENTATION:  ./IMPLEMENTATION_CLI_Tools_Architecture.md
+TEST:            ./TEST_CLI_Tool_Coverage.md
 SYNC:            ./SYNC_CLI_Tools.md
-IMAGE_PROMPTING: ../image-generation/PATTERNS_Image_Generation.md
 
 IMPL:            tools/stream_dialogue.py
-                 tools/image_generation/generate_image.py
+IMPL:            tools/image_generation/generate_image.py
 ```
+
+RELATED: ../image-generation/PATTERNS_Image_Generation.md
 
 ---
 

@@ -289,3 +289,17 @@ modules:
     notes: |
       Chronicle, conversations, and ledger panels presented as tabs alongside
       the main scene view.
+
+  frontend-minimap:
+    code: "frontend/components/minimap/**"
+    docs: "docs/frontend/minimap/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - frontend/components/minimap/Minimap.tsx
+    patterns:
+      - "Read-only minimap preview"
+      - "Discovered-only rendering"
+    notes: |
+      Compact minimap button that previews discovered locations and opens the
+      full map view on click.

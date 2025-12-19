@@ -8,6 +8,20 @@ STATUS: CANONICAL
 
 ---
 
+## CHAIN
+
+```
+PATTERNS:        ./PATTERNS_CLI_Agent_Utilities.md
+BEHAVIORS:       ./BEHAVIORS_CLI_Streaming_And_Image_Output.md
+ALGORITHM:       ./ALGORITHM_CLI_Tool_Flows.md
+VALIDATION:      ./VALIDATION_CLI_Tool_Invariants.md
+IMPLEMENTATION:  ./IMPLEMENTATION_CLI_Tools_Architecture.md
+TEST:            ./TEST_CLI_Tool_Coverage.md
+THIS:            SYNC_CLI_Tools.md (you are here)
+```
+
+---
+
 ## MATURITY
 
 **What's canonical (v1):**
@@ -37,6 +51,17 @@ Both CLI tools are functional and actively used by agents:
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-19: Complete documentation chain
+
+- **What:** Added BEHAVIORS, ALGORITHM, VALIDATION, IMPLEMENTATION, and TEST docs
+- **Why:** Repair incomplete chain for cli-tools module
+- **Files:**
+  - `docs/infrastructure/cli-tools/BEHAVIORS_CLI_Streaming_And_Image_Output.md`
+  - `docs/infrastructure/cli-tools/ALGORITHM_CLI_Tool_Flows.md`
+  - `docs/infrastructure/cli-tools/VALIDATION_CLI_Tool_Invariants.md`
+  - `docs/infrastructure/cli-tools/IMPLEMENTATION_CLI_Tools_Architecture.md`
+  - `docs/infrastructure/cli-tools/TEST_CLI_Tool_Coverage.md`
 
 ### 2025-12-19: Documentation created
 
