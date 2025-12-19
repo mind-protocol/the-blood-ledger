@@ -36,6 +36,13 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
   - `engine/infrastructure/api/playthroughs.py`
   - `docs/infrastructure/api/SYNC_Api.md`
 
+### 2025-12-19: Re-validate playthroughs repair task
+
+- **What:** Reconfirmed the playthroughs helpers are implemented; no code changes required for this repair run.
+- **Why:** Task still flagged incomplete implementations, but the functions already perform real logic.
+- **Files:**
+  - `docs/infrastructure/api/SYNC_Api.md`
+
 ---
 
 ## AGENT OBSERVATIONS
