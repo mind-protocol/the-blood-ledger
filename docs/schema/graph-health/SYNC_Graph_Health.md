@@ -52,6 +52,14 @@ sections and keep the status record complete and traceable.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Restored missing SYNC sections
+
+- **What:** Added IN PROGRESS, KNOWN ISSUES, HANDOFF: FOR HUMAN, and
+  CONSCIOUSNESS TRACE sections to match the SYNC template.
+- **Why:** Resolve doc-template drift for the graph health module sync doc.
+- **Files:** `docs/schema/graph-health/SYNC_Graph_Health.md`
+- **Struggles/Insights:** Kept the update documentation-only, no code changes.
+
 ### 2025-12-19: Completed SYNC template sections
 
 - **What:** Added IN PROGRESS, KNOWN ISSUES, HANDOFF (human), and CONSCIOUSNESS
