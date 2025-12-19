@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Mapped `frontend/components/moment/**` to existing Scene docs in `modules.yaml` and added a DOCS reference in `frontend/components/moment/index.ts` to close the moment UI documentation gap.
+
 Completed async architecture implementation documentation, linked CHAIN sections, added a DOCS reference in `engine/scripts/check_injection.py`, and logged the injection queue format conflict in `docs/infrastructure/async/SYNC_Async_Architecture.md`.
 
 Completed image-generation documentation chain by adding IMPLEMENTATION doc, linking CHAIN references, and mapping the module in `modules.yaml`.
@@ -16,6 +18,8 @@ Completed image-generation documentation chain by adding IMPLEMENTATION doc, lin
 Documented the frontend right panel module with new docs, a modules.yaml mapping, and a DOCS reference in `frontend/components/panel/RightPanel.tsx`.
 
 Documented the frontend minimap module with new docs, a modules.yaml mapping, and a DOCS reference in `frontend/components/minimap/Minimap.tsx`.
+
+Mapped the frontend scene components to `docs/frontend/scene/` in `modules.yaml` and linked `frontend/components/scene/SceneView.tsx` to the scene documentation chain.
 
 World scraping documentation chain finalized with implementation details and extraction candidates; DOCS references remain absent because `data/` is gitignored. Frontend module is now mapped in `modules.yaml` with existing docs and a DOCS reference in `frontend/app/page.tsx`. Added a DOCS reference to `frontend/components/chronicle/ChroniclePanel.tsx` to link it to frontend implementation documentation.
 Completed cli-tools documentation chain (BEHAVIORS/ALGORITHM/VALIDATION/IMPLEMENTATION/TEST), updated CHAIN references, and added a `modules.yaml` mapping.

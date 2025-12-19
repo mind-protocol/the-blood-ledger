@@ -60,6 +60,17 @@ The scene view is **implemented and functional**. It is the main game view where
 
 ---
 
+## RECENT CHANGES
+
+### 2025-12-19: Map moment components to scene docs
+
+- **What:** Linked `frontend/components/moment/**` to the Scene docs in `modules.yaml` and added a DOCS reference in `frontend/components/moment/index.ts`.
+- **Why:** Establish documentation mapping for the moment UI components used by Scene.
+- **Files:** `modules.yaml`, `frontend/components/moment/index.ts`
+- **Struggles/Insights:** None.
+
+---
+
 ## DESIGN QUESTIONS (from PATTERNS)
 
 These remain open for iteration:
@@ -126,6 +137,15 @@ Scene view is implemented and works. The core layout exists with header, image, 
 - Voice selection algorithm refinement
 - How should conversation flow work?
 - Should choice buttons feel different from current hardcoded actions?
+
+## RECENT CHANGES
+
+### 2025-12-19: Documented scene module mapping and DOCS link
+
+- **What:** Added module mapping in `modules.yaml` and linked `SceneView.tsx` to scene docs.
+- **Why:** Ensure scene components resolve to their dedicated documentation chain.
+- **Files:** `modules.yaml`, `frontend/components/scene/SceneView.tsx`
+- **Struggles/Insights:** None.
 
 ---
 

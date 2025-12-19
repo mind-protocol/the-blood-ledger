@@ -290,6 +290,21 @@ modules:
       Chronicle, conversations, and ledger panels presented as tabs alongside
       the main scene view.
 
+  frontend-moment-components:
+    code: "frontend/components/moment/**"
+    docs: "docs/frontend/scene/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/components/moment/index.ts
+      - frontend/components/moment/MomentStream.tsx
+    patterns:
+      - "Moment stream with interactive words"
+      - "Type-driven rendering per moment"
+    notes: |
+      Moment display components (stream, display, debug) used by the scene
+      view. Documented under the Scene module.
+
   frontend-minimap:
     code: "frontend/components/minimap/**"
     docs: "docs/frontend/minimap/"
@@ -303,3 +318,18 @@ modules:
     notes: |
       Compact minimap button that previews discovered locations and opens the
       full map view on click.
+
+  frontend-scene:
+    code: "frontend/components/scene/**"
+    docs: "docs/frontend/scene/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/components/scene/SceneView.tsx
+      - frontend/components/scene/CenterStage.tsx
+    patterns:
+      - "Scene composed of header, banner, people, voices, actions"
+      - "CenterStage animated text flow"
+    notes: |
+      Scene presentation components for the main game view, including the
+      banner, character rows, hotspot rows, and action controls.

@@ -20,7 +20,7 @@ TEST:            ./TEST_CLI_Tool_Coverage.md
 SYNC:            ./SYNC_CLI_Tools.md
 
 IMPL:            tools/stream_dialogue.py
-                 tools/image_generation/generate_image.py
+IMPL:            tools/image_generation/generate_image.py
 ```
 
 > **Contract:** Read docs before modifying. After changes: update IMPL or add TODO to SYNC. Run tests.

@@ -1,5 +1,7 @@
 'use client';
 
+// DOCS: docs/frontend/scene/PATTERNS_Scene.md
+
 import { Scene, Voice } from '@/types/game';
 import { SceneHeader } from './SceneHeader';
 import { SceneBanner } from './SceneBanner';
