@@ -57,6 +57,12 @@ The module relies on physics graph ops/queries and is treated as a hot path.
 - **Struggles/Insights:** Keeping this distinct from the schema-first
   `docs/engine/moments/` module avoids doc duplication.
 
+### 2025-12-19: Clarified implementation references
+
+- **What:** Removed class/method references that were misread as file paths.
+- **Why:** Avoid false broken-link reports from health checks.
+- **Files:** `docs/engine/moment-graph-engine/IMPLEMENTATION_Moment_Graph_Runtime_Layout.md`
+
 ---
 
 ## HANDOFF: FOR AGENTS
