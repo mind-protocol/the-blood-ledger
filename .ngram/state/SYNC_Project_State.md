@@ -96,6 +96,7 @@ Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.m
 - The `engine/models/links.py` helper properties were already implemented; no changes needed.
 - `ngram validate` and `ngram doctor --no-github` report pre-existing missing docs and incomplete chains outside this repair scope.
 - Re-validated playthroughs API helpers during this repair run; no code changes required.
+- Rechecked playthroughs helper repair task during this run; documentation updated.
 - Node model helper implementations already exist; no changes needed.
 - `ngram validate` still reports missing docs and broken CHAIN links in `docs/schema`; unchanged in this repair.
 

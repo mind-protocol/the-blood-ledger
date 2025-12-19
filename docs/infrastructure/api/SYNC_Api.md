@@ -50,6 +50,7 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 ### Remarks
 - `engine/infrastructure/api/app.py` remains a large monolith that bundles multiple endpoint groups.
 - Repair task flagged playthrough helper functions as empty, but they are already implemented.
+- Re-validated playthroughs helper implementations for this repair run; no code changes required.
 
 ### Suggestions
 - [ ] Consider splitting `engine/infrastructure/api/app.py` into smaller router modules once the API surface stabilizes.
