@@ -9,10 +9,15 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
-Filled missing template sections in `docs/infrastructure/api/PATTERNS_Api.md`
-for repair #16 and recorded the update in `docs/infrastructure/api/SYNC_Api.md`.
-Ran `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
-gaps in schema/product/network/storms modules).
+Filled missing SYNC template sections in `docs/infrastructure/api/SYNC_Api.md`
+to resolve DOC_TEMPLATE_DRIFT for repair #16 and recorded the change in the
+API SYNC. Ran `ngram validate`; failures remain pre-existing (missing VIEW and
+doc-chain gaps in schema/product/network/storms modules).
+
+Expanded `docs/infrastructure/api/PATTERNS_Api.md` with the missing template
+sections (problem, pattern, principles, dependencies, inspirations, scope,
+gaps) for repair #16 and recorded the update in
+`docs/infrastructure/api/SYNC_Api.md`.
 
 Filled missing MATURITY, RECENT CHANGES, and CONSCIOUSNESS TRACE sections in
 `docs/infrastructure/history/SYNC_History.md` and expanded the IN PROGRESS
@@ -32,6 +37,9 @@ Expanded `docs/infrastructure/history/IMPLEMENTATION_History_Service_Architectur
 with the missing SCHEMA, LOGIC CHAINS, RUNTIME BEHAVIOR, and CONCURRENCY MODEL
 sections to resolve DOC_TEMPLATE_DRIFT for repair #16 and logged the update in
 `docs/infrastructure/history/SYNC_History.md`.
+Revalidated the history implementation template coverage after filling the
+missing sections; `ngram validate` still reports pre-existing gaps in other
+modules (missing VIEW and doc-chain gaps in schema/product/network/storms).
 
 Re-verified `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
 meets template requirements (ALGORITHM and HELPER FUNCTIONS present) and
