@@ -30,15 +30,15 @@ IMPL:           frontend/app/page.tsx
 ```
 frontend/
 ├── app/                          # Next.js App Router pages
-│   ├── page.tsx                  # Main entry - loads GameClient
-│   ├── layout.tsx                # Root layout with providers
-│   ├── start/page.tsx            # Opening/start screen
-│   ├── map/page.tsx              # Map view
-│   └── scenarios/page.tsx        # Scenario selection
+│   ├── frontend/app/page.tsx          # Main entry - loads GameClient
+│   ├── frontend/app/layout.tsx        # Root layout with providers
+│   ├── frontend/app/start/page.tsx    # Opening/start screen
+│   ├── frontend/app/map/page.tsx      # Map view
+│   └── frontend/app/scenarios/page.tsx # Scenario selection
 ├── components/                   # React components
-│   ├── GameClient.tsx            # Main game wrapper, handles loading
-│   ├── GameLayout.tsx            # Layout: scene + right panel
-│   ├── Providers.tsx             # Context providers
+│   ├── frontend/components/GameClient.tsx # Main game wrapper, handles loading
+│   ├── frontend/components/GameLayout.tsx # Layout: scene + right panel
+│   ├── frontend/components/Providers.tsx  # Context providers
 │   ├── scene/                    # Scene rendering components
 │   ├── moment/                   # Moment system components
 │   ├── map/                      # Map display components
@@ -55,11 +55,11 @@ frontend/
 │   ├── api.ts                    # API client functions
 │   └── map/                      # Map utilities
 ├── types/                        # TypeScript definitions
-│   ├── game.ts                   # Core game types
-│   ├── moment.ts                 # Moment types
-│   └── map.ts                    # Map types
+│   ├── frontend/types/game.ts    # Core game types
+│   ├── frontend/types/moment.ts  # Moment types
+│   └── frontend/types/map.ts     # Map types
 ├── data/                         # Static data
-│   └── game-state.json           # Fallback static state
+│   └── frontend/data/game-state.json # Fallback static state
 └── public/                       # Static assets
     └── playthroughs/             # Playthrough images
 ```
@@ -341,7 +341,7 @@ Initial → Loading → (Loaded | Error | NeedsOpening)
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `NEXT_PUBLIC_API_URL` | `.env.local` | `http://localhost:8000` | Backend API URL |
+| `NEXT_PUBLIC_API_URL` | `frontend/.env.local` | `http://localhost:8000` | Backend API URL |
 
 ---
 

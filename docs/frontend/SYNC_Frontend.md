@@ -62,6 +62,14 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ## RECENT CHANGES
 
+### 2025-12-19: Fix frontend implementation doc file paths
+
+- **What:** Updated implementation doc file references to full `frontend/**` paths and corrected the `.env.local` location to `frontend/.env.local`.
+- **Why:** Remove broken file references so doc link checks resolve to existing files.
+- **Files:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
+- **Struggles/Insights:** None.
+- **Verification:** `ngram validate` (fails on pre-existing docs gaps in `docs/schema/`, `docs/product/`, `docs/network/`, and `docs/infrastructure/*`).
+
 ### 2025-12-19: Align tempo API base with shared frontend client
 
 - **What:** Exported `API_BASE` from the shared API client and used it in `SpeedControl` and `useTempo`.

@@ -12,6 +12,10 @@ UPDATED_BY: Codex (repair agent)
 Completed the tempo documentation chain (PATTERNS/BEHAVIORS/VALIDATION/TEST),
 updated `docs/infrastructure/tempo/SYNC_Tempo.md`, and added an
 `infrastructure-tempo` mapping in `modules.yaml`.
+
+Repaired frontend implementation doc file references to use full
+`frontend/**` paths (including `frontend/.env.local`) and logged the update in
+`docs/frontend/SYNC_Frontend.md`.
 Added a tempo DOCS reference to `frontend/components/SpeedControl.tsx` to
 link the frontend speed controls to the tempo documentation chain.
 
