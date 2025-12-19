@@ -21,6 +21,8 @@ verification procedure, sync status, gaps) and logged the update in
 Added SCHEMA and LOGIC CHAINS sections to `docs/design/IMPLEMENTATION_Vision.md`
 and expanded bidirectional link notes to satisfy the DOC_TEMPLATE_DRIFT warning
 for repair #16. Logged the update in `docs/design/SYNC_Vision.md`.
+Ran `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
+gaps in schema/product/network/storms modules).
 
 Expanded `docs/schema/models/SYNC_Schema_Models.md` IN PROGRESS notes to keep
 the schema-model doc chain aligned after template repairs for #16.
