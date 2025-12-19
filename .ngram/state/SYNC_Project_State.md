@@ -13,9 +13,10 @@ Completed async architecture documentation chain by adding an IMPLEMENTATION doc
 
 Completed image-generation documentation chain by adding IMPLEMENTATION doc, linking CHAIN references, and mapping the module in `modules.yaml`.
 
-World scraping documentation chain finalized with implementation details and extraction candidates; DOCS references remain absent because `data/` is gitignored. Frontend module is now mapped in `modules.yaml` with existing docs and a DOCS reference in `frontend/app/page.tsx`.
+World scraping documentation chain finalized with implementation details and extraction candidates; DOCS references remain absent because `data/` is gitignored. Frontend module is now mapped in `modules.yaml` with existing docs and a DOCS reference in `frontend/app/page.tsx`. Added a DOCS reference to `frontend/components/chronicle/ChroniclePanel.tsx` to link it to frontend implementation documentation.
 Completed docs/design chain by adding IMPLEMENTATION_Vision.md, updating TEST_Vision.md chain, and refreshing SYNC_Vision.md; mapped design-vision in modules.yaml.
 Mapped frontend module in `modules.yaml` to cover `frontend/**`, aligning docs with `docs/frontend/` and closing the unmapped `frontend/components` gap.
+Linked `frontend/components/voices/Voices.tsx` to frontend docs via a DOCS reference and added it as a frontend entry point in `modules.yaml`.
 
 Frontend-backend integration fixes for playthrough flow:
 - Added scene-memory IMPLEMENTATION/TEST docs, updated doc chains, and added a DOCS reference in `engine/infrastructure/memory/moment_processor.py`.
