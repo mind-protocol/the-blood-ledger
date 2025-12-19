@@ -33,6 +33,17 @@ All Python imports updated and verified working. Health score improved from 10 c
 
 ## RECENT CHANGES
 
+### 2025-12-19: SYNC_Scene_Memory.md Refreshed
+
+- **What:** Major update to stale SYNC file for infrastructure/scene-memory module
+- **Why:** SYNC was 368 days old, documented a "Scene Memory" design that was superseded by Moment Graph
+- **Impact:**
+  - SYNC now reflects Moment Graph architecture (not original Scene-based design)
+  - Documented all implemented components: MomentProcessor, Moment model, graph operations
+  - Updated status from DRAFT to CANONICAL
+  - Marked related PATTERNS/BEHAVIORS/ALGORITHM/VALIDATION docs as Superseded (need review)
+  - Added file locations for all implemented code
+
 ### 2025-12-19: SYNC_Opening.md Refreshed
 
 - **What:** Updated stale SYNC file for design/opening module
@@ -117,7 +128,7 @@ All Python imports updated and verified working. Health score improved from 10 c
 | graph_ops.py monolith | warning | `engine/physics/graph/` | 1611 lines (reduced from 2252 via ApplyOperationsMixin extraction), still above 800 threshold |
 | ~~graph_queries.py monolith~~ | ~~critical~~ | `engine/physics/graph/` | RESOLVED: 892 lines (extracted SearchQueryMixin) |
 | ~~Broken impl link~~ | ~~warning~~ | `docs/physics/` | MOSTLY RESOLVED: 51→34 references remaining are false positives (tree filenames, constants) |
-| 4 stale SYNCs | warning | various | Need refresh (scene, map, world-runner fixed) |
+| 3 stale SYNCs | warning | various | Need refresh (scene, map, world-runner, scene-memory fixed) |
 
 ---
 
@@ -167,7 +178,7 @@ Code restructured to match docs areas. All imports updated and verified working.
 
 ### Backlog
 
-- [ ] Refresh 4 remaining stale SYNC files (scene, map, world-runner done)
+- [ ] Refresh 3 remaining stale SYNC files (scene, map, world-runner, scene-memory done)
 - [ ] Add DOCS: references to code files
 
 ---

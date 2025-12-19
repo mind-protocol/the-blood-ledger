@@ -1,9 +1,9 @@
 # Scene Memory System — Sync
 
 ```
-LAST_UPDATED: 2024-12-16
-UPDATED_BY: Claude
-STATUS: DRAFT
+LAST_UPDATED: 2025-12-19
+UPDATED_BY: Claude (repair agent)
+STATUS: CANONICAL
 ```
 
 ===============================================================================
@@ -12,26 +12,110 @@ STATUS: DRAFT
 
 | Document | Status | Purpose |
 |----------|--------|---------|
-| PATTERNS_Scene_Memory.md | Draft | Why this shape, design philosophy |
-| BEHAVIORS_Scene_Memory.md | Draft | Inputs, outputs, observable behaviors |
-| ALGORITHM_Scene_Memory.md | Draft | Implementation logic |
-| VALIDATION_Scene_Memory.md | Draft | How to verify correctness |
+| PATTERNS_Scene_Memory.md | Superseded | Original design - now Moment Graph |
+| BEHAVIORS_Scene_Memory.md | Superseded | Original behaviors - evolved |
+| ALGORITHM_Scene_Memory.md | Superseded | Original algorithm - replaced |
+| VALIDATION_Scene_Memory.md | Superseded | Original validation - needs update |
 | SYNC_Scene_Memory.md | Current | This file — state tracking |
+
+**NOTE:** The original "Scene Memory" design evolved into the **Moment Graph** architecture.
+The Scene node type was replaced by individual Moment nodes with graph-based relationships.
+See `docs/physics/` for current Moment Graph documentation.
+
+===============================================================================
+## ARCHITECTURE EVOLUTION
+===============================================================================
+
+**Original Design (2024-12):** Scene-based memory with Scene containers holding Moments
+
+**Current Design (2025):** Moment Graph architecture
+- No Scene container nodes
+- Moments are first-class nodes with lifecycle states
+- Weight-based surfacing instead of scene containers
+- Click traversal with <50ms target
+- Persistence via dormant/reactivate states
 
 ===============================================================================
 ## IMPLEMENTATION STATUS
 ===============================================================================
 
-| Component | Status | Notes |
-|-----------|--------|-------|
-| Name expansion | Not started | `expand_name()` function |
-| Moment creation | Not started | `create_moment()`, `create_hint_moment()` |
-| Scene storage | Not started | Scene node + CONTAINS links to Moments |
-| Narrative creation | Not started | With FROM links to Moments |
-| Belief creation | Not started | Auto-create for present characters |
-| Embeddings | Not started | For text fields > 20 chars |
-| Vector indices | Not started | moment_emb, narrative_emb |
-| Queries | Not started | Cypher queries documented |
+| Component | Status | Location |
+|-----------|--------|----------|
+| Moment model | **CANONICAL** | `engine/models/nodes.py:189` |
+| MomentProcessor | **CANONICAL** | `engine/infrastructure/memory/moment_processor.py` |
+| Graph moment ops | **CANONICAL** | `engine/physics/graph/graph_ops.py:792` (add_moment) |
+| Moment lifecycle | **CANONICAL** | `engine/physics/graph/graph_ops_moments.py` |
+| Moment queries | **CANONICAL** | `engine/physics/graph/graph_queries_moments.py` |
+| Moment Graph engine | **CANONICAL** | `engine/moment_graph/` |
+| API endpoints | **CANONICAL** | `engine/infrastructure/api/moments.py` |
+| Tests | **CANONICAL** | `engine/tests/test_moment*.py` (5 files) |
+| Embeddings | **CANONICAL** | Generated for text > 20 chars |
+
+===============================================================================
+## MOMENT NODE TYPE
+===============================================================================
+
+From `engine/models/nodes.py`:
+
+```python
+class Moment:
+    id: str           # {place}_{day}_{time}_{type}_{timestamp}
+    text: str         # Actual content
+    type: MomentType  # dialogue, narration, player_*, hint
+
+    # Moment Graph fields
+    status: MomentStatus   # possible, active, spoken, dormant, decayed
+    weight: float          # 0-1, salience/importance
+    tone: Optional[str]    # bitter, hopeful, urgent, etc.
+
+    # Tick tracking
+    tick_created: int
+    tick_spoken: Optional[int]
+    tick_decayed: Optional[int]
+
+    # Transcript reference
+    line: Optional[int]    # Line in transcript.json
+
+    embedding: Optional[List[float]]
+```
+
+===============================================================================
+## LINK TYPES (IMPLEMENTED)
+===============================================================================
+
+| Link | Purpose | Status |
+|------|---------|--------|
+| `Character -[CAN_SPEAK]-> Moment` | Who can say this | CANONICAL |
+| `Character -[SAID]-> Moment` | Who said this (after spoken) | CANONICAL |
+| `Moment -[ATTACHED_TO]-> *` | Presence gating | CANONICAL |
+| `Moment -[CAN_LEAD_TO]-> Moment` | Click traversal | CANONICAL |
+| `Moment -[THEN]-> Moment` | Sequence after spoken | CANONICAL |
+| `Moment -[AT]-> Place` | Location | CANONICAL |
+| `Narrative -[FROM]-> Moment` | Source attribution | CANONICAL |
+
+===============================================================================
+## MOMENT PROCESSOR API
+===============================================================================
+
+`engine/infrastructure/memory/moment_processor.py`:
+
+```python
+processor = MomentProcessor(graph_ops, embed_fn, playthrough_id)
+processor.set_context(tick, place_id)
+
+# Immediate moments (added to transcript)
+processor.process_dialogue(text, speaker, name?, tone?)
+processor.process_narration(text, name?, tone?)
+processor.process_player_action(text, player_id, action_type)
+processor.process_hint(text, name?, tone?)
+
+# Potential moments (graph only)
+processor.create_possible_moment(text, speaker_id, ...)
+
+# Links
+processor.link_moments(from_id, to_id, trigger, require_words?, ...)
+processor.link_narrative_to_moments(narrative_id, moment_ids)
+```
 
 ===============================================================================
 ## INTEGRATION POINTS
@@ -39,80 +123,47 @@ STATUS: DRAFT
 
 | System | Integration | Status |
 |--------|-------------|--------|
-| Narrator agent | Produces NarratorOutput with named elements | Not integrated |
-| Graph ops | Stores scenes, narratives, beliefs | Not integrated |
-| Embeddings | Embeds detail fields | Not integrated |
-| Frontend | Renders clickables, captures player input | Not integrated |
+| Narrator orchestration | Uses MomentProcessor for output | CANONICAL |
+| Graph ops | add_moment, handle_click, etc. | CANONICAL |
+| Embeddings service | Called for text > 20 chars | CANONICAL |
+| Moments API | REST endpoints for frontend | CANONICAL |
+| Moment Graph engine | Traversal, queries, surfacing | CANONICAL |
 
 ===============================================================================
-## SCHEMA DEPENDENCIES
+## DECISIONS MADE (HISTORICAL)
 ===============================================================================
 
-This system introduces:
-
-**New Node Types:**
-- `Scene` — Container for a scene (when, tick)
-- `Moment` — Individual narration element (id, text, type, tick, embedding)
-
-**New Fields on Narrative:**
-- `tick: int` — World tick when created
-
-**New Link Types:**
-- `Scene -[CONTAINS]-> Moment`
-- `Scene -[CREATES]-> Narrative`
-- `Scene -[AT]-> Place`
-- `Scene -[INVOLVES]-> Character`
-- `Moment -[AT]-> Place`
-- `Moment -[THEN]-> Moment` (sequence)
-- `Character -[SAID]-> Moment` (dialogue)
-- `Narrative -[FROM]-> Moment` (sources)
-- `Narrative -[ABOUT]-> Thing` (optional)
+| Decision | Rationale |
+|----------|-----------|
+| No Scene containers | Moments are independent; graph topology provides context |
+| Moment Graph architecture | Enables <50ms click response without LLM |
+| Weight-based surfacing | Probabilistic selection based on graph topology |
+| Status lifecycle | possible → active → spoken (or dormant/decayed) |
+| Transcript.json | Preserves full history for playthrough |
+| FROM links for attribution | Graph relationships, not embedded arrays |
+| SAID links for dialogue | Query "what did X say?" directly |
+| THEN links for sequence | Preserve moment order |
 
 ===============================================================================
 ## OPEN QUESTIONS
 ===============================================================================
 
-- [ ] Should player inputs be stored as nodes or just as names in sources?
-- [ ] How to handle scene continuation (same scene, multiple narrator turns)?
-- [ ] Should clickable hints create mini-narratives automatically?
-- [ ] How to handle retcons (narrative created, then discovered wrong)?
-
-===============================================================================
-## DECISIONS MADE
-===============================================================================
-
-| Decision | Rationale |
-|----------|-----------|
-| Moments as nodes | Enables linking, querying, embedding — not just embedded JSON |
-| Auto-prefix with scene context | Narrator writes short names, system handles uniqueness |
-| FROM links instead of sources array | Graph relationships, not string arrays |
-| SAID links for dialogue | Query "what did X say?" directly |
-| THEN links for sequence | Preserve moment order within scene |
-| Auto-create beliefs for present | Being present = witnessing, no explicit creation needed |
-| No `about` attribute | Relationships via graph links, not duplicated as attributes |
-| `embedding` not `detail_embedding` | Consistent field name across all embedded content |
-| Node name: Moment | Short, evocative, covers narration + dialogue + player actions |
-
-===============================================================================
-## NEXT STEPS
-===============================================================================
-
-1. [ ] Review docs with Nicolas
-2. [ ] Add Moment node type to schema
-3. [ ] Add Scene node type to schema
-4. [ ] Implement `expand_name()` function
-5. [ ] Implement `create_moment()` function
-6. [ ] Implement scene processing pipeline
-7. [ ] Integrate with narrator agent output
-8. [ ] Add vector indices (moment_emb, narrative_emb)
-9. [ ] Write integration tests
+- [ ] Should PATTERNS/BEHAVIORS/ALGORITHM/VALIDATION docs be updated to match Moment Graph?
+- [ ] Are original Scene-based docs still needed or should they be deprecated?
 
 ===============================================================================
 ## CHANGELOG
 ===============================================================================
 
+### 2025-12-19
+- **MAJOR UPDATE:** Refreshed SYNC to reflect Moment Graph architecture
+- Original Scene-based design was superseded
+- Documented all implemented components with file locations
+- Updated status from DRAFT to CANONICAL
+- Marked related docs as Superseded pending review
+
 ### 2024-12-16
-- Initial documentation created
+- Initial documentation created (Scene-based design)
 - PATTERN, BEHAVIOR, ALGORITHM, VALIDATION docs written
 - Removed `about` attribute from Narrative (use links instead)
 - Renamed `detail_embedding` to `embedding` for consistency
