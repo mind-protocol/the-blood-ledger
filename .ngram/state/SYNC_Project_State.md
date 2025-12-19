@@ -9,6 +9,16 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/agents/narrator/VALIDATION_Narrator.md` with the missing SYNC
+STATUS section and longer validation entries to resolve doc-template drift,
+and logged the update in `docs/agents/narrator/SYNC_Narrator.md` for repair #16.
+
+Expanded narrator PATTERNS template sections (problem, pattern, principles,
+dependencies, inspirations, scope, gaps) and logged the update in
+`docs/agents/narrator/SYNC_Narrator.md` for repair #16. Ran `ngram validate`;
+remaining failures are pre-existing missing VIEW/doc-chain gaps in other
+modules.
+
 Verified `docs/agents/narrator/SYNC_Narrator.md` still satisfies the required
 template sections for repair #16; no behavioral changes were introduced.
 

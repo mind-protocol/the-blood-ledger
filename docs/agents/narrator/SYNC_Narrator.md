@@ -121,6 +121,25 @@ Focus stays on clarity and traceability. This repair is intentionally small, emp
 
 ## RECENT CHANGES
 
+### 2025-12-19: Completed validation SYNC status and expansion
+
+- **What:** Added the missing SYNC STATUS block and expanded short validation
+  entries in `VALIDATION_Narrator.md` to meet template length requirements.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the narrator validation doc and keep
+  the documentation chain aligned.
+- **Files:** `docs/agents/narrator/VALIDATION_Narrator.md`,
+  `docs/agents/narrator/SYNC_Narrator.md`
+
+### 2025-12-19: Expanded narrator patterns template sections
+
+- **What:** Added missing PATTERNS template sections (problem, pattern,
+  principles, dependencies, inspirations, scope, gaps) and expanded short
+  entries to meet template length requirements.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the narrator patterns doc and keep the
+  chain aligned.
+- **Files:** `docs/agents/narrator/PATTERNS_Narrator.md`,
+  `docs/agents/narrator/SYNC_Narrator.md`
+
 ### 2025-12-19: Completed missing narrator SYNC template sections
 
 - **What:** Added maturity, current state, in-progress, known issues, handoffs,
