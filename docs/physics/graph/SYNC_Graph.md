@@ -185,6 +185,12 @@ Repeat
 
 ## CONFLICTS
 
+### DECISION: Graph Health Check Incomplete Impl
+- Conflict: Repair task flagged `add_issue`, `error_count`, `warning_count`, `is_healthy`, and `load_schema` as empty in `engine/graph/health/check_health.py`, but each function already implements concrete behavior.
+- Resolution: Treat the issue as already resolved; no code changes required.
+- Reasoning: The functions already manage issues, counts, health status, and schema loading for the health report flow.
+- Updated: `docs/physics/graph/SYNC_Graph.md`
+
 ### DECISION: Graph Ops Event Listener Incomplete Impl
 - Conflict: Repair task flagged `add_mutation_listener` and `remove_mutation_listener` as empty in `engine/physics/graph/graph_ops_events.py`, but both functions already implement registration and removal logic.
 - Resolution: Treat the issue as already resolved; no code changes required.
@@ -215,6 +221,7 @@ Repeat
 - Repair task appears stale relative to `engine/physics/graph/graph_ops_events.py`.
 - Repair task appears stale relative to `engine/physics/graph/graph_queries_moments.py`.
 - Repair task appears stale relative to `engine/physics/graph/graph_ops_types.py`.
+- Repair task appears stale relative to `engine/graph/health/check_health.py`.
 
 ### Suggestions
 - None.

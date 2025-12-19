@@ -136,6 +136,7 @@ Check `modules.yaml` (project root) for full manifest.
 
 ## RECENT REPAIRS
 
+- Confirmed `engine/graph/health/check_health.py` functions flagged by repair are already implemented; documented in `docs/physics/graph/SYNC_Graph.md`.
 - Verified `engine/graph/health/check_health.py` functions flagged as empty are already implemented; no code changes required for graph health helpers.
 - Verified `engine/infrastructure/history/conversations.py` functions flagged as empty are already implemented; no code changes required for ConversationThread helpers.
 - Verified `engine/infrastructure/api/moments.py` functions flagged as empty are already implemented; no code changes required for moments API helpers.
