@@ -136,6 +136,39 @@ modules:
     notes: |
       Moment processing and transcript persistence for playthroughs.
 
+  image-generation:
+    code: "tools/image_generation/**"
+    docs: "docs/infrastructure/image-generation/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - tools/image_generation/generate_image.py
+    patterns:
+      - "Pipeline-style CLI tool"
+      - "Table-driven image type configuration"
+    notes: |
+      Ideogram 3.0 image generation CLI for scene banners, portraits, and icons.
+
+  infrastructure-async:
+    code: "engine/infrastructure/api/playthroughs.py"
+    docs: "docs/infrastructure/async/"
+    additional_code:
+      - "engine/infrastructure/api/app.py"
+      - "engine/infrastructure/api/moments.py"
+      - "engine/infrastructure/api/sse_broadcast.py"
+      - "engine/scripts/check_injection.py"
+      - "engine/scripts/inject_to_narrator.py"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/infrastructure/api/playthroughs.py
+      - engine/scripts/check_injection.py
+    patterns:
+      - "Event-driven queues + SSE"
+      - "File-backed injection and message queues"
+    notes: |
+      Async travel architecture documentation and current queue/SSE scaffolding.
+
   frontend:
     code: "frontend/**"
     docs: "docs/frontend/"
