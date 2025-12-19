@@ -30,8 +30,8 @@ are captured in TODO so the scope stays explicit.
 
 ### 2025-12-19: Expanded physics implementation design patterns
 
-- **What:** Added a testability note to the architecture-pattern rationale so the
-  DESIGN PATTERNS section explains why orchestration stays stateless.
+- **What:** Added an anti-pattern note about hidden writes in query helpers to keep
+  the DESIGN PATTERNS section explicit about read/write separation.
 - **Why:** Keep the implementation doc aligned with template expectations and clarity.
 - **Files:** `docs/physics/IMPLEMENTATION_Physics.md`
 

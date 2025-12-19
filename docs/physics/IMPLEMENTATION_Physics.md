@@ -185,6 +185,7 @@ duplicating graph state in memory.
 ### Anti-Patterns to Avoid
 
 - **Stateful orchestration**: Avoid caching graph state in orchestrator memory -> always query the graph so canon stays authoritative.
+- **Hidden writes in queries**: Avoid mutating the graph in read helpers -> keep writes in graph_ops so effects stay explicit.
 - **God object GraphOps**: Don't add unrelated services into graph ops -> keep only graph mutations and query helpers there.
 - **Premature handler abstraction**: Avoid building a generic handler framework before real handlers exist -> start with concrete types first.
 
