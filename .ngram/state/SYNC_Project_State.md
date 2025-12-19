@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/physics/graph/PATTERNS_Graph.md` with the missing template
+sections (chain, problem, pattern, principles, dependencies, inspirations,
+scope, gaps) for repair #16 and recorded the change in
+`docs/physics/graph/SYNC_Graph.md`. Ran `ngram validate`; remaining failures
+are the pre-existing missing VIEW and doc-chain gaps in schema/product/network
+and storms modules.
+
 Normalized `docs/physics/graph/SYNC_Graph.md` headings (MATURITY, CURRENT
 STATE, RECENT CHANGES, and handoffs) to match template labels for repair #16.
 
@@ -32,8 +39,9 @@ Verified `docs/physics/PATTERNS_Physics.md` already satisfies the patterns
 template sections for repair #16 and logged the check in
 `docs/physics/SYNC_Physics.md`.
 
-Expanded `docs/physics/VALIDATION_Physics.md` with missing template sections
-(properties, error conditions, test coverage) and recorded the update in
+Expanded `docs/physics/VALIDATION_Physics.md` with template coverage for
+invariants, properties, error conditions, test coverage, verification
+procedure, and sync status, and recorded the update in
 `docs/physics/SYNC_Physics.md` to resolve DOC_TEMPLATE_DRIFT for repair #16.
 
 Expanded `docs/physics/graph/ALGORITHM_Energy_Flow.md` with explicit template
