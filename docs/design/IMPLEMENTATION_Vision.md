@@ -151,6 +151,50 @@ TEST_Vision.md
 
 ---
 
+## SCHEMA
+
+The vision module schema describes the required documentation chain and how
+each file anchors a specific intent layer for the overall vision narrative.
+
+```
+VisionDocChain:
+  required:
+    - PATTERNS_Vision.md
+    - BEHAVIORS_Vision.md
+    - ALGORITHM_Vision.md
+    - VALIDATION_Vision.md
+    - IMPLEMENTATION_Vision.md
+    - TEST_Vision.md
+    - SYNC_Vision.md
+  optional:
+    - archive/SYNC_archive_2024-12.md
+    - opening/* (Opening submodule chain + payload)
+```
+
+---
+
+## LOGIC CHAINS
+
+### LC1: Vision Doc Update Flow
+
+**Purpose:** Keep the vision intent consistent across rationale, behaviors,
+and validation as edits occur or feedback arrives.
+
+```
+PATTERNS update -> BEHAVIORS alignment -> ALGORITHM mapping -> VALIDATION refresh -> TEST signal updates
+```
+
+### LC2: Vision to Opening Alignment
+
+**Purpose:** Ensure the opening content stays grounded in the core vision
+before any scenario expansion or payload edits.
+
+```
+Vision chain review -> Opening GUIDE/CONTENT edits -> opening.json update
+```
+
+---
+
 ## MODULE DEPENDENCIES
 
 ### Internal Dependencies
@@ -196,11 +240,11 @@ Not applicable. This module is documentation-only.
 
 ### Code -> Docs
 
-None. This module does not have code files.
+None. This module has no code files with DOCS markers, so no outbound links exist.
 
 ### Docs -> Code
 
-None. This module does not map to implementation code.
+None. This module documents intent only, so it does not map to runtime code.
 
 ---
 
