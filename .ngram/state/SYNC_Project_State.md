@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/infrastructure/api/VALIDATION_Api.md` with the missing validation
+template sections (invariants, properties, error conditions, test coverage,
+verification procedure, sync status, gaps) and logged the update in
+`docs/infrastructure/api/SYNC_Api.md` for repair #16.
+
 Filled missing SYNC template sections in `docs/infrastructure/api/SYNC_Api.md`
 to resolve DOC_TEMPLATE_DRIFT for repair #16 and recorded the change in the
 API SYNC. Ran `ngram validate`; failures remain pre-existing (missing VIEW and

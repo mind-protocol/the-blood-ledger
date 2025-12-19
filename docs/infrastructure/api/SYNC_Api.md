@@ -41,6 +41,13 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Expand API validation template sections (repair 16)
+
+- **What:** Added invariants, properties, error conditions, test coverage, verification procedure, sync status, and gaps sections to the API validation doc.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for `VALIDATION_Api.md` and align with the validation template requirements.
+- **Files:**
+  - `docs/infrastructure/api/VALIDATION_Api.md`
+
 ### 2025-12-19: Fill missing SYNC template sections (repair 16)
 
 - **What:** Added MATURITY, IN PROGRESS, KNOWN ISSUES, handoffs, TODO, consciousness trace, and pointers sections.
