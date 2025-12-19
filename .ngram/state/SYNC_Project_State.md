@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reviewed commit `684b456` for `docs/agents/world-runner/BEHAVIORS_World_Runner.md`
+and logged duplicated template sections as Review Observations in
+`docs/agents/world-runner/SYNC_World_Runner.md`.
+
 Expanded `docs/world/map/SYNC_Map.md` with the missing template sections
 (maturity, current state, in progress, recent changes, known issues, handoffs,
 todo, consciousness trace, pointers) to resolve DOC_TEMPLATE_DRIFT for
