@@ -30,24 +30,12 @@ IMPL:            agents/narrator/CLAUDE.md
 The Narrator is an AI agent, not traditional code. Its "implementation" is a CLAUDE.md instruction file that configures Claude's behavior when invoked via CLI.
 
 ```
-agents/
-└── narrator/
-    ├── CLAUDE.md                 # Agent instructions (878 lines)
-    └── .claude/                  # Claude CLI state directory
-
-tools/
-└── stream_dialogue.py            # Streaming tool for narrator output
-
-engine/
-├── infrastructure/
-│   └── orchestration/
-│       ├── narrator.py           # Python service that invokes Claude CLI
-│       └── narrator_prompt.py    # Prompt builder for scene context
-│
-└── physics/
-    └── graph/
-        ├── graph_ops.py          # Write operations (mutations)
-        └── graph_queries.py      # Read operations (queries)
+agents/narrator/CLAUDE.md                 # Agent instructions (878 lines)
+agents/narrator/.claude/                  # Claude CLI state directory
+tools/stream_dialogue.py                  # Streaming tool for narrator output
+engine/infrastructure/orchestration/narrator.py  # Claude CLI + prompt builder
+engine/physics/graph/graph_ops.py         # Write operations (mutations)
+engine/physics/graph/graph_queries.py     # Read operations (queries)
 ```
 
 ### File Responsibilities
@@ -56,8 +44,7 @@ engine/
 |------|---------|-------|--------|
 | `agents/narrator/CLAUDE.md` | AI agent instructions and behavior rules | ~878 | OK |
 | `tools/stream_dialogue.py` | Stream dialogue chunks via SSE | ~200 | OK |
-| `engine/infrastructure/orchestration/narrator.py` | Claude CLI wrapper service | ~150 | OK |
-| `engine/infrastructure/orchestration/narrator_prompt.py` | Prompt builder | ~100 | OK |
+| `engine/infrastructure/orchestration/narrator.py` | Claude CLI wrapper service + prompt builder (`_build_prompt`) | ~150 | OK |
 
 **Size Thresholds:**
 - **OK** (<400 lines): Healthy size
@@ -86,9 +73,9 @@ Traditional code can't provide the creative generation needed. An LLM agent with
 
 | Pattern | Applied To | Purpose |
 |---------|------------|---------|
-| Tool Use | `stream_dialogue.py`, `graph_ops.py` | Narrator interacts with world via tool calls |
-| SSE Streaming | `narrator.py` → frontend | Real-time dialogue display |
-| Prompt Engineering | `narrator_prompt.py` | Structured context for consistent behavior |
+| Tool Use | `tools/stream_dialogue.py`, `engine/physics/graph/graph_ops.py` | Narrator interacts with world via tool calls |
+| SSE Streaming | `engine/infrastructure/orchestration/narrator.py` → frontend | Real-time dialogue display |
+| Prompt Engineering | `engine/infrastructure/orchestration/narrator.py` (`_build_prompt`) | Structured context for consistent behavior |
 | Persistent Session | `--continue` flag | Narrator remembers entire playthrough |
 
 ### Anti-Patterns to Avoid
@@ -103,8 +90,8 @@ Traditional code can't provide the creative generation needed. An LLM agent with
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
 | Agent Instructions | CLAUDE.md | Orchestrator, tools | Claude CLI invocation |
-| Graph Access | graph_ops, graph_queries | CLAUDE.md | Python tool calls |
-| Output Streaming | stream_dialogue.py | Frontend | SSE events |
+| Graph Access | engine/physics/graph/graph_ops.py, engine/physics/graph/graph_queries.py | CLAUDE.md | Python tool calls |
+| Output Streaming | tools/stream_dialogue.py | Frontend | SSE events |
 
 ---
 
@@ -112,10 +99,10 @@ Traditional code can't provide the creative generation needed. An LLM agent with
 
 | Entry Point | File | Triggered By |
 |-------------|------|--------------|
-| Narrator invocation | `narrator.py:call_narrator()` | Orchestrator on player action |
+| Narrator invocation | `engine/infrastructure/orchestration/narrator.py` (`NarratorService.generate`) | Orchestrator on player action |
 | Streaming dialogue | `tools/stream_dialogue.py` | Narrator tool call |
-| Graph query | `graph_queries.py:search()` | Narrator tool call |
-| Mutation apply | `graph_ops.py:apply()` | Narrator tool call |
+| Graph query | `engine/physics/graph/graph_queries.py:search()` | Narrator tool call |
+| Mutation apply | `engine/physics/graph/graph_ops.py:apply()` | Narrator tool call |
 
 ---
 
@@ -193,15 +180,15 @@ agents/narrator/CLAUDE.md
 
 engine/infrastructure/orchestration/narrator.py
     └── imports → subprocess (Claude CLI)
-    └── imports → narrator_prompt.py
+    └── builds → prompt in _build_prompt
 ```
 
 ### External Dependencies
 
 | Package | Used For | Imported By |
 |---------|----------|-------------|
-| `claude` (CLI) | Agent execution | orchestration/narrator.py |
-| `falkordb` | Graph database | graph_ops.py, graph_queries.py |
+| `claude` (CLI) | Agent execution | engine/infrastructure/orchestration/narrator.py |
+| `falkordb` | Graph database | engine/physics/graph/graph_ops.py, engine/physics/graph/graph_queries.py |
 | `pydantic` | Schema validation | engine/models/ |
 
 ---
@@ -215,7 +202,7 @@ engine/infrastructure/orchestration/narrator.py
 | Agent memory | Claude `--continue` session | Playthrough | Persistent via CLI state |
 | Graph state | FalkorDB | Global | Persistent |
 | Current scene | Query result | Request | Ephemeral |
-| Player profile | `playthroughs/{id}/PROFILE_NOTES.md` | Playthrough | File-based |
+| Player profile | `engine/infrastructure/api/playthroughs.py` creates PROFILE_NOTES.md in the playthrough dir | Playthrough | File-based |
 
 ### State Transitions
 
@@ -225,8 +212,8 @@ The narrator doesn't have internal state transitions — it maintains context th
 3. **File reads** — loads player profile, world injections
 
 Orchestrator scene context uses graph world tick when available to derive
-`time_of_day`/`day`, and reads `playthroughs/{id}/current_action.json` to
-populate the recent action field.
+`time_of_day`/`day`, and reads current_action.json from the playthrough
+directory to populate the recent action field.
 
 ---
 
@@ -237,7 +224,7 @@ populate the recent action field.
 ```
 1. Orchestrator starts
 2. On first player action:
-   a. Build scene context (narrator_prompt.py)
+   a. Build scene context (narrator.py `_build_prompt`)
    b. Invoke Claude CLI (first call, no --continue)
    c. Claude loads CLAUDE.md as system instructions
    d. Session established
@@ -279,7 +266,7 @@ The --continue flag means:
 |--------|----------|---------|-------------|
 | Agent instructions | `agents/narrator/CLAUDE.md` | N/A | Full narrator behavior spec |
 | Streaming tool | `tools/stream_dialogue.py` | graph-native | Output mode |
-| Playthrough data | `playthroughs/{id}/` | N/A | Per-game state |
+| Playthrough data | Playthrough directory on disk (created under `playthroughs/`) | N/A | Per-game state |
 
 ---
 

@@ -41,6 +41,12 @@ TOOLS:           tools/stream_dialogue.py
 
 ## RECENT CHANGES
 
+### 2025-12-19: Fixed broken implementation links
+
+- **What:** Updated narrator implementation doc paths to point at existing files and removed stale narrator_prompt references.
+- **Why:** Repair BROKEN_IMPL_LINK report and keep documentation references accurate.
+- **Files:** `docs/agents/narrator/IMPLEMENTATION_Narrator.md`
+
 ### 2025-12-19: Removed duplicate narrator patterns doc
 
 - **What:** Deleted the deprecated `PATTERNS_World_Building.md` and removed duplicate PATTERNS references from narrator doc chains.
