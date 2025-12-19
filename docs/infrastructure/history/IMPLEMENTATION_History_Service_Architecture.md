@@ -28,11 +28,10 @@ IMPL:           engine/infrastructure/history/service.py
 ## CODE STRUCTURE
 
 ```
-engine/infrastructure/history/
-├── __init__.py          # Module exports and usage examples
-├── engine/infrastructure/history/service.py           # HistoryService query/record workflows
-├── engine/infrastructure/history/conversations.py     # ConversationThread file handling
-└── README.md            # Implementation overview and examples
+engine/infrastructure/history/__init__.py           # Module exports and usage examples
+engine/infrastructure/history/service.py            # HistoryService query/record workflows
+engine/infrastructure/history/conversations.py      # ConversationThread file handling
+engine/infrastructure/history/README.md             # Implementation overview and examples
 ```
 
 ### File Responsibilities

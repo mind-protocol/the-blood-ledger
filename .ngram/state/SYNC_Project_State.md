@@ -9,6 +9,7 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Updated the history implementation doc CODE STRUCTURE block to use full paths for all module files and logged the change in `docs/infrastructure/history/SYNC_History.md`.
 Logged the BROKEN_IMPL_LINK verification for the engine test suite
 implementation doc and noted the latest `ngram validate` results.
 
