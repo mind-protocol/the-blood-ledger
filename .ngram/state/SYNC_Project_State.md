@@ -25,7 +25,7 @@ Removed the duplicate API algorithm doc (`docs/infrastructure/api/ALGORITHM_Play
 
 Ran `ngram validate` after removing the duplicate API algorithm doc; pre-existing schema/tempo/world-builder documentation gaps and broken CHAIN links remain.
 
-Completed repair 13 by normalizing belief-based energy injection and enforcing zero-sum propagation (with supersedes drain) in `engine/physics/tick.py`, then updated physics implementation docs and SYNC to reflect the changes.
+Completed repair 13 by normalizing belief-based energy injection and enforcing zero-sum propagation (with supersedes drain) in `engine/physics/tick.py`, then updated physics implementation docs and SYNC to reflect the changes. `pytest engine/tests/test_behaviors.py -q` failed because `pytest_xprocess` is missing (anchorpy plugin), and `ngram validate` still reports pre-existing schema/tempo/world-builder doc gaps and broken CHAIN links.
 
 Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers (`get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, `get_clickable_words`) are already implemented for the current incomplete-impl repair; no code changes required (logged in `docs/physics/graph/SYNC_Graph.md`).
 

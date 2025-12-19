@@ -540,9 +540,9 @@ Files that reference this documentation:
 
 | Doc Section | Implemented In |
 |-------------|----------------|
-| ALGORITHM_Physics: Step 1 (Inject) | `engine/physics/tick.py:_flow_energy_to_narratives` (partial) |
+| ALGORITHM_Physics: Step 1 (Inject) | `engine/physics/tick.py:_flow_energy_to_narratives` (normalized belief distribution) |
 | ALGORITHM_Physics: Step 2 (Decay) | `engine/physics/tick.py:_decay_energy` |
-| ALGORITHM_Physics: Step 3 (Propagate) | `engine/physics/tick.py:_propagate_energy` |
+| ALGORITHM_Physics: Step 3 (Propagate) | `engine/physics/tick.py:_propagate_energy` (zero-sum with supersedes drain) |
 | ALGORITHM_Physics: Step 4 (Detect) | `engine/physics/tick.py:_detect_flips` |
 | BEHAVIOR B1 (click word) | `engine/moment_graph/traversal.py:handle_click` |
 | BEHAVIOR B2 (wait trigger) | `engine/moment_graph/traversal.py:process_wait_triggers` |

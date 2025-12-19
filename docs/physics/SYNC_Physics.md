@@ -7,17 +7,15 @@ UPDATED: 2025-12-19
 
 ## GAPS
 
-- Completed: Verified `engine/moment_graph/queries.py` helpers are implemented; no code changes needed.
-- Remaining: Commit the SYNC updates once guidance is given on unrelated working tree changes.
-- Blocker: Unexpected existing modifications in the working tree need user direction before committing.
+- None.
 
 ## Recent Changes
 
-### 2025-12-19: Verified physics tick energy helpers for repair 13
+### 2025-12-19: Completed physics tick energy flow for repair 13
 
-- **What:** Confirmed `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` already have concrete implementations; no code changes required.
-- **Why:** Repair task flagged incomplete implementations; verified the helpers are implemented.
-- **Files:** `engine/physics/tick.py`, `docs/physics/SYNC_Physics.md`
+- **What:** Normalized belief-based injection and enforced zero-sum propagation with supersedes drain, clamping to `MIN_WEIGHT`.
+- **Why:** Close the incomplete-impl gap for physics tick energy flow and align with the documented algorithm.
+- **Files:** `engine/physics/tick.py:300`, `engine/physics/tick.py:342`, `docs/physics/IMPLEMENTATION_Physics.md`
 
 ### 2025-12-19: Documented physics module mapping
 
@@ -109,10 +107,11 @@ For next session:
 ## Agent Observations
 
 ### Remarks
-- The physics tick energy helpers already contain concrete logic; repair task appears stale.
+- `pytest engine/tests/test_behaviors.py -q` failed: missing `pytest_xprocess` (anchorpy plugin import).
+- `ngram validate` still reports pre-existing doc gaps and broken CHAIN links (schema/tempo/world-builder).
 
 ### Suggestions
-- [ ] Add integration coverage for physics tick helpers once a FalkorDB test harness is available.
+- [ ] Install `pytest_xprocess` (or disable the anchorpy pytest plugin) to run the physics behavior tests.
 
 ### Propositions
 - None.

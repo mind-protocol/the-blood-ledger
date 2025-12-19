@@ -309,6 +309,15 @@ class GraphTick:
         for char_id, char_energy in char_energies.items():
             # Get character's beliefs
             beliefs = self.read.get_character_beliefs(char_id)
+            if not beliefs:
+                continue
+
+            total_strength = 0.0
+            for belief in beliefs:
+                total_strength += belief.get('believes', 0) * belief.get('heard', 0)
+
+            if total_strength <= 0:
+                continue
 
             for belief in beliefs:
                 narr_id = belief.get('id')
@@ -317,7 +326,14 @@ class GraphTick:
 
                 # Energy flow = char_energy × belief_strength × flow_rate
                 belief_strength = belief.get('believes', 0) * belief.get('heard', 0)
-                energy_flow = char_energy * belief_strength * BELIEF_FLOW_RATE
+                if belief_strength <= 0:
+                    continue
+
+                energy_flow = (
+                    char_energy
+                    * (belief_strength / total_strength)
+                    * BELIEF_FLOW_RATE
+                )
 
                 narrative_energies[narr_id] = narrative_energies.get(narr_id, 0) + energy_flow
 
@@ -352,11 +368,16 @@ class GraphTick:
                         if link_strength > 0:
                             transfer = energy * link_strength * factor
 
+                            new_energies[narr_id] = new_energies.get(narr_id, energy) - transfer
+
                             # Supersession drains source
                             if link_type == 'supersedes':
                                 new_energies[narr_id] -= transfer * 0.5
 
                             new_energies[target_id] = new_energies.get(target_id, 0) + transfer
+
+            for narr_id, energy in new_energies.items():
+                new_energies[narr_id] = max(MIN_WEIGHT, energy)
 
             narrative_energies = new_energies
 
