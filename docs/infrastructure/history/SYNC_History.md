@@ -2,32 +2,9 @@
 
 ```
 LAST_UPDATED: 2025-12-19
-UPDATED_BY: Claude (repair agent)
+UPDATED_BY: Codex (repair agent)
 STATUS: CANONICAL
 ```
-
----
-
-## MATURITY
-
-**What's canonical (v1):**
-- Core pattern: distributed history through narratives + beliefs
-- Two sources: player-experienced (conversation refs) vs world-generated (detail field)
-- Timestamp format: "Day N, time_of_day"
-- BELIEVES edge structure with confidence, source, when, where
-- HistoryService class with query/record operations
-- ConversationThread class for markdown conversation files
-- Belief propagation to nearby characters
-
-**What's still being designed:**
-- Integration with Chronicle view
-- Performance optimization for large narrative sets
-
-**What's proposed (v2+):**
-- Memory decay over time
-- Confidence degradation with retellings
-- Player journal entries as narratives
-- "Actively trying to remember" mechanic
 
 ---
 
@@ -77,33 +54,6 @@ engine/infrastructure/history/
 ## IN PROGRESS
 
 No active work.
-
----
-
-## RECENT CHANGES
-
-### 2025-12-19: ConversationThread Review
-
-- **What:** Verified ConversationThread functions flagged by repair as incomplete already contain implementations
-- **Why:** Repair task marked `__init__`, `_get_file_path`, `_get_relative_path` as empty, but code is implemented
-- **Files:** `engine/infrastructure/history/conversations.py`
-
-### 2025-12-19: Implementation Added
-
-- **What:** Full HistoryService and ConversationThread implementation
-- **Why:** Part of code restructure to match documentation areas
-- **Commit:** `bd15ecf` - "refactor: Restructure code to match docs areas"
-- **Files:**
-  - engine/infrastructure/history/service.py
-  - engine/infrastructure/history/conversations.py
-  - engine/infrastructure/history/__init__.py
-  - engine/infrastructure/history/README.md
-
-### 2024-12-16: Initial Documentation
-
-- **What:** Created docs/infrastructure/history/ with full PATTERN → TEST chain
-- **Why:** History system is core to "they remembered" experience; needed documented before implementation
-- **Files:** PATTERNS, BEHAVIORS, ALGORITHM, VALIDATION, TEST, SYNC docs
 
 ---
 
@@ -203,9 +153,17 @@ History module now has full implementation. HistoryService provides query_histor
 
 ### Remarks
 - Repair task appears stale relative to `engine/infrastructure/history/conversations.py`.
+- Re-verified ConversationThread path helpers are implemented; no code changes required.
 
 ### Suggestions
 - None.
 
 ### Propositions
 - None.
+
+
+---
+
+## ARCHIVE
+
+Older content archived to: `SYNC_History_archive_2025-12.md`

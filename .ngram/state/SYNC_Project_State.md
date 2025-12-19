@@ -221,6 +221,7 @@ Check `modules.yaml` (project root) for full manifest.
 - Repair task appears to be stale relative to the current `engine/physics/graph/graph_ops_types.py` implementation.
 - `ngram validate` still reports pre-existing missing docs/CHAIN links (schema, world-runner, map, and infrastructure subsets).
 - Moment model now accepts legacy `tick` input and optional `speaker` for embedding output without storing speaker on the graph node.
+- Re-verified ConversationThread helpers already implemented; no code changes required.
 
 ### Suggestions
 - [ ] Consider adding DOCS: references for `engine/graph/health/check_health.py` to link it into the documentation chain.
