@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reduced narrator module doc size by condensing core narrator docs, archiving long-form examples in `docs/agents/narrator/archive/SYNC_archive_2024-12.md`, and aligning narrator `time_elapsed` guidance with the conversational/significant split; logged in `docs/agents/narrator/SYNC_Narrator.md`.
+
+Condensed world-runner documentation to reduce size, moved verbose examples and schemas into `docs/agents/world-runner/archive/SYNC_archive_2024-12.md`, and updated the world-runner SYNC with the new archive and observations.
+
 Expanded the engine tests implementation doc with a file responsibilities table and updated key file roles; logged the change in `docs/engine/tests/SYNC_Engine_Test_Suite.md`.
 
 Refreshed cli-tools implementation doc line counts for the image-generation files and logged the update in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.

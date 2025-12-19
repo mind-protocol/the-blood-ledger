@@ -14,7 +14,7 @@ STATUS: CANONICAL — fully implemented and documented
 **Components:**
 - `agents/world_runner/CLAUDE.md` — AI agent instructions (650 lines, comprehensive)
 - `engine/infrastructure/orchestration/world_runner.py` — Python service that invokes the agent via the agent CLI (`AGENTS_MODEL`)
-- Full documentation suite in `docs/agents/world-runner/`
+- Documentation suite in `docs/agents/world-runner/`
 
 **Design Summary:**
 - Runner owns time, Narrator owns story
@@ -28,14 +28,15 @@ STATUS: CANONICAL — fully implemented and documented
 
 | Doc | Purpose | Status |
 |-----|---------|--------|
-| `PATTERNS_World_Runner.md` | Why this shape | Current |
-| `BEHAVIORS_World_Runner.md` | What it produces (Injection) | Current |
-| `ALGORITHM_World_Runner.md` | How the tick loop works | Current |
+| `PATTERNS_World_Runner.md` | Why this shape | Current (condensed) |
+| `BEHAVIORS_World_Runner.md` | What it produces (Injection) | Current (condensed) |
+| `ALGORITHM_World_Runner.md` | How the tick loop works | Current (condensed) |
 | `VALIDATION_World_Runner_Invariants.md` | Invariants + failure behavior | Current |
 | `IMPLEMENTATION_World_Runner_Service_Architecture.md` | Code architecture | Current |
 | `TEST_World_Runner_Coverage.md` | Test coverage + gaps | Current |
-| `TOOL_REFERENCE.md` | JSON schemas for LLM output | Current |
-| `INPUT_REFERENCE.md` | What Runner receives | Current |
+| `TOOL_REFERENCE.md` | Output schema summary | Current (examples archived) |
+| `INPUT_REFERENCE.md` | What Runner receives | Current (example archived) |
+| `archive/SYNC_archive_2024-12.md` | Archived examples + JSON schema | Current |
 | `SYNC_World_Runner.md` | Current state | This file |
 
 ---
@@ -50,23 +51,29 @@ STATUS: CANONICAL — fully implemented and documented
 
 ## Notes
 
-The INPUT_REFERENCE.md references `engine/orchestration/world_runner.py` but the correct path after restructure is `engine/infrastructure/orchestration/world_runner.py`. This is a minor doc drift but doesn't affect functionality.
-
-## Updates
-
-- Routed the World Runner service through the shared agent CLI wrapper and documented `AGENTS_MODEL` provider selection.
-- Consolidated the graph tick vs narrative flip description into `docs/agents/world-runner/ALGORITHM_World_Runner.md`.
-- Removed deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` after consolidating its content into the canonical algorithm doc.
-- Added VALIDATION, IMPLEMENTATION, and TEST docs to complete the documentation chain.
-- Consolidated duplicate IMPLEMENTATION docs into `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md` and removed `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service.md`.
-- Noted the initialization logging step in the canonical implementation doc to match current service behavior.
-- Removed method-name file references from the implementation doc to resolve broken link detection.
-- Updated the implementation doc to remove non-existent file references and point to the actual PATTERNS doc path.
-- Updated the implementation doc tables to use concrete file paths/line references for entry points, configuration, and state fields.
+- The INPUT_REFERENCE.md references `engine/infrastructure/orchestration/world_runner.py` (correct after restructure).
+- Verbose examples and the full JSON schema are archived in `docs/agents/world-runner/archive/SYNC_archive_2024-12.md` to keep module docs under size limits.
 
 ---
 
-*"The Runner runs the world. The Narrator tells the story. They meet at Injections."*
+## Updates
+
+- Condensed PATTERNS/BEHAVIORS/ALGORITHM to remove duplicated interface examples.
+- Moved verbose examples and JSON schema into `archive/SYNC_archive_2024-12.md`.
+- Simplified TOOL_REFERENCE and INPUT_REFERENCE to keep current, high-signal content.
+
+---
+
+## Agent Observations
+
+### Remarks
+- The doc chain repeated large schema/examples across multiple files; consolidating references reduced redundancy.
+
+### Suggestions
+- [ ] Consider adding a short link in `agents/world_runner/CLAUDE.md` pointing to the archived full JSON schema if prompt usage needs it.
+
+### Propositions
+- Document a single canonical schema location (file or generated artifact) to avoid future duplication.
 
 ---
 
