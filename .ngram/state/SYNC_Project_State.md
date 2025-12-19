@@ -143,6 +143,8 @@ Check `modules.yaml` (project root) for full manifest.
 - Implemented orchestrator time/day/recent action helpers using world tick and playthrough `current_action.json`, with resilient world injection path handling.
 - Verified `engine/models/base.py` functions flagged as empty are already implemented; no code changes required for GameTimestamp comparisons.
 - Verified `engine/infrastructure/memory/moment_processor.py` functions flagged as empty are already implemented; no code changes required for moment processor helpers.
+- Verified `engine/physics/graph/graph_ops_events.py` listener helpers are already implemented; no code changes required.
+- Documented the stale graph ops events repair in `docs/physics/graph/SYNC_Graph.md`.
 
 ## CONFLICTS
 
@@ -199,6 +201,7 @@ Check `modules.yaml` (project root) for full manifest.
 - Repair task appears to be stale relative to the current `engine/models/base.py` implementation.
 - Repair task appears to be stale relative to the current `engine/infrastructure/memory/moment_processor.py` implementation.
 - Repair task appears to be stale relative to the current `engine/models/links.py` implementation.
+- `ngram validate` still reports pre-existing missing docs/CHAIN links (schema, world-runner, map, and infrastructure subsets).
 
 ### Suggestions
 - [ ] Consider adding DOCS: references for `engine/graph/health/check_health.py` to link it into the documentation chain.

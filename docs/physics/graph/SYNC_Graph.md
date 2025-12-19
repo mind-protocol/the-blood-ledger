@@ -180,3 +180,24 @@ Repeat
 ---
 
 *"Characters are batteries. Narratives are circuits. Energy flows through links."*
+
+---
+
+## CONFLICTS
+
+### DECISION: Graph Ops Event Listener Incomplete Impl
+- Conflict: Repair task flagged `add_mutation_listener` and `remove_mutation_listener` as empty in `engine/physics/graph/graph_ops_events.py`, but both functions already implement registration and removal logic.
+- Resolution: Treat the issue as already resolved; no code changes required.
+- Reasoning: The functions already mutate the listener registry and are exercised by graph ops event emission.
+- Updated: `docs/physics/graph/SYNC_Graph.md`
+
+## Agent Observations
+
+### Remarks
+- Repair task appears stale relative to `engine/physics/graph/graph_ops_events.py`.
+
+### Suggestions
+- None.
+
+### Propositions
+- None.
