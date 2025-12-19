@@ -76,6 +76,8 @@ to avoid drift warnings in the doc health checks.
 
 ## RECENT CHANGES
 
+- 2025-12-19: Added clarification in ALGORITHM_Opening.md overview to explain
+  how nested acknowledgments preserve question order for repair #16.
 - 2025-12-19: Filled missing PATTERNS_Opening.md template sections (problem,
   pattern, principles, dependencies, inspirations, scope) for repair #16.
 - 2025-12-19: Expanded ALGORITHM_Opening.md with full template sections and

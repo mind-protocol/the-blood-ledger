@@ -27,7 +27,8 @@ The opening algorithm turns the authored `opening.json` beats into a
 SceneTree that the narrator can run, while keeping the question list
 static and the player answers dynamic. The goal is a deterministic
 structure that delivers the scripted experience without re-generating
-questions at runtime.
+questions at runtime. The nested acknowledgments preserve question order
+without requiring additional dialogue planning logic.
 
 ## DATA STRUCTURES
 

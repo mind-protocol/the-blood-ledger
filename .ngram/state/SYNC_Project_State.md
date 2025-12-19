@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/infrastructure/scene-memory/ALGORITHM_Scene_Memory.md` with the
+missing template sections (data structures, algorithm steps, decisions, data
+flow, complexity, helpers, interactions, gaps) and logged the update in
+`docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` for repair #16.
+
 Clarified the TEST_Vision test strategy with explicit playtest log fields and
 recorded the update in `docs/design/SYNC_Vision.md` for repair #16.
 
@@ -27,6 +32,12 @@ gaps in schema/product/network/storms modules).
 Expanded `docs/design/opening/ALGORITHM_Opening.md` with longer descriptions in
 each template section to resolve the DOC_TEMPLATE_DRIFT warning for repair #16,
 and recorded the change in `docs/design/opening/SYNC_Opening.md`.
+Ran `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
+gaps in schema/product/network/storms modules).
+
+Added a brief clarification to `docs/design/opening/ALGORITHM_Opening.md`
+about nested acknowledgments preserving question order, and logged the update
+in `docs/design/opening/SYNC_Opening.md` for repair #16.
 Ran `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
 gaps in schema/product/network/storms modules).
 

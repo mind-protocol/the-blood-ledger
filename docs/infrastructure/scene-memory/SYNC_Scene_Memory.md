@@ -62,6 +62,11 @@ STATUS: CANONICAL
 - Added `docs/infrastructure/scene-memory/archive/SYNC_archive_2024-12.md` to
   preserve legacy summary context.
 - Trimmed IMPLEMENTATION doc to focus on current code structure and entry points.
+- Expanded `docs/infrastructure/scene-memory/ALGORITHM_Scene_Memory.md` with the
+  missing algorithm template sections and legacy clarifications for repair #16.
+- Expanded `docs/infrastructure/scene-memory/PATTERNS_Scene_Memory.md` with the
+  missing template sections (principles, dependencies, inspirations, scope) and
+  clarified legacy context for repair #16.
 - Ran `ngram validate`; pre-existing failures remain in schema/embeddings/network
   and missing VIEW files.
 
