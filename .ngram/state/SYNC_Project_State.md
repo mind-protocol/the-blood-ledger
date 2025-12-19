@@ -140,10 +140,17 @@ Check `modules.yaml` (project root) for full manifest.
 - Reasoning: Current implementations provide concrete behavior and are exercised by the health report flow.
 - Updated: `.ngram/state/SYNC_Project_State.md`
 
+### DECISION: Playthroughs Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `_count_branches` and `_get_playthrough_queries` in `engine/infrastructure/api/playthroughs.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: Both functions already perform real logic and are referenced by the playthroughs API flow.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
 ## Agent Observations
 
 ### Remarks
 - Repair task appears to be stale relative to the current `engine/graph/health/check_health.py` implementation.
+- Repair task appears to be stale relative to the current `engine/infrastructure/api/playthroughs.py` implementation.
 
 ### Suggestions
 - [ ] Consider adding DOCS: references for `engine/graph/health/check_health.py` to link it into the documentation chain.
