@@ -139,8 +139,53 @@ Check `modules.yaml` (project root) for full manifest.
 - Verified `engine/graph/health/check_health.py` functions flagged as empty are already implemented; no code changes required for graph health helpers.
 - Verified `engine/infrastructure/history/conversations.py` functions flagged as empty are already implemented; no code changes required for ConversationThread helpers.
 - Verified `engine/infrastructure/api/moments.py` functions flagged as empty are already implemented; no code changes required for moments API helpers.
+- Implemented orchestrator time/day/recent action helpers using world tick and playthrough `current_action.json`, with resilient world injection path handling.
 - Verified `engine/models/base.py` functions flagged as empty are already implemented; no code changes required for GameTimestamp comparisons.
 - Verified `engine/infrastructure/memory/moment_processor.py` functions flagged as empty are already implemented; no code changes required for moment processor helpers.
+
+## CONFLICTS
+
+### DECISION: Graph Health Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `add_issue`, `error_count`, `warning_count`, `is_healthy`, and `load_schema` in `engine/graph/health/check_health.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: Current implementations provide concrete behavior and are exercised by the health report flow.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
+### DECISION: Playthroughs Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `_count_branches` and `_get_playthrough_queries` in `engine/infrastructure/api/playthroughs.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: Both functions already perform real logic and are referenced by the playthroughs API flow.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
+### DECISION: History Conversations Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `__init__`, `_get_file_path`, and `_get_relative_path` in `engine/infrastructure/history/conversations.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: The functions perform base directory setup and path mapping used by conversation operations.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
+### DECISION: Moments API Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `_get_queries`, `_get_traversal`, `_get_surface`, `_get_graph_queries`, and `moment_stream` in `engine/infrastructure/api/moments.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: All five functions are fully implemented and actively used: `_get_*` functions resolve graph names and return appropriate query/traversal/surface objects; `moment_stream` is a complete SSE endpoint with async event generator.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
+### DECISION: Models Base Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `__str__`, `__le__`, and `__gt__` in `engine/models/base.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: `GameTimestamp` implements string formatting and comparison logic used by tests and history ordering.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
+### DECISION: Moment Processor Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `_write_transcript`, `last_moment_id`, `transcript_line_count`, and `get_moment_processor` in `engine/infrastructure/memory/moment_processor.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: The methods implement transcript serialization, last-moment tracking, transcript line count, and a configured factory for `MomentProcessor`.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
+### DECISION: Models Links Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `belief_intensity`, `is_present`, `has_item`, and `is_here` in `engine/models/links.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: The properties implement the expected link behaviors and are covered by model/integration tests.
+- Updated: `.ngram/state/SYNC_Project_State.md`
 
 ## Agent Observations
 
@@ -149,6 +194,7 @@ Check `modules.yaml` (project root) for full manifest.
 - Repair task appears to be stale relative to the current `engine/infrastructure/api/playthroughs.py` implementation.
 - Repair task appears to be stale relative to the current `engine/infrastructure/history/conversations.py` implementation.
 - Repair task appears to be stale relative to the current `engine/infrastructure/api/moments.py` implementation.
+- Orchestrator scene context now derives time-of-day/day from the World tick when available.
 - Repair task appears to be stale relative to the current `engine/models/base.py` implementation.
 - Repair task appears to be stale relative to the current `engine/infrastructure/memory/moment_processor.py` implementation.
 - Repair task appears to be stale relative to the current `engine/models/links.py` implementation.
@@ -158,13 +204,6 @@ Check `modules.yaml` (project root) for full manifest.
 
 ### Propositions
 - None.
-
----
-
-## ARCHIVE
-
-Older content archived to: `SYNC_Project_State_archive_2025-12.md`
-
 
 ---
 
