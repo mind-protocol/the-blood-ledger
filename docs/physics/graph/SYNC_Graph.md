@@ -103,3 +103,15 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 - Verified `engine/physics/graph/graph_ops_types.py` helpers (`SimilarNode.__str__`, `ApplyResult.success`) are already implemented; repair flagged as INCOMPLETE_IMPL is stale.
 - Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers are implemented; repair flagged as INCOMPLETE_IMPL is stale.
 - Removed duplicate graph algorithm doc by consolidating weight computation into `docs/physics/graph/ALGORITHM_Energy_Flow.md` and dropping `docs/physics/graph/ALGORITHM_Weight.md`.
+- Reconfirmed mutation listener helpers (`add_mutation_listener`, `remove_mutation_listener`) are implemented in `engine/physics/graph/graph_ops_events.py` for the current repair run; no code changes required.
+
+## Agent Observations
+
+### Remarks
+- The mutation listener helpers already include guard checks to avoid duplicate registrations and safe removal.
+
+### Suggestions
+- [ ] Add a lightweight unit test for `emit_event` to cover listener registration/removal behavior.
+
+### Propositions
+- None.

@@ -34,6 +34,14 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Reconfirmed node helper implementations (repair 07, current run)
+
+- **What:** Rechecked `Narrative.is_core_type` and Moment helpers (`tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) remain implemented in `engine/models/nodes.py` (see `engine/models/nodes.py:185` and `engine/models/nodes.py:249`); no code changes made.
+- **Why:** Current INCOMPLETE_IMPL repair run required validation of node helper properties.
+- **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Test:** `pytest engine/tests/test_models.py` (failed: missing `pytest_xprocess` dependency).
+- **Struggles/Insights:** Repair task remains stale; verification only.
+
 ### 2025-12-19: Revalidated link helper implementations with line refs (repair 06, current run)
 
 - **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` remain implemented in `engine/models/links.py` (`engine/models/links.py:66`, `engine/models/links.py:120`, `engine/models/links.py:140`, `engine/models/links.py:160`); no code changes made.
