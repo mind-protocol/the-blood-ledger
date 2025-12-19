@@ -46,9 +46,9 @@ Original file: SYNC_Embeddings.md
 - **Files:**
   - docs/infrastructure/embeddings/PATTERNS_Embeddings.md
   - docs/infrastructure/embeddings/BEHAVIORS_Embeddings.md
-  - docs/infrastructure/embeddings/ALGORITHM_Embeddings.md
+  - docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Overview.md
   - docs/infrastructure/embeddings/VALIDATION_Embeddings.md
-  - docs/infrastructure/embeddings/TEST_Embeddings.md
+  - docs/infrastructure/embeddings/TEST/TEST_Overview.md
   - docs/infrastructure/embeddings/SYNC_Embeddings.md
 - **Insights:** Current implementation is good foundation but needs refactoring for new spec
 

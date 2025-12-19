@@ -12,10 +12,10 @@ CREATED: 2025-12-19
 ```
 PATTERNS:       ./PATTERNS_Embeddings.md
 BEHAVIORS:      ./BEHAVIORS_Embeddings.md
-ALGORITHM:      ./ALGORITHM_Embeddings.md
+ALGORITHM:      ./ALGORITHM/ALGORITHM_Overview.md
 VALIDATION:     ./VALIDATION_Embeddings.md
 THIS:           IMPLEMENTATION_Embeddings.md
-TEST:           ./TEST_Embeddings.md
+TEST:           ./TEST/TEST_Overview.md
 SYNC:           ./SYNC_Embeddings.md
 
 IMPL:           ../../../engine/infrastructure/embeddings/service.py

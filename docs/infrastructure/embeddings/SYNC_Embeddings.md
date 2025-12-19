@@ -39,6 +39,13 @@ No active work on embeddings module.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Split large algorithm/test docs
+
+- **What:** Split ALGORITHM and TEST docs into focused subfiles with concise overviews; moved detailed examples to archive.
+- **Why:** Reduce module doc size below threshold and keep entry points readable.
+- **Files:** `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`, `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Overview.md`, `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Indexing.md`, `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Search.md`, `docs/infrastructure/embeddings/TEST_Embeddings.md`, `docs/infrastructure/embeddings/TEST/TEST_Overview.md`, `docs/infrastructure/embeddings/TEST/TEST_Cases.md`, `docs/infrastructure/embeddings/archive/SYNC_archive_2024-12.md`
+- **Struggles/Insights:** Moved vector index details plus fixture/performance examples into the archive to keep the entry docs concise.
+
 ### 2025-12-19: Normalize embeddings implementation references
 
 - **What:** Replaced method-only tokens with concrete file paths in the embeddings implementation doc.
@@ -102,7 +109,6 @@ No active work on embeddings module.
 - Don't break existing embed() and embed_batch() functions
 - Return vector or None from index_node/index_link
 - Need vector index per node label in FalkorDB
-- Other docs in this folder have stale paths (see Known Issues)
 
 **Open questions I had:**
 - Should we keep embed_node() for backwards compatibility?
@@ -132,7 +138,6 @@ Embeddings module is canonical and working. Core service provides embed(), embed
 - [ ] Implement `index_node()` — detail > 20 (fallback name), set node.embedding
 - [ ] Implement `index_link()` — detail > 20, set link.embedding
 - [ ] Create vector indexes per node label
-- [ ] Update path references in other docs (ALGORITHM, BEHAVIORS, PATTERNS, TEST, VALIDATION)
 
 ### Later
 
@@ -150,9 +155,9 @@ Embeddings module is canonical and working. Core service provides embed(), embed
 | Module init | engine/infrastructure/embeddings/__init__.py |
 | Pattern philosophy | ./PATTERNS_Embeddings.md |
 | Observable behaviors | ./BEHAVIORS_Embeddings.md |
-| Indexing/search procedures | ./ALGORITHM_Embeddings.md |
+| Indexing/search procedures | ./ALGORITHM/ALGORITHM_Overview.md |
 | Test invariants | ./VALIDATION_Embeddings.md |
-| Test cases | ./TEST_Embeddings.md |
+| Test cases | ./TEST/TEST_Overview.md |
 | Graph queries (has search) | engine/physics/graph/graph_queries.py |
 | History conversations | engine/infrastructure/history/conversations.py |
 
@@ -161,4 +166,17 @@ Embeddings module is canonical and working. Core service provides embed(), embed
 
 ## ARCHIVE
 
-Older content archived to: `SYNC_Embeddings_archive_2025-12.md`
+Older content archived to: `SYNC_Embeddings_archive_2025-12.md` and `archive/SYNC_archive_2024-12.md`
+
+---
+
+## Agent Observations
+
+### Remarks
+- Split documents keep entry points readable while preserving details in the archive.
+
+### Suggestions
+- [ ] Add a brief cross-link from VALIDATION to the archive if more test cases are migrated.
+
+### Propositions
+- None.

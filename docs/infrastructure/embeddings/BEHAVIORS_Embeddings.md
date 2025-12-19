@@ -12,10 +12,10 @@ CREATED: 2024-12-16
 ```
 PATTERNS:    ./PATTERNS_Embeddings.md
 THIS:        BEHAVIORS_Embeddings.md (you are here)
-ALGORITHM:   ./ALGORITHM_Embeddings.md
+ALGORITHM:   ./ALGORITHM/ALGORITHM_Overview.md
 VALIDATION:  ./VALIDATION_Embeddings.md
 IMPLEMENTATION: ./IMPLEMENTATION_Embeddings.md
-TEST:        ./TEST_Embeddings.md
+TEST:        ./TEST/TEST_Overview.md
 SYNC:        ./SYNC_Embeddings.md
 IMPL:        ../../../engine/infrastructure/embeddings/service.py
 ```
@@ -239,46 +239,8 @@ INSTEAD:  Overwrite node.embedding attribute
 
 ---
 
-## QUERY EXAMPLES
-
-### "What do I know about guilt?"
-
-```python
-results = search("guilt regret couldn't save")
-
-# Expected matches:
-# - character/char_aldric: "Watched his brother die at Stamford..."
-# - link/BELIEVES: "Aldric told me by the fire, voice breaking..."
-# - conversation: "I was fifty yards away. Couldn't reach him."
-```
-
-### "How did I get this ring?"
-
-```python
-results = search("ring father inheritance")
-
-# Expected matches:
-# - link/CARRIES: "Pulled from father's hand as he died..."
-# - narrative/narr_father_death: "Father died in the burning..."
-```
-
-### "Dangerous places"
-
-```python
-results = search("dangerous threat wolves bandits")
-
-# Expected matches:
-# - place/place_moors: "Wind howls. Men disappear here..."
-# - place/place_humber: "Norman patrols check travelers..."
-```
-
----
-
 ## GAPS / IDEAS / QUESTIONS
 
 - [ ] Should search support filtering by source_type?
 - [ ] Should search support minimum score threshold?
 - [ ] How to handle queries that match many results equally?
-- IDEA: Boost recent embeddings in search ranking
-- IDEA: Allow negative queries ("not about York")
-- QUESTION: What's the practical limit on results before quality degrades?

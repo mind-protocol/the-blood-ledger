@@ -13,10 +13,10 @@ UPDATED: 2024-12-16
 ```
 THIS:        PATTERNS_Embeddings.md (you are here)
 BEHAVIORS:   ./BEHAVIORS_Embeddings.md
-ALGORITHM:   ./ALGORITHM_Embeddings.md
+ALGORITHM:   ./ALGORITHM/ALGORITHM_Overview.md
 VALIDATION:  ./VALIDATION_Embeddings.md
 IMPLEMENTATION: ./IMPLEMENTATION_Embeddings.md
-TEST:        ./TEST_Embeddings.md
+TEST:        ./TEST/TEST_Overview.md
 SYNC:        ./SYNC_Embeddings.md
 IMPL:        ../../../engine/infrastructure/embeddings/
 ```
@@ -169,26 +169,6 @@ The economics of local embedding models (sentence-transformers) make "embed ever
 **Structured queries.** "Show me all oaths" is a graph query, not an embedding search. Embeddings handle semantic similarity, not categorical filtering.
 
 **Multi-hop reasoning.** "What does Aldric know that I don't?" requires graph traversal + comparison. Embeddings surface individual pieces, not relationships between pieces.
-
----
-
-## SCALE ESTIMATES
-
-| Type | Count | Embeddable | Embeddings |
-|------|-------|------------|------------|
-| Narrative | ~250 | ~80% | ~200 |
-| Character | ~120 | ~80% | ~100 |
-| Place | ~215 | ~70% | ~150 |
-| Tension | ~50 | 100% | ~50 |
-| BELIEVES links | ~1500 | ~20% | ~300 |
-| PRESENT links | ~50 | ~60% | ~30 |
-| CARRIES links | ~50 | ~40% | ~20 |
-| Conversation chunks | ~200 | — | ~200 |
-| **Total** | | | **~1,050** |
-
-Growth: ~5-10 embeddings per scene (new narratives, link details, conversation chunks).
-
-At 384 dimensions, total storage: ~1.5 MB for vectors. Trivial.
 
 ---
 
