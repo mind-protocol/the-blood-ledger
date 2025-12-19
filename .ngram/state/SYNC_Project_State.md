@@ -48,6 +48,10 @@ sections (problem, pattern, principles, dependencies, inspirations, scope,
 gaps) and removed a duplicate template block to resolve DOC_TEMPLATE_DRIFT for
 repair #16, then recorded the update in `docs/infrastructure/api/SYNC_Api.md`.
 
+Normalized the API patterns doc by removing duplicate template content and
+replacing non-ASCII scope arrows in `docs/infrastructure/api/PATTERNS_Api.md`,
+then logged the update in `docs/infrastructure/api/SYNC_Api.md`.
+
 Filled missing SYNC template sections in `docs/infrastructure/api/SYNC_Api.md`
 to resolve DOC_TEMPLATE_DRIFT for repair #16 and recorded the change in the
 API SYNC. Ran `ngram validate`; failures remain pre-existing (missing VIEW and
@@ -129,6 +133,7 @@ IN PROGRESS entry in `docs/infrastructure/embeddings/SYNC_Embeddings.md` to
 resolve the remaining DOC_TEMPLATE_DRIFT warning for repair #16. Ran
 `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain gaps
 in schema/product/network/storms modules).
+Noted the repair verification in the embeddings consciousness trace.
 
 Expanded the archive embeddings SYNC sections (current state, in progress,
 known issues, handoffs, todo, consciousness trace, pointers) to resolve

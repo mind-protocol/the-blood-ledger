@@ -261,6 +261,7 @@ Embeddings module is canonical and working. Core service provides embed(), embed
 
 This update focuses only on template alignment (adding maturity/trace and
 expanding the in-progress note) without changing the module's behavior.
+Revalidated the sync sections for repair #16 after the edit.
 
 ---
 
