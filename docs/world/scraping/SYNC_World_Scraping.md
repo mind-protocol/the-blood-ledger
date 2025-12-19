@@ -133,6 +133,17 @@ with the canonical algorithm and implementation docs.
 
 ## Recent Changes
 
+Recent documentation updates focused on consolidation and alignment rather
+than new scraping features or additional YAML outputs.
+
+### 2025-12-19: Expanded SYNC template coverage
+
+- **What:** Filled missing SYNC sections (maturity, current state, in progress,
+  known issues, handoffs, todo, consciousness trace, pointers).
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the scraping SYNC without changing
+  behavior or data outputs.
+- **Files:** `docs/world/scraping/SYNC_World_Scraping.md`
+
 ### 2025-12-19: Filled behaviors template sections
 
 - **What:** Added BEHAVIORS, INPUTS/OUTPUTS, EDGE CASES, ANTI-BEHAVIORS, and
@@ -213,6 +224,53 @@ with the canonical algorithm and implementation docs.
 
 ---
 
+## Known Issues
+
+OpenDomesday remains unavailable (404), so historical verification depends on
+manual sources and Claude knowledge. Data/scripts remain gitignored, which
+prevents DOCS references unless the ignore rules are adjusted.
+
+---
+
+## Handoff: For Agents
+
+Use VIEW_Implement_Write_Or_Modify_Code. Focus on keeping the scraping doc
+chain aligned with `data/scripts/scrape/**` and the YAML outputs listed here,
+especially if new phases or new data sources are added.
+
+---
+
+## Handoff: For Human
+
+World scraping data is stable and injected into the `seed` database. No code
+changes were required for this repair; only SYNC coverage was expanded to
+match the template and keep documentation consistent.
+
+---
+
+## TODO
+
+- [ ] Reconfirm OpenDomesday availability or identify a durable alternate API.
+- [ ] Decide whether to whitelist `data/scripts/` for DOCS references.
+
+---
+
+## Consciousness Trace
+
+This update is strictly a documentation template alignment pass. The main
+uncertainty is whether the pipeline is considered canonical despite the
+external API outage; staying in DESIGNING preserves that caution.
+
+---
+
+## Pointers
+
+See `docs/world/scraping/ALGORITHM_Pipeline.md` for the phase flow, and
+`docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
+for script entry points and YAML outputs.
+
+---
+
 ## Updates
 
 - Consolidated phase-level ALGORITHM docs into the canonical `docs/world/scraping/ALGORITHM_Pipeline.md` and left per-phase stubs as redirects.
@@ -224,6 +282,8 @@ with the canonical algorithm and implementation docs.
 ### Remarks
 - Behaviors doc now spells out pipeline expectations, but source citation
   handling still needs a clear multi-citation standard.
+- Template sections were filled in this SYNC to resolve doc drift without
+  altering scraping behavior or data outputs.
 
 ### Suggestions
 - [ ] Add a short provenance policy to `VALIDATION_World_Scraping.md` so

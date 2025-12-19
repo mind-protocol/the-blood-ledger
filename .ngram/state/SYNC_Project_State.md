@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/world/scraping/SYNC_World_Scraping.md` with missing template
+sections (maturity, current state, in progress, known issues, handoffs, todo,
+consciousness trace, pointers) and added a brief recent-changes intro to
+resolve DOC_TEMPLATE_DRIFT for repair #16.
+
 Added `docs/world/map/ALGORITHM_Rendering.md` as a template-complete rendering
 summary that points to the canonical rendering pipeline doc, and logged the
 change in `docs/world/map/SYNC_Map.md` for repair #16.
