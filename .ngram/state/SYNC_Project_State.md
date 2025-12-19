@@ -17,6 +17,7 @@ Frontend-backend integration fixes for playthrough flow:
 - Implemented free text input in CenterStage.tsx (calls `sendMoment` API)
 - Added emoji fallbacks for player/character avatars (👤/🗣️)
 - Updated API IMPLEMENTATION and SYNC docs
+Consolidated duplicate world-runner IMPLEMENTATION docs into `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md` and removed the redundant file; updated chain links.
 Revalidated moment graph traversal helpers in `engine/moment_graph/traversal.py` for repair 08; `make_dormant` and `process_wait_triggers` are already implemented, so no code changes were needed.
 Verified `engine/models/nodes.py` moment/narrative helper properties for repair 06; implementations already present, no code changes required.
 Re-verified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) are implemented; no code changes required for repair 04-INCOMPLETE_IMPL-models-base.
@@ -84,6 +85,7 @@ Reverified playthrough helper implementations for repair 01-INCOMPLETE_IMPL-api-
 Re-verified ConversationThread path helper implementations for repair 02-INCOMPLETE_IMPL-history-conversations; no code changes required.
 Reconfirmed moment graph query helper implementations in `engine/moment_graph/queries.py`; repair task was stale and required no code changes.
 Removed the deprecated narrator patterns doc (`docs/agents/narrator/PATTERNS_World_Building.md`) and cleaned duplicate PATTERNS chain references in narrator docs.
+Removed duplicate graph algorithm doc `docs/physics/graph/ALGORITHM_Weight.md` after consolidating weight computation into `docs/physics/graph/ALGORITHM_Energy_Flow.md` and updated the design doc listing.
 
 ---
 

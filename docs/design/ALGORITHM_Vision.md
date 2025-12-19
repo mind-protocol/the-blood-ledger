@@ -284,7 +284,7 @@ When we write them, these should exist:
 
 | Area | Expected Docs |
 |------|---------------|
-| `docs/physics/graph/` | PATTERNS, BEHAVIORS, ALGORITHM_Schema, ALGORITHM_CRUD, ALGORITHM_Queries, ALGORITHM_Weight, VALIDATION, SYNC |
+| `docs/physics/graph/` | PATTERNS, BEHAVIORS, ALGORITHM_Schema, ALGORITHM_CRUD, ALGORITHM_Queries, ALGORITHM_Energy_Flow, VALIDATION, SYNC |
 | `docs/engine/mechanisms/` | PATTERNS, ALGORITHM_Belief, ALGORITHM_Tension, ALGORITHM_Breaks, ALGORITHM_Cascade, ALGORITHM_Propagation, VALIDATION, SYNC |
 | `docs/engine/orchestration/` | PATTERNS, ALGORITHM_Loop, ALGORITHM_World_Update, ALGORITHM_Scene_Creation, VALIDATION, SYNC |
 | `docs/agents/narrator/` | PATTERNS, ALGORITHM_Story_Doc, ALGORITHM_Player_Doc, ALGORITHM_Prompts, VALIDATION, SYNC |
