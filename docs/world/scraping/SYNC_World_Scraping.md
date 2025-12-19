@@ -97,7 +97,7 @@
 
 - **What:** Merged phase algorithm docs into `ALGORITHM_Pipeline.md` and removed duplicates.
 - **Why:** Keep one canonical ALGORITHM doc for the scraping module.
-- **Files:** `docs/world/scraping/ALGORITHM_Pipeline.md`, `docs/world/scraping/ALGORITHM_*.md`, `docs/world/scraping/PATTERNS_World_Scraping.md`
+- **Files:** `docs/world/scraping/ALGORITHM_Pipeline.md`, `docs/world/scraping/PATTERNS_World_Scraping.md`
 
 ---
 

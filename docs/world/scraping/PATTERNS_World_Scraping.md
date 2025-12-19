@@ -92,11 +92,7 @@ Not generated — discovered.
 
 ## Related Documents
 
-- `ALGORITHM_Pipeline.md` — Five-phase scraping pipeline
-- `ALGORITHM_Geography.md` — Phase 1: Places & Routes
-- `ALGORITHM_Political.md` — Phase 2: Who Holds What
-- `ALGORITHM_Events.md` — Phase 3: What Happened
-- `ALGORITHM_Narratives.md` — Phase 4: Stories & Knowledge
-- `ALGORITHM_Tensions.md` — Phase 5: What's About To Break
-- `VERIFICATION_Tests.md` — How we know it worked
+- `ALGORITHM_Pipeline.md` — Five-phase scraping pipeline (all phases consolidated)
+- `VALIDATION_World_Scraping.md` — How we know it worked
+- `TEST_World_Scraping.md` — Test coverage and gaps
 - `SYNC_World_Scraping.md` — Current state & progress
