@@ -57,6 +57,7 @@ The INPUT_REFERENCE.md references `engine/orchestration/world_runner.py` but the
 - Consolidated the graph tick vs narrative flip description into `docs/agents/world-runner/ALGORITHM_World_Runner.md`.
 - Removed deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` after consolidating its content into the canonical algorithm doc.
 - Added VALIDATION, IMPLEMENTATION, and TEST docs to complete the documentation chain.
+- Consolidated duplicate IMPLEMENTATION docs into `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md` and removed `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service.md`.
 
 ---
 

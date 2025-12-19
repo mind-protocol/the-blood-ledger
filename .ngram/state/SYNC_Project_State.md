@@ -70,6 +70,7 @@ Consolidated world-runner algorithm docs into `docs/agents/world-runner/ALGORITH
 Removed the deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` file to eliminate duplicate ALGORITHM docs under world-runner.
 Consolidated world runner algorithm docs by merging graph tick details into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and redirecting `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
 Re-removed the deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` file to ensure the duplication cleanup is complete.
+Verified the world-runner ALGORITHM duplication repair by deleting `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` from the docs set.
 Completed the World Runner documentation chain with VALIDATION/IMPLEMENTATION/TEST docs, updated chain links, added a DOCS reference, and mapped the module in `modules.yaml`.
 Consolidated graph weight algorithm docs by redirecting `docs/physics/graph/ALGORITHM_Weight.md` to `docs/physics/graph/ALGORITHM_Energy_Flow.md`.
 Consolidated world scraping algorithm docs into `docs/world/scraping/ALGORITHM_Pipeline.md` and removed duplicate phase-specific ALGORITHM files.
