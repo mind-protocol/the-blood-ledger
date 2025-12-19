@@ -11,10 +11,11 @@ UPDATED_BY: Codex (repair agent)
 
 Mapped the canon infrastructure module in `modules.yaml`, linking `engine/infrastructure/canon/**` and `tests/infrastructure/canon/` to the existing docs.
 
-Normalized the DOCS header in `tools/image_generation/README.md` so `ngram context` resolves the image-generation mapping.
+Normalized the DOCS header in `tools/image_generation/README.md` so `ngram context` resolves the image-generation mapping. Ran `ngram validate`; remaining failures are pre-existing in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/`.
 
 Linked `frontend/lib/api.ts` and `frontend/lib/map/*` utilities to the frontend documentation chain with DOCS references and updated frontend/map SYNC notes. Ran `ngram validate`; remaining failures are pre-existing in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/`.
 Added image-generation DOCS references in `tools/image_generation/README.md` and reordered `tools/image_generation/generate_image.py` DOCS links so the image-generation chain is primary.
+Updated image-generation and cli-tools implementation docs to reflect the new DOCS comment line numbers.
 
 Documented the frontend scenario selection module with new docs, a modules.yaml mapping, and a DOCS reference in `frontend/app/scenarios/page.tsx`.
 Added `frontend/app/start/page.tsx` as an explicit frontend entry point in `modules.yaml` to map the start screen to the frontend docs.
