@@ -9,6 +9,15 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/physics/SYNC_Physics.md` with missing template sections
+(maturity, current state, in progress, known issues, handoffs, todo,
+consciousness trace, pointers) and lengthened short entries to resolve
+DOC_TEMPLATE_DRIFT for repair #16.
+
+Expanded `docs/physics/BEHAVIORS_Physics.md` with the missing behavior template
+sections (BEHAVIORS, INPUTS/OUTPUTS, EDGE CASES, ANTI-BEHAVIORS, GAPS) and
+logged the update in `docs/physics/SYNC_Physics.md` for repair #16.
+
 Filled missing template sections in
 `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
 (schema, logic chains, dependencies, state management, runtime behavior,

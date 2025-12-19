@@ -5,11 +5,36 @@ STATUS: CANONICAL
 UPDATED: 2025-12-19
 ```
 
+## MATURITY
+
+STATUS: CANONICAL. The physics module behavior is stable and documented, but
+some planned runtime components (handlers/canon/speed) are still pending.
+
+## CURRENT STATE
+
+Physics documentation is consolidated in `docs/physics/`, the algorithm is
+canonical, and implementation exists for core tick + graph ops with remaining
+runtime handlers planned but not yet built.
+
+## IN PROGRESS
+
+No active physics implementation work is underway in this repair; current
+focus is maintaining doc-template alignment for the physics module.
+
 ## GAPS
 
-- None.
+No unresolved physics design gaps tracked here; planned implementation items
+are captured in TODO so the scope stays explicit.
 
-## Recent Changes
+## RECENT CHANGES
+
+### 2025-12-19: Restored missing SYNC template sections
+
+- **What:** Added required template sections (maturity, current state, in
+  progress, known issues, handoffs, todo, consciousness trace, pointers) and
+  expanded short entries to meet length guidance.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics SYNC file.
+- **Files:** `docs/physics/SYNC_Physics.md`
 
 ### 2025-12-19: Completed physics behaviors template sections
 
@@ -29,6 +54,36 @@ UPDATED: 2025-12-19
 - **What:** Added `modules.yaml` entry for `engine/physics/**` and linked `engine/physics/tick.py` to the physics doc chain.
 - **Why:** Close the undocumented module gap and make `ngram context` resolve physics docs.
 - **Files:** `modules.yaml`, `engine/physics/tick.py`
+
+## KNOWN ISSUES
+
+`ngram validate` still reports pre-existing doc gaps and broken CHAIN links in
+other modules; no physics-specific defects are currently open.
+
+## HANDOFF: FOR AGENTS
+
+If you touch physics code, use VIEW_Implement_Write_Or_Modify_Code and update
+this SYNC plus any impacted doc chain entries (ALGORITHM/IMPLEMENTATION/TEST).
+
+## HANDOFF: FOR HUMAN
+
+Physics documentation is aligned and no behavior changes were made; the only
+remaining work is optional implementation of planned handlers/canon/speed.
+
+## TODO
+
+- [ ] Create `engine/handlers/` and wire flip-triggered handler dispatch.
+- [ ] Implement canon holder and speed controller runtime scaffolding.
+
+## CONSCIOUSNESS TRACE
+
+Focus stayed on doc-template alignment with minimal scope; no code paths were
+changed, so confidence is high in the consistency of this sync update.
+
+## POINTERS
+
+- `docs/physics/ALGORITHM_Physics.md` for the canonical physics mechanics.
+- `docs/physics/IMPLEMENTATION_Physics.md` for current code entry points.
 
 ## CHAIN
 
@@ -114,6 +169,7 @@ For next session:
 ## Agent Observations
 
 ### Remarks
+- Recorded the behaviors template completion in `docs/physics/BEHAVIORS_Physics.md` for repair #16.
 - `pytest engine/tests/test_behaviors.py -q` failed: missing `pytest_xprocess` (anchorpy plugin import).
 - `ngram validate` still reports pre-existing doc gaps and broken CHAIN links (schema/tempo/world-builder).
 
