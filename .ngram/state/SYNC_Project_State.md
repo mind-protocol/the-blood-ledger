@@ -84,11 +84,14 @@ Code restructured to match docs areas. All imports updated and verified working.
 - [ ] Split graph_ops.py further (1094 lines → target <800) — PARTIAL: ApplyOperationsMixin + LinkCreationMixin extracted, now at 1094 lines
 - [x] Split graph_queries.py (1147 lines → target <800) — DONE: Now 892 lines
 - [x] Fix docs/physics/IMPLEMENTATION_Physics.md broken references — MOSTLY DONE: Reduced 51→34, remaining are false positives
+- [x] Complete narrator doc chain — DONE: Added VALIDATION, IMPLEMENTATION, TEST docs (2024-12-19)
 
 ### Backlog
 
 - [ ] Refresh 2 remaining stale SYNC files (scene, map, world-runner, scene-memory, embeddings done)
 - [ ] Add DOCS: references to code files
+- [ ] Complete world-runner doc chain (missing VALIDATION, IMPLEMENTATION, TEST)
+- [x] Complete frontend doc chain — DONE: Added BEHAVIORS, ALGORITHM, VALIDATION, IMPLEMENTATION, TEST docs (2025-12-19)
 
 ---
 
