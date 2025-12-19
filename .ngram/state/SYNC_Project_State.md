@@ -67,7 +67,7 @@ logged the update in `docs/physics/graph/SYNC_Graph.md`. Ran `ngram validate`;
 failures remain pre-existing (missing VIEW file and doc-chain gaps in
 schema/product/network/storms modules).
 
-Expanded the DESIGN PATTERNS rationale in `docs/physics/IMPLEMENTATION_Physics.md` with a testability note to align with template guidance for repair #16.
+Expanded the DESIGN PATTERNS anti-pattern list in `docs/physics/IMPLEMENTATION_Physics.md` to call out hidden writes in query helpers for repair #16.
 
 Expanded `docs/physics/VALIDATION_Physics.md` validation guidance (invariants,
 properties, error conditions, test coverage, verification procedure, sync

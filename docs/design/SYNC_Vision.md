@@ -7,7 +7,24 @@ UPDATED_BY: Codex (repair agent)
 
 ---
 
-## Current State
+## MATURITY
+
+STATUS: DESIGNING
+
+What's canonical (v1):
+- Vision doc chain exists and is coherent enough for review and iteration.
+- Core pitch and experience framing are drafted for validation.
+
+What's still being designed:
+- Final wording and scope after Nicolas reviews open questions.
+- Concrete validation steps and acceptance thresholds.
+
+What's proposed (v2):
+- Expanded market validation and research annexes in the archive.
+
+---
+
+## CURRENT STATE
 
 Vision documentation complete (draft). Full protocol chain created:
 
@@ -19,7 +36,7 @@ Vision documentation complete (draft). Full protocol chain created:
 | VALIDATION_Vision.md | Testing approach, POC milestones, ultimate test | Draft |
 | IMPLEMENTATION_Vision.md | Documentation architecture, file responsibilities, data flow | Draft |
 
-All documents ready for validation.
+All documents ready for validation, pending human review and decisions.
 
 ### 2025-12-19 Update
 - Fixed broken file references in `docs/design/IMPLEMENTATION_Vision.md` by listing concrete paths and removing placeholder target filenames so link validation resolves cleanly.
@@ -30,6 +47,76 @@ All documents ready for validation.
 - Archived market validation, Octalysis mapping, and engagement lever details in `docs/design/archive/SYNC_archive_2024-12.md`.
 - Updated `docs/design/IMPLEMENTATION_Vision.md` file map and line counts to reflect the reduced docs.
 - Ran `ngram validate`; failures remain for pre-existing missing VIEW/doc-chain gaps (schema/product/network/storms/history).
+
+---
+
+## IN PROGRESS
+
+No active drafting sessions at the moment; pending feedback from Nicolas on the
+vision chain before further revisions or expansion.
+
+---
+
+## RECENT CHANGES
+
+- 2025-12-19: Filled missing SYNC template sections and lengthened entries.
+- 2025-12-19: Fixed broken IMPLEMENTATION references and validated the chain.
+- 2025-12-19: Condensed PATTERNS/BEHAVIORS content and archived long-form notes.
+- 2025-12-19: Updated the file map/line counts in IMPLEMENTATION to match edits.
+
+---
+
+## KNOWN ISSUES
+
+- Vision docs remain unvalidated by Nicolas; several open questions persist.
+- Some repository-wide doc-chain gaps remain outside the design module.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+Likely VIEW: `VIEW_Implement_Write_Or_Modify_Code.md`
+
+Focus: Keep vision docs stable until human review lands; avoid introducing new
+sections without a validated need.
+
+Watchouts: Align any edits with the archived notes to avoid reintroducing drift.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+Executive summary: Vision docs are drafted and trimmed; ready for review and
+approval with open questions listed below.
+
+Decisions needed: Confirm death/replayability/image scope and the validation
+thresholds before implementation moves forward.
+
+---
+
+## TODO
+
+- [ ] Confirm vision wording, scope, and the core win condition phrasing.
+- [ ] Resolve open questions in this SYNC and update the archive if needed.
+- [ ] Re-run `ngram validate` after any edits that change doc links.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+Awareness: The vision documentation feels coherent but still fragile without
+human sign-off; restraint is important until feedback lands.
+
+Uncertainty: The engagement risk and image scope remain the biggest unknowns,
+and should be treated as validation priorities.
+
+---
+
+## POINTERS
+
+- `docs/design/PATTERNS_Vision.md` for design intent and scope.
+- `docs/design/BEHAVIORS_Vision.md` for player experience details.
+- `docs/design/archive/SYNC_archive_2024-12.md` for pruned research notes.
 
 ---
 
