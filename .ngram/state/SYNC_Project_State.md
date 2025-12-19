@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections in `docs/agents/narrator/ALGORITHM_Scene_Generation.md` (overview, data structures, algorithm, decisions, data flow, complexity, helpers, interactions, gaps) and logged the update in `docs/agents/narrator/SYNC_Narrator.md` for repair #16.
+
 Added `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md` with the missing
 SCOPE and INSPIRATIONS sections expanded to template length, and updated
 `docs/frontend/map/SYNC_Map_View.md` to reference the new patterns doc for
@@ -27,6 +29,10 @@ Filled missing SCOPE and INSPIRATIONS sections in
 `docs/frontend/map/PATTERNS_Parchment_Map_View.md`, expanded short template
 entries, and noted the update in `docs/frontend/map/SYNC_Map_View.md` for
 repair #16.
+
+Restored `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md` as a deprecated
+pointer to the canonical parchment map patterns, filling the missing template
+sections and logging the update in `docs/frontend/map/SYNC_Map_View.md`.
 
 Filled missing test template sections in `docs/frontend/scene/TEST_Scene.md`
 (strategy, unit/integration coverage, edge cases, run guidance, gaps, flaky

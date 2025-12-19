@@ -39,7 +39,101 @@ TOOLS:           tools/stream_dialogue.py
 
 ---
 
+## MATURITY
+
+STATUS: CANONICAL
+
+What's canonical (v1):
+- Narrator prompt chain, SSE streaming, and CLI orchestration are stable and documented in the current chain.
+
+What's still being designed:
+- Minor polish around stream recovery and UX flow remains open but does not change the core narrator contract.
+
+What's proposed (v2):
+- Additional scene variants and richer recovery hooks once the frontend flow is reworked.
+
+---
+
+## CURRENT STATE
+
+Narrator documentation is current after template alignment work. The module remains stable with no code changes in this repair, and the focus here is filling missing SYNC sections so the chain stays consistent.
+
+---
+
+## IN PROGRESS
+
+No active narrator implementation work is underway. The only ongoing effort is documentation hygiene to prevent template drift, especially in the SYNC file and handoff metadata.
+
+---
+
+## KNOWN ISSUES
+
+No narrator-specific issues are open. Repository-wide `ngram validate` still reports pre-existing doc-chain gaps in other modules, which are outside this narrator-focused repair.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+**Likely VIEW for continuing:** VIEW_Implement_Write_Or_Modify_Code
+
+**Current focus:** Maintain narrator doc-chain integrity; no active code changes expected.
+
+**Key context:** Narrator orchestration and prompt-building are stable, but SYNC template sections needed expansion to satisfy repair checks.
+
+**Watch out for:** Avoid introducing new narrator behavior without updating BEHAVIORS/VALIDATION and this SYNC.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+**Executive summary:** Filled missing narrator SYNC sections to meet template requirements; no code behavior changed.
+
+**Decisions made recently:** None beyond documentation completeness for the narrator module.
+
+**Needs your input:** None; this is a doc-only repair.
+
+**Concerns:** Broader repo doc-chain gaps remain, but the narrator chain is now aligned.
+
+---
+
+## TODO
+
+- [ ] Re-check narrator stream recovery notes once frontend reconnection behavior is finalized.
+- [ ] Confirm narrator UX polish items align with the current scenario flow before expanding docs.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+Focus stays on clarity and traceability. This repair is intentionally small, emphasizing documentation hygiene over new design decisions or behavioral changes.
+
+---
+
+## POINTERS
+
+- `docs/agents/narrator/PATTERNS_Narrator.md`
+- `docs/agents/narrator/BEHAVIORS_Narrator.md`
+- `docs/agents/narrator/ALGORITHM_Scene_Generation.md`
+- `docs/agents/narrator/IMPLEMENTATION_Narrator.md`
+- `engine/infrastructure/orchestration/narrator.py`
+
+---
+
 ## RECENT CHANGES
+
+### 2025-12-19: Verified narrator implementation template completeness
+
+- **What:** Confirmed `IMPLEMENTATION_Narrator.md` already includes SCHEMA,
+  LOGIC CHAINS, and CONCURRENCY MODEL sections with sufficient detail.
+- **Why:** Close the DOC_TEMPLATE_DRIFT check without duplicating content edits.
+- **Files:** `docs/agents/narrator/IMPLEMENTATION_Narrator.md`,
+  `docs/agents/narrator/SYNC_Narrator.md`
+
+### 2025-12-19: Filled narrator algorithm template sections
+
+- **What:** Added missing template sections (overview, data structures, key decisions, data flow, complexity, helper functions, interactions, gaps) and expanded brief algorithm sections.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the narrator algorithm doc and keep the chain aligned.
+- **Files:** `docs/agents/narrator/ALGORITHM_Scene_Generation.md`, `docs/agents/narrator/SYNC_Narrator.md`
 
 ### 2025-12-19: Filled narrator implementation template gaps
 
@@ -156,6 +250,7 @@ Older content archived to: `docs/agents/narrator/archive/SYNC_archive_2024-12.md
 
 ### Remarks
 - `time_elapsed` requirements were inconsistent between TOOL_REFERENCE and BEHAVIORS; aligned to conversational/significant split.
+- Scene generation algorithm now includes the full template sections to avoid drift.
 - Implementation template gaps were filled to prevent narrator docs from drifting again.
 
 ### Suggestions
