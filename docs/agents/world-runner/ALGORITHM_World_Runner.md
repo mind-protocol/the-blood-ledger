@@ -54,6 +54,53 @@ def run_world(action: str, max_minutes: int, player_context: PlayerContext) -> I
 
 ---
 
+## Graph Ticks vs Narrative Flips
+
+**Graph ticks are mechanical. Narrative flips are story.**
+
+- Graph ticks: math-only updates (no LLM), run every 5 minutes of world time.
+- Narrative flips: reasoning about what happens when tension breaks (LLM).
+
+```typescript
+function graphTick(graph: Graph, time_elapsed: Duration): TickResult {
+  for (const tension of graph.tensions) {
+    tension.pressure += time_elapsed * tension.base_rate * tension.focus;
+  }
+
+  for (const narrative of graph.narratives) {
+    narrative.weight = computeWeight(narrative, graph);
+  }
+
+  for (const narrative of graph.narratives) {
+    if (distanceFromPlayer(narrative, graph) > threshold) {
+      narrative.weight *= decay_factor;
+    }
+  }
+
+  const flips = graph.tensions.filter(t => t.pressure > t.breaking_point);
+  return { flips };
+}
+```
+
+```typescript
+interface FlipRequest {
+  tension: Tension;
+  graph_context: GraphSnapshot;
+  trigger_reason: string;
+}
+
+interface FlipResult {
+  event: string;
+  new_narratives: Narrative[];
+  belief_changes: BeliefChange[];
+  cascades: FlipRequest[];
+}
+```
+
+**Tick frequency:** if `time_elapsed < 5 min` → no tick. If `time_elapsed ≥ 5 min` → tick. Only call the Runner when flips are detected.
+
+---
+
 ## The Full Flow
 
 ```
@@ -194,6 +241,35 @@ NEXT CALL
 ```
 
 **The graph IS the memory.** Flip processed → graph mutated → next call sees new state.
+
+---
+
+## Graph Ticks vs Narrative Flips
+
+**Graph ticks are mechanical.** Math-only updates every 5 minutes or more.
+
+**Narrative flips are story.** LLM reasoning only when a tension breaks.
+
+```
+graph_tick:
+  trigger: time_elapsed >= 5 minutes
+  does:
+    - tension.pressure += time * base_rate * focus
+    - narrative.weight = compute_weight(...)
+    - decay distant narratives
+  llm: no
+
+narrative_flip:
+  trigger:
+    - tension.pressure > breaking_point
+    - OR contradiction/oath/secret/power-vacuum breaks
+  does:
+    - determine what happens
+    - spawn narratives, belief changes, cascades
+  llm: yes
+```
+
+**Flow:** Tick → detect flips → run Runner only for flips.
 
 ---
 
@@ -627,6 +703,17 @@ def get_flip_cluster(flip: Flip) -> List[Node]:
 - Who's involved? (char_aldric: current state, beliefs about bandits)
 - Where exactly? (place_road_north: description, atmosphere)
 
----
+--- 
 
 *"The Runner runs the world. The Narrator tells the story. They meet at Injections."*
+
+---
+
+## CHAIN
+
+PATTERNS:        ./PATTERNS_World_Runner.md
+BEHAVIORS:       ./BEHAVIORS_World_Runner.md
+ALGORITHM:       ./ALGORITHM_World_Runner.md
+INPUTS:          ./INPUT_REFERENCE.md
+TOOLS:           ./TOOL_REFERENCE.md
+SYNC:            ./SYNC_World_Runner.md
