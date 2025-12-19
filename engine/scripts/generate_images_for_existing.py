@@ -4,6 +4,8 @@ Generate images for existing graph nodes that don't have them.
 
 Creates appropriate image prompts based on node attributes and generates images.
 
+DOCS: docs/infrastructure/ops-scripts/PATTERNS_Operational_Seeding_And_Backfill_Scripts.md
+
 Usage:
     python generate_images_for_existing.py --playthrough default
 """

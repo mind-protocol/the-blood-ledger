@@ -5,6 +5,8 @@ Inject a message to the narrator.
 If narrator is running: writes to injection_queue.json
 If narrator is not running: calls narrator directly with claude -p
 
+DOCS: docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md
+
 Usage:
     python inject_to_narrator.py <playthrough_id> <message>
     python inject_to_narrator.py pt_abc123 "Aldric wants to say something"
