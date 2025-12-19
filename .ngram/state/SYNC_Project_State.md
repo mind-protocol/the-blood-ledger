@@ -9,6 +9,9 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Verified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) for the current incomplete-impl repair; implementations already present and logged in `docs/schema/models/SYNC_Schema_Models.md`.
+Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder doc gaps and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
+
 Logged repair 03-INCOMPLETE_IMPL-world_builder-world_builder verification in `docs/infrastructure/world-builder/SYNC_World_Builder.md`; confirmed `_hash_query` and `clear_cache` are implemented in `engine/infrastructure/world_builder/world_builder.py`, so no code changes were required. Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder doc gaps and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Rechecked `engine/infrastructure/memory/moment_processor.py` helper implementations for the current repair run; no code changes required and logged the verification in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.

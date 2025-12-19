@@ -34,6 +34,13 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Verified GameTimestamp helper implementations (repair 04)
+
+- **What:** Confirmed `GameTimestamp.__str__`, `__le__`, and `__gt__` are implemented in `engine/models/base.py`; no code changes required.
+- **Why:** Current INCOMPLETE_IMPL repair run flagged empty helpers; verification shows the implementations are already present.
+- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task appears stale relative to current code.
+
 ### 2025-12-19: Rechecked GameTimestamp comparison helpers (current run)
 
 - **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` are already implemented in `engine/models/base.py`; no code changes made.
