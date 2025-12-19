@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reduced frontend documentation size by splitting the implementation doc into an overview entry point with focused parts under `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/`, moved the prior SYNC archive to `docs/frontend/archive/SYNC_archive_2024-12.md`, and updated frontend DOCS pointers to the new entry point. Ran `ngram validate`; remaining failures are pre-existing missing VIEW/doc-chain gaps (schema/product/network/storms/embeddings) and unrelated module chain issues.
+
 Reduced the `docs/infrastructure/scene-memory` module size to ~32K chars by
 replacing legacy 2024-12 content with concise summaries, adding
 `docs/infrastructure/scene-memory/archive/SYNC_archive_2024-12.md`, and trimming

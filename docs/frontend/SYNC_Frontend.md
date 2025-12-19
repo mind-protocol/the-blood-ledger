@@ -60,99 +60,6 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ---
 
-## RECENT CHANGES
-
-### 2025-12-19: Fix frontend implementation doc file paths
-
-- **What:** Updated implementation doc file references to full `frontend/**` paths and corrected the `.env.local` location to `frontend/.env.local`.
-- **Why:** Remove broken file references so doc link checks resolve to existing files.
-- **Files:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
-- **Struggles/Insights:** None.
-- **Verification:** `ngram validate` (fails on pre-existing docs gaps in `docs/schema/`, `docs/product/`, `docs/network/`, and `docs/infrastructure/*`).
-
-### 2025-12-19: Align tempo API base with shared frontend client
-
-- **What:** Exported `API_BASE` from the shared API client and used it in `SpeedControl` and `useTempo`.
-- **Why:** Ensure tempo fetches respect `NEXT_PUBLIC_API_URL` and the same backend base as other frontend calls.
-- **Files:** `frontend/lib/api.ts`, `frontend/components/SpeedControl.tsx`, `frontend/hooks/useTempo.ts`
-- **Struggles/Insights:** None.
-- **Verification:** `cd frontend && npm run build`
-
-### 2025-12-19: Relocate speed controls into the chronicle panel footer
-
-- **What:** Moved speed controls into the Chronicle journal footer, passed the playthrough id through the layout, and added wrapping for narrow widths; removed the fixed bottom-left speed control.
-- **Why:** Ensure the speed buttons appear directly beneath the journal input and stay within the right panel on narrow screens.
-- **Files:** `frontend/components/chronicle/ChroniclePanel.tsx`, `frontend/components/GameLayout.tsx`, `frontend/components/GameClient.tsx`, `frontend/components/SpeedControl.tsx`
-- **Struggles/Insights:** None.
-- **Verification:** `cd frontend && npm run build`
-
-### 2025-12-19: Normalize frontend code structure paths
-
-- **What:** Updated the CODE STRUCTURE tree in the frontend implementation doc to list module-relative paths under `frontend/`.
-- **Why:** Align tree paths with actual frontend layout to avoid stale file references during doc validation.
-- **Files:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
-- **Struggles/Insights:** None.
-- **Verification:** Not run (doc-only change).
-
-### 2025-12-19: Fix broken implementation doc file references
-
-- **What:** Updated file paths in the frontend implementation doc to point at `frontend/**`, removed the non-existent playthrough route reference, and adjusted proposed extraction targets to non-path labels.
-- **Why:** Remove broken file references so the implementation doc resolves to existing files.
-- **Files:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
-- **Struggles/Insights:** None.
-- **Verification:** `ngram validate` (fails on pre-existing docs gaps in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/`).
-
-### 2025-12-19: Link frontend API client to documentation chain
-
-- **What:** Added a DOCS reference in `frontend/lib/api.ts`.
-- **Why:** Ensure the API client is discoverable via `ngram context`.
-- **Files:** `frontend/lib/api.ts`
-- **Struggles/Insights:** None.
-
-### 2025-12-19: Link frontend types to documentation chain
-
-- **What:** Added DOCS references in `frontend/types/game.ts`, `frontend/types/map.ts`, and `frontend/types/moment.ts` plus a `modules.yaml` mapping for `frontend/types/**`.
-- **Why:** Ensure shared frontend type definitions are discoverable through `ngram context` and explicitly mapped in the module manifest.
-- **Files:** `frontend/types/game.ts`, `frontend/types/map.ts`, `frontend/types/moment.ts`, `modules.yaml`
-- **Struggles/Insights:** None.
-
-### 2025-12-19: Map start screen entry point in module manifest
-
-- **What:** Added `frontend/app/start/page.tsx` as a frontend entry point in `modules.yaml`.
-- **Why:** Ensure the start screen is explicitly mapped to the frontend documentation chain.
-- **Files:** `modules.yaml`
-- **Struggles/Insights:** None.
-
-### 2025-12-19: Link frontend hooks to documentation chain
-
-- **What:** Added DOCS references in `frontend/hooks/useGameState.ts` and `frontend/hooks/useMoments.ts`.
-- **Why:** Ensure the core state hooks are discoverable via `ngram context` and mapped to the frontend docs.
-- **Files:** `frontend/hooks/useGameState.ts`, `frontend/hooks/useMoments.ts`
-- **Struggles/Insights:** None.
-
-### 2025-12-19: Link app shell files to frontend documentation
-
-- **What:** Added DOCS references to `frontend/app` shell files (layout, start screen, globals stylesheet).
-- **Why:** Close the undocumented app gap for the layout and bootstrap screens in the App Router.
-- **Files:** `frontend/app/layout.tsx`, `frontend/app/start/page.tsx`, `frontend/app/globals.css`
-- **Struggles/Insights:** None.
-
-### 2025-12-19: Link toast UI component to frontend docs
-
-- **What:** Added a DOCS reference in `frontend/components/ui/Toast.tsx` and listed it as an entry point in `modules.yaml`.
-- **Why:** Ensure the shared UI toast component is discoverable through the frontend documentation chain.
-- **Files:** `frontend/components/ui/Toast.tsx`, `modules.yaml`
-- **Struggles/Insights:** None.
-
-### 2025-12-19: Link moment component docs to Scene module
-
-- **What:** Noted Scene-owned documentation for moment components in `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`.
-- **Why:** Keep moment UI documentation aligned with the Scene module mapping.
-- **Files:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
-- **Struggles/Insights:** None.
-
----
-
 ## KNOWN ISSUES
 
 No critical issues currently tracked.
@@ -222,9 +129,35 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 | Moment components | `frontend/components/moment/` |
 | Backend API docs | `docs/physics/API_Physics.md` |
 
+---
+
+## RECENT CHANGES
+
+### 2025-12-19: Split implementation doc
+- Replaced the monolithic implementation doc with an overview entry point and two focused parts.
+- Line counts: 394L → 233L across `IMPLEMENTATION_Frontend_Code_Architecture.md`, `IMPLEMENTATION_Code_Structure.md`, `IMPLEMENTATION_Runtime_And_Config.md`.
+
+### 2025-12-19: Archive consolidation
+- Moved the previous SYNC archive to `docs/frontend/archive/SYNC_archive_2024-12.md` and condensed it.
+
+### 2025-12-19: DOCS reference updates
+- Updated frontend DOCS pointers to use the new implementation entry point.
+
+---
+
+## Agent Observations
+
+### Remarks
+- The frontend doc chain is now centered on the implementation overview entry point.
+
+### Suggestions
+- [ ] If `useGameState.ts` and `api.ts` continue to grow, consider extracting transformers and moment-specific API helpers.
+
+### Propositions
+- Keep component inventories in the `docs/frontend/scene/` module to avoid repeating long file lists here.
 
 ---
 
 ## ARCHIVE
 
-Older content archived to: `SYNC_Frontend_archive_2025-12.md`
+Older content archived to: `docs/frontend/archive/SYNC_archive_2024-12.md`

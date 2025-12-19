@@ -99,136 +99,35 @@ AND:    User should be redirected to opening/start flow
 
 ### Primary Hook: `useGameState(playthroughId)`
 
-**Inputs:**
+**Inputs:** `playthroughId` (string, default `default`).
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| playthroughId | string | ID of the playthrough (defaults to 'default') |
+**Outputs:** `gameState`, `isLoading`, `loadingMessage`, `error`, `isConnected`, `needsOpening`, `refresh`, `sendAction`, `clickWord` (deprecated).
 
-**Outputs:**
-
-| Return | Type | Description |
-|--------|------|-------------|
-| gameState | GameState | null | Full game state or null if loading |
-| isLoading | boolean | Whether state is being fetched |
-| loadingMessage | string | Atmospheric loading message |
-| error | string | null | Error message if fetch failed |
-| isConnected | boolean | Whether backend is available |
-| needsOpening | boolean | Whether playthrough needs opening |
-| refresh | () => Promise | Refetch game state |
-| sendAction | (action) => Promise | Submit player action |
-| clickWord | (word, path) => Promise | DEPRECATED - use moment system |
-
-**Side Effects:**
-
-- Network requests to backend API
-- SSE connection established
-- Toast notifications on error
+**Side Effects:** backend API requests, SSE subscription, toast on error.
 
 ### Secondary Hook: `useMoments({ playthroughId, location, tick })`
 
-**Inputs:**
+**Inputs:** `playthroughId`, `location`, `tick`, optional `autoConnect` (default true).
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| playthroughId | string | ID of the playthrough |
-| location | string | Current location ID |
-| tick | number | Current game tick |
-| autoConnect | boolean | Whether to auto-connect SSE (default: true) |
-
-**Outputs:**
-
-| Return | Type | Description |
-|--------|------|-------------|
-| spokenMoments | Moment[] | Moments that have been spoken |
-| activeMoments | Moment[] | Currently active/possible moments |
-| transitions | MomentTransition[] | Available click transitions |
-| isLoading | boolean | Whether traversal is in progress |
-| error | string | null | Error message if any |
-| clickWord | (momentId, word) => Promise | Trigger word click traversal |
-| refresh | () => Promise | Refetch moments |
-| clearError | () => void | Clear error state |
+**Outputs:** `spokenMoments`, `activeMoments`, `transitions`, `isLoading`, `error`, `clickWord`, `refresh`, `clearError`.
 
 ---
 
-## EDGE CASES
+## EDGE CASES (SUMMARY)
 
-### E1: Backend Starts Unavailable Then Becomes Available
-
-```
-GIVEN:  User loads page while backend is down
-THEN:   Error state is shown
-WHEN:   Backend becomes available and user refreshes
-THEN:   Normal game state loads
-```
-
-### E2: SSE Connection Lost
-
-```
-GIVEN:  User is playing with active SSE connection
-WHEN:   Network drops or backend restarts
-THEN:   Error callback fires with "Connection lost"
-AND:    UI shows reconnection message
-```
-
-### E3: Duplicate Moment Activation
-
-```
-GIVEN:  Active moments exist
-WHEN:   SSE emits moment_activated for existing moment ID
-THEN:   Duplicate is not added (deduplication in hook)
-```
-
-### E4: Empty Moments Response
-
-```
-GIVEN:  Playthrough exists but has no moments
-WHEN:   useGameState loads
-THEN:   needsOpening is set to true
-AND:    User redirected to start flow
-```
+- Backend starts unavailable → error state; refresh recovers when backend returns.
+- SSE connection loss → error callback + reconnection message.
+- Duplicate moment activation → deduplicate by ID.
+- Empty moments response → `needsOpening` set true and redirect.
 
 ---
 
-## ANTI-BEHAVIORS
+## ANTI-BEHAVIORS (SUMMARY)
 
-What should NOT happen:
-
-### A1: Direct State Mutation
-
-```
-GIVEN:   Game state is loaded
-WHEN:    Component tries to modify state directly
-MUST NOT: Mutate gameState object directly
-INSTEAD:  Use sendAction or clickWord to trigger backend changes
-```
-
-### A2: Stale UI After Action
-
-```
-GIVEN:   User performs an action
-WHEN:    Backend processes and SSE emits update
-MUST NOT: Show stale data after SSE event received
-INSTEAD:  UI must reflect new state immediately
-```
-
-### A3: Multiple Concurrent Traversals
-
-```
-GIVEN:   User clicks a word
-WHEN:    Traversal is in progress (isLoading = true)
-MUST NOT: Allow another click to trigger traversal
-INSTEAD:  Ignore clicks while isLoading
-```
-
-### A4: Error State Persistence
-
-```
-GIVEN:   An error occurred during fetch
-WHEN:    User triggers refresh
-MUST NOT: Keep showing stale error after successful refresh
-INSTEAD:  Clear error state and show fresh data
-```
+- No direct mutation of `gameState` or moment arrays.
+- No stale UI after SSE updates.
+- No concurrent traversal clicks while `isLoading`.
+- No stale error state after successful refresh.
 
 ---
 

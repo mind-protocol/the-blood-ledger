@@ -82,43 +82,6 @@ No 'any' types in production code paths.
 
 ---
 
-## PROPERTIES
-
-For property-based testing:
-
-### P1: State Transformation Idempotency
-
-```
-FORALL view: CurrentView:
-    transformViewToScene(view) produces consistent Scene
-    Same input always produces same output
-```
-
-**Tested by:** NOT YET TESTED - pure function, could add unit tests
-
-### P2: Click Traversal Atomicity
-
-```
-FORALL click event:
-    Either traversal completes AND state updates
-    OR traversal fails AND state unchanged
-    Never partial state updates
-```
-
-**Tested by:** NOT YET TESTED - would require integration tests
-
-### P3: SSE Event Ordering
-
-```
-FORALL events e1, e2 for same moment:
-    If e1 arrives before e2, e1 processed before e2
-    No race conditions in state updates
-```
-
-**Tested by:** NOT YET TESTED - SSE handlers are synchronous
-
----
-
 ## ERROR CONDITIONS
 
 ### E1: Backend Unavailable
@@ -165,44 +128,17 @@ SYMPTOM: Runtime error if untyped data accessed
 
 ## TEST COVERAGE
 
-| Requirement | Test(s) | Status |
-|-------------|---------|--------|
-| V1: Backend source of truth | Manual review | - |
-| V2: Loading state consistency | - | NOT YET TESTED |
-| V3: Moment state separation | - | NOT YET TESTED |
-| V4: No duplicate moments | - | NOT YET TESTED |
-| V5: TypeScript safety | `npm run build` | Automated |
-| E1: Backend unavailable | - | NOT YET TESTED |
-| E2: API failure | - | NOT YET TESTED |
-| E3: SSE connection lost | - | NOT YET TESTED |
+- TypeScript safety: `npm run build` (automated).
+- Other invariants and error conditions: manual verification pending.
 
 ---
 
 ## VERIFICATION PROCEDURE
 
-### Manual Checklist
-
-```
-[ ] Build succeeds: `cd frontend && npm run build`
-[ ] No TypeScript errors
-[ ] Backend available: start backend, verify /health returns 200
-[ ] Game loads: navigate to /, verify scene displays
-[ ] Moment clicks work: click a word, verify new content appears
-[ ] SSE works: perform action, verify real-time update
-[ ] Error handling: stop backend, verify error toast appears
-```
-
-### Automated
-
-```bash
-# Build (type checking)
-cd frontend && npm run build
-
-# Lint
-cd frontend && npm run lint
-
-# No dedicated test suite yet (see TEST doc)
-```
+Manual quick-checks:
+- `cd frontend && npm run build`
+- Load `/` with backend running; verify scene renders and moments update via SSE.
+- Stop backend; verify error toast and disconnected state.
 
 ---
 

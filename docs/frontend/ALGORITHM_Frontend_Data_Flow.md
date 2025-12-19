@@ -158,7 +158,7 @@ useEffect(() => {
 
 ## Chain
 
-- PATTERNS: `docs/frontend/PATTERNS_Frontend.md`
+- PATTERNS: `docs/frontend/PATTERNS_Presentation_Layer.md`
 - BEHAVIORS: `docs/frontend/BEHAVIORS_Frontend_State_And_Interaction.md`
 - **ALGORITHM: This file**
 - IMPLEMENTATION: `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
