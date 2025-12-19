@@ -398,3 +398,23 @@ modules:
     notes: |
       Scene presentation components for the main game view, including the
       banner, character rows, hotspot rows, and action controls.
+
+  schema-models:
+    code: "engine/models/**"
+    docs: "docs/schema/models/"
+    tests: "engine/tests/test_models.py"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/models/__init__.py
+      - engine/models/base.py
+      - engine/models/nodes.py
+      - engine/models/links.py
+      - engine/models/tensions.py
+    patterns:
+      - "Pydantic schema models for nodes, links, and tensions"
+      - "Enums + shared models in base.py"
+    notes: |
+      Canonical Pydantic models for the Blood Ledger schema (nodes, links,
+      tensions, moments) with shared enums and helpers. Used by engine services
+      and validation tests.

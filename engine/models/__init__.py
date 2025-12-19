@@ -4,6 +4,8 @@ Blood Ledger — Data Models
 Complete Pydantic models for the Blood Ledger schema.
 Based on SCHEMA.md v5.1
 
+DOCS: docs/schema/models/PATTERNS_Pydantic_Schema_Models.md
+
 Nodes (4 types):
 - Character: A person who can act, speak, remember, die
 - Place: A location with atmosphere and geography
