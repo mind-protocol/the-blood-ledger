@@ -9,6 +9,7 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Consolidated physics algorithm docs into `docs/physics/ALGORITHM_Physics.md`, removed standalone physics ALGORITHM files, and updated physics/schema doc chains to the consolidated algorithm.
 Repair 13 verified physics tick energy helpers in `engine/physics/tick.py`; repair task marked stale with no code changes.
 Revalidated playthroughs API helper implementations; documentation updated for the stale repair task.
 Confirmed `engine/models/base.py` comparison helpers were already implemented; no code change required.
