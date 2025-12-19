@@ -45,8 +45,8 @@ engine/scripts/inject_to_narrator.py    # CLI helper: write injection queue or c
 
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|----------------------|-------|--------|
-| `engine/scripts/check_injection.py` | PostToolUse hook reader for injection queue (JSONL) | `main()` | ~50 | OK |
-| `engine/scripts/inject_to_narrator.py` | Manual injection helper (queue or direct call) | `inject()`, `inject_via_queue()` | ~122 | OK |
+| `engine/scripts/check_injection.py` | PostToolUse hook reader for injection queue (JSONL) | `main()` | ~52 | OK |
+| `engine/scripts/inject_to_narrator.py` | Manual injection helper (queue or direct call) | `inject()`, `inject_via_queue()`, `inject_via_direct_call()` | ~124 | OK |
 
 **Size Thresholds:**
 - **OK** (<400 lines): Healthy size, easy to understand
@@ -89,18 +89,25 @@ engine/scripts/inject_to_narrator.py    # CLI helper: write injection queue or c
 
 ### Injection Queue Entry (JSONL)
 
+Stored at `playthroughs/default/injection_queue.jsonl`.
+
+```
+Each line is a JSON object written directly from /api/inject.
+No schema validation exists at write time; payload is passed through to the hook.
+```
+
+### Injection Queue Entry (JSON Array)
+
+Stored at `playthroughs/{playthrough_id}/injection_queue.json`.
+
 ```yaml
 InjectionEvent:
   required:
-    - type: string            # Event type (player_abort, character_speaks, etc.)
-  optional:
-    - character: string       # Character ID (if applicable)
-    - prompt: string          # Narration prompt or player action
-    - current_position: string
+    - message: string
     - timestamp: string       # ISO 8601
-    - source: string          # writer identifier (frontend, runner, cli)
+    - source: string          # writer identifier (world_runner)
   constraints:
-    - Each entry is one JSON object per line (FIFO consumption).
+    - File is a JSON array of InjectionEvent objects.
 ```
 
 ---
@@ -110,7 +117,7 @@ InjectionEvent:
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
 | Hook injection reader | `engine/scripts/check_injection.py:20` | Claude Code PostToolUse hook for Narrator session |
-| Manual injection CLI | `engine/scripts/inject_to_narrator.py:109` | Developer/operator CLI call |
+| Manual injection CLI | `engine/scripts/inject_to_narrator.py:111` | Developer/operator CLI call |
 
 ---
 
@@ -120,9 +127,9 @@ InjectionEvent:
 
 ```
 Producer(s) (frontend, runner, api)
-  -> injection queue file (FIFO file queue configured in `engine/scripts/check_injection.py`)
+  -> `/api/inject` appends JSON to `playthroughs/default/injection_queue.jsonl`
   -> engine/scripts/check_injection.py (PostToolUse hook)
-  -> Narrator session (handles injection)
+  -> Narrator session (handles injection payload)
 ```
 
 ### Manual Injection: CLI -> Queue or Direct Call
@@ -130,7 +137,7 @@ Producer(s) (frontend, runner, api)
 ```
 CLI command
   -> engine/scripts/inject_to_narrator.py
-     - if narrator running: write the JSON injection queue file
+     - if narrator running: append to `playthroughs/{playthrough_id}/injection_queue.json`
      - else: subprocess call to claude -p
 ```
 
@@ -166,9 +173,9 @@ engine/scripts/inject_to_narrator.py
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| injection queue (JSONL) | Runtime file configured in `engine/scripts/check_injection.py` | per-playthrough | append, consume FIFO |
-| narrator status | Runtime file configured in `engine/scripts/inject_to_narrator.py` | global | updated by Narrator runtime |
-| injection queue (JSON) | Runtime file configured in `engine/scripts/inject_to_narrator.py` | per-playthrough | rewritten on inject_to_narrator calls |
+| injection queue (JSONL) | `playthroughs/default/injection_queue.jsonl` | default/global | append, consume FIFO |
+| narrator status | `playthroughs/narrator_state.json` | global | updated by Narrator runtime |
+| injection queue (JSON array) | `playthroughs/{playthrough_id}/injection_queue.json` | per-playthrough | rewritten on inject_to_narrator calls |
 
 ---
 
@@ -182,8 +189,8 @@ File-backed queues are append/read in separate processes. There is no locking or
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `INJECTION_FILE` | `engine/scripts/check_injection.py` | Runtime path configured in-script | Queue read by hook script |
-| `NARRATOR_STATE_FILE` | `engine/scripts/inject_to_narrator.py` | Runtime path configured in-script | Determines whether Narrator is running |
+| `INJECTION_FILE` | `engine/scripts/check_injection.py` | `playthroughs/default/injection_queue.jsonl` | Queue read by hook script |
+| `NARRATOR_STATE_FILE` | `engine/scripts/inject_to_narrator.py` | `playthroughs/narrator_state.json` | Determines whether Narrator is running |
 
 ---
 
@@ -194,13 +201,14 @@ File-backed queues are append/read in separate processes. There is no locking or
 | File | Line | Reference |
 |------|------|-----------|
 | `engine/scripts/check_injection.py` | 7 | `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md` |
+| `engine/scripts/inject_to_narrator.py` | 8 | `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md` |
 
 ### Docs -> Code
 
 | Doc Section | Implemented In |
 |-------------|----------------|
 | Hook injection reader | `engine/scripts/check_injection.py:20` |
-| Manual injection CLI | `engine/scripts/inject_to_narrator.py:109` |
+| Manual injection CLI | `engine/scripts/inject_to_narrator.py:111` |
 
 ---
 
@@ -209,6 +217,7 @@ File-backed queues are append/read in separate processes. There is no locking or
 ### Missing Implementation
 
 - [ ] Reconcile JSON vs JSONL injection queue formats and update producers/consumers to a single queue.
+- [ ] Align `engine/infrastructure/api/playthroughs.py` initialization (`{"injections": []}`) with the array format expected by `engine/scripts/inject_to_narrator.py`.
 - [ ] Add file lock or atomic rotation for JSONL queue consumption if multiple writers are expected.
 
 ### Ideas

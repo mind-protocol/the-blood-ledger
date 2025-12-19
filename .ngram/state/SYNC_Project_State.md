@@ -20,6 +20,8 @@ Aligned narrator documentation with the current prompt builder location by corre
 Updated the world scraping implementation doc to include minor place and thing YAML inputs loaded by `data/scripts/inject_world.py`; ran `ngram validate` (pre-existing schema/product/network/storms doc gaps and broken CHAIN links remain).
 Verified the scraping implementation doc already lists all scrape scripts and current `data/world/` YAML outputs (including things and minor places), so the stale-impl warning is resolved without further edits to the doc itself.
 
+Updated the async implementation doc to reflect current injection queue formats/paths and entry points, and logged the change in `docs/infrastructure/async/SYNC_Async_Architecture.md`.
+
 Documented the legacy narrator prompt file in the narrator implementation doc so the file list matches the module directory, and logged the change in `docs/agents/narrator/SYNC_Narrator.md`. Ran `ngram validate`; existing schema/product/network/storms documentation gaps and broken CHAIN links remain.
 
 Repaired the engine tests implementation doc by replacing bare filenames and
