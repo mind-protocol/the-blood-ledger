@@ -244,7 +244,7 @@ Files that reference this documentation:
 
 | File | Line | Reference |
 |------|------|-----------|
-| `tools/image_generation/generate_image.py` | 4 | `# DOCS: docs/infrastructure/image-generation/IMPLEMENTATION_Image_Generation.md` |
+| `tools/image_generation/generate_image.py` | 3 | `# DOCS: docs/infrastructure/image-generation/IMPLEMENTATION_Image_Generation.md` |
 
 ### Docs → Code
 

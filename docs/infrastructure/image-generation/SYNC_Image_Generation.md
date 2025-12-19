@@ -90,9 +90,11 @@ Update this table when tasks complete or reprioritized.
 ## Recent Changes
 
 - Added IMPLEMENTATION doc and linked CHAIN references for image-generation.
+- Added DOCS references in `tools/image_generation/README.md` and prioritized the image-generation doc link in `tools/image_generation/generate_image.py`.
+- Replaced the HTML DOCS comment in `tools/image_generation/README.md` with a plain `DOCS:` line so `ngram context` can resolve the mapping.
 
 ---
 
 ## Last Updated
 
-2025-12-19 — Added implementation documentation and chain links.
+2025-12-19 — Normalized the README DOCS line to a plain `DOCS:` mapping for `ngram context`.

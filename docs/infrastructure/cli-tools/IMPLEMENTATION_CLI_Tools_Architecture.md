@@ -173,7 +173,7 @@ stream_dialogue.py
 | File | Line | Reference |
 |------|------|-----------|
 | `tools/stream_dialogue.py` | 2 | `# DOCS: docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md` |
-| `tools/image_generation/generate_image.py` | 2 | `# DOCS: docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md` |
+| `tools/image_generation/generate_image.py` | 4 | `# DOCS: docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md` |
 
 ### Docs -> Code
 

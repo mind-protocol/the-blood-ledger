@@ -1,5 +1,7 @@
 # Image Generation Tool
 
+DOCS: docs/infrastructure/image-generation/PATTERNS_Image_Generation.md
+
 Generate images for Blood Ledger using the Ideogram 3.0 API.
 
 ## Setup

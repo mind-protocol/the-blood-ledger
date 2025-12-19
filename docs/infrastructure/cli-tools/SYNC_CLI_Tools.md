@@ -52,6 +52,13 @@ Both CLI tools are functional and actively used by agents:
 
 ## RECENT CHANGES
 
+### 2025-12-19: Sync DOCS reference line numbers
+
+- **What:** Updated the line number reference for the image-generation DOCS comment
+- **Why:** DOCS comments were reordered in `tools/image_generation/generate_image.py`
+- **Files:**
+  - `docs/infrastructure/cli-tools/IMPLEMENTATION_CLI_Tools_Architecture.md`
+
 ### 2025-12-19: Complete documentation chain
 
 - **What:** Added BEHAVIORS, ALGORITHM, VALIDATION, IMPLEMENTATION, and TEST docs
