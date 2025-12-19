@@ -14,8 +14,8 @@ Expanded `docs/design/SYNC_Vision.md` with the missing template sections
 todo, consciousness trace, pointers) and lengthened entries to resolve the
 DOC_TEMPLATE_DRIFT warning for repair #16.
 
-Logged the graph health SYNC template restoration in the module RECENT CHANGES
-so the drift fix remains traceable (`docs/schema/graph-health/SYNC_Graph_Health.md`).
+Updated the graph health SYNC RECENT CHANGES entry to record the template
+section restoration (`docs/schema/graph-health/SYNC_Graph_Health.md`).
 
 Expanded `docs/schema/graph-health/PATTERNS_Graph_Health_Validation.md` to
 lengthen short inspirations and non-scope sections for template guidance, and
