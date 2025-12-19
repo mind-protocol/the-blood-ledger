@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/frontend/minimap/SYNC_Minimap.md` with the missing template
+sections (in progress, known issues, human handoff, consciousness trace,
+pointers) and expanded short entries to meet length requirements for repair
+#16.
+
 Filled missing SCOPE and INSPIRATIONS sections in `docs/frontend/minimap/PATTERNS_Discovered_Location_Minimap.md`, expanded template text, and logged the update in `docs/frontend/minimap/SYNC_Minimap.md` for repair #16.
 
 Filled missing SCOPE and INSPIRATIONS sections in
@@ -22,6 +27,8 @@ Reduced `docs/infrastructure/world-builder` to ~34K chars by splitting ALGORITHM
 Filled missing template sections (in progress, known issues, human handoff,
 consciousness trace, pointers, observations) in
 `docs/frontend/right-panel/SYNC_Right_Panel.md` for repair #16.
+Expanded the right-panel patterns gaps framing to clarify persistence and
+unread indicator decisions in `docs/frontend/right-panel/PATTERNS_Tabbed_Right_Panel.md`.
 
 Filled the missing SCOPE section in `docs/frontend/PATTERNS_Presentation_Layer.md` and expanded short template sections, logging the update in `docs/frontend/SYNC_Frontend.md`.
 Expanded frontend presentation-layer dependencies, inspirations, and gaps to meet template length requirements for repair #16.
