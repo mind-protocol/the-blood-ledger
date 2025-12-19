@@ -27,6 +27,9 @@ data flow, complexity, helper functions, interactions, gaps) and logged the
 update in `docs/physics/graph/SYNC_Graph.md` to resolve DOC_TEMPLATE_DRIFT for
 repair #16.
 
+Normalized the energy flow algorithm headings to the required template labels
+so drift checks recognize the sections in `docs/physics/graph/ALGORITHM_Energy_Flow.md`.
+
 Expanded `docs/physics/PATTERNS_Physics.md` with missing template sections
 (problem, pattern, principles, dependencies, inspirations, scope, gaps) and
 logged the update in `docs/physics/SYNC_Physics.md` for repair #16.
@@ -35,16 +38,14 @@ Expanded the archive physics SYNC handoff, todo, consciousness trace, and
 pointers sections to meet template requirements, and logged the change in
 `docs/physics/SYNC_Physics.md` for repair #16.
 
-Added the missing DESIGN PATTERNS section to `docs/physics/IMPLEMENTATION_Physics.md` (architecture pattern, code patterns, anti-patterns, boundaries) to resolve the DOC_TEMPLATE_DRIFT warning for repair #16.
-
 Completed the missing template sections in `docs/physics/ALGORITHM_Physics.md`
 (overview, data structures, algorithm summary, decisions, data flow,
 complexity, helpers, interactions, gaps) to resolve DOC_TEMPLATE_DRIFT for
 repair #16 and noted the change in `docs/physics/SYNC_Physics.md`.
 
-Filled the missing DESIGN PATTERNS section in
-`docs/physics/IMPLEMENTATION_Physics.md` and recorded the update in
-`docs/physics/SYNC_Physics.md` to resolve DOC_TEMPLATE_DRIFT for repair #16.
+Expanded the DESIGN PATTERNS section in `docs/physics/IMPLEMENTATION_Physics.md` with
+architecture, code patterns, anti-patterns, and boundaries, and recorded the update
+in `docs/physics/SYNC_Physics.md` for repair #16.
 
 Filled missing template sections (maturity, current state, in progress, known
 issues, handoffs, todo, consciousness trace, pointers) in

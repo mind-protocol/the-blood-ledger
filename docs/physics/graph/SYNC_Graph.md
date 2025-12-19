@@ -99,6 +99,8 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
   template sections (overview, data structures, algorithm entry point,
   decisions, data flow, complexity, helpers, interactions, gaps) to resolve
   DOC_TEMPLATE_DRIFT for repair #16.
+- Normalized the energy flow algorithm headings to the required template
+  labels (OVERVIEW, DATA STRUCTURES, ALGORITHM, KEY DECISIONS, and related).
 - Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers (`get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, `get_clickable_words`) are fully implemented; repair task was stale.
 - Confirmed the `physics-graph` module mapping in `modules.yaml`, removed the duplicate entry, and verified the `graph_ops.py` DOCS reference.
 - Confirmed tick.py, orchestrator.py are complete
