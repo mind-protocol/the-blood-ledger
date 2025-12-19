@@ -52,6 +52,14 @@ sections and keep the status record complete and traceable.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Completed SYNC template sections
+
+- **What:** Added IN PROGRESS, KNOWN ISSUES, HANDOFF (human), and CONSCIOUSNESS
+  TRACE sections with full context.
+- **Why:** Resolve doc-template drift for the graph health SYNC file.
+- **Files:** `docs/schema/graph-health/SYNC_Graph_Health.md`
+- **Struggles/Insights:** Kept changes documentation-only to avoid scope creep.
+
 ### 2025-12-19: Expanded patterns template sections
 
 - **What:** Lengthened inspirations and non-scope notes in the graph health
@@ -194,6 +202,7 @@ module intent and noted that this change is purely documentation alignment.
 ### Remarks
 - Health report helpers are already implemented; incomplete-impl task was stale.
 - Reconfirmed helper implementations; repair remains a documentation-only update.
+- Expanded patterns doc to keep template coverage aligned with guidance.
 
 ### Suggestions
 - [ ] Consider adding BEHAVIORS/ALGORITHM docs if this module changes again.

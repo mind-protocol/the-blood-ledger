@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/schema/graph-health/PATTERNS_Graph_Health_Validation.md` to
+lengthen short inspirations and non-scope sections for template guidance, and
+logged the update in `docs/schema/graph-health/SYNC_Graph_Health.md` for
+repair #16.
+
 Filled the missing SYNC template sections (in progress, known issues, human
 handoff, consciousness trace) in `docs/schema/graph-health/SYNC_Graph_Health.md`
 to resolve doc-template drift for repair #16.
