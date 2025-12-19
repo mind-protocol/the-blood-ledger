@@ -27,6 +27,11 @@ All core files are complete and ready for integration testing:
 
 ## Recent Changes
 
+### 2025-12-19 — Documentation chain completion
+
+- Added `PATTERNS_World_Builder.md` and `BEHAVIORS_World_Builder.md` to complete the world-builder doc chain and align CHAIN links.
+- Added the world-builder module mapping in `modules.yaml` for discovery and validation.
+
 ### 2025-12-19 — Repair verification (world_builder.py, repair 03-INCOMPLETE_IMPL)
 
 - Confirmed `_hash_query` and `clear_cache` are already implemented in `engine/infrastructure/world_builder/world_builder.py`; no code changes required for this repair run.

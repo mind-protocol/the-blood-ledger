@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Completed the world-builder documentation chain by adding PATTERNS and BEHAVIORS docs and mapping the module in `modules.yaml`, with the update logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`.
+
 Updated the scene-memory module tests mapping in `modules.yaml` to point at the
 concrete `engine/tests/test_moment.py` file so `ngram validate` no longer flags
 the glob path as missing. Logged the change in
