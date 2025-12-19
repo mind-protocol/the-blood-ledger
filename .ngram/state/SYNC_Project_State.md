@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Verified the history module already has documentation and a `modules.yaml`
+mapping; no code changes required beyond logging this verification.
+Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`,
+and `docs/infrastructure/world-builder/` plus broken CHAIN links in
+`docs/schema/SCHEMA_Moments.md`.
+
 Documented the engine test suite module by adding `docs/engine/tests/` (PATTERNS
 and SYNC), mapping `engine/tests/**` in `modules.yaml`, and linking
 `engine/tests/__init__.py` to the docs chain.
@@ -184,6 +190,8 @@ Removed duplicate graph algorithm doc `docs/physics/graph/ALGORITHM_Weight.md` a
 Documented the moment graph module with a full documentation chain, a DOCS
 reference in `engine/moments/__init__.py`, and aligned the module docs with the
 existing `modules.yaml` entry.
+
+Verified repair 57-UNDOCUMENTED-infrastructure-history is already resolved; history docs and module mapping already exist and are recorded in `docs/infrastructure/history/SYNC_History.md`.
 
 ---
 
