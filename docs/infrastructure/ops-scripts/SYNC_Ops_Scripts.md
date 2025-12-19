@@ -57,6 +57,12 @@ assets. Injection-related scripts in the same directory are documented under
 - **Why:** Repair task flagged `engine/scripts` as undocumented.
 - **Files:** `docs/infrastructure/ops-scripts/PATTERNS_Operational_Seeding_And_Backfill_Scripts.md`, `docs/infrastructure/ops-scripts/SYNC_Ops_Scripts.md`, `modules.yaml`, `engine/scripts/seed_moment_sample.py`
 
+### 2025-12-19: Verified ops-scripts mapping
+
+- **What:** Confirmed the ops-scripts documentation chain and DOCS reference are in place.
+- **Why:** Repair 51 revalidated `engine/scripts` documentation coverage.
+- **Files:** No code changes.
+
 ### 2025-12-19: Linked backfill script to ops-scripts docs
 
 - **What:** Added DOCS reference in `engine/scripts/generate_images_for_existing.py`.
