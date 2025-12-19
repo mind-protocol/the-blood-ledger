@@ -9,9 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+World scraping documentation chain finalized with implementation details; added DOCS reference in phase 1 scraper and documented extraction candidates.
 Completed docs/design chain by adding IMPLEMENTATION_Vision.md, updating TEST_Vision.md chain, and refreshing SYNC_Vision.md; mapped design-vision in modules.yaml.
 
 Frontend-backend integration fixes for playthrough flow:
+- Added scene-memory IMPLEMENTATION/TEST docs, updated doc chains, and added a DOCS reference in `engine/infrastructure/memory/moment_processor.py`.
+- Mapped scene-memory in `modules.yaml`; `ngram validate` still reports pre-existing schema/infrastructure doc gaps.
 - Reverified physics tick energy helpers in `engine/physics/tick.py`; repair 12 is stale and required no code changes.
 - Added `/api/action` endpoint for full game loop (narrator→tick→flips)
 - Fixed scenario path in playthroughs.py (was `engine/scenarios`, now `scenarios/`)

@@ -121,3 +121,17 @@ modules:
     notes: |
       World Runner agent and orchestration service. Converts flipped tensions
       into graph mutations and narrator injection payloads.
+
+  scene-memory:
+    code: "engine/infrastructure/memory/**"
+    docs: "docs/infrastructure/scene-memory/"
+    tests: "engine/tests/test_moment*.py"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/memory/moment_processor.py
+    patterns:
+      - "Moment processor facade"
+      - "Transcript append-only log"
+    notes: |
+      Moment processing and transcript persistence for playthroughs.

@@ -14,6 +14,8 @@ PATTERNS:    ./PATTERNS_Scene_Memory.md
 BEHAVIORS:   ./BEHAVIORS_Scene_Memory.md
 ALGORITHM:   ./ALGORITHM_Scene_Memory.md
 THIS:        VALIDATION_Scene_Memory.md (you are here)
+IMPLEMENTATION:  ./IMPLEMENTATION_Scene_Memory.md
+TEST:        ./TEST_Scene_Memory.md
 SYNC:        ./SYNC_Scene_Memory.md
 ```
 
