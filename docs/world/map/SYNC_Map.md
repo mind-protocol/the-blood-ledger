@@ -32,7 +32,15 @@ Documentation repair 65: fixed implementation doc references to point at `engine
 
 Documentation chain completed for validation, implementation, and test coverage.
 
+Frontend map view exists as a read-only UI using sample data under
+`frontend/components/map`, but it is not yet wired to this backend map system.
+
 **Partial implementation:**
+
+Frontend map view is documented and implemented with a read-only canvas UI
+(`MapClient`, `MapCanvas`) that uses sample data for terrain, routes, and
+places. It currently provides hover and selection affordances without travel
+integration.
 
 | Component | Status | Notes |
 |-----------|--------|-------|
@@ -76,6 +84,8 @@ The documented map features remain unimplemented:
 - Route visualization with waypoints
 - Player position tracking
 - Click-to-travel interaction
+Frontend has a placeholder map UI, but it uses static seed data and does not
+connect to the backend map system yet.
 
 ### Visibility/Knowledge System
 
@@ -97,6 +107,16 @@ Player-specific knowledge tracking:
 | `IMPLEMENTATION_Map_Code_Architecture.md` | Code architecture | Complete |
 | `TEST_Map_Test_Coverage.md` | Test coverage | Complete (no tests yet) |
 | `SYNC_Map.md` | Current state | This file |
+
+---
+
+## Recent Changes
+
+### 2025-12-19: Consolidated map SYNC documentation
+
+- **What:** Moved frontend map view status into this canonical map SYNC and redirected the frontend map SYNC to this file.
+- **Why:** Remove duplicate SYNC docs for the map system while preserving frontend-specific status.
+- **Files:** `docs/world/map/SYNC_Map.md`, `docs/frontend/map/SYNC_Map_View.md`
 
 ---
 
