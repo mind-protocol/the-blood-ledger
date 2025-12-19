@@ -13,6 +13,8 @@ Docs:
 DOCS: docs/infrastructure/api/
 """
 
+# DOCS: docs/infrastructure/api/
+
 import asyncio
 import json
 import logging
@@ -30,6 +32,7 @@ from engine.infrastructure.orchestration import Orchestrator
 from engine.physics.graph import GraphQueries, GraphOps, add_mutation_listener
 from engine.infrastructure.api.moments import create_moments_router
 from engine.infrastructure.api.playthroughs import create_playthroughs_router
+from engine.infrastructure.api.tempo import create_tempo_router
 
 # =============================================================================
 # LOGGING SETUP
@@ -220,6 +223,15 @@ def create_app(
         playthroughs_dir=playthroughs_dir
     )
     app.include_router(playthroughs_router, prefix="/api")
+
+    # Mount the tempo API router for game speed control
+    # Endpoints: POST /api/tempo/speed, GET /api/tempo/{id}, POST /api/tempo/input
+    tempo_router = create_tempo_router(
+        host=host,
+        port=port,
+        playthroughs_dir=playthroughs_dir
+    )
+    app.include_router(tempo_router, prefix="/api")
 
     # =========================================================================
     # HEALTH CHECK

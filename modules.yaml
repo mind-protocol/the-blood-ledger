@@ -278,6 +278,22 @@ modules:
     notes: |
       Async travel architecture documentation and current queue/SSE scaffolding.
 
+  infrastructure-api:
+    code: "engine/infrastructure/api/**"
+    docs: "docs/infrastructure/api/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/api/app.py
+      - engine/infrastructure/api/moments.py
+      - engine/infrastructure/api/playthroughs.py
+    patterns:
+      - "FastAPI app with router factories"
+      - "SSE stream endpoints for moments"
+    notes: |
+      FastAPI application and API routers for playthroughs, moments, tempo,
+      and server-sent events.
+
   ops-scripts:
     code: "engine/scripts/**"
     docs: "docs/infrastructure/ops-scripts/"

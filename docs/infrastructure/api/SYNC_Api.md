@@ -18,6 +18,14 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Map infrastructure API module and link DOCS reference
+
+- **What:** Mapped `engine/infrastructure/api/**` to `docs/infrastructure/api/` in `modules.yaml` and added a `# DOCS:` header in `engine/infrastructure/api/app.py` for `ngram context`.
+- **Why:** The API docs existed but the code path was not mapped, so documentation discovery failed for the API module.
+- **Files:**
+  - `modules.yaml`
+  - `engine/infrastructure/api/app.py`
+
 ### 2025-12-19: Consolidate API algorithm documentation
 
 - **What:** Merged playthrough creation flow into `docs/infrastructure/api/ALGORITHM_Api.md` and replaced the duplicate algorithm file with a redirect.
