@@ -34,6 +34,13 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Verified node helper implementations
+
+- **What:** Confirmed `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` are implemented in `engine/models/nodes.py`.
+- **Why:** Repair task flagged incomplete helpers; verification shows no changes needed.
+- **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task appears stale; no code changes required.
+
 ### 2025-12-19: Verified link helper implementations
 
 - **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` helpers are implemented in `engine/models/links.py`.
@@ -47,6 +54,13 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 - **Why:** Repair task flagged incomplete implementations; verification shows the functions are already complete.
 - **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
 - **Struggles/Insights:** Repair task appears stale; no code changes required.
+
+### 2025-12-19: Reconfirmed GameTimestamp comparison helpers
+
+- **What:** Rechecked `GameTimestamp.__str__`, `__le__`, and `__gt__` for the 06-INCOMPLETE_IMPL-models-base repair run; no code changes needed.
+- **Why:** Current repair task required verification in the latest run.
+- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`, `.ngram/state/SYNC_Project_State.md`.
+- **Struggles/Insights:** Repair task remains stale relative to current code.
 
 ### 2025-12-19: Documented schema models module
 
@@ -91,7 +105,9 @@ pytest engine/tests/test_models.py
 ### Remarks
 - Repair task flagged incomplete functions, but `engine/models/base.py` already contains full implementations for the comparison helpers.
 - Repair task for `engine/models/links.py` flagged missing helpers, but implementations are already present.
+- Repair task for `engine/models/nodes.py` flagged missing helpers, but implementations are already present.
 
 ### Suggestions
+- [ ] Consider adding explicit tests for `GameTimestamp` ordering in `engine/tests/test_models.py`.
 
 ### Propositions

@@ -13,6 +13,8 @@ Reverified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__g
 
 Verified `engine/infrastructure/world_builder/world_builder.py` helper implementations (`_hash_query`, `clear_cache`) for the incomplete-impl repair; task was stale with no code changes (logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`).
 
+Verified `engine/models/nodes.py` helper properties (`is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) are already implemented; repair task was stale and required no code changes (logged in `docs/schema/models/SYNC_Schema_Models.md`).
+
 Implemented missing playthrough helper logic in `engine/infrastructure/api/playthroughs.py` (branch counting, per-playthrough GraphQueries caching, and embedding service fallback) and updated API implementation docs.
 
 Reverified the moment processor helpers in `engine/infrastructure/memory/moment_processor.py` for repair 03; all implementations are present and no code changes were required (logged in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`).
@@ -195,6 +197,7 @@ Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py`
 Logged repair 09-INCOMPLETE_IMPL-graph-graph_ops_events verification in `docs/physics/graph/SYNC_Graph.md`.
 Verified `engine/models/base.py` comparison helpers are already implemented; repair 04-INCOMPLETE_IMPL-models-base is stale.
 Verified link model helpers (`belief_intensity`, `is_present`, `has_item`, `is_here`) in `engine/models/links.py`; repair 05-INCOMPLETE_IMPL-models-links appears stale with no code changes required.
+Logged the current repair verification in `docs/schema/models/SYNC_Schema_Models.md`.
 Implemented markdown formatting and cosine similarity helpers in `engine/physics/graph/graph_queries_search.py` to complete the search mixin methods.
 Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still reports pre-existing docs/schema gaps and broken CHAIN links.
 Recorded moment query verification in `docs/physics/graph/SYNC_Graph.md`.
