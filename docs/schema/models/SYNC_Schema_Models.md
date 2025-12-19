@@ -29,160 +29,22 @@ tensions, along with shared enums and helper methods. The module is structured
 by responsibility (base enums, nodes, links, tensions) and re-exported from
 `engine/models/__init__.py` for stable imports. Tests live in
 `engine/tests/test_models.py` with some integration coverage in scenario tests.
+Updated the patterns doc to include the missing INSPIRATIONS and SCOPE
+sections and expanded the non-goals to meet template length guidance.
 
 ---
 
-## RECENT CHANGES
+## IN PROGRESS
 
-### 2025-12-19: Reconfirmed node helper implementations (repair 07, current run)
+Doc-template repair for this SYNC file, ensuring required sections exist and
+carry enough context to keep schema-model documentation aligned.
 
-- **What:** Rechecked `Narrative.is_core_type` and Moment helpers (`tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) remain implemented in `engine/models/nodes.py` (see `engine/models/nodes.py:185` and `engine/models/nodes.py:249`); no code changes made.
-- **Why:** Current INCOMPLETE_IMPL repair run required validation of node helper properties.
-- **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Test:** `pytest engine/tests/test_models.py` (failed: missing `pytest_xprocess` dependency).
-- **Struggles/Insights:** Repair task remains stale; verification only.
+---
 
-### 2025-12-19: Revalidated link helper implementations with line refs (repair 06, current run)
+## KNOWN ISSUES
 
-- **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` remain implemented in `engine/models/links.py` (`engine/models/links.py:66`, `engine/models/links.py:120`, `engine/models/links.py:140`, `engine/models/links.py:160`); no code changes made.
-- **Why:** Current INCOMPLETE_IMPL repair run required validation for link helper properties.
-- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task remains stale; verification only.
-
-### 2025-12-19: Revalidated node helper implementations with line refs (repair 07)
-
-- **What:** Confirmed `Narrative.is_core_type` and Moment helpers (`tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) are implemented in `engine/models/nodes.py` (`Narrative.is_core_type` at `engine/models/nodes.py:185`, Moment helpers starting at `engine/models/nodes.py:249`); no code changes made.
-- **Why:** Current INCOMPLETE_IMPL repair required validation of node helper properties.
-- **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Test:** `pytest engine/tests/test_models.py` (failed: missing `pytest_xprocess` dependency).
-- **Struggles/Insights:** Repair task appears stale relative to current code.
-
-### 2025-12-19: Verified GameTimestamp comparison helpers (repair 05)
-
-- **What:** Confirmed `GameTimestamp.__str__`, `__le__`, and `__gt__` are implemented in `engine/models/base.py`; no code changes made.
-- **Why:** Current INCOMPLETE_IMPL repair task required validation for the base model helpers.
-- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task appears stale relative to current implementation.
-
-### 2025-12-19: Rechecked link helper implementations (repair 05, latest run)
-
-- **What:** Reconfirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` remain implemented in `engine/models/links.py`; no code changes made.
-- **Why:** Current INCOMPLETE_IMPL repair run required verification for link helper properties.
-- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task remains stale; verification only.
-
-### 2025-12-19: Revalidated link helper implementations (repair 05, current run)
-
-- **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` in `engine/models/links.py` remain implemented; no code changes made.
-- **Why:** Current INCOMPLETE_IMPL repair run required validation of the link helper properties.
-- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task remains stale; verification only.
-
-### 2025-12-19: Verified GameTimestamp helpers with test attempt (current run)
-
-- **What:** Confirmed `GameTimestamp.__str__`, `__le__`, and `__gt__` are implemented in `engine/models/base.py`; attempted `pytest engine/tests/test_models.py`.
-- **Why:** Current INCOMPLETE_IMPL repair requires evidence for comparison helpers.
-- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Test:** `pytest engine/tests/test_models.py` (failed: missing `pytest_xprocess` dependency).
-- **Struggles/Insights:** Test dependency missing in environment; helper implementations still present.
-
-### 2025-12-19: Verified GameTimestamp helper implementations (repair 04)
-
-- **What:** Confirmed `GameTimestamp.__str__`, `__le__`, and `__gt__` are implemented in `engine/models/base.py`; no code changes required.
-- **Why:** Current INCOMPLETE_IMPL repair run flagged empty helpers; verification shows the implementations are already present.
-- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task appears stale relative to current code.
-
-### 2025-12-19: Rechecked GameTimestamp comparison helpers (current run)
-
-- **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` are already implemented in `engine/models/base.py`; no code changes made.
-- **Why:** Current INCOMPLETE_IMPL repair run required validation of these helpers.
-- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task is stale relative to the current implementation.
-
-### 2025-12-19: Logged repair 04 verification (current run)
-
-- **What:** Recorded the current repair run verification for `GameTimestamp` helpers in `engine/models/base.py`; no code changes needed.
-- **Why:** Repair task required confirmation for this run.
-- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task remains stale; verification only.
-
-### 2025-12-19: Logged repair 06 verification (current run)
-
-- **What:** Recorded the current repair run verification for node helper properties in `engine/models/nodes.py`; no code changes needed.
-- **Why:** Repair task required confirmation for this run.
-- **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task remains stale; verification only.
-
-### 2025-12-19: Revalidated node helper implementations (repair 06)
-
-- **What:** Rechecked `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` in `engine/models/nodes.py`; implementations already present.
-- **Why:** Current INCOMPLETE_IMPL repair run required verification.
-- **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task appears stale; no code changes required.
-
-### 2025-12-19: Reconfirmed link helper implementations (repair 05)
-
-- **What:** Verified `belief_intensity`, `is_present`, `has_item`, and `is_here` remain implemented in `engine/models/links.py`.
-- **Why:** Current INCOMPLETE_IMPL repair run required confirmation.
-- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task remains stale; no code changes required.
-
-### 2025-12-19: Revalidated link helper implementations (repair 05)
-
-- **What:** Rechecked `belief_intensity`, `is_present`, `has_item`, and `is_here` in `engine/models/links.py`; implementations already present.
-- **Why:** Current INCOMPLETE_IMPL repair run required verification.
-- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task appears stale; no code changes required.
-
-### 2025-12-19: Reverified GameTimestamp comparison helpers (repair 04)
-
-- **What:** Rechecked `GameTimestamp.__str__`, `__le__`, and `__gt__` and confirmed implementations already exist.
-- **Why:** Current INCOMPLETE_IMPL repair run required verification.
-- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task remains stale relative to current code.
-
-### 2025-12-19: Verified node helper implementations
-
-- **What:** Confirmed `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` are implemented in `engine/models/nodes.py`.
-- **Why:** Repair task flagged incomplete helpers; verification shows no changes needed.
-- **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task appears stale; no code changes required.
-
-### 2025-12-19: Verified link helper implementations
-
-- **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` helpers are implemented in `engine/models/links.py`.
-- **Why:** Repair task flagged incomplete helpers; verification shows no changes needed.
-- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task appears stale; no code changes required.
-
-### 2025-12-19: Verified GameTimestamp comparison helpers
-
-- **What:** Confirmed `GameTimestamp.__str__`, `__le__`, and `__gt__` are fully implemented in `engine/models/base.py`.
-- **Why:** Repair task flagged incomplete implementations; verification shows the functions are already complete.
-- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task appears stale; no code changes required.
-
-### 2025-12-19: Reconfirmed GameTimestamp comparison helpers
-
-- **What:** Rechecked `GameTimestamp.__str__`, `__le__`, and `__gt__` for the 06-INCOMPLETE_IMPL-models-base repair run; no code changes needed.
-- **Why:** Current repair task required verification in the latest run.
-- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`, `.ngram/state/SYNC_Project_State.md`.
-- **Struggles/Insights:** Repair task remains stale relative to current code.
-
-### 2025-12-19: Revalidated GameTimestamp comparison helpers (repair 04)
-
-- **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` are fully implemented in `engine/models/base.py`; no code changes required.
-- **Why:** Repair task flagged incomplete implementations; current code already satisfies the expected behavior.
-- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
-- **Struggles/Insights:** Repair task remains stale relative to current implementation.
-
-### 2025-12-19: Documented schema models module
-
-- **What:** Added module docs and mapping for `engine/models/**`.
-- **Why:** Close undocumented module gap and enable `ngram` context navigation.
-- **Files:** `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`, `docs/schema/models/SYNC_Schema_Models.md`, `engine/models/__init__.py`, `modules.yaml`.
-- **Struggles/Insights:** Minimal chain created to avoid duplicating existing schema docs.
+The schema-models doc chain does not yet link `docs/schema/SCHEMA.md`, so schema
+context is split across modules and can drift without explicit cross-links.
 
 ---
 
@@ -203,6 +65,13 @@ into a full doc chain for this module.
 
 ---
 
+## HANDOFF: FOR HUMAN
+
+This update only fills missing SYNC sections to satisfy the doc template; no
+behavior changes were made to schema models or tests.
+
+---
+
 ## TODO
 
 ### Doc/Impl Drift
@@ -215,24 +84,36 @@ into a full doc chain for this module.
 pytest engine/tests/test_models.py
 ```
 
+---
+
+## CONSCIOUSNESS TRACE
+
+Attention stayed on template completeness rather than schema changes; the main
+concern is avoiding doc drift while keeping changes minimal and traceable.
+
+---
+
 ## Agent Observations
 
 ### Remarks
-- Repair task flagged incomplete functions, but `engine/models/base.py` already contains full implementations for the comparison helpers.
-- Reverified the base model comparison helpers for repair 05; no code changes required.
-- Repair task for `engine/models/links.py` flagged missing helpers, but implementations are already present.
-- Repair task for `engine/models/nodes.py` flagged missing helpers, but implementations are already present.
-- Reverified GameTimestamp comparison helpers for the current repair run; no changes required.
-- Logged the current repair run verification for `GameTimestamp` helpers; no code changes required.
-- Revalidated link helper implementations in `engine/models/links.py`; no changes required.
-- Revalidated node helper implementations in `engine/models/nodes.py`; no changes required.
-- Confirmed the current repair run for `engine/models/base.py` remains a verification-only update; no code changes needed.
-- Attempted `pytest engine/tests/test_models.py`; missing `pytest_xprocess` prevented the test run.
-- Reconfirmed link helper properties for the current repair run; no code changes required.
-- Rechecked link helper implementations for the latest repair run; no code changes required.
-- Revalidated link helper implementations for the current repair run; no code changes required.
+- Filled the missing patterns template sections and expanded the non-goals text.
 
 ### Suggestions
-- [ ] Consider adding explicit tests for `GameTimestamp` ordering in `engine/tests/test_models.py`.
+- [ ] Link `docs/schema/SCHEMA.md` in the schema-models doc chain to reduce drift.
 
 ### Propositions
+- Capture cross-model validation invariants once the schema contract stabilizes.
+
+---
+
+## POINTERS
+
+- `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`
+- `engine/models/__init__.py`
+- `engine/tests/test_models.py`
+
+---
+
+## ARCHIVE
+
+Older content archived to: `SYNC_Schema_Models_archive_2025-12.md`

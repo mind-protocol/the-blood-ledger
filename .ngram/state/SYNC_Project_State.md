@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing INSPIRATIONS and SCOPE sections in
+`docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`, expanded the non-goals
+text to meet template length guidance, and logged the update plus observations
+in `docs/schema/models/SYNC_Schema_Models.md` for repair #16. Ran
+`ngram validate`; failures remain pre-existing (missing VIEW file and doc-chain
+gaps in schema/product/network/storms modules).
+
 Expanded `docs/schema/VALIDATION_Graph.md` with the missing validation
 template sections (CHAIN, invariants, properties, error conditions, test
 coverage, verification procedure, sync status, gaps) and preserved the
@@ -37,7 +44,7 @@ logged the update in `docs/physics/graph/SYNC_Graph.md`. Ran `ngram validate`;
 failures remain pre-existing (missing VIEW file and doc-chain gaps in
 schema/product/network/storms modules).
 
-Expanded the DESIGN PATTERNS table in `docs/physics/IMPLEMENTATION_Physics.md` with an observer/event-emitter row and lengthened the `.py` extension note to align with template guidance for repair #16.
+Expanded the DESIGN PATTERNS rationale in `docs/physics/IMPLEMENTATION_Physics.md` with a testability note to align with template guidance for repair #16.
 
 Expanded `docs/physics/VALIDATION_Physics.md` validation guidance (invariants,
 properties, error conditions, test coverage, verification procedure, sync

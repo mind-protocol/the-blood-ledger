@@ -63,11 +63,38 @@ they describe so downstream systems can rely on consistent behavior.
 
 ---
 
+## INSPIRATIONS
+
+- Pydantic's validation and JSON schema export patterns, which keep the schema
+  contract explicit and make model intent legible across services.
+- The shared schema glossary in `docs/schema/SCHEMA.md`, anchoring consistent
+  field naming and enum meanings across engine subsystems.
+
+---
+
+## SCOPE
+
+### In Scope
+
+- Pydantic classes, enums, and shared base shapes for nodes, links, and
+  tensions that define canonical schema surfaces for the engine.
+- Field defaults, optionality, and helper properties that remain data-adjacent
+  so model behavior stays predictable and portable.
+
+### Out of Scope
+
+- Graph storage, query APIs, and persistence behavior, which live in graph and
+  physics layers rather than the schema-model definitions.
+- Runtime rule enforcement (physics ticks, tension flips, narrative gating)
+  that belongs to system logic outside the schema layer.
+
+---
+
 ## WHAT THIS DOES NOT SOLVE
 
-- Graph persistence or query logic.
-- Relationship integrity across nodes/links beyond field validation.
-- Runtime enforcement of world rules (handled by graph/physics layers).
+- Graph persistence or query logic, which live in graph/physics layers and storage.
+- Relationship integrity across nodes/links beyond field validation checks.
+- Runtime enforcement of world rules, which is owned by physics and runtime services.
 
 ---
 
