@@ -10,6 +10,7 @@ UPDATED_BY: Codex (repair agent)
 ## CURRENT STATE
 
 Frontend-backend integration fixes for playthrough flow:
+- Reverified physics tick energy helpers in `engine/physics/tick.py`; repair 12 is stale and required no code changes.
 - Added `/api/action` endpoint for full game loop (narrator→tick→flips)
 - Fixed scenario path in playthroughs.py (was `engine/scenarios`, now `scenarios/`)
 - Fixed `active_moments` vs `moments` field mismatch in useGameState.ts
@@ -50,6 +51,7 @@ Verified link model helpers (`belief_intensity`, `is_present`, `has_item`, `is_h
 Implemented markdown formatting and cosine similarity helpers in `engine/physics/graph/graph_queries_search.py` to complete the search mixin methods.
 Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still reports pre-existing docs/schema gaps and broken CHAIN links.
 Recorded moment query verification in `docs/physics/graph/SYNC_Graph.md`.
+Logged the graph_queries_moments helper verification in `docs/physics/graph/SYNC_Graph.md` for repair 11.
 Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.md`.
 Reconfirmed playthroughs helper implementations for repair 01; no code changes required.
 Verified playthroughs helper implementations for repair 01-INCOMPLETE_IMPL-api-playthroughs; no code changes required.

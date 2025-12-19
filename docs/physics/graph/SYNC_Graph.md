@@ -100,3 +100,4 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 - Created task spec for agents to add endpoint
 - Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py` are already implemented; repair flagged as INCOMPLETE_IMPL is stale.
 - Verified `engine/physics/graph/graph_ops_types.py` helpers (`SimilarNode.__str__`, `ApplyResult.success`) are already implemented; repair flagged as INCOMPLETE_IMPL is stale.
+- Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers are implemented; repair flagged as INCOMPLETE_IMPL is stale.
