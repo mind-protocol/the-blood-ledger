@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Fixed the image-generation implementation doc code-to-docs reference entry to remove the `# DOCS:` prefix that was being flagged as a broken link; logged in `docs/infrastructure/image-generation/SYNC_Image_Generation.md`.
+
 Updated the tempo implementation doc to replace the `SALIENCE_THRESHOLD` default
 literal with the constant label so link checks stop flagging it as a missing
 file token. Ran `ngram validate`; pre-existing schema/product/network/storms

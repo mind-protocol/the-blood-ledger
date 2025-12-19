@@ -92,9 +92,10 @@ Update this table when tasks complete or reprioritized.
 - Added IMPLEMENTATION doc and linked CHAIN references for image-generation.
 - Added DOCS references in `tools/image_generation/README.md` and prioritized the image-generation doc link in `tools/image_generation/generate_image.py`.
 - Replaced the HTML DOCS comment in `tools/image_generation/README.md` with a `# DOCS:` line to standardize the marker; `ngram context` still does not resolve markdown files.
+- Simplified the implementation doc code-to-docs reference entry to avoid false broken-link detection.
 
 ---
 
 ## Last Updated
 
-2025-12-19 — Normalized the README DOCS line to a `# DOCS:` marker; `ngram context` still does not resolve markdown files.
+2025-12-19 — Simplified the implementation doc code-to-docs reference entry to avoid false broken-link detection.
