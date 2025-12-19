@@ -7,13 +7,67 @@ STATUS: CANONICAL (describes desired state)
 
 ---
 
-## Overview
+## CHAIN
 
-How data flows between frontend and backend for the moment system.
+```
+THIS:            ALGORITHM_Frontend_Data_Flow.md (you are here)
+PATTERNS:        ./PATTERNS_Presentation_Layer.md
+BEHAVIORS:       ./BEHAVIORS_Frontend_State_And_Interaction.md
+VALIDATION:      ./VALIDATION_Frontend_Invariants.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Frontend_Code_Architecture.md
+TEST:            ./TEST_Frontend_Coverage.md
+SYNC:            ./SYNC_Frontend.md
+
+IMPL:            frontend/hooks/useGameState.ts
+```
 
 ---
 
-## Two Paths
+## OVERVIEW
+
+This document describes the frontend data flow between UI events, REST/SSE
+calls, and in-memory state updates for the moment system and scene rendering.
+
+---
+
+## DATA STRUCTURES
+
+- **GameState**: aggregate of scene, moments, characters, and UI flags that
+  powers the main render tree and the right-panel tabs.
+- **Moment**: text payload with status flags (active/spoken/decayed), weight,
+  and clickable word metadata used by the moment stream.
+- **SSE Event**: `{type, payload}` structures emitted by `/api/moments/stream`
+  to notify the frontend about moment activation, decay, or clicks.
+- **Action Payload**: `{playthrough_id, action, player_id}` for full-loop
+  narrator requests that mutate the graph and update the scene.
+
+---
+
+## ALGORITHM: ProcessFrontendDataFlow
+
+1. Capture a UI event (click on a word or a free-text action).
+2. Select the appropriate backend path (instant click vs full action loop).
+3. Issue a REST request with playthrough identifiers and payload data.
+4. On response, update local state (scene, moments, indicators) immediately.
+5. Subscribe to SSE stream updates and reconcile via `fetchGameState`.
+6. Render components based on updated GameState and Moment arrays.
+
+---
+
+## KEY DECISIONS
+
+- Favor backend-driven truth: the frontend does not own authoritative state,
+  so most updates reconcile via server responses or SSE pushes.
+- Keep two paths for latency: instant clicks stay under 50ms, full actions
+  allow slower LLM responses while keeping the UI responsive.
+- Use SSE to avoid polling: the client listens for event triggers and refreshes
+  state when moments activate, speak, decay, or traverse.
+
+---
+
+## DATA FLOW
+
+### Two Paths
 
 ### Path 1: Instant Click (No LLM)
 
@@ -150,16 +204,50 @@ useEffect(() => {
 | File | Role |
 |------|------|
 | `frontend/lib/api.ts` | `subscribeToMomentStream()` — client SSE function |
-| `frontend/hooks/useGameState.ts` | Needs SSE integration |
-| `frontend/components/scene/CenterStage.tsx` | Has polling hack to remove |
+| `frontend/hooks/useGameState.ts` | Manages state refresh and SSE hooks |
+| `frontend/components/scene/CenterStage.tsx` | Sends action inputs to backend |
 | `engine/infrastructure/api/moments.py` | SSE endpoint |
 
 ---
 
-## Chain
+## COMPLEXITY
 
-- PATTERNS: `docs/frontend/PATTERNS_Presentation_Layer.md`
-- BEHAVIORS: `docs/frontend/BEHAVIORS_Frontend_State_And_Interaction.md`
-- **ALGORITHM: This file**
-- IMPLEMENTATION: `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
-- SYNC: `docs/frontend/SYNC_Frontend.md`
+- Instant click path: O(1) request/response with small payloads and immediate
+  in-memory updates for the active moments array.
+- Full action loop: dominated by LLM latency; frontend work is O(1) for
+  request/response but may trigger O(n) state refresh when reloading lists.
+- SSE handling: O(1) per event, with optional O(n) refresh when full state is
+  refetched after a stream notification.
+
+---
+
+## HELPER FUNCTIONS
+
+- `subscribeToMomentStream(playthroughId, handlers)` in `frontend/lib/api.ts`
+  wires SSE events to hook-level callbacks.
+- `fetchGameState()` in `frontend/hooks/useGameState.ts` reconciles backend
+  truth with local state after SSE or action responses.
+- `sendMoment()` and `sendAction()` in the API layer emit click and free-text
+  requests to the backend endpoints.
+
+---
+
+## INTERACTIONS
+
+- UI components emit events from `CenterStage` and clickable moment text,
+  calling API helpers that route to `/api/moment/click` or `/api/action`.
+- The backend responds with scene and mutation data; the frontend updates
+  GameState and re-renders the scene, map, and panels accordingly.
+- SSE stream notifications act as a trigger for refresh to keep moments in
+  sync with backend graph updates without polling.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- Should the incremental SSE update strategy replace the full refresh path,
+  or do we need a hybrid to guard against missed events?
+- What is the target latency budget for full-action LLM calls on low-power
+  devices, and do we need progress or retry UI states?
+- The moment system still coexists with legacy scene state; confirm the
+  deprecation plan and whether `useMoments` becomes the sole source.

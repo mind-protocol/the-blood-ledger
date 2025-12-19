@@ -170,6 +170,10 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 
 ## RECENT CHANGES
 
+### 2025-12-19: Algorithm template completion
+- Added missing template sections (CHAIN, data structures, complexity, helpers).
+- Expanded data flow narrative and clarified interactions for SSE + REST paths.
+
 ### 2025-12-19: Implementation overview fill-in
 - Added LOGIC CHAINS and CONCURRENCY MODEL sections to the frontend implementation overview entry point.
 - Ran `cd frontend && npm run build` to verify the doc update against the current frontend build.
@@ -193,6 +197,7 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 
 ### Remarks
 - The frontend doc chain is now centered on the implementation overview entry point.
+- The algorithm doc now captures data flow, complexity, and helper calls in one place.
 
 ### Suggestions
 - [ ] If `useGameState.ts` and `api.ts` continue to grow, consider extracting transformers and moment-specific API helpers.
