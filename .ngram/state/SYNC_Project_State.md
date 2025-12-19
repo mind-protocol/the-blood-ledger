@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Added the missing FLAKY TESTS section to
+`docs/agents/world-runner/TEST_World_Runner_Coverage.md` and logged the update
+in `docs/agents/world-runner/SYNC_World_Runner.md` for repair #16. Ran
+`ngram validate`; failures remain in pre-existing missing VIEW/doc-chain gaps.
+
 Expanded `docs/agents/world-runner/SYNC_World_Runner.md` with the missing
 template sections (maturity, in-progress, recent changes, known issues,
 handoffs, todo, consciousness trace, pointers) and kept content aligned to the
