@@ -2,4 +2,4 @@
 
 This content is now consolidated into the canonical validation document:
 
-See `docs/schema/VALIDATION_Living_Graph.md`.
+See `docs/physics/graph/VALIDATION_Living_Graph.md`.
