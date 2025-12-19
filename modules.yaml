@@ -71,6 +71,8 @@ modules:
     entry_points:
       - docs/design/PATTERNS_Vision.md
       - docs/design/SYNC_Vision.md
+    internal:
+      - docs/design/archive/SYNC_archive_2024-12.md
     patterns:
       - "Documentation chain for vision and experience goals"
     notes: |

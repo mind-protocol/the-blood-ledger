@@ -29,6 +29,7 @@ All documents ready for validation.
 - Condensed PATTERNS and BEHAVIORS content to keep core vision concise while preserving intent.
 - Archived market validation, Octalysis mapping, and engagement lever details in `docs/design/archive/SYNC_archive_2024-12.md`.
 - Updated `docs/design/IMPLEMENTATION_Vision.md` file map and line counts to reflect the reduced docs.
+- Ran `ngram validate`; failures remain for pre-existing missing VIEW/doc-chain gaps (schema/product/network/storms/history).
 
 ---
 

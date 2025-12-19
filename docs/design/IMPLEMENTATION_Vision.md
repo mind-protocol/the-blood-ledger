@@ -61,7 +61,7 @@ docs/design/scenarios/README.md
 | `docs/design/VALIDATION_Vision.md` | Validation plan and success criteria | N/A | 193 | OK |
 | `docs/design/IMPLEMENTATION_Vision.md` | Documentation architecture and file map | N/A | 222 | OK |
 | `docs/design/TEST_Vision.md` | Experience metrics and test signals | N/A | 39 | OK |
-| `docs/design/SYNC_Vision.md` | Vision status and handoff notes | N/A | 126 | OK |
+| `docs/design/SYNC_Vision.md` | Vision status and handoff notes | N/A | 146 | OK |
 | `docs/design/archive/SYNC_archive_2024-12.md` | Archived vision material (condensed) | N/A | 27 | OK |
 | `docs/design/opening/PATTERNS_Opening.md` | Opening-specific design rationale | N/A | 136 | OK |
 | `docs/design/opening/BEHAVIORS_Opening.md` | Opening experience behaviors | N/A | 153 | OK |
