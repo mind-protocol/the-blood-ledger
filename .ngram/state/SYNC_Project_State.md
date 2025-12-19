@@ -31,6 +31,7 @@ Repair 13 verified physics tick energy helpers in `engine/physics/tick.py`; repa
 Revalidated playthroughs API helper implementations; documentation updated for the stale repair task.
 Confirmed `engine/models/base.py` comparison helpers were already implemented; no code change required.
 Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py`; repair task is stale.
+Verified graph ops type helpers in `engine/physics/graph/graph_ops_types.py` (`SimilarNode.__str__`, `ApplyResult.success`) are already implemented; repair task is stale.
 Validated moment processor implementations; repair task appears stale.
 Rechecked moment processor helpers in `engine/infrastructure/memory/moment_processor.py`; all flagged functions are implemented (no code changes).
 Reconfirmed moment processor helper implementations in `engine/infrastructure/memory/moment_processor.py`; no code changes required.

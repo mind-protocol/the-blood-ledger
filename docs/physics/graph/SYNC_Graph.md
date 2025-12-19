@@ -99,3 +99,4 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 - Identified gap: no API endpoint calls orchestrator.process_action()
 - Created task spec for agents to add endpoint
 - Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py` are already implemented; repair flagged as INCOMPLETE_IMPL is stale.
+- Verified `engine/physics/graph/graph_ops_types.py` helpers (`SimilarNode.__str__`, `ApplyResult.success`) are already implemented; repair flagged as INCOMPLETE_IMPL is stale.
