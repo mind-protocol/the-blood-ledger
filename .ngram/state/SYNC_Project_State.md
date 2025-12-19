@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Resolved repair 30-BROKEN_IMPL_LINK for embeddings by updating implementation doc references to concrete file paths in `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md` and logging the change in `docs/infrastructure/embeddings/SYNC_Embeddings.md`.
+
 Normalized the scene-memory implementation doc code-structure tree to use full paths, avoiding bare filename references that trigger broken-link checks.
 
 Repaired broken embeddings implementation doc links by replacing method-only references with concrete file paths in `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md`, and logged the update in `docs/infrastructure/embeddings/SYNC_Embeddings.md`.
@@ -26,6 +28,7 @@ Repaired broken narrator implementation references by removing the nonexistent `
 
 Repaired broken implementation doc links in `docs/design/IMPLEMENTATION_Vision.md` by switching to concrete file paths and removing placeholder extraction target filenames; logged the update in `docs/design/SYNC_Vision.md`.
 Verified the vision implementation doc references already resolve to existing `docs/design/**` files for the BROKEN_IMPL_LINK repair; logged in `docs/design/SYNC_Vision.md`.
+Logged the BROKEN_IMPL_LINK-design-IMPLEMENTATION_Vision verification outcome; no additional doc changes required beyond the SYNC note.
 Ran `ngram validate`; failures remain in `docs/schema/` (missing chain docs) and missing ALGORITHM docs under product/network/storms plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Completed the tempo documentation chain (PATTERNS/BEHAVIORS/VALIDATION/TEST),
