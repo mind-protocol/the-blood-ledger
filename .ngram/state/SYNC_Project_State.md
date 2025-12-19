@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/physics/graph/ALGORITHM_Energy_Flow.md` with the missing
+template sections (overview, data structures, primary algorithm entry point,
+decisions, data flow, complexity, helpers, interactions, gaps) and logged the
+update in `docs/physics/graph/SYNC_Graph.md` to resolve DOC_TEMPLATE_DRIFT for
+repair #16.
+
 Expanded `docs/physics/PATTERNS_Physics.md` with missing template sections
 (problem, pattern, principles, dependencies, inspirations, scope, gaps) and
 logged the update in `docs/physics/SYNC_Physics.md` for repair #16.

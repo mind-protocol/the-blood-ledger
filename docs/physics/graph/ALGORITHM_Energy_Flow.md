@@ -7,6 +7,97 @@ STATUS: Canonical
 
 ---
 
+## OVERVIEW
+
+This algorithm describes the per-tick energy flow that keeps the living graph
+focused on what matters now, using propagation, decay, and weight recompute.
+
+---
+
+## DATA STRUCTURES
+
+- Graph: collections of characters, narratives, tensions, and link edges.
+- Character: has energy, location, beliefs, and relationship intensities.
+- Narrative: has energy, weight, focus, and outgoing typed links.
+- Tension: has pressure, progression checkpoints, and breaking point.
+
+---
+
+## ALGORITHM: graph_tick
+
+The primary function is `graph_tick(time_elapsed_minutes)`, which sequences
+character energy computation, narrative flow, propagation, decay, weight
+recompute, pressure ticking, and flip detection in a single cycle.
+
+---
+
+## KEY DECISIONS
+
+- Energy is computed from structure (beliefs + proximity), never set directly.
+- Propagation applies type-specific factors to keep story semantics consistent.
+- Only `decay_rate` is dynamically tuned to preserve criticality.
+
+---
+
+## DATA FLOW
+
+Character beliefs and proximity generate energy, which flows into narratives,
+propagates across links, decays, and then recomputes narrative weights that
+drive tension pressure and flip detection for downstream systems.
+
+---
+
+## COMPLEXITY
+
+Per tick work is O(N + E + T) for narratives, links, and tensions; propagation
+dominates with one pass over outgoing links for each narrative node.
+
+---
+
+## HELPER FUNCTIONS
+
+- `compute_character_energy` and `compute_proximity` for per-character energy.
+- `flow_energy_from_characters` for narrative inflow.
+- `propagate_energy`, `decay_with_exceptions`, `check_conservation`.
+- `recompute_weights`, `tick_pressures`, `detect_flips`.
+
+---
+
+## INTERACTIONS
+
+The tick algorithm is invoked by the orchestrator and its outputs feed the
+World Runner and Narrator, while GraphOps/GraphQueries persist the state.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- Clarify how hop limits are enforced in the current propagation code path.
+- Confirm whether tension progression checkpoints are stored in the graph.
+- Decide if energy conservation thresholds should scale by node count.
+
+---
+
+## Overview
+
+This algorithm defines the per-tick energy flow, decay, and pressure update
+cycle for the living graph. It specifies how character energy moves into
+narratives, how narratives propagate through link types, and how flips are
+detected after weight and pressure updates.
+
+## Data Structures
+
+- Character: `energy`, `location`, and belief links to narratives.
+- Narrative: `energy`, `weight`, `focus`, `last_active_tick`, and link edges.
+- Tension: `pressure`, `breaking_point`, `pressure_type`, and `progression`.
+- Link: `type`, `strength`, `source`, `target`, plus optional metadata.
+
+## Algorithm: `graph_tick`
+
+Primary entry point for the physics update loop. Runs a deterministic,
+non-LLM tick that updates energy, weights, and pressures, then reports flips
+to the orchestrator.
+
 ## Per-Tick Processing
 
 Every tick (5 minutes game time), the graph engine runs this sequence:
@@ -22,6 +113,49 @@ Every tick (5 minutes game time), the graph engine runs this sequence:
 ```
 
 ---
+
+## Key Decisions
+
+- Energy is derived, not set: all updates flow through relationships and
+  link structure to keep the story emergent and avoid direct overrides.
+- Decay is the only dynamic knob: `decay_rate` is adjustable to maintain
+  criticality while link factors and breaking points remain fixed.
+- Transfers are collected before applying: this avoids order dependency in
+  propagation and makes the tick deterministic for a given graph state.
+
+## Data Flow
+
+Character beliefs produce energy, which flows into narratives, propagates
+across narrative links, decays, and then informs weight recalculation. The
+updated weights drive tension pressure updates, which can trigger flips that
+the orchestrator passes to the world runner.
+
+## Complexity
+
+Let `C` be characters, `N` narratives, `L` narrative links, `T` tensions:
+energy and weight steps are O(C + N + L), pressure ticks are O(T + edges
+inside each tension), and flips are O(T). The full tick is linear in the
+graph size for typical tension fanout.
+
+## Helper Functions
+
+- `compute_character_energy` and `compute_proximity` for character energy.
+- `flow_energy_from_characters` to inject energy into narratives.
+- `propagate_energy`, `decay_with_exceptions`, `check_conservation`,
+  `adjust_criticality` for flow and decay control.
+- `recompute_weights`, `tick_pressures`, `detect_flips` for state updates.
+
+## Interactions
+
+The orchestrator calls `graph_tick` each time a player action advances time.
+GraphOps provides the query/mutation surface for narrative, link, and tension
+data, while the world runner consumes flipped tensions to generate changes.
+
+## Gaps / Ideas / Questions
+
+- Confirm the exact source of `player` and `current_tick` in tick context.
+- Validate propagation factors against current GraphOps link taxonomy.
+- Decide whether to bound propagation by `MAX_HOPS` or rely on link sparsity.
 
 ## Step 1: Compute Character Energies
 
