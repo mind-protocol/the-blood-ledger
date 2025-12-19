@@ -59,6 +59,7 @@ engine/infrastructure/world_builder/
 
 | File | Purpose | Key Functions | Lines | Status |
 |------|---------|---------------|-------|--------|
+| `engine/infrastructure/world_builder/__init__.py` | Package exports | `query`, `WorldBuilder` | ~10 | IMPL |
 | `engine/infrastructure/world_builder/query.py` | Universal query interface | `query()`, `query_sync()` | ~200 | IMPL |
 | `engine/infrastructure/world_builder/query_moment.py` | Record queries as thought moments | `record_query_moment()`, `link_results_to_moment()` | ~186 | IMPL |
 | `engine/infrastructure/world_builder/sparsity.py` | Semantic sparsity detection | `is_sparse()`, `SparsityResult` | ~207 | IMPL |
@@ -551,8 +552,8 @@ Create 2-5 items per relevant category. Be specific and concrete.
          │ query("What about Edmund?", char_id="char_aldric")
          ▼
 ┌─────────────────┐
-│  query.py       │
 │  query()        │
+│  (module)       │
 └────────┬────────┘
          │
     ┌────┴────┐
@@ -619,12 +620,12 @@ Create 2-5 items per relevant category. Be specific and concrete.
 ### Internal
 
 ```
-query.py
-  └── query_moment.py
-  └── sparsity.py  
-  └── world_builder.py
-        └── enrichment.py
-        └── orchestration/agent_cli.py
+engine/infrastructure/world_builder/query.py
+  └── engine/infrastructure/world_builder/query_moment.py
+  └── engine/infrastructure/world_builder/sparsity.py
+  └── engine/infrastructure/world_builder/world_builder.py
+        └── engine/infrastructure/world_builder/enrichment.py
+        └── engine/infrastructure/orchestration/agent_cli.py
 ```
 
 ### External
@@ -632,8 +633,8 @@ query.py
 | Package | Used For | File |
 |---------|----------|------|
 | `claude` (CLI) | LLM calls (CLI only) | `engine/infrastructure/orchestration/agent_cli.py` |
-| `numpy` | Cosine similarity | `sparsity.py` |
-| `pyyaml` | Parse LLM output | `enrichment.py` |
+| `numpy` | Cosine similarity | `engine/infrastructure/world_builder/sparsity.py` |
+| `pyyaml` | Parse LLM output | `engine/infrastructure/world_builder/enrichment.py` |
 
 ### Existing Code
 
@@ -742,7 +743,7 @@ def test_moments_always_thought_type():
 ## GAPS / TODO
 
 - [x] Implement all files in `engine/infrastructure/world_builder/`
-- [x] YAML parsing with error handling (in `world_builder.py`)
+- [x] YAML parsing with error handling (in `engine/infrastructure/world_builder/world_builder.py`)
 - [ ] Integration tests with real FalkorDB
 - [ ] Unit tests for sparsity detection
 - [ ] End-to-end test with LLM enrichment

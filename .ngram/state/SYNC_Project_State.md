@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Updated the world-builder implementation doc to add the missing `__init__.py` entry and replace bare dependency references with full `engine/infrastructure/world_builder/**` paths, then logged the change in `docs/infrastructure/world-builder/SYNC_World_Builder.md`. Ran `ngram validate` and saw pre-existing schema/product/network/storms doc-chain gaps plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
+
 Updated the history implementation doc CODE STRUCTURE block to use full paths for all module files and logged the change in `docs/infrastructure/history/SYNC_History.md`.
 Logged the BROKEN_IMPL_LINK verification for the engine test suite
 implementation doc and noted the latest `ngram validate` results.
