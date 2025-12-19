@@ -295,7 +295,7 @@ The graph is truth. The narrator is interpretation. The scene tree is presentati
 
 PATTERNS:        ./PATTERNS_Narrator.md
 BEHAVIORS:       ./BEHAVIORS_Narrator.md
-ALGORITHM:       ./ALGORITHM_Scene_Generation.md
+ALGORITHM:       ./ALGORITHM_Prompt_Structure.md
 VALIDATION:      ./VALIDATION_Narrator.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Narrator.md
 TEST:            ./TEST_Narrator.md

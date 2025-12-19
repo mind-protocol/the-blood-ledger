@@ -11,11 +11,9 @@ STATUS: Fully implemented with SSE streaming
 
 ```
 PATTERNS:        ./PATTERNS_Narrator.md
+PATTERNS:        ./PATTERNS_World_Building.md
 BEHAVIORS:       ./BEHAVIORS_Narrator.md
-ALGORITHM:       ./ALGORITHM_Scene_Generation.md
-ALGORITHM:       ./ALGORITHM_Rolling_Window.md
 ALGORITHM:       ./ALGORITHM_Prompt_Structure.md
-ALGORITHM:       ./ALGORITHM_Thread.md
 VALIDATION:      ./VALIDATION_Narrator.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Narrator.md
 TEST:            ./TEST_Narrator.md
@@ -33,12 +31,22 @@ TOOLS:           tools/stream_dialogue.py
 |----------|------|--------|
 | PATTERNS | `PATTERNS_Narrator.md` | Current |
 | BEHAVIORS | `BEHAVIORS_Narrator.md` | Current |
-| ALGORITHM | 4 files (Scene, Rolling Window, Prompt, Thread) | Current |
+| ALGORITHM | `ALGORITHM_Prompt_Structure.md` (consolidated) | Current |
 | VALIDATION | `VALIDATION_Narrator.md` | Created 2024-12-19 |
 | IMPLEMENTATION | `IMPLEMENTATION_Narrator.md` | Created 2024-12-19 |
 | TEST | `TEST_Narrator.md` | Created 2024-12-19 |
 | SYNC | This file | Current |
 | REFERENCE | `INPUT_REFERENCE.md`, `TOOL_REFERENCE.md` | Current |
+
+---
+
+## RECENT CHANGES
+
+### 2025-12-19: Consolidated narrator algorithm docs
+
+- **What:** Merged prompt structure, scene generation, thread, and rolling window content into `ALGORITHM_Prompt_Structure.md`.
+- **Why:** Remove duplicate ALGORITHM docs in the narrator module and keep a single canonical algorithm reference.
+- **Files:** `docs/agents/narrator/ALGORITHM_Prompt_Structure.md`, `docs/agents/narrator/SYNC_Narrator.md`, `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/VALIDATION_Narrator.md`, `docs/agents/narrator/TEST_Narrator.md`, `docs/agents/narrator/PATTERNS_Narrator.md`
 
 ---
 

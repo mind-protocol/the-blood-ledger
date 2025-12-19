@@ -21,6 +21,7 @@ Implemented markdown formatting and cosine similarity helpers in `engine/physics
 Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still reports pre-existing docs/schema gaps and broken CHAIN links.
 Recorded moment query verification in `docs/physics/graph/SYNC_Graph.md`.
 Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.md`.
+Consolidated narrator algorithm docs into `docs/agents/narrator/ALGORITHM_Prompt_Structure.md` and updated narrator doc chains.
 Reconfirmed traversal helper implementations for repair 08-INCOMPLETE_IMPL-moment_graph-traversal; no code changes required.
 Consolidated narrator PATTERNS docs into `docs/agents/narrator/PATTERNS_Narrator.md` and deprecated `docs/agents/narrator/PATTERNS_World_Building.md`.
 Consolidated world-runner algorithm docs into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.

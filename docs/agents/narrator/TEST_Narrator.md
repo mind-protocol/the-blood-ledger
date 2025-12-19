@@ -13,10 +13,7 @@ CREATED: 2024-12-19
 PATTERNS:        ./PATTERNS_Narrator.md
 PATTERNS:        ./PATTERNS_World_Building.md
 BEHAVIORS:       ./BEHAVIORS_Narrator.md
-ALGORITHM:       ./ALGORITHM_Scene_Generation.md
-ALGORITHM:       ./ALGORITHM_Rolling_Window.md
 ALGORITHM:       ./ALGORITHM_Prompt_Structure.md
-ALGORITHM:       ./ALGORITHM_Thread.md
 VALIDATION:      ./VALIDATION_Narrator.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Narrator.md
 THIS:            TEST_Narrator.md (you are here)
