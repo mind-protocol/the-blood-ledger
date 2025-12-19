@@ -1,38 +1,36 @@
 # Project — Sync: Current State
 
 ```
-LAST_UPDATED: {DATE}
-UPDATED_BY: {AGENT/HUMAN}
+LAST_UPDATED: 2025-12-19
+UPDATED_BY: Codex (repair agent)
 ```
 
 ---
 
 ## CURRENT STATE
 
-Documented the embeddings module mapping by adding a modules.yaml entry, linking `engine/infrastructure/embeddings/service.py` with a DOCS reference, and logging the update in `docs/infrastructure/embeddings/SYNC_Embeddings.md`.
-
-{Narrative of the project's current state. Not a feature list — the story of where things are.}
+Repair pipeline is focusing on closing undocumented modules and aligning module mappings with existing documentation. The embeddings module already had a documentation chain, and this pass ensured the module initializer links to those docs so `ngram context` resolves for both module files.
 
 ---
 
 ## ACTIVE WORK
 
-### {Work Stream}
+### Embeddings Documentation Linkage
 
-- **Area:** `{area}/`
-- **Status:** {in progress / blocked}
-- **Owner:** {agent/human}
-- **Context:** {what's happening, why it matters}
+- **Area:** `engine/infrastructure/embeddings/`
+- **Status:** completed
+- **Owner:** Codex (repair agent)
+- **Context:** Added a DOCS reference to the embeddings module initializer and logged the change in the embeddings SYNC file.
 
 ---
 
 ## RECENT CHANGES
 
-### {DATE}: {Summary}
+### 2025-12-19: Embeddings module init linked to docs
 
-- **What:** {description}
-- **Why:** {motivation}
-- **Impact:** {what this affects}
+- **What:** Added a DOCS reference to `engine/infrastructure/embeddings/__init__.py` and updated `docs/infrastructure/embeddings/SYNC_Embeddings.md`.
+- **Why:** Ensure documentation is discoverable for both module files via `ngram context`.
+- **Impact:** Embeddings module documentation now resolves for the package initializer.
 
 ---
 
@@ -40,85 +38,4 @@ Documented the embeddings module mapping by adding a modules.yaml entry, linking
 
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
-| {description} | {level} | `{area}/` | {context} |
-
----
-
-## HANDOFF: FOR AGENTS
-
-**Likely VIEW for continuing:** {which VIEW}
-
-**Current focus:** {what the project is working toward right now}
-
-**Key context:**
-{The things an agent needs to know that aren't obvious from the code/docs}
-
-**Watch out for:**
-{Project-level gotchas}
-
----
-
-## HANDOFF: FOR HUMAN
-
-**Executive summary:**
-{2-3 sentences on project state}
-
-**Decisions made recently:**
-{Key choices with rationale}
-
-**Needs your input:**
-{Blocked items, strategic questions}
-
-**Concerns:**
-{Things that might be problems, flagged for awareness}
-
----
-
-## TODO
-
-### High Priority
-
-- [ ] {Must do}
-
-### Backlog
-
-- [ ] {Should do}
-- IDEA: {Possibility}
-
----
-
-## CONSCIOUSNESS TRACE
-
-**Project momentum:**
-{Is the project moving well? Stuck? What's the energy like?}
-
-**Architectural concerns:**
-{Things that feel like they might become problems}
-
-**Opportunities noticed:**
-{Ideas that came up during work}
-
----
-
-## AREAS
-
-| Area | Status | SYNC |
-|------|--------|------|
-| `{area}/` | {status} | `docs/{area}/SYNC_*.md` |
-
----
-
-## MODULE COVERAGE
-
-Check `modules.yaml` (project root) for full manifest.
-
-**Mapped modules:**
-| Module | Code | Docs | Maturity |
-|--------|------|------|----------|
-| {module} | `{code_path}` | `{docs_path}` | {status} |
-
-**Unmapped code:** (run `ngram validate` to check)
-- {List any code directories without module mappings}
-
-**Coverage notes:**
-{Any notes about why certain code isn't mapped, or plans to add mappings}
+| Pre-existing doc gaps | medium | `docs/schema`, `docs/infrastructure/tempo`, `docs/infrastructure/world-builder` | `ngram validate` still reports missing docs/CHAIN links unrelated to this repair. |

@@ -39,6 +39,13 @@ No active work on embeddings module.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Link module init to docs
+
+- **What:** Added a DOCS reference in the embeddings module initializer.
+- **Why:** Ensure `ngram context` resolves docs for `engine/infrastructure/embeddings/__init__.py`.
+- **Files:** `engine/infrastructure/embeddings/__init__.py`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Documentation mapping and DOCS linkage
 
 - **What:** Added modules.yaml mapping for embeddings and a DOCS reference in the service file.

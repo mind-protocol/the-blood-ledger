@@ -3,6 +3,8 @@ Blood Ledger — Embedding Service
 
 Generate and query embeddings for semantic search.
 
+DOCS: docs/infrastructure/embeddings/
+
 Usage:
     from engine.infrastructure.embeddings import EmbeddingService
 
