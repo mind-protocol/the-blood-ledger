@@ -131,6 +131,12 @@ Tests cover:
 
 ## Recent Changes
 
+### 2025-12-19: Verified canon docs mapping
+
+- **What:** Confirmed `modules.yaml` mapping and DOCS references already cover `engine/infrastructure/canon/**`.
+- **Why:** Repair 60 flagged undocumented canon files; verification shows existing docs are authoritative.
+- **Files:** `modules.yaml`, `engine/infrastructure/canon/canon_holder.py`, `engine/infrastructure/canon/speaker.py`, `engine/infrastructure/canon/__init__.py`
+
 ### 2025-12-19: Mapped canon module in manifest
 
 - **What:** Added `modules.yaml` entry linking canon code/tests to docs.
