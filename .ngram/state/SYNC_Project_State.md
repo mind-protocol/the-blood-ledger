@@ -30,6 +30,7 @@ Linked `frontend/hooks/useGameState.ts` and `frontend/hooks/useMoments.ts` to th
 Documented the frontend map view module with new docs in `docs/frontend/map/` and a DOCS reference in `frontend/components/map/MapClient.tsx` (module mapping already existed). Ran `ngram validate`; failures are pre-existing in `docs/schema/` and `docs/infrastructure/tempo/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Linked `engine/infrastructure/canon/canon_holder.py` to the canon documentation chain via an in-docstring DOCS reference and corrected the canon SYNC chain status.
+Ran `ngram validate`; failures remain in pre-existing `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` gaps.
 
 Mapped `frontend/components/moment/**` to existing Scene docs in `modules.yaml` and added a DOCS reference in `frontend/components/moment/index.ts` to close the moment UI documentation gap.
 
