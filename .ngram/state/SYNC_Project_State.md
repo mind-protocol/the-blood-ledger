@@ -21,6 +21,7 @@ Implemented markdown formatting and cosine similarity helpers in `engine/physics
 Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still reports pre-existing docs/schema gaps and broken CHAIN links.
 Recorded moment query verification in `docs/physics/graph/SYNC_Graph.md`.
 Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.md`.
+Reconfirmed traversal helper implementations for repair 08-INCOMPLETE_IMPL-moment_graph-traversal; no code changes required.
 
 ---
 
