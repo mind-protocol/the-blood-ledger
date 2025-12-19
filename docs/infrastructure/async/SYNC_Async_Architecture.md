@@ -66,7 +66,7 @@ THIS:           SYNC_Async_Architecture.md
 | Capability | Current | Target | Gap |
 |------------|---------|--------|-----|
 | Injection queue file | Not implemented | `injection_queue.jsonl` | **BUILD** |
-| Hook script | Not implemented | `check_injection.py` | **BUILD** |
+| Hook script | Not implemented | `engine/scripts/check_injection.py` | **BUILD** |
 | Character activation writing | Not implemented | Graph → queue | **BUILD** |
 | Frontend UI writing | Not implemented | API → queue | **BUILD** |
 
@@ -133,6 +133,7 @@ This unlocks real-time updates for all other phases.
 
 ## Recent Changes
 
+- Verified the async implementation doc already lists the `engine/scripts/inject_to_narrator.py` code-to-docs link and aligned the hook-script path in this SYNC table.
 - Updated async implementation doc to replace runtime-only file references with configured script paths so all references point to tracked files.
 - Refreshed the async implementation doc to match current queue file formats/paths (JSONL default queue, JSON array per playthrough) and updated entry point lines and config table; noted the playthrough initialization mismatch as a gap.
 - Reverified `IMPLEMENTATION_Async_Architecture.md` after the broken-link report; no additional path corrections were needed.
