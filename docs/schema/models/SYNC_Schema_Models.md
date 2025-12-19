@@ -34,7 +34,7 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
-### 2025-12-19: Revalidated link helper implementations with line refs (repair 06)
+### 2025-12-19: Revalidated link helper implementations with line refs (repair 06, current run)
 
 - **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` remain implemented in `engine/models/links.py` (`engine/models/links.py:66`, `engine/models/links.py:120`, `engine/models/links.py:140`, `engine/models/links.py:160`); no code changes made.
 - **Why:** Current INCOMPLETE_IMPL repair run required validation for link helper properties.
