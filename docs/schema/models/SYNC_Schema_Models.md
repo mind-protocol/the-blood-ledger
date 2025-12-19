@@ -34,6 +34,13 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Verified GameTimestamp comparison helpers (repair 05)
+
+- **What:** Confirmed `GameTimestamp.__str__`, `__le__`, and `__gt__` are implemented in `engine/models/base.py`; no code changes made.
+- **Why:** Current INCOMPLETE_IMPL repair task required validation for the base model helpers.
+- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task appears stale relative to current implementation.
+
 ### 2025-12-19: Rechecked link helper implementations (repair 05, latest run)
 
 - **What:** Reconfirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` remain implemented in `engine/models/links.py`; no code changes made.
@@ -189,6 +196,7 @@ pytest engine/tests/test_models.py
 
 ### Remarks
 - Repair task flagged incomplete functions, but `engine/models/base.py` already contains full implementations for the comparison helpers.
+- Reverified the base model comparison helpers for repair 05; no code changes required.
 - Repair task for `engine/models/links.py` flagged missing helpers, but implementations are already present.
 - Repair task for `engine/models/nodes.py` flagged missing helpers, but implementations are already present.
 - Reverified GameTimestamp comparison helpers for the current repair run; no changes required.

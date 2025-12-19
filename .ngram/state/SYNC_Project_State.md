@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Verified `engine/models/base.py` GameTimestamp comparison helpers (`__str__`, `__le__`, `__gt__`) are already implemented for repair 05; no code changes required and logged in `docs/schema/models/SYNC_Schema_Models.md`.
+
 Rechecked the moment processor helper implementations for the current repair run; no code changes required (logged in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`).
 
 Revalidated `engine/infrastructure/world_builder/world_builder.py` cache helper implementations for repair 04-INCOMPLETE_IMPL-world_builder-world_builder; no code changes required (logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`).
