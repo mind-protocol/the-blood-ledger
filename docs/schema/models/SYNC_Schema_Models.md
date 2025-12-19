@@ -34,6 +34,13 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Reverified GameTimestamp comparison helpers (repair 04)
+
+- **What:** Rechecked `GameTimestamp.__str__`, `__le__`, and `__gt__` and confirmed implementations already exist.
+- **Why:** Current INCOMPLETE_IMPL repair run required verification.
+- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task remains stale relative to current code.
+
 ### 2025-12-19: Verified node helper implementations
 
 - **What:** Confirmed `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` are implemented in `engine/models/nodes.py`.
@@ -61,6 +68,13 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 - **Why:** Current repair task required verification in the latest run.
 - **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`, `.ngram/state/SYNC_Project_State.md`.
 - **Struggles/Insights:** Repair task remains stale relative to current code.
+
+### 2025-12-19: Revalidated GameTimestamp comparison helpers (repair 04)
+
+- **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` are fully implemented in `engine/models/base.py`; no code changes required.
+- **Why:** Repair task flagged incomplete implementations; current code already satisfies the expected behavior.
+- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task remains stale relative to current implementation.
 
 ### 2025-12-19: Documented schema models module
 
@@ -106,6 +120,7 @@ pytest engine/tests/test_models.py
 - Repair task flagged incomplete functions, but `engine/models/base.py` already contains full implementations for the comparison helpers.
 - Repair task for `engine/models/links.py` flagged missing helpers, but implementations are already present.
 - Repair task for `engine/models/nodes.py` flagged missing helpers, but implementations are already present.
+- Reverified GameTimestamp comparison helpers for the current repair run; no changes required.
 
 ### Suggestions
 - [ ] Consider adding explicit tests for `GameTimestamp` ordering in `engine/tests/test_models.py`.

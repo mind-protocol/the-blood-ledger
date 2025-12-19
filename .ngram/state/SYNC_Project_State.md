@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reverified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) for the current repair run; implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
+
 Reconfirmed `engine/infrastructure/memory/moment_processor.py` helper implementations for the repair run; no code changes required and logged the verification in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
 
 Reverified `ConversationThread` path helpers in `engine/infrastructure/history/conversations.py` for the current repair run; implementations already present, no code changes required.
@@ -180,6 +182,8 @@ Verified `engine/models/links.py` helper properties (`belief_intensity`, `is_pre
 Verified health check helper implementations in `engine/graph/health/check_health.py` for repair 00-INCOMPLETE_IMPL-health-check_health; no code changes required.
 Verified moment processor functions for repair 03-INCOMPLETE_IMPL-memory-moment_processor; no code changes required.
 Rechecked moment graph traversal helpers `make_dormant` and `process_wait_triggers` in `engine/moment_graph/traversal.py`; implementations already present, no code changes required.
+
+Revalidated `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) for repair 04-INCOMPLETE_IMPL-models-base; implementations already present and recorded in `docs/schema/models/SYNC_Schema_Models.md`.
 
 Previous: Regenerated global repository map (`docs/map.md`). Fixed `modules.yaml` world-runner code pattern.
 Logged repair 02-INCOMPLETE_IMPL-history-conversations verification in `docs/infrastructure/history/SYNC_History.md` (no code changes).
