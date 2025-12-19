@@ -1,4 +1,4 @@
-# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md
+# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md
 """
 Query moment recording for World Builder.
 
@@ -7,7 +7,7 @@ This makes the graph self-documenting and enables energy flow
 from attention (queries) to related content.
 
 Specs:
-- docs/infrastructure/world-builder/ALGORITHM_World_Builder.md
+- docs/infrastructure/world-builder/ALGORITHM/ALGORITHM_Overview.md
 """
 
 import logging

@@ -1,4 +1,4 @@
 """World Builder tests.
 
-DOCS: docs/infrastructure/world-builder/TEST_World_Builder.md
+DOCS: docs/infrastructure/world-builder/TEST/TEST_Overview.md
 """

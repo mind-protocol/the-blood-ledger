@@ -1,4 +1,4 @@
-# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md
+# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md
 """
 Semantic sparsity detection for World Builder.
 
@@ -6,7 +6,7 @@ Determines when query results are too thin and enrichment is needed.
 Uses embedding-based measures, not type-based rules.
 
 Specs:
-- docs/infrastructure/world-builder/ALGORITHM_World_Builder.md
+- docs/infrastructure/world-builder/ALGORITHM/ALGORITHM_Overview.md
 """
 
 import logging

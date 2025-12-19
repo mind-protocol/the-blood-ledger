@@ -25,6 +25,14 @@ All core files are complete and ready for integration testing:
 
 ---
 
+## Documentation Updates
+
+- Split large docs into focused folders: `ALGORITHM/`, `IMPLEMENTATION/`, `VALIDATION/`, `TEST/`.
+- Added concise overviews plus detail files and updated all CHAIN references.
+- Archived trimmed details in `archive/SYNC_archive_2024-12.md`.
+
+---
+
 ## Configuration
 
 | Setting | File | Default | Description |
@@ -59,7 +67,8 @@ All core files are complete and ready for integration testing:
 
 ## Known Issues
 
-None yet — module is newly implemented.
+- Test run failed locally: missing `pytest_xprocess` plugin (pytest bootstrap error).
+- `ngram validate` reports missing VIEW and doc chain gaps in other modules (not world-builder specific).
 
 ---
 
@@ -80,6 +89,8 @@ World Builder is complete but untested with real infrastructure. To verify:
 
 The semantic search integration depends on `engine.world.map.semantic.SemanticSearch` which should already be working.
 
+Doc chain entry points now live under `docs/infrastructure/world-builder/ALGORITHM/`, `IMPLEMENTATION/`, `VALIDATION/`, and `TEST/`.
+
 ---
 
 ## Chain
@@ -87,10 +98,10 @@ The semantic search integration depends on `engine.world.map.semantic.SemanticSe
 ```
 PATTERNS:        ./PATTERNS_World_Builder.md
 BEHAVIORS:       ./BEHAVIORS_World_Builder.md
-ALGORITHM:       ./ALGORITHM_World_Builder.md
-VALIDATION:      ./VALIDATION_World_Builder.md
-IMPLEMENTATION:  ./IMPLEMENTATION_World_Builder.md
-TEST:            ./TEST_World_Builder.md
+ALGORITHM:       ./ALGORITHM/ALGORITHM_Overview.md
+VALIDATION:      ./VALIDATION/VALIDATION_Overview.md
+IMPLEMENTATION:  ./IMPLEMENTATION/IMPLEMENTATION_Overview.md
+TEST:            ./TEST/TEST_Overview.md
 THIS:            SYNC_World_Builder.md
 ```
 
@@ -99,12 +110,15 @@ THIS:            SYNC_World_Builder.md
 ### Remarks
 - Repair task flagged empty helpers, but `_hash_query` and `clear_cache` already have concrete implementations.
 - Reconfirmed cache helper implementations during the latest repair verification; no code changes were required.
+- Reduced doc size by splitting and trimming verbose sections into summary docs.
 
 ### Suggestions
 - [x] Doc chain already includes PATTERNS/BEHAVIORS; no restoration needed for this repair.
+- [ ] Consider regenerating `docs/map.md` if tooling relies on it for navigation.
 
 ### Propositions
 - Run `ngram validate` after doc chain restoration to confirm world-builder CHAIN links are resolved.
+- Add a lightweight doc size check to prevent future drift over 50K.
 
 
 ---

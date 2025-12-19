@@ -1,4 +1,4 @@
-# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md
+# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md
 """
 World Builder - LLM service for graph enrichment.
 
@@ -7,7 +7,7 @@ World Builder generates new characters, places, things, narratives,
 and potential moments (thoughts).
 
 Specs:
-- docs/infrastructure/world-builder/ALGORITHM_World_Builder.md
+- docs/infrastructure/world-builder/ALGORITHM/ALGORITHM_Overview.md
 """
 
 import logging

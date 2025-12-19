@@ -1,4 +1,4 @@
-# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md
+# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md
 """
 World Builder module.
 

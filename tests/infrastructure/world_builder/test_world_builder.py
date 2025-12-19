@@ -1,11 +1,11 @@
-# DOCS: docs/infrastructure/world-builder/TEST_World_Builder.md
+# DOCS: docs/infrastructure/world-builder/TEST/TEST_Overview.md
 """
 Tests for World Builder module.
 
 Specs:
-- docs/infrastructure/world-builder/VALIDATION_World_Builder.md (invariants)
-- docs/infrastructure/world-builder/ALGORITHM_World_Builder.md (flow)
-- docs/infrastructure/world-builder/TEST_World_Builder.md (test cases)
+- docs/infrastructure/world-builder/VALIDATION/VALIDATION_Overview.md (invariants)
+- docs/infrastructure/world-builder/ALGORITHM/ALGORITHM_Overview.md (flow)
+- docs/infrastructure/world-builder/TEST/TEST_Overview.md (test cases)
 
 Implementation:
 - engine/infrastructure/world_builder/

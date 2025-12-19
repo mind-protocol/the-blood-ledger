@@ -1,4 +1,4 @@
-# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md
+# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md
 """
 Enrichment prompts and application for World Builder.
 
@@ -6,7 +6,7 @@ Builds prompts for LLM enrichment and applies the results to the graph.
 All created content links back to the query moment via ABOUT.
 
 Specs:
-- docs/infrastructure/world-builder/ALGORITHM_World_Builder.md
+- docs/infrastructure/world-builder/ALGORITHM/ALGORITHM_Overview.md
 """
 
 import logging

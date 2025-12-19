@@ -1,4 +1,4 @@
-# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md
+# DOCS: docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md
 """
 Universal query interface for World Builder.
 
@@ -11,7 +11,7 @@ The main entry point for all graph queries with:
 Every query leaves a trace. Sparse results trigger content generation.
 
 Specs:
-- docs/infrastructure/world-builder/ALGORITHM_World_Builder.md
+- docs/infrastructure/world-builder/ALGORITHM/ALGORITHM_Overview.md
 """
 
 import logging

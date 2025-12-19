@@ -55,6 +55,12 @@ selected scenario before triggering playthrough creation.
 - **Why:** Resolve DOC_TEMPLATE_DRIFT for missing template fields.
 - **Files:** `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md`
 
+### 2025-12-19: Expanded scenario selection pattern details
+
+- **What:** Expanded INSPIRATIONS/SCOPE and clarified out-of-scope bullets to meet template length thresholds.
+- **Why:** Repair task required missing sections plus 50+ character guidance.
+- **Files:** `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md`
+
 ---
 
 ## IN PROGRESS
@@ -123,7 +129,7 @@ behavior, keeping uncertainty explicit around future metadata sourcing.
 ## Agent Observations
 
 ### Remarks
-- The scenario selection pattern now includes scope and inspiration notes to match template expectations.
+- The scenario selection pattern now includes expanded scope and inspiration notes that meet template requirements.
 
 ### Suggestions
 - [ ] Add a brief note on how the UI should react if a selected scenario YAML is missing.
