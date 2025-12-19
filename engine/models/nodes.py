@@ -4,6 +4,8 @@ Blood Ledger — Node Models
 The 4 node types: Character, Place, Thing, Narrative, Moment
 Based on SCHEMA.md v5.1
 
+DOCS: docs/schema/
+
 TESTS:
     engine/tests/test_models.py::TestCharacterModel
     engine/tests/test_models.py::TestPlaceModel
@@ -231,6 +233,7 @@ class Moment(BaseModel):
     # Tick tracking (expanded from single tick)
     tick_created: int = Field(
         default=0, ge=0,
+        alias="tick",
         description="World tick when moment was created"
     )
     tick_spoken: Optional[int] = Field(
@@ -251,6 +254,9 @@ class Moment(BaseModel):
     # Transcript reference - line number in playthroughs/{id}/transcript.json
     line: Optional[int] = Field(default=None, description="Starting line in transcript.json")
 
+    # Speaker reference (derived from SAID link, not stored on node)
+    speaker: Optional[str] = Field(default=None, description="Character ID for dialogue moments")
+
     # Embedding for semantic search
     embedding: Optional[List[float]] = Field(default=None, exclude=True)
 
@@ -270,12 +276,14 @@ class Moment(BaseModel):
 
     def embeddable_text(self) -> str:
         """Generate text for embedding (speaker added by processor if dialogue)."""
+        if self.type == MomentType.DIALOGUE and self.speaker:
+            return f"{self.speaker}: {self.text}"
         return self.text
 
     @property
     def should_embed(self) -> bool:
         """Only embed if text is meaningful length."""
-        return len(self.text) > 20
+        return len(self.text.strip()) > 20
 
     @property
     def is_active(self) -> bool:
@@ -291,3 +299,6 @@ class Moment(BaseModel):
     def can_surface(self) -> bool:
         """Check if moment can potentially surface."""
         return self.status in [MomentStatus.POSSIBLE, MomentStatus.ACTIVE]
+
+    class Config:
+        allow_population_by_field_name = True

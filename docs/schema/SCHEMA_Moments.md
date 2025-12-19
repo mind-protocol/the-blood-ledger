@@ -279,6 +279,10 @@ line: integer       # Position in transcript (for spoken)
 embedding: float[]  # 768-dim vector for semantic matching
 ```
 
+Note: `speaker` is derived from the `SAID` link and can appear in responses or in-memory models,
+but it is not stored as a Moment attribute. Legacy inputs may provide `tick` as an alias for
+`tick_created`.
+
 | Type | Purpose | Has action? |
 |------|---------|-------------|
 | `narration` | Describes world, scene, action result | No |

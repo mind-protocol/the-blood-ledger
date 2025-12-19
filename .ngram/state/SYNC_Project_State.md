@@ -145,6 +145,7 @@ Check `modules.yaml` (project root) for full manifest.
 - Verified `engine/infrastructure/memory/moment_processor.py` functions flagged as empty are already implemented; no code changes required for moment processor helpers.
 - Verified `engine/physics/graph/graph_ops_events.py` listener helpers are already implemented; no code changes required.
 - Documented the stale graph ops events repair in `docs/physics/graph/SYNC_Graph.md`.
+- Implemented Moment model compatibility (tick alias, speaker handling, embeddable_text) and noted schema alias guidance in `docs/schema/SCHEMA_Moments.md`.
 
 ## CONFLICTS
 
@@ -202,6 +203,7 @@ Check `modules.yaml` (project root) for full manifest.
 - Repair task appears to be stale relative to the current `engine/infrastructure/memory/moment_processor.py` implementation.
 - Repair task appears to be stale relative to the current `engine/models/links.py` implementation.
 - `ngram validate` still reports pre-existing missing docs/CHAIN links (schema, world-runner, map, and infrastructure subsets).
+- Moment model now accepts legacy `tick` input and optional `speaker` for embedding output without storing speaker on the graph node.
 
 ### Suggestions
 - [ ] Consider adding DOCS: references for `engine/graph/health/check_health.py` to link it into the documentation chain.
