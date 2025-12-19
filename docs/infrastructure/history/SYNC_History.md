@@ -137,6 +137,7 @@ SYNC: ./SYNC_History.md
 - Logged this repair run's verification of conversation helpers; no code changes required.
  - Re-verified `__init__`, `_get_file_path`, and `_get_relative_path`; no implementation gaps found.
 - Reconfirmed the helper implementations in this run; no code changes required.
+- Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder doc gaps and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 - Reverified ConversationThread path helper implementations for this repair; no code changes required.
 
 ### Suggestions
