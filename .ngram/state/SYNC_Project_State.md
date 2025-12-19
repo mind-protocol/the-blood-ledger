@@ -2,7 +2,7 @@
 
 ```
 LAST_UPDATED: 2025-12-19
-UPDATED_BY: agent (repair)
+UPDATED_BY: Codex (repair agent)
 ```
 
 ---
@@ -11,21 +11,28 @@ UPDATED_BY: agent (repair)
 
 Revalidated playthroughs API helper implementations; documentation updated for the stale repair task.
 Confirmed `engine/models/base.py` comparison helpers were already implemented; no code change required.
+Validated moment processor implementations; repair task appears stale.
 
 ---
 
 ## ACTIVE WORK
 
-### {Work Stream}
+### Moment Processor Repair
 
-- **Area:** `{area}/`
-- **Status:** {in progress / blocked}
-- **Owner:** {agent/human}
-- **Context:** {what's happening, why it matters}
+- **Area:** `engine/infrastructure/memory/`
+- **Status:** completed
+- **Owner:** Codex (repair agent)
+- **Context:** Verified incomplete-impl report; no code changes needed.
 
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-19: Validate node model helpers already implemented
+
+- **What:** Confirmed `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` in `engine/models/nodes.py` already have concrete implementations.
+- **Why:** Repair task flagged these as incomplete, but current code matches expected behavior.
+- **Impact:** No runtime behavior change; repair marked as stale.
 
 ### 2025-12-19: Verify link model helpers already implemented
 
@@ -45,22 +52,40 @@ Confirmed `engine/models/base.py` comparison helpers were already implemented; n
 - **Why:** Repair task still flagged them as incomplete, so docs were refreshed.
 - **Impact:** No runtime behavior change; documentation refreshed.
 
+### 2025-12-19: Playthroughs repair verification (ngram repair)
+
+- **What:** Verified the playthroughs helper implementations for this repair run; updated API SYNC.
+- **Why:** Task still reported incomplete implementations despite existing logic.
+- **Impact:** No runtime behavior change; documentation refreshed.
+
 ### 2025-12-19: Confirm base model comparison helpers
 
 - **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` are already implemented in `engine/models/base.py`.
 - **Why:** Repair task flagged incomplete implementations, but the functions are present.
 - **Impact:** No runtime behavior change.
 
+### 2025-12-19: Validate moment processor repair
+
+- **What:** Confirmed `_write_transcript`, `last_moment_id`,
+  `transcript_line_count`, and `get_moment_processor` already implemented in
+  `engine/infrastructure/memory/moment_processor.py`.
+- **Why:** Repair task flagged incomplete functions; validation required.
+- **Impact:** No runtime behavior change; documentation refreshed.
+
 ## Agent Observations
 
 ### Remarks
 - The repair task appears to be stale for `engine/models/base.py`; functions are implemented.
+- The moment processor repair task appears stale; implementations already exist.
+- `ngram validate` reported existing doc-chain gaps; `ngram doctor --no-github` recorded broader documentation issues in `.ngram/state/SYNC_Project_Health.md`.
 - The `engine/models/links.py` helper properties were already implemented; no changes needed.
 - `ngram validate` and `ngram doctor --no-github` report pre-existing missing docs and incomplete chains outside this repair scope.
 - Re-validated playthroughs API helpers during this repair run; no code changes required.
+- Node model helper implementations already exist; no changes needed.
+- `ngram validate` still reports missing docs and broken CHAIN links in `docs/schema`; unchanged in this repair.
 
 ### Suggestions
-- [ ] Run `ngram validate` to confirm no other stale repair tasks are active.
+- [ ] Review stale repair task detection criteria.
 
 ### Propositions
 - Consider adding module docs for `engine/models` once new changes are planned.
@@ -71,37 +96,38 @@ Confirmed `engine/models/base.py` comparison helpers were already implemented; n
 
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
-| {description} | {level} | `{area}/` | {context} |
+| None | - | - | - |
 
 ---
 
 ## HANDOFF: FOR AGENTS
 
-**Likely VIEW for continuing:** {which VIEW}
+**Likely VIEW for continuing:** VIEW_Implement_Write_Or_Modify_Code
 
-**Current focus:** {what the project is working toward right now}
+**Current focus:** Keep Moment Graph docs/code aligned.
 
 **Key context:**
-{The things an agent needs to know that aren't obvious from the code/docs}
+Moment processor functions already have implementations; repair task appears stale.
 
 **Watch out for:**
-{Project-level gotchas}
+Some SYNC files still contain placeholders and need updates when touched.
 
 ---
 
 ## HANDOFF: FOR HUMAN
 
 **Executive summary:**
-{2-3 sentences on project state}
+Moment processor repair task did not require code changes; sync updated to
+record validation.
 
 **Decisions made recently:**
-{Key choices with rationale}
+Validated existing implementations instead of altering working code.
 
 **Needs your input:**
-{Blocked items, strategic questions}
+None.
 
 **Concerns:**
-{Things that might be problems, flagged for awareness}
+Repair task appears stale relative to current code.
 
 ---
 
@@ -109,25 +135,24 @@ Confirmed `engine/models/base.py` comparison helpers were already implemented; n
 
 ### High Priority
 
-- [ ] {Must do}
+- [ ] Add module mapping for `engine/infrastructure/memory/`.
 
 ### Backlog
 
-- [ ] {Should do}
-- IDEA: {Possibility}
+- IDEA: Audit placeholder sync templates for updates.
 
 ---
 
 ## CONSCIOUSNESS TRACE
 
 **Project momentum:**
-{Is the project moving well? Stuck? What's the energy like?}
+Stable; minor documentation hygiene tasks remain.
 
 **Architectural concerns:**
-{Things that feel like they might become problems}
+None surfaced in this repair.
 
 **Opportunities noticed:**
-{Ideas that came up during work}
+Clarify module mappings for infrastructure/memory.
 
 ---
 
@@ -135,7 +160,7 @@ Confirmed `engine/models/base.py` comparison helpers were already implemented; n
 
 | Area | Status | SYNC |
 |------|--------|------|
-| `{area}/` | {status} | `docs/{area}/SYNC_*.md` |
+| `infrastructure/scene-memory` | canonical | `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` |
 
 ---
 
@@ -146,10 +171,10 @@ Check `modules.yaml` (project root) for full manifest.
 **Mapped modules:**
 | Module | Code | Docs | Maturity |
 |--------|------|------|----------|
-| {module} | `{code_path}` | `{docs_path}` | {status} |
+| None | - | - | - |
 
 **Unmapped code:** (run `ngram validate` to check)
-- {List any code directories without module mappings}
+- `engine/infrastructure/memory/`
 
 **Coverage notes:**
-{Any notes about why certain code isn't mapped, or plans to add mappings}
+Moment processor is documented under scene-memory but not mapped in modules.yaml.
