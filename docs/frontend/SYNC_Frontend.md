@@ -133,6 +133,9 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 
 ## RECENT CHANGES
 
+### 2025-12-19: Size verification
+- Confirmed the frontend doc chain is ~32K chars (below the 50K module threshold).
+
 ### 2025-12-19: Split implementation doc
 - Replaced the monolithic implementation doc with an overview entry point and two focused parts.
 - Line counts: 394L → 233L across `IMPLEMENTATION_Frontend_Code_Architecture.md`, `IMPLEMENTATION_Code_Structure.md`, `IMPLEMENTATION_Runtime_And_Config.md`.
