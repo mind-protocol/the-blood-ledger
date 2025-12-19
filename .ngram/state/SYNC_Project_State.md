@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Repaired async architecture implementation doc references by pointing runtime queue mentions to configured script files in `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`, and logged the update in `docs/infrastructure/async/SYNC_Async_Architecture.md`.
+
 Resolved repair 30-BROKEN_IMPL_LINK for embeddings by updating implementation doc references to concrete file paths in `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md` and logging the change in `docs/infrastructure/embeddings/SYNC_Embeddings.md`.
 
 Normalized the scene-memory implementation doc code-structure tree to use full paths, avoiding bare filename references that trigger broken-link checks.

@@ -30,16 +30,14 @@ IMPL:           engine/scripts/check_injection.py
 ### Module Code (Implemented)
 
 ```
-engine/
-|-- scripts/
-|   |-- check_injection.py       # Hook script: consume JSONL queue, return injection context
-|   `-- inject_to_narrator.py    # CLI helper: write injection queue or call Narrator directly
+engine/scripts/check_injection.py       # Hook script: consume JSONL queue, return injection context
+engine/scripts/inject_to_narrator.py    # CLI helper: write injection queue or call Narrator directly
 ```
 
 ### Related Integration Points (Outside This Module)
 
-- `engine/infrastructure/api/app.py` - `/api/inject` endpoint writes to `injection_queue.jsonl`.
-- `engine/infrastructure/api/playthroughs.py` - playthrough bootstrapping creates `injection_queue.json`.
+- `engine/infrastructure/api/app.py` - `/api/inject` endpoint appends to the injection queue file configured in `engine/scripts/check_injection.py`.
+- `engine/infrastructure/api/playthroughs.py` - playthrough bootstrapping initializes the per-playthrough injection queue handled by `engine/scripts/inject_to_narrator.py`.
 - `agents/narrator/CLAUDE.md` - Narrator instructions for consuming injections.
 - `agents/world_runner/CLAUDE.md` - World Runner instructions for emitting injections.
 
@@ -74,7 +72,7 @@ engine/
 
 ### Anti-Patterns to Avoid
 
-- **Dual queue formats**: Mixing `injection_queue.json` and `injection_queue.jsonl` makes hooks non-deterministic.
+- **Dual queue formats**: Mixing JSON and JSONL queue formats makes hooks non-deterministic.
 - **Long-running hook work**: The hook must only read/write the queue and return.
 - **Hidden side effects**: Avoid mutating graph state in hook scripts; keep them as relays.
 
@@ -82,8 +80,8 @@ engine/
 
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
-| Hook injection | Queue read/write and hook payload translation | Narrator handling, Runner generation | `injection_queue.jsonl`, PostToolUse hook payload |
-| Manual injection | CLI script and narrator state check | Narrator process management | `inject_to_narrator.py` CLI |
+| Hook injection | Queue read/write and hook payload translation | Narrator handling, Runner generation | Injection queue file referenced by `engine/scripts/check_injection.py`, PostToolUse hook payload |
+| Manual injection | CLI script and narrator state check | Narrator process management | `engine/scripts/inject_to_narrator.py` CLI |
 
 ---
 
@@ -122,8 +120,8 @@ InjectionEvent:
 
 ```
 Producer(s) (frontend, runner, api)
-  -> injection_queue.jsonl (FIFO file queue)
-  -> check_injection.py (PostToolUse hook)
+  -> injection queue file (FIFO file queue configured in `engine/scripts/check_injection.py`)
+  -> engine/scripts/check_injection.py (PostToolUse hook)
   -> Narrator session (handles injection)
 ```
 
@@ -131,8 +129,8 @@ Producer(s) (frontend, runner, api)
 
 ```
 CLI command
-  -> inject_to_narrator.py
-     - if narrator running: write injection_queue.json
+  -> engine/scripts/inject_to_narrator.py
+     - if narrator running: write the JSON injection queue file
      - else: subprocess call to claude -p
 ```
 
@@ -143,22 +141,22 @@ CLI command
 ### Internal Dependencies
 
 ```
-check_injection.py
-    -> uses injection_queue.jsonl (playthroughs/default)
+engine/scripts/check_injection.py
+    -> uses the JSONL injection queue file (path configured in-script)
 
-inject_to_narrator.py
-    -> reads playthroughs/narrator_state.json
-    -> writes playthroughs/{id}/injection_queue.json
+engine/scripts/inject_to_narrator.py
+    -> reads narrator state (path configured in-script)
+    -> writes the per-playthrough JSON injection queue file
 ```
 
 ### External Dependencies
 
 | Package | Used For | Imported By |
 |---------|----------|-------------|
-| `json` | Serialization of queue entries | `check_injection.py`, `inject_to_narrator.py` |
-| `os` | Filesystem paths | `check_injection.py` |
-| `pathlib` | Path management | `inject_to_narrator.py` |
-| `subprocess` | Direct narrator call | `inject_to_narrator.py` |
+| `json` | Serialization of queue entries | `engine/scripts/check_injection.py`, `engine/scripts/inject_to_narrator.py` |
+| `os` | Filesystem paths | `engine/scripts/check_injection.py` |
+| `pathlib` | Path management | `engine/scripts/inject_to_narrator.py` |
+| `subprocess` | Direct narrator call | `engine/scripts/inject_to_narrator.py` |
 
 ---
 
@@ -168,9 +166,9 @@ inject_to_narrator.py
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| injection queue (JSONL) | `playthroughs/default/injection_queue.jsonl` | per-playthrough | append, consume FIFO |
-| narrator status | `playthroughs/narrator_state.json` | global | updated by Narrator runtime |
-| injection queue (JSON) | `playthroughs/{id}/injection_queue.json` | per-playthrough | rewritten on inject_to_narrator calls |
+| injection queue (JSONL) | Runtime file configured in `engine/scripts/check_injection.py` | per-playthrough | append, consume FIFO |
+| narrator status | Runtime file configured in `engine/scripts/inject_to_narrator.py` | global | updated by Narrator runtime |
+| injection queue (JSON) | Runtime file configured in `engine/scripts/inject_to_narrator.py` | per-playthrough | rewritten on inject_to_narrator calls |
 
 ---
 
@@ -184,8 +182,8 @@ File-backed queues are append/read in separate processes. There is no locking or
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `INJECTION_FILE` | `engine/scripts/check_injection.py` | `playthroughs/default/injection_queue.jsonl` | Queue read by hook script |
-| `NARRATOR_STATE_FILE` | `engine/scripts/inject_to_narrator.py` | `playthroughs/narrator_state.json` | Determines whether Narrator is running |
+| `INJECTION_FILE` | `engine/scripts/check_injection.py` | Runtime path configured in-script | Queue read by hook script |
+| `NARRATOR_STATE_FILE` | `engine/scripts/inject_to_narrator.py` | Runtime path configured in-script | Determines whether Narrator is running |
 
 ---
 
@@ -195,7 +193,7 @@ File-backed queues are append/read in separate processes. There is no locking or
 
 | File | Line | Reference |
 |------|------|-----------|
-| `engine/scripts/check_injection.py` | 7 | `DOCS: docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md` |
+| `engine/scripts/check_injection.py` | 7 | `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md` |
 
 ### Docs -> Code
 
@@ -210,12 +208,12 @@ File-backed queues are append/read in separate processes. There is no locking or
 
 ### Missing Implementation
 
-- [ ] Reconcile `injection_queue.json` vs `injection_queue.jsonl` format and update producers/consumers to a single queue.
+- [ ] Reconcile JSON vs JSONL injection queue formats and update producers/consumers to a single queue.
 - [ ] Add file lock or atomic rotation for JSONL queue consumption if multiple writers are expected.
 
 ### Ideas
 
-- IDEA: Move injection queue helpers into a shared module (e.g., `engine/infrastructure/api/injection_queue.py`).
+- IDEA: Move injection queue helpers into a shared module under `engine/infrastructure/api/`.
 
 ### Questions
 
