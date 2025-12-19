@@ -225,7 +225,7 @@ engine/infrastructure/memory/moment_processor.py
 | Spoken moment creation | `engine/infrastructure/memory/moment_processor.py:126` |
 | Player action processing | `engine/infrastructure/memory/moment_processor.py:252` |
 | Possible moment seeding | `engine/infrastructure/memory/moment_processor.py:380` |
-| Transcript persistence | `engine/infrastructure/memory/moment_processor.py:64` |
+| Transcript persistence | `engine/infrastructure/memory/moment_processor.py:66` |
 
 ---
 

@@ -115,9 +115,9 @@ THIS:            SYNC_World_Scraping.md (you are here)
 
 ### 2025-12-19: Added implementation architecture doc
 
-- **What:** Added implementation architecture doc and linked CHAIN entries; added DOCS reference in injection script; mapped module in `modules.yaml`.
-- **Why:** Complete the documentation chain and tie code to docs.
-- **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`, `docs/world/scraping/*.md`, `data/scripts/inject_world.py`, `modules.yaml`
+- **What:** Added implementation architecture doc and linked CHAIN entries; added DOCS reference in phase 1 script; clarified extraction candidates and design patterns.
+- **Why:** Complete the documentation chain and tie code to docs with clear refactoring targets.
+- **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`, `docs/world/scraping/PATTERNS_World_Scraping.md`, `data/scripts/scrape/phase1_geography.py`
 
 ---
 

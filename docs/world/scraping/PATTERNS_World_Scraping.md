@@ -15,6 +15,7 @@ VALIDATION:      ./VALIDATION_World_Scraping.md
 IMPLEMENTATION:  ./IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md
 TEST:            ./TEST_World_Scraping.md
 SYNC:            ./SYNC_World_Scraping.md
+IMPL:            data/scripts/scrape/phase1_geography.py
 ```
 
 ---
