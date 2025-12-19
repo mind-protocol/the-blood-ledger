@@ -209,13 +209,36 @@ class Orchestrator:
 
     def _get_time_of_day(self) -> str:
         """Get current time of day (would be tracked in game state)."""
-        # TODO: Track game time properly
+        tick = self._get_world_tick()
+        if tick is None:
+            hour = datetime.utcnow().hour
+        else:
+            hour = (tick % 1440) // 60
+
+        if hour < 6:
+            return "night"
+        if hour < 9:
+            return "dawn"
+        if hour < 12:
+            return "morning"
+        if hour < 14:
+            return "midday"
+        if hour < 17:
+            return "afternoon"
+        if hour < 20:
+            return "dusk"
+        if hour < 22:
+            return "evening"
         return "night"
 
     def _get_game_day(self) -> int:
         """Get current game day (would be tracked in game state)."""
-        # TODO: Track game day properly
-        return 1
+        tick = self._get_world_tick()
+        if tick is None:
+            return 1
+        if tick < 0:
+            return 1
+        return (tick // 1440) + 1
 
     def _get_player_goal(self, player_id: str) -> str:
         """Get player's current goal from active narratives."""
@@ -227,7 +250,15 @@ class Orchestrator:
 
     def _get_recent_action(self) -> str:
         """Get description of recent action (would be tracked in state)."""
-        # TODO: Track recent actions
+        path = self.playthrough_dir / "current_action.json"
+        if path.exists():
+            try:
+                data = json.loads(path.read_text())
+                action = data.get("action")
+                if action:
+                    return str(action)
+            except Exception as exc:
+                logger.warning(f"[Orchestrator] Failed to load recent action: {exc}")
         return "Continuing the journey"
 
     def _apply_mutations(self, mutations: List[Dict[str, Any]]):
@@ -475,7 +506,25 @@ class Orchestrator:
 
     def _world_injection_path(self) -> Path:
         """Get path to world_injection.md for this playthrough."""
+        if not self.playthrough_dir.exists():
+            self.playthrough_dir.mkdir(parents=True, exist_ok=True)
         return self.playthrough_dir / "world_injection.md"
+
+    def _get_world_tick(self) -> Optional[int]:
+        """Get current world tick from graph state."""
+        try:
+            result = self.read._query("""
+                MATCH (w:World)
+                RETURN w.tick
+                LIMIT 1
+            """)
+            if result and result[0]:
+                tick_value = result[0][0]
+                if tick_value is not None:
+                    return int(tick_value)
+        except Exception as exc:
+            logger.debug(f"[Orchestrator] Failed to load world tick: {exc}")
+        return None
 
     def _load_world_injection(self) -> Optional[str]:
         """Load world_injection markdown from file if it exists."""

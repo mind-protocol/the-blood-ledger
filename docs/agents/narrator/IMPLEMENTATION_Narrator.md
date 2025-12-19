@@ -228,6 +228,10 @@ The narrator doesn't have internal state transitions — it maintains context th
 2. **Graph queries** — retrieves current world state
 3. **File reads** — loads player profile, world injections
 
+Orchestrator scene context uses graph world tick when available to derive
+`time_of_day`/`day`, and reads `playthroughs/{id}/current_action.json` to
+populate the recent action field.
+
 ---
 
 ## RUNTIME BEHAVIOR
