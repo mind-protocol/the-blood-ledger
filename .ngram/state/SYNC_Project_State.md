@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/design/opening/BEHAVIORS_Opening.md` with the missing BEHAVIORS,
+INPUTS / OUTPUTS, and ANTI-BEHAVIORS sections to resolve template drift for
+repair #16, and recorded the update in `docs/design/opening/SYNC_Opening.md`.
+Ran `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
+gaps in schema/product/network/storms modules).
+
 Expanded `docs/design/opening/ALGORITHM_Opening.md` with longer descriptions in
 each template section to resolve the DOC_TEMPLATE_DRIFT warning for repair #16,
 and recorded the change in `docs/design/opening/SYNC_Opening.md`.
@@ -59,6 +65,10 @@ the DOC_TEMPLATE_DRIFT audit trail stays explicit.
 Added a playtest log guidance sentence to the TEST STRATEGY section in
 `docs/design/TEST_Vision.md` and recorded the change in
 `docs/design/SYNC_Vision.md` for repair #16.
+
+Extended the TEST_Vision playtest log guidance with concrete fields (date,
+scenario, facilitator) and logged the update in `docs/design/SYNC_Vision.md`
+for repair #16.
 
 Expanded `docs/design/ALGORITHM_Vision.md` with missing template sections
 (chain, overview, data structures, algorithm, decisions, data flow, complexity,

@@ -20,6 +20,15 @@ SYNC:        ./SYNC_Opening.md
 ```
 
 ═══════════════════════════════════════════════════════════════════════════════
+## BEHAVIORS
+═══════════════════════════════════════════════════════════════════════════════
+
+The opening should feel like a deliberate, intimate exchange that establishes
+trust, tension, and stakes without UI clutter or tutorial friction. The player
+experiences being read and responded to by a companion who has agency, not a
+service NPC, and the conversation sets the emotional contract for the journey.
+
+═══════════════════════════════════════════════════════════════════════════════
 ## WHAT THE PLAYER EXPERIENCES
 ═══════════════════════════════════════════════════════════════════════════════
 
@@ -58,7 +67,7 @@ Not all at once. Spread across:
 Each beat has a different mood. Questions match the moment.
 
 ═══════════════════════════════════════════════════════════════════════════════
-## INPUT / OUTPUT
+## INPUTS / OUTPUTS
 ═══════════════════════════════════════════════════════════════════════════════
 
 ### Input
@@ -142,6 +151,22 @@ No clicks. No menus. Pure conversation.
 | Contradictory answers | Companion might gently note it |
 | Player asks companion questions | Companion answers — reveals themselves too |
 | Player refuses to engage | Companion notices: "You don't like talking about yourself" |
+
+═══════════════════════════════════════════════════════════════════════════════
+## ANTI-BEHAVIORS
+═══════════════════════════════════════════════════════════════════════════════
+
+### "This feels like a character creator."
+If the opening reads like a form or a tutorial checklist, the intimacy is gone
+and the player stops treating the companion as a real presence.
+
+### "Just tell me the objective."
+If the player tries to skip the exchange to get to map icons or quest steps,
+the opening failed to create stakes or curiosity worth staying for.
+
+### "Why is he asking the same thing again?"
+If the companion repeats questions or ignores the player's answers, it breaks
+the sense of being heard and turns the scene into mechanical prompting.
 
 ═══════════════════════════════════════════════════════════════════════════════
 ## GAPS / IDEAS / QUESTIONS
