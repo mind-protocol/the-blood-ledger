@@ -14,7 +14,7 @@ sections (in progress, known issues, human handoff, consciousness trace,
 pointers) and expanded short entries to meet length requirements for repair
 #16.
 
-Filled missing SCOPE and INSPIRATIONS sections in `docs/frontend/minimap/PATTERNS_Discovered_Location_Minimap.md`, expanded template text, and logged the update in `docs/frontend/minimap/SYNC_Minimap.md` for repair #16.
+Filled missing SCOPE and INSPIRATIONS sections in `docs/frontend/minimap/PATTERNS_Discovered_Location_Minimap.md`, expanded template text, and added minimap SYNC observations in `docs/frontend/minimap/SYNC_Minimap.md` for repair #16.
 
 Filled missing SCOPE and INSPIRATIONS sections in
 `docs/frontend/right-panel/PATTERNS_Tabbed_Right_Panel.md` and logged the

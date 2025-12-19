@@ -57,6 +57,12 @@ tabs or rendering rules change without updating the doc chain.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Expanded patterns gaps framing
+
+- **What:** Clarified gaps text around tab persistence and unread indicators.
+- **Why:** Ensure template sections stay above minimum detail requirements.
+- **Files:** `docs/frontend/right-panel/PATTERNS_Tabbed_Right_Panel.md`
+
 ### 2025-12-19: Added scope and inspirations to patterns doc
 
 - **What:** Filled SCOPE and INSPIRATIONS in the right panel patterns file.
@@ -131,7 +137,8 @@ design changes were introduced in this update.
 The right panel docs are now aligned with the template requirements and keep
 the focus on read-only rendering with parent-controlled state.
 
-Added scope and inspirations to the patterns doc to close template drift.
+Added scope/inspirations and clarified gaps in the patterns doc to close
+template drift without changing behavior.
 
 ### Suggestions
 - [ ] If unread indicators are added, document state persistence and update

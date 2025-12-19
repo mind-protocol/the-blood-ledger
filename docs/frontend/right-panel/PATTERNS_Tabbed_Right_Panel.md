@@ -38,6 +38,7 @@ local to the panel and rely on data passed in from the main game client.
 This pattern covers the right-side panel layout, tab switching, and read-only
 rendering of chronicle, conversations, and ledger content within the scene
 view; it does not cover data creation, persistence, or backend sync logic.
+It also excludes layout decisions outside the panel (header, banner, center).
 
 ---
 
