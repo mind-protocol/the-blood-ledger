@@ -62,6 +62,13 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ## RECENT CHANGES
 
+### 2025-12-19: Link frontend types to documentation chain
+
+- **What:** Added DOCS references in `frontend/types/game.ts`, `frontend/types/map.ts`, and `frontend/types/moment.ts` plus a `modules.yaml` mapping for `frontend/types/**`.
+- **Why:** Ensure shared frontend type definitions are discoverable through `ngram context` and explicitly mapped in the module manifest.
+- **Files:** `frontend/types/game.ts`, `frontend/types/map.ts`, `frontend/types/moment.ts`, `modules.yaml`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Map start screen entry point in module manifest
 
 - **What:** Added `frontend/app/start/page.tsx` as a frontend entry point in `modules.yaml`.

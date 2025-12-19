@@ -279,6 +279,20 @@ modules:
       Presentation layer for The Blood Ledger, rendering scene, moments, and
       map views while delegating state to the backend.
 
+  frontend-types:
+    code: "frontend/types/**"
+    docs: "docs/frontend/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/types/game.ts
+      - frontend/types/moment.ts
+      - frontend/types/map.ts
+    patterns:
+      - "Shared TypeScript shapes for frontend state"
+    notes: |
+      Type definitions for game state, moments, and map rendering.
+
   frontend-right-panel:
     code: "frontend/components/panel/**"
     docs: "docs/frontend/right-panel/"
@@ -327,6 +341,7 @@ modules:
     docs: "docs/frontend/map/"
     additional_code:
       - "frontend/app/map/**"
+      - "frontend/lib/map/**"
     maturity: DESIGNING
     owner: agent
     entry_points:

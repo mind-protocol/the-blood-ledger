@@ -11,6 +11,7 @@ UPDATED_BY: Codex (repair agent)
 
 Documented the frontend scenario selection module with new docs, a modules.yaml mapping, and a DOCS reference in `frontend/app/scenarios/page.tsx`.
 Added `frontend/app/start/page.tsx` as an explicit frontend entry point in `modules.yaml` to map the start screen to the frontend docs.
+Linked `frontend/types/game.ts`, `frontend/types/map.ts`, and `frontend/types/moment.ts` to the frontend documentation chain and added a `frontend/types/**` mapping in `modules.yaml`.
 
 Added DOCS references for `frontend/app` shell files (layout, start screen, globals stylesheet) to close the undocumented frontend/app gap.
 
