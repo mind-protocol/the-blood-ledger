@@ -39,8 +39,8 @@ tools/image_generation/README.md         # Usage and flags
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|----------------------|-------|--------|
 | `tools/stream_dialogue.py` | Stream dialogue, narration, scene, mutation events + graph moments | `create_moment_with_clickables`, `parse_inline_clickables`, `stream_event`, `main` | ~400 | WATCH |
-| `tools/image_generation/generate_image.py` | Generate images via Ideogram API and save assets | `generate_image`, `main` | ~287 | OK |
-| `tools/image_generation/README.md` | Usage and CLI options | - | ~78 | OK |
+| `tools/image_generation/generate_image.py` | Generate images via Ideogram API and save assets | `generate_image`, `main` | ~288 | OK |
+| `tools/image_generation/README.md` | Usage and CLI options | - | ~79 | OK |
 
 **Size Thresholds:**
 - **OK** (<400 lines): Healthy size, easy to understand

@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Refreshed cli-tools implementation doc line counts for the image-generation files and logged the update in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
+
 Updated the ops-scripts implementation doc entry points to include the injection scripts and logged the change in `docs/infrastructure/ops-scripts/SYNC_Ops_Scripts.md`.
 
 Updated the async implementation doc to include the `engine/scripts/inject_to_narrator.py` code-to-docs link and aligned the manual injection line reference, plus refreshed the async SYNC hook-script path to the full script location.

@@ -52,6 +52,13 @@ Both CLI tools are functional and actively used by agents:
 
 ## RECENT CHANGES
 
+### 2025-12-19: Refresh cli-tools implementation file metadata
+
+- **What:** Updated line counts for image generation files in the cli-tools implementation doc
+- **Why:** Keep implementation metadata aligned with current file sizes
+- **Files:**
+  - `docs/infrastructure/cli-tools/IMPLEMENTATION_CLI_Tools_Architecture.md`
+
 ### 2025-12-19: Normalize cli-tools implementation references
 
 - **What:** Updated remaining bare filename references in the cli-tools implementation doc and clarified GraphOps/GraphQueries import locations
