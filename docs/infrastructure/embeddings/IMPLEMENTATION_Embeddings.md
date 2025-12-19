@@ -122,11 +122,64 @@ Caller
 
 ---
 
+## SCHEMA
+
+### Core Fields
+
+| Field | Type | Owner | Notes |
+|-------|------|-------|-------|
+| `embedding` | `list[float]` | Node/Link attribute | 768-dim vector (all-mpnet-base-v2) stored on graph entities |
+| `dimension` | `int` | EmbeddingService | Mirrors model dimension for empty-vector padding |
+| `model_name` | `str` | EmbeddingService | HuggingFace model identifier used for encoding |
+
+### Text Inputs
+
+| Source | Fields | Notes |
+|--------|--------|-------|
+| Node dict | `name`, `content`, `description`, and type-specific fields | `_node_to_text` builds a composite string from known keys |
+| Direct text | `text` | `embed()` expects non-empty text or returns a zero vector |
+
+---
+
+## LOGIC CHAINS
+
+### Single Embed Path
+
+```
+Caller -> EmbeddingService.embed(text)
+       -> _load_model() (lazy)
+       -> SentenceTransformer.encode(normalize=True)
+       -> list[float] returned to caller
+```
+
+### Node Embed Path
+
+```
+Caller -> EmbeddingService.embed_node(node)
+       -> _node_to_text(node, node_type)
+       -> embed(text)
+       -> list[float] returned to caller
+```
+
+### Similarity Path
+
+```
+Caller -> EmbeddingService.similarity(vec1, vec2)
+       -> numpy dot/norm
+       -> float score returned to caller
+```
+
+These chains describe the current implementation only; no graph writes or
+indexing are performed in this module.
+
+---
+
 ## MODULE DEPENDENCIES
 
 ### Internal Dependencies
 
-None.
+No internal engine modules are required; the service stays self-contained and
+only depends on its own module-level singleton state.
 
 ### External Dependencies
 
@@ -146,6 +199,15 @@ None.
 | `_embedding_service` | `engine/infrastructure/embeddings/service.py` module global | Module | Process lifetime |
 | `model` | `engine/infrastructure/embeddings/service.py:EmbeddingService.model` | Instance | Loaded on first call |
 | `dimension` | `engine/infrastructure/embeddings/service.py:EmbeddingService.dimension` | Instance | Set on model load |
+
+---
+
+## CONCURRENCY MODEL
+
+The module exposes a process-wide singleton without explicit locking. In
+multi-threaded contexts, concurrent calls can race on first-time model load,
+but the load is idempotent and subsequent calls reuse the shared model
+instance. Callers should treat `EmbeddingService` as read-only once initialized.
 
 ---
 
@@ -182,7 +244,9 @@ None.
 
 ### Code -> Docs
 
-No DOCS references in source files yet.
+DOCS references exist in both `engine/infrastructure/embeddings/__init__.py`
+and `engine/infrastructure/embeddings/service.py` to make `ngram context`
+resolve the module documentation chain.
 
 ### Docs -> Code
 

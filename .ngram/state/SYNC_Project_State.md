@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md` with the
+missing SCHEMA, LOGIC CHAINS, and CONCURRENCY MODEL sections plus longer
+template-compliant entries, and logged the change in
+`docs/infrastructure/embeddings/SYNC_Embeddings.md` for repair #16. Ran
+`ngram validate`; failures are pre-existing missing VIEW and doc-chain gaps in
+schema/product/network/storms modules.
+
 Added the missing SCOPE section to `docs/infrastructure/embeddings/PATTERNS_Embeddings.md`
 and refreshed the UPDATED timestamp to resolve DOC_TEMPLATE_DRIFT for #16.
 

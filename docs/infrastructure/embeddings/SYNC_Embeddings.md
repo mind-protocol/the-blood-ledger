@@ -39,6 +39,32 @@ No active work on embeddings module.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Expand archive SYNC template sections
+
+- **What:** Filled missing CURRENT STATE, IN PROGRESS, KNOWN ISSUES, handoffs,
+  TODO, consciousness trace, and pointers in the embeddings archive SYNC.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the archive snapshot while keeping
+  the main SYNC focused on active state.
+- **Files:** `docs/infrastructure/embeddings/SYNC_Embeddings_archive_2025-12.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Restore missing template sections in archive
+
+- **What:** Added CURRENT STATE, IN PROGRESS, KNOWN ISSUES, handoffs, TODO,
+  consciousness trace, and pointers to the 2025-12 archive SYNC.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT warning for the embeddings archive.
+- **Files:** `docs/infrastructure/embeddings/SYNC_Embeddings_archive_2025-12.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Document implementation schema/logic/concurrency
+
+- **What:** Added SCHEMA, LOGIC CHAINS, and CONCURRENCY MODEL sections to the
+  embeddings implementation doc; expanded short template entries.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for missing sections in the implementation
+  template and keep structure aligned with other infrastructure modules.
+- **Files:** `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Fill missing SCOPE in patterns
 
 - **What:** Added the SCOPE section and updated the timestamp in the embeddings
@@ -190,6 +216,7 @@ Older content archived to: `SYNC_Embeddings_archive_2025-12.md` and `archive/SYN
 
 ### Remarks
 - Split documents keep entry points readable while preserving details in the archive.
+- Implementation doc now documents schema, logic chains, and concurrency notes.
 
 ### Suggestions
 - [ ] Add a brief cross-link from VALIDATION to the archive if more test cases are migrated.
