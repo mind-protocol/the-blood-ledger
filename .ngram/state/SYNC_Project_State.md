@@ -27,6 +27,12 @@ Confirmed `engine/models/base.py` comparison helpers were already implemented; n
 
 ## RECENT CHANGES
 
+### 2025-12-19: Verify link model helpers already implemented
+
+- **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` in `engine/models/links.py` already have concrete implementations.
+- **Why:** Repair task flagged these as incomplete, but current code matches tests.
+- **Impact:** No runtime behavior change; repair marked as stale.
+
 ### 2025-12-19: Verify graph health check helpers
 
 - **What:** Confirmed `engine/graph/health/check_health.py` helper implementations are present; updated `docs/physics/graph/SYNC_Graph.md`.
@@ -49,6 +55,9 @@ Confirmed `engine/models/base.py` comparison helpers were already implemented; n
 
 ### Remarks
 - The repair task appears to be stale for `engine/models/base.py`; functions are implemented.
+- The `engine/models/links.py` helper properties were already implemented; no changes needed.
+- `ngram validate` and `ngram doctor --no-github` report pre-existing missing docs and incomplete chains outside this repair scope.
+- Re-validated playthroughs API helpers during this repair run; no code changes required.
 
 ### Suggestions
 - [ ] Run `ngram validate` to confirm no other stale repair tasks are active.

@@ -16,30 +16,47 @@ The project has critical issues that will significantly impact agent effectivene
 
 | Severity | Count |
 |----------|-------|
-| Critical | 3 |
-| Warning | 64 |
-| Info | 211 |
+| Critical | 41 |
+| Warning | 54 |
+| Info | 212 |
 
 ---
 
 ## ISSUES
 
-### MONOLITH (2 files)
+### UNDOCUMENTED (38 files)
 
-**What's wrong:** Large files are hard to navigate, test, and maintain. They slow down agents who need to load context, and changes become risky because side effects are hard to predict.
+**What's wrong:** Code without documentation becomes a black box. Agents will reverse-engineer intent from implementation, make changes that violate invisible design decisions, or duplicate existing patterns.
 
-**How to fix:** Extract cohesive functionality into separate modules. Start with the largest functions/classes listed above.
+**How to fix:** Add a mapping in modules.yaml (project root), then create at minimum PATTERNS + SYNC docs for the module.
 
-**Protocol:** Load `VIEW_Refactor_Improve_Code_Structure.md` before starting.
+**Protocol:** Load `VIEW_Document_Create_Module_Documentation.md` before starting.
 
 **Files:**
 
-- `engine/physics/graph/graph_ops.py` - 1989 lines (threshold: 800)
-  - Split: class GraphOps() (1896L, :246), def apply() (383L, :411), def get_graph() (112L, :2142)
-- `engine/physics/graph/graph_queries.py` - 1147 lines (threshold: 800)
-  - Split: class GraphQueries() (1270L, :66), def _get_connected_cluster() (93L, :347), def get_live_moments() (82L, :1138)
+- `frontend` - No documentation mapping (51 files)
+  - Add mapping to modules.yaml
+- `frontend/components` - No documentation mapping (32 files)
+  - Add mapping to modules.yaml
+- `frontend/components/voices` - No documentation mapping (1 files)
+  - Add mapping to modules.yaml
+- `frontend/components/chronicle` - No documentation mapping (1 files)
+  - Add mapping to modules.yaml
+- `frontend/components/panel` - No documentation mapping (4 files)
+  - Add mapping to modules.yaml
+- `frontend/components/debug` - No documentation mapping (1 files)
+  - Add mapping to modules.yaml
+- `frontend/components/minimap` - No documentation mapping (1 files)
+  - Add mapping to modules.yaml
+- `frontend/components/moment` - No documentation mapping (5 files)
+  - Add mapping to modules.yaml
+- `frontend/components/scene` - No documentation mapping (12 files)
+  - Add mapping to modules.yaml
+- `frontend/components/ui` - No documentation mapping (1 files)
+  - Add mapping to modules.yaml
+- ... and 28 more
 
-### BROKEN_IMPL_LINK (1 files)
+### BROKEN_IMPL_LINK (3 files)
 
 **What's wrong:** IMPLEMENTATION docs reference files that don't exist. Agents following these docs will waste time looking for non-existent code.
 
@@ -49,28 +66,14 @@ The project has critical issues that will significantly impact agent effectivene
 
 **Files:**
 
-- `docs/physics/IMPLEMENTATION_Physics.md` - References 47 non-existent file(s)
-  - Update or remove references: handlers/*.py, Orchestrator.pending_handlers, app.py
+- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md` - References 21 non-existent file(s)
+  - Update or remove references: useMoments.ts, api.ts, env.local
+- `docs/agents/narrator/IMPLEMENTATION_Narrator.md` - References 7 non-existent file(s)
+  - Update or remove references: playthroughs/{id}/PROFILE_NOTES.md, narrator.py, playthroughs/{id}/current_action.json
+- `docs/infrastructure/api/IMPLEMENTATION_Api.md` - References 1 non-existent file(s)
+  - Update or remove references: asyncio.Queue
 
-### STALE_SYNC (7 files)
-
-**What's wrong:** Outdated SYNC files mislead agents about current state. They may work from wrong assumptions or miss important context about recent changes.
-
-**How to fix:** Review the SYNC file, update LAST_UPDATED, and ensure it reflects what actually exists.
-
-**Protocol:** Load `VIEW_Implement_Write_Or_Modify_Code.md` before starting.
-
-**Files:**
-
-- `docs/frontend/scene/SYNC_Scene.md` - Last updated 367 days ago
-- `docs/agents/world-runner/SYNC_World_Runner.md` - Last updated 368 days ago
-- `docs/world/map/SYNC_Map.md` - Last updated 368 days ago
-- `docs/design/opening/SYNC_Opening.md` - Last updated 367 days ago
-- `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` - Last updated 368 days ago
-- `docs/infrastructure/embeddings/SYNC_Embeddings.md` - Last updated 368 days ago
-- `docs/infrastructure/history/SYNC_History.md` - Last updated 368 days ago
-
-### INCOMPLETE_CHAIN (12 files)
+### INCOMPLETE_CHAIN (10 files)
 
 **What's wrong:** Missing doc types mean agents can't answer certain questions about the module. For example, without IMPLEMENTATION, they don't know where code lives or how data flows.
 
@@ -80,8 +83,6 @@ The project has critical issues that will significantly impact agent effectivene
 
 **Files:**
 
-- `docs/frontend` - Missing: BEHAVIORS, ALGORITHM, VALIDATION, IMPLEMENTATION, TEST
-- `docs/agents/narrator` - Missing: VALIDATION, IMPLEMENTATION, TEST
 - `docs/agents/world-runner` - Missing: VALIDATION, IMPLEMENTATION, TEST
 - `docs/world/map` - Missing: VALIDATION, IMPLEMENTATION, TEST
 - `docs/world/scraping` - Missing: IMPLEMENTATION
@@ -90,21 +91,10 @@ The project has critical issues that will significantly impact agent effectivene
 - `docs/infrastructure/embeddings` - Missing: IMPLEMENTATION
 - `docs/infrastructure/history` - Missing: IMPLEMENTATION
 - `docs/infrastructure/async` - Missing: IMPLEMENTATION
-- ... and 2 more
+- `docs/infrastructure/cli-tools` - Missing: BEHAVIORS, ALGORITHM, VALIDATION, IMPLEMENTATION, TEST
+- `docs/infrastructure/image-generation` - Missing: IMPLEMENTATION
 
-### STUB_IMPL (1 files)
-
-**What's wrong:** Stub implementations (TODO, NotImplementedError, pass) are placeholders that don't actually work. The code looks complete but fails at runtime.
-
-**How to fix:** Implement the stub functions with actual logic, or mark the file as incomplete in SYNC.
-
-**Protocol:** Load `VIEW_Implement_Write_Or_Modify_Code.md` before starting.
-
-**Files:**
-
-- `engine/infrastructure/orchestration/orchestrator.py` - Contains 4 stub indicators
-
-### INCOMPLETE_IMPL (16 files)
+### INCOMPLETE_IMPL (14 files)
 
 **What's wrong:** Empty functions indicate incomplete implementation. The interface exists but the behavior doesn't.
 
@@ -115,16 +105,16 @@ The project has critical issues that will significantly impact agent effectivene
 **Files:**
 
 - `engine/graph/health/check_health.py` - Contains 5 empty/incomplete function(s)
-- `engine/infrastructure/api/app.py` - Contains 4 empty/incomplete function(s)
-- `engine/infrastructure/api/moments.py` - Contains 5 empty/incomplete function(s)
 - `engine/infrastructure/api/playthroughs.py` - Contains 2 empty/incomplete function(s)
 - `engine/infrastructure/history/conversations.py` - Contains 3 empty/incomplete function(s)
 - `engine/infrastructure/memory/moment_processor.py` - Contains 4 empty/incomplete function(s)
-- `engine/infrastructure/orchestration/orchestrator.py` - Contains 4 empty/incomplete function(s)
 - `engine/models/base.py` - Contains 3 empty/incomplete function(s)
 - `engine/models/links.py` - Contains 4 empty/incomplete function(s)
 - `engine/models/nodes.py` - Contains 6 empty/incomplete function(s)
-- ... and 6 more
+- `engine/moment_graph/queries.py` - Contains 3 empty/incomplete function(s)
+- `engine/moment_graph/traversal.py` - Contains 2 empty/incomplete function(s)
+- `engine/physics/graph/graph_ops_events.py` - Contains 2 empty/incomplete function(s)
+- ... and 4 more
 
 ### LARGE_DOC_MODULE (7 files)
 
@@ -136,13 +126,26 @@ The project has critical issues that will significantly impact agent effectivene
 
 **Files:**
 
-- `docs/agents/narrator` - Total 79K chars (threshold: 50K)
+- `docs/agents/narrator` - Total 107K chars (threshold: 50K)
 - `docs/agents/world-runner` - Total 65K chars (threshold: 50K)
-- `docs/world/map` - Total 58K chars (threshold: 50K)
-- `docs/physics` - Total 229K chars (threshold: 50K)
+- `docs/world/map` - Total 59K chars (threshold: 50K)
+- `docs/physics` - Total 237K chars (threshold: 50K)
 - `docs/schema` - Total 109K chars (threshold: 50K)
 - `docs/design` - Total 54K chars (threshold: 50K)
-- `docs/infrastructure/scene-memory` - Total 63K chars (threshold: 50K)
+- `docs/infrastructure/scene-memory` - Total 66K chars (threshold: 50K)
+
+### STALE_IMPL (2 files)
+
+**What's wrong:** This issue may cause problems.
+
+**How to fix:** Review and fix.
+
+**Protocol:** Load `VIEW_Implement_Write_Or_Modify_Code.md` before starting.
+
+**Files:**
+
+- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md` - 28 referenced files not found
+- `docs/agents/narrator/IMPLEMENTATION_Narrator.md` - 5 referenced files not found
 
 ### DOC_DUPLICATION (9 files)
 
@@ -174,16 +177,16 @@ The project has critical issues that will significantly impact agent effectivene
 
 **Files:**
 
-- `frontend/lib/api.ts` - Contains hardcoded configuration values
-- `frontend/components/chronicle/ChroniclePanel.tsx` - Contains hardcoded configuration values
-- `frontend/components/debug/DebugPanel.tsx` - Contains hardcoded configuration values
-- `frontend/app/scenarios/page.tsx` - Contains hardcoded configuration values
-- `frontend/app/start/page.tsx` - Contains hardcoded configuration values
 - `tools/image_generation/generate_image.py` - Contains hardcoded configuration values
 - `engine/init_db.py` - Contains hardcoded configuration values
 - `engine/run.py` - Contains hardcoded configuration values
 - `engine/graph/health/check_health.py` - Contains hardcoded configuration values
 - `engine/physics/graph/graph_queries.py` - Contains hardcoded configuration values
+- `engine/physics/graph/graph_ops.py` - Contains hardcoded configuration values
+- `engine/infrastructure/api/app.py` - Contains hardcoded configuration values
+- `frontend/lib/api.ts` - Contains hardcoded configuration values
+- `frontend/components/chronicle/ChroniclePanel.tsx` - Contains hardcoded configuration values
+- `frontend/components/debug/DebugPanel.tsx` - Contains hardcoded configuration values
 - ... and 2 more
 
 ---
@@ -196,13 +199,13 @@ These are minor issues that don't block work but would improve project health:
 - [ ] `engine/graph/health/example_queries.cypher` - No DOCS: reference in file header
 - [ ] `engine/graph/health/lint_terminology.py` - No DOCS: reference in file header
 - [ ] `engine/graph/health/test_schema.py` - No DOCS: reference in file header
-- [ ] `engine/infrastructure/api/app.py` - No DOCS: reference in file header
 - [ ] `engine/infrastructure/api/moments.py` - No DOCS: reference in file header
 - [ ] `engine/infrastructure/api/playthroughs.py` - No DOCS: reference in file header
 - [ ] `engine/infrastructure/embeddings/service.py` - No DOCS: reference in file header
 - [ ] `engine/infrastructure/history/conversations.py` - No DOCS: reference in file header
 - [ ] `engine/infrastructure/history/service.py` - No DOCS: reference in file header
-- ... and 201 more
+- [ ] `engine/infrastructure/memory/moment_processor.py` - No DOCS: reference in file header
+- ... and 202 more
 
 ---
 
