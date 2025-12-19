@@ -14,17 +14,19 @@ Tempo Controller is **implemented** with backend, API, and frontend components.
 Latest repair update:
 - Hardened `TempoController.stop` and `update_display_queue_size` with cleanup,
   validation, and logging.
+- Added the missing PATTERNS, BEHAVIORS, VALIDATION, and TEST docs to complete
+  the documentation chain.
 
 ### Doc Chain
 
 | Doc | Status |
 |-----|--------|
-| PATTERNS | ❌ Missing |
-| BEHAVIORS | ❌ Missing |
+| PATTERNS | ✓ Complete |
+| BEHAVIORS | ✓ Complete |
 | ALGORITHM | ✓ Complete |
-| VALIDATION | ❌ Missing |
+| VALIDATION | ✓ Complete |
 | IMPLEMENTATION | ✓ Complete |
-| TEST | ❌ Missing |
+| TEST | ✓ Complete |
 | SYNC | ✓ This file |
 
 ### Code Status
@@ -96,10 +98,6 @@ This is why `_record_narrator_output` was deleted from Orchestrator — it incor
 
 ### Missing Docs
 
-- [ ] PATTERNS_Tempo.md — Design philosophy
-- [ ] BEHAVIORS_Tempo.md — Observable behaviors
-- [ ] VALIDATION_Tempo.md — Invariants
-
 ### Missing Implementation
 
 - [ ] Display filtering in frontend (2x shows only dialogue, 3x only interrupts)
@@ -127,17 +125,21 @@ This is why `_record_narrator_output` was deleted from Orchestrator — it incor
 | `engine/infrastructure/api/app.py` | Added tempo router |
 | `frontend/components/SpeedControl.tsx` | Created |
 | `frontend/components/GameClient.tsx` | Added SpeedControl |
+| `docs/infrastructure/tempo/PATTERNS_Tempo.md` | Created |
+| `docs/infrastructure/tempo/BEHAVIORS_Tempo.md` | Created |
+| `docs/infrastructure/tempo/VALIDATION_Tempo.md` | Created |
+| `docs/infrastructure/tempo/TEST_Tempo.md` | Created |
 
 ---
 
 ## Chain
 
-- PATTERNS: `docs/infrastructure/tempo/PATTERNS_Tempo.md` ❌
-- BEHAVIORS: `docs/infrastructure/tempo/BEHAVIORS_Tempo.md` ❌
+- PATTERNS: `docs/infrastructure/tempo/PATTERNS_Tempo.md` ✓
+- BEHAVIORS: `docs/infrastructure/tempo/BEHAVIORS_Tempo.md` ✓
 - ALGORITHM: `docs/infrastructure/tempo/ALGORITHM_Tempo_Controller.md` ✓
-- VALIDATION: `docs/infrastructure/tempo/VALIDATION_Tempo.md` ❌
+- VALIDATION: `docs/infrastructure/tempo/VALIDATION_Tempo.md` ✓
 - IMPLEMENTATION: `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md` ✓
-- TEST: `docs/infrastructure/tempo/TEST_Tempo.md` ❌
+- TEST: `docs/infrastructure/tempo/TEST_Tempo.md` ✓
 - **SYNC: This file** ✓
 
 ## Agent Observations
