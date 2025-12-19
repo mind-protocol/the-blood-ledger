@@ -41,6 +41,31 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Expand API implementation template sections (repair 16)
+
+- **What:** Added missing implementation template sections (code structure,
+  design patterns, schema, entry points, data flow, logic chains, dependencies,
+  state management, runtime behavior, concurrency model, configuration,
+  bidirectional links, gaps) to `IMPLEMENTATION_Api.md`.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the API implementation doc and align
+  the module with required template coverage.
+- **Files:**
+  - `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+
+### 2025-12-19: Expand API behaviors template coverage (repair 16)
+
+- **What:** Filled BEHAVIORS, INPUTS / OUTPUTS, EDGE CASES, ANTI-BEHAVIORS, and GAPS sections in `BEHAVIORS_Api.md`.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for API behaviors documentation by restoring required sections with meaningful content.
+- **Files:**
+  - `docs/infrastructure/api/BEHAVIORS_Api.md`
+
+### 2025-12-19: Expand playthrough creation sections in canonical algorithm doc (repair 16)
+
+- **What:** Added playthrough creation sections (data structures, algorithm steps, decisions, data flow, complexity, helpers, interactions, gaps) to `ALGORITHM_Api.md`.
+- **Why:** The previous playthrough-specific algorithm file was removed to avoid duplication; the canonical doc now holds the full template coverage.
+- **Files:**
+  - `docs/infrastructure/api/ALGORITHM_Api.md`
+
 ### 2025-12-19: Re-verify API validation template completeness (repair 16)
 
 - **What:** Reconfirmed `VALIDATION_Api.md` includes all required template sections and meets length guidance.
@@ -228,6 +253,15 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 ## KNOWN ISSUES
 
 - None logged for API runtime behavior; doc drift repairs are still ongoing in other modules and may reference API dependencies.
+
+## CONFLICTS
+
+### DECISION: Playthrough algorithm doc location
+
+- Conflict: Repair task targets `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`, but that file was removed to avoid duplicate algorithm docs in the API folder.
+- Resolution: Keep `docs/infrastructure/api/ALGORITHM_Api.md` as the sole algorithm document and expand it with the missing playthrough creation template sections.
+- Reasoning: Maintaining a single authoritative algorithm doc follows the architecture principle and avoids resurrecting the duplication warning.
+- Updated: `docs/infrastructure/api/ALGORITHM_Api.md`, `docs/infrastructure/api/SYNC_Api.md`
 
 ---
 

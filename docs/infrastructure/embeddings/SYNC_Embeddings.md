@@ -55,6 +55,14 @@ runtime indexing behavior with the documented detail-first embedding spec.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Restore maturity and consciousness trace
+
+- **What:** Added MATURITY and CONSCIOUSNESS TRACE sections and expanded the
+  IN PROGRESS entry for template alignment.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT warning for missing/short sections.
+- **Files:** `docs/infrastructure/embeddings/SYNC_Embeddings.md`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Re-verify algorithm entry template compliance
 
 - **What:** Re-checked that the embeddings algorithm entry includes the

@@ -9,6 +9,19 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/infrastructure/api/BEHAVIORS_Api.md` with the missing template
+sections (behaviors, inputs/outputs, edge cases, anti-behaviors, gaps) to
+resolve DOC_TEMPLATE_DRIFT for repair #16 and logged the update in
+`docs/infrastructure/api/SYNC_Api.md`.
+
+Expanded the playthrough creation sections in `docs/infrastructure/api/ALGORITHM_Api.md`
+(data structures, algorithm steps, decisions, data flow, complexity, helpers,
+interactions, gaps) to keep the canonical API algorithm doc template-complete
+without reintroducing the deprecated `ALGORITHM_Playthrough_Creation.md`.
+Recorded the decision in `docs/infrastructure/api/SYNC_Api.md` for repair #16.
+Ran `ngram validate`; failures remain pre-existing (missing VIEW and
+doc-chain gaps in schema/product/network/storms modules).
+
 Re-verified `docs/infrastructure/api/VALIDATION_Api.md` template completeness
 for repair #16 and logged the verification entry in
 `docs/infrastructure/api/SYNC_Api.md`.
