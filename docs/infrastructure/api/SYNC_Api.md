@@ -41,6 +41,16 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Restore legacy playthrough algorithm alias (repair 16)
+
+- **What:** Added `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`
+  with full template sections and a deprecation notice pointing to the
+  canonical API algorithm doc.
+- **Why:** The repair task targeted the legacy file; restoring it keeps older
+  references functional while preserving `ALGORITHM_Api.md` as canonical.
+- **Files:**
+  - `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`
+
 ### 2025-12-19: Expand API implementation template sections (repair 16)
 
 - **What:** Added missing implementation template sections (code structure,
@@ -258,10 +268,15 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ### DECISION: Playthrough algorithm doc location
 
-- Conflict: Repair task targets `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`, but that file was removed to avoid duplicate algorithm docs in the API folder.
-- Resolution: Keep `docs/infrastructure/api/ALGORITHM_Api.md` as the sole algorithm document and expand it with the missing playthrough creation template sections.
-- Reasoning: Maintaining a single authoritative algorithm doc follows the architecture principle and avoids resurrecting the duplication warning.
-- Updated: `docs/infrastructure/api/ALGORITHM_Api.md`, `docs/infrastructure/api/SYNC_Api.md`
+- Conflict: Repair task targets `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`,
+  but the API module previously removed it to avoid duplicate algorithm docs.
+- Resolution: Restore the legacy file with template-complete content and a
+  deprecation notice, while keeping `ALGORITHM_Api.md` as the canonical
+  algorithm reference.
+- Reasoning: This satisfies the drift repair without replacing the canonical
+  algorithm doc, and keeps the alias clearly non-authoritative.
+- Updated: `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`,
+  `docs/infrastructure/api/SYNC_Api.md`
 
 ---
 

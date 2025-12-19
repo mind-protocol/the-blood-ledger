@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Restored the legacy API playthrough algorithm alias in
+`docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md` with full template
+sections and a deprecation notice pointing to the canonical API algorithm doc,
+then updated `docs/infrastructure/api/SYNC_Api.md` with the change and the
+conflict decision for repair #16.
+
 Expanded `docs/infrastructure/api/IMPLEMENTATION_Api.md` with the missing
 implementation template sections (code structure, design patterns, schema,
 entry points, data flow, logic chains, dependencies, state management, runtime

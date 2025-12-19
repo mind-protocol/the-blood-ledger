@@ -59,9 +59,9 @@ boundaries that separate orchestration from transport concerns.
 
 ### Out of Scope
 
-- Frontend hooks and UI-specific state handling → see: `docs/frontend/`.
-- Graph mutation logic and physics tick behavior → see: `docs/physics/`.
-- Narrator prompt composition and agent behavior → see: `docs/agents/narrator/`.
+- Frontend hooks and UI-specific state handling -> see: `docs/frontend/`.
+- Graph mutation logic and physics tick behavior -> see: `docs/physics/`.
+- Narrator prompt composition and agent behavior -> see: `docs/agents/narrator/`.
 
 ## GAPS / IDEAS / QUESTIONS
 
@@ -69,87 +69,6 @@ boundaries that separate orchestration from transport concerns.
 - [ ] Clarify whether debug SSE should be behind auth or dev-only config.
 - IDEA: Split the app factory into per-router factories when the surface grows.
 - QUESTION: Should health checks include a read-only scenario asset check?
-
----
-
-## THE PROBLEM
-
-The API layer must expose playthrough, moment, and debug endpoints without
-leaking engine internals or forcing clients to know graph details. Without a
-clear API boundary, gameplay flow fragments and frontend integration drifts.
-
----
-
-## THE PATTERN
-
-A FastAPI app factory wires routers, shared services, and SSE streams in one
-place, while each router focuses on a single concern. The API stays thin,
-translating requests into orchestrated engine calls and streaming updates.
-
----
-
-## PRINCIPLES
-
-### Principle 1: Single Entry App Factory
-
-Centralize dependency wiring so route modules stay declarative and shared
-state stays scoped to a single application instance.
-
-### Principle 2: Thin Translation Layer
-
-Endpoints translate HTTP payloads into engine calls without embedding business
-logic, keeping behavior consistent with core services.
-
-### Principle 3: Stream Isolation
-
-Separate debug SSE from gameplay streams so observability does not interfere
-with player-facing event delivery.
-
----
-
-## DEPENDENCIES
-
-| Module | Why We Depend On It |
-|--------|---------------------|
-| engine/infrastructure/api/app.py | Hosts the FastAPI factory and router wiring. |
-| engine/infrastructure/api/playthroughs.py | Implements playthrough CRUD and creation flows. |
-| engine/infrastructure/api/moments.py | Provides moment and narration endpoints. |
-| engine/infrastructure/api/sse_broadcast.py | Manages per-client SSE queues and broadcasts. |
-| engine/infrastructure/orchestration | Bridges API requests to narrator/tick orchestration. |
-
----
-
-## INSPIRATIONS
-
-FastAPI's router-first design, event-stream APIs in realtime games, and prior
-service layering in the history and async architecture modules.
-
----
-
-## SCOPE
-
-### In Scope
-
-- FastAPI application factory and router wiring.
-- Playthrough, moment, tempo, and debug stream endpoints.
-- SSE event fan-out for gameplay and debug streams.
-
-### Out of Scope
-
-- Core game logic and physics ticks → see: `docs/physics/`.
-- Long-running orchestration workflows → see: `docs/agents/world-runner/`.
-- Frontend state management → see: `docs/frontend/`.
-
----
-
-## GAPS / IDEAS / QUESTIONS
-
-- [ ] Confirm whether API auth will live here or in a dedicated gateway module.
-- [ ] Document rate limiting expectations once load patterns are known.
-- IDEA: Add structured error envelopes for all endpoints.
-- QUESTION: Should debug SSE move to a separate service boundary?
-
----
 
 ## CHAIN
 
