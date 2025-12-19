@@ -191,10 +191,30 @@ Repeat
 - Reasoning: The functions already mutate the listener registry and are exercised by graph ops event emission.
 - Updated: `docs/physics/graph/SYNC_Graph.md`
 
+### DECISION: Graph Queries Moments Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, and `get_clickable_words` in `engine/physics/graph/graph_queries_moments.py`, but each function already contains full query logic.
+- Resolution: Treat the issue as already resolved; no code changes required.
+- Reasoning: The functions execute concrete Cypher queries and result parsing for narrative, transition, and clickable word lookups.
+- Updated: `docs/physics/graph/SYNC_Graph.md`
+
+### DECISION: Graph Queries Moments Incomplete Impl
+- Conflict: Repair task flagged `get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, and `get_clickable_words` as empty in `engine/physics/graph/graph_queries_moments.py`, but each function already contains concrete Cypher query logic.
+- Resolution: Treat the issue as already resolved; no code changes required.
+- Reasoning: The functions already query FalkorDB and parse results as part of `GraphQueries` moment/view flows.
+- Updated: `docs/physics/graph/SYNC_Graph.md`
+
+### DECISION: Graph Ops Types Incomplete Impl
+- Conflict: Repair task flagged `__str__` and `success` as empty in `engine/physics/graph/graph_ops_types.py`, but both functions already implement formatting and error-free status checks.
+- Resolution: Treat the issue as already resolved; no code changes required.
+- Reasoning: `SimilarNode.__str__` and `ApplyResult.success` already provide concrete behavior used by graph ops apply reporting.
+- Updated: `docs/physics/graph/SYNC_Graph.md`
+
 ## Agent Observations
 
 ### Remarks
 - Repair task appears stale relative to `engine/physics/graph/graph_ops_events.py`.
+- Repair task appears stale relative to `engine/physics/graph/graph_queries_moments.py`.
+- Repair task appears stale relative to `engine/physics/graph/graph_ops_types.py`.
 
 ### Suggestions
 - None.

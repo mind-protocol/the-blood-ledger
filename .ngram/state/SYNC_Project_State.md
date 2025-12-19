@@ -146,6 +146,7 @@ Check `modules.yaml` (project root) for full manifest.
 - Verified `engine/physics/graph/graph_ops_events.py` listener helpers are already implemented; no code changes required.
 - Documented the stale graph ops events repair in `docs/physics/graph/SYNC_Graph.md`.
 - Implemented Moment model compatibility (tick alias, speaker handling, embeddable_text) and noted schema alias guidance in `docs/schema/SCHEMA_Moments.md`.
+- Verified `engine/physics/graph/graph_ops_types.py` functions flagged as empty are already implemented; no code changes required.
 
 ## CONFLICTS
 
@@ -191,6 +192,12 @@ Check `modules.yaml` (project root) for full manifest.
 - Reasoning: The properties implement the expected link behaviors and are covered by model/integration tests.
 - Updated: `.ngram/state/SYNC_Project_State.md`
 
+### DECISION: Graph Ops Types Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `__str__` and `success` in `engine/physics/graph/graph_ops_types.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: The functions already provide string formatting and success computation for apply results.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
 ## Agent Observations
 
 ### Remarks
@@ -202,6 +209,7 @@ Check `modules.yaml` (project root) for full manifest.
 - Repair task appears to be stale relative to the current `engine/models/base.py` implementation.
 - Repair task appears to be stale relative to the current `engine/infrastructure/memory/moment_processor.py` implementation.
 - Repair task appears to be stale relative to the current `engine/models/links.py` implementation.
+- Repair task appears to be stale relative to the current `engine/physics/graph/graph_ops_types.py` implementation.
 - `ngram validate` still reports pre-existing missing docs/CHAIN links (schema, world-runner, map, and infrastructure subsets).
 - Moment model now accepts legacy `tick` input and optional `speaker` for embedding output without storing speaker on the graph node.
 
