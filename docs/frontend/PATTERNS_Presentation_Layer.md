@@ -12,11 +12,11 @@ VERIFIED: 2025-12-18 against current implementation
 
 ```
 THIS:            PATTERNS_Presentation_Layer.md (you are here)
-BEHAVIORS:       (not yet documented)
-ALGORITHM:       (not yet documented)
-VALIDATION:      (not yet documented)
-IMPLEMENTATION:  (not yet documented)
-TEST:            (not yet documented)
+BEHAVIORS:       ./BEHAVIORS_Frontend_State_And_Interaction.md
+ALGORITHM:       ./ALGORITHM_Frontend_Data_Flow.md
+VALIDATION:      ./VALIDATION_Frontend_Invariants.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Frontend_Code_Architecture.md
+TEST:            ./TEST_Frontend_Coverage.md
 SYNC:            ./SYNC_Frontend.md
 
 IMPL:            frontend/app/page.tsx
@@ -138,7 +138,7 @@ Each component handles one responsibility. Scene components don't know about map
 
 ## GAPS / IDEAS / QUESTIONS
 
-- [ ] TEST doc: Document component testing approach
-- [ ] IMPLEMENTATION doc: Detail file structure and data flows
+- [x] TEST doc: Document component testing approach
+- [x] IMPLEMENTATION doc: Detail file structure and data flows
 - QUESTION: Should useMoments replace useGameState entirely, or coexist?
 - IDEA: Storybook for component development
