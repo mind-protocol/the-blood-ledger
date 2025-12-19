@@ -9,6 +9,16 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Added `NEXT_PUBLIC_API_URL=http://localhost:8000` to `.env` so the frontend uses the expected local backend by default.
+
+Verified the graph health report helpers in `engine/graph/health/check_health.py`; the incomplete-impl task was stale and required no code changes (logged in `docs/schema/graph-health/SYNC_Graph_Health.md`).
+
+Aligned tempo API calls with the shared frontend `API_BASE` so speed controls and tempo SSE respect `NEXT_PUBLIC_API_URL`. Verified via `cd frontend && npm run build`.
+
+Adjusted the frontend chronicle panel to host the speed controls directly beneath the journal input, added wrapping for narrow widths, and removed the fixed bottom-left speed widget. Verified via `cd frontend && npm run build`.
+
+Added a shared agent CLI wrapper in `engine/infrastructure/orchestration/agent_cli.py`, routed narrator/world-runner/world-builder CLI calls through it, and added `AGENTS_MODEL` provider selection (with doc updates in narrator/world-builder implementation and SYNC files).
+
 Adjusted narrator implementation doc references to avoid broken-link parsing (removed colon-qualified paths, standardized file paths, and noted prompt builder location), and logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
 
 Repaired broken canon implementation doc references by switching to full-path file entries and removing stray `# DOCS:` labels, then logged the update in `docs/infrastructure/canon/SYNC_Canon.md`.
