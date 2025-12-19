@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reverified the moment processor helpers in `engine/infrastructure/memory/moment_processor.py` for repair 03; all implementations are present and no code changes were required (logged in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`).
+
 Added `NEXT_PUBLIC_API_URL=http://localhost:8000` to `.env` so the frontend uses the expected local backend by default.
 
 Reconfirmed ConversationThread helper implementations in `engine/infrastructure/history/conversations.py` for the repair run; no code changes required.

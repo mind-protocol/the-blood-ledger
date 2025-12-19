@@ -127,6 +127,14 @@ See `docs/physics/` for current Moment Graph documentation.
 ## RECENT CHANGES
 ===============================================================================
 
+### 2025-12-19: Reverified moment processor helpers for repair 03
+- **What:** Checked `_write_transcript`, `last_moment_id`,
+  `transcript_line_count`, and `get_moment_processor` in
+  `engine/infrastructure/memory/moment_processor.py`; all implementations are
+  present.
+- **Why:** Confirm the INCOMPLETE_IMPL report is stale.
+- **Files:** `engine/infrastructure/memory/moment_processor.py`
+
 ### 2025-12-19: Added DOCS references for memory module entry points
 - **What:** Added `# DOCS: docs/infrastructure/scene-memory/` to
   `engine/infrastructure/memory/__init__.py` and standardized the comment in
