@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reduced the `docs/infrastructure/scene-memory` module size to ~32K chars by
+replacing legacy 2024-12 content with concise summaries, adding
+`docs/infrastructure/scene-memory/archive/SYNC_archive_2024-12.md`, and trimming
+the implementation doc to current entry points. Ran `ngram validate`; existing
+schema/embeddings/network doc gaps and a missing VIEW file remain.
+
 Reduced `docs/schema` size by splitting the schema into focused files under `docs/schema/SCHEMA/` and `docs/schema/SCHEMA_Moments/`, replacing the oversized index files with concise pointers, and adding a brief archive note in `docs/schema/archive/SYNC_archive_2024-12.md`. Ran `ngram validate`; failures remain for pre-existing missing VIEW/doc-chain gaps and broken CHAIN links elsewhere.
 
 Reduced narrator module doc size by condensing core narrator docs, archiving long-form examples in `docs/agents/narrator/archive/SYNC_archive_2024-12.md`, and aligning narrator `time_elapsed` guidance with the conversational/significant split; ran `ngram validate` (pre-existing schema/product/network/storms chain gaps and missing VIEW file remain) and logged in `docs/agents/narrator/SYNC_Narrator.md`.
