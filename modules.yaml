@@ -498,6 +498,20 @@ modules:
       Moment graph module stub that anchors documentation for moment nodes,
       lifecycle states, and schema alignment.
 
+  moment-graph-engine:
+    code: "engine/moment_graph/**"
+    docs: "docs/engine/moment-graph-engine/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/moment_graph/__init__.py
+    patterns:
+      - "Hot-path traversal without LLM calls"
+      - "Mechanical surfacing and decay thresholds"
+    notes: |
+      Runtime moment graph engine for fast traversal, surfacing, and query
+      helpers. Complements the schema-first docs in docs/engine/moments/.
+
   engine-test-suite:
     code: "engine/tests/**"
     docs: "docs/engine/tests/"
