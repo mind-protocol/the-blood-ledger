@@ -31,9 +31,9 @@ IMPL:           engine/scripts/check_injection.py
 
 ```
 engine/
-└── scripts/
-    ├── check_injection.py       # Hook script: consume JSONL queue, return injection context
-    └── inject_to_narrator.py    # CLI helper: write injection queue or call Narrator directly
+|-- scripts/
+|   |-- check_injection.py       # Hook script: consume JSONL queue, return injection context
+|   `-- inject_to_narrator.py    # CLI helper: write injection queue or call Narrator directly
 ```
 
 ### Related Integration Points (Outside This Module)
@@ -121,24 +121,10 @@ InjectionEvent:
 ### Hook Injection: API/Runner -> Queue -> Narrator
 
 ```
-┌─────────────────┐
-│  Producer(s)    │  (frontend, runner, api)
-└────────┬────────┘
-         │ JSONL append
-         ▼
-┌─────────────────────────┐
-│ injection_queue.jsonl   │  (FIFO file queue)
-└────────┬────────────────┘
-         │ read + shift
-         ▼
-┌─────────────────────────┐
-│ check_injection.py       │  (PostToolUse hook)
-└────────┬────────────────┘
-         │ additionalContext
-         ▼
-┌─────────────────────────┐
-│ Narrator session         │  (handles injection)
-└─────────────────────────┘
+Producer(s) (frontend, runner, api)
+  -> injection_queue.jsonl (FIFO file queue)
+  -> check_injection.py (PostToolUse hook)
+  -> Narrator session (handles injection)
 ```
 
 ### Manual Injection: CLI -> Queue or Direct Call
@@ -146,8 +132,8 @@ InjectionEvent:
 ```
 CLI command
   -> inject_to_narrator.py
-     ├─ if narrator running: write injection_queue.json
-     └─ else: subprocess call to claude -p
+     - if narrator running: write injection_queue.json
+     - else: subprocess call to claude -p
 ```
 
 ---
@@ -158,11 +144,11 @@ CLI command
 
 ```
 check_injection.py
-    └── uses -> injection_queue.jsonl (playthroughs/default)
+    -> uses injection_queue.jsonl (playthroughs/default)
 
 inject_to_narrator.py
-    ├── reads -> playthroughs/narrator_state.json
-    └── writes -> playthroughs/{id}/injection_queue.json
+    -> reads playthroughs/narrator_state.json
+    -> writes playthroughs/{id}/injection_queue.json
 ```
 
 ### External Dependencies
