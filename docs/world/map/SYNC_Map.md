@@ -76,6 +76,12 @@ Frontend map UI exists under `frontend/components/map` but is static demo data.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Filled SYNC template sections
+
+- Added the missing SYNC template sections (maturity, in progress, known
+  issues, handoffs, todo, consciousness trace, pointers) and expanded content
+  to meet length guidance without changing module behavior.
+
 ### 2025-12-19: Expanded map behaviors template sections
 
 - Added missing BEHAVIORS template sections (behaviors, inputs/outputs, edge
