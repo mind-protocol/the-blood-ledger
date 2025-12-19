@@ -5,7 +5,22 @@ Original file: SYNC_Physics.md
 
 ---
 
-## Recent Changes
+## MATURITY
+
+STATUS: ARCHIVED. This file is a frozen snapshot from 2025-12-19 and should
+not be treated as the live source of truth for the physics module.
+
+## CURRENT STATE
+
+This archive preserves a past physics SYNC state for traceability; it is not
+updated and exists only for historical context.
+
+## IN PROGRESS
+
+No active work is tracked in this archive; any new or ongoing physics tasks
+belong in the live SYNC file, not here.
+
+## RECENT CHANGES
 
 **2025-12-19: Repair 12 re-verified physics tick energy helpers**
 - Confirmed `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` already have implementations
@@ -91,6 +106,35 @@ Original file: SYNC_Physics.md
 
 ---
 
+## KNOWN ISSUES
+
+No archive-specific issues are tracked here; any active physics concerns are
+documented in the current physics SYNC file instead.
+
+## HANDOFF: FOR AGENTS
+
+Use this archive only for historical context. For new work, follow
+VIEW_Implement_Write_Or_Modify_Code and update `docs/physics/SYNC_Physics.md`.
+
+## HANDOFF: FOR HUMAN
+
+This archive preserves prior repair notes for reference and should not be used
+as the authoritative status report for physics work.
+
+## TODO
+
+No action items belong in the archive; track new tasks in the live physics
+SYNC to keep the active backlog accurate.
+
+## CONSCIOUSNESS TRACE
+
+Archival focus only: this update preserves traceable repair history without
+implying any new physics changes or runtime modifications.
+
+## POINTERS
+
+- `docs/physics/SYNC_Physics.md` for current status and handoffs.
+- `docs/physics/ALGORITHM_Physics.md` for canonical mechanics.
 
 ## Agent Observations
 
@@ -117,4 +161,3 @@ Original file: SYNC_Physics.md
 ---
 
 *"There is no scene. There is only the graph."*
-

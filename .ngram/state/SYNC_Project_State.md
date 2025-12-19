@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections (maturity, current state, in progress, known
+issues, handoffs, todo, consciousness trace, pointers) in
+`docs/physics/SYNC_Physics_archive_2025-12.md` and normalized the RECENT
+CHANGES header to resolve DOC_TEMPLATE_DRIFT for repair #16.
+
 Filled missing template sections in `docs/physics/ALGORITHM_Physics.md`
 (overview, data structures, algorithm summary, decisions, data flow,
 complexity, helpers, interactions, gaps) to resolve DOC_TEMPLATE_DRIFT for
