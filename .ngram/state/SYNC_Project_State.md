@@ -11,6 +11,7 @@ UPDATED_BY: Codex (repair agent)
 
 Revalidated playthroughs API helper implementations; documentation updated for the stale repair task.
 Confirmed `engine/models/base.py` comparison helpers were already implemented; no code change required.
+Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py`; repair task is stale.
 Validated moment processor implementations; repair task appears stale.
 Verified moment graph query helpers in `engine/moment_graph/queries.py` are already implemented; repair task appears stale.
 Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.md`.
@@ -25,86 +26,6 @@ Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.m
 - **Status:** completed
 - **Owner:** Codex (repair agent)
 - **Context:** Verified incomplete-impl report; no code changes needed.
-
----
-
-## RECENT CHANGES
-
-### 2025-12-19: Validate moment graph query helpers already implemented
-
-- **What:** Confirmed `get_dormant_moments`, `get_wait_triggers`, and `get_moments_attached_to_tension` are implemented in `engine/moment_graph/queries.py`.
-- **Why:** Repair task flagged incomplete functions; current code already has concrete logic.
-- **Impact:** No runtime behavior change; documentation refreshed.
-
-### 2025-12-19: Validate node model helpers already implemented
-
-- **What:** Confirmed `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` in `engine/models/nodes.py` already have concrete implementations.
-- **Why:** Repair task flagged these as incomplete, but current code matches expected behavior.
-- **Impact:** No runtime behavior change; repair marked as stale.
-
-### 2025-12-19: Verify link model helpers already implemented
-
-- **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` in `engine/models/links.py` already have concrete implementations.
-- **Why:** Repair task flagged these as incomplete, but current code matches tests.
-- **Impact:** No runtime behavior change; repair marked as stale.
-
-### 2025-12-19: Verify graph health check helpers
-
-- **What:** Confirmed `engine/graph/health/check_health.py` helper implementations are present; updated `docs/physics/graph/SYNC_Graph.md`.
-- **Why:** Repair task flagged incomplete implementations that were already done.
-- **Impact:** No runtime behavior change; documentation refreshed.
-
-### 2025-12-19: Re-validate playthroughs API helpers
-
-- **What:** Reconfirmed `_count_branches` and `_get_playthrough_queries` in `engine/infrastructure/api/playthroughs.py` are implemented.
-- **Why:** Repair task still flagged them as incomplete, so docs were refreshed.
-- **Impact:** No runtime behavior change; documentation refreshed.
-
-### 2025-12-19: Playthroughs repair verification (ngram repair)
-
-- **What:** Verified the playthroughs helper implementations for this repair run; updated API SYNC.
-- **Why:** Task still reported incomplete implementations despite existing logic.
-- **Impact:** No runtime behavior change; documentation refreshed.
-
-### 2025-12-19: Confirm base model comparison helpers
-
-- **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` are already implemented in `engine/models/base.py`.
-- **Why:** Repair task flagged incomplete implementations, but the functions are present.
-- **Impact:** No runtime behavior change.
-
-### 2025-12-19: Validate moment processor repair
-
-- **What:** Confirmed `_write_transcript`, `last_moment_id`,
-  `transcript_line_count`, and `get_moment_processor` already implemented in
-  `engine/infrastructure/memory/moment_processor.py`.
-- **Why:** Repair task flagged incomplete functions; validation required.
-- **Impact:** No runtime behavior change; documentation refreshed.
-
-### 2025-12-19: Refresh project health report
-
-- **What:** Ran `ngram validate` and `ngram doctor --no-github`; updated
-  `.ngram/state/SYNC_Project_Health.md`.
-- **Why:** Required post-repair verification; noted existing doc gaps.
-- **Impact:** Health report refreshed; no runtime changes.
-
-## Agent Observations
-
-### Remarks
-- The repair task appears to be stale for `engine/models/base.py`; functions are implemented.
-- The moment processor repair task appears stale; implementations already exist.
-- `ngram validate` reported existing doc-chain gaps; `ngram doctor --no-github` recorded broader documentation issues in `.ngram/state/SYNC_Project_Health.md`.
-- The `engine/models/links.py` helper properties were already implemented; no changes needed.
-- `ngram validate` and `ngram doctor --no-github` report pre-existing missing docs and incomplete chains outside this repair scope.
-- Re-validated playthroughs API helpers during this repair run; no code changes required.
-- Rechecked playthroughs helper repair task during this run; documentation updated.
-- Node model helper implementations already exist; no changes needed.
-- `ngram validate` still reports missing docs and broken CHAIN links in `docs/schema`; unchanged in this repair.
-
-### Suggestions
-- [ ] Review stale repair task detection criteria.
-
-### Propositions
-- Consider adding module docs for `engine/models` once new changes are planned.
 
 ---
 
@@ -194,3 +115,10 @@ Check `modules.yaml` (project root) for full manifest.
 
 **Coverage notes:**
 Moment processor is documented under scene-memory but not mapped in modules.yaml.
+
+
+---
+
+## ARCHIVE
+
+Older content archived to: `SYNC_Project_State_archive_2025-12.md`
