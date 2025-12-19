@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Added `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md` with the missing
+SCOPE and INSPIRATIONS sections expanded to template length, and updated
+`docs/frontend/map/SYNC_Map_View.md` to reference the new patterns doc for
+repair #16.
+
 Filled missing template sections (SCHEMA, LOGIC CHAINS, CONCURRENCY MODEL) in `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, expanded short summaries, and logged the update in `docs/agents/narrator/SYNC_Narrator.md` for repair #16.
 
 Expanded `docs/frontend/scene/ALGORITHM_Scene.md` with the missing template

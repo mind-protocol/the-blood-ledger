@@ -48,6 +48,7 @@ the shared map sync is treated as the single source of truth.
 
 - Canonical status lives at `docs/world/map/SYNC_Map.md` for map-wide planning.
 - Frontend behavior and scope live in `docs/frontend/map/PATTERNS_Parchment_Map_View.md`.
+- Interactive travel intent UI patterns live in `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`.
 
 ## Updates
 
@@ -56,3 +57,5 @@ the shared map sync is treated as the single source of truth.
   template entries to satisfy doc-template drift checks.
 - 2025-12-19: Added missing SYNC template sections and expanded entries to
   meet the doc-template length requirements for the map view sync.
+- 2025-12-19: Added `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md` with
+  the missing SCOPE and INSPIRATIONS sections expanded to template length.
