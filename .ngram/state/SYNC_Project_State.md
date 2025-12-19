@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Repaired broken file references in `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md` by aligning paths to `frontend/**` and logging the change in `docs/frontend/SYNC_Frontend.md`.
+
 Verified the canon module documentation mapping already exists; recorded this check in `docs/infrastructure/canon/SYNC_Canon.md`.
 
 Mapped `engine/infrastructure/api/**` to `docs/infrastructure/api/` in `modules.yaml` and added a `# DOCS:` header in `engine/infrastructure/api/app.py` so `ngram context` resolves the API documentation chain.

@@ -29,55 +29,55 @@ IMPL:           frontend/app/page.tsx
 
 ```
 frontend/
-├── app/                          # Next.js App Router pages
-│   ├── page.tsx                  # Main entry - loads GameClient
-│   ├── layout.tsx                # Root layout with providers
-│   ├── start/page.tsx            # Opening/start screen
-│   ├── map/page.tsx              # Map view
-│   ├── scenarios/page.tsx        # Scenario selection
-│   └── playthroughs/[id]/page.tsx # Dynamic playthrough route
-├── components/                   # React components
-│   ├── GameClient.tsx            # Main game wrapper, handles loading
-│   ├── GameLayout.tsx            # Layout: scene + right panel
-│   ├── Providers.tsx             # Context providers
-│   ├── scene/                    # Scene rendering components
-│   ├── moment/                   # Moment system components
-│   ├── map/                      # Map display components
-│   ├── panel/                    # Right panel tabs
-│   ├── voices/                   # Internal thoughts display
-│   ├── chronicle/                # Chronicle display
-│   ├── minimap/                  # Minimap component
-│   ├── debug/                    # Debug panel
-│   └── ui/                       # Generic UI components
-├── hooks/                        # Custom React hooks
-│   ├── useGameState.ts           # Main game state management
-│   └── useMoments.ts             # Moment system state
-├── lib/                          # Utilities
-│   ├── api.ts                    # API client functions
-│   └── map/                      # Map utilities
-├── types/                        # TypeScript definitions
-│   ├── game.ts                   # Core game types
-│   ├── moment.ts                 # Moment types
-│   └── map.ts                    # Map types
-├── data/                         # Static data
-│   └── game-state.json           # Fallback static state
-└── public/                       # Static assets
-    └── playthroughs/             # Playthrough images
+├── frontend/app/                          # Next.js App Router pages
+│   ├── frontend/app/page.tsx              # Main entry - loads GameClient
+│   ├── frontend/app/layout.tsx            # Root layout with providers
+│   ├── frontend/app/start/page.tsx        # Opening/start screen
+│   ├── frontend/app/map/page.tsx          # Map view
+│   ├── frontend/app/scenarios/page.tsx    # Scenario selection
+│   └── frontend/app/playthroughs/[id]/page.tsx # Dynamic playthrough route
+├── frontend/components/                   # React components
+│   ├── frontend/components/GameClient.tsx # Main game wrapper, handles loading
+│   ├── frontend/components/GameLayout.tsx # Layout: scene + right panel
+│   ├── frontend/components/Providers.tsx  # Context providers
+│   ├── frontend/components/scene/         # Scene rendering components
+│   ├── frontend/components/moment/        # Moment system components
+│   ├── frontend/components/map/           # Map display components
+│   ├── frontend/components/panel/         # Right panel tabs
+│   ├── frontend/components/voices/        # Internal thoughts display
+│   ├── frontend/components/chronicle/     # Chronicle display
+│   ├── frontend/components/minimap/       # Minimap component
+│   ├── frontend/components/debug/         # Debug panel
+│   └── frontend/components/ui/            # Generic UI components
+├── frontend/hooks/                        # Custom React hooks
+│   ├── frontend/hooks/useGameState.ts     # Main game state management
+│   └── frontend/hooks/useMoments.ts       # Moment system state
+├── frontend/lib/                          # Utilities
+│   ├── frontend/lib/api.ts                # API client functions
+│   └── frontend/lib/map/                  # Map utilities
+├── frontend/types/                        # TypeScript definitions
+│   ├── frontend/types/game.ts             # Core game types
+│   ├── frontend/types/moment.ts           # Moment types
+│   └── frontend/types/map.ts              # Map types
+├── frontend/data/                         # Static data
+│   └── frontend/data/game-state.json      # Fallback static state
+└── frontend/public/                       # Static assets
+    └── frontend/public/playthroughs/      # Playthrough images
 ```
 
 ### File Responsibilities
 
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|----------------------|-------|--------|
-| `hooks/useGameState.ts` | Main game state, API integration | `useGameState`, transform helpers | ~423 | WATCH |
-| `lib/api.ts` | Backend API client | `getMap`, `getFaces`, `clickMoment`, etc. | ~419 | WATCH |
-| `types/game.ts` | TypeScript type definitions | `GameState`, `Scene`, `Moment`, etc. | ~312 | OK |
-| `hooks/useMoments.ts` | Moment system state, SSE | `useMoments` | ~197 | OK |
-| `types/moment.ts` | Moment-specific types | `Moment`, `MomentTransition` | ~98 | OK |
-| `types/map.ts` | Map-specific types | `MapLocation`, `MapRegion` | ~151 | OK |
-| `components/GameClient.tsx` | Game wrapper, loading states | `GameClient` | ~106 | OK |
-| `components/GameLayout.tsx` | Scene + panel layout | `GameLayout` | ~63 | OK |
-| `app/page.tsx` | Main entry point | Page component | ~12 | OK |
+| `frontend/hooks/useGameState.ts` | Main game state, API integration | `useGameState`, transform helpers | ~423 | WATCH |
+| `frontend/lib/api.ts` | Backend API client | `getMap`, `getFaces`, `clickMoment`, etc. | ~419 | WATCH |
+| `frontend/types/game.ts` | TypeScript type definitions | `GameState`, `Scene`, `Moment`, etc. | ~312 | OK |
+| `frontend/hooks/useMoments.ts` | Moment system state, SSE | `useMoments` | ~197 | OK |
+| `frontend/types/moment.ts` | Moment-specific types | `Moment`, `MomentTransition` | ~98 | OK |
+| `frontend/types/map.ts` | Map-specific types | `MapLocation`, `MapRegion` | ~151 | OK |
+| `frontend/components/GameClient.tsx` | Game wrapper, loading states | `GameClient` | ~106 | OK |
+| `frontend/components/GameLayout.tsx` | Scene + panel layout | `GameLayout` | ~63 | OK |
+| `frontend/app/page.tsx` | Main entry point | Page component | ~12 | OK |
 
 **Size Thresholds:**
 - **OK** (<400 lines): Healthy size, easy to understand
@@ -88,27 +88,27 @@ frontend/
 
 | File | Purpose | Lines | Status |
 |------|---------|-------|--------|
-| `components/scene/CenterStage.tsx` | Main scene display area | ~435 | WATCH |
-| `components/scene/SceneView.tsx` | Scene wrapper | ~120 | OK |
-| `components/scene/SceneImage.tsx` | Scene image display | ~102 | OK |
-| `components/scene/HotspotRow.tsx` | Row of hotspots | ~79 | OK |
-| `components/scene/Hotspot.tsx` | Single hotspot element | ~77 | OK |
-| `components/scene/SceneBanner.tsx` | Scene banner image | ~69 | OK |
-| `components/scene/CharacterRow.tsx` | Character display row | ~66 | OK |
-| `components/scene/ObjectRow.tsx` | Object display row | ~63 | OK |
-| `components/scene/SettingStrip.tsx` | Setting/location strip | ~61 | OK |
-| `components/scene/SceneHeader.tsx` | Scene header | ~42 | OK |
-| `components/scene/SceneActions.tsx` | Action buttons | ~33 | OK |
-| `components/scene/Atmosphere.tsx` | Atmospheric text | ~20 | OK |
+| `frontend/components/scene/CenterStage.tsx` | Main scene display area | ~435 | WATCH |
+| `frontend/components/scene/SceneView.tsx` | Scene wrapper | ~120 | OK |
+| `frontend/components/scene/SceneImage.tsx` | Scene image display | ~102 | OK |
+| `frontend/components/scene/HotspotRow.tsx` | Row of hotspots | ~79 | OK |
+| `frontend/components/scene/Hotspot.tsx` | Single hotspot element | ~77 | OK |
+| `frontend/components/scene/SceneBanner.tsx` | Scene banner image | ~69 | OK |
+| `frontend/components/scene/CharacterRow.tsx` | Character display row | ~66 | OK |
+| `frontend/components/scene/ObjectRow.tsx` | Object display row | ~63 | OK |
+| `frontend/components/scene/SettingStrip.tsx` | Setting/location strip | ~61 | OK |
+| `frontend/components/scene/SceneHeader.tsx` | Scene header | ~42 | OK |
+| `frontend/components/scene/SceneActions.tsx` | Action buttons | ~33 | OK |
+| `frontend/components/scene/Atmosphere.tsx` | Atmospheric text | ~20 | OK |
 
 ### Moment Components
 
 | File | Purpose | Lines | Status |
 |------|---------|-------|--------|
-| `components/moment/MomentDebugPanel.tsx` | Debug info display | ~221 | OK |
-| `components/moment/MomentDisplay.tsx` | Single moment display | ~201 | OK |
-| `components/moment/ClickableText.tsx` | Text with clickable words | ~137 | OK |
-| `components/moment/MomentStream.tsx` | Moment list/stream | ~122 | OK |
+| `frontend/components/moment/MomentDebugPanel.tsx` | Debug info display | ~221 | OK |
+| `frontend/components/moment/MomentDisplay.tsx` | Single moment display | ~201 | OK |
+| `frontend/components/moment/ClickableText.tsx` | Text with clickable words | ~137 | OK |
+| `frontend/components/moment/MomentStream.tsx` | Moment list/stream | ~122 | OK |
 
 Docs for moment components live with the Scene module (`docs/frontend/scene/`), since Scene owns the moment display experience.
 
@@ -196,10 +196,10 @@ Scene:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| Main page load | `app/page.tsx:1` | User navigates to / |
-| Game state init | `hooks/useGameState.ts:31` | GameClient mounts |
-| Moment click | `hooks/useMoments.ts:96` | User clicks word |
-| SSE subscription | `hooks/useMoments.ts:132` | useMoments mounts |
+| Main page load | `frontend/app/page.tsx:1` | User navigates to / |
+| Game state init | `frontend/hooks/useGameState.ts:31` | GameClient mounts |
+| Moment click | `frontend/hooks/useMoments.ts:96` | User clicks word |
+| SSE subscription | `frontend/hooks/useMoments.ts:132` | useMoments mounts |
 
 ---
 
@@ -209,7 +209,7 @@ Scene:
 
 ```
 ┌─────────────────┐
-│  app/page.tsx   │
+│  frontend/app/page.tsx   │
 └────────┬────────┘
          │ renders
          v
@@ -219,13 +219,13 @@ Scene:
          │ fetches
          v
 ┌─────────────────┐
-│  lib/api.ts     │ ← API client
+│  frontend/lib/api.ts     │ ← API client
 │  (parallel)     │
 └────────┬────────┘
          │ transforms
          v
 ┌─────────────────┐
-│  GameState      │ ← hooks/useGameState.ts
+│  GameState      │ ← frontend/hooks/useGameState.ts
 └────────┬────────┘
          │ renders
          v
@@ -271,14 +271,14 @@ Scene:
 ### Internal Dependencies
 
 ```
-app/page.tsx
-    └── imports → GameClient.tsx
-        └── imports → useGameState.ts
-            └── imports → lib/api.ts
-            └── imports → types/game.ts
-        └── imports → GameLayout.tsx
-            └── imports → SceneView.tsx
-            └── imports → RightPanel.tsx
+frontend/app/page.tsx
+    └── imports → frontend/components/GameClient.tsx
+        └── imports → frontend/hooks/useGameState.ts
+            └── imports → frontend/lib/api.ts
+            └── imports → frontend/types/game.ts
+        └── imports → frontend/components/GameLayout.tsx
+            └── imports → frontend/components/scene/SceneView.tsx
+            └── imports → frontend/components/panel/RightPanel.tsx
 ```
 
 ### External Dependencies
@@ -354,16 +354,16 @@ Files that should reference this documentation:
 
 | File | Line | Reference |
 |------|------|-----------|
-| `frontend/app/page.tsx` | TBD | `// DOCS: docs/frontend/PATTERNS_Presentation_Layer.md` |
+| `frontend/app/page.tsx` | TBD | `docs/frontend/PATTERNS_Presentation_Layer.md` |
 
 ### Docs → Code
 
 | Doc Section | Implemented In |
 |-------------|----------------|
-| ALGORITHM initial load | `hooks/useGameState.ts:39-167` |
-| ALGORITHM click traversal | `hooks/useMoments.ts:96-129` |
-| BEHAVIOR B1 (initial load) | `hooks/useGameState.ts:39` |
-| BEHAVIOR B3 (moment click) | `hooks/useMoments.ts:96` |
+| ALGORITHM initial load | `frontend/hooks/useGameState.ts:39-167` |
+| ALGORITHM click traversal | `frontend/hooks/useMoments.ts:96-129` |
+| BEHAVIOR B1 (initial load) | `frontend/hooks/useGameState.ts:39` |
+| BEHAVIOR B3 (moment click) | `frontend/hooks/useMoments.ts:96` |
 
 ---
 
@@ -375,9 +375,9 @@ Files approaching WATCH/SPLIT status:
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `hooks/useGameState.ts` | ~423L | <400L | `hooks/transformers.ts` | Transform helper functions |
-| `lib/api.ts` | ~419L | <400L | `lib/api/moments.ts` | Moment-specific API functions |
-| `components/scene/CenterStage.tsx` | ~435L | <400L | `components/scene/CenterStageContent.tsx` | Sub-sections |
+| `frontend/hooks/useGameState.ts` | ~423L | <400L | `transformers.ts` (proposed) | Transform helper functions |
+| `frontend/lib/api.ts` | ~419L | <400L | `api-moments.ts` (proposed) | Moment-specific API functions |
+| `frontend/components/scene/CenterStage.tsx` | ~435L | <400L | `CenterStageContent.tsx` (proposed) | Sub-sections |
 
 ### Missing Implementation
 
