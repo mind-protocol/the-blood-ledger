@@ -28,7 +28,7 @@ Consolidated map algorithm docs into `docs/world/map/ALGORITHM_Rendering.md`; re
 Consolidated world-runner algorithm docs into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
 Consolidated world runner algorithm docs by merging graph tick details into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and redirecting `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
 Consolidated world scraping algorithm docs into `docs/world/scraping/ALGORITHM_Pipeline.md` and removed duplicate phase-specific ALGORITHM files.
-Consolidated world scraping ALGORITHM docs into `docs/world/scraping/ALGORITHM_Pipeline.md` and redirected per-phase docs.
+Consolidated world scraping ALGORITHM docs into `docs/world/scraping/ALGORITHM_Pipeline.md`, redirected per-phase docs, and updated chain links for scraping docs.
 
 ---
 
