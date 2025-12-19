@@ -121,6 +121,13 @@ Focus stays on clarity and traceability. This repair is intentionally small, emp
 
 ## RECENT CHANGES
 
+### 2025-12-19: Verified narrator SYNC template completeness
+
+- **What:** Confirmed required SYNC sections (maturity, state, handoffs,
+  todo, consciousness trace, pointers) are present and sufficiently detailed.
+- **Why:** Close DOC_TEMPLATE_DRIFT for `SYNC_Narrator.md` without changing behavior.
+- **Files:** `docs/agents/narrator/SYNC_Narrator.md`
+
 ### 2025-12-19: Verified narrator implementation template completeness
 
 - **What:** Confirmed `IMPLEMENTATION_Narrator.md` already includes SCHEMA,
