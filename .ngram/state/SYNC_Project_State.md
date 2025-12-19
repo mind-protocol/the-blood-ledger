@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Revalidated `engine/models/nodes.py` helper properties (`is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) for the current incomplete-impl repair; implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
+
 Verified `engine/models/base.py` GameTimestamp comparison helpers (`__str__`, `__le__`, `__gt__`) are already implemented for repair 05; no code changes required and logged in `docs/schema/models/SYNC_Schema_Models.md`.
 
 Rechecked the moment processor helper implementations for the current repair run; no code changes required (logged in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`).

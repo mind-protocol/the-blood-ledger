@@ -34,6 +34,13 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Revalidated node helper implementations (repair 07)
+
+- **What:** Confirmed `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` are already implemented in `engine/models/nodes.py`; no code changes made.
+- **Why:** Current INCOMPLETE_IMPL repair required validation of node helper properties.
+- **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task appears stale relative to current code.
+
 ### 2025-12-19: Verified GameTimestamp comparison helpers (repair 05)
 
 - **What:** Confirmed `GameTimestamp.__str__`, `__le__`, and `__gt__` are implemented in `engine/models/base.py`; no code changes made.
