@@ -113,6 +113,12 @@ Player-specific knowledge tracking:
 
 ## Recent Changes
 
+### 2025-12-19: Repaired semantic search references
+
+- **What:** Updated implementation doc references to use concrete semantic search file paths instead of method-qualified paths.
+- **Why:** Eliminate broken implementation links in the map implementation documentation.
+- **Files:** `docs/world/map/IMPLEMENTATION_Map_Code_Architecture.md`
+
 ### 2025-12-19: Consolidated frontend map patterns
 
 - **What:** Merged the frontend map view PATTERNS docs into the parchment map

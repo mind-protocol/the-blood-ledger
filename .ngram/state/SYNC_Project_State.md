@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Repaired broken method-qualified references in the map implementation doc by pointing semantic search mentions at `engine/world/map/semantic.py` and logged the change in `docs/world/map/SYNC_Map.md`.
+
 Repaired broken narrator implementation references by removing the nonexistent `narrator_prompt.py` mention and clarifying the NarratorService entry point in `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, then logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
 
 Completed the tempo documentation chain (PATTERNS/BEHAVIORS/VALIDATION/TEST),

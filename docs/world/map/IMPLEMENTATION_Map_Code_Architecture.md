@@ -151,7 +151,7 @@ SearchResult:
 
 ```
 query
-  → semantic.py:SemanticSearch.find()
+  → engine/world/map/semantic.py (SemanticSearch.find)
     → embeddings.embed()
       → SemanticSearch._vector_search()
         → GraphQueries.query()
@@ -221,7 +221,7 @@ None ──get_semantic_search()──▶ SemanticSearch instance
 
 ```
 1. get_semantic_search() checks module singleton
-2. semantic.py:SemanticSearch.__init__ creates GraphQueries + embedding service
+2. engine/world/map/semantic.py (SemanticSearch.__init__) creates GraphQueries + embedding service
 3. Instance ready for queries
 ```
 
@@ -246,10 +246,10 @@ Synchronous. No explicit threading or async handling.
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `graph_name` | `engine/world/map/semantic.py:SemanticSearch.__init__` | `blood_ledger` | FalkorDB graph name |
-| `host` | `engine/world/map/semantic.py:SemanticSearch.__init__` | `localhost` | FalkorDB host |
-| `port` | `engine/world/map/semantic.py:SemanticSearch.__init__` | `6379` | FalkorDB port |
-| `min_similarity` | `engine/world/map/semantic.py:SemanticSearch.find` | 0.3 | Similarity filter threshold |
+| `graph_name` | `engine/world/map/semantic.py (SemanticSearch.__init__)` | `blood_ledger` | FalkorDB graph name |
+| `host` | `engine/world/map/semantic.py (SemanticSearch.__init__)` | `localhost` | FalkorDB host |
+| `port` | `engine/world/map/semantic.py (SemanticSearch.__init__)` | `6379` | FalkorDB port |
+| `min_similarity` | `engine/world/map/semantic.py (SemanticSearch.find)` | 0.3 | Similarity filter threshold |
 
 ---
 
@@ -269,7 +269,7 @@ Files that reference this documentation:
 |-------------|----------------|
 | BEHAVIORS: visibility update rules | Not implemented in code yet |
 | ALGORITHM: rendering layers | Not implemented in code yet |
-| Semantic search interface | `engine/world/map/semantic.py:SemanticSearch` |
+| Semantic search interface | `engine/world/map/semantic.py (SemanticSearch)` |
 
 ---
 
