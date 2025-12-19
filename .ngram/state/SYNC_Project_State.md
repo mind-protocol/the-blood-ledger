@@ -13,13 +13,19 @@ Consolidated map SYNC documentation by moving frontend map view status into
 `docs/world/map/SYNC_Map.md` and redirecting
 `docs/frontend/map/SYNC_Map_View.md` to the canonical map SYNC.
 
+Refreshed the frontend map SYNC redirect metadata and noted the placeholder UI
+status in the world map SYNC for this repair.
+
+Ran `ngram validate` after the map SYNC consolidation; pre-existing schema,
+tempo, and world-builder doc gaps plus broken CHAIN links remain.
+
 Consolidated frontend map view PATTERNS docs into `docs/frontend/map/PATTERNS_Parchment_Map_View.md`, removed the duplicate, and updated `docs/frontend/map/SYNC_Map_View.md` to point to the canonical file.
 
 Removed the duplicate API algorithm doc (`docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`) so the canonical API flow lives only in `docs/infrastructure/api/ALGORITHM_Api.md`.
 
 Ran `ngram validate` after removing the duplicate API algorithm doc; pre-existing schema/tempo/world-builder documentation gaps and broken CHAIN links remain.
 
-Verified physics tick helper implementations (`_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, `_update_narrative_weights`) in `engine/physics/tick.py` for repair 13; functions already implemented, so no code changes required (logged in `docs/physics/SYNC_Physics.md`).
+Completed repair 13 by normalizing belief-based energy injection and enforcing zero-sum propagation (with supersedes drain) in `engine/physics/tick.py`, then updated physics implementation docs and SYNC to reflect the changes.
 
 Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers (`get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, `get_clickable_words`) are already implemented for the current incomplete-impl repair; no code changes required (logged in `docs/physics/graph/SYNC_Graph.md`).
 

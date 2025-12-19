@@ -34,6 +34,7 @@ Documentation chain completed for validation, implementation, and test coverage.
 
 Frontend map view exists as a read-only UI using sample data under
 `frontend/components/map`, but it is not yet wired to this backend map system.
+The frontend map SYNC now redirects here to keep map status in one place.
 
 **Partial implementation:**
 
@@ -111,6 +112,13 @@ Player-specific knowledge tracking:
 ---
 
 ## Recent Changes
+
+### 2025-12-19: Consolidated frontend map patterns
+
+- **What:** Merged the frontend map view PATTERNS docs into the parchment map
+  doc and removed the duplicate file.
+- **Why:** Keep a single canonical PATTERNS doc for the frontend map view.
+- **Files:** `docs/frontend/map/PATTERNS_Parchment_Map_View.md`
 
 ### 2025-12-19: Consolidated map SYNC documentation
 
