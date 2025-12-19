@@ -38,6 +38,7 @@ sections and expanded the non-goals to meet template length guidance.
 
 Doc-template repair for this SYNC file, focused on filling missing sections so
 schema-model documentation stays aligned while avoiding behavioral changes.
+Once complete, keep the schema-model doc chain synced with future field edits.
 
 ---
 

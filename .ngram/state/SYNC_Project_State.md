@@ -9,6 +9,9 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/schema/models/SYNC_Schema_Models.md` IN PROGRESS notes to keep
+the schema-model doc chain aligned after template repairs for #16.
+
 Applied the physics implementation doc anti-pattern update (hidden writes in query helpers) for repair #16 and verified it against the DESIGN PATTERNS template.
 
 Expanded `docs/design/SYNC_Vision.md` with the missing template sections
