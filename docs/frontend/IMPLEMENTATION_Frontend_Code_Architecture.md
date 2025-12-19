@@ -36,3 +36,21 @@ The frontend is a Next.js App Router UI that renders the game state provided by 
 
 - `IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Code_Structure.md` — File layout, responsibilities, key dependencies
 - `IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md` — Entry points, runtime flow, configuration, and doc links
+
+---
+
+## LOGIC CHAINS
+
+### LC1: Initial app render and fallback selection
+
+`frontend/app/page.tsx` → `frontend/components/GameClient.tsx` loads bootstrap state, then selects live vs fallback view based on connection status and hook readiness.
+
+### LC2: Live updates via hooks and SSE
+
+`frontend/hooks/useGameState.ts` → fetches REST state, subscribes to SSE stream, then pushes updates into React state so scene and panel components re-render.
+
+---
+
+## CONCURRENCY MODEL
+
+The frontend runs on the browser event loop with React scheduling async fetch and SSE callbacks; no explicit worker threads are used, and state updates serialize through React setState batching.
