@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/infrastructure/scene-memory/SYNC_Scene_Memory_archive_2025-12.md`
+with the missing SYNC template sections (maturity, current state, in progress,
+recent changes, known issues, handoffs, todo, consciousness trace, pointers) and
+logged the update in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` for
+repair #16. Ran `ngram validate`; failures remain pre-existing (missing VIEW and
+doc-chain gaps in schema/product/network/storms modules).
+
 Added a Scene Memory SYNC observation noting the legacy algorithm template
 expansion and its canonical Moment Graph references for repair #16.
 

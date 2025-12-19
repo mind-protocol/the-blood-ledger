@@ -90,6 +90,8 @@ STATUS: CANONICAL
 ### Remarks
 - The module was dominated by legacy Scene Memory docs that are superseded by
   Moment Graph documentation.
+- The archive SYNC file now carries the standard template headings to prevent
+  future drift checks from flagging missing sections.
 - The legacy algorithm doc now carries the full template sections to reduce
   drift while keeping the canonical Moment Graph references explicit.
 

@@ -5,6 +5,77 @@ Original file: SYNC_Scene_Memory.md
 
 ---
 
+## Maturity
+
+STATUS: DEPRECATED
+
+What's canonical (v1):
+- The authoritative scene-memory state lives in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` and the Moment Graph docs; this archive is only for historical reference.
+
+What's still being designed:
+- Active design work is tracked in the current SYNC and Moment Graph chains, not in this archived snapshot.
+
+What's proposed (v2):
+- Any future improvements should be documented in the live SYNC and only captured here if a new archive snapshot is produced.
+
+---
+
+## CURRENT STATE
+
+This archive preserves the prior scene-memory SYNC snapshot, including the moment node type and moment processor API summary, while current status remains in the live SYNC file.
+
+---
+
+## IN PROGRESS
+
+No active work is tracked in this archive; ongoing tasks should be recorded in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` instead.
+
+---
+
+## RECENT CHANGES
+
+2025-12-19: Added missing SYNC template sections to this archive so drift checks can recognize the standard headings for repair #16, without altering the historical content below.
+
+---
+
+## KNOWN ISSUES
+
+No archive-specific issues are known; if any details appear stale or inconsistent, defer to the current scene-memory SYNC and Moment Graph documentation.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+Use the live SYNC at `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` for current work; this file is read-only history unless a new archival snapshot is created.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+This archive is retained to preserve prior decision history, but the canonical scene-memory state and open questions are tracked in the current SYNC and Moment Graph docs.
+
+---
+
+## TODO
+
+- [ ] If this archive is refreshed again, re-run the SYNC template checklist to ensure maturity, handoff, and pointers remain aligned with protocol requirements.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+Keeping the archive template-complete makes it easy to separate historical context from live obligations without re-reading the full current SYNC each time.
+
+---
+
+## POINTERS
+
+- Current scene-memory state: `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`
+- Scene-memory implementation: `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md`
+- Canonical Moment Graph docs: `docs/engine/moments/`
+
+---
+
 ## MOMENT NODE TYPE
 ===============================================================================
 
@@ -89,3 +160,109 @@ processor.link_narrative_to_moments(narrative_id, moment_ids)
 - Added THEN links for moment sequencing
 
 ===============================================================================
+
+
+---
+
+# Archived: SYNC_Scene_Memory.md
+
+Archived on: 2025-12-19
+Original file: SYNC_Scene_Memory.md
+
+---
+
+## RECENT CHANGES
+===============================================================================
+
+### 2025-12-19: Refreshed scene-memory implementation file metadata
+- **What:** Updated the implementation doc line counts to match the current
+  `engine/infrastructure/memory/__init__.py` and
+  `engine/infrastructure/memory/moment_processor.py` sizes.
+- **Why:** Keep the file responsibility table and extraction candidate sizing
+  aligned with the actual codebase layout.
+- **Files:** `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md`
+
+### 2025-12-19: Clarified extraction candidates to avoid stale file references
+- **What:** Reworded extraction target descriptions to emphasize they remain
+  internal helpers within `engine/infrastructure/memory/moment_processor.py`.
+- **Why:** Keep the implementation doc aligned with existing files while
+  avoiding references to nonexistent modules.
+- **Files:** `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md`
+
+### 2025-12-19: Normalized code structure paths in implementation doc
+- **What:** Rewrote the code structure tree to use full file paths.
+- **Why:** Prevent bare filename references from being flagged as broken links.
+- **Files:** `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md`
+
+### 2025-12-19: Fixed broken implementation doc references
+- **What:** Replaced method/attribute-only references with concrete file paths
+  and line anchors, and removed non-existent extraction target paths from the
+  implementation doc.
+- **Why:** Clear broken-link checks for the scene-memory implementation doc.
+- **Files:** `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md`
+
+### 2025-12-19: Updated scene-memory test path in modules.yaml
+- **What:** Switched the scene-memory `tests` entry from a glob to the concrete
+  file `engine/tests/test_moment.py`.
+- **Why:** `ngram validate` treats glob strings as literal paths; pointing to an
+  existing test file avoids YAML drift.
+- **Files:** `modules.yaml`
+
+### 2025-12-19: Rechecked moment processor helpers for current repair run
+- **What:** Confirmed `_write_transcript`, `last_moment_id`,
+  `transcript_line_count`, and `get_moment_processor` are already implemented in
+  `engine/infrastructure/memory/moment_processor.py`.
+- **Why:** The INCOMPLETE_IMPL alert remains stale; no code changes required.
+- **Files:** `engine/infrastructure/memory/moment_processor.py`
+
+### 2025-12-19: Logged moment processor helper verification for repair 02
+- **What:** Verified the helper implementations flagged by the repair task remain
+  complete (`_write_transcript`, `last_moment_id`, `transcript_line_count`,
+  `get_moment_processor`).
+- **Why:** This repair run confirms the INCOMPLETE_IMPL alert is stale.
+- **Files:** `engine/infrastructure/memory/moment_processor.py`
+
+### 2025-12-19: Rechecked moment processor helper implementations for current repair run
+- **What:** Confirmed `_write_transcript`, `last_moment_id`, `transcript_line_count`,
+  and `get_moment_processor` are already implemented in
+  `engine/infrastructure/memory/moment_processor.py`.
+- **Why:** The INCOMPLETE_IMPL alert is stale for this repair task.
+- **Files:** `engine/infrastructure/memory/moment_processor.py`
+
+### 2025-12-19: Revalidated moment processor helpers for current repair run
+- **What:** Rechecked `_write_transcript`, `last_moment_id`,
+  `transcript_line_count`, and `get_moment_processor`; all implementations
+  remain present.
+- **Why:** Confirm the INCOMPLETE_IMPL alert is stale for this repair task.
+- **Files:** `engine/infrastructure/memory/moment_processor.py`
+
+### 2025-12-19: Reconfirmed moment processor implementations
+- **What:** Rechecked the helper implementations flagged by the repair task;
+  no missing bodies were found.
+- **Why:** This repair run validates the INCOMPLETE_IMPL alert is stale.
+- **Files:** `engine/infrastructure/memory/moment_processor.py`
+
+### 2025-12-19: Reverified moment processor helpers for repair 03
+- **What:** Checked `_write_transcript`, `last_moment_id`,
+  `transcript_line_count`, and `get_moment_processor` in
+  `engine/infrastructure/memory/moment_processor.py`; all implementations are
+  present.
+- **Why:** Confirm the INCOMPLETE_IMPL report is stale.
+- **Files:** `engine/infrastructure/memory/moment_processor.py`
+
+### 2025-12-19: Reconfirmed moment processor implementations for repair 02
+- **What:** Rechecked the same helper implementations flagged in this repair run;
+  no empty bodies were found.
+- **Why:** Validate the INCOMPLETE_IMPL alert remains stale.
+- **Files:** `engine/infrastructure/memory/moment_processor.py`
+
+### 2025-12-19: Added DOCS references for memory module entry points
+- **What:** Added `# DOCS: docs/infrastructure/scene-memory/` to
+  `engine/infrastructure/memory/__init__.py` and standardized the comment in
+  `engine/infrastructure/memory/moment_processor.py`.
+- **Why:** Ensure `ngram` doc mapping resolves both files in the module.
+- **Files:** `engine/infrastructure/memory/__init__.py`,
+  `engine/infrastructure/memory/moment_processor.py`
+
+
+---
