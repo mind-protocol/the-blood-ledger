@@ -38,7 +38,7 @@ All Python imports updated and verified working. Health score improved from 10 c
 | graph_ops.py monolith | warning | `engine/physics/graph/` | 1094 lines (reduced from 1611 via LinkCreationMixin extraction), still above 800 threshold |
 | ~~graph_queries.py monolith~~ | ~~critical~~ | `engine/physics/graph/` | RESOLVED: 892 lines (extracted SearchQueryMixin) |
 | ~~Broken impl link~~ | ~~critical~~ | `docs/physics/` | RESOLVED: Fixed tree structure (ASCII), removed false positive backticks |
-| 3 stale SYNCs | warning | various | Need refresh (scene, map, world-runner, scene-memory fixed) |
+| 2 stale SYNCs | warning | various | Need refresh (scene, map, world-runner, scene-memory, embeddings done) |
 
 ---
 
@@ -87,7 +87,7 @@ Code restructured to match docs areas. All imports updated and verified working.
 
 ### Backlog
 
-- [ ] Refresh 3 remaining stale SYNC files (scene, map, world-runner, scene-memory done)
+- [ ] Refresh 2 remaining stale SYNC files (scene, map, world-runner, scene-memory, embeddings done)
 - [ ] Add DOCS: references to code files
 
 ---
