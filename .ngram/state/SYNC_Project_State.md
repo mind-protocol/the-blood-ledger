@@ -9,6 +9,9 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Revalidated moment processor helpers for the current repair run; no code changes
+needed and logged in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
+
 Ran `ngram validate` after confirming the nodes helper implementations; failures remain in pre-existing `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` gaps plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Logged the current repair run verification for `engine/models/base.py` comparison helpers in `docs/schema/models/SYNC_Schema_Models.md`; no code changes required.
