@@ -61,9 +61,9 @@ engine/
 
 | Pattern | Applied To | Purpose |
 |---------|------------|---------|
-| Strategy | `moment_processor.py:MomentProcessor.__init__` | Inject `embed_fn` to swap embedding providers |
-| Facade | `moment_processor.py:MomentProcessor` | Provide a single interface over GraphOps + transcript IO |
-| Factory | `moment_processor.py:get_moment_processor` | Create a configured processor with defaults |
+| Strategy | `engine/infrastructure/memory/moment_processor.py:30` | Inject `embed_fn` to swap embedding providers |
+| Facade | `engine/infrastructure/memory/moment_processor.py:19` | Provide a single interface over GraphOps + transcript IO |
+| Factory | `engine/infrastructure/memory/moment_processor.py:561` | Create a configured processor with defaults |
 
 ### Anti-Patterns to Avoid
 
@@ -164,10 +164,10 @@ engine/infrastructure/memory/moment_processor.py
 
 | Package | Used For | Imported By |
 |---------|----------|-------------|
-| `json` | Transcript persistence | `moment_processor.py` |
-| `logging` | Processor diagnostics | `moment_processor.py` |
-| `pathlib` | Playthrough paths | `moment_processor.py` |
-| `datetime` | Transcript timestamps | `moment_processor.py` |
+| `json` | Transcript persistence | `engine/infrastructure/memory/moment_processor.py` |
+| `logging` | Processor diagnostics | `engine/infrastructure/memory/moment_processor.py` |
+| `pathlib` | Playthrough paths | `engine/infrastructure/memory/moment_processor.py` |
+| `datetime` | Transcript timestamps | `engine/infrastructure/memory/moment_processor.py` |
 
 ---
 
@@ -177,11 +177,11 @@ engine/infrastructure/memory/moment_processor.py
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| current tick | `MomentProcessor._current_tick` | instance | set via `set_context` |
-| current place | `MomentProcessor._current_place_id` | instance | set via `set_context` |
-| last moment id | `MomentProcessor._last_moment_id` | instance | updated per processed moment |
-| transcript line count | `MomentProcessor._transcript_line_count` | instance | loaded/updated per write |
-| transcript path | `MomentProcessor.transcript_path` | instance | derived at init |
+| current tick | `engine/infrastructure/memory/moment_processor.py:59` | instance | set via `set_context` |
+| current place | `engine/infrastructure/memory/moment_processor.py:60` | instance | set via `set_context` |
+| last moment id | `engine/infrastructure/memory/moment_processor.py:61` | instance | updated per processed moment |
+| transcript line count | `engine/infrastructure/memory/moment_processor.py:64` | instance | loaded/updated per write |
+| transcript path | `engine/infrastructure/memory/moment_processor.py:56` | instance | derived at init |
 
 ---
 
@@ -205,8 +205,8 @@ engine/infrastructure/memory/moment_processor.py
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `playthroughs_dir` | `MomentProcessor.__init__` | `engine/playthroughs` | Transcript storage root |
-| `graph_name` | `get_moment_processor` | `blood_ledger` | Target graph database |
+| `playthroughs_dir` | `engine/infrastructure/memory/moment_processor.py:30` | `engine/playthroughs` | Transcript storage root |
+| `graph_name` | `engine/infrastructure/memory/moment_processor.py:561` | `blood_ledger` | Target graph database |
 
 ---
 
@@ -235,8 +235,8 @@ engine/infrastructure/memory/moment_processor.py
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `engine/infrastructure/memory/moment_processor.py` | ~583L | <400L | `engine/infrastructure/memory/transcript_store.py` | `_load_transcript_line_count`, `_write_transcript`, `_append_to_transcript` |
-| `engine/infrastructure/memory/moment_processor.py` | ~583L | <400L | `engine/infrastructure/memory/moment_ids.py` | `_generate_id`, `_tick_to_time_of_day` |
+| `engine/infrastructure/memory/moment_processor.py` | ~583L | <400L | transcript store module (proposed) | `_load_transcript_line_count`, `_write_transcript`, `_append_to_transcript` |
+| `engine/infrastructure/memory/moment_processor.py` | ~583L | <400L | moment id helper module (proposed) | `_generate_id`, `_tick_to_time_of_day` |
 
 ### Missing Implementation
 

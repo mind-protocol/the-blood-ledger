@@ -9,9 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Repaired broken file references in `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md` by swapping method/attribute-only mentions to concrete file paths and removing references to non-existent extraction target files.
+
 Repaired broken method-qualified references in the map implementation doc by pointing semantic search mentions at `engine/world/map/semantic.py` and logged the change in `docs/world/map/SYNC_Map.md`.
 
 Repaired broken narrator implementation references by removing the nonexistent `narrator_prompt.py` mention and clarifying the NarratorService entry point in `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, then logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
+
+Repaired broken implementation doc links in `docs/design/IMPLEMENTATION_Vision.md` by switching to concrete file paths and removing placeholder extraction target filenames; logged the update in `docs/design/SYNC_Vision.md`.
 
 Completed the tempo documentation chain (PATTERNS/BEHAVIORS/VALIDATION/TEST),
 updated `docs/infrastructure/tempo/SYNC_Tempo.md`, and added an

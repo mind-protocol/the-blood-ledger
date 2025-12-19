@@ -127,6 +127,13 @@ See `docs/physics/` for current Moment Graph documentation.
 ## RECENT CHANGES
 ===============================================================================
 
+### 2025-12-19: Fixed broken implementation doc references
+- **What:** Replaced method/attribute-only references with concrete file paths
+  and line anchors, and removed non-existent extraction target paths from the
+  implementation doc.
+- **Why:** Clear broken-link checks for the scene-memory implementation doc.
+- **Files:** `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md`
+
 ### 2025-12-19: Updated scene-memory test path in modules.yaml
 - **What:** Switched the scene-memory `tests` entry from a glob to the concrete
   file `engine/tests/test_moment.py`.

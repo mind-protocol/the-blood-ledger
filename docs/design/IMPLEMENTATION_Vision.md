@@ -30,28 +30,24 @@ Note: This module is documentation-only; the IMPL reference points to the primar
 ## CODE STRUCTURE
 
 ```
-docs/
-└── design/
-    ├── PATTERNS_Vision.md
-    ├── BEHAVIORS_Vision.md
-    ├── ALGORITHM_Vision.md
-    ├── VALIDATION_Vision.md
-    ├── IMPLEMENTATION_Vision.md
-    ├── TEST_Vision.md
-    ├── SYNC_Vision.md
-    ├── opening/
-    │   ├── PATTERNS_Opening.md
-    │   ├── BEHAVIORS_Opening.md
-    │   ├── ALGORITHM_Opening.md
-    │   ├── VALIDATION_Opening.md
-    │   ├── TEST_Opening.md
-    │   ├── SYNC_Opening.md
-    │   ├── GUIDE.md
-    │   ├── CONTENT.md
-    │   ├── CLAUDE.md
-    │   └── opening.json
-    └── scenarios/
-        └── README.md
+docs/design/PATTERNS_Vision.md
+docs/design/BEHAVIORS_Vision.md
+docs/design/ALGORITHM_Vision.md
+docs/design/VALIDATION_Vision.md
+docs/design/IMPLEMENTATION_Vision.md
+docs/design/TEST_Vision.md
+docs/design/SYNC_Vision.md
+docs/design/opening/PATTERNS_Opening.md
+docs/design/opening/BEHAVIORS_Opening.md
+docs/design/opening/ALGORITHM_Opening.md
+docs/design/opening/VALIDATION_Opening.md
+docs/design/opening/TEST_Opening.md
+docs/design/opening/SYNC_Opening.md
+docs/design/opening/GUIDE.md
+docs/design/opening/CONTENT.md
+docs/design/opening/CLAUDE.md
+docs/design/opening/opening.json
+docs/design/scenarios/README.md
 ```
 
 ### File Responsibilities
@@ -97,7 +93,7 @@ docs/
 | Pattern | Applied To | Purpose |
 |---------|------------|---------|
 | Documentation chain | `docs/design/TEST_Vision.md`, `docs/design/IMPLEMENTATION_Vision.md` | Explicitly links vision docs for navigation |
-| Template-driven docs | `docs/design/*`, `docs/design/opening/*` | Keeps documentation structured and comparable |
+| Template-driven docs | `docs/design/`, `docs/design/opening/` | Keeps documentation structured and comparable |
 
 ### Anti-Patterns to Avoid
 
@@ -109,9 +105,9 @@ docs/
 
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
-| Vision core | `docs/design/*.md` | Engine/frontend modules | CHAIN references, shared terminology |
-| Opening submodule | `docs/design/opening/*` | Vision core docs | References in GUIDE/CONTENT |
-| Scenarios | `docs/design/scenarios/*` | Opening/vision docs | Scenario index links |
+| Vision core | `docs/design/` | Engine/frontend modules | CHAIN references, shared terminology |
+| Opening submodule | `docs/design/opening/` | Vision core docs | References in GUIDE/CONTENT |
+| Scenarios | `docs/design/scenarios/` | Opening/vision docs | Scenario index links |
 
 ---
 
@@ -160,8 +156,8 @@ TEST_Vision.md
 ```
 docs/design/TEST_Vision.md
     └── references -> docs/design/PATTERNS_Vision.md
-docs/design/opening/*
-    └── depends on -> docs/design/*.md
+docs/design/opening/
+    └── depends on -> docs/design/
 ```
 
 ### External Dependencies
@@ -212,9 +208,9 @@ None. This module does not map to implementation code.
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `docs/design/BEHAVIORS_Vision.md` | 409L | <400L | `docs/design/BEHAVIORS_Drives_And_Metrics.md` | Octalysis framework + metrics section |
-| `docs/design/opening/CLAUDE.md` | 728L | <400L | `docs/design/opening/CLAUDE_Core_Loop.md` + `docs/design/opening/CLAUDE_Tool_Reference.md` | Tool call reference and operational checklists |
-| `docs/design/opening/opening.json` | 401L | <400L | `docs/design/opening/opening_part_*.json` | Split by scene/section payloads |
+| `docs/design/BEHAVIORS_Vision.md` | 409L | <400L | Proposed: split into a new drives/metrics behaviors doc (name TBD) | Octalysis framework + metrics section |
+| `docs/design/opening/CLAUDE.md` | 728L | <400L | Proposed: split into core loop + tool reference docs (names TBD) | Tool call reference and operational checklists |
+| `docs/design/opening/opening.json` | 401L | <400L | Proposed: split into per-scene JSON payloads (names TBD) | Split by scene/section payloads |
 
 ### Missing Implementation
 
