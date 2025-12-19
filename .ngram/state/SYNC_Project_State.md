@@ -139,6 +139,8 @@ Check `modules.yaml` (project root) for full manifest.
 - Verified `engine/graph/health/check_health.py` functions flagged as empty are already implemented; no code changes required for graph health helpers.
 - Verified `engine/infrastructure/history/conversations.py` functions flagged as empty are already implemented; no code changes required for ConversationThread helpers.
 - Verified `engine/infrastructure/api/moments.py` functions flagged as empty are already implemented; no code changes required for moments API helpers.
+- Verified `engine/models/base.py` functions flagged as empty are already implemented; no code changes required for GameTimestamp comparisons.
+- Verified `engine/infrastructure/memory/moment_processor.py` functions flagged as empty are already implemented; no code changes required for moment processor helpers.
 
 ## CONFLICTS
 
@@ -166,6 +168,18 @@ Check `modules.yaml` (project root) for full manifest.
 - Reasoning: All five functions are fully implemented and actively used: `_get_*` functions resolve graph names and return appropriate query/traversal/surface objects; `moment_stream` is a complete SSE endpoint with async event generator.
 - Updated: `.ngram/state/SYNC_Project_State.md`
 
+### DECISION: Models Base Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `__str__`, `__le__`, and `__gt__` in `engine/models/base.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: `GameTimestamp` implements string formatting and comparison logic used by tests and history ordering.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
+### DECISION: Moment Processor Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `_write_transcript`, `last_moment_id`, `transcript_line_count`, and `get_moment_processor` in `engine/infrastructure/memory/moment_processor.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: The methods implement transcript serialization, last-moment tracking, transcript line count, and a configured factory for `MomentProcessor`.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
 ## Agent Observations
 
 ### Remarks
@@ -173,6 +187,8 @@ Check `modules.yaml` (project root) for full manifest.
 - Repair task appears to be stale relative to the current `engine/infrastructure/api/playthroughs.py` implementation.
 - Repair task appears to be stale relative to the current `engine/infrastructure/history/conversations.py` implementation.
 - Repair task appears to be stale relative to the current `engine/infrastructure/api/moments.py` implementation.
+- Repair task appears to be stale relative to the current `engine/models/base.py` implementation.
+- Repair task appears to be stale relative to the current `engine/infrastructure/memory/moment_processor.py` implementation.
 
 ### Suggestions
 - [ ] Consider adding DOCS: references for `engine/graph/health/check_health.py` to link it into the documentation chain.
