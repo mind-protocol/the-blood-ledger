@@ -80,7 +80,7 @@ engine/
 
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
-| World Runner Service | prompt build, CLI call, JSON parsing, fallback | graph tick detection, mutation application, injection storage | WorldRunnerService process_flips |
+| World Runner Service | prompt build, CLI call, JSON parsing, fallback | graph tick detection, mutation application, injection storage | `engine/infrastructure/orchestration/world_runner.py:34` (process_flips) |
 | Agent Contract | structure and guidance in `agents/world_runner/CLAUDE.md` | orchestration flow and graph data fetching | `WORLD RUNNER INSTRUCTION` sections |
 
 ---
@@ -106,8 +106,8 @@ WorldRunnerOutput:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| WorldRunnerService constructor | `engine/infrastructure/orchestration/world_runner.py:22` | Orchestrator startup |
-| WorldRunnerService process_flips | `engine/infrastructure/orchestration/world_runner.py:32` | Orchestrator `_process_flips` |
+| constructor | `engine/infrastructure/orchestration/world_runner.py:24` | Orchestrator startup |
+| process_flips | `engine/infrastructure/orchestration/world_runner.py:34` | Orchestrator `_process_flips` |
 
 ---
 
@@ -122,7 +122,7 @@ WorldRunnerOutput:
                │ flips, graph_context, player_context
                ▼
 ┌─────────────────────────┐
-│ WorldRunnerService process_flips │
+│ process_flips             │
 │ world_runner.py          │
 └──────────────┬──────────┘
                │ builds prompt
@@ -192,8 +192,8 @@ agents/world_runner/CLAUDE.md
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| `working_dir` | `WorldRunnerService` | instance | set on init, used per call |
-| `timeout` | `WorldRunnerService` | instance | set on init, used per call |
+| `working_dir` | `engine/infrastructure/orchestration/world_runner.py:29` | instance | set on init, used per call |
+| `timeout` | `engine/infrastructure/orchestration/world_runner.py:30` | instance | set on init, used per call |
 
 ---
 
@@ -234,8 +234,8 @@ Synchronous subprocess call with a timeout. Orchestrator call blocks until CLI r
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `working_dir` | WorldRunnerService constructor | `Path.cwd()` | Working directory for CLI invocation |
-| `timeout` | WorldRunnerService constructor | `600` | CLI timeout in seconds |
+| `working_dir` | `engine/infrastructure/orchestration/world_runner.py:26` | `Path.cwd()` | Working directory for CLI invocation |
+| `timeout` | `engine/infrastructure/orchestration/world_runner.py:27` | `600` | CLI timeout in seconds |
 
 ---
 

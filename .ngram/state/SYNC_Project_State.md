@@ -17,7 +17,7 @@ Updated the world-runner implementation doc to remove method-name file reference
 Updated the World Runner implementation doc tables to use concrete file path/line references for entry points, configuration, and state fields, and logged the change in `docs/agents/world-runner/SYNC_World_Runner.md`.
 Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
-Repaired broken narrator implementation links in `docs/agents/narrator/IMPLEMENTATION_Narrator.md` by pinning prompt ownership and playthrough file references to existing paths, and logged the update in `docs/agents/narrator/SYNC_Narrator.md`. Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
+Repaired broken narrator implementation links in `docs/agents/narrator/IMPLEMENTATION_Narrator.md` by pinning prompt ownership, correcting the narrator entrypoint reference, and grounding playthrough file references to existing paths; logged the update in `docs/agents/narrator/SYNC_Narrator.md`. Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Reworded the debug stream entry in `docs/infrastructure/api/IMPLEMENTATION_Api.md` to avoid an `asyncio.Queue` file reference; logged the fix in `docs/infrastructure/api/SYNC_Api.md`. Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder docs and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 

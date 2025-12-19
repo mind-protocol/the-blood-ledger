@@ -61,6 +61,7 @@ The INPUT_REFERENCE.md references `engine/orchestration/world_runner.py` but the
 - Noted the initialization logging step in the canonical implementation doc to match current service behavior.
 - Removed method-name file references from the implementation doc to resolve broken link detection.
 - Updated the implementation doc to remove non-existent file references and point to the actual PATTERNS doc path.
+- Updated the implementation doc tables to use concrete file paths/line references for entry points, configuration, and state fields.
 
 ---
 
