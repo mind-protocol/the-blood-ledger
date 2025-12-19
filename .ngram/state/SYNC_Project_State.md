@@ -12,6 +12,8 @@ UPDATED_BY: Codex (repair agent)
 Completed the tempo documentation chain (PATTERNS/BEHAVIORS/VALIDATION/TEST),
 updated `docs/infrastructure/tempo/SYNC_Tempo.md`, and added an
 `infrastructure-tempo` mapping in `modules.yaml`.
+Added a tempo DOCS reference to `frontend/components/SpeedControl.tsx` to
+link the frontend speed controls to the tempo documentation chain.
 
 Linked `tests/infrastructure/world_builder/__init__.py` to the world-builder
 TEST documentation and corrected the TEST doc IMPL path to the actual test

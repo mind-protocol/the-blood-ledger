@@ -126,6 +126,7 @@ None.
 | `engine/infrastructure/api/tempo.py` | Created |
 | `engine/infrastructure/api/app.py` | Added tempo router |
 | `frontend/components/SpeedControl.tsx` | Created |
+| `frontend/components/SpeedControl.tsx` | Added DOCS reference to tempo implementation |
 | `frontend/components/GameClient.tsx` | Added SpeedControl |
 | `docs/infrastructure/tempo/PATTERNS_Tempo.md` | Created |
 | `docs/infrastructure/tempo/BEHAVIORS_Tempo.md` | Created |

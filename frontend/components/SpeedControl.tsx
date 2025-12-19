@@ -1,5 +1,7 @@
 'use client';
 
+// DOCS: docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md
+
 import { useState, useEffect, useCallback } from 'react';
 import { API_BASE } from '@/lib/api';
 
