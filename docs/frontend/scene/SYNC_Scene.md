@@ -60,7 +60,39 @@ The scene view is **implemented and functional**. It is the main game view where
 
 ---
 
+## IN PROGRESS
+
+Documentation alignment is the only active work right now, focused on keeping the scene SYNC template complete for repair #16.
+
+---
+
+## KNOWN ISSUES
+
+No active functional bugs are tracked for SceneView; the only known issue was documentation template drift that is now being addressed.
+
+---
+
+## TODO
+
+Add basic component tests for SceneView and SceneBanner once a frontend test harness is settled, and confirm action button wiring as backend APIs evolve.
+
+---
+
 ## RECENT CHANGES
+
+### 2025-12-19: Filled missing SYNC template sections
+
+- **What:** Added IN PROGRESS, KNOWN ISSUES, TODO, and CONSCIOUSNESS TRACE sections to the scene SYNC.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for `docs/frontend/scene/SYNC_Scene.md` per repair #16.
+- **Files:** `docs/frontend/scene/SYNC_Scene.md`
+- **Struggles/Insights:** Kept additions factual and scoped to documentation status.
+
+### 2025-12-19: Completed scene behaviors template sections
+
+- **What:** Filled missing BEHAVIORS/INPUTS-OUTPUTS/EDGE CASES/ANTI-BEHAVIORS/GAPS sections and expanded behavior statements.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for `BEHAVIORS_Scene.md` per repair #16.
+- **Files:** `docs/frontend/scene/BEHAVIORS_Scene.md`
+- **Struggles/Insights:** Kept behaviors aligned with existing scene UI expectations without asserting backend behavior.
 
 ### 2025-12-19: Fill scene test template sections
 
@@ -180,6 +212,13 @@ Scene view is implemented and works. The core layout exists with header, image, 
 - **Files:** `docs/frontend/scene/VALIDATION_Scene.md`
 - **Struggles/Insights:** None; verification only.
 
+### 2025-12-19: Completed scene test template
+
+- **What:** Filled missing test-template sections and aligned headings to the standard TEST format, including strategy, coverage, and run guidance.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for `TEST_Scene.md` and make planned coverage explicit.
+- **Files:** `docs/frontend/scene/TEST_Scene.md`
+- **Struggles/Insights:** Documented plans only; no automated tests exist yet.
+
 ---
 
 ## POINTERS
@@ -207,3 +246,9 @@ Scene view is implemented and works. The core layout exists with header, image, 
 
 ### Propositions
 - Consider a shared scene fixture in frontend tests to standardize validation inputs.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+This update focuses on documentation hygiene only; I kept the additions narrow to avoid implying any unverified UI behavior or implementation changes.
