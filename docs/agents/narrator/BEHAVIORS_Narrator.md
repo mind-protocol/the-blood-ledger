@@ -8,6 +8,17 @@ STATUS: Canonical
 
 ---
 
+## CHAIN
+
+PATTERNS:        ./PATTERNS_Narrator.md  
+ALGORITHM:       ./ALGORITHM_Scene_Generation.md  
+VALIDATION:      ./VALIDATION_Narrator.md  
+IMPLEMENTATION:  ./IMPLEMENTATION_Narrator.md  
+TEST:            ./TEST_Narrator.md  
+SYNC:            ./SYNC_Narrator.md  
+
+---
+
 ## Two Response Modes
 
 | Mode | Threshold | Output |
@@ -49,6 +60,45 @@ Schema: `TOOL_REFERENCE.md`.
 
 - Only include `time_elapsed` for significant actions.
 - Conversational actions omit it entirely.
+
+---
+
+## BEHAVIORS
+
+- Produces narrations and dialogue that stay anchored to current graph state and recent actions, with clear continuity and referential consistency.
+- Emits a streaming response where the first chunk arrives fast and subsequent chunks preserve voice, pacing, and scene context.
+- Returns a full SceneTree only for significant actions, while conversational actions return an empty scene structure.
+- Persists inventions as graph mutations so new facts are canon and can be queried immediately in the next turn.
+
+---
+
+## INPUTS / OUTPUTS
+
+Inputs include the player action payload, recent scene state, and any world injection breaks defined in `docs/agents/narrator/INPUT_REFERENCE.md`. Outputs are streamed narrator chunks plus mutations and either `scene: {}` or a full SceneTree as defined in `docs/agents/narrator/TOOL_REFERENCE.md`.
+
+---
+
+## EDGE CASES
+
+- If graph context is sparse, the narrator should invent minimally, then persist it as mutations so the next step can reference it.
+- If streaming stalls, the narrator must still honor the stream-first rule by sending an opening chunk before any long reasoning.
+- If world injection conflicts with current narration, urgent interruptions override and the conflict is surfaced through character reactions.
+
+---
+
+## ANTI-BEHAVIORS
+
+- Do not invent facts without recording mutations; unpersisted facts cause canon drift and break future continuity checks.
+- Do not emit a full SceneTree for conversational actions; that breaks the lightweight response contract and slows the stream.
+- Do not include `time_elapsed` for conversational actions; it must only appear on significant actions.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+Gaps: Recovery behavior for interrupted streams is documented elsewhere but not fully enumerated here.  
+Ideas: Add explicit expectations for narrator fallback phrasing when click responses are missing.  
+Questions: Should the narrator ever suppress mutations for clearly non-canonical chatter?
 
 ---
 

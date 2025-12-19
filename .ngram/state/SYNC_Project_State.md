@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections in `docs/agents/narrator/BEHAVIORS_Narrator.md` (CHAIN, behaviors, inputs/outputs, edge cases, anti-behaviors, gaps/ideas/questions) and logged the update in `docs/agents/narrator/SYNC_Narrator.md` for repair #16.
+
 Expanded `docs/agents/narrator/VALIDATION_Narrator.md` with the missing SYNC
 STATUS section and longer validation entries to resolve doc-template drift,
 and logged the update in `docs/agents/narrator/SYNC_Narrator.md` for repair #16.
