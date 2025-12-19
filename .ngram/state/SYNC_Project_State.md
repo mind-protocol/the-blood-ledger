@@ -14,6 +14,11 @@ missing template sections (data structures, algorithm steps, decisions, data
 flow, complexity, helpers, interactions, gaps) and logged the update in
 `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` for repair #16.
 
+Expanded `docs/infrastructure/scene-memory/PATTERNS_Scene_Memory.md` with the
+missing template sections (principles, dependencies, inspirations, scope) and
+logged the update in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`
+for repair #16.
+
 Clarified the TEST_Vision test strategy with explicit playtest log fields and
 recorded the update in `docs/design/SYNC_Vision.md` for repair #16.
 

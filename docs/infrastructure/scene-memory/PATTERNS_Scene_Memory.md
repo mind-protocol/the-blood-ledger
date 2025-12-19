@@ -34,6 +34,48 @@ This document is kept as a legacy reference only.
 - `docs/physics/`
 
 ===============================================================================
+## PRINCIPLES
+===============================================================================
+
+- Preserve a single source of truth: capture narration and actions as moments
+  so later systems can link beliefs and narratives without hidden rewrites.
+- Favor append-only history: write transcript entries in order so debugging and
+  provenance checks never depend on reconstructing past output.
+- Keep identity stable: expand short names with scene context to avoid global
+  collisions in downstream graph queries and export pipelines.
+
+===============================================================================
+## DEPENDENCIES
+===============================================================================
+
+- Moment Graph docs define the canonical model, lifecycle, and query patterns
+  that supersede the legacy Scene Memory container assumptions in this file.
+- Transcript persistence relies on engine infrastructure that writes readable,
+  append-only logs for audit trails and replay debugging.
+- Graph ops and schema models provide the APIs that the legacy pattern assumed
+  for creating, linking, and reading Moment nodes.
+
+===============================================================================
+## INSPIRATIONS
+===============================================================================
+
+- Event-sourcing style logs where every narrative line is immutable and can be
+  replayed for debugging, analytics, or retrospective story reconstruction.
+- Memory systems that treat observations as primary facts and derive beliefs as
+  secondary projections tied back to explicit sources.
+
+===============================================================================
+## SCOPE
+===============================================================================
+
+- This legacy pattern only documents the historical Scene Memory design and
+  its transition into the Moment Graph system; it is not the canonical spec.
+- In scope: high-level assumptions about moments, transcripts, and name
+  expansion that still explain why the current system looks the way it does.
+- Out of scope: new behavior, updated algorithms, or implementation details,
+  which are documented in the Moment Graph and physics docs.
+
+===============================================================================
 ## LEGACY PATTERN SUMMARY
 ===============================================================================
 
