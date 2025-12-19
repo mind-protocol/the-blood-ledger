@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/frontend/SYNC_Frontend.md` with maturity, in-progress, and consciousness trace sections, plus a fuller known-issues note for doc-template alignment.
+
 Reduced `docs/infrastructure/history` below the 50K character threshold by splitting ALGORITHM and TEST docs into subfiles with entry-point stubs, condensing long-form sections, and moving archives into `docs/infrastructure/history/archive/`. Ran `ngram validate`; remaining failures are pre-existing missing VIEW/doc-chain gaps in other modules.
 
 Reduced the `docs/world/map` module size by splitting the algorithm overview

@@ -60,9 +60,46 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ---
 
+## MATURITY
+
+STATUS: CANONICAL
+
+What's canonical (v1):
+- Next.js App Router entry points and layout flow.
+- Backend-driven state hooks with REST + SSE updates.
+- Scene, moment, map, panel, and voice component hierarchy.
+
+What's still being designed:
+- Testing strategy and coverage expectations for frontend modules.
+- Long-term consolidation plan for `useGameState` and `useMoments`.
+
+What's proposed (v2):
+- Replace remaining static fallbacks with scenario-specific mocks.
+- Expand automated UI coverage for core playthrough flows.
+
+---
+
+## IN PROGRESS
+
+- Align frontend testing approach with backend CI constraints.
+- Track when the moment system can fully replace legacy scene state.
+
+---
+
 ## KNOWN ISSUES
 
-No critical issues currently tracked.
+No critical issues currently tracked, but automated frontend tests are sparse
+and the dual state hooks (`useGameState` + `useMoments`) add maintenance risk.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+**Project momentum:**
+Stable; frontend surface area is mapped and documented, with tests as the main gap.
+
+**Attention points:**
+Keep hook ownership clear as the moment system evolves to prevent drift.
 
 ---
 
@@ -132,6 +169,10 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-19: Implementation overview fill-in
+- Added LOGIC CHAINS and CONCURRENCY MODEL sections to the frontend implementation overview entry point.
+- Ran `cd frontend && npm run build` to verify the doc update against the current frontend build.
 
 ### 2025-12-19: Size verification
 - Confirmed the frontend doc chain is ~32K chars (below the 50K module threshold).
