@@ -12,8 +12,9 @@ STATUS: Documented, not implemented
 ### Documentation
 - [x] PATTERNS_Graph.md — Core philosophy (energy as attention, computed weight)
 - [x] BEHAVIORS_Graph.md — What the graph does (flow, propagation, decay, pressure, flips, criticality)
-- [x] ALGORITHM_Energy_Flow.md — Per-tick processing with link-type propagation
-- [x] ALGORITHM_Weight_Computation.md — How weight emerges from structure
+- [x] ALGORITHM_Energy_Flow.md — Per-tick processing with link-type propagation and weight recomputation
+- [x] ALGORITHM_Weight.md — Redirect to ALGORITHM_Energy_Flow.md (deprecated duplicate)
+- [x] VALIDATION_Living_Graph.md — Validation spec tying behaviors to tests and desired feel
 
 ### Data
 - [x] `/data/graph.json` — Narrative graph with characters, narratives, tensions
@@ -227,6 +228,7 @@ Repeat
 - Re-verified `engine/graph/health/check_health.py` already implements health report helpers; no code changes needed.
  - Verified moment query helpers in `engine/physics/graph/graph_queries_moments.py` already implement narrative, transition, and clickable-word queries.
 - Implemented markdown formatting and cosine similarity helpers directly in `engine/physics/graph/graph_queries_search.py` to complete search mixin methods.
+- Consolidated weight computation into `docs/physics/graph/ALGORITHM_Energy_Flow.md` and redirected `docs/physics/graph/ALGORITHM_Weight.md`.
 
 ### Suggestions
 - None.
