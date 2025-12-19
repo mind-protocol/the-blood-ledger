@@ -9,6 +9,14 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing SCOPE and INSPIRATIONS sections in `docs/frontend/minimap/PATTERNS_Discovered_Location_Minimap.md`, expanded template text, and logged the update in `docs/frontend/minimap/SYNC_Minimap.md` for repair #16.
+
+Filled missing SCOPE and INSPIRATIONS sections in
+`docs/frontend/right-panel/PATTERNS_Tabbed_Right_Panel.md` and logged the
+template-drift fix in `docs/frontend/right-panel/SYNC_Right_Panel.md`.
+
+Reduced `docs/infrastructure/async` under the 50K threshold by splitting the async algorithm into focused parts under `docs/infrastructure/async/ALGORITHM/`, archiving verbose discussion-tree and data-flow details in `docs/infrastructure/async/archive/SYNC_archive_2024-12.md`, trimming example blocks, and updating CHAIN references across the module.
+
 Reduced `docs/infrastructure/world-builder` to ~34K chars by splitting ALGORITHM/IMPLEMENTATION/VALIDATION/TEST into overview/detail subfiles with entry-point stubs, trimming verbose examples into `docs/infrastructure/world-builder/archive/SYNC_archive_2024-12.md`, and updating DOCS pointers in world-builder code and tests. `pytest tests/infrastructure/world_builder/test_world_builder.py -v` failed due to missing `pytest_xprocess` plugin; `ngram validate` still reports pre-existing missing VIEW and doc-chain gaps in other modules.
 
 Filled missing template sections (in progress, known issues, human handoff,

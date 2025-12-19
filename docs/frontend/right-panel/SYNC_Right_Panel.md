@@ -57,6 +57,12 @@ tabs or rendering rules change without updating the doc chain.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Added scope and inspirations to patterns doc
+
+- **What:** Filled SCOPE and INSPIRATIONS in the right panel patterns file.
+- **Why:** Repair task flagged missing template sections for the module.
+- **Files:** `docs/frontend/right-panel/PATTERNS_Tabbed_Right_Panel.md`
+
 ### 2025-12-19: Filled template sections for drift repair
 
 - **What:** Added missing template sections and expanded sync content.
@@ -124,6 +130,8 @@ design changes were introduced in this update.
 ### Remarks
 The right panel docs are now aligned with the template requirements and keep
 the focus on read-only rendering with parent-controlled state.
+
+Added scope and inspirations to the patterns doc to close template drift.
 
 ### Suggestions
 - [ ] If unread indicators are added, document state persistence and update

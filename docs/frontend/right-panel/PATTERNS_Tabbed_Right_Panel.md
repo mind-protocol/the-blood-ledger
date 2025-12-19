@@ -33,6 +33,22 @@ local to the panel and rely on data passed in from the main game client.
 
 ---
 
+## SCOPE
+
+This pattern covers the right-side panel layout, tab switching, and read-only
+rendering of chronicle, conversations, and ledger content within the scene
+view; it does not cover data creation, persistence, or backend sync logic.
+
+---
+
+## INSPIRATIONS
+
+Sidebar tab patterns from collaborative tools (Slack/Notion), plus RPG journals
+that separate lore, dialogue, and obligations into quick-access panes, guided
+the decision to keep the panel compact and immediately switchable.
+
+---
+
 ## PRINCIPLES
 
 ### Principle 1: Scene First
@@ -72,5 +88,9 @@ state owners.
 
 ## GAPS / IDEAS / QUESTIONS
 
-- [ ] Decide if the active tab should persist in local storage.
-- [ ] Consider unread indicators when new entries arrive.
+Open questions focus on whether the panel should behave like a persistent
+context shelf or an attention-capture surface, because that choice drives the
+storage and indicator design.
+
+- [ ] Decide if the active tab should persist in local storage or per-session.
+- [ ] Consider unread indicators when new entries arrive within each tab.
