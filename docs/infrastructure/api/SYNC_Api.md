@@ -8,6 +8,22 @@ STATUS: CANONICAL
 
 ---
 
+## MATURITY
+
+STATUS: CANONICAL
+
+What's canonical (v1):
+- API app factory, router wiring, and current playthrough/moment endpoints are live and documented.
+- Debug and gameplay SSE streams are established with separate queues and known payload shapes.
+
+What's still being designed:
+- Auth, rate limiting, and API gateway decisions are pending until load and access patterns stabilize.
+
+What's proposed (v2):
+- Split router-level docs into per-route modules if the API surface keeps growing.
+
+---
+
 ## CURRENT STATE
 
 **Implementation Location:** `engine/infrastructure/api/app.py`
@@ -16,7 +32,21 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ---
 
+## IN PROGRESS
+
+- Tracking template completeness for the API SYNC doc so future repairs do not regress section coverage.
+- Waiting on product direction to confirm whether authentication should be handled here or via a gateway service.
+
+---
+
 ## RECENT CHANGES
+
+### 2025-12-19: Fill missing SYNC template sections (repair 16)
+
+- **What:** Added MATURITY, IN PROGRESS, KNOWN ISSUES, handoffs, TODO, consciousness trace, and pointers sections.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT warning for the API SYNC doc.
+- **Files:**
+  - `docs/infrastructure/api/SYNC_Api.md`
 
 ### 2025-12-19: Fill API PATTERNS template sections (repair 16)
 
@@ -25,6 +55,7 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 - **Why:** Resolve DOC_TEMPLATE_DRIFT for the API patterns document.
 - **Files:**
   - `docs/infrastructure/api/PATTERNS_Api.md`
+  - `docs/infrastructure/api/SYNC_Api.md`
 
 ### 2025-12-19: Remove duplicate playthrough algorithm doc
 
@@ -158,6 +189,53 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 - **Files:**
   - `engine/infrastructure/api/playthroughs.py`
   - `docs/infrastructure/api/SYNC_Api.md`
+
+---
+
+## KNOWN ISSUES
+
+- None logged for API runtime behavior; doc drift repairs are still ongoing in other modules and may reference API dependencies.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+**Likely VIEW for continuing:** VIEW_Implement_Write_Or_Modify_Code
+
+**Context:** This SYNC entry now includes missing template sections; keep them updated if API behavior changes.
+
+**Watch out for:** Avoid adding duplicate algorithm files under `docs/infrastructure/api/`; keep `ALGORITHM_Api.md` canonical.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+**Executive summary:** Filled missing SYNC template sections for the API doc to resolve template drift warnings.
+
+**Decisions made:** None; content clarifies current status and keeps the canonical API docs intact.
+
+**Needs your input:** Confirm whether authentication and rate limiting should live in the API module or a gateway.
+
+---
+
+## TODO
+
+- [ ] Revisit API auth and rate limiting scope once the gateway strategy is chosen to avoid documenting the wrong boundary.
+- [ ] Keep SYNC entries concise while still meeting template requirements as new API endpoints are added.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+The repair focus here is documentation completeness, with no behavior changes; remaining uncertainty centers on future auth/gateway design choices.
+
+---
+
+## POINTERS
+
+- `docs/infrastructure/api/PATTERNS_Api.md` for scope and design rationale.
+- `docs/infrastructure/api/IMPLEMENTATION_Api.md` for endpoint-level data flow notes.
+- `engine/infrastructure/api/app.py` for the app factory and router wiring.
 
 ---
 
