@@ -9,11 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded the engine tests implementation doc with a file responsibilities table and updated key file roles; logged the change in `docs/engine/tests/SYNC_Engine_Test_Suite.md`.
+
 Refreshed cli-tools implementation doc line counts for the image-generation files and logged the update in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
 
 Updated the ops-scripts implementation doc entry points to include the injection scripts and logged the change in `docs/infrastructure/ops-scripts/SYNC_Ops_Scripts.md`.
 
-Updated the async implementation doc to include the `engine/scripts/inject_to_narrator.py` code-to-docs link and aligned the manual injection line reference, plus refreshed the async SYNC hook-script path to the full script location.
+Verified the async implementation doc already lists the `engine/scripts/inject_to_narrator.py` code-to-docs link and refreshed the async SYNC hook-script path to the full script location.
 
 Updated the world-builder implementation doc to add the missing `__init__.py` entry and replace bare dependency references with full `engine/infrastructure/world_builder/**` paths, then logged the change in `docs/infrastructure/world-builder/SYNC_World_Builder.md`. Ran `ngram validate` and saw pre-existing schema/product/network/storms doc-chain gaps plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 

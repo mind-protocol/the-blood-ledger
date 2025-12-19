@@ -40,6 +40,13 @@ No active work.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Expand test file responsibilities
+
+- **What:** Added a file responsibilities table and expanded key file descriptions in the implementation doc.
+- **Why:** Align test layout documentation with the current `engine/tests` suite.
+- **Files:** `docs/engine/tests/IMPLEMENTATION_Test_File_Layout.md`, `docs/engine/tests/SYNC_Engine_Test_Suite.md`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Verified implementation doc file references
 
 - **What:** Confirmed `IMPLEMENTATION_Test_File_Layout.md` references concrete `engine/tests/**` paths instead of missing or wildcard tokens.
