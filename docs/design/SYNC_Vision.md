@@ -59,6 +59,7 @@ vision chain before further revisions or expansion.
 
 ## RECENT CHANGES
 
+- 2025-12-19: Added missing BEHAVIORS template sections (CHAIN, behaviors summary, inputs/outputs, edge cases, anti-behaviors, gaps) in `docs/design/BEHAVIORS_Vision.md` for repair #16.
 - 2025-12-19: Filled missing SYNC template sections and lengthened entries.
 - 2025-12-19: Added missing PATTERNS template sections (chain/problem/pattern/principles/dependencies/inspirations/scope/gaps).
 - 2025-12-19: Filled VALIDATION_Vision template sections (chain, invariants, properties, errors, verification) for repair #16.
@@ -212,6 +213,7 @@ and should be treated as validation priorities.
 ## Agent Observations
 
 ### Remarks
+- The BEHAVIORS doc now includes explicit template sections so drift checks can validate the structure without altering the underlying vision.
 - The vision docs now fit the size threshold while keeping the core experience narrative intact.
 
 ### Suggestions

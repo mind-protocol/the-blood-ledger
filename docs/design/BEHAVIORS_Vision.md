@@ -7,6 +7,49 @@ STATUS: Draft — validating with Nicolas
 
 ---
 
+## CHAIN
+
+```
+PATTERNS:   ./PATTERNS_Vision.md
+THIS:       BEHAVIORS_Vision.md (you are here)
+ALGORITHM:  ./ALGORITHM_Vision.md
+VALIDATION: ./VALIDATION_Vision.md
+IMPLEMENTATION: ./IMPLEMENTATION_Vision.md
+TEST:       ./TEST_Vision.md
+SYNC:       ./SYNC_Vision.md
+```
+
+---
+
+## BEHAVIORS
+
+These behaviors define the lived experience: how scenes, choices, ledger
+weight, and voices feel to the player without requiring them to understand
+internal systems or hidden state.
+
+---
+
+## CHAIN
+
+- `docs/design/PATTERNS_Vision.md` (design intent and scope)
+- `docs/design/BEHAVIORS_Vision.md` (this doc)
+- `docs/design/ALGORITHM_Vision.md` (systems that create the behaviors)
+- `docs/design/VALIDATION_Vision.md` (proof points and success criteria)
+- `docs/design/IMPLEMENTATION_Vision.md` (doc architecture and ownership)
+- `docs/design/TEST_Vision.md` (validation checklist and coverage)
+- `docs/design/SYNC_Vision.md` (current state, handoffs, open questions)
+
+---
+
+## BEHAVIORS
+
+At the highest level, the player should feel present, weighted by obligation,
+and guided by specific relationships rather than abstract stats or checklists.
+These behaviors are detailed below as moment-to-moment actions, view-specific
+experiences, and the arc that shapes a full playthrough.
+
+---
+
 ## What the Player Does
 
 ### Moment to Moment
@@ -198,6 +241,29 @@ These are the moments we're designing toward:
 
 ---
 
+## INPUTS / OUTPUTS
+
+**Inputs we rely on:** player choices (actions, dialogue, travel), current
+graph state (narratives, debts, oaths), and view context (scene, map, ledger,
+faces, chronicle). These inputs shape what appears and when it matters.
+
+**Outputs we expect:** concrete narrative moments, updated ledger entries,
+shifts in relationship understanding, and a clear next step the player can
+take without feeling railroaded or lost.
+
+---
+
+## EDGE CASES
+
+- Player idles or refuses to choose; the system should surface pressure or
+time-based movement so the world still advances without breaking immersion.
+- Sparse or conflicting narrative data; scenes should still ground the player
+with clear, limited options rather than empty or confusing output.
+- High churn between views; the UI should remain consistent so the player
+does not lose the thread of the current moment.
+
+---
+
 ## Core Drives (Archived Summary)
 
 Primary motivational focus is Social Influence (deep relationships), Ownership
@@ -208,7 +274,7 @@ Detailed Octalysis mappings and behavioral targets are archived in
 
 ---
 
-## Anti-Patterns to Avoid
+## ANTI-BEHAVIORS
 
 ### "Let me check my quest log."
 If the player treats the Ledger as a checklist of objectives, we've failed. The Ledger is weight, not tasks.
@@ -246,6 +312,16 @@ in `docs/design/archive/SYNC_archive_2024-12.md`.
 Experience measurement ideas (session length, return rate, choice deliberation,
 view usage, player stories, memory moments, emotional responses) live in
 `docs/design/archive/SYNC_archive_2024-12.md`.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- How much image support is needed before text-only sessions feel thin?
+- What cadence of "world moves without you" moments keeps tension high but
+does not overwhelm player agency or comprehension?
+- Which view (map, ledger, faces, chronicle) needs the earliest prototype to
+validate the experience before full system build-out?
 
 ---
 

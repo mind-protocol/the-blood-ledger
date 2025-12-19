@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/design/BEHAVIORS_Vision.md` with the missing template sections
+(CHAIN, behaviors summary, inputs/outputs, edge cases, anti-behaviors, gaps)
+for repair #16 and logged the update in `docs/design/SYNC_Vision.md`. Ran
+`ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
+gaps in schema/product/network/storms modules).
+
 Expanded `docs/design/PATTERNS_Vision.md` with missing pattern template sections (chain, problem, pattern, principles, dependencies, inspirations, scope, gaps) and logged the change in `docs/design/SYNC_Vision.md` for repair #16.
 Ran `ngram validate`; failures remain pre-existing (missing VIEW file and doc-chain gaps in schema/product/network/storms modules).
 
