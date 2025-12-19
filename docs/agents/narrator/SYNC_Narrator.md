@@ -41,6 +41,12 @@ TOOLS:           tools/stream_dialogue.py
 
 ## RECENT CHANGES
 
+### 2025-12-19: Filled narrator implementation template gaps
+
+- **What:** Added SCHEMA, LOGIC CHAINS, and CONCURRENCY MODEL sections and expanded short summaries in the implementation doc.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT in `IMPLEMENTATION_Narrator.md` and keep the implementation template complete.
+- **Files:** `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/SYNC_Narrator.md`
+
 ### 2025-12-19: Reduced narrator doc footprint
 
 - **What:** Condensed narrator docs (algorithm, behaviors, implementation, validation, tests, input/tool references, rolling window handoff) to remove duplication and large examples; aligned `time_elapsed` guidance with conversational/significant split; added archive for removed long-form detail.
@@ -150,6 +156,7 @@ Older content archived to: `docs/agents/narrator/archive/SYNC_archive_2024-12.md
 
 ### Remarks
 - `time_elapsed` requirements were inconsistent between TOOL_REFERENCE and BEHAVIORS; aligned to conversational/significant split.
+- Implementation template gaps were filled to prevent narrator docs from drifting again.
 
 ### Suggestions
 - [ ] Review mutation type lists across narrator docs and `engine/models/` for canonical alignment.

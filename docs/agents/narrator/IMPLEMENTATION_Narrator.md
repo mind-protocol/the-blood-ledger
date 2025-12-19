@@ -68,6 +68,9 @@ tools/stream_dialogue.py                  # SSE streaming
 
 ## DATA FLOW (Condensed)
 
+This is the high-level path for a narrator call, focusing on the concrete
+runtime touchpoints and the order they occur in the current service.
+
 1. Orchestrator builds prompt with scene context + world injection.
 2. `agent_cli.py` invokes the agent with `--continue` for thread memory.
 3. Narrator streams dialogue chunks via `tools/stream_dialogue.py`.
@@ -77,7 +80,38 @@ tools/stream_dialogue.py                  # SSE streaming
 
 ---
 
+## SCHEMA
+
+The narrator returns a JSON object that matches the NarratorOutput contract,
+anchored by the SceneTree schema. The concrete shape lives in
+`docs/agents/narrator/INPUT_REFERENCE.md` and
+`docs/agents/narrator/TOOL_REFERENCE.md`, with scene, time_elapsed, mutations,
+and seeds forming the stable output envelope.
+
+---
+
+## LOGIC CHAINS
+
+Request flow chains through the orchestrator: a player action triggers the
+call in `engine/infrastructure/orchestration/narrator.py`, the prompt is built
+from scene_context/world_injection, the CLI returns JSON, and the response is
+parsed and streamed while optional graph queries and mutations happen in-band.
+
+---
+
+## CONCURRENCY MODEL
+
+Narrator calls are synchronous within a single service instance: `run_agent`
+blocks until the CLI returns, and `session_started` tracks the conversation
+thread for that instance. Parallel playthroughs should use separate service
+instances or request contexts to avoid shared session state.
+
+---
+
 ## CONFIGURATION
+
+Configuration is intentionally minimal; the narrator is driven by the prompt
+builder and agent CLI defaults, with only a few environment hooks exposed.
 
 | Config | Location | Default |
 |--------|----------|---------|
@@ -110,6 +144,6 @@ tools/stream_dialogue.py                  # SSE streaming
 
 ## GAPS / IDEAS / QUESTIONS
 
-- [ ] No automated tests for narrator output quality
-- [ ] Voice consistency checking not implemented
-- [ ] No regression tests for behavior changes
+- [ ] No automated tests for narrator output quality or schema drift detection
+- [ ] Voice consistency checking not implemented across scenes and sessions
+- [ ] No regression tests for behavior changes across playthrough resets

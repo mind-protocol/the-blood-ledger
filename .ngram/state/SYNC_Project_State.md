@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections (SCHEMA, LOGIC CHAINS, CONCURRENCY MODEL) in `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, expanded short summaries, and logged the update in `docs/agents/narrator/SYNC_Narrator.md` for repair #16.
+
 Expanded `docs/frontend/scene/ALGORITHM_Scene.md` with the missing template
 sections (overview, data structures, decisions, data flow, complexity, helper
 functions, interactions, gaps) and logged the update in
