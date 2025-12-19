@@ -17,7 +17,8 @@ verification procedure, sync status, gaps) and logged the update in
 Filled missing SYNC template sections in `docs/infrastructure/api/SYNC_Api.md`
 to resolve DOC_TEMPLATE_DRIFT for repair #16 and recorded the change in the
 API SYNC. Ran `ngram validate`; failures remain pre-existing (missing VIEW and
-doc-chain gaps in schema/product/network/storms modules).
+doc-chain gaps in schema/product/network/storms modules). Files updated:
+`docs/infrastructure/api/SYNC_Api.md`, `.ngram/state/SYNC_Project_State.md`.
 
 Expanded `docs/infrastructure/api/PATTERNS_Api.md` with the missing template
 sections (problem, pattern, principles, dependencies, inspirations, scope,
