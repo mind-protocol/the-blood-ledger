@@ -111,34 +111,50 @@ Each component handles one responsibility. Scene components don't know about map
 
 | Module | Why We Depend On It |
 |--------|---------------------|
-| `engine/api/` | REST endpoints for game state |
-| `engine/api/moments.py` | Moments API for new display system |
-| `docs/physics/` | Moment system architecture |
-| `docs/infrastructure/async/` | SSE streaming patterns |
+| `engine/api/` | REST and SSE endpoints provide authoritative state snapshots so the UI can render without duplicating logic. |
+| `engine/api/moments.py` | Moments endpoint defines the payload shape for the narrative stream and keeps hooks aligned. |
+| `docs/physics/` | Moment system and energy model live here, guiding UI expectations and debug displays. |
+| `docs/infrastructure/async/` | Streaming patterns and injection queues define the cadence the UI must mirror. |
 
 ---
 
 ## INSPIRATIONS
 
-- **Disco Elysium** — Voices as internal thoughts, click-to-explore
-- **80 Days** — Narrative presentation, atmospheric UI
-- **Twine/Ink** — Clickable narrative words
+- **Disco Elysium** — Voices as internal thoughts, layered UI, and click-to-explore narrative fragments.
+- **80 Days** — Narrative presentation with travel pacing, atmosphere, and constrained choice surfaces.
+- **Twine/Ink** — Clickable narrative words, branching micro-interactions, and text-first emphasis.
+
+---
+
+## SCOPE
+
+### In Scope
+
+- Render scenes, moments, maps, and panels from backend-provided state, including static fallback snapshots.
+- Manage UI-only state such as layout toggles, scroll positions, and input buffering without owning canon.
+- Surface real-time updates through SSE-driven hooks and present interactive affordances like clickable words.
+
+### Out of Scope
+
+- Game logic, simulations, and graph mutations remain in Python services; the UI never computes outcomes.
+- Persistent storage, authentication, and account management are handled elsewhere or deferred from v1.
+- Image generation and media pipelines live in backend tools; the frontend only renders provided assets.
 
 ---
 
 ## WHAT THIS DOES NOT SOLVE
 
-- **Game logic** — Lives in Python backend
-- **Persistence** — Graph database on backend
-- **LLM orchestration** — Narrator module on backend
-- **Image generation** — Ideogram API via Python tools
-- **Authentication** — Not implemented (single-player game)
+- **Game logic** — Lives in the Python backend; frontend never decides outcomes or world state.
+- **Persistence** — Graph database ownership stays server-side; UI does not store canonical history.
+- **LLM orchestration** — Narrator and agent prompting run in backend services, not the browser.
+- **Image generation** — Ideogram and asset pipelines are server tools; UI only renders returned assets.
+- **Authentication** — Not implemented for v1; assumptions remain single-player and session-local.
 
 ---
 
 ## GAPS / IDEAS / QUESTIONS
 
-- [x] TEST doc: Document component testing approach
-- [x] IMPLEMENTATION doc: Detail file structure and data flows
-- QUESTION: Should useMoments replace useGameState entirely, or coexist?
-- IDEA: Storybook for component development
+- [x] TEST doc: Document component testing approach, including expectations for hooks and UI utilities.
+- [x] IMPLEMENTATION doc: Detail file structure and data flows across routes, hooks, and panels.
+- QUESTION: Should useMoments replace useGameState entirely, or coexist as parallel reads of backend state?
+- IDEA: Use Storybook or Ladle for component development and QA of scene/panel variants.

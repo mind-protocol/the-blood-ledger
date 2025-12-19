@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled the missing SCOPE section in `docs/frontend/PATTERNS_Presentation_Layer.md` and expanded short template sections, logging the update in `docs/frontend/SYNC_Frontend.md`.
+
+Expanded `docs/frontend/scenarios/SYNC_Scenario_Selection.md` with required
+template sections (in-progress, known issues, human handoff, consciousness
+trace, pointers) to resolve doc-template drift.
+
 Created `docs/frontend/SYNC_Frontend_archive_2025-12.md` to restore the missing
 archive sync file with the required template sections (current state, handoffs,
 todo, consciousness trace, pointers) for the frontend repair.

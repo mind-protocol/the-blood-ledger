@@ -170,6 +170,11 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 
 ## RECENT CHANGES
 
+### 2025-12-19: PATTERNS scope completion
+- Added the missing SCOPE section to the presentation layer patterns doc.
+- Expanded dependencies, inspirations, and gaps to match template expectations.
+- Ran `cd frontend && npm run build` and `ngram validate` (remaining failures are pre-existing doc-chain gaps).
+
 ### 2025-12-19: Restored frontend sync archive file
 - Recreated `docs/frontend/SYNC_Frontend_archive_2025-12.md` with full template
   sections to resolve doc-template drift for the archived snapshot.
