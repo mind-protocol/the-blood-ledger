@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/frontend/scene/ALGORITHM_Scene.md` with the missing template
+sections (overview, data structures, decisions, data flow, complexity, helper
+functions, interactions, gaps) and logged the update in
+`docs/frontend/scene/SYNC_Scene.md` for repair #16.
+
 Completed the missing template sections in `docs/frontend/scene/BEHAVIORS_Scene.md` (behaviors, inputs/outputs, edge cases, anti-behaviors, gaps) and logged the update in `docs/frontend/scene/SYNC_Scene.md` for repair #16.
 
 Filled missing SCOPE and INSPIRATIONS sections in

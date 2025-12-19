@@ -80,6 +80,17 @@ Add basic component tests for SceneView and SceneBanner once a frontend test har
 
 ## RECENT CHANGES
 
+### 2025-12-19: Completed scene algorithm template sections
+
+- **What:** Added missing sections to `ALGORITHM_Scene.md` (overview, data
+  structures, primary algorithm, decisions, data flow, complexity, helpers,
+  interactions, gaps) and expanded the existing steps for clarity.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the scene algorithm document in
+  repair #16.
+- **Files:** `docs/frontend/scene/ALGORITHM_Scene.md`
+- **Struggles/Insights:** Kept the algorithm aligned with frontend API usage
+  and existing scene components without implying new behavior.
+
 ### 2025-12-19: Filled missing SYNC template sections
 
 - **What:** Added IN PROGRESS, KNOWN ISSUES, TODO, and CONSCIOUSNESS TRACE sections to the scene SYNC.
