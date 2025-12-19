@@ -66,6 +66,7 @@ Consolidated map algorithm docs into `docs/world/map/ALGORITHM_Rendering.md`; re
 Repair 17 revalidated map algorithm consolidation and updated `docs/world/map/SYNC_Map.md` wording to note the verification.
 Completed world map documentation chain by adding validation, implementation, and test docs; added DOCS reference in `engine/world/map/semantic.py` and mapped module in `modules.yaml`.
 Consolidated world-runner algorithm docs into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
+Removed the deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` file to eliminate duplicate ALGORITHM docs under world-runner.
 Consolidated world runner algorithm docs by merging graph tick details into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and redirecting `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
 Completed the World Runner documentation chain with VALIDATION/IMPLEMENTATION/TEST docs, updated chain links, added a DOCS reference, and mapped the module in `modules.yaml`.
 Consolidated graph weight algorithm docs by redirecting `docs/physics/graph/ALGORITHM_Weight.md` to `docs/physics/graph/ALGORITHM_Energy_Flow.md`.
@@ -81,6 +82,7 @@ Consolidated async algorithm docs into `docs/infrastructure/async/ALGORITHM_Asyn
 Reverified playthrough helper implementations for repair 01-INCOMPLETE_IMPL-api-playthroughs; no code changes required.
 Re-verified ConversationThread path helper implementations for repair 02-INCOMPLETE_IMPL-history-conversations; no code changes required.
 Reconfirmed moment graph query helper implementations in `engine/moment_graph/queries.py`; repair task was stale and required no code changes.
+Removed the deprecated narrator patterns doc (`docs/agents/narrator/PATTERNS_World_Building.md`) and cleaned duplicate PATTERNS chain references in narrator docs.
 
 ---
 

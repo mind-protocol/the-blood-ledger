@@ -12,7 +12,7 @@ STATUS: CANONICAL — fully implemented and documented
 **Module is complete.** The World Runner is an AI agent that processes tension flips (when narrative tension exceeds breaking point) and determines what happened in the world.
 
 **Components:**
-- `agents/world_runner/CLAUDE.md` — AI agent instructions (651 lines, comprehensive)
+- `agents/world_runner/CLAUDE.md` — AI agent instructions (650 lines, comprehensive)
 - `engine/infrastructure/orchestration/world_runner.py` — Python service that invokes the agent via Claude CLI
 - Full documentation suite in `docs/agents/world-runner/`
 
@@ -31,7 +31,9 @@ STATUS: CANONICAL — fully implemented and documented
 | `PATTERNS_World_Runner.md` | Why this shape | Current |
 | `BEHAVIORS_World_Runner.md` | What it produces (Injection) | Current |
 | `ALGORITHM_World_Runner.md` | How the tick loop works | Current |
-| `ALGORITHM_Graph_Ticks.md` | Redirects to canonical algorithm doc | Deprecated |
+| `VALIDATION_World_Runner_Invariants.md` | Invariants + failure behavior | Current |
+| `IMPLEMENTATION_World_Runner_Service_Architecture.md` | Code architecture | Current |
+| `TEST_World_Runner_Coverage.md` | Test coverage + gaps | Current |
 | `TOOL_REFERENCE.md` | JSON schemas for LLM output | Current |
 | `INPUT_REFERENCE.md` | What Runner receives | Current |
 | `SYNC_World_Runner.md` | Current state | This file |
@@ -53,8 +55,23 @@ The INPUT_REFERENCE.md references `engine/orchestration/world_runner.py` but the
 ## Updates
 
 - Consolidated the graph tick vs narrative flip description into `docs/agents/world-runner/ALGORITHM_World_Runner.md`.
-- Replaced `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` with a reference to the canonical algorithm doc to remove duplication.
+- Removed deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` after consolidating its content into the canonical algorithm doc.
+- Added VALIDATION, IMPLEMENTATION, and TEST docs to complete the documentation chain.
 
 ---
 
 *"The Runner runs the world. The Narrator tells the story. They meet at Injections."*
+
+---
+
+## CHAIN
+
+PATTERNS:        ./PATTERNS_World_Runner.md
+BEHAVIORS:       ./BEHAVIORS_World_Runner.md
+ALGORITHM:       ./ALGORITHM_World_Runner.md
+VALIDATION:      ./VALIDATION_World_Runner_Invariants.md
+IMPLEMENTATION:  ./IMPLEMENTATION_World_Runner_Service_Architecture.md
+TEST:            ./TEST_World_Runner_Coverage.md
+INPUTS:          ./INPUT_REFERENCE.md
+TOOLS:           ./TOOL_REFERENCE.md
+SYNC:            ./SYNC_World_Runner.md
