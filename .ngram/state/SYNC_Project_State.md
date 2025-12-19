@@ -15,6 +15,8 @@ in `docs/agents/narrator/SYNC_Narrator.md` for repair #16.
 
 Filled missing template sections in `docs/agents/narrator/ALGORITHM_Scene_Generation.md` (overview, data structures, algorithm, decisions, data flow, complexity, helpers, interactions, gaps) and logged the update in `docs/agents/narrator/SYNC_Narrator.md` for repair #16.
 
+Filled the missing SYNC template sections (maturity, current state, in progress, known issues, handoffs, todo, consciousness trace, pointers) in `docs/agents/narrator/SYNC_Narrator.md` to resolve DOC_TEMPLATE_DRIFT for repair #16.
+
 Added `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md` with the missing
 SCOPE and INSPIRATIONS sections expanded to template length, and updated
 `docs/frontend/map/SYNC_Map_View.md` to reference the new patterns doc for
