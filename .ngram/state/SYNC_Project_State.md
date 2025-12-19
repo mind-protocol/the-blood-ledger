@@ -9,6 +9,9 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Normalized `docs/physics/graph/SYNC_Graph.md` headings (MATURITY, CURRENT
+STATE, RECENT CHANGES, and handoffs) to match template labels for repair #16.
+
 Verified `docs/physics/graph/SYNC_Graph_archive_2025-12.md` already contains
 the required template sections; no content edits were needed beyond noting
 the verification in the graph SYNC for repair #16.
