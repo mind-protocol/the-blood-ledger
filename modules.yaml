@@ -164,3 +164,18 @@ modules:
     notes: |
       History service for querying and recording narratives, beliefs, and
       conversation threads for player-experienced events.
+
+  frontend:
+    code: "frontend/**"
+    docs: "docs/frontend/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/app/page.tsx
+      - frontend/components/GameClient.tsx
+    patterns:
+      - "Next.js app router"
+      - "Backend-owned game state"
+    notes: |
+      Presentation layer for The Blood Ledger, rendering scene, moments, and
+      map views while delegating state to the backend.

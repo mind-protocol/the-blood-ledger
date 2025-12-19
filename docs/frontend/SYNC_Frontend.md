@@ -2,7 +2,7 @@
 
 ```
 LAST_UPDATED: 2025-12-19
-UPDATED_BY: ngram repair agent
+UPDATED_BY: Codex (repair agent)
 STATUS: CANONICAL
 ```
 
@@ -84,6 +84,21 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ## RECENT CHANGES
 
+### 2025-12-19: Map frontend module in manifest
+
+- **What:** Added frontend module mapping in modules.yaml
+- **Why:** Ensure code/docs are linked and validated by ngram
+- **Files:** `modules.yaml`
+
+### 2025-12-19: Implement SSE integration per Migration Path
+
+- **What:** Added SSE subscription to useGameState.ts, removed polling hack from CenterStage.tsx
+- **Why:** Replace setTimeout polling with real-time SSE event handling
+- **Files:**
+  - `frontend/hooks/useGameState.ts` — Added useEffect with subscribeToMomentStream
+  - `frontend/components/scene/CenterStage.tsx` — Removed setTimeout polling
+  - `docs/frontend/ALGORITHM_Frontend_Data_Flow.md` — Updated checklist and code examples
+
 ### 2025-12-19: Complete documentation chain created
 
 - **What:** Created full documentation chain for frontend module
@@ -151,7 +166,7 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 
 ### Immediate
 
-- [ ] Add DOCS reference to main entry file (frontend/app/page.tsx)
+- [x] Add DOCS reference to main entry file (frontend/app/page.tsx)
 
 ### Later
 

@@ -22,6 +22,7 @@ Frontend-backend integration fixes for playthrough flow:
 - Implemented free text input in CenterStage.tsx (calls `sendMoment` API)
 - Added emoji fallbacks for player/character avatars (👤/🗣️)
 - Updated API IMPLEMENTATION and SYNC docs
+Mapped frontend module in `modules.yaml` to link existing frontend docs with code.
 Completed embeddings documentation chain by adding IMPLEMENTATION doc and updating IMPL paths.
 Consolidated API algorithm docs for playthrough creation into `docs/infrastructure/api/ALGORITHM_Api.md` and redirected the duplicate file.
 Consolidated duplicate world-runner IMPLEMENTATION docs into `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md` and removed the redundant file; updated chain links.
