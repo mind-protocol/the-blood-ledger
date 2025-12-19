@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/design/opening/ALGORITHM_Opening.md` with longer descriptions in
+each template section to resolve the DOC_TEMPLATE_DRIFT warning for repair #16,
+and recorded the change in `docs/design/opening/SYNC_Opening.md`.
+
 Expanded `docs/design/opening/VALIDATION_Opening.md` with missing template
 sections (properties, error conditions, test coverage, verification procedure,
 sync status) and recorded the update in `docs/design/opening/SYNC_Opening.md`
@@ -22,7 +26,9 @@ gaps, flaky tracking) and logged the update in
 Expanded `docs/design/opening/ALGORITHM_Opening.md` with the missing template
 sections (overview, data structures, algorithm, decisions, data flow,
 complexity, helpers, interactions, gaps) and logged the update in
-`docs/design/opening/SYNC_Opening.md` for repair #16.
+`docs/design/opening/SYNC_Opening.md` for repair #16. Ran `ngram validate`;
+failures remain pre-existing (missing VIEW and doc-chain gaps in schema/
+product/network/storms modules).
 
 Updated `docs/design/BEHAVIORS_Vision.md` with explicit CHAIN and BEHAVIORS
 sections (removing duplicate CHAIN/BEHAVIORS blocks) to satisfy the template
