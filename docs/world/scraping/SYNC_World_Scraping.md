@@ -136,6 +136,15 @@ with the canonical algorithm and implementation docs.
 Recent documentation updates focused on consolidation and alignment rather
 than new scraping features or additional YAML outputs.
 
+### 2025-12-19: Completed patterns template sections
+
+- **What:** Added THE PROBLEM, THE PATTERN, PRINCIPLES, DEPENDENCIES,
+  INSPIRATIONS, SCOPE, and GAPS / IDEAS / QUESTIONS to the world scraping
+  patterns doc.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the patterns document without
+  changing the pipeline behavior or YAML outputs.
+- **Files:** `docs/world/scraping/PATTERNS_World_Scraping.md`
+
 ### 2025-12-19: Expanded SYNC template coverage
 
 - **What:** Filled missing SYNC sections (maturity, current state, in progress,
@@ -282,6 +291,8 @@ for script entry points and YAML outputs.
 ### Remarks
 - Behaviors doc now spells out pipeline expectations, but source citation
   handling still needs a clear multi-citation standard.
+- Patterns doc now captures the missing template sections to align with the
+  scrape pipeline scope and dependencies.
 - Template sections were filled in this SYNC to resolve doc drift without
   altering scraping behavior or data outputs.
 

@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/world/scraping/PATTERNS_World_Scraping.md` with the missing
+template sections (problem, pattern, principles, dependencies, inspirations,
+scope, gaps) and logged the update in `docs/world/scraping/SYNC_World_Scraping.md`
+to resolve DOC_TEMPLATE_DRIFT for repair #16.
+
 Expanded `docs/world/scraping/SYNC_World_Scraping.md` with missing template
 sections (maturity, current state, in progress, known issues, handoffs, todo,
 consciousness trace, pointers) and added a brief recent-changes intro to

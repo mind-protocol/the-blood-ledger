@@ -26,6 +26,65 @@ IMPL:            data/scripts/scrape/phase1_geography.py
 
 ---
 
+## The Problem
+
+The game needs a believable 1067 England that feels authored by history, not
+by the player or procedural noise, and it must be consistent enough to support
+travel, politics, and social tension without constant manual repair.
+
+---
+
+## The Pattern
+
+Use a phase-based scraping pipeline that captures real geography, political
+control, people, narratives, and tensions as YAML sources, then inject the
+resulting records into the graph to seed a coherent world state.
+
+---
+
+## Principles
+
+- Prefer real historical anchors (places, dates, actors) over invented ones.
+- Treat geography as constraint, not decoration, so routes feel inevitable.
+- Encode social context (holdings, narratives, tensions) alongside locations.
+- Preserve auditability through YAML intermediates before injection.
+
+---
+
+## Dependencies
+
+- `data/scripts/scrape/**` phase scripts for gathering and transforming data.
+- `data/world/**` YAML outputs as the canonical intermediate artifacts.
+- `data/scripts/inject_world.py` for loading YAML into FalkorDB.
+- External sources (OSM/Nominatim, historical references) for accuracy.
+
+---
+
+## Inspirations
+
+- Domesday-era historiography that grounds who holds what, where, and why.
+- Cartographic realism from medieval atlases and river/road constraints.
+- Narrative worldbuilding that emphasizes pre-existing conflicts and scars.
+
+---
+
+## Scope
+
+In scope: scraping and compiling 1067 England geography, holdings, people,
+events, narratives, beliefs, and tensions into YAML outputs that seed the
+graph. Out of scope: live web scraping at runtime, alternate eras, or
+procedural world generation beyond the curated dataset.
+
+---
+
+## Gaps / Ideas / Questions
+
+- Need a clear provenance rule for multi-source claims per record.
+- OpenDomesday API outage remains a risk to future updates.
+- Consider a lightweight validation script for cross-file consistency.
+
+---
+
 ## Pattern: Authentic England 1067
 
 The player enters a world that was there before them.
