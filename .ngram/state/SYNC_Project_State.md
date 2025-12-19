@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/physics/graph/VALIDATION_Living_Graph.md` with the missing
+template sections (chain, invariants, properties, error conditions, test
+coverage, verification procedure, sync status, gaps) for repair #16 and
+logged the update in `docs/physics/graph/SYNC_Graph.md`. Ran `ngram validate`;
+failures remain pre-existing (missing VIEW file and doc-chain gaps in
+schema/product/network/storms modules).
+
 Removed the duplicate short DESIGN PATTERNS block in `docs/physics/IMPLEMENTATION_Physics.md` so the remaining section matches the template subheadings for repair #16.
 
 Expanded `docs/physics/VALIDATION_Physics.md` validation guidance (invariants,

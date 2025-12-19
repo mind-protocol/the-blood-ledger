@@ -19,6 +19,87 @@ purpose: |
   If the feelings are right, the mechanisms worked.
 
 # =============================================================================
+# CHAIN
+# =============================================================================
+
+## CHAIN
+
+```
+PATTERNS:  ./PATTERNS_Graph.md
+BEHAVIORS: ./BEHAVIORS_Graph.md
+ALGORITHM: ./ALGORITHM_Energy_Flow.md
+THIS:      VALIDATION_Living_Graph.md (you are here)
+SYNC:      ./SYNC_Graph.md
+```
+
+# =============================================================================
+# INVARIANTS
+# =============================================================================
+
+## INVARIANTS
+
+The living graph must never create orphaned nodes, disconnected clusters, or
+links that reference missing targets. Mutations must be partially persisted:
+valid items remain, invalid items are rejected with actionable feedback, and
+the graph continues operating with intact integrity guarantees.
+
+# =============================================================================
+# PROPERTIES
+# =============================================================================
+
+## PROPERTIES
+
+Graph behavior should remain legible and deterministic for the same inputs:
+energy flow, pressure buildup, and propagation must produce repeatable
+surfaces for Voices and narrative tension. Properties here are observed in
+gameplay, not only in low-level graph queries.
+
+# =============================================================================
+# ERROR CONDITIONS
+# =============================================================================
+
+## ERROR CONDITIONS
+
+Validation must surface orphaned nodes, disconnected clusters, missing
+targets, invalid types, or missing required fields immediately. Database
+connection failures are fatal for validation runs and should halt further
+mutation application until the database is available again.
+
+# =============================================================================
+# TEST COVERAGE
+# =============================================================================
+
+## TEST COVERAGE
+
+Coverage draws from the behavior tests in this validation document plus the
+physics engine tests in `engine/tests/` that exercise graph integrity,
+propagation, and flip mechanics. Any manual validation runs should be noted
+in `docs/physics/graph/SYNC_Graph.md` to avoid drift.
+
+# =============================================================================
+# VERIFICATION PROCEDURE
+# =============================================================================
+
+## VERIFICATION PROCEDURE
+
+1. Run the automated physics and graph-related tests in `engine/tests/`.
+2. Apply representative mutation batches and confirm partial persistence
+   behavior matches the examples and error handling described above.
+3. Simulate a short travel sequence and confirm world-runner narratives
+   surface according to the behaviors and tests in this doc.
+4. Record any deviations or missing coverage in `docs/physics/graph/SYNC_Graph.md`.
+
+# =============================================================================
+# SYNC STATUS
+# =============================================================================
+
+## SYNC STATUS
+
+This validation spec is aligned with `docs/physics/graph/SYNC_Graph.md`. If
+the SYNC file is missing updates about validation changes, treat the results
+as provisional and document the gap before closing a repair.
+
+# =============================================================================
 # GRAPH INTEGRITY RULES
 # =============================================================================
 
@@ -1193,6 +1274,16 @@ summary:
     5. Iterate on parameters until tests pass
     6. Playtest for FEELINGS, not just mechanics
 
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- Which invariants should be enforced at mutation time versus during scheduled
+  health checks, and how should partial persistence report the difference?
+- Are the current behavior tests sufficient to validate narrative attention,
+  or do we need targeted probes for low-energy suppression edge cases?
+- Should graph integrity validation include explicit cycle checks for certain
+  link types (e.g., supersedes) to prevent contradictory feedback loops?
 
 ---
 
