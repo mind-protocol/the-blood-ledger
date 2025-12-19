@@ -88,6 +88,8 @@ to avoid drift warnings in the doc health checks.
   test coverage, verification procedure, and sync status for repair #16.
 - 2025-12-19: Restored BEHAVIORS_Opening.md template sections (behaviors,
   inputs/outputs, anti-behaviors) to resolve doc drift for repair #16.
+- 2025-12-19: Expanded BEHAVIORS_Opening.md text to meet template-length
+  guidance for behaviors, inputs/outputs, and anti-behaviors in repair #16.
 
 ---
 
