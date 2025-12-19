@@ -31,15 +31,22 @@ TOOLS:           tools/stream_dialogue.py
 | PATTERNS | `PATTERNS_Narrator.md` | Current |
 | BEHAVIORS | `BEHAVIORS_Narrator.md` | Current |
 | ALGORITHM | `ALGORITHM_Scene_Generation.md` | Current |
-| VALIDATION | `VALIDATION_Narrator.md` | Created 2024-12-19 |
-| IMPLEMENTATION | `IMPLEMENTATION_Narrator.md` | Created 2024-12-19 |
-| TEST | `TEST_Narrator.md` | Created 2024-12-19 |
+| VALIDATION | `VALIDATION_Narrator.md` | Current |
+| IMPLEMENTATION | `IMPLEMENTATION_Narrator.md` | Current |
+| TEST | `TEST_Narrator.md` | Current |
 | SYNC | This file | Current |
 | REFERENCE | `INPUT_REFERENCE.md`, `TOOL_REFERENCE.md` | Current |
 
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-19: Reduced narrator doc footprint
+
+- **What:** Condensed narrator docs (algorithm, behaviors, implementation, validation, tests, input/tool references, rolling window handoff) to remove duplication and large examples; aligned `time_elapsed` guidance with conversational/significant split; added archive for removed long-form detail.
+- **Why:** Reduce module docs below size threshold while keeping current behavior and references intact.
+- **Files:** `docs/agents/narrator/ALGORITHM_Scene_Generation.md`, `docs/agents/narrator/BEHAVIORS_Narrator.md`, `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/VALIDATION_Narrator.md`, `docs/agents/narrator/TEST_Narrator.md`, `docs/agents/narrator/INPUT_REFERENCE.md`, `docs/agents/narrator/TOOL_REFERENCE.md`, `docs/agents/narrator/HANDOFF_Rolling_Window_Architecture.md`, `docs/agents/narrator/archive/SYNC_archive_2024-12.md`, `docs/agents/narrator/SYNC_Narrator.md`
+- **Validation:** `ngram validate` (fails due to pre-existing missing docs/CHAIN links in schema/product/network/storms and missing VIEW file).
 
 ### 2025-12-19: Aligned narrator docs with current prompt builder
 
@@ -93,16 +100,16 @@ TOOLS:           tools/stream_dialogue.py
 
 ## Recent Updates
 
-- Consolidated narrator ALGORITHM docs into `ALGORITHM_Scene_Generation.md`.
+- Condensed narrator docs and archived long-form details.
 
 ---
 
 ## Open Questions (Resolved)
 
-1. **Where does orchestrator run?** → Python FastAPI backend
-2. **Graph tick implementation** → `engine/physics/graph_tick.py`
-3. **Scene tree caching** → `playthroughs/{id}/scene.json`
-4. **How does frontend trigger it?** → `POST /api/scene/action` with `stream: true`
+1. **Where does orchestrator run?** -> Python FastAPI backend
+2. **Graph tick implementation** -> `engine/physics/graph_tick.py`
+3. **Scene tree caching** -> `playthroughs/{id}/scene.json`
+4. **How does frontend trigger it?** -> `POST /api/scene/action` with `stream: true`
 
 ---
 
@@ -123,9 +130,29 @@ TOOLS:           tools/stream_dialogue.py
 
 *"Talk first. Query as you speak. Invent when the graph is silent. The world grows through conversation."*
 
-
 ---
+
+## CONFLICTS
+
+### DECISION: time_elapsed requirement
+- Conflict: `TOOL_REFERENCE.md` required `time_elapsed` on every output, while `BEHAVIORS_Narrator.md` and `VALIDATION_Narrator.md` only require it for significant actions.
+- Resolution: Align `TOOL_REFERENCE.md` with conversational/significant split; `time_elapsed` is optional and only for significant actions.
+- Reasoning: Matches narrator mode logic and avoids contradicting behavior/validation rules.
+- Updated: `docs/agents/narrator/TOOL_REFERENCE.md`, `docs/agents/narrator/BEHAVIORS_Narrator.md`, `docs/agents/narrator/VALIDATION_Narrator.md`
 
 ## ARCHIVE
 
-Older content archived to: `SYNC_Narrator_archive_2025-12.md`
+Older content archived to: `docs/agents/narrator/archive/SYNC_archive_2024-12.md`
+
+---
+
+## Agent Observations
+
+### Remarks
+- `time_elapsed` requirements were inconsistent between TOOL_REFERENCE and BEHAVIORS; aligned to conversational/significant split.
+
+### Suggestions
+- [ ] Review mutation type lists across narrator docs and `engine/models/` for canonical alignment.
+
+### Propositions
+- Consolidate narrator schema references under `docs/schema/SCHEMA.md` and link from all narrator docs.
