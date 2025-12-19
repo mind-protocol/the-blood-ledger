@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections in `docs/infrastructure/api/PATTERNS_Api.md`
+for repair #16 and recorded the update in `docs/infrastructure/api/SYNC_Api.md`.
+Ran `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
+gaps in schema/product/network/storms modules).
+
 Filled missing MATURITY, RECENT CHANGES, and CONSCIOUSNESS TRACE sections in
 `docs/infrastructure/history/SYNC_History.md` and expanded the IN PROGRESS
 entry to satisfy the DOC_TEMPLATE_DRIFT requirements for repair #16. Ran

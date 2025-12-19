@@ -18,6 +18,14 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Fill API PATTERNS template sections (repair 16)
+
+- **What:** Added missing problem, pattern, principles, dependencies,
+  inspirations, scope, and gaps sections in `PATTERNS_Api.md`.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the API patterns document.
+- **Files:**
+  - `docs/infrastructure/api/PATTERNS_Api.md`
+
 ### 2025-12-19: Remove duplicate playthrough algorithm doc
 
 - **What:** Deleted `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md` so the API folder has a single canonical ALGORITHM doc.
@@ -41,6 +49,13 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 - **Files:**
   - `engine/infrastructure/api/playthroughs.py`
   - `engine/infrastructure/api/app.py`
+
+### 2025-12-19: Remove unsupported energy argument when creating opening moments
+
+- **What:** Dropped the `energy` argument passed to `GraphOps.add_moment()` when generating opening moments.
+- **Why:** `GraphOps.add_moment()` does not accept `energy`, which raised an exception during playthrough creation and could stall the flow.
+- **Files:**
+  - `engine/infrastructure/api/playthroughs.py`
 
 ### 2025-12-19: Finish playthrough helper implementations
 
@@ -154,6 +169,7 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 - Re-validated playthroughs helper implementations for this repair run; no code changes required.
  - Confirmed playthrough helper implementations for repair 01-INCOMPLETE_IMPL-api-playthroughs.
 - Reconfirmed `_count_branches` and `_get_playthrough_queries` implementations during this repair run.
+- PATTERNS template sections now reflect the API boundary and dependencies.
 
 ### Suggestions
 - [ ] Consider splitting `engine/infrastructure/api/app.py` into smaller router modules once the API surface stabilizes.
