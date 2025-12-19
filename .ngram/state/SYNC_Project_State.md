@@ -17,6 +17,10 @@ The Blood Ledger is a narrative game engine set in Norman England (1067), using 
 - Extracted `graph_ops_types.py` (59 lines): Types and exceptions (WriteError, SimilarNode, ApplyResult)
 - Removed __main__ example block
 
+**Just completed:** Moments API graph-name resolution now honors configured playthroughs directory:
+- `engine/infrastructure/api/moments.py` reads `player.yaml` under router `playthroughs_dir` when available
+- Falls back to `get_playthrough_graph_name()` to preserve existing behavior
+
 All Python imports updated and verified working.
 
 ---
@@ -131,6 +135,7 @@ Check `modules.yaml` (project root) for full manifest.
 ## RECENT REPAIRS
 
 - Verified `engine/graph/health/check_health.py` functions flagged as empty are already implemented; no code changes required for graph health helpers.
+- Verified `engine/infrastructure/history/conversations.py` functions flagged as empty are already implemented; no code changes required for ConversationThread helpers.
 
 ## CONFLICTS
 
@@ -146,11 +151,18 @@ Check `modules.yaml` (project root) for full manifest.
 - Reasoning: Both functions already perform real logic and are referenced by the playthroughs API flow.
 - Updated: `.ngram/state/SYNC_Project_State.md`
 
+### DECISION: History Conversations Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `__init__`, `_get_file_path`, and `_get_relative_path` in `engine/infrastructure/history/conversations.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: The functions perform base directory setup and path mapping used by conversation operations.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
 ## Agent Observations
 
 ### Remarks
 - Repair task appears to be stale relative to the current `engine/graph/health/check_health.py` implementation.
 - Repair task appears to be stale relative to the current `engine/infrastructure/api/playthroughs.py` implementation.
+- Repair task appears to be stale relative to the current `engine/infrastructure/history/conversations.py` implementation.
 
 ### Suggestions
 - [ ] Consider adding DOCS: references for `engine/graph/health/check_health.py` to link it into the documentation chain.
