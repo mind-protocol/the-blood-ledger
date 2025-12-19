@@ -48,6 +48,14 @@ The module relies on physics graph ops/queries and is treated as a hot path.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Revalidated traversal helpers
+
+- **What:** Checked `make_dormant` and `process_wait_triggers` in
+  `engine/moment_graph/traversal.py`.
+- **Why:** Repair task flagged the functions as incomplete.
+- **Files:** `engine/moment_graph/traversal.py`
+- **Result:** Implementations already present; no code changes required.
+
 ### 2025-12-19: Documented moment graph engine module
 
 - **What:** Added docs and mapped the module in `modules.yaml`.
