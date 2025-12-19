@@ -31,6 +31,7 @@ The Narrator is an AI agent, not traditional code. Its "implementation" is a CLA
 
 ```
 agents/narrator/CLAUDE.md                 # Agent instructions (878 lines)
+agents/narrator/CLAUDE_old.md             # Legacy narrator prompt (deprecated)
 agents/narrator/.claude/                  # Claude CLI state directory (when using Claude)
 tools/stream_dialogue.py                  # Streaming tool for narrator output
 engine/infrastructure/orchestration/agent_cli.py   # Shared agent CLI wrapper
@@ -46,6 +47,7 @@ The prompt builder lives in `engine/infrastructure/orchestration/narrator.py` (m
 | File | Purpose | Lines | Status |
 |------|---------|-------|--------|
 | `agents/narrator/CLAUDE.md` | AI agent instructions and behavior rules | ~878 | OK |
+| `agents/narrator/CLAUDE_old.md` | Legacy narrator instructions retained for reference | ~877 | DEPRECATED |
 | `tools/stream_dialogue.py` | Stream dialogue chunks via SSE | ~200 | OK |
 | `engine/infrastructure/orchestration/agent_cli.py` | Agent CLI command builder + parsing helpers | ~140 | OK |
 | `engine/infrastructure/orchestration/narrator.py` | Narrator caller + prompt builder (method _build_prompt) | ~150 | OK |

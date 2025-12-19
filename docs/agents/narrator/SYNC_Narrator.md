@@ -41,6 +41,12 @@ TOOLS:           tools/stream_dialogue.py
 
 ## RECENT CHANGES
 
+### 2025-12-19: Documented legacy narrator prompt file
+
+- **What:** Added `agents/narrator/CLAUDE_old.md` to the narrator implementation doc as a deprecated legacy prompt reference.
+- **Why:** Align implementation documentation with the actual files in the narrator module and close the stale implementation file list.
+- **Files:** `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/SYNC_Narrator.md`
+
 ### 2025-12-19: Removed broken implementation references
 
 - **What:** Reworded prompt builder and entrypoint references so method names are plain text instead of inline code.
