@@ -189,120 +189,22 @@ If you fail:
 
 These are the moments we're designing toward:
 
-### "I know what I need to do."
-Early in the game, the player has clarity. They have a goal — vengeance, fortune, redemption, whatever they chose. They can articulate it: "I'm going to find Edmund and take back what's mine." The opening establishes purpose, not confusion.
-
-### "I see where I'm going."
-The player has a path, not just a goal. They know the next step: "First I need to reach York. I'll need allies. Aldric knows someone there." They're projecting themselves into a vision — they can imagine the future they're building toward.
-
-### "I know this place."
-Some locations become familiar. Not everywhere — the world is large — but certain places become *theirs*. The camp where they started. The tavern in York where they met Wulfric. The road they've traveled twice. "I know this place well" creates grounding, ownership, home.
-
-### "They remembered."
-An character references something the player did sessions ago. Not triggered — organic. The player realizes the world has memory.
-
-### "The world moved."
-Player arrives somewhere and hears about events that happened without them. A feud broke out. A lord died. The player wasn't the center.
-
-### "My past speaks."
-In a tense moment, the player's own oaths and debts speak up as voices, pulling in different directions. The player feels the weight of their history.
-
-### "I was wrong."
-Player discovers their foundational belief was mistaken. Edmund didn't betray them — or did, but for reasons they understand now. Reality shifts.
-
-### "Everything led here."
-In a climactic moment, the player sees how all their choices wove together. This confrontation was inevitable given what they did.
-
-### "This is my band."
-The player looks at their companions and feels ownership, familiarity, belonging. "This is my crew. I know every one of them — why they're here, what they do, what they're good at, what they struggle with." Like a band on tour together. Each person has a role, a history, a reason for being here. The group feels like *theirs*.
-
-### "They became real."
-A character the player started with becomes complex — not an ally or enemy, but a person with their own beliefs, doubts, arc. Not just "Aldric the loyal fighter" but Aldric who lost his brother, who hates the cold, who prays when he thinks no one's watching. The player cares about them as *people*, not as party members.
-
-### "I know them."
-The player asks Aldric about his grandmother, his childhood, why he fights. Aldric has answers — real ones, consistent with everything else. The player realizes they *know* this person. They can predict what he'd do in a situation they haven't seen.
-
-### "I can rely on them."
-The player sends a companion on a mission, confident they'll succeed — because they know this person's strengths, loyalties, history. The companion succeeds *for the reasons the player predicted*.
+- Clear goal and next step ("I know what I need to do")
+- Familiar places that feel owned ("I know this place")
+- The world remembers and moves without you
+- Past oaths and debts speak in tense moments
+- Companions become knowable, reliable people
+- Climactic convergence ("Everything led here")
 
 ---
 
-## Core Drives: Octalysis Framework
+## Core Drives (Archived Summary)
 
-We use Yu-kai Chou's Octalysis framework to understand which motivational drives we're leveraging.
-
-### The 8 Core Drives
-
-| Drive | What It Is | How We Use It | Strength |
-|-------|------------|---------------|----------|
-| **1. Epic Meaning & Calling** | Being part of something bigger than yourself | Rise from nothing to lord. Shape England. The Norman Conquest needs you. | Strong |
-| **2. Development & Accomplishment** | Progress, mastery, achieving goals | Visible growth: companions → network → power. Mastery of relationships. | Strong |
-| **3. Empowerment of Creativity & Feedback** | Expressing creativity, seeing results | Your choices shape the story. Multiple paths to power. The graph responds to you. | Strong |
-| **4. Ownership & Possession** | Having things, wanting to improve them | THE LEDGER. It's yours. Your debts, oaths, history. You're *keeping* it. | Very Strong |
-| **5. Social Influence & Relatedness** | Social dynamics, mentorship, relationships | The entire success metric. Deep relationships. Knowing and being known. | Core Strength |
-| **6. Scarcity & Impatience** | Wanting things because rare or time-limited | Time passes. Opportunities close. News travels. Situations evolve without you. | Moderate |
-| **7. Unpredictability & Curiosity** | Not knowing what happens next | Emergence. World moves without you. Secrets to discover. "What happened while I was away?" | Strong |
-| **8. Loss & Avoidance** | Avoiding negative outcomes | Death is real. Companions can leave. Trust can break. Reputation can crumble. | Strong |
-
-### Primary Drives (Our Focus)
-
-**Drive 5: Social Influence & Relatedness** — This is THE core drive. Everything else serves it.
-- You need your companions
-- You want to be known, respected, feared
-- Relationships are how you rise
-- The success metric IS social: "do you know them?"
-
-**Drive 4: Ownership & Possession** — The Ledger creates this viscerally.
-- It's YOUR ledger, YOUR debts, YOUR oaths
-- You're keeping the record
-- The game is named after the artifact you possess
-- Improvement = deeper relationships, more connections
-
-**Drive 7: Unpredictability & Curiosity** — Emergence delivers this.
-- You genuinely don't know what will happen
-- The world moves without you
-- Secrets exist that you might never find
-- Each playthrough is different
-
-### Secondary Drives (Supporting)
-
-**Drive 1: Epic Meaning** — The setting and rise arc provide this.
-**Drive 2: Development** — Visible progression through relationship network.
-**Drive 8: Loss & Avoidance** — Death, betrayal, broken trust create stakes.
-**Drive 3: Creativity & Feedback** — Choices matter, graph responds.
-
-### Drive We're Careful With
-
-**Drive 6: Scarcity & Impatience** — Present but not dominant.
-- We DON'T want artificial time pressure ("complete quest in 3 days!")
-- We DO want natural urgency (situations evolve, opportunities pass)
-- The world moving without you creates organic scarcity
-- But this shouldn't feel like a timer — it should feel like life
-
-### White Hat vs Black Hat Balance
-
-Octalysis divides drives into:
-- **White Hat** (1-3): Make players feel powerful, fulfilled, creative
-- **Black Hat** (6-8): Create urgency, obsession, fear of loss
-
-Blood Ledger leans **White Hat** with Black Hat accents:
-- Primary feeling: empowerment, meaning, ownership
-- Tension from: uncertainty, potential loss, time passing
-
-This is intentional. A narrative game should make you feel *good* about playing, with enough stakes to create drama — not anxiety or compulsion.
-
-### Behavioral Targets by Drive
-
-| Drive | Target Behavior |
-|-------|-----------------|
-| Epic Meaning | Player talks about their character's journey as meaningful |
-| Development | Player notices and appreciates their growing network |
-| Creativity | Player experiments with different approaches |
-| Ownership | Player checks the Ledger frequently, feels protective of it |
-| Social Influence | Player invests in understanding characters deeply |
-| Scarcity | Player feels urgency about evolving situations (not artificial timers) |
-| Unpredictability | Player wonders what will happen, speculates about outcomes |
-| Loss Avoidance | Player makes careful choices to protect relationships and position |
+Primary motivational focus is Social Influence (deep relationships), Ownership
+(the Ledger as a personal artifact), and Unpredictability (emergent outcomes),
+with Epic Meaning, Development, Creativity, and Loss Avoidance supporting.
+Detailed Octalysis mappings and behavioral targets are archived in
+`docs/design/archive/SYNC_archive_2024-12.md`.
 
 ---
 
@@ -325,84 +227,25 @@ If the player can't remember characters, we've failed. Characters should be memo
 
 ---
 
-## Grounding: Beyond Text
+## Grounding (Summary)
 
-Text is the backbone, but not the only sense we engage.
-
-### Visual Grounding
-
-**Every scene has an image.** Not decorative — grounding. The image shows where you are, the atmosphere, the moment. Coherent style across the game.
-
-**Every character has a face.** When you talk to Aldric, you see Aldric. When Edmund appears, you see Edmund. Faces create memory anchors — you recognize people visually, not just by name.
-
-**Images adapt to context.** The same location looks different at night, in rain, after a battle. Character expressions shift with the conversation. The visual layer responds to what's happening.
-
-**Coherent style matters.** Not photorealistic, not cartoonish — a distinct visual identity that feels like The Blood Ledger. This is part of the game's signature.
-
-### Audio Grounding (Key Characters)
-
-**Distinct voices for key characters.** Not every character, but your companions — Aldric, Mildred, Edmund — should have actual voices. When they speak important lines, you hear them. Creates presence, personality, memory.
-
-**Why this matters:** A voice is harder to forget than text. When Aldric speaks in his voice, he becomes more real. When Edmund's voice arrives, it carries weight.
-
-### Ambient Sound (Future)
-
-**Not for V1**, but on the roadmap:
-- Ambient soundscapes (camp at night, York market, forest)
-- Atmospheric audio that shifts with scene type
-- Sound as another grounding layer
-
-**Why we want this eventually:** Sound creates presence without demanding attention. You feel "in the forest" before you read about it.
-
-### The Grounding Stack
-
-| Layer | V1 | Future |
-|-------|-----|--------|
-| Text (scenes, dialogue, voices) | Yes | Enhanced |
-| Images (scenes, faces) | Yes | More dynamic |
-| Character voices (key characters) | Maybe | Yes |
-| Ambient sound | No | Yes |
-| Music | No | Maybe |
+Text is primary, supported by images for key scenes and faces. Audio and ambient sound are future enhancements, not V1 commitments.
 
 ---
 
-## Engagement Levers
+## Engagement Levers (Archived Summary)
 
-How we keep the experience engaging:
-
-### The Voices
-Your debts and oaths talk to you. This transforms reading into dialogue. You're not alone in your head.
-
-### Brevity
-Scenes are short. Atmosphere in 2-3 lines. Get in, make it vivid, get out. No walls of text.
-
-### Stakes
-Every scene connects to something that matters. If it doesn't matter, skip it. Time passage handles the boring parts.
-
-### Rhythm
-Slow build → tension → break → aftermath → slow build. Pacing is controlled by the tension system, not arbitrary.
-
-### Visual Grounding
-Image generation for key moments — faces, places, dramatic scenes. Breaks up text, creates memory anchors.
-
-### The Ledger as Artifact
-The Ledger isn't a menu — it's a thing you're keeping. The game is named after it. It should feel weighty, personal.
+Engagement relies on the voices mechanic, brevity, stakes, rhythm, visual
+grounding, and the Ledger as a tangible artifact. The detailed list is archived
+in `docs/design/archive/SYNC_archive_2024-12.md`.
 
 ---
 
-## Metrics (If We Could Measure)
+## Metrics (Archived Summary)
 
-How would we know the experience is working?
-
-| Metric | What It Indicates |
-|--------|-------------------|
-| Session length | Engaged enough to keep playing |
-| Return rate | Wants to continue the story |
-| Choice deliberation time | Choices feel meaningful |
-| View usage patterns | Using tools to make decisions |
-| Player-generated stories | Experience worth retelling |
-| "They remembered" moments | Memory system is working |
-| Emotional responses | Characters feel real |
+Experience measurement ideas (session length, return rate, choice deliberation,
+view usage, player stories, memory moments, emotional responses) live in
+`docs/design/archive/SYNC_archive_2024-12.md`.
 
 ---
 

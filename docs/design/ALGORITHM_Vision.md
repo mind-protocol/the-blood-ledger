@@ -209,27 +209,9 @@ Five views that present different aspects of state:
 
 ---
 
-## What's Missing?
+## What's Missing (Summary)
 
-This list is incomplete. Systems I suspect we'll need but haven't worked out:
-
-- **Character Depth Generation** — How do we create backstories rich enough for deep questioning? Is this pre-authored? Generated? Hybrid?
-
-- **Conversation System** — Talking to characters seems core ("ask about grandmother"). How does that work technically?
-
-- **Action System** — Player actions beyond dialogue. Move, take, give, wait. How do these integrate?
-
-- **Combat/Conflict** — The design doc says "to develop." Is this a system or handled narratively?
-
-- **Image Generation** — Core to grounding. Every scene needs an image. Every character needs a face. Images adapt to context (time of day, weather, emotion). Need: coherent style, dynamic generation, context awareness. Where does this fit architecturally? Presentation layer, but tightly coupled to scene creation.
-
-- **Character Portraits** — Subset of image gen, but specific: faces that are consistent across the game. Aldric always looks like Aldric. Expressions can vary. Need: style consistency, expression variation, memory of character appearance.
-
-- **Voice Generation (Key Characters)** — Actual audio voices for companions and major characters. Not every line, but key moments. Creates presence and memorability. V1 maybe, future definitely. Need: voice consistency per character, emotional variation, integration with dialogue.
-
-- **Ambient Sound (Future)** — Soundscapes for scene types. Not V1. But architecturally, where would it fit?
-
-- **Persistence/Save** — How do we save/load? What's the DB schema?
+Key gaps to resolve: character depth generation, conversation model, action system beyond dialogue, conflict/combat handling, image generation/portraits, voice and audio integration, and persistence/save strategy.
 
 ---
 
@@ -251,44 +233,9 @@ This is approximate. Will refine as we understand better.
 
 ---
 
-## Implementation Thinking (Very Preliminary)
+## Implementation Thinking (Summary)
 
-**Dependency order (what needs what):**
-```
-Graph (foundation — nothing depends on nothing)
-  └── Weight (needs graph to compute from)
-        └── Tension (needs weight to identify high-pressure)
-              └── Breaks (needs tension to know what breaks)
-                    └── World Update (needs breaks to process)
-                          └── Scene Creation (needs world state)
-
-Director (parallel — reads everything, writes focus)
-
-Views (read from graph/scene)
-Voices (part of scene creation? or separate?)
-```
-
-**What to build first for POC:**
-1. Graph schema + basic operations
-2. Load starter story (Rolf)
-3. Render one scene
-4. See if voices work
-
-**Open question:** Should POC include world update? Or just static scene from graph?
-
----
-
-## Links to Detailed Documentation
-
-When we write them, these should exist:
-
-| Area | Expected Docs |
-|------|---------------|
-| `docs/physics/graph/` | PATTERNS, BEHAVIORS, ALGORITHM_Schema, ALGORITHM_CRUD, ALGORITHM_Queries, ALGORITHM_Energy_Flow, VALIDATION, SYNC |
-| `docs/engine/mechanisms/` | PATTERNS, ALGORITHM_Belief, ALGORITHM_Tension, ALGORITHM_Breaks, ALGORITHM_Cascade, ALGORITHM_Propagation, VALIDATION, SYNC |
-| `docs/engine/orchestration/` | PATTERNS, ALGORITHM_Loop, ALGORITHM_World_Update, ALGORITHM_Scene_Creation, VALIDATION, SYNC |
-| `docs/agents/narrator/` | PATTERNS, ALGORITHM_Story_Doc, ALGORITHM_Player_Doc, ALGORITHM_Prompts, VALIDATION, SYNC |
-| `docs/views/` | PATTERNS, then per-view: scene/, map/, chronicle/, ledger/, faces/ |
+Initial dependency ordering and detailed module specs will live in engine/view module docs as they are created. This doc keeps only the high-level map.
 
 ---
 

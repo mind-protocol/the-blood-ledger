@@ -13,8 +13,8 @@ Vision documentation complete (draft). Full protocol chain created:
 
 | Document | Content | Status |
 |----------|---------|--------|
-| PATTERNS_Vision.md | Design philosophy, principles, market validation (CK3 insights) | Draft |
-| BEHAVIORS_Vision.md | Player experience, arc, Octalysis drives, anti-patterns | Draft |
+| PATTERNS_Vision.md | Design philosophy, principles, market validation summary | Draft |
+| BEHAVIORS_Vision.md | Player experience, arc, core drives summary, anti-patterns | Draft |
 | ALGORITHM_Vision.md | Systems that create behaviors, dependencies, priority | Draft |
 | VALIDATION_Vision.md | Testing approach, POC milestones, ultimate test | Draft |
 | IMPLEMENTATION_Vision.md | Documentation architecture, file responsibilities, data flow | Draft |
@@ -24,6 +24,11 @@ All documents ready for validation.
 ### 2025-12-19 Update
 - Fixed broken file references in `docs/design/IMPLEMENTATION_Vision.md` by listing concrete paths and removing placeholder target filenames so link validation resolves cleanly.
 - Verified the remaining implementation doc references resolve to existing vision/opening/scenarios files for the BROKEN_IMPL_LINK repair.
+
+### 2025-12-19 Update (Doc Size Reduction)
+- Condensed PATTERNS and BEHAVIORS content to keep core vision concise while preserving intent.
+- Archived market validation, Octalysis mapping, and engagement lever details in `docs/design/archive/SYNC_archive_2024-12.md`.
+- Updated `docs/design/IMPLEMENTATION_Vision.md` file map and line counts to reflect the reduced docs.
 
 ---
 
@@ -105,3 +110,36 @@ All documents ready for validation.
 ---
 
 *Status: Vision drafted, awaiting validation*
+
+---
+
+## Agent Observations
+
+### Remarks
+- The vision docs now fit the size threshold while keeping the core experience narrative intact.
+
+### Suggestions
+- [ ] Review the condensed Key Experience Moments list to ensure no critical moments were removed.
+- [ ] Confirm the archive summary is sufficient for future reference before further pruning.
+
+### Propositions
+- Keep future additions to BEHAVIORS in short lists or tables to avoid re-growth past thresholds.
+
+### 2025-12-19 Update (Docs size reduction)
+- Condensed market validation and Octalysis content in vision docs to reduce size while preserving core intent.
+- Added `docs/design/archive/SYNC_archive_2024-12.md` to retain removed detail.
+- Trimmed ALGORITHM scope notes to high-level mapping and updated file responsibilities.
+- Ran `ngram validate`; failures remain for missing VIEW/doc-chain gaps outside docs/design.
+
+---
+
+## Agent Observations
+
+### Remarks
+- The vision docs had overlapping rationale and validation detail; trimming helped reduce redundancy without changing intent.
+
+### Suggestions
+- [ ] Consider moving any future long-form research quotes directly into the archive to keep the vision docs concise.
+
+### Propositions
+- None.

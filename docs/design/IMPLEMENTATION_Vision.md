@@ -37,6 +37,7 @@ docs/design/VALIDATION_Vision.md
 docs/design/IMPLEMENTATION_Vision.md
 docs/design/TEST_Vision.md
 docs/design/SYNC_Vision.md
+docs/design/archive/SYNC_archive_2024-12.md
 docs/design/opening/PATTERNS_Opening.md
 docs/design/opening/BEHAVIORS_Opening.md
 docs/design/opening/ALGORITHM_Opening.md
@@ -54,13 +55,14 @@ docs/design/scenarios/README.md
 
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|-----------------------|-------|--------|
-| `docs/design/PATTERNS_Vision.md` | Vision rationale and design principles | N/A | 320 | OK |
-| `docs/design/BEHAVIORS_Vision.md` | Player experience targets and behaviors | N/A | 409 | WATCH |
-| `docs/design/ALGORITHM_Vision.md` | System mapping from vision to mechanics | N/A | 323 | OK |
+| `docs/design/PATTERNS_Vision.md` | Vision rationale and design principles | N/A | 249 | OK |
+| `docs/design/BEHAVIORS_Vision.md` | Player experience targets and behaviors | N/A | 252 | OK |
+| `docs/design/ALGORITHM_Vision.md` | System mapping from vision to mechanics | N/A | 270 | OK |
 | `docs/design/VALIDATION_Vision.md` | Validation plan and success criteria | N/A | 193 | OK |
-| `docs/design/IMPLEMENTATION_Vision.md` | Documentation architecture and file map | N/A | 225 | OK |
-| `docs/design/TEST_Vision.md` | Experience metrics and test signals | N/A | 38 | OK |
-| `docs/design/SYNC_Vision.md` | Vision status and handoff notes | N/A | 102 | OK |
+| `docs/design/IMPLEMENTATION_Vision.md` | Documentation architecture and file map | N/A | 222 | OK |
+| `docs/design/TEST_Vision.md` | Experience metrics and test signals | N/A | 39 | OK |
+| `docs/design/SYNC_Vision.md` | Vision status and handoff notes | N/A | 126 | OK |
+| `docs/design/archive/SYNC_archive_2024-12.md` | Archived vision material (condensed) | N/A | 27 | OK |
 | `docs/design/opening/PATTERNS_Opening.md` | Opening-specific design rationale | N/A | 136 | OK |
 | `docs/design/opening/BEHAVIORS_Opening.md` | Opening experience behaviors | N/A | 153 | OK |
 | `docs/design/opening/ALGORITHM_Opening.md` | Opening flow outline | N/A | 33 | OK |
@@ -208,7 +210,6 @@ None. This module does not map to implementation code.
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `docs/design/BEHAVIORS_Vision.md` | 409L | <400L | Proposed: split into a new drives/metrics behaviors doc (name TBD) | Octalysis framework + metrics section |
 | `docs/design/opening/CLAUDE.md` | 728L | <400L | Proposed: split into core loop + tool reference docs (names TBD) | Tool call reference and operational checklists |
 | `docs/design/opening/opening.json` | 401L | <400L | Proposed: split into per-scene JSON payloads (names TBD) | Split by scene/section payloads |
 

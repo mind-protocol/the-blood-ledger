@@ -58,95 +58,24 @@ When you become lord, you remember every step. And so do they.
 
 What this feels like (not what it copies):
 
-**Game of Thrones** — Political intrigue, relationships more dangerous than swords, betrayal as narrative engine, consequences that echo across seasons, "everyone remembers."
+**Game of Thrones** — Political intrigue, betrayal as engine, long memory.
 
-**Crusader Kings 3** — Emergent character stories, dynasties built through marriages and murders, the joy of watching plans unfold over generations, the pain of watching them collapse.
+**Crusader Kings 3** — Emergent character stories, dynasties, consequences.
 
-**The Expanse** — Found family, loyalty tested by impossible choices, small crew caught in large events, intimacy within epic scope.
+**The Expanse** — Found family, loyalty under pressure, intimacy inside scale.
 
-**What we take:**
-- Relationships as the core system (GoT)
-- Emergence over authorship (CK3)
-- Intimacy within scale (Expanse)
-- Consequences that compound (all three)
+**What we take:** relationships as the core system, emergence over authorship, intimacy within scale, compounding consequences.
 
-**What we leave:**
-- Visual spectacle (we're text-primary)
-- Mechanical complexity for its own sake (CK3's systems bloat)
-- Predetermined character arcs (GoT's later seasons)
+**What we leave:** visual spectacle, mechanical bloat, predetermined arcs.
 
 ---
 
-## Market Validation: What CK3 Players Actually Want
+## Market Validation (Archived Summary)
 
-Real feedback from CK3 community (Reddit, thousands of upvotes) reveals exactly what players are missing — and what we're building.
-
-### 1. Characters That Feel Alive
-
-> *"I want to create my own family drama, deeper relationships and situations... A deeper system for character relationships, bonds created, rivalries, feuds, family, mentors, friends and lovers, traitors..."*
-
-> *"The AI seems to be very robotic in its relationships to us the player."*
-
-**What they're missing:** Characters don't remember what you did for them. Saving a vassal's land = he still joins factions against you. No sense of history.
-
-**Our solution:** AI companions with persistent memory. The graph records everything. They remember what you did in hour two and it changes hour fifteen.
-
-### 2. Uncertainty / Not Knowing Everything
-
-A mod called ObfusCKate (2,580 upvotes, 99% ratio) is beloved because it HIDES information:
-
-> *"If you don't have a logical reason to know something, you don't know it."*
-
-> *"I wish something like this was an official game rule. Deceitful characters could have fake stats till you get to know them better."*
-
-**What they're missing:** Too much information kills roleplay. You know exactly how loyal everyone is, how strong neighbors are. No mystery.
-
-**Our solution:** You don't know if someone is loyal — you read their behavior. Truth values are director-only. You have beliefs, not facts.
-
-### 3. A Living World / Consequences
-
-Post with 998 upvotes: *"CK3 doesn't need a hard mode... it needs a living one"*
-
-> *"I still remember my most fascinating moment from CK2 — my scheming cousin became my regent, then my guardian, and what proceeded was an event chain I had never seen before or since..."*
-
-**What they're missing:** The AI doesn't have memory or personality. Events feel random, not personal. No one schemes against you in ways that feel intelligent.
-
-**Our solution:** The Director learns player patterns, creates personal threats. Events emerge from specific narrative tension, not random tables.
-
-### 4. Actually Needing Your People
-
-> *"The reason CK3 feels easy is because vassals barely matter for military power... Managing relationships with all of your vassals now matters much more."*
-
-**What they're missing:** You can ignore people. Companions/vassals are stat blocks, not people you depend on.
-
-**Our solution:** You NEED your companions — they're how you survive. You can't do everything alone. Sending Aldric matters because you need him back.
-
-### 5. Stories, Not Numbers
-
-Top post ever about CK3 (20,668 upvotes):
-
-> *"Paradox no matter what, don't sacrifice RPG elements to appease min-max players... My favorite improvement has been to the trait and stress system. It really encourages roleplaying and I love the stories it creates."*
-
-**What they want:** Character, not optimization. Drama, not efficiency.
-
-**Our solution:** No visible stats to optimize. Relationships are narratives, not numbers. The Ledger shows stories, not scores.
-
-### The Killer Insight
-
-**They want MYSTERY. MEMORY. MEANING.**
-
-CK3 gives them mechanics. They want *people*.
-
-That's exactly what we're building.
-
-| CK3 Problem | Our Solution |
-|-------------|--------------|
-| Characters don't remember | Persistent narrative memory — everything recorded |
-| Too much information | Uncertainty by design — beliefs, not facts |
-| No intelligent scheming | Director creates personal narrative threats |
-| Companions are stat blocks | Companions are people you talk to and depend on |
-| Events feel random | Events emerge from YOUR narrative tension |
-| You can ignore people | You NEED your people to survive and rise |
+CK3 community feedback aligns with the vision: players want people who remember,
+uncertainty instead of omniscience, a living world with personal consequences,
+companions who matter, and stories over numbers. The detailed quotes and
+mapping table are archived in `docs/design/archive/SYNC_archive_2024-12.md`.
 
 ---
 

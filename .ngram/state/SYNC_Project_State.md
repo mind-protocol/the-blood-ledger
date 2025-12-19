@@ -11,6 +11,8 @@ UPDATED_BY: Codex (repair agent)
 
 Reduced the design vision docs (PATTERNS/BEHAVIORS/ALGORITHM) to keep the module under the 50K character threshold, archived detailed CK3 and Octalysis notes in `docs/design/archive/SYNC_archive_2024-12.md`, and updated `docs/design/IMPLEMENTATION_Vision.md` and `docs/design/SYNC_Vision.md` with new sizes and notes.
 
+Reduced `docs/infrastructure/embeddings` below the 50K character threshold by splitting ALGORITHM and TEST docs into subfiles with entry-point stubs, moving verbose examples to `docs/infrastructure/embeddings/archive/SYNC_archive_2024-12.md`, and updating chains/pointers. Ran `ngram validate`; remaining failures are pre-existing missing VIEW/doc-chain gaps in other modules.
+
 Reduced frontend documentation size by splitting the implementation doc into an overview entry point with focused parts under `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/`, moved the prior SYNC archive to `docs/frontend/archive/SYNC_archive_2024-12.md`, and updated frontend DOCS pointers to the new entry point. Ran `ngram validate`; remaining failures are pre-existing missing VIEW/doc-chain gaps (schema/product/network/storms/embeddings) and unrelated module chain issues.
 
 Reduced the `docs/infrastructure/scene-memory` module size to ~32K chars by
