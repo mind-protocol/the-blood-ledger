@@ -20,6 +20,32 @@ THIS:            SYNC_World_Scraping.md (you are here)
 
 ---
 
+## Maturity
+
+STATUS: DESIGNING
+
+The scraping pipeline and YAML outputs are stable enough for repeatable
+seed-world imports, but ongoing documentation consolidation means the module
+remains in DESIGNING until the pipeline is fully verified end-to-end.
+
+---
+
+## Current State
+
+Pipeline phases 1–6 are complete, YAML outputs are present in `data/world/`,
+and the `seed` database is populated via `data/scripts/inject_world.py`. The
+documentation chain is now consolidated under `ALGORITHM_Pipeline.md`.
+
+---
+
+## In Progress
+
+No new scrape phases are active. Current work is documentation hygiene only,
+including ensuring template sections remain complete and aligning SYNC notes
+with the canonical algorithm and implementation docs.
+
+---
+
 ## Phase Status
 
 | Phase | Name | Status | Output |
