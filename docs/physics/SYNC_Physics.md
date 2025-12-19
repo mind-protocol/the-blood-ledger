@@ -7,7 +7,7 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
-**2025-12-19: Verified physics tick energy helpers already implemented**
+**2025-12-19: Repair 13 verified physics tick energy helpers already implemented**
 - Confirmed `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` contain concrete logic
 - Repair task marked as stale; no runtime changes
 
