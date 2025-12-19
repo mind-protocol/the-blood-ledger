@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Re-verified `docs/physics/graph/SYNC_Graph_archive_2025-12.md` template
+completeness for repair #16; no additional edits were required beyond logging
+the verification in the graph SYNC.
+
 Expanded `docs/physics/graph/VALIDATION_Living_Graph.md` with the missing
 template sections (chain, invariants, properties, error conditions, test
 coverage, verification procedure, sync status, gaps) for repair #16 and
