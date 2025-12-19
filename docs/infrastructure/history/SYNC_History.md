@@ -13,7 +13,7 @@ STATUS: CANONICAL
 **Implementation complete.** The History module is fully functional.
 Repair 02-INCOMPLETE_IMPL-history-conversations confirmed ConversationThread path helpers already implemented; no code changes required.
 Re-verified `__init__`, `_get_file_path`, and `_get_relative_path` in `engine/infrastructure/history/conversations.py`; still implemented.
-Added `docs/infrastructure/history/IMPLEMENTATION_History.md`, corrected doc chain links, added DOCS reference in `engine/infrastructure/history/service.py`, and mapped the history module in `modules.yaml`.
+Updated the implementation doc chain, added a DOCS reference in `engine/infrastructure/history/service.py`, and mapped the history module in `modules.yaml`.
 Added implementation architecture doc and linked the history doc chain.
 
 ### Code Structure
@@ -150,7 +150,7 @@ History module now has full implementation. HistoryService provides query_histor
 | Query/record procedures | ./ALGORITHM_History.md |
 | Test invariants | ./VALIDATION_History.md |
 | Test cases | ./TEST_History.md |
-| Implementation architecture | ./IMPLEMENTATION_History.md |
+| Implementation architecture | ./IMPLEMENTATION_History_Service_Architecture.md |
 | Implementation code | engine/infrastructure/history/ |
 | Module registration | modules.yaml (history) |
 
@@ -160,7 +160,7 @@ PATTERNS: ./PATTERNS_History.md
 BEHAVIORS: ./BEHAVIORS_History.md
 ALGORITHM: ./ALGORITHM_History.md
 VALIDATION: ./VALIDATION_History.md
-IMPLEMENTATION: ./IMPLEMENTATION_History.md
+IMPLEMENTATION: ./IMPLEMENTATION_History_Service_Architecture.md
 TEST: ./TEST_History.md
 SYNC: ./SYNC_History.md
 

@@ -136,6 +136,37 @@ modules:
     notes: |
       Moment processing and transcript persistence for playthroughs.
 
+  async-architecture:
+    code: "engine/scripts/check_injection.py"
+    docs: "docs/infrastructure/async/"
+    additional_code:
+      - "engine/scripts/inject_to_narrator.py"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/scripts/check_injection.py
+    patterns:
+      - "Hook-based interrupts via JSONL queue"
+      - "File-backed FIFO injection queue"
+    notes: |
+      Async travel architecture documentation and injection queue hooks.
+      Core integration points live in infrastructure/api and agent modules.
+
+  cli-tools:
+    code: "tools/**"
+    docs: "docs/infrastructure/cli-tools/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - tools/stream_dialogue.py
+      - tools/image_generation/generate_image.py
+    patterns:
+      - "CLI tools as agent interface layer"
+      - "Graph-native streaming events"
+    notes: |
+      Agent-facing CLI utilities for streaming dialogue/narration and
+      generating images via Ideogram.
+
   history:
     code: "engine/infrastructure/history/**"
     docs: "docs/infrastructure/history/"
@@ -244,3 +275,17 @@ modules:
     notes: |
       Presentation layer for The Blood Ledger, rendering scene, moments, and
       map views while delegating state to the backend.
+
+  frontend-right-panel:
+    code: "frontend/components/panel/**"
+    docs: "docs/frontend/right-panel/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - frontend/components/panel/RightPanel.tsx
+    patterns:
+      - "Tabbed right-side panel for context"
+      - "Read-only rendering from parent state"
+    notes: |
+      Chronicle, conversations, and ledger panels presented as tabs alongside
+      the main scene view.

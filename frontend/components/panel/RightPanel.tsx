@@ -1,5 +1,7 @@
 'use client';
 
+// DOCS: docs/frontend/right-panel/PATTERNS_Tabbed_Right_Panel.md
+
 import { useState } from 'react';
 import { ChronicleEntry, Conversation, LedgerEntry, Player } from '@/types/game';
 import { ChronicleTab } from './ChronicleTab';
