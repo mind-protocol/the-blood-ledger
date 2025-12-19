@@ -147,6 +147,13 @@ Scene view is implemented and works. The core layout exists with header, image, 
 - **Files:** `modules.yaml`, `frontend/components/scene/SceneView.tsx`
 - **Struggles/Insights:** None.
 
+### 2025-12-19: Expanded scene validation template
+
+- **What:** Filled missing template sections in `VALIDATION_Scene.md` (invariants, properties, error conditions, test coverage, verification procedure, sync status, gaps).
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the scene validation document and keep the chain complete.
+- **Files:** `docs/frontend/scene/VALIDATION_Scene.md`
+- **Struggles/Insights:** Kept statements aligned with current SceneView/SceneBanner behavior to avoid unverified claims.
+
 ---
 
 ## POINTERS
@@ -159,3 +166,17 @@ Scene view is implemented and works. The core layout exists with header, image, 
 | Types | `frontend/types/game.ts` |
 | Design patterns | `docs/frontend/scene/PATTERNS_Scene.md` |
 | Frontend overview | `docs/frontend/SYNC_Frontend.md` |
+
+---
+
+## Agent Observations
+
+### Remarks
+- The validation doc now mirrors the actual SceneView/SceneBanner fallbacks, reducing drift risk.
+
+### Suggestions
+- [ ] Add basic component tests for SceneView and SceneBanner to cover fallback rendering.
+- [ ] Add a Playwright smoke test for voice ordering and action button presence.
+
+### Propositions
+- Consider a shared scene fixture in frontend tests to standardize validation inputs.
