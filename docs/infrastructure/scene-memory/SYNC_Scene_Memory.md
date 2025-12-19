@@ -127,6 +127,14 @@ See `docs/physics/` for current Moment Graph documentation.
 ## RECENT CHANGES
 ===============================================================================
 
+### 2025-12-19: Refreshed scene-memory implementation file metadata
+- **What:** Updated the implementation doc line counts to match the current
+  `engine/infrastructure/memory/__init__.py` and
+  `engine/infrastructure/memory/moment_processor.py` sizes.
+- **Why:** Keep the file responsibility table and extraction candidate sizing
+  aligned with the actual codebase layout.
+- **Files:** `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md`
+
 ### 2025-12-19: Clarified extraction candidates to avoid stale file references
 - **What:** Reworded extraction target descriptions to emphasize they remain
   internal helpers within `engine/infrastructure/memory/moment_processor.py`.

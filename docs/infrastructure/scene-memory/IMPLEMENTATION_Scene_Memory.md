@@ -37,8 +37,8 @@ engine/infrastructure/memory/
 
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|----------------------|-------|--------|
-| `engine/infrastructure/memory/__init__.py` | Module export surface | `MomentProcessor` | ~9 | OK |
-| `engine/infrastructure/memory/moment_processor.py` | Create moments, manage transcript, connect to GraphOps | `MomentProcessor`, `get_moment_processor` | ~583 | WATCH |
+| `engine/infrastructure/memory/__init__.py` | Module export surface | `MomentProcessor` | ~11 | OK |
+| `engine/infrastructure/memory/moment_processor.py` | Create moments, manage transcript, connect to GraphOps | `MomentProcessor`, `get_moment_processor` | ~585 | WATCH |
 
 **Size Thresholds:**
 - **OK** (<400 lines): Healthy size, easy to understand
@@ -233,8 +233,8 @@ engine/infrastructure/memory/moment_processor.py
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `engine/infrastructure/memory/moment_processor.py` | ~583L | <400L | internal transcript helpers (stay in `engine/infrastructure/memory/moment_processor.py`) | `_load_transcript_line_count`, `_write_transcript`, `_append_to_transcript` |
-| `engine/infrastructure/memory/moment_processor.py` | ~583L | <400L | internal ID helpers (stay in `engine/infrastructure/memory/moment_processor.py`) | `_generate_id`, `_tick_to_time_of_day` |
+| `engine/infrastructure/memory/moment_processor.py` | ~585L | <400L | internal transcript helpers (stay in `engine/infrastructure/memory/moment_processor.py`) | `_load_transcript_line_count`, `_write_transcript`, `_append_to_transcript` |
+| `engine/infrastructure/memory/moment_processor.py` | ~585L | <400L | internal ID helpers (stay in `engine/infrastructure/memory/moment_processor.py`) | `_generate_id`, `_tick_to_time_of_day` |
 
 ### Missing Implementation
 
