@@ -78,6 +78,8 @@ to avoid drift warnings in the doc health checks.
 
 - 2025-12-19: Filled missing SYNC template sections and expanded notes to
   satisfy DOC_TEMPLATE_DRIFT checks for repair #16.
+- 2025-12-19: Expanded TEST_Opening.md with full test template sections and
+  noted current gaps for repair #16.
 
 ---
 
@@ -138,3 +140,16 @@ opening behavior, avoiding changes that would imply unverified behavior.
 - Static questions in CONTENT.md remain the most engaging approach per design philosophy
 - LLM's role: present questions with life/timing, listen, build player profile, reflect back authentically
 - Companion reflection template in CONTENT.md guides post-question synthesis
+
+---
+
+## Agent Observations
+
+### Remarks
+- TEST_Opening.md now reflects intended coverage but remains unimplemented in code.
+
+### Suggestions
+- [ ] Add a lightweight test harness for opening.json replay in engine/tests.
+
+### Propositions
+- Consider a golden transcript fixture to detect CONTENT.md drift over time.
