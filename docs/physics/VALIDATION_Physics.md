@@ -2,7 +2,7 @@
 
 ```
 CREATED: 2024-12-17
-UPDATED: 2024-12-18
+UPDATED: 2025-12-19
 STATUS: Canonical
 ```
 
@@ -24,6 +24,42 @@ IMPL:           ../../engine/tests/test_moment_graph.py
 ```
 
 ---
+
+## INVARIANTS
+
+The checks below define the non-negotiable physics rules. They are written
+as validation anchors so any deviation is treated as a defect, not a
+variance in interpretation or runtime configuration.
+
+## PROPERTIES
+
+Physics behavior is deterministic for a fixed graph state, conserves energy
+with explicit decay, and keeps canon ordering stable regardless of display
+speed. These properties are validated by the invariants and benchmarks here.
+
+## ERROR CONDITIONS
+
+Validation must flag missing ticks, invalid status enums, weight values
+outside bounds, or illegal links (e.g., THEN to non-Moment nodes). Handler
+scope violations and non-deterministic flips are critical errors.
+
+## TEST COVERAGE
+
+Physics validation relies on integration tests in `engine/tests/` plus schema
+checks in the graph-health suite. See `docs/physics/TEST_Physics.md` for
+specific cases, coverage notes, and known gaps.
+
+## VERIFICATION PROCEDURE
+
+1. Run automated physics and schema tests from `engine/tests/`.
+2. Execute a short simulated scenario at 1x and 3x to compare canon chains.
+3. Inspect graph queries for invariant violations (status, weights, links).
+4. Review SYNC notes for open gaps before claiming completion.
+
+## SYNC STATUS
+
+Validation guidance is aligned with `docs/physics/SYNC_Physics.md`. Update the
+SYNC file whenever invariants or verification steps change to avoid drift.
 
 ## Core Invariants
 
@@ -573,5 +609,68 @@ Before release:
 - [ ] Parallel handlers work
 
 ---
+
+## PROPERTIES
+
+These properties describe expected characteristics of a healthy physics run
+that are observable without asserting exact event content. They complement
+the invariants by describing measurable system traits, not strict rules.
+
+- Energy propagation produces measurable decay per tick even when no new
+  player input arrives, confirming the world does not idle.
+- Canon ordering remains stable under replays with identical seeds and graph
+  state snapshots, even if display speed differs.
+- Handler output stays within the moment schema and never asserts weight or
+  energy directly, keeping physics authoritative.
+- Flip detection produces consistent counts across identical snapshots, with
+  variance attributable only to randomized seed configuration.
+
+## ERROR CONDITIONS
+
+These are explicit failure states that must be surfaced by tests or runtime
+checks, because silent degradation here would undermine physics authority and
+simulation credibility.
+
+- Missing or null tick metadata on THEN links or spoken moments.
+- Moment weights or energies outside allowed bounds after a physics tick.
+- Handler output attaching to the wrong character or writing to non-moment
+  nodes without an explicit graph operation.
+- Speed changes producing different canon chains or missing interrupts.
+- Tick loop halted while the simulation reports an active playthrough.
+
+## TEST COVERAGE
+
+Primary coverage lives in `docs/physics/TEST_Physics.md` and the engine test
+suite under `engine/tests/`, especially tests that exercise moment graph
+consistency and physics tick behavior. The validation checklist maps to those
+tests, and any gaps are tracked in the physics TEST doc and SYNC file.
+
+## VERIFICATION PROCEDURE
+
+1. Review `docs/physics/ALGORITHM_Physics.md` and confirm invariants align with
+   the documented tick, decay, flip, and canon mechanics.
+2. Run the relevant physics tests from `engine/tests/` and confirm no skips
+   obscure missing coverage for tick, graph, or handler logic.
+3. Validate graph integrity checks against a representative playthrough
+   dataset, confirming status, weight, link, and THEN-link requirements.
+4. Compare canon chains across at least two speed settings to confirm
+   display-only differences and identical actualization outcomes.
+5. Record verification outcomes in `docs/physics/SYNC_Physics.md` with any
+   deviations, failing checks, or follow-up items.
+
+## SYNC STATUS
+
+Physics validation drift is tracked in `docs/physics/SYNC_Physics.md`. Any
+changes to invariants, properties, or procedures must be logged there to keep
+the validation doc aligned with current engine behavior.
+
+## GAPS / IDEAS / QUESTIONS
+
+- Which validation checks should be automated vs. manual when handler and
+  canon runtime scaffolding is still pending?
+- Should physics invariants include explicit checks for proximity gating once
+  the World Runner integration is fully wired?
+- How should we record acceptable nondeterminism when LLM-driven handlers add
+  variability to moment text but not structure?
 
 *"Verification is how we know the system behaves as designed."*

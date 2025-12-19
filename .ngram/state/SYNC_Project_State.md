@@ -54,6 +54,11 @@ Expanded `docs/physics/SYNC_Physics.md` with missing template sections
 consciousness trace, pointers) and lengthened short entries to resolve
 DOC_TEMPLATE_DRIFT for repair #16.
 
+Expanded `docs/physics/VALIDATION_Physics.md` with the missing validation
+template sections (invariants, properties, error conditions, test coverage,
+verification procedure, sync status, gaps) to resolve DOC_TEMPLATE_DRIFT for
+repair #16 and logged the change in `docs/physics/SYNC_Physics.md`.
+
 Verified `docs/physics/BEHAVIORS_Physics.md` already includes the required
 behavior template sections and logged the verification in
 `docs/physics/SYNC_Physics.md` for repair #16.
