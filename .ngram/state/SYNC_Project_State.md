@@ -24,7 +24,7 @@ status in the world map SYNC for this repair.
 Ran `ngram validate` after the map SYNC consolidation; pre-existing schema,
 tempo, and world-builder doc gaps plus broken CHAIN links remain.
 
-Consolidated frontend map view PATTERNS docs into `docs/frontend/map/PATTERNS_Parchment_Map_View.md`, removed the duplicate, and updated `docs/frontend/map/SYNC_Map_View.md` to point to the canonical file.
+Consolidated frontend map view PATTERNS docs into `docs/frontend/map/PATTERNS_Parchment_Map_View.md`, expanded the visibility/read-only detail, and removed the duplicate.
 
 Removed the duplicate API algorithm doc (`docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`) so the canonical API flow lives only in `docs/infrastructure/api/ALGORITHM_Api.md`.
 
