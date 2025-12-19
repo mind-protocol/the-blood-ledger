@@ -1,9 +1,9 @@
-# Tempo Controller — Validation: Pacing Invariants and Safety Checks
+# Tempo Controller — Validation: Pacing Invariants
 
 ```
 STATUS: DRAFT
 CREATED: 2025-12-19
-VERIFIED: 2025-12-19 against local worktree
+VERIFIED: 2025-12-19 against local tree
 ```
 
 ---
@@ -14,7 +14,7 @@ VERIFIED: 2025-12-19 against local worktree
 PATTERNS:        ./PATTERNS_Tempo.md
 BEHAVIORS:       ./BEHAVIORS_Tempo.md
 ALGORITHM:       ./ALGORITHM_Tempo_Controller.md
-THIS:            VALIDATION_Tempo.md
+THIS:            VALIDATION_Tempo.md (you are here)
 IMPLEMENTATION:  ./IMPLEMENTATION_Tempo.md
 TEST:            ./TEST_Tempo.md
 SYNC:            ./SYNC_Tempo.md
@@ -30,29 +30,38 @@ IMPL:            engine/infrastructure/tempo/tempo_controller.py
 
 These must ALWAYS be true:
 
-### V1: Speed is one of the allowed values
+### V1: Tick Count Is Monotonic
 
 ```
-TempoController.speed in {'pause', '1x', '2x', '3x'}
+tick_count increments by 1 for each physics.tick() call.
 ```
 
-**Checked by:** manual inspection; future unit test should assert speed transitions.
+**Checked by:** Manual inspection during debug logging (no automated test yet).
 
-### V2: Pause mode never ticks without input
-
-```
-If speed == 'pause' and no input event occurs, then no physics tick runs.
-```
-
-**Checked by:** manual reasoning; add unit test with mocked Event.
-
-### V3: Display queue size is non-negative
+### V2: Pause Mode Ticks Only On Input
 
 ```
-TempoController.display_queue_size >= 0
+If speed == 'pause', ticks occur only after input event is set.
 ```
 
-**Checked by:** `update_display_queue_size` normalization.
+**Checked by:** Manual run with pause speed and observing tick logs.
+
+### V3: Presence Requirements Are Respected
+
+```
+Moments with presence_required attachments are surfaced only when all required
+characters are at the player location.
+```
+
+**Checked by:** Manual graph inspection via queries (no automated test yet).
+
+### V4: Interrupts Snap To 1x
+
+```
+Any interrupt moment recorded at 2x/3x forces speed to '1x'.
+```
+
+**Checked by:** Manual run with interrupt moment flag.
 
 ---
 
@@ -60,47 +69,38 @@ TempoController.display_queue_size >= 0
 
 For property-based testing:
 
-### P1: Tick count only increments on physics ticks
+### P1: Backpressure Never Makes Queue Negative
 
 ```
-FORALL tick cycles:
-    tick_count increments exactly once per physics.tick() call
+FORALL queue_size:
+    update_display_queue_size(queue_size) >= 0
 ```
 
-**Tested by:** NOT YET TESTED — requires mocking GraphTick.
-
-### P2: Interrupt flips speed to 1x
-
-```
-FORALL moments with interrupt == true at 2x/3x:
-    speed becomes '1x' after processing
-```
-
-**Tested by:** NOT YET TESTED — requires deterministic loop control.
+**Tested by:** NOT YET TESTED — no property tests exist.
 
 ---
 
 ## ERROR CONDITIONS
 
-### E1: Graph query failure during surfacing
+### E1: Graph Query Failure
 
 ```
-WHEN:    GraphQueries raises an exception
-THEN:    ready moment detection returns [] and logs a warning
-SYMPTOM: no moment surfacing for that tick
+WHEN:    GraphQueries.query throws
+THEN:    ready list is empty and a warning is logged
+SYMPTOM: ticks continue without surfacing new moments
 ```
 
-**Tested by:** NOT YET TESTED — needs mocked queries.
+**Tested by:** NOT YET TESTED — no error tests exist.
 
-### E2: Invalid queue size input
+### E2: Invalid Queue Size Report
 
 ```
-WHEN:    queue_size is non-numeric
-THEN:    value is ignored and controller continues
-SYMPTOM: warning log, no crash
+WHEN:    frontend reports a non-integer or negative queue size
+THEN:    value is ignored or clamped, no exception thrown
+SYMPTOM: log warning, backpressure remains stable
 ```
 
-**Tested by:** NOT YET TESTED — needs unit test.
+**Tested by:** NOT YET TESTED — no error tests exist.
 
 ---
 
@@ -108,13 +108,13 @@ SYMPTOM: warning log, no crash
 
 | Requirement | Test(s) | Status |
 |-------------|---------|--------|
-| V1: speed values | — | ⚠ NOT YET TESTED |
-| V2: pause tick gating | — | ⚠ NOT YET TESTED |
-| V3: non-negative queue size | — | ⚠ NOT YET TESTED |
-| P1: tick_count increment | — | ⚠ NOT YET TESTED |
-| P2: interrupt snap | — | ⚠ NOT YET TESTED |
-| E1: query failure | — | ⚠ NOT YET TESTED |
-| E2: invalid queue size | — | ⚠ NOT YET TESTED |
+| V1: Tick count monotonic | — | ⚠ NOT YET TESTED |
+| V2: Pause mode gating | — | ⚠ NOT YET TESTED |
+| V3: Presence requirements | — | ⚠ NOT YET TESTED |
+| V4: Interrupt snap | — | ⚠ NOT YET TESTED |
+| P1: Backpressure clamp | — | ⚠ NOT YET TESTED |
+| E1: Graph query failure | — | ⚠ NOT YET TESTED |
+| E2: Invalid queue size | — | ⚠ NOT YET TESTED |
 
 ---
 
@@ -123,18 +123,20 @@ SYMPTOM: warning log, no crash
 ### Manual Checklist
 
 ```
-[ ] V1 holds — inspect speed transitions in `set_speed`
-[ ] V2 holds — pause waits on input event
-[ ] V3 holds — queue size clamped in `update_display_queue_size`
-[ ] All behaviors from BEHAVIORS_Tempo.md are met
-[ ] All edge cases handled without crashing
+[ ] V1 holds — watch tick_count increment with logs
+[ ] V2 holds — pause mode ticks only on input
+[ ] V3 holds — presence-required moments stay hidden when characters are absent
+[ ] V4 holds — interrupt moment sets speed to 1x
+[ ] All behaviors from BEHAVIORS_Tempo.md work
+[ ] All edge cases handled
+[ ] All anti-behaviors prevented
 ```
 
 ### Automated
 
 ```bash
-# No dedicated tempo tests exist yet
-pytest engine/tests/test_*.py
+# No automated tests yet for tempo.
+# Planned: pytest engine/tests/test_tempo.py
 ```
 
 ---
@@ -144,20 +146,19 @@ pytest engine/tests/test_*.py
 ```
 LAST_VERIFIED: 2025-12-19
 VERIFIED_AGAINST:
-    impl: engine/infrastructure/tempo/tempo_controller.py @ local worktree
-    test: none
+    impl: engine/infrastructure/tempo/tempo_controller.py @ local tree
+    test: engine/tests/test_tempo.py @ not yet created
 VERIFIED_BY: manual inspection
 RESULT:
-    V1: PASS (manual)
-    V2: PASS (manual)
-    V3: PASS (manual)
+    V1: NOT RUN
+    V2: NOT RUN
+    V3: NOT RUN
+    V4: NOT RUN
 ```
 
 ---
 
 ## GAPS / IDEAS / QUESTIONS
 
-- [ ] Add unit tests with mocked GraphTick/GraphQueries/CanonHolder
-- [ ] Add integration test that runs tempo loop with a fake backend
-- IDEA: Property tests for speed transition sequences
-- QUESTION: Should backpressure apply at 2x as well?
+- [ ] Add unit tests for speed transitions, pause mode, and queue size handling.
+- [ ] Add integration tests for API endpoints + SSE speed_changed events.

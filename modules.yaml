@@ -312,6 +312,24 @@ modules:
       FastAPI application and API routers for playthroughs, moments, tempo,
       and server-sent events.
 
+  infrastructure-tempo:
+    code: "engine/infrastructure/tempo/**"
+    docs: "docs/infrastructure/tempo/"
+    additional_code:
+      - "engine/infrastructure/api/tempo.py"
+      - "frontend/components/SpeedControl.tsx"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/infrastructure/tempo/tempo_controller.py
+      - engine/infrastructure/api/tempo.py
+    patterns:
+      - "Speed state machine with async loop"
+      - "Per-playthrough tempo controller"
+    notes: |
+      Tempo controller for game pacing (pause/1x/2x/3x), surfacing moments, and
+      broadcasting speed changes. API endpoints live under infrastructure/api.
+
   ops-scripts:
     code: "engine/scripts/**"
     docs: "docs/infrastructure/ops-scripts/"

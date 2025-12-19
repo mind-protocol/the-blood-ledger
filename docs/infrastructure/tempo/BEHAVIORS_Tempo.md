@@ -1,9 +1,9 @@
-# Tempo Controller — Behaviors: Speed-Controlled Moment Surfacing
+# Tempo Controller — Behaviors: Speed-Driven Surfacing
 
 ```
 STATUS: DRAFT
 CREATED: 2025-12-19
-VERIFIED: 2025-12-19 against local worktree
+VERIFIED: 2025-12-19 against local tree
 ```
 
 ---
@@ -12,7 +12,7 @@ VERIFIED: 2025-12-19 against local worktree
 
 ```
 PATTERNS:        ./PATTERNS_Tempo.md
-THIS:            BEHAVIORS_Tempo.md
+THIS:            BEHAVIORS_Tempo.md (you are here)
 ALGORITHM:       ./ALGORITHM_Tempo_Controller.md
 VALIDATION:      ./VALIDATION_Tempo.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Tempo.md
@@ -28,80 +28,88 @@ IMPL:            engine/infrastructure/tempo/tempo_controller.py
 
 ## BEHAVIORS
 
-### B1: Pause mode ticks once per input
+### B1: Pause Mode Waits For Input And Ticks Once
 
 ```
-GIVEN:  speed == 'pause'
+GIVEN:  speed == 'pause' and controller is running
 WHEN:   player input arrives
-THEN:   exactly one physics tick runs
-AND:    at most one ready moment is recorded to canon
+THEN:   controller ticks exactly once and records at most one ready moment
+AND:    controller returns to waiting state
 ```
 
-### B2: Continuous ticking respects the current interval
+### B2: Continuous Modes Tick On Interval And Record Ready Moments
 
 ```
-GIVEN:  speed in {'1x', '2x', '3x'}
-WHEN:   run loop executes
-THEN:   ticks occur no faster than the interval for the current speed
+GIVEN:  speed in {'1x', '2x', '3x'} and controller is running
+WHEN:   tick interval elapses
+THEN:   physics.tick() runs and ready moments are recorded to canon (max 3)
 ```
 
-### B3: Interrupt moments snap back to 1x
+### B3: Interrupts Snap Fast Speeds Back To 1x
 
 ```
 GIVEN:  speed in {'2x', '3x'}
-WHEN:   a ready moment has interrupt == true
-THEN:   speed changes to '1x'
-AND:    a speed_changed event is broadcast
+WHEN:   a recorded moment is flagged interrupt == true
+THEN:   speed changes to '1x' and a speed_changed event is broadcast
 ```
 
-### B4: Backpressure slows 1x when the queue is large
+### B4: Player Input Interrupts 3x
+
+```
+GIVEN:  speed == '3x'
+WHEN:   player input is received
+THEN:   speed changes to '1x' with reason 'player_input'
+```
+
+### B5: Backpressure Slows 1x When Queue Is Large
 
 ```
 GIVEN:  speed == '1x'
 WHEN:   display_queue_size > BACKPRESSURE_LIMIT
-THEN:   the loop sleeps to let the frontend catch up
+THEN:   controller sleeps briefly before next tick
 ```
 
 ---
 
 ## INPUTS / OUTPUTS
 
-### Primary Function: `on_player_input()`
+### Primary Function: `TempoController.on_player_input()`
 
 **Inputs:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `text` | `str` | Player-entered text |
+| `text` | `str` | Player input text to store as a moment |
 
 **Outputs:**
 
 | Return | Type | Description |
 |--------|------|-------------|
-| `result` | `Dict[str, Any]` | `{status, moment_id}` for the created player moment |
+| `status` | `str` | `"ok"` when queued |
+| `moment_id` | `str` | Newly created moment id |
 
 **Side Effects:**
 
-- Creates a player `Moment` node in the graph
-- Signals pause-mode input event
-- May change speed from 3x to 1x
+- Creates a `Moment` node in the graph with status `possible`.
+- Signals pause mode to tick once.
+- Forces speed to 1x when input arrives at 3x.
 
 ---
 
 ## EDGE CASES
 
-### E1: Invalid queue size updates
+### E1: Invalid Queue Size Report
 
 ```
-GIVEN:  queue_size is not an int or is negative
-THEN:   size is ignored or clamped to 0 without crashing
+GIVEN:  queue size is non-integer or negative
+THEN:   controller ignores or clamps the value to 0 and continues
 ```
 
-### E2: Graph query failures
+### E2: Ready-Moment Query Failure
 
 ```
-GIVEN:  graph queries raise exceptions
-THEN:   the controller logs a warning and continues without surfacing moments
+GIVEN:  graph query throws an exception
+THEN:   controller logs a warning and proceeds with no ready moments
 ```
 
 ---
@@ -110,29 +118,27 @@ THEN:   the controller logs a warning and continues without surfacing moments
 
 What should NOT happen:
 
-### A1: Ticking without input in pause mode
+### A1: Pause Mode Should Not Tick Without Input
 
 ```
-GIVEN:   speed == 'pause'
-WHEN:    no input has arrived
-MUST NOT: run physics ticks
-INSTEAD: wait on the input event
+GIVEN:   speed == 'pause' and no input received
+WHEN:    time advances
+MUST NOT: physics.tick() or canon.record_to_canon() run
+INSTEAD:  controller waits on the input event
 ```
 
-### A2: Speed changes without notification
+### A2: Presence Requirements Must Not Be Ignored
 
 ```
-GIVEN:   speed is changed
-WHEN:    set_speed is called
-MUST NOT: skip SSE broadcast
-INSTEAD: emit speed_changed with reason
+GIVEN:   a moment has presence_required attachments not at player location
+WHEN:    ready moments are detected
+MUST NOT: moment be recorded to canon
+INSTEAD:  moment is filtered out of the ready list
 ```
 
 ---
 
 ## GAPS / IDEAS / QUESTIONS
 
-- [ ] Define expected behavior when pause-mode input arrives while running is false
-- [ ] Clarify whether interrupt detection expands beyond `moment.interrupt`
-- IDEA: Emit a tempo shutdown event for the frontend UI
-- QUESTION: Should 2x/3x still record non-displayed moments to canon?
+- [ ] Clarify frontend display filtering at 2x/3x (not enforced server-side).
+- QUESTION: Should pause mode surface more than one moment per input?

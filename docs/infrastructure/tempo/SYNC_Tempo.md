@@ -16,6 +16,7 @@ Latest repair update:
   validation, and logging.
 - Added the missing PATTERNS, BEHAVIORS, VALIDATION, and TEST docs to complete
   the documentation chain.
+- Added an `infrastructure-tempo` module mapping in `modules.yaml`.
 
 ### Doc Chain
 
@@ -97,6 +98,7 @@ This is why `_record_narrator_output` was deleted from Orchestrator — it incor
 ## Remaining Work
 
 ### Missing Docs
+None.
 
 ### Missing Implementation
 
@@ -129,6 +131,7 @@ This is why `_record_narrator_output` was deleted from Orchestrator — it incor
 | `docs/infrastructure/tempo/BEHAVIORS_Tempo.md` | Created |
 | `docs/infrastructure/tempo/VALIDATION_Tempo.md` | Created |
 | `docs/infrastructure/tempo/TEST_Tempo.md` | Created |
+| `modules.yaml` | Added infrastructure-tempo mapping |
 
 ---
 
