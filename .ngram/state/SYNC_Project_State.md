@@ -14,6 +14,8 @@ and refreshed the UPDATED timestamp to resolve DOC_TEMPLATE_DRIFT for #16.
 
 Updated `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` by adding the
 missing SYNC template sections and recording the repair log entry for #16.
+Deduplicated the Scene Memory SYNC template headings so only one authoritative
+set of sections remains after the drift fix.
 
 Expanded `docs/infrastructure/scene-memory/BEHAVIORS_Scene_Memory.md` with the
 missing template sections (behaviors, inputs/outputs, anti-behaviors,
