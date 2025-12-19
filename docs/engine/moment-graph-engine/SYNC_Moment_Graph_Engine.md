@@ -56,6 +56,12 @@ The module relies on physics graph ops/queries and is treated as a hot path.
 - **Files:** `engine/moment_graph/traversal.py`
 - **Result:** Implementations already present; no code changes required.
 
+### 2025-12-19: Logged repair validation run
+
+- **What:** Ran `ngram validate` after confirming traversal helpers.
+- **Why:** Protocol requires validation after changes.
+- **Result:** Pre-existing doc-chain gaps remain in schema/tempo/world-builder.
+
 ### 2025-12-19: Documented moment graph engine module
 
 - **What:** Added docs and mapped the module in `modules.yaml`.

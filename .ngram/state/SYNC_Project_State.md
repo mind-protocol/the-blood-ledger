@@ -16,6 +16,10 @@ Revalidated traversal helpers (`make_dormant`, `process_wait_triggers`) in
 implementations already present, no code changes required (logged in
 `docs/engine/moment-graph-engine/SYNC_Moment_Graph_Engine.md`).
 
+Ran `ngram validate` after confirming traversal helpers; pre-existing doc-chain
+gaps remain in schema/tempo/world-builder (recorded in
+`docs/engine/moment-graph-engine/SYNC_Moment_Graph_Engine.md`).
+
 Reconfirmed mutation listener helpers (`add_mutation_listener`, `remove_mutation_listener`) in `engine/physics/graph/graph_ops_events.py` are already implemented for the repair run; no code changes required (logged in `docs/physics/graph/SYNC_Graph.md`).
 
 Reviewed moment graph query helpers (`get_dormant_moments`, `get_wait_triggers`,
