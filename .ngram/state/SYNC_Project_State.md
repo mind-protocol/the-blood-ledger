@@ -21,6 +21,8 @@ Linked the History implementation doc into the module chain, added a CHAIN block
 Mapped frontend module in `modules.yaml` to cover `frontend/**`, aligning docs with `docs/frontend/` and closing the unmapped `frontend/components` gap.
 Linked `frontend/components/voices/Voices.tsx` to frontend docs via a DOCS reference for `ngram context` discoverability.
 Linked `frontend/components/debug/DebugPanel.tsx` to frontend docs via a DOCS reference.
+Verified the debug panel documentation mapping remains in place for the current repair (no code changes needed).
+Ran `ngram validate`; failures are pre-existing doc gaps in `docs/schema/` and `docs/infrastructure/tempo/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 Repair 22: corrected the history module implementation chain link and registered history in `modules.yaml`.
 
 Frontend-backend integration fixes for playthrough flow:
