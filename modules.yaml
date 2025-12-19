@@ -183,6 +183,21 @@ modules:
       Distributed history service for querying and recording memories.
       Provides HistoryService and ConversationThread APIs.
 
+  canon:
+    code: "engine/infrastructure/canon/**"
+    docs: "docs/infrastructure/canon/"
+    tests: "tests/infrastructure/canon/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/canon/canon_holder.py
+    patterns:
+      - "Single gatekeeper for recording moments"
+      - "Graph-first canon chain via THEN links"
+    notes: |
+      Canon holder logic for recording moments to the story canon.
+      Includes speaker resolution and SSE broadcast on record.
+
   image-generation:
     code: "tools/image_generation/**"
     docs: "docs/infrastructure/image-generation/"
