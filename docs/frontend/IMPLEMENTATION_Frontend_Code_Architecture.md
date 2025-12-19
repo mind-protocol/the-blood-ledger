@@ -34,8 +34,7 @@ frontend/
 │   ├── frontend/app/layout.tsx            # Root layout with providers
 │   ├── frontend/app/start/page.tsx        # Opening/start screen
 │   ├── frontend/app/map/page.tsx          # Map view
-│   ├── frontend/app/scenarios/page.tsx    # Scenario selection
-│   └── frontend/app/playthroughs/[id]/page.tsx # Dynamic playthrough route
+│   └── frontend/app/scenarios/page.tsx    # Scenario selection
 ├── frontend/components/                   # React components
 │   ├── frontend/components/GameClient.tsx # Main game wrapper, handles loading
 │   ├── frontend/components/GameLayout.tsx # Layout: scene + right panel
@@ -139,7 +138,7 @@ Docs for moment components live with the Scene module (`docs/frontend/scene/`), 
 
 - **Prop Drilling**: Use context or compose hooks instead of passing props through many layers
 - **Direct State Mutation**: Always use setState/dispatch, never mutate state directly
-- **God Component**: Split CenterStage.tsx if it grows beyond 500 lines
+- **God Component**: Split frontend/components/scene/CenterStage.tsx if it grows beyond 500 lines
 - **Mixing Concerns**: Keep API logic in hooks/lib, not in components
 
 ### Boundaries
@@ -214,7 +213,7 @@ Scene:
          │ renders
          v
 ┌─────────────────┐
-│  GameClient.tsx │ ← uses useGameState
+│  frontend/components/GameClient.tsx │ ← uses useGameState
 └────────┬────────┘
          │ fetches
          v
@@ -230,7 +229,7 @@ Scene:
          │ renders
          v
 ┌─────────────────┐
-│  GameLayout.tsx │ ← Scene + Panel
+│  frontend/components/GameLayout.tsx │ ← Scene + Panel
 └─────────────────┘
 ```
 
@@ -317,7 +316,7 @@ Initial → Loading → (Loaded | Error | NeedsOpening)
 ### Initialization
 
 ```
-1. Next.js renders page.tsx
+1. Next.js renders frontend/app/page.tsx
 2. GameClient mounts
 3. useGameState hook initializes
 4. Health check → parallel API fetch → transform
@@ -375,14 +374,14 @@ Files approaching WATCH/SPLIT status:
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `frontend/hooks/useGameState.ts` | ~423L | <400L | `transformers.ts` (proposed) | Transform helper functions |
-| `frontend/lib/api.ts` | ~419L | <400L | `api-moments.ts` (proposed) | Moment-specific API functions |
-| `frontend/components/scene/CenterStage.tsx` | ~435L | <400L | `CenterStageContent.tsx` (proposed) | Sub-sections |
+| `frontend/hooks/useGameState.ts` | ~423L | <400L | Transformers module (proposed) | Transform helper functions |
+| `frontend/lib/api.ts` | ~419L | <400L | Moment API module (proposed) | Moment-specific API functions |
+| `frontend/components/scene/CenterStage.tsx` | ~435L | <400L | CenterStage content component (proposed) | Sub-sections |
 
 ### Missing Implementation
 
 - [ ] Add DOCS reference to frontend/app/page.tsx
-- [ ] Consider splitting CenterStage.tsx
+- [ ] Consider splitting frontend/components/scene/CenterStage.tsx
 
 ### Ideas
 

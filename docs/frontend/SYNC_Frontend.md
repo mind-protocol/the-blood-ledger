@@ -64,10 +64,11 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ### 2025-12-19: Fix broken implementation doc file references
 
-- **What:** Updated file paths in the frontend implementation doc to point at `frontend/**` and adjusted proposed extraction targets to non-path labels.
+- **What:** Updated file paths in the frontend implementation doc to point at `frontend/**`, removed the non-existent playthrough route reference, and adjusted proposed extraction targets to non-path labels.
 - **Why:** Remove broken file references so the implementation doc resolves to existing files.
 - **Files:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
 - **Struggles/Insights:** None.
+- **Verification:** `ngram validate` (fails on pre-existing docs gaps in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/`).
 
 ### 2025-12-19: Link frontend API client to documentation chain
 
