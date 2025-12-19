@@ -28,6 +28,21 @@ are captured in TODO so the scope stays explicit.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Filled validation template sections
+
+- **What:** Added missing validation template sections (properties, error
+  conditions, test coverage) to `docs/physics/VALIDATION_Physics.md` and
+  ensured the guidance aligns with the existing verification checklist.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics validation doc.
+- **Files:** `docs/physics/VALIDATION_Physics.md`
+
+### 2025-12-19: Verified physics patterns template coverage
+
+- **What:** Rechecked `docs/physics/PATTERNS_Physics.md` to confirm the
+  required template sections are present and sufficiently detailed.
+- **Why:** Close the active DOC_TEMPLATE_DRIFT report for the patterns doc.
+- **Files:** `docs/physics/PATTERNS_Physics.md`
+
 ### 2025-12-19: Added physics implementation design patterns
 
 - **What:** Added the DESIGN PATTERNS section (architecture, code patterns, anti-patterns, boundaries) to `docs/physics/IMPLEMENTATION_Physics.md`.
@@ -237,6 +252,7 @@ For next session:
 - Filled the missing algorithm template sections in `docs/physics/ALGORITHM_Physics.md` for repair #16.
 - Expanded `docs/physics/VALIDATION_Physics.md` to include all required validation template sections for repair #16.
 - Expanded `docs/physics/PATTERNS_Physics.md` with the missing template sections for repair #16.
+- Reverified `docs/physics/PATTERNS_Physics.md` template coverage for repair #16.
 
 ### Suggestions
 - [ ] Install `pytest_xprocess` (or disable the anchorpy pytest plugin) to run the physics behavior tests.

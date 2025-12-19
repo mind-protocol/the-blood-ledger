@@ -5,6 +5,77 @@ Original file: SYNC_Graph.md
 
 ---
 
+## Maturity
+
+STATUS: DEPRECATED
+
+What's canonical (v1):
+- The archive preserves prior graph physics decisions for reference; canonical, up-to-date guidance lives in `docs/physics/graph/SYNC_Graph.md`.
+
+What's still being designed:
+- Active design work is no longer tracked here; any ongoing graph tuning should be logged in the current SYNC, not this archive.
+
+What's proposed (v2):
+- Future proposals should be documented in the live SYNC and promoted here only if this archive is reissued, so history stays readable.
+
+---
+
+## CURRENT STATE
+
+This archive captures older SYNC content for the physics graph module, retained to preserve decision history while the active state continues in `docs/physics/graph/SYNC_Graph.md`.
+
+---
+
+## IN PROGRESS
+
+No active work is tracked in this archive; it exists solely to preserve historical context while ongoing tasks are recorded in the current graph SYNC file.
+
+---
+
+## RECENT CHANGES
+
+2025-12-19: Added the missing archive template sections (maturity, state, handoffs, and pointers) so this file stays aligned with the SYNC format expectations for repair #16.
+
+---
+
+## KNOWN ISSUES
+
+No known issues specific to this archive; if the guidance here appears stale, defer to the live `docs/physics/graph/SYNC_Graph.md` for authoritative updates.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+Use `docs/physics/graph/SYNC_Graph.md` for current work items; this archive is for historical context only and should not be updated unless a new archival snapshot is created.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+This archive is a historical snapshot of the graph SYNC; current priorities and open questions are tracked in the active graph SYNC and should be reviewed there first.
+
+---
+
+## TODO
+
+- [ ] If this archive is updated again, re-run the SYNC template checklist to keep maturity, handoffs, and pointers aligned with protocol requirements.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+Archiving keeps decision history available while reducing noise in the active SYNC, making it easier to distinguish current obligations from settled design context.
+
+---
+
+## POINTERS
+
+- Current graph state and tasks: `docs/physics/graph/SYNC_Graph.md`
+- Graph design rationale: `docs/physics/graph/PATTERNS_Graph.md`
+- Energy flow algorithm: `docs/physics/graph/ALGORITHM_Energy_Flow.md`
+
+---
+
 ## Key Design Decisions
 
 ### Energy Sources Are Characters
@@ -622,4 +693,3 @@ Repeat
 
 
 ---
-

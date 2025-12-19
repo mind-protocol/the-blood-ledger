@@ -109,6 +109,7 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 - Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers are implemented; repair flagged as INCOMPLETE_IMPL is stale.
 - Removed duplicate graph algorithm doc by consolidating weight computation into `docs/physics/graph/ALGORITHM_Energy_Flow.md` and dropping `docs/physics/graph/ALGORITHM_Weight.md`.
 - Reconfirmed `engine/physics/graph/graph_ops_types.py` helper implementations for the current repair run; no code changes required.
+- Filled the missing template sections in `docs/physics/graph/SYNC_Graph_archive_2025-12.md` to align the archive with current SYNC requirements for repair #16.
 
 ## Agent Observations
 
