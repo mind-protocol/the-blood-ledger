@@ -7,6 +7,10 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
+**2025-12-19: Verified moment graph query helpers already implemented**
+- Confirmed `get_dormant_moments`, `get_wait_triggers`, and `get_moments_attached_to_tension` in `engine/moment_graph/queries.py` are implemented
+- Repair task marked as stale; no runtime changes
+
 **2025-12-19: Normalized moment graph query row handling**
 - `engine/moment_graph/queries.py` now normalizes dict/list query rows for dormant moments, wait triggers, and tension-attached moments
 - Keeps traversal/reactivation logic stable across FalkorDB result formats

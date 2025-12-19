@@ -12,6 +12,7 @@ UPDATED_BY: Codex (repair agent)
 Revalidated playthroughs API helper implementations; documentation updated for the stale repair task.
 Confirmed `engine/models/base.py` comparison helpers were already implemented; no code change required.
 Validated moment processor implementations; repair task appears stale.
+Verified moment graph query helpers in `engine/moment_graph/queries.py` are already implemented; repair task appears stale.
 Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.md`.
 
 ---
@@ -28,6 +29,12 @@ Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.m
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-19: Validate moment graph query helpers already implemented
+
+- **What:** Confirmed `get_dormant_moments`, `get_wait_triggers`, and `get_moments_attached_to_tension` are implemented in `engine/moment_graph/queries.py`.
+- **Why:** Repair task flagged incomplete functions; current code already has concrete logic.
+- **Impact:** No runtime behavior change; documentation refreshed.
 
 ### 2025-12-19: Validate node model helpers already implemented
 
