@@ -33,6 +33,18 @@ All Python imports updated and verified working. Health score improved from 10 c
 
 ## RECENT CHANGES
 
+### 2025-12-19: SYNC_Opening.md Refreshed
+
+- **What:** Updated stale SYNC file for design/opening module
+- **Why:** SYNC was 367 days old, claimed "not moment graph yet" when opening moments ARE now written
+- **Impact:** SYNC now reflects reality - moment graph creation documented, code locations updated for 2025-12 restructure, remaining work (answer→ledger automation, tests) tracked
+
+### 2025-12-19: SYNC_World_Runner.md Refreshed
+
+- **What:** Updated stale SYNC file for agents/world-runner module
+- **Why:** SYNC was 368 days old, claimed "implementation in progress" when module is complete
+- **Impact:** SYNC now reflects reality - CANONICAL status, all docs current, fixed stale path reference in INPUT_REFERENCE.md
+
 ### 2025-12-19: SYNC_Map.md Refreshed
 
 - **What:** Updated stale SYNC file for world/map module
@@ -105,7 +117,7 @@ All Python imports updated and verified working. Health score improved from 10 c
 | graph_ops.py monolith | warning | `engine/physics/graph/` | 1611 lines (reduced from 2252 via ApplyOperationsMixin extraction), still above 800 threshold |
 | ~~graph_queries.py monolith~~ | ~~critical~~ | `engine/physics/graph/` | RESOLVED: 892 lines (extracted SearchQueryMixin) |
 | ~~Broken impl link~~ | ~~warning~~ | `docs/physics/` | MOSTLY RESOLVED: 51→34 references remaining are false positives (tree filenames, constants) |
-| 5 stale SYNCs | warning | various | Need refresh (scene, map fixed) |
+| 4 stale SYNCs | warning | various | Need refresh (scene, map, world-runner fixed) |
 
 ---
 
@@ -155,7 +167,7 @@ Code restructured to match docs areas. All imports updated and verified working.
 
 ### Backlog
 
-- [ ] Refresh 5 remaining stale SYNC files (scene, map done)
+- [ ] Refresh 4 remaining stale SYNC files (scene, map, world-runner done)
 - [ ] Add DOCS: references to code files
 
 ---
