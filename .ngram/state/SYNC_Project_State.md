@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers (`get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, `get_clickable_words`) are already implemented for the current incomplete-impl repair; no code changes required (logged in `docs/physics/graph/SYNC_Graph.md`).
+
 Revalidated traversal helpers (`make_dormant`, `process_wait_triggers`) in
 `engine/moment_graph/traversal.py` for the current incomplete-impl repair;
 implementations already present, no code changes required (logged in

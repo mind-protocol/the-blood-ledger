@@ -95,6 +95,7 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 ## Recent Changes
 
 ### 2025-12-19
+- Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers (`get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, `get_clickable_words`) are fully implemented; repair task was stale.
 - Confirmed the `physics-graph` module mapping in `modules.yaml`, removed the duplicate entry, and verified the `graph_ops.py` DOCS reference.
 - Confirmed tick.py, orchestrator.py are complete
 - Identified gap: no API endpoint calls orchestrator.process_action()
