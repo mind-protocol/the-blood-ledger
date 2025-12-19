@@ -1,8 +1,8 @@
 # Map System — Sync: Current State
 
 ```
-LAST_UPDATED: 2024-12-16
-STATUS: Documented, ready for implementation
+LAST_UPDATED: 2025-12-19
+STATUS: Partial implementation - semantic search complete, visual map pending
 ```
 
 ---
@@ -16,10 +16,57 @@ STATUS: Documented, ready for implementation
 - Visibility system with 4 levels
 - Interaction behaviors
 
-**Not yet implemented.** Waiting for:
-- Frontend setup (Next.js)
-- Graph infrastructure (FalkorDB)
-- Integration with Narrator
+**Partial implementation:**
+
+| Component | Status | Notes |
+|-----------|--------|-------|
+| Semantic Search | **Implemented** | `engine/world/map/semantic.py` |
+| FalkorDB Integration | **Available** | Used via GraphQueries |
+| Visual Map Rendering | Not started | Canvas layers, fog of war |
+| Place/Route Display | Not started | Requires frontend setup |
+| Visibility System | Not started | Player knowledge tracking |
+
+---
+
+## What's Implemented
+
+### SemanticSearch (`engine/world/map/semantic.py`)
+
+Natural language query layer for finding world content:
+
+- `find(query, node_types, limit)` — Search by natural language
+- `find_similar(node_id)` — Find nodes similar to given node
+- `find_narratives_like(text)` — Find matching narratives
+- `find_characters_like(description)` — Find matching characters
+- `answer_question(question)` — Find nodes that answer a question
+
+Uses FalkorDB vector search with fallback to brute-force similarity computation.
+
+**Integration:**
+- Uses `engine.infrastructure.embeddings` for embedding generation
+- Uses `engine.physics.graph.GraphQueries` for database access
+
+---
+
+## What's NOT Implemented
+
+### Visual Map System
+
+The documented map features remain unimplemented:
+- Canvas-based rendering with 7 layers
+- Parchment aesthetic with hand-drawn feel
+- Fog of war using multiply blend
+- Place icons and labels
+- Route visualization with waypoints
+- Player position tracking
+- Click-to-travel interaction
+
+### Visibility/Knowledge System
+
+Player-specific knowledge tracking:
+- Unknown/Rumored/Known/Familiar states
+- Fog of war reveal
+- Discovery mechanics
 
 ---
 
@@ -36,23 +83,17 @@ STATUS: Documented, ready for implementation
 
 ---
 
-## Summary Table
+## Dependencies for Visual Map
 
-| Component | Implementation |
-|-----------|----------------|
-| Place scale | 5 levels: region → room |
-| CONTAINS | Hierarchy link (no attributes) |
-| ROUTE | Waypoints + computed distance/time |
-| Movement | Scale-based defaults, ROUTE for between settlements |
-| Projection | Equirectangular for Northern England |
-| Rendering | 7 Canvas layers, seeded random for hand-drawn |
-| Fog of war | Separate canvas, radial gradient holes, multiply blend |
-| Visibility | 4 levels: unknown → familiar |
-| Hit detection | Distance threshold from projected coordinates |
+To implement the visual map system:
+1. **Frontend canvas component** — React component with layered Canvas2D
+2. **Place/Route data loading** — Query places from graph
+3. **Visibility state storage** — Per-playthrough player knowledge
+4. **Travel event handling** — Integration with Narrator
 
 ---
 
-*"The map is documented. Implementation awaits the frontend."*
+*"Semantic search is ready. The visual map awaits."*
 
 
 ---

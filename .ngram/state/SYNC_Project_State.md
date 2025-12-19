@@ -33,6 +33,23 @@ All Python imports updated and verified working. Health score improved from 10 c
 
 ## RECENT CHANGES
 
+### 2025-12-19: SYNC_Map.md Refreshed
+
+- **What:** Updated stale SYNC file for world/map module
+- **Why:** SYNC was 368 days old, claimed "Not yet implemented" when semantic search IS implemented
+- **Impact:** SYNC now reflects reality - SemanticSearch class documented, visual map system tracked as not-yet-implemented
+
+### 2025-12-19: graph_ops.py Monolith Split (ApplyOperationsMixin)
+
+- **What:** Extracted ApplyOperationsMixin from graph_ops.py
+- **Why:** File was 2252 lines (threshold: 800)
+- **Impact:**
+  - Created new file `graph_ops_apply.py` (697 lines)
+  - `graph_ops.py` reduced from 2252 to 1611 lines
+  - Extracted: `apply()` method, all `_extract_*` methods, apply helpers
+  - Added `ApplyOperationsMixin` to class inheritance (alongside existing `MomentOperationsMixin`)
+  - Updated IMPLEMENTATION_Physics.md and modules.yaml
+
 ### 2025-12-19: Fixed IMPLEMENTATION_Physics.md Broken Links
 
 - **What:** Updated docs/physics/IMPLEMENTATION_Physics.md to fix broken file references
@@ -85,10 +102,10 @@ All Python imports updated and verified working. Health score improved from 10 c
 
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
-| graph_ops.py monolith | critical | `engine/physics/graph/` | 1989 lines, needs splitting |
+| graph_ops.py monolith | warning | `engine/physics/graph/` | 1611 lines (reduced from 2252 via ApplyOperationsMixin extraction), still above 800 threshold |
 | ~~graph_queries.py monolith~~ | ~~critical~~ | `engine/physics/graph/` | RESOLVED: 892 lines (extracted SearchQueryMixin) |
 | ~~Broken impl link~~ | ~~warning~~ | `docs/physics/` | MOSTLY RESOLVED: 51→34 references remaining are false positives (tree filenames, constants) |
-| 6 stale SYNCs | warning | various | Need refresh (scene fixed) |
+| 5 stale SYNCs | warning | various | Need refresh (scene, map fixed) |
 
 ---
 
@@ -132,13 +149,13 @@ Code restructured to match docs areas. All imports updated and verified working.
 
 ### High Priority
 
-- [ ] Split graph_ops.py (1989 lines → target <800)
+- [ ] Split graph_ops.py further (1611 lines → target <800) — PARTIAL: ApplyOperationsMixin extracted, 641 lines removed
 - [x] Split graph_queries.py (1147 lines → target <800) — DONE: Now 892 lines
 - [x] Fix docs/physics/IMPLEMENTATION_Physics.md broken references — MOSTLY DONE: Reduced 51→34, remaining are false positives
 
 ### Backlog
 
-- [ ] Refresh 6 remaining stale SYNC files (scene done)
+- [ ] Refresh 5 remaining stale SYNC files (scene, map done)
 - [ ] Add DOCS: references to code files
 
 ---
