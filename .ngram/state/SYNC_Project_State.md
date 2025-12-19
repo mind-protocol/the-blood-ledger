@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/design/VALIDATION_Vision.md` layer status lines to clarify pending implementation dependencies and meet template length guidance, and recorded the change in `docs/design/SYNC_Vision.md` for repair #16.
+
 Expanded `docs/design/TEST_Vision.md` with the missing test template sections
 (strategy, unit/integration coverage, edge cases, run guidance, gaps, flaky
 tracking) and logged the change in `docs/design/SYNC_Vision.md` for repair #16.

@@ -60,7 +60,9 @@ vision chain before further revisions or expansion.
 ## RECENT CHANGES
 
 - 2025-12-19: Filled missing SYNC template sections and lengthened entries.
+- 2025-12-19: Added missing PATTERNS template sections (chain/problem/pattern/principles/dependencies/inspirations/scope/gaps).
 - 2025-12-19: Filled VALIDATION_Vision template sections (chain, invariants, properties, errors, verification) for repair #16.
+- 2025-12-19: Expanded validation layer status lines to clarify pending implementation dependencies.
 - 2025-12-19: Expanded TEST_Vision sections (strategy, coverage, gaps, run guidance) to resolve doc-template drift for repair #16.
 - 2025-12-19: Fixed broken IMPLEMENTATION references and validated the chain.
 - 2025-12-19: Condensed PATTERNS/BEHAVIORS content and archived long-form notes.
@@ -231,6 +233,8 @@ and should be treated as validation priorities.
 ### Remarks
 - The vision docs had overlapping rationale and validation detail; trimming helped reduce redundancy without changing intent.
 - The implementation doc now captures schema expectations and logic flows for the vision documentation chain.
+- Validation layer status lines now spell out which implementation pieces are required before testing.
+- PATTERNS_Vision now includes the full template headings to prevent drift warnings.
 
 ### Suggestions
 - [ ] Consider moving any future long-form research quotes directly into the archive to keep the vision docs concise.

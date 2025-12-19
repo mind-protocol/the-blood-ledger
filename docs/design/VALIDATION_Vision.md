@@ -41,7 +41,7 @@ Everything else is in service of this. If we build all the systems and the answe
 
 **Proof:** Query the graph for "what does Rolf believe about Edmund?" and get a meaningful answer.
 
-**Status:** Not yet tested (graph not implemented)
+**Status:** Not yet tested; requires a working schema-backed graph and query runtime to verify.
 
 ---
 
@@ -55,7 +55,7 @@ Everything else is in service of this. If we build all the systems and the answe
 
 **Proof:** Generate context for a scene. Does it include the relevant narratives? Does it exclude the noise?
 
-**Status:** Not yet tested (weight computation not implemented)
+**Status:** Not yet tested; weight computation and ranking logic must land before validation.
 
 ---
 
@@ -69,7 +69,7 @@ Everything else is in service of this. If we build all the systems and the answe
 
 **Proof:** Given Rolf and Edmund in the same room, with their contradicting beliefs about The Betrayal vs The Salvation, the system identifies this as unsustainable.
 
-**Status:** Not yet tested (tension detection not implemented)
+**Status:** Not yet tested; tension detection logic and thresholds are still unimplemented.
 
 ---
 
@@ -83,7 +83,7 @@ Everything else is in service of this. If we build all the systems and the answe
 
 **Proof:** Run 10 break resolutions. Are they specific? Consistent? Interesting?
 
-**Status:** Not yet tested (break resolution not implemented)
+**Status:** Not yet tested; break resolution and traceable event logging are missing.
 
 ---
 
@@ -97,7 +97,7 @@ Everything else is in service of this. If we build all the systems and the answe
 
 **Proof:** Show scenes to players. Do they lean forward or lean back?
 
-**Status:** Not yet tested (scene rendering not implemented)
+**Status:** Not yet tested; scene rendering and narrator output review are pending.
 
 ---
 
@@ -110,7 +110,7 @@ Everything else is in service of this. If we build all the systems and the answe
 
 **Proof:** Play for several hours. Count "they remembered" moments. Do they feel earned?
 
-**Status:** Not yet tested (requires full playthrough)
+**Status:** Not yet tested; requires full playthrough data and recall instrumentation.
 
 ---
 
@@ -123,7 +123,7 @@ Everything else is in service of this. If we build all the systems and the answe
 
 **Proof:** Post-session interviews. "Tell me about Aldric."
 
-**Status:** Not yet tested (requires player testing)
+**Status:** Not yet tested; requires player testing with interview follow-ups.
 
 ---
 
