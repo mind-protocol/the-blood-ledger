@@ -18,6 +18,14 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Finish playthrough helper implementations
+
+- **What:** Expanded discussion branch counting, added per-playthrough GraphQueries caching, and wired player moment embeddings to the embedding service with a safe fallback.
+- **Why:** Repair task flagged incomplete helper implementations; these changes provide full logic without breaking moment creation when embeddings are unavailable.
+- **Files:**
+  - `engine/infrastructure/api/playthroughs.py`
+  - `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+
 ### 2025-12-19: Fix asyncio queue reference in API implementation doc
 
 - **What:** Reworded the debug stream description to avoid `asyncio.Queue` being parsed as a file link.

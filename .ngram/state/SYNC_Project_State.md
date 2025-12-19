@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Implemented missing playthrough helper logic in `engine/infrastructure/api/playthroughs.py` (branch counting, per-playthrough GraphQueries caching, and embedding service fallback) and updated API implementation docs.
+
 Reverified the moment processor helpers in `engine/infrastructure/memory/moment_processor.py` for repair 03; all implementations are present and no code changes were required (logged in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`).
 Added a reconfirmation entry in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` for the current repair run.
 

@@ -13,7 +13,6 @@ Docs:
 
 import json
 import logging
-import subprocess
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Any, Optional
@@ -145,21 +144,22 @@ def _opening_to_scene_tree(opening_template: dict, scenario: dict) -> dict:
 
 def _count_branches(topics: list) -> int:
     """Count total unexplored branches across all topics."""
-    count = 0
-
-    def count_clickables(obj):
-        nonlocal count
+    def count_clickables(obj) -> int:
         if isinstance(obj, dict):
             clickable = obj.get("clickable", {})
-            count += len(clickable)
+            total = len(clickable)
             for v in clickable.values():
                 if isinstance(v, dict) and "response" in v:
-                    count_clickables(v["response"])
+                    total += count_clickables(v["response"])
+            for v in obj.values():
+                if isinstance(v, (dict, list)) and v is not clickable:
+                    total += count_clickables(v)
+            return total
+        if isinstance(obj, list):
+            return sum(count_clickables(item) for item in obj)
+        return 0
 
-    for topic in topics:
-        count_clickables(topic.get("opener", {}))
-
-    return count
+    return sum(count_clickables(topic.get("opener", {})) for topic in topics)
 
 
 def _delete_branch(topic: dict, branch_path: list):
@@ -205,14 +205,18 @@ def create_playthroughs_router(
     _port = port
     _graph_name = graph_name
     _playthroughs_dir = Path(playthroughs_dir)
-
-    # Track running narrator processes per playthrough
-    _narrator_processes: Dict[str, subprocess.Popen] = {}
+    _queries_cache: Dict[str, GraphQueries] = {}
 
     def _get_playthrough_queries(playthrough_id: str) -> GraphQueries:
         """Get graph queries instance for a specific playthrough."""
-        pt_graph_name = get_playthrough_graph_name(playthrough_id)
-        return GraphQueries(graph_name=pt_graph_name, host=_host, port=_port)
+        if playthrough_id not in _queries_cache:
+            pt_graph_name = get_playthrough_graph_name(playthrough_id) or _graph_name
+            _queries_cache[playthrough_id] = GraphQueries(
+                graph_name=pt_graph_name,
+                host=_host,
+                port=_port
+            )
+        return _queries_cache[playthrough_id]
 
     # =========================================================================
     # PLAYTHROUGH CREATION
@@ -379,102 +383,86 @@ def create_playthroughs_router(
         }
 
     # =========================================================================
-    # MOMENT ENDPOINT (Async)
+    # MOMENT ENDPOINT (Graph-based)
     # =========================================================================
 
     @router.post("/moment")
     async def send_moment(request: MomentRequest):
         """
-        Send a player moment (async).
+        Send a player moment.
 
-        1. Append to message_queue.json
-        2. If narrator not running: spawn it with scene.json + injection_queue.json
-        3. Return immediately
+        Creates the moment directly in the graph using MomentProcessor.
+        The physics system handles any reactions via tick/weight propagation.
         """
+        from engine.infrastructure.memory.moment_processor import MomentProcessor
+        from engine.physics.graph import GraphOps
+
         playthrough_dir = _playthroughs_dir / request.playthrough_id
         if not playthrough_dir.exists():
             raise HTTPException(status_code=404, detail="Playthrough not found")
 
-        # 1. Append to message queue
-        queue_file = playthrough_dir / "message_queue.json"
         try:
-            queue = json.loads(queue_file.read_text()) if queue_file.exists() else []
-        except:
-            queue = []
+            # Get graph for this playthrough
+            graph_name = get_playthrough_graph_name(request.playthrough_id)
+            ops = GraphOps(graph_name=graph_name, host=_host, port=_port)
+            queries = _get_playthrough_queries(request.playthrough_id)
 
-        moment = {
-            "text": request.text,
-            "type": request.moment_type,
-            "timestamp": datetime.utcnow().isoformat()
-        }
-        queue.append(moment)
-        queue_file.write_text(json.dumps(queue, indent=2))
+            # Get player location
+            player_loc = queries.get_player_location("char_player")
+            location_id = player_loc.get("id", "place_unknown") if player_loc else "place_unknown"
 
-        # 2. Check if narrator is running
-        narrator_running = False
-        if request.playthrough_id in _narrator_processes:
-            proc = _narrator_processes[request.playthrough_id]
-            if proc.poll() is None:  # Still running
-                narrator_running = True
-            else:
-                del _narrator_processes[request.playthrough_id]
+            # Get current tick from tempo state
+            tempo_file = playthrough_dir / "tempo_state.json"
+            current_tick = 0
+            if tempo_file.exists():
+                try:
+                    tempo_data = json.loads(tempo_file.read_text())
+                    current_tick = tempo_data.get("tick", 0)
+                except:
+                    pass
 
-        # 3. Spawn narrator if not running
-        if not narrator_running:
-            project_root = Path(__file__).parent.parent.parent
-            narrator_dir = project_root / "agents" / "narrator"
+            # Create embedding function (use None for now - embeddings are optional)
+            def dummy_embed(text: str):
+                if not text or not text.strip():
+                    return None
+                try:
+                    from engine.infrastructure.embeddings.service import get_embedding_service
+                    return get_embedding_service().embed(text)
+                except Exception as exc:
+                    logger.warning(f"[moment] Embedding unavailable: {exc}")
+                    return None
 
-            # Get context from graph
-            try:
-                queries = _get_playthrough_queries(request.playthrough_id)
-                player_loc = queries.get_player_location("char_player")
-                location_id = player_loc.get("id", "unknown") if player_loc else "unknown"
-                location_name = player_loc.get("name", "Unknown") if player_loc else "Unknown"
+            # Create moment processor
+            processor = MomentProcessor(
+                graph_ops=ops,
+                embed_fn=dummy_embed,
+                playthrough_id=request.playthrough_id,
+                playthroughs_dir=_playthroughs_dir
+            )
+            processor._current_tick = current_tick
+            processor._current_place_id = location_id
 
-                # Get characters at location
-                characters = queries.get_characters_at(location_id) if location_id != "unknown" else []
-                char_names = [c.get("name", c.get("id", "Unknown")) for c in characters if c.get("id") != "char_player"]
-            except Exception as e:
-                logger.warning(f"[moment] Failed to get graph context: {e}")
-                location_id = "unknown"
-                location_name = "Unknown"
-                char_names = []
+            # Process the player action into a graph moment
+            moment_id = processor.process_player_action(
+                text=request.text,
+                player_id="char_player",
+                action_type=request.moment_type,
+                initial_weight=1.0,
+                initial_status="spoken"
+            )
 
-            characters_str = ", ".join(char_names) if char_names else "None"
+            logger.info(f"[moment] Created player moment {moment_id} for {request.playthrough_id}")
 
-            prompt = f"""Playthrough: {request.playthrough_id}
-Player moment: {request.text}
-Location: {location_name} ({location_id})
-Characters present: {characters_str}
+            return {
+                "status": "created",
+                "moment_id": moment_id,
+                "narrator_started": False,
+                "narrator_running": False
+            }
 
-Respond using ../../tools/stream_dialogue.py -p {request.playthrough_id}. End with -t complete."""
-
-            try:
-                # Load PROFILE_NOTES.md for system prompt
-                profile_notes_file = playthrough_dir / "PROFILE_NOTES.md"
-                profile_notes = profile_notes_file.read_text() if profile_notes_file.exists() else ""
-
-                cmd = ["claude", "-p", prompt, "--dangerously-skip-permissions", "--continue"]
-                if profile_notes:
-                    cmd.extend(["--append-system-prompt", profile_notes])
-
-                proc = subprocess.Popen(
-                    cmd,
-                    cwd=str(narrator_dir),
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                )
-                _narrator_processes[request.playthrough_id] = proc
-                logger.info(f"[moment] Started narrator PID {proc.pid} for {request.playthrough_id}")
-            except Exception as e:
-                logger.error(f"[moment] Failed to start narrator: {e}")
-                return {"status": "queued", "narrator_started": False, "error": str(e)}
-
-        return {
-            "status": "queued",
-            "narrator_started": not narrator_running,
-            "narrator_running": narrator_running or True
-        }
+        except Exception as e:
+            logger.error(f"[moment] Failed to create moment: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
 
     # =========================================================================
     # DISCUSSION TREE ENDPOINTS

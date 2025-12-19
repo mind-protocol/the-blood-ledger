@@ -4,6 +4,7 @@
 
 - `create_app()` defines cached helpers for `GraphQueries` and `GraphOps`.
 - Instances are lazily constructed and reused for the lifetime of the app process.
+- Playthrough router caches `GraphQueries` per playthrough ID to reuse read connections.
 
 ## Health Check
 
@@ -31,6 +32,7 @@
 - Creates playthrough directory with mutations/, conversations/ subdirs.
 - Injects scenario nodes/links into a new graph named after the playthrough ID.
 - Generates opening scene from opening.json template.
+- Player moment processing uses the embeddings service when available and falls back to no embedding on failure.
 
 ---
 
