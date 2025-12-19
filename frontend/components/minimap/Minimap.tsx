@@ -1,5 +1,7 @@
 'use client';
 
+// DOCS: docs/frontend/minimap/PATTERNS_Discovered_Location_Minimap.md
+
 import { MapRegion } from '@/types/game';
 
 interface MinimapProps {
