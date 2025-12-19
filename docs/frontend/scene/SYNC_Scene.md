@@ -62,6 +62,16 @@ The scene view is **implemented and functional**. It is the main game view where
 
 ## RECENT CHANGES
 
+### 2025-12-19: Expanded scene PATTERNS template sections
+
+- **What:** Added CHAIN, problem/pattern framing, scope, dependencies,
+  inspirations, principles, and gaps sections to `PATTERNS_Scene.md`.
+- **Why:** Resolve doc-template drift for the scene patterns document and keep
+  the chain aligned with the frontend scene implementation.
+- **Files:** `docs/frontend/scene/PATTERNS_Scene.md`
+- **Struggles/Insights:** Kept descriptions scoped to presentation behavior to
+  avoid implying unverified backend generation logic.
+
 ### 2025-12-19: Map moment components to scene docs
 
 - **What:** Linked `frontend/components/moment/**` to the Scene docs in `modules.yaml` and added a DOCS reference in `frontend/components/moment/index.ts`.

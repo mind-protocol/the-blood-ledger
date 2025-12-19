@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/frontend/scene/PATTERNS_Scene.md` with missing template sections
+(CHAIN, problem/pattern framing, principles, scope, dependencies,
+inspirations, gaps) and logged the update in
+`docs/frontend/scene/SYNC_Scene.md` for repair #16.
+
 Expanded `docs/frontend/scene/VALIDATION_Scene.md` with the missing template
 sections (invariants, properties, error conditions, test coverage,
 verification procedure, sync status, gaps) and logged the update in

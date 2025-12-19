@@ -10,6 +10,32 @@ LINKS_TO:
 
 ---
 
+## CHAIN
+
+```
+THIS:  PATTERNS_Scene.md
+SYNC:  ./SYNC_Scene.md
+IMPL:  frontend/components/scene/SceneView.tsx
+```
+
+---
+
+## THE PROBLEM
+
+The scene view must compress atmosphere, stakes, voices, and choices into a
+single, readable frame without overwhelming the player or diluting the tension
+that makes a moment feel playable instead of merely descriptive.
+
+---
+
+## THE PATTERN
+
+Present a structured scene stack (header, banner, atmosphere, situation,
+voices, actions) with short text blocks and weighted voice callouts, so the
+player can absorb context quickly and act without wading through long prose.
+
+---
+
 ## Purpose
 
 The Scene view is THE game. Everything else supports it.
@@ -35,7 +61,7 @@ The scene view is the test of the entire vision. If players lean forward, we're 
 
 ---
 
-## Design Principles for Scene
+## PRINCIPLES
 
 ### 1. Brevity Over Completeness
 
@@ -116,6 +142,33 @@ The image shows:
 
 ---
 
+## SCOPE
+
+This pattern governs the scene presentation layer (layout, pacing, voice
+rendering, and action affordances) in the frontend; it does not define backend
+scene generation, persistence, or any LLM prompting mechanics.
+
+---
+
+## DEPENDENCIES
+
+| Module | Why We Depend On It |
+|--------|---------------------|
+| `frontend/components/scene/CenterStage.tsx` | Animated text pacing and reading-time flow |
+| `frontend/components/scene/SceneBanner.tsx` | Scene imagery framing and fallbacks |
+| `frontend/components/moment/` | Moment stream rendering used by the scene view |
+| `frontend/hooks/useMoments.ts` | Moment data source for live scene updates |
+
+---
+
+## INSPIRATIONS
+
+These patterns lean on tabletop session vignettes, succinct narrative cards in
+story-driven games, and cinematic establishing shots that foreground mood
+before action, keeping focus on tension and choice.
+
+---
+
 ## What We Don't Know Yet
 
 Being honest about uncertainties:
@@ -131,6 +184,14 @@ Being honest about uncertainties:
 5. **Conversation flow.** When you talk to someone, how does that work? Scene within scene? Modal? Different view?
 
 6. **The feedback loop.** How does player action create new scene? What's the cycle?
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+We still need to validate the optimal voice count and clarify how choices are
+generated and presented, especially when the scene is quiet or introspective.
+The current UI supports these hooks, but the experience design is unsettled.
 
 ---
 
