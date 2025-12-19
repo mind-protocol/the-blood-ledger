@@ -1,5 +1,9 @@
 'use client';
 
+// DOCS: docs/frontend/map/PATTERNS_Interactive_Travel_Map.md
+
+// DOCS: docs/frontend/map/PATTERNS_Parchment_Map_View.md
+
 import { useState, useCallback, useEffect } from 'react';
 import { MapCanvas } from './MapCanvas';
 import { places, routes, sampleVisibility } from '@/data/map-data';

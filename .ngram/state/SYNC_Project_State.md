@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Documented the frontend map view module with new docs, a modules.yaml mapping, and a DOCS reference in `frontend/components/map/MapClient.tsx`.
+
 Mapped `frontend/components/moment/**` to existing Scene docs in `modules.yaml` and added a DOCS reference in `frontend/components/moment/index.ts` to close the moment UI documentation gap.
 
 Completed async architecture implementation documentation, linked CHAIN sections, added a DOCS reference in `engine/scripts/check_injection.py`, and logged the injection queue format conflict in `docs/infrastructure/async/SYNC_Async_Architecture.md`.
