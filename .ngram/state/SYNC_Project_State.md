@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Revalidated `engine/models/nodes.py` helper properties (`is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) for the current incomplete-impl repair; implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
+
+Revalidated `engine/models/nodes.py` helper properties (`is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) for the current incomplete-impl repair run; implementations already present and logged in `docs/schema/models/SYNC_Schema_Models.md`.
+
 Reconfirmed `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) remain implemented for the current repair run; no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
 
 Revalidated `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) for the repair run; implementations already present and logged in `docs/schema/models/SYNC_Schema_Models.md`.
@@ -265,6 +269,8 @@ Repaired broken link references in `docs/agents/world-runner/IMPLEMENTATION_Worl
 ---
 
 ## ACTIVE WORK
+
+Logged the schema models repair verification for `engine/models/base.py` in `docs/schema/models/SYNC_Schema_Models.md` for the current repair run; no code changes required.
 
 ### Moment Processor Repair
 

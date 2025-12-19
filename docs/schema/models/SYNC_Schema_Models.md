@@ -143,6 +143,7 @@ pytest engine/tests/test_models.py
 - Repair task for `engine/models/nodes.py` flagged missing helpers, but implementations are already present.
 - Reverified GameTimestamp comparison helpers for the current repair run; no changes required.
 - Revalidated link helper implementations in `engine/models/links.py`; no changes required.
+- Revalidated node helper implementations in `engine/models/nodes.py`; no changes required.
 
 ### Suggestions
 - [ ] Consider adding explicit tests for `GameTimestamp` ordering in `engine/tests/test_models.py`.
