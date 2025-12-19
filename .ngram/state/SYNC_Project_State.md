@@ -23,6 +23,7 @@ Recorded moment query verification in `docs/physics/graph/SYNC_Graph.md`.
 Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.md`.
 Reconfirmed traversal helper implementations for repair 08-INCOMPLETE_IMPL-moment_graph-traversal; no code changes required.
 Consolidated narrator PATTERNS docs into `docs/agents/narrator/PATTERNS_Narrator.md` and deprecated `docs/agents/narrator/PATTERNS_World_Building.md`.
+Consolidated world-runner algorithm docs into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
 Consolidated world runner algorithm docs by merging graph tick details into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and redirecting `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
 
 ---

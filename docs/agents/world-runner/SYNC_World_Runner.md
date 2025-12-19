@@ -31,7 +31,7 @@ STATUS: CANONICAL — fully implemented and documented
 | `PATTERNS_World_Runner.md` | Why this shape | Current |
 | `BEHAVIORS_World_Runner.md` | What it produces (Injection) | Current |
 | `ALGORITHM_World_Runner.md` | How the tick loop works | Current |
-| `ALGORITHM_Graph_Ticks.md` | Redirects to canonical algorithm doc | Current |
+| `ALGORITHM_Graph_Ticks.md` | Redirects to canonical algorithm doc | Deprecated |
 | `TOOL_REFERENCE.md` | JSON schemas for LLM output | Current |
 | `INPUT_REFERENCE.md` | What Runner receives | Current |
 | `SYNC_World_Runner.md` | Current state | This file |
