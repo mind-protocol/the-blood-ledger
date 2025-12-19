@@ -16,6 +16,20 @@ interface WorldRunnerOutput {
 
 ---
 
+## CHAIN
+
+PATTERNS:        ./PATTERNS_World_Runner.md
+BEHAVIORS:       ./BEHAVIORS_World_Runner.md
+ALGORITHM:       ./ALGORITHM_World_Runner.md
+VALIDATION:      ./VALIDATION_World_Runner_Invariants.md
+IMPLEMENTATION:  ./IMPLEMENTATION_World_Runner_Service_Architecture.md
+TEST:            ./TEST_World_Runner_Coverage.md
+INPUTS:          ./INPUT_REFERENCE.md
+TOOLS:           ./TOOL_REFERENCE.md
+SYNC:            ./SYNC_World_Runner.md
+
+---
+
 ## Graph Mutations
 
 All changes to apply to the graph after a flip.

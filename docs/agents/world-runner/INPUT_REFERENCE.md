@@ -7,8 +7,8 @@ What the World Runner receives from the Orchestrator.
 ## Script Location
 
 ```
-engine/orchestration/world_runner.py  # World Runner caller
-engine/models/                         # Pydantic models for validation
+engine/infrastructure/orchestration/world_runner.py  # World Runner caller
+engine/models/                                        # Pydantic models for validation
 ```
 
 ---
@@ -231,3 +231,17 @@ After determining the break, check if it destabilizes other tensions:
 - Belief changes that create conflicts?
 
 Report cascades for the engine to process.
+
+---
+
+## CHAIN
+
+PATTERNS:        ./PATTERNS_World_Runner.md
+BEHAVIORS:       ./BEHAVIORS_World_Runner.md
+ALGORITHM:       ./ALGORITHM_World_Runner.md
+VALIDATION:      ./VALIDATION_World_Runner_Invariants.md
+IMPLEMENTATION:  ./IMPLEMENTATION_World_Runner_Service_Architecture.md
+TEST:            ./TEST_World_Runner_Coverage.md
+INPUTS:          ./INPUT_REFERENCE.md
+TOOLS:           ./TOOL_REFERENCE.md
+SYNC:            ./SYNC_World_Runner.md

@@ -13,7 +13,6 @@ DEPENDS_ON: graph.json, character backstories
 
 ```
 PATTERNS:        ./PATTERNS_Narrator.md
-PATTERNS:        ./PATTERNS_World_Building.md
 BEHAVIORS:       ./BEHAVIORS_Narrator.md
 THIS:            ALGORITHM_Scene_Generation.md (you are here)
 VALIDATION:      ./VALIDATION_Narrator.md

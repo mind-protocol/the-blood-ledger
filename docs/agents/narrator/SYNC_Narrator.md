@@ -11,7 +11,6 @@ STATUS: Fully implemented with SSE streaming
 
 ```
 PATTERNS:        ./PATTERNS_Narrator.md
-PATTERNS:        ./PATTERNS_World_Building.md
 BEHAVIORS:       ./BEHAVIORS_Narrator.md
 ALGORITHM:       ./ALGORITHM_Scene_Generation.md
 VALIDATION:      ./VALIDATION_Narrator.md
@@ -41,6 +40,12 @@ TOOLS:           tools/stream_dialogue.py
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-19: Removed duplicate narrator patterns doc
+
+- **What:** Deleted the deprecated `PATTERNS_World_Building.md` and removed duplicate PATTERNS references from narrator doc chains.
+- **Why:** Enforce a single canonical PATTERNS doc for the narrator module.
+- **Files:** `docs/agents/narrator/PATTERNS_World_Building.md`, `docs/agents/narrator/ALGORITHM_Scene_Generation.md`, `docs/agents/narrator/VALIDATION_Narrator.md`, `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/TEST_Narrator.md`, `docs/agents/narrator/SYNC_Narrator.md`
 
 ### 2025-12-19: Consolidated narrator algorithm docs
 

@@ -68,6 +68,7 @@ Completed world map documentation chain by adding validation, implementation, an
 Consolidated world-runner algorithm docs into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
 Removed the deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` file to eliminate duplicate ALGORITHM docs under world-runner.
 Consolidated world runner algorithm docs by merging graph tick details into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and redirecting `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
+Re-removed the deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md` file to ensure the duplication cleanup is complete.
 Completed the World Runner documentation chain with VALIDATION/IMPLEMENTATION/TEST docs, updated chain links, added a DOCS reference, and mapped the module in `modules.yaml`.
 Consolidated graph weight algorithm docs by redirecting `docs/physics/graph/ALGORITHM_Weight.md` to `docs/physics/graph/ALGORITHM_Energy_Flow.md`.
 Consolidated world scraping algorithm docs into `docs/world/scraping/ALGORITHM_Pipeline.md` and removed duplicate phase-specific ALGORITHM files.
@@ -148,27 +149,6 @@ Repair task appears stale relative to current code.
 
 ---
 
-## Agent Observations
-
-### Remarks
-- Moment traversal helper implementations already exist; no code changes required.
-- Rechecked `engine/moment_graph/traversal.py` and confirmed `make_dormant` and `process_wait_triggers` are implemented.
-- Physics tick energy helper implementations already exist; no code changes required.
-- Graph health report helper implementations already exist; no code changes required.
-- Health check helpers in `engine/graph/health/check_health.py` verified; repair task was stale.
-- Reverified repair 00-INCOMPLETE_IMPL-health-check_health; functions were already implemented.
-- `ngram validate` still reports pre-existing missing docs in `docs/schema/` and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
-- `engine/models/base.py` comparison helpers already exist; repair 04-INCOMPLETE_IMPL-models-base required no code changes.
-- Attempted `python3 -m pytest` for link model helper tests; pytest failed to load due to missing `pytest_xprocess`.
-- Link model property helpers in `engine/models/links.py` already exist; repair 05-INCOMPLETE_IMPL-models-links required no code changes.
-- `engine/models/nodes.py` helper properties already exist; repair 06-INCOMPLETE_IMPL-models-nodes required no code changes.
-
-### Suggestions
-
-### Propositions
-
----
-
 ## CONSCIOUSNESS TRACE
 
 **Project momentum:**
@@ -204,6 +184,13 @@ Check `modules.yaml` (project root) for full manifest.
 
 **Coverage notes:**
 Moment processor is documented under scene-memory but not mapped in modules.yaml.
+
+
+---
+
+## ARCHIVE
+
+Older content archived to: `SYNC_Project_State_archive_2025-12.md`
 
 
 ---
