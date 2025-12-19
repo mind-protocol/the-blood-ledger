@@ -48,11 +48,14 @@ real graph-backed moment model is implemented.
 
 ## RECENT CHANGES
 
-### 2025-12-19: Documented moment graph module
+### 2025-12-19: Documented moment graph module mapping
 
-- **What:** Added the moment graph documentation chain and linked the module entry point.
+- **What:** Added/updated PATTERNS + SYNC docs, mapped the module in
+  `modules.yaml`, and aligned the entry point DOCS reference.
 - **Why:** Repair task flagged `engine/moments` as undocumented.
-- **Files:** `docs/engine/moments/PATTERNS_Moments.md`, `docs/engine/moments/BEHAVIORS_Moment_Lifecycle.md`, `docs/engine/moments/ALGORITHM_Moment_Graph_Operations.md`, `docs/engine/moments/VALIDATION_Moment_Graph_Invariants.md`, `docs/engine/moments/IMPLEMENTATION_Moment_Graph_Stub.md`, `docs/engine/moments/TEST_Moment_Graph_Coverage.md`, `docs/engine/moments/SYNC_Moments.md`, `engine/moments/__init__.py`, `modules.yaml`
+- **Files:** `docs/engine/moments/PATTERNS_Moments.md`,
+  `docs/engine/moments/SYNC_Moments.md`, `engine/moments/__init__.py`,
+  `modules.yaml`
 
 ---
 

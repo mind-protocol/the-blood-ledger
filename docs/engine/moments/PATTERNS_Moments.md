@@ -1,7 +1,7 @@
 # Moment Graph — Patterns
 
 ```
-STATUS: DRAFT
+STATUS: DESIGNING
 CREATED: 2025-12-19
 ```
 
@@ -87,5 +87,5 @@ single place to integrate.
 ## GAPS / IDEAS / QUESTIONS
 ===============================================================================
 
-- [ ] Document behaviors, algorithms, and validation once implementation begins.
-- [ ] Align API docs with this module once the HTTP surface is finalized.
+- [ ] Implement the graph-backed moment lifecycle and query helpers.
+- [ ] Author or relocate the API doc referenced by engine/app/tests.
