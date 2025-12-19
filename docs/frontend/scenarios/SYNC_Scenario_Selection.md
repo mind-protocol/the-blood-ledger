@@ -51,6 +51,20 @@ selected scenario before triggering playthrough creation.
 
 ---
 
+## IN PROGRESS
+
+Template drift repair: adding required SYNC sections and expanding terse notes
+to meet the minimum detail threshold for this module snapshot.
+
+---
+
+## KNOWN ISSUES
+
+No runtime defects are tracked here today, but scenario list drift is still a
+standing risk because the UI list is static and must mirror `scenarios/*.yaml`.
+
+---
+
 ## HANDOFF: FOR AGENTS
 
 **Your likely VIEW:** VIEW_Implement_Write_Or_Modify_Code
@@ -59,6 +73,16 @@ selected scenario before triggering playthrough creation.
 
 **What you need to understand:**
 Scenario IDs are hardcoded in the UI and must stay aligned with `scenarios/*.yaml`.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+**Summary:** This repair only fills missing SYNC sections and clarifies drift
+risks; no code behavior or scenario content was changed in this pass.
+
+**Requests:** None. If you want scenario metadata sourced dynamically, decide
+when that backend contract is ready so the UI can follow.
 
 ---
 
@@ -73,3 +97,17 @@ Scenario IDs are hardcoded in the UI and must stay aligned with `scenarios/*.yam
 ```bash
 cd frontend && npm run build
 ```
+
+---
+
+## CONSCIOUSNESS TRACE
+
+I focused on template compliance and kept the wording grounded in current
+behavior, keeping uncertainty explicit around future metadata sourcing.
+
+---
+
+## POINTERS
+
+- `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md` for design intent.
+- `frontend/app/scenarios/page.tsx` for the live UI flow and scenario list.
