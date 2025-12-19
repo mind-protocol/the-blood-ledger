@@ -115,6 +115,12 @@ Start with **Phase 1: Graph SSE Foundation**
 
 This unlocks real-time updates for all other phases.
 
+---
+
+## Recent Changes
+
+- Consolidated async algorithm docs into `ALGORITHM_Async_Architecture.md` and removed per-topic algorithm files to keep a single canonical algorithm reference.
+
 
 ---
 

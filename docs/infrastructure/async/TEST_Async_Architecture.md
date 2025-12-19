@@ -12,7 +12,7 @@ STATUS: TODO
 ```
 PATTERNS:    ./PATTERNS_Async_Architecture.md
 BEHAVIORS:   ./BEHAVIORS_Travel_Experience.md
-ALGORITHMS:  ./ALGORITHM_*.md
+ALGORITHM:   ./ALGORITHM_Async_Architecture.md
 VALIDATION:  ./VALIDATION_Async_Architecture.md
 THIS:        TEST_Async_Architecture.md (you are here)
 SYNC:        ./SYNC_Async_Architecture.md
@@ -33,7 +33,7 @@ SYNC:        ./SYNC_Async_Architecture.md
 ## Manual Verification
 
 - Launch narrator + runner concurrently; inspect logs for stuck tasks.
-- Fire mock webhooks (see `ALGORITHM_Hook_Injection.md`) and confirm GraphOps mutations apply once.
+- Fire mock webhooks (see `ALGORITHM_Async_Architecture.md`) and confirm GraphOps mutations apply once.
 
 ---
 

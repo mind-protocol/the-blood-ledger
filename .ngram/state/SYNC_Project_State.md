@@ -36,6 +36,7 @@ Verified map algorithm consolidation state and recorded the check in `docs/world
 Moved `docs/schema/VALIDATION_Living_Graph.md` into `docs/physics/graph/VALIDATION_Living_Graph.md` to eliminate duplicate VALIDATION docs in `docs/schema/`.
 Consolidated graph weight computation into `docs/physics/graph/ALGORITHM_Energy_Flow.md` and redirected `docs/physics/graph/ALGORITHM_Weight.md`.
 Consolidated schema validation docs by merging graph integrity rules into `docs/schema/VALIDATION_Living_Graph.md` and redirecting `docs/schema/VALIDATION_Graph.md`.
+Consolidated async algorithm docs into `docs/infrastructure/async/ALGORITHM_Async_Architecture.md` and removed per-topic async ALGORITHM files; updated async doc chains.
 
 ---
 

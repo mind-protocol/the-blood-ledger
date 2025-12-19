@@ -254,12 +254,6 @@ Frontend responsibility. Frontend tracks time since last player input and trigge
 
 ## Related Documents
 
-- `ALGORITHM_Runner_Protocol.md` — How Runner is spawned and read
-- `ALGORITHM_Graph_SSE.md` — SSE event streaming
-- `ALGORITHM_Hook_Injection.md` — Interruption mechanism
-- `ALGORITHM_Waypoint_Creation.md` — Place materialization
-- `ALGORITHM_Fog_Of_War.md` — Visibility system
-- `ALGORITHM_Image_Generation.md` — Automatic image creation
-- `ALGORITHM_Discussion_Trees.md` — Companion conversations
+- `ALGORITHM_Async_Architecture.md` — Runner protocol, hooks, SSE, waypoints, fog, images, discussions
 - `BEHAVIORS_Travel_Experience.md` — What travel should feel like
 - `SYNC_Async_Architecture.md` — Current vs target state
