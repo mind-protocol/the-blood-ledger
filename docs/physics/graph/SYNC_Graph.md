@@ -225,7 +225,8 @@ Repeat
 - Repair task appears stale relative to `engine/physics/graph/graph_ops_types.py`; `SimilarNode.__str__` and `ApplyResult.success` are already implemented.
 - Repair task appears stale relative to `engine/graph/health/check_health.py`.
 - Re-verified `engine/graph/health/check_health.py` already implements health report helpers; no code changes needed.
-- Verified moment query helpers in `engine/physics/graph/graph_queries_moments.py` already implement narrative, transition, and clickable-word queries.
+ - Verified moment query helpers in `engine/physics/graph/graph_queries_moments.py` already implement narrative, transition, and clickable-word queries.
+- Implemented markdown formatting and cosine similarity helpers directly in `engine/physics/graph/graph_queries_search.py` to complete search mixin methods.
 
 ### Suggestions
 - None.

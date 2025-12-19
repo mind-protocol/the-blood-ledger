@@ -22,12 +22,12 @@ import json
 import logging
 from typing import Dict, Any, List, Callable
 
+import numpy as np
+
 from engine.physics.graph.graph_query_utils import (
     SYSTEM_FIELDS,
-    cosine_similarity,
     extract_node_props,
     extract_link_props,
-    to_markdown,
 )
 
 logger = logging.getLogger(__name__)
@@ -127,12 +127,95 @@ class SearchQueryMixin:
         return result
 
     def _to_markdown(self, search_result: Dict[str, Any]) -> str:
-        """Convert search results to markdown format. Delegates to standalone function."""
-        return to_markdown(search_result)
+        """
+        Convert search results to markdown format for LLM consumption.
+
+        IMPORTANT: Include ALL fields. NEVER filter or summarize.
+        The LLM needs complete information to make decisions.
+        """
+        lines = []
+        query = search_result.get('query', '')
+        matches = search_result.get('matches', [])
+        clusters = search_result.get('clusters', [])
+
+        lines.append(f"# Search: \"{query}\"\n")
+
+        # Matches section
+        lines.append("## Matches\n")
+        for i, match in enumerate(matches, 1):
+            node_type = match.get('type', 'unknown')
+            name = match.get('name', match.get('id', 'Unknown'))
+            similarity = match.get('similarity', 0)
+
+            lines.append(f"### {i}. {name} ({node_type}) — {similarity:.2f}\n")
+
+            # Include ALL fields (except similarity which is in header)
+            for key, value in match.items():
+                if key in ('type', 'name', 'similarity'):
+                    continue
+                if value is None:
+                    continue
+
+                # Format the value
+                if isinstance(value, list):
+                    value_str = ', '.join(str(v) for v in value)
+                elif isinstance(value, dict):
+                    value_str = json.dumps(value)
+                else:
+                    value_str = str(value)
+
+                lines.append(f"- **{key}:** {value_str}")
+
+            lines.append("")  # Blank line between matches
+
+        # Clusters section
+        if clusters:
+            lines.append("## Clusters\n")
+            for cluster in clusters:
+                root_id = cluster.get('root', 'unknown')
+                root_type = cluster.get('root_type', 'unknown')
+                nodes = cluster.get('nodes', [])
+
+                lines.append(f"### Cluster: {root_id} ({root_type})\n")
+
+                for node in nodes:
+                    node_name = node.get('name', node.get('id', 'Unknown'))
+                    node_type = node.get('type', 'unknown')
+                    distance = node.get('distance', 0)
+                    is_root = node.get('is_root', False)
+
+                    if is_root:
+                        lines.append(f"**[ROOT] {node_name}** ({node_type})")
+                    else:
+                        lines.append(f"- {node_name} ({node_type}, distance={distance})")
+
+                    # Include ALL fields for each node
+                    for key, value in node.items():
+                        if key in ('type', 'name', 'id', 'distance', 'is_root'):
+                            continue
+                        if value is None:
+                            continue
+
+                        if isinstance(value, list):
+                            value_str = ', '.join(str(v) for v in value)
+                        elif isinstance(value, dict):
+                            value_str = json.dumps(value)
+                        else:
+                            value_str = str(value)
+
+                        lines.append(f"  - {key}: {value_str}")
+
+                lines.append("")  # Blank line between clusters
+
+        return '\n'.join(lines)
 
     def _cosine_similarity(self, a: List[float], b: List[float]) -> float:
-        """Calculate cosine similarity. Delegates to standalone function."""
-        return cosine_similarity(a, b)
+        """Calculate cosine similarity between two vectors."""
+        a = np.array(a)
+        b = np.array(b)
+        if np.linalg.norm(a) == 0 or np.linalg.norm(b) == 0:
+            return 0.0
+        return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
 
     def _find_similar_by_embedding(
         self,

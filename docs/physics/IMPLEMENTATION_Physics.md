@@ -141,7 +141,7 @@ The following modules are designed but not yet created. These are DESIGN DOCUMEN
 | `engine/physics/graph/graph_ops_moments.py` | 594 | Moment lifecycle operations mixin |
 | `engine/physics/graph/graph_ops_types.py` | 59 | Types and exceptions |
 | `engine/physics/graph/graph_queries_moments.py` | 512 | Moment-specific query operations |
-| `engine/physics/graph/graph_queries_search.py` | 285 | Search/cluster query operations |
+| `engine/physics/graph/graph_queries_search.py` | 285 | Search/cluster queries with markdown formatting and similarity scoring |
 | `engine/physics/graph/graph_query_utils.py` | 270 | Query utilities |
 | `engine/moment_graph/queries.py` | - | Fast graph queries (<50ms); normalizes dict/list result rows |
 | `engine/moment_graph/traversal.py` | - | Click/wait/status transitions |
