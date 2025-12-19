@@ -256,6 +256,8 @@ pytest engine/tests/test_models.py
 - Revalidated link helper implementations for the current repair run; no code changes required.
 - Expanded INSPIRATIONS and SCOPE text in the patterns doc to meet template
   length guidance for the schema-model module.
+- Refined the patterns wording to better tie schema scope to testing and graph
+  health tooling context.
 
 ### Suggestions
 - [ ] Consider adding explicit tests for `GameTimestamp` ordering in `engine/tests/test_models.py`.

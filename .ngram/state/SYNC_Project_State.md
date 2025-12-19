@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/design/SYNC_Vision.md` with the missing template sections
+(maturity, current state, in progress, recent changes, known issues, handoffs,
+todo, consciousness trace, pointers) and lengthened entries to resolve the
+DOC_TEMPLATE_DRIFT warning for repair #16.
+
 Logged the graph health SYNC template restoration in the module RECENT CHANGES
 so the drift fix remains traceable (`docs/schema/graph-health/SYNC_Graph_Health.md`).
 
@@ -29,9 +34,10 @@ chain gaps in schema/product/network/storms modules.
 
 Expanded the INSPIRATIONS and SCOPE content in
 `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md` to meet template length
-guidance, and recorded the update in `docs/schema/models/SYNC_Schema_Models.md`
-for repair #16. Ran `ngram validate`; failures remain pre-existing (missing
-VIEW file and doc-chain gaps in schema/product/network/storms modules).
+guidance and tie the schema scope to testing/graph-health context, and recorded
+the update in `docs/schema/models/SYNC_Schema_Models.md` for repair #16. Ran
+`ngram validate`; failures remain pre-existing (missing VIEW file and doc-chain
+gaps in schema/product/network/storms modules).
 
 Expanded `docs/schema/VALIDATION_Graph.md` with the missing validation
 template sections (CHAIN, invariants, properties, error conditions, test
