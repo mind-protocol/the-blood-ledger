@@ -12,7 +12,8 @@ UPDATED_BY: Codex (repair agent)
 Expanded `docs/infrastructure/history/ALGORITHM_History.md` with the missing
 entry-point template sections (overview, algorithm routing, helpers) and
 logged the update in `docs/infrastructure/history/SYNC_History.md` for
-repair #16.
+repair #16. Ran `ngram validate`; failures remain pre-existing (missing VIEW
+and doc-chain gaps in schema/product/network/storms modules).
 
 Re-verified `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
 meets template requirements (ALGORITHM and HELPER FUNCTIONS present) and

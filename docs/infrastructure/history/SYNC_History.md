@@ -16,7 +16,12 @@ Moved archived material into `docs/infrastructure/history/archive/` and added a 
 Expanded the PATTERNS scope statement to meet template length guidance for repair #16.
 Added a SCOPE section to `docs/infrastructure/history/PATTERNS_History.md` to resolve DOC_TEMPLATE_DRIFT (#16).
 Filled missing template sections in `docs/infrastructure/history/archive/SYNC_History_archive_2025-12.md`
-to resolve DOC_TEMPLATE_DRIFT for #16.
+to resolve DOC_TEMPLATE_DRIFT for #16, including the initial archive block.
+Expanded `docs/infrastructure/history/ALGORITHM_History.md` with the missing
+entry-point template sections (overview, algorithm routing, helpers) to resolve
+DOC_TEMPLATE_DRIFT for repair #16. Ran `ngram validate`; failures remain
+pre-existing (missing VIEW and doc-chain gaps in schema/product/network/storms
+modules).
 
 ## IN PROGRESS
 
