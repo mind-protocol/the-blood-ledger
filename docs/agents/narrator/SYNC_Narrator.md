@@ -13,7 +13,7 @@ STATUS: Fully implemented with SSE streaming
 PATTERNS:        ./PATTERNS_Narrator.md
 PATTERNS:        ./PATTERNS_World_Building.md
 BEHAVIORS:       ./BEHAVIORS_Narrator.md
-ALGORITHM:       ./ALGORITHM_Prompt_Structure.md
+ALGORITHM:       ./ALGORITHM_Scene_Generation.md
 VALIDATION:      ./VALIDATION_Narrator.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Narrator.md
 TEST:            ./TEST_Narrator.md
@@ -31,7 +31,7 @@ TOOLS:           tools/stream_dialogue.py
 |----------|------|--------|
 | PATTERNS | `PATTERNS_Narrator.md` | Current |
 | BEHAVIORS | `BEHAVIORS_Narrator.md` | Current |
-| ALGORITHM | `ALGORITHM_Prompt_Structure.md` (consolidated) | Current |
+| ALGORITHM | `ALGORITHM_Scene_Generation.md` | Current |
 | VALIDATION | `VALIDATION_Narrator.md` | Created 2024-12-19 |
 | IMPLEMENTATION | `IMPLEMENTATION_Narrator.md` | Created 2024-12-19 |
 | TEST | `TEST_Narrator.md` | Created 2024-12-19 |
@@ -44,15 +44,15 @@ TOOLS:           tools/stream_dialogue.py
 
 ### 2025-12-19: Consolidated narrator algorithm docs
 
-- **What:** Merged prompt structure, scene generation, thread, and rolling window content into `ALGORITHM_Prompt_Structure.md`.
+- **What:** Merged prompt structure, scene generation, thread, and rolling window content into `ALGORITHM_Scene_Generation.md`.
 - **Why:** Remove duplicate ALGORITHM docs in the narrator module and keep a single canonical algorithm reference.
-- **Files:** `docs/agents/narrator/ALGORITHM_Prompt_Structure.md`, `docs/agents/narrator/SYNC_Narrator.md`, `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/VALIDATION_Narrator.md`, `docs/agents/narrator/TEST_Narrator.md`, `docs/agents/narrator/PATTERNS_Narrator.md`
+- **Files:** `docs/agents/narrator/ALGORITHM_Scene_Generation.md`, `docs/agents/narrator/SYNC_Narrator.md`, `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/VALIDATION_Narrator.md`, `docs/agents/narrator/TEST_Narrator.md`
 
 ---
 
 ## Recent Updates
 
-- Consolidated narrator PATTERNS docs into `PATTERNS_Narrator.md` and deprecated `PATTERNS_World_Building.md`.
+- Consolidated narrator ALGORITHM docs into `ALGORITHM_Scene_Generation.md`.
 
 ---
 

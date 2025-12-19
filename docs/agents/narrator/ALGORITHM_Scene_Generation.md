@@ -1,9 +1,10 @@
-# Narrator — Algorithm: Prompt Structure and Generation Flow
+# Narrator — Algorithm: Scene Generation
 
 ```
 CREATED: 2024-12-16
 UPDATED: 2025-12-19
-STATUS: Canonical (consolidated)
+STATUS: Canonical (consolidated prompt + thread + rolling window)
+DEPENDS_ON: graph.json, character backstories
 ```
 
 ---
@@ -14,18 +15,20 @@ STATUS: Canonical (consolidated)
 PATTERNS:        ./PATTERNS_Narrator.md
 PATTERNS:        ./PATTERNS_World_Building.md
 BEHAVIORS:       ./BEHAVIORS_Narrator.md
+THIS:            ALGORITHM_Scene_Generation.md (you are here)
 VALIDATION:      ./VALIDATION_Narrator.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Narrator.md
 TEST:            ./TEST_Narrator.md
 SYNC:            ./SYNC_Narrator.md
-THIS:            ALGORITHM_Prompt_Structure.md
+
+IMPL:            agents/narrator/CLAUDE.md
 ```
 
 ---
 
 ## Purpose
 
-This document consolidates the narrator generation flow: prompt assembly, thread continuity, scene generation modes, rolling window pre-generation, and output schemas.
+This document specifies how the narrator generates responses, how prompts are assembled, how the thread is maintained, and how rolling-window pre-generation keeps responses instant.
 
 ---
 
@@ -35,10 +38,10 @@ This document consolidates the narrator generation flow: prompt assembly, thread
 ┌─────────────────────────────────────────────────────────────────┐
 │                        ORCHESTRATOR                              │
 │                                                                  │
-│  1. Read world_injection.md (if exists)                           │
+│  1. Read world_injection.md (if exists)                          │
 │  2. Read graph state                                              │
 │  3. Build prompt                                                  │
-│  4. Call: claude --continue -p "{prompt}" --output-format json    │
+│  4. Call: claude --continue -p "{prompt}" --output-format json   │
 │  5. Parse response                                                │
 │  6. Apply graph mutations                                         │
 │  7. Clear world_injection.md                                      │
@@ -53,62 +56,9 @@ This document consolidates the narrator generation flow: prompt assembly, thread
 
 ```
 playthroughs/{playthrough_id}/world_injection.md    # From World Runner (if flips occurred)
-/data/state/graph.json                               # Current world state
-/data/scenes/{scene_id}.json                         # Output scene trees
+/data/state/graph.json              # Current world state
+/data/scenes/{scene_id}.json        # Output scene trees
 ```
-
----
-
-## The Thread (Continuity)
-
-Single persistent conversation with the narrator. Never reset within a playthrough.
-
-```
-[System Prompt]
-[Scene 1 generation]
-[Scene 1 output]
-[Scene 2 generation]
-[Scene 2 output]
-...continuing indefinitely with --continue
-```
-
-**The narrator remembers everything it authored.**
-
-### Why Continuity Matters
-
-- **Foreshadowing:** Seeds planted earlier can pay off later.
-- **Consistency:** Character voices and patterns stay coherent.
-- **Accumulated Knowledge:** The narrator remembers prior scenes, clickables, and setup arcs.
-
-### When to Start Fresh
-
-- **New playthrough:** New thread
-- **Same playthrough:** Same thread
-
-### Thread Management
-
-If the thread exceeds context:
-
-```
-[System Prompt]
-[Summary: Scenes 1-10]
-[Full: Scenes 11-15]
-[Current generation]
-```
-
-### Thread vs Graph
-
-| Thread | Graph |
-|--------|-------|
-| What was authored | What's true |
-| Narrator's memory | World's memory |
-| Voice and style | Facts and connections |
-| Seeds and setups | Narratives and beliefs |
-
-### Error Handling
-
-- **Thread lost:** Start new thread, summarize recent scenes, continue
-- **Thread corrupted:** Graph mutations take precedence, narrator self-corrects
 
 ---
 
@@ -225,36 +175,6 @@ Player state:
 
 ---
 
-## Generation Modes
-
-### Conversational (Default)
-
-For questions, observations, character interactions — anything <5 minutes:
-
-```
-1. Classify action as conversational
-2. Stream dialogue chunks immediately
-3. Query graph for facts mid-stream
-4. Invent when graph is sparse
-5. Output mutations
-6. Return empty scene {}
-```
-
-### Significant
-
-For travel, rest, combat, major decisions — anything ≥5 minutes:
-
-```
-1. Classify action as significant
-2. Stream transition dialogue
-3. Query graph for context
-4. Generate full SceneTree
-5. Output mutations
-6. Return scene + time_elapsed
-```
-
----
-
 ## Generation Instructions
 
 ### For Scene Generation (no interruption)
@@ -321,7 +241,7 @@ The player must respond to this before continuing previous threads.
 
 ---
 
-## Required Output Schema (Prompt JSON)
+## Required Output Schema
 
 ```typescript
 interface NarratorOutput {
@@ -354,44 +274,6 @@ interface Clickable {
   speaks: string;
   intent: string;
   response: ScenePackage;  // Nested response
-}
-```
-
----
-
-## SceneTree Structure (Legacy Scene Outputs)
-
-```typescript
-interface SceneTree {
-  id: string;
-  location: {
-    place: string;          // Graph place ID
-    name: string;           // Display name
-    region: string;         // Location description
-    time: string;           // Time of day
-  };
-  present: string[];        // Character IDs present
-  atmosphere: string[];     // 2-3 atmospheric lines
-  narration: SceneTreeNarration[];
-  voices: SceneTreeVoice[];
-  freeInput?: {
-    enabled: boolean;
-    handler: string;
-    context: string[];
-  };
-}
-
-interface SceneTreeNarration {
-  text: string;                                     // 2-3 sentences
-  speaker?: string;                                 // If dialogue
-  clickable?: Record<string, SceneTreeClickable>;   // Embedded clickables
-}
-
-interface SceneTreeClickable {
-  speaks: string;           // What player says when clicking
-  intent: string;           // Tag for tracking
-  response?: SceneTreeResponse;  // Pre-baked response (optional)
-  waitingMessage?: string;  // Shown while LLM generates (required if no response)
 }
 ```
 
@@ -478,6 +360,294 @@ Include in narration.
 "The fire has burned low."
 "Dawn light creeps in."
 Mood, not plot.
+```
+
+---
+
+## Orchestrator Pseudocode
+
+```python
+def generate_scene(scene_context):
+    # 1. Check for world injection
+    injection = None
+    injection_path = f'playthroughs/{playthrough_id}/world_injection.md'
+    if file_exists(injection_path):
+        injection = read_json(injection_path)
+
+    # 2. Build prompt
+    prompt = build_prompt(scene_context, injection)
+
+    # 3. Call narrator (--continue maintains thread)
+    result = subprocess.run([
+        'claude', '--continue',
+        '-p', prompt,
+        '--output-format', 'json'
+    ], capture_output=True)
+
+    # 4. Parse output
+    output = json.loads(result.stdout)
+
+    # 5. Apply mutations to graph
+    apply_mutations(output['mutations'])
+
+    # 6. Clear injection (consumed)
+    if injection:
+        delete_file(injection_path)
+
+    # 7. Trigger graph tick with time_elapsed
+    flips = graph_tick(output['time_elapsed'])
+
+    # 8. If flips, run World Runner
+    if flips:
+        world_runner_output = run_world_runner(flips)
+        write_json(injection_path, world_runner_output)
+
+    # 9. Return scene for frontend
+    return output['scene']
+```
+
+---
+
+## Two Generation Modes
+
+### Conversational (Default)
+
+For questions, observations, character interactions — anything <5 minutes:
+
+```
+1. Classify action as conversational
+2. Stream dialogue chunks immediately
+3. Query graph for facts mid-stream
+4. Invent when graph is sparse
+5. Output mutations
+6. Return empty scene {}
+```
+
+### Significant
+
+For travel, rest, combat, major decisions — anything ≥5 minutes:
+
+```
+1. Classify action as significant
+2. Stream transition dialogue
+3. Query graph for context
+4. Generate full SceneTree
+5. Output mutations
+6. Return scene + time_elapsed
+```
+
+---
+
+## Input: Scene Context
+
+Before generation, gather from graph:
+
+```typescript
+interface SceneContext {
+  place: Place;                    // Where this happens
+  present: Character[];            // Who is here
+  activeNarratives: Narrative[];   // High-weight narratives (become voices)
+  tensions: Tension[];             // What might break
+  recentHistory: ChronicleEntry[]; // What just happened
+  playerState: {
+    day: number;
+    goals: string[];               // What player is pursuing
+    patterns: PlayerPatterns;      // How they've been playing
+  };
+}
+```
+
+---
+
+## Conversational Generation
+
+### Step 0: Classify
+
+Determine if action is conversational (<5 min) or significant (≥5 min):
+
+| Conversational | Significant |
+|----------------|-------------|
+| "Do you have kids?" | "Let's break camp" |
+| "Tell me about York" | "I attack him" |
+| Clicking a character detail | Travel |
+| Observation | Rest |
+
+### Step 1: Stream Immediately
+
+Don't wait for context. Start with character voice:
+
+```json
+{ "speaker": "Aldric", "text": "Ahah, kids..." }
+```
+
+### Step 2: Query Graph
+
+Mid-stream, query for facts:
+
+```
+Query: "Does Aldric have family or children?"
+Graph: Sister (deceased). Niece exists, sparse details.
+```
+
+### Step 3: Continue with Facts
+
+```json
+{ "text": "He looks into the fire, something shifting behind his eyes." }
+{ "speaker": "Aldric", "text": "No. Never had the life for it." }
+```
+
+### Step 4: Invent When Sparse
+
+The graph says niece exists but nothing more. Invent:
+
+```
+Invent: Niece named Edda. Archer. Lives near Jorvik.
+```
+
+```json
+{ "speaker": "Aldric", "text": "But my niece — Edda — she's the finest archer north of the Humber." }
+```
+
+### Step 5: Look for Connections
+
+Query again for connection opportunities:
+
+```
+Query: "Where did the player grow up?"
+Graph: Thornwick, same region.
+```
+
+```json
+{ "text": "He glances at you, something like curiosity in his expression." }
+{ "speaker": "Aldric", "text": "Actually... she trained near Thornwick. Might've known your people." }
+```
+
+### Step 6: Output Mutations
+
+Everything invented becomes a mutation:
+
+```json
+{
+  "mutations": [
+    { "type": "new_character", "payload": { "id": "char_edda", "name": "Edda", "traits": ["archer"] } },
+    { "type": "new_edge", "payload": { "from": "char_aldric", "to": "char_edda", "type": "KIN" } },
+    { "type": "new_narrative", "payload": { "id": "narr_edda_thornwick", "content": "Edda trained near Thornwick..." } }
+  ]
+}
+```
+
+### Step 7: Return Empty Scene
+
+```json
+{ "scene": {} }
+```
+
+Conversation continues. World stays frozen. No time passes.
+
+---
+
+## Significant Generation
+
+### Step 1: Stream Transition
+
+Even significant actions get immediate response:
+
+```json
+{ "text": "You stamp out the embers. The moor stretches dark before you." }
+{ "text": "Aldric gathers the horses without a word." }
+```
+
+### Step 2: Query for Context
+
+```
+Query: "What's between here and York?"
+Query: "Any world events pending?"
+Query: "What tensions involve present characters?"
+```
+
+### Step 3: Weave Injections
+
+If `world_injection.md` exists, weave events:
+
+```json
+{ "speaker": "Aldric", "text": "Smoke to the north. Too much for a farmstead." }
+```
+
+### Step 4: Generate Full SceneTree
+
+Build complete scene for arrival or next moment:
+
+```typescript
+interface SceneTree {
+  id: string;
+  location: SceneLocation;
+  present: string[];
+  atmosphere: string[];
+  narration: SceneTreeNarration[];
+  voices: SceneTreeVoice[];
+  freeInput?: SceneTreeFreeInput;
+}
+```
+
+### Step 5: Output with time_elapsed
+
+```json
+{
+  "dialogue": [...],
+  "mutations": [...],
+  "scene": { /* full SceneTree */ },
+  "time_elapsed": "4 hours"
+}
+```
+
+This triggers the world runner.
+
+---
+
+## SceneTree Structure
+
+For significant actions, generate a full scene:
+
+```typescript
+interface SceneTree {
+  id: string;
+  location: {
+    place: string;          // Graph place ID
+    name: string;           // Display name
+    region: string;         // Location description
+    time: string;           // Time of day
+  };
+  present: string[];        // Character IDs present
+  atmosphere: string[];     // 2-3 atmospheric lines
+  narration: SceneTreeNarration[];
+  voices: SceneTreeVoice[];
+  freeInput?: {
+    enabled: boolean;
+    handler: string;
+    context: string[];
+  };
+}
+```
+
+### SceneTreeNarration
+
+```typescript
+interface SceneTreeNarration {
+  text: string;                                     // 2-3 sentences
+  speaker?: string;                                 // If dialogue
+  clickable?: Record<string, SceneTreeClickable>;   // Embedded clickables
+}
+```
+
+### SceneTreeClickable
+
+```typescript
+interface SceneTreeClickable {
+  speaks: string;           // What player says when clicking
+  intent: string;           // Tag for tracking
+  response?: SceneTreeResponse;  // Pre-baked response (optional)
+  waitingMessage?: string;  // Shown while LLM generates (required if no response)
+}
 ```
 
 ---
@@ -588,19 +758,6 @@ When player is in scene N:
 
 ---
 
-## Quality Control
-
-Before serving, scene trees should pass:
-
-- [ ] All clickables have responses OR waitingMessage
-- [ ] No dead ends (every path has exit or continuation)
-- [ ] Character voices are consistent
-- [ ] Clickable words make sense in context
-- [ ] Invented content fits the world
-- [ ] Emotional beats land properly
-
----
-
 ## Rolling Window Generation
 
 **Generate current + N layers ahead. As player clicks, generate next layer in background.**
@@ -621,10 +778,10 @@ Background:     Generate new Layer 2
 
 ```typescript
 interface RollingWindow {
-  current: SceneState;              // What player sees now
-  depth1: Map<string, SceneState>;  // Responses to current clickables
-  depth2: Map<string, SceneState>;  // Responses to depth1 clickables
-  generating: Set<string>;          // Currently being generated
+  current: SceneState;             // What player sees now
+  depth1: Map<string, SceneState>; // Responses to current clickables
+  depth2: Map<string, SceneState>; // Responses to depth1 clickables
+  generating: Set<string>;         // Currently being generated
 }
 ```
 
@@ -665,6 +822,8 @@ async function loadScene(sceneId: string): Promise<RollingWindow> {
 
 ### On Click
 
+Player clicks a word. Response is instant (from depth 1).
+
 ```typescript
 async function handleClick(word: string): Promise<void> {
   const response = window.depth1.get(word);
@@ -681,13 +840,15 @@ async function handleClick(word: string): Promise<void> {
 }
 ```
 
+**Player experience: instant.** Generation happens after render.
+
 ### Generation Priority
 
-Prioritize by:
+When generating depth 2, prioritize by:
 
-1. **Weight** — Higher weight clickables first
-2. **Position** — Words earlier in text first
-3. **Type** — Voices before narration
+1. **Weight** — Higher weight clickables first (player more likely to click)
+2. **Position** — Words earlier in text first (eye tracking)
+3. **Type** — Voices before narration (more emotionally relevant)
 
 ```typescript
 function prioritizeClickables(clickables: Clickable[]): Clickable[] {
@@ -701,6 +862,8 @@ function prioritizeClickables(clickables: Clickable[]): Clickable[] {
 ```
 
 ### Handling Slow Generation
+
+If player clicks before depth 2 is ready:
 
 ```typescript
 async function handleClick(word: string): Promise<void> {
@@ -728,7 +891,11 @@ async function handleClick(word: string): Promise<void> {
 }
 ```
 
+**Thinking indicator:** Subtle, not blocking. "..." or slight dim. Player can still read.
+
 ### Scene Transitions
+
+When a click leads to a new scene:
 
 ```typescript
 interface SceneTransition {
@@ -749,6 +916,8 @@ async function handleTransition(transition: SceneTransition): Promise<void> {
   render(nextScene.current);
 }
 ```
+
+**Predictive pre-fetch:** When player enters a scene, start loading likely next scenes in background.
 
 ### Caching Strategy
 
@@ -771,6 +940,8 @@ interface SceneCache {
 - Evict LRU when memory pressure
 
 ### Background Worker
+
+Dedicated worker for generation:
 
 ```typescript
 const generationWorker = {
@@ -805,7 +976,33 @@ const generationWorker = {
 | Generation time | < 2s | Fast enough to stay ahead |
 | Cache hit rate | > 80% | Efficient reuse |
 
+### Example Flow
+
+```
+1. Player enters Camp Night scene
+   - Render current immediately
+   - Background: generate depth 1 (3 clickables × 1 response each)
+   - Background: generate depth 2 (3 × 3 = 9 responses)
+
+2. Player clicks "Thornwick"
+   - Instant: show response from depth 1
+   - New current has 4 clickables
+   - Background: generate new depth 2 (4 × 3 = 12 responses)
+
+3. Player clicks "Harrying"
+   - Instant: show response from depth 2 (now depth 1)
+   - Background: continue generating
+
+4. Player types free input
+   - On-demand LLM call
+   - Show "Aldric considers..." (500ms-2s)
+   - Render response
+   - Background: generate responses to new state
+```
+
 ### Free Input Handling
+
+Free input breaks the pre-generation model. Handle gracefully:
 
 ```typescript
 async function handleFreeInput(text: string): Promise<void> {
@@ -837,9 +1034,28 @@ async function handleFreeInput(text: string): Promise<void> {
 
 ---
 
-## The --continue Flag
+## Thread Continuity
 
-The Narrator uses `--continue` to maintain thread:
+Single persistent conversation with the narrator. Never reset within a playthrough.
+
+```
+[System Prompt]
+[Scene 1 generation]
+[Scene 1 output]
+[Scene 2 generation]
+[Scene 2 output]
+...continuing indefinitely with --continue
+```
+
+**The narrator remembers everything it authored.**
+
+### Why Continuity Matters
+
+- **Foreshadowing:** Seeds planted early can be paid off later.
+- **Consistency:** Character voices and habits carry forward.
+- **Accumulated Knowledge:** The narrator remembers every response it wrote.
+
+### The --continue Flag
 
 ```bash
 # First scene of playthrough
@@ -857,49 +1073,116 @@ claude --continue -p "{prompt}" --output-format json
 
 **Never reset the thread within a playthrough.**
 
+### Thread State
+
+```
+THREAD STATE (in narrator's memory)
+├── All scenes generated
+├── All clickables authored
+├── All responses written (seen or not)
+├── Character voice patterns established
+├── Seeds planted
+├── Setups awaiting payoff
+└── Accumulated understanding of the world
+```
+
+This isn't stored explicitly — it's in the conversation history.
+
+### When to Start Fresh
+
+**New playthrough** = New thread
+- Different player character
+- Different starting narratives
+- Fresh authorial space
+
+**Same playthrough** = Same thread
+- Continue from where we left off
+- Narrator remembers everything
+
+### Thread Management
+
+**Session boundaries:**
+- Thread persists (Claude Code conversation continues)
+- On resume, narrator has full context
+
+**Thread too long:**
+- Summarize earlier portions
+- Keep recent scenes in full
+- Narrator loses detail on early scenes but keeps patterns
+
+```
+[System Prompt]
+[Summary: Scenes 1-10]
+[Full: Scenes 11-15]
+[Current generation]
+```
+
+**Backup/Restore:**
+- Store conversation ID
+- Resume from any point
+- Consider periodic state snapshots
+
+### Generation Flow
+
+```
+1. Read graph state (what's true now)
+2. Read thread (what's been authored)
+3. Generate scene package
+4. Narrator remembers what it just wrote
+5. Return output
+6. Graph receives mutations
+7. Player receives scene
+8. Wait for next generation request
+```
+
+### The Narrator's Memory
+
+| Memory Type | Example | Why It Matters |
+|-------------|---------|----------------|
+| Seeds planted | "Old habit" in scene 2 | Can pay off later |
+| Character patterns | Aldric's terse speech | Consistency |
+| Responses written | Grandmother answer | World depth |
+| Emotional arcs | Aldric opening up slowly | Character development |
+| Player tendencies | Asks about past often | Personalization |
+
+### Thread vs Graph
+
+| Thread | Graph |
+|--------|-------|
+| What was authored | What's true |
+| Narrator's memory | World's memory |
+| Voice and style | Facts and connections |
+| Seeds and setups | Narratives and beliefs |
+| Implicit in conversation | Explicit in data |
+
+Both are needed. Graph without thread = inconsistent voice. Thread without graph = no persistent world state.
+
+### Error Handling
+
+**Thread Lost**
+1. Start new thread
+2. Load recent graph state
+3. Generate summary of recent scenes for narrator context
+4. Mark discontinuity in logs
+5. Continue (some consistency loss acceptable)
+
+**Thread Corrupted**
+1. Narrator self-corrects with graph as source of truth
+2. Graph mutations take precedence
+3. Log the correction
+
 ---
 
-## Orchestrator Pseudocode
+## Quality Control
 
-```python
-def generate_scene(scene_context):
-    # 1. Check for world injection
-    injection = None
-    injection_path = f'playthroughs/{playthrough_id}/world_injection.md'
-    if file_exists(injection_path):
-        injection = read_json(injection_path)
+Before serving, scene trees should pass:
 
-    # 2. Build prompt
-    prompt = build_prompt(scene_context, injection)
-
-    # 3. Call narrator (--continue maintains thread)
-    result = subprocess.run([
-        'claude', '--continue',
-        '-p', prompt,
-        '--output-format', 'json'
-    ], capture_output=True)
-
-    # 4. Parse output
-    output = json.loads(result.stdout)
-
-    # 5. Apply mutations to graph
-    apply_mutations(output['mutations'])
-
-    # 6. Clear injection (consumed)
-    if injection:
-        delete_file(injection_path)
-
-    # 7. Trigger graph tick with time_elapsed
-    flips = graph_tick(output['time_elapsed'])
-
-    # 8. If flips, run World Runner
-    if flips:
-        world_runner_output = run_world_runner(flips)
-        write_json(injection_path, world_runner_output)
-
-    # 9. Return scene for frontend
-    return output['scene']
-```
+- [ ] All clickables have responses OR waitingMessage
+- [ ] No dead ends (every path has exit or continuation)
+- [ ] Character voices are consistent
+- [ ] Clickable words make sense in context
+- [ ] Invented content fits the world
+- [ ] Emotional beats land properly
 
 ---
 

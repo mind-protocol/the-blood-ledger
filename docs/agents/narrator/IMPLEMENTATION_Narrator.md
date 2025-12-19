@@ -13,7 +13,7 @@ CREATED: 2024-12-19
 PATTERNS:        ./PATTERNS_Narrator.md
 PATTERNS:        ./PATTERNS_World_Building.md
 BEHAVIORS:       ./BEHAVIORS_Narrator.md
-ALGORITHM:       ./ALGORITHM_Prompt_Structure.md
+ALGORITHM:       ./ALGORITHM_Scene_Generation.md
 VALIDATION:      ./VALIDATION_Narrator.md
 THIS:            IMPLEMENTATION_Narrator.md (you are here)
 TEST:            ./TEST_Narrator.md
@@ -299,7 +299,7 @@ Files that reference this documentation:
 
 | Doc Section | Implemented In |
 |-------------|----------------|
-| ALGORITHM_Prompt_Structure: Two modes | `CLAUDE.md:§2 The Two Paths` |
+| ALGORITHM_Scene_Generation: Two modes | `CLAUDE.md:§2 The Two Paths` |
 | BEHAVIORS: DialogueChunk | `tools/stream_dialogue.py` |
 | BEHAVIORS: GraphMutation | `CLAUDE.md:§1 Invention Is Creation` |
 | PATTERNS: Pre-baked trees | `CLAUDE.md:§3 What You Produce` |
