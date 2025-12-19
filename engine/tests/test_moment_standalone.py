@@ -77,7 +77,7 @@ def test_should_embed():
 
 def test_extract_moment_args():
     """Test _extract_moment_args."""
-    from engine.db.graph_ops import GraphOps
+    from engine.physics.graph.graph_ops import GraphOps
 
     # Create instance without connecting
     ops = GraphOps.__new__(GraphOps)
@@ -106,7 +106,7 @@ def test_extract_moment_args():
 
 def test_moment_processor_id_generation():
     """Test moment ID generation."""
-    from engine.memory.moment_processor import MomentProcessor
+    from engine.infrastructure.memory.moment_processor import MomentProcessor
 
     mock_ops = MagicMock()
     mock_embed = MagicMock(return_value=[0.1] * 768)
@@ -128,7 +128,7 @@ def test_moment_processor_id_generation():
 
 def test_moment_processor_time_conversion():
     """Test tick to time of day conversion."""
-    from engine.memory.moment_processor import MomentProcessor
+    from engine.infrastructure.memory.moment_processor import MomentProcessor
 
     mock_ops = MagicMock()
     mock_embed = MagicMock()
@@ -154,7 +154,7 @@ def test_moment_processor_time_conversion():
 
 def test_moment_processor_dialogue():
     """Test processing dialogue."""
-    from engine.memory.moment_processor import MomentProcessor
+    from engine.infrastructure.memory.moment_processor import MomentProcessor
 
     mock_ops = MagicMock()
     mock_embed = MagicMock(return_value=[0.1] * 768)
@@ -200,7 +200,7 @@ def test_moment_processor_dialogue():
 
 def test_moment_processor_sequence():
     """Test moment sequence linking."""
-    from engine.memory.moment_processor import MomentProcessor
+    from engine.infrastructure.memory.moment_processor import MomentProcessor
 
     mock_ops = MagicMock()
     mock_embed = MagicMock(return_value=[0.1] * 768)
@@ -229,7 +229,7 @@ def test_moment_processor_sequence():
 
 def test_moment_processor_narrative_linking():
     """Test linking narratives to moments."""
-    from engine.memory.moment_processor import MomentProcessor
+    from engine.infrastructure.memory.moment_processor import MomentProcessor
 
     mock_ops = MagicMock()
     mock_embed = MagicMock()

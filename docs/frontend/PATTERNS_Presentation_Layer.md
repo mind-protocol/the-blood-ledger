@@ -113,8 +113,8 @@ Each component handles one responsibility. Scene components don't know about map
 |--------|---------------------|
 | `engine/api/` | REST endpoints for game state |
 | `engine/api/moments.py` | Moments API for new display system |
-| `docs/engine/moments/` | Moment system architecture |
-| `docs/async-architecture/` | SSE streaming patterns |
+| `docs/physics/` | Moment system architecture |
+| `docs/infrastructure/async/` | SSE streaming patterns |
 
 ---
 

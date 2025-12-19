@@ -8,7 +8,7 @@ This is the hot path — must be <50ms for all operations.
 import logging
 from typing import Dict, Any, Optional, List
 
-from engine.db.graph_ops import GraphOps
+from engine.physics.graph.graph_ops import GraphOps
 from .queries import MomentQueries
 
 logger = logging.getLogger(__name__)

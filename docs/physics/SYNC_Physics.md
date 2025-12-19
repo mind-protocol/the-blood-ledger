@@ -1,0 +1,101 @@
+# Physics — Current State
+
+```
+STATUS: CANONICAL
+UPDATED: 2024-12-18
+```
+
+---
+
+## CHAIN
+
+```
+THIS:            SYNC_Physics.md (you are here)
+PATTERNS:        ./PATTERNS_Physics.md
+BEHAVIORS:       ./BEHAVIORS_Physics.md
+ALGORITHMS:      ./ALGORITHM_Physics.md, ./ALGORITHM_Energy.md (M1-M6, M11-M13),
+                 ./ALGORITHM_Handlers.md, ./ALGORITHM_Input.md, ./ALGORITHM_Actions.md,
+                 ./ALGORITHM_Questions.md, ./ALGORITHM_Speed.md
+SCHEMA:         ../schema/SCHEMA_Moments.md
+API:             ./API_Physics.md
+VALIDATION:      ./VALIDATION_Physics.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Physics.md (+ Runtime Patterns from INFRASTRUCTURE.md)
+TEST:            ./TEST_Physics.md, ../../engine/tests/test_moment_graph.py
+IMPL:            ../../engine/physics/tick.py, ../../engine/handlers/, ../../engine/canon/
+```
+
+---
+
+## Architecture Summary
+
+**The graph is the only truth.**
+
+| Component | Purpose | Status |
+|-----------|---------|--------|
+| Energy System | Characters pump, links route, decay drains | ALGORITHM_Energy.md ✓ |
+| Physics Tick | Pump, transfer, decay, detect flips | ALGORITHM_Physics.md ✓ |
+| Character Handlers | One handler per character, triggered on flip | ALGORITHM_Handlers.md ✓ |
+| Flip Detection (M11) | Status progression, salience threshold | ALGORITHM_Energy.md ✓ |
+| Canon Holder (M12) | Record what becomes real, THEN links | ALGORITHM_Energy.md ✓ |
+| Agent Dispatch (M13) | Runner/Narrator/Citizen/Canon coordination | ALGORITHM_Energy.md ✓ |
+| Speed Controller | 1x/2x/3x display modes | ALGORITHM_Speed.md ✓ |
+
+---
+
+## Open Questions
+
+1. **LLM latency at 1x** — If handler takes 3-5s, is that acceptable? Pre-generation helps but may not cover all cases.
+
+2. **Grouped character splitting** — When to split automatically vs. on direct address?
+
+3. **Montage moment generation** — Same handlers or dedicated montage handler?
+
+4. **Energy constants** — What values for PUMP_RATE, transfer factors, etc.? Need playtesting. See ALGORITHM_Energy.md.
+
+5. **Question answerer priority** — When multiple questions queued, which first?
+
+---
+
+## Next Steps
+
+1. ~~**Create ALGORITHM_Speed.md** — Speed controller with The Snap~~ ✓ DONE
+2. ~~**Update VALIDATION_Physics.md** — Align with v2 invariants~~ ✓ DONE
+3. ~~**Deprecate legacy files**~~ ✓ DONE
+4. ~~**Update SCHEMA_Moments.md** — Add energy/weight fields~~ ✓ DONE
+5. ~~**Create ALGORITHM_Energy.md** — Energy mechanics, conservation, link transfers~~ ✓ DONE
+6. ~~**Remove TENSION node** — Tension is now computed, not stored~~ ✓ DONE
+7. **Begin implementation** — Create handlers/, canon/, physics/energy.py
+
+---
+
+## Handoff Notes
+
+For next session:
+
+- v2 architecture is fully documented in ALGORITHM files
+- **ALGORITHM_Energy.md** is the master document, containing:
+  - **M1-M6**: Strength Mechanics (Activation, Evidence, Association, Source, Commitment, Intensity)
+  - **M11**: Flip Detection — status progression, salience threshold, detection queries
+  - **M12**: Canon Holder — record, link, time, trigger, strength, notify
+  - **M13**: Agent Dispatch — Runner (world), Narrator (scene), Citizen (character), Canon Holder (record)
+  - **Weight vs Energy**: All nodes have both weight (importance over time, slow) and energy (current activation, fast)
+  - **Salience = weight × energy** — determines surfacing (threshold = 0.3)
+  - Characters are batteries, narratives are circuits, moments spend energy on actualization
+  - Links route energy (zero-sum), don't create it
+  - Tension is computed from structure, not stored
+  - **Energy IS proximity** — no separate proximity calculation
+  - **Physical gating is link attributes** (presence_required, AT), not functions
+  - Transfer types: T1-T6 (narrative links), T7 (CAN_LEAD_TO), T8 (CAN_SPEAK), T9 (ATTACHED_TO)
+  - Moment decay by status: possible (0.02), active (0.01), spoken (0.03), dormant (0.005)
+  - Weight decays only after 100 ticks without reinforcement (very slow: 0.001)
+- SCHEMA updated with weight+energy fields on Character, Narrative, Moment
+- TENSION node removed — tensions emerge from contradictions, deadlines, debts, secrets, oaths
+- All docs unified to new model (Physics, Handlers, Behaviors, Tests, Implementation)
+- ALGORITHM_Physics.md updated: character_pumping() no longer takes focus param
+- INFRASTRUCTURE.md consolidated into IMPLEMENTATION_Physics.md (Runtime Patterns section)
+  - Scene as query, time passage, character movement, backstory generation
+- Implementation is next phase: create handlers/, canon/, physics/energy.py
+
+---
+
+*"There is no scene. There is only the graph."*

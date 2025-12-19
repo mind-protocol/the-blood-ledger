@@ -686,195 +686,190 @@ You don't control what happens in the world. You discover it (via `world_injecti
 
 # Graph Schema Reference
 
+Full schema: `docs/engine/moments/SCHEMA_Moments.md`
+
 ## Nodes
 
 **CHARACTER**
 ```yaml
-id, name: string (required)
-type: string  # player, companion, major, minor, background
-gender: string  # female | male (default: male)
+id: string          # char_{name_slug}
+name: string        # "Aldric" or "The Guards"
+type: string        # player, companion, major, minor, background, group
+gender: string      # female | male
 alive: boolean
-face: string  # young, scarred, weathered, gaunt, hard, noble
-skills: { fighting, tracking, healing, persuading, sneaking, riding, reading, leading }  # untrained→master
-voice: { tone, style }  # how they speak
+face: string        # young, scarred, weathered, gaunt, hard, noble
+voice: { tone, style }
 personality: { approach, values[], flaw }
 backstory: { family, childhood, wound, why_here }
-modifiers: []
-detail: string  # Extended narrative text for rich descriptions (optional)
-image_prompt: string  # Prompt for character portrait (see docs/image-generation/PATTERNS_Image_Generation.md)
+skills: { fighting, tracking, healing, persuading, sneaking, riding, reading, leading }
+modifiers: []       # wounded, hungry, inspired
+detail: string
+image_prompt: string
+# For groups:
+count: integer      # How many individuals
+split_from: string  # Parent group id if split
 ```
 
 **PLACE**
 ```yaml
-id, name: string (required)
-historical_name: string  # Jorvik, Eoforwic
-type: string  # region, city, hold, village, monastery, camp, road, room, wilderness, ruin
-coordinates: [lat, lng]  # Geographic position
-scale: string  # region | settlement | district | building | room
-atmosphere: { weather[], mood, details[] }  # weather is array: rain, snow, fog, clear, etc.
+id: string          # place_{name_slug}
+name: string        # "York Market"
+historical_name: string  # "Jorvik"
+type: string        # region, city, hold, village, monastery, camp, road, room, wilderness, ruin
+scale: string       # region | settlement | district | building | room
+coordinates: [lat, lng]
+atmosphere: { weather[], mood, details[] }
 modifiers: []
-detail: string  # Extended narrative text for rich descriptions (optional)
-image_prompt: string  # Prompt for place illustration (see docs/image-generation/PATTERNS_Image_Generation.md)
+detail: string
+image_prompt: string
 ```
 
-**Scale determines implicit movement:**
-| From → To (same parent) | Needs ROUTE? | Default time |
-|-------------------------|--------------|--------------|
-| room → room | No | ~1 min |
-| building → building | No | ~5 min |
-| district → district | No | ~15 min |
-| settlement → settlement | **Yes** | from route |
-| region → region | **Yes** | from route |
+| Scale | Movement within | Movement out |
+|-------|-----------------|--------------|
+| room | Instant | ~1 min |
+| building | ~1 min | ~5 min |
+| district | ~5 min | ~15 min |
+| settlement | ~15 min | Needs ROUTE |
+| region | Needs ROUTE | Needs ROUTE |
 
 **THING**
 ```yaml
-id, name: string (required)
-type: string  # weapon, armor, document, letter, relic, treasure, title, land, token, provisions, coin_purse, horse, ship, tool
+id: string          # thing_{name_slug}
+name: string        # "Father's Sword"
+type: string        # weapon, armor, document, letter, relic, treasure, title, land, token, provisions, coin_purse, horse, ship, tool
 portable: boolean
 significance: string  # mundane, personal, political, sacred, legendary
 quantity: integer
 description: string
 modifiers: []
-detail: string  # Extended narrative text for rich descriptions (optional)
-image_prompt: string  # Prompt for thing illustration (see docs/image-generation/PATTERNS_Image_Generation.md)
+detail: string
+image_prompt: string
 ```
 
-**NARRATIVE** — The core. Everything is narrative.
+**NARRATIVE** — What moments are ABOUT
 ```yaml
-id, name, content, interpretation: string (required)
-type: string  # memory, account, rumor, reputation, identity, bond, oath, debt, blood, enmity, love, service, ownership, claim, control, origin, belief, prophecy, lie, secret
-about: { characters[], relationship[], places[], things[] }
-tone: string  # bitter, proud, shameful, defiant, mournful, cold, righteous, hopeful, fearful, warm, dark, sacred
-voice: { style, phrases[] }
-weight: float (computed)
-focus: float 0.1-3.0
-truth: float 0-1 (director only)
+id: string          # narr_{summary_slug}
+name: string        # "Aldric's Betrayal"
+content: string     # What happened/is believed
+interpretation: string  # What it means
+type: string        # memory, account, rumor, reputation, identity, bond, oath, debt, blood, enmity, love, service, ownership, claim, control, origin, belief, prophecy, lie, secret
+about: { characters[], places[], things[], relationships[] }
+tone: string        # bitter, proud, shameful, defiant, mournful, cold, righteous, hopeful, fearful, warm, dark, sacred
+weight: float
+focus: float        # 0.1-3.0
+truth: float        # 0-1 (director only)
 narrator_notes: string
-occurred_at: string  # When the event occurred (e.g., "Day 12, dawn")
-# NOTE: "where" is expressed via OCCURRED_AT link to Place, not an attribute
-detail: string  # Extended narrative text for rich descriptions (optional)
+occurred_at: string # "Day 12, dawn"
+detail: string
 ```
 
-**MOMENT** — A single unit of narrated content (every piece of text shown to player)
+**MOMENT** — The atomic unit. Everything displayed is a moment.
 ```yaml
-id: string  # Pattern: {place}_{day}_{time}_{type}_{suffix} (e.g., "crossing_d5_dusk_dialogue_143521")
-text: string (required)
-type: string  # narration, dialogue, hint, player_click, player_freeform, player_choice
-tick: integer (required)  # World tick when this occurred
-status: string  # possible | active | spoken | dormant | decayed (default: spoken)
-weight: float 0-1  # Surfacing weight. Flips to active when >= 0.8 (default: 0.5)
-tone: string  # Emotional tone: curious, defiant, warm, cold, tense, vulnerable, etc.
-tick_spoken: integer  # Tick when status became "spoken"
-tick_decayed: integer  # Tick when status became "decayed"
-line: integer  # Line number in transcript.json
-embedding: float[]  # 768-dim vector (if text > 20 chars)
-# NOTE: Speaker is determined by CAN_SPEAK links, not an attribute
+id: string          # {place}_{day}_{time}_{type}_{random}
+text: string
+type: string        # narration, dialogue, thought, action, montage, hint, player_click, player_freeform, player_choice
+status: string      # possible | active | spoken | dormant | decayed
+weight: float       # 0-1. Flips to active at >= 0.8
+tone: string        # curious, defiant, warm, cold, tense, vulnerable
+duration: integer   # Time units
+tick_created: integer
+tick_spoken: integer
+tick_decayed: integer
+line: integer
+embedding: float[]
+# For action moments:
+action: string      # travel, attack, take, give, use (target via TARGETS link)
+# For query moments:
+query: string       # "Who is my father?"
+query_type: string  # backstory_gap, world_fact, relationship
+query_filled: boolean
 ```
 
-## Links
-
-**CHARACTER → NARRATIVE** (Belief)
+**TENSION**
 ```yaml
-heard, believes, doubts, denies: float 0-1  # knowledge state
-hides, spreads: float 0-1  # action state
-originated: float 0-1
-source: string  # witnessed, told, inferred, assumed, taught
-from_whom: string  # character_id who told them (if source=told)
-when: datetime  # when they learned
-where: string  # place_id where they learned this (optional)
-detail: string  # Extended narrative text (optional)
-```
-
-**NARRATIVE → NARRATIVE**
-```yaml
-contradicts, supports, elaborates, subsumes, supersedes: float 0-1
-detail: string  # Extended narrative text (optional)
-```
-
-**NARRATIVE → PLACE** (where it occurred)
-```yaml
-# OCCURRED_AT link — no properties, just indicates where the narrative event took place
-```
-
-**Ground truth links** (physical state, not belief):
-
-CHARACTER → PLACE:
-```yaml
-present: float  # 1 = here now
-visible: float  # 0 = hiding
-traveling_to: string  # place_id if en route
-travel_progress: float  # 0-1
-travel_eta_hours: float
-detail: string  # Extended narrative text (optional)
-```
-
-CHARACTER → THING: `carries`, `carries_hidden`, `detail`
-
-THING → PLACE: `located`, `hidden`, `specific_location`, `detail`
-
-PLACE → PLACE:
-```yaml
-# CONTAINS (hierarchy) — no attributes needed, relationship is binary
-# place_york CONTAINS place_york_market CONTAINS place_merchants_hall CONTAINS place_back_room
-
-# ROUTE (travel between settlements/regions) — computed from waypoints
-ROUTE:
-  waypoints: float[][]     # [[lat, lng], ...] — traced once, real geography
-  road_type: string        # roman | track | path | river | none
-  distance_km: float       # Computed from waypoints (Haversine)
-  travel_minutes: int      # Computed from distance + road_type speed
-  difficulty: string       # Computed from road_type (easy/moderate/hard/dangerous)
-  detail: string           # Optional: "Crosses marshland near Humber"
-
-# Road type speeds (km/h on foot):
-# roman: 5.0, track: 3.5, path: 2.5, river: 8.0 (downstream), none: 1.5 (cross-country)
-```
-
-## Tensions
-
-```yaml
-id, narratives[], description, narrator_notes: string
+id: string          # tension_{summary_slug}
+description: string
+narratives: string[]
+pressure: float     # 0-1
+breaking_point: float  # Default 0.9
 pressure_type: string  # gradual, scheduled, hybrid
-pressure: float 0-1
-breaking_point: float (default 0.9)
-base_rate: float (for gradual)
-trigger_at: string (for scheduled)
-progression: [] (for scheduled/hybrid)
-detail: string  # Extended narrative text (optional)
+base_rate: float
+trigger_at: string
+progression: []
+narrator_notes: string
+detail: string
 ```
 
-## Modifiers
+## Key Links
 
+**CHARACTER -[AT]-> PLACE**
 ```yaml
-type: string  # wounded, sick, hungry, exhausted, grieving, inspired, afraid, burning, besieged, damaged, etc.
-severity: string  # mild, moderate, severe
-duration: string
-source: string
+present: float      # 1 = here now
+visible: float      # 1 = can be seen
+traveling_to: string
+travel_progress: float
+travel_eta_hours: float
 ```
 
-## Moment Links
-
+**CHARACTER -[BELIEVES]-> NARRATIVE**
 ```yaml
-CHARACTER -[SAID]-> MOMENT  # Who said/did this (legacy)
-CHARACTER -[CAN_SPEAK]-> MOMENT  # Who can speak this moment (weight determines priority)
-  weight: float 0-1  # Higher weight = more likely speaker when multiple can speak
+heard, believes, doubts, denies: float 0-1
+hides, spreads: float 0-1
+originated: float 0-1
+source: string      # witnessed, told, inferred, assumed, taught
+from_whom: string
+when: datetime
+where: string
+```
 
-MOMENT -[AT]-> PLACE  # Where moment occurred
-MOMENT -[THEN]-> MOMENT  # Sequence within scene (first -> second)
-NARRATIVE -[FROM]-> MOMENT  # Source attribution for narratives
+**CHARACTER -[CAN_SPEAK]-> MOMENT**
+```yaml
+weight: float       # Priority among possible speakers
+```
 
-MOMENT -[ATTACHED_TO]-> Character|Place|Thing  # Visibility gating
-  presence_required: boolean  # If true, target must be present for moment to be visible
-  persistent: boolean  # If true, moment goes dormant (not deleted) when player leaves
-  dies_with_target: boolean  # If true, delete moment when target is deleted
+**MOMENT -[ATTACHED_TO]-> CHARACTER | PLACE | THING**
+```yaml
+presence_required: boolean  # Target must be present for moment visible
+persistent: boolean         # Goes dormant (not deleted) when player leaves
+dies_with_target: boolean
+```
 
-MOMENT -[CAN_LEAD_TO]-> MOMENT  # Conversation transitions
-  trigger: string  # "player" (click/type), "wait" (ticks), "auto" (immediate)
-  require_words: string[]  # Words that trigger this transition (for trigger="player")
-  weight_transfer: float  # How much weight flows to target (default: 0.3)
-  wait_ticks: integer  # Ticks to wait (for trigger="wait")
-  bidirectional: boolean  # Create reverse link too
-  consumes_origin: boolean  # If true, origin status → spoken after traversal
+**MOMENT -[CAN_LEAD_TO]-> MOMENT**
+```yaml
+trigger: string     # "click", "wait", "auto"
+require_words: string[]  # For click trigger
+weight_transfer: float   # Default 0.3
+wait_ticks: integer
+bidirectional: boolean
+consumes_origin: boolean
+```
+
+**MOMENT -[THEN]-> MOMENT** — History (immutable, created by Canon Holder)
+```yaml
+tick: integer
+player_caused: boolean
+```
+
+**MOMENT -[REFERENCES]-> CHARACTER | PLACE | THING**
+```yaml
+strength: float     # 1.0 = direct address, 0.5 = mention
+```
+
+**MOMENT -[TARGETS]-> CHARACTER | PLACE | THING** — Action target
+
+**MOMENT -[THREATENS]-> CHARACTER** — Triggers interrupt/snap
+```yaml
+threat_type: string  # physical, social, emotional
+severity: float
+```
+
+**PLACE -[ROUTE]-> PLACE**
+```yaml
+waypoints: float[][]
+road_type: string   # roman, track, path, river, none
+distance_km: float
+travel_minutes: int
+difficulty: string
 ```
 
 ---

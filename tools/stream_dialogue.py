@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# DOCS: docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md
 """
 Stream dialogue and narration to the frontend via moments graph.
 
@@ -93,14 +94,14 @@ def get_playthrough_graph_name(playthrough: str) -> str:
 
 def get_graph_ops(playthrough: str = None):
     """Lazy import of GraphOps with playthrough-specific graph."""
-    from engine.db.graph_ops import GraphOps
+    from engine.physics.graph.graph_ops import GraphOps
     graph_name = get_playthrough_graph_name(playthrough) if playthrough else "blood_ledger"
     return GraphOps(graph_name=graph_name)
 
 
 def get_graph_queries(playthrough: str = None):
     """Lazy import of GraphQueries with playthrough-specific graph."""
-    from engine.db.graph_queries import GraphQueries
+    from engine.physics.graph.graph_queries import GraphQueries
     graph_name = get_playthrough_graph_name(playthrough) if playthrough else "blood_ledger"
     return GraphQueries(graph_name=graph_name)
 

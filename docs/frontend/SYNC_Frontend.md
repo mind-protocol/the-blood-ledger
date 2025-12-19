@@ -141,4 +141,4 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 | Types | `frontend/types/game.ts` |
 | Scene components | `frontend/components/scene/` |
 | Moment components | `frontend/components/moment/` |
-| Backend API docs | `docs/engine/moments/API_Moments.md` |
+| Backend API docs | `docs/physics/API_Physics.md` |

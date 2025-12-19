@@ -129,7 +129,7 @@ def mock_graph_queries():
 @pytest.fixture
 def test_client(mock_moment_queries, mock_moment_traversal, mock_moment_surface, mock_graph_queries):
     """Create TestClient with mocked dependencies."""
-    from engine.api.moments import create_moments_router
+    from engine.infrastructure.api.moments import create_moments_router
     from fastapi import FastAPI
 
     app = FastAPI()

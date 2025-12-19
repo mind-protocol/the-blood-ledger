@@ -39,7 +39,7 @@ def mock_graph_ops():
         mock_graph = MagicMock()
         mock_falkor.return_value.select_graph.return_value = mock_graph
 
-        from engine.db.graph_ops import GraphOps
+        from engine.physics.graph.graph_ops import GraphOps
         ops = GraphOps(graph_name="test_graph")
         ops._graph = mock_graph
 
@@ -62,7 +62,7 @@ def mock_graph_queries():
         mock_graph = MagicMock()
         mock_falkor.return_value.select_graph.return_value = mock_graph
 
-        from engine.db.graph_queries import GraphQueries
+        from engine.physics.graph.graph_queries import GraphQueries
         queries = GraphQueries(graph_name="test_graph")
         queries._graph = mock_graph
         queries._queries = []
@@ -688,7 +688,7 @@ class TestViewToSceneTree:
 
     def test_view_to_scene_tree_basic_structure(self):
         """Test SceneTree conversion produces expected structure."""
-        from engine.db.graph_queries import view_to_scene_tree
+        from engine.physics.graph.graph_queries import view_to_scene_tree
 
         view_result = {
             "location": {"id": "place_camp", "name": "Camp", "type": "wilderness"},
@@ -714,7 +714,7 @@ class TestViewToSceneTree:
 
     def test_view_to_scene_tree_with_clickables(self):
         """Test SceneTree includes clickables from transitions."""
-        from engine.db.graph_queries import view_to_scene_tree
+        from engine.physics.graph.graph_queries import view_to_scene_tree
 
         view_result = {
             "location": {"id": "place_camp", "name": "Camp"},
@@ -913,7 +913,7 @@ class TestExtractMomentArgs:
 
     def test_extract_moment_args_basic(self):
         """Test extracting moment arguments from query result."""
-        from engine.db.graph_ops import GraphOps
+        from engine.physics.graph.graph_ops import GraphOps
 
         # Create instance without connecting
         ops = GraphOps.__new__(GraphOps)

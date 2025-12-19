@@ -31,7 +31,7 @@ TEST_GRAPH = "test_e2e_moments"
 @pytest.fixture(scope="module")
 def graph_ops():
     """Create GraphOps connected to test graph."""
-    from engine.db.graph_ops import GraphOps
+    from engine.physics.graph.graph_ops import GraphOps
     ops = GraphOps(graph_name=TEST_GRAPH)
 
     # Clean up any existing test data
@@ -52,7 +52,7 @@ def graph_ops():
 @pytest.fixture(scope="module")
 def graph_queries():
     """Create GraphQueries connected to test graph."""
-    from engine.db.graph_queries import GraphQueries
+    from engine.physics.graph.graph_queries import GraphQueries
     return GraphQueries(graph_name=TEST_GRAPH)
 
 

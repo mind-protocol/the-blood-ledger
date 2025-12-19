@@ -38,7 +38,7 @@ import logging
 from typing import List, Dict, Any, Set, Tuple
 from dataclasses import dataclass, field
 
-from engine.db import GraphQueries, GraphOps
+from engine.physics.graph import GraphQueries, GraphOps
 from .constants import *
 
 logger = logging.getLogger(__name__)

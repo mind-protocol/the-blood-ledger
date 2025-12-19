@@ -94,7 +94,7 @@ class TestMomentGraphOps:
     def test_extract_moment_args(self):
         """Test _extract_moment_args extracts correct fields."""
         # Import here to avoid connection issues
-        from engine.db.graph_ops import GraphOps
+        from engine.physics.graph.graph_ops import GraphOps
 
         # Create instance without connecting
         ops = GraphOps.__new__(GraphOps)
@@ -125,7 +125,7 @@ class TestMomentProcessor:
 
     def test_generate_id(self):
         """Test moment ID generation."""
-        from engine.memory.moment_processor import MomentProcessor
+        from engine.infrastructure.memory.moment_processor import MomentProcessor
 
         # Create processor with mocked dependencies
         mock_ops = MagicMock()
@@ -153,7 +153,7 @@ class TestMomentProcessor:
 
     def test_tick_to_time_of_day(self):
         """Test tick to time of day conversion."""
-        from engine.memory.moment_processor import MomentProcessor
+        from engine.infrastructure.memory.moment_processor import MomentProcessor
 
         mock_ops = MagicMock()
         mock_embed = MagicMock()
@@ -179,7 +179,7 @@ class TestMomentProcessor:
 
     def test_process_dialogue(self):
         """Test processing dialogue creates moment and updates transcript."""
-        from engine.memory.moment_processor import MomentProcessor
+        from engine.infrastructure.memory.moment_processor import MomentProcessor
 
         mock_ops = MagicMock()
         mock_embed = MagicMock(return_value=[0.1] * 768)
@@ -224,7 +224,7 @@ class TestMomentProcessor:
 
     def test_process_narration(self):
         """Test processing narration creates moment."""
-        from engine.memory.moment_processor import MomentProcessor
+        from engine.infrastructure.memory.moment_processor import MomentProcessor
 
         mock_ops = MagicMock()
         mock_embed = MagicMock(return_value=[0.1] * 768)
@@ -253,7 +253,7 @@ class TestMomentProcessor:
 
     def test_sequence_linking(self):
         """Test that moments are linked in sequence."""
-        from engine.memory.moment_processor import MomentProcessor
+        from engine.infrastructure.memory.moment_processor import MomentProcessor
 
         mock_ops = MagicMock()
         mock_embed = MagicMock(return_value=[0.1] * 768)
@@ -280,7 +280,7 @@ class TestMomentProcessor:
 
     def test_link_narrative_to_moments(self):
         """Test linking a narrative to source moments."""
-        from engine.memory.moment_processor import MomentProcessor
+        from engine.infrastructure.memory.moment_processor import MomentProcessor
 
         mock_ops = MagicMock()
         mock_embed = MagicMock()

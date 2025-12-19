@@ -88,7 +88,7 @@ def graph_ops(db_connection):
     - add_narrative_link(source_id, target_id, contradicts=0.0, supports=0.0, ...)
     """
     try:
-        from engine.db.graph_ops import GraphOps
+        from engine.physics.graph.graph_ops import GraphOps
         ops = GraphOps(graph_name='blood_ledger_test')
         return ops
     except Exception as e:
@@ -101,7 +101,7 @@ def graph_queries(db_connection):
     REQUIRES: engine/db/graph_queries.py fully implemented
     """
     try:
-        from engine.db.graph_queries import GraphQueries
+        from engine.physics.graph.graph_queries import GraphQueries
         return GraphQueries(graph_name='blood_ledger_test')
     except Exception as e:
         pytest.skip(f"GraphQueries not available: {e}")
@@ -592,7 +592,7 @@ class TestWorldRunnerImplementation:
         """
         pytest.skip("WorldRunner not yet implemented")
 
-        from engine.orchestration.world_runner import WorldRunner
+        from engine.infrastructure.orchestration.world_runner import WorldRunner
 
         runner = WorldRunner()
 
@@ -635,7 +635,7 @@ class TestNarratorImplementation:
         """
         pytest.skip("Narrator not yet implemented")
 
-        from engine.orchestration.narrator import NarratorPromptBuilder
+        from engine.infrastructure.orchestration.narrator import NarratorPromptBuilder
 
         builder = NarratorPromptBuilder(graph_queries)
         context = builder.build_context(
@@ -756,7 +756,7 @@ class TestSemanticSearchImplementation:
         """
         pytest.skip("Embedding service not tested")
 
-        from engine.embeddings.service import EmbeddingService
+        from engine.infrastructure.embeddings.service import EmbeddingService
 
         service = EmbeddingService()
 
@@ -772,7 +772,7 @@ class TestSemanticSearchImplementation:
         """
         pytest.skip("Semantic search not tested")
 
-        from engine.queries.semantic import SemanticSearch
+        from engine.world.map.semantic import SemanticSearch
 
         search = SemanticSearch(graph_queries)
 
@@ -801,7 +801,7 @@ class TestMomentImplementation:
         """
         pytest.skip("MomentProcessor integration not tested")
 
-        from engine.memory.moment_processor import MomentProcessor
+        from engine.infrastructure.memory.moment_processor import MomentProcessor
 
         processor = MomentProcessor(
             graph_ops=graph_ops,

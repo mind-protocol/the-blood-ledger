@@ -15,7 +15,7 @@ from pathlib import Path
 from datetime import datetime
 
 from engine.models.base import GameTimestamp, TimeOfDay, NarrativeSource
-from engine.history.conversations import ConversationThread, ConversationSection
+from engine.infrastructure.history.conversations import ConversationThread, ConversationSection
 
 
 # =============================================================================
@@ -322,7 +322,7 @@ class TestHistoryServiceUnit:
 
     def test_query_history_builds_correct_cypher(self, temp_conversations_dir):
         """query_history should build appropriate Cypher query."""
-        from engine.history.service import HistoryService
+        from engine.infrastructure.history.service import HistoryService
 
         mock_graph = MockGraphQueries()
         mock_ops = MockGraphOps()
@@ -346,7 +346,7 @@ class TestHistoryServiceUnit:
 
     def test_query_history_filters_by_place(self, temp_conversations_dir):
         """query_history should filter by place when specified."""
-        from engine.history.service import HistoryService
+        from engine.infrastructure.history.service import HistoryService
 
         mock_graph = MockGraphQueries()
         mock_ops = MockGraphOps()
@@ -375,9 +375,9 @@ class TestHistoryServiceIntegration:
     def live_service(self, temp_conversations_dir):
         """Create HistoryService with real graph connections."""
         try:
-            from engine.db.graph_queries import GraphQueries
-            from engine.db.graph_ops import GraphOps
-            from engine.history.service import HistoryService
+            from engine.physics.graph.graph_queries import GraphQueries
+            from engine.physics.graph.graph_ops import GraphOps
+            from engine.infrastructure.history.service import HistoryService
 
             graph = GraphQueries()
             ops = GraphOps()

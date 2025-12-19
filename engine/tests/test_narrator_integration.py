@@ -38,7 +38,7 @@ def mock_graph_ops():
         mock_graph = MagicMock()
         mock_falkor.return_value.select_graph.return_value = mock_graph
 
-        from engine.db.graph_ops import GraphOps
+        from engine.physics.graph.graph_ops import GraphOps
         ops = GraphOps(graph_name="test_graph")
         ops._graph = mock_graph
 
@@ -80,7 +80,7 @@ def mock_graph_ops():
 @pytest.fixture
 def mock_moment_processor(mock_graph_ops):
     """Create a MomentProcessor with mocked dependencies."""
-    from engine.memory.moment_processor import MomentProcessor
+    from engine.infrastructure.memory.moment_processor import MomentProcessor
 
     mock_embed = MagicMock(return_value=[0.0] * 768)
 
@@ -415,7 +415,7 @@ class TestWeightActivation:
     def test_weight_below_threshold_stays_possible(self, mock_graph_ops):
         """Verify moment with weight < 0.8 remains possible."""
         # This is a behavioral test - just verify the contract
-        from engine.db.graph_ops import GraphOps
+        from engine.physics.graph.graph_ops import GraphOps
 
         # Weight 0.5 + transfer 0.4 = 0.9 > 0.8 threshold
         # This tests the design contract

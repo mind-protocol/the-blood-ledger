@@ -38,7 +38,7 @@ def mock_graph_ops():
         mock_graph = MagicMock()
         mock_falkor.return_value.select_graph.return_value = mock_graph
 
-        from engine.db.graph_ops import GraphOps
+        from engine.physics.graph.graph_ops import GraphOps
         ops = GraphOps(graph_name="test_graph")
         ops._graph = mock_graph
 

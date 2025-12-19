@@ -17,7 +17,7 @@ Quick Start:
     python run.py
 
     # Or use the API directly
-    from engine.orchestration import Orchestrator
+    from engine.infrastructure.orchestration import Orchestrator
     orch = Orchestrator()
     scene = orch.process_action("look around")
 """

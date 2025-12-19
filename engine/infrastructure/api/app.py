@@ -1,0 +1,753 @@
+"""
+Blood Ledger — FastAPI Application
+
+Main API application with endpoints for:
+- Scene generation and clicks
+- View data (map, ledger, faces, chronicle)
+- SSE for rolling window updates
+
+Docs:
+- docs/engine/moments/PATTERNS_Moments.md — architecture + rationale
+- docs/engine/moments/API_Moments.md — HTTP contract for the moment graph
+"""
+
+import asyncio
+import json
+import logging
+import subprocess
+from pathlib import Path
+from typing import Dict, Any, Optional, AsyncGenerator
+from datetime import datetime
+
+from fastapi import FastAPI, HTTPException, Request, Query
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
+
+from engine.infrastructure.orchestration import Orchestrator
+from engine.physics.graph import GraphQueries, GraphOps, add_mutation_listener
+from engine.infrastructure.api.moments import create_moments_router
+from engine.infrastructure.api.playthroughs import create_playthroughs_router
+
+# =============================================================================
+# LOGGING SETUP
+# =============================================================================
+
+_project_root = Path(__file__).parent.parent.parent
+_log_dir = _project_root / "data" / "logs"
+_log_dir.mkdir(parents=True, exist_ok=True)
+
+# Configure file logging
+_file_handler = logging.FileHandler(_log_dir / "backend.log")
+_file_handler.setLevel(logging.DEBUG)
+_file_handler.setFormatter(logging.Formatter(
+    '%(asctime)s %(levelname)s %(name)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+))
+
+# Configure root logger
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(name)s: %(message)s',
+    datefmt='%H:%M:%S'
+)
+logging.getLogger().addHandler(_file_handler)
+
+# Also log uvicorn access/errors
+logging.getLogger("uvicorn").addHandler(_file_handler)
+logging.getLogger("uvicorn.access").addHandler(_file_handler)
+logging.getLogger("uvicorn.error").addHandler(_file_handler)
+
+logger = logging.getLogger(__name__)
+
+
+# =============================================================================
+# REQUEST/RESPONSE MODELS
+# =============================================================================
+
+class ActionRequest(BaseModel):
+    """Request for a player action."""
+    playthrough_id: str
+    action: str
+    player_id: str = "char_player"
+    location: Optional[str] = None
+    stream: bool = False  # If true, returns SSE stream instead of JSON
+
+
+class SceneResponse(BaseModel):
+    """Response containing a scene."""
+    scene: Dict[str, Any]
+    time_elapsed: str
+
+
+class DialogueChunk(BaseModel):
+    """A single chunk of streamed dialogue."""
+    speaker: Optional[str] = None  # Character ID if dialogue, None for narration
+    text: str
+
+
+class NewPlaythroughRequest(BaseModel):
+    """Request to create a new playthrough."""
+    drive: str  # BLOOD, OATH, or SHADOW
+    companion: str = "char_aldric"
+    initial_goal: Optional[str] = None
+
+
+class ScenarioPlaythroughRequest(BaseModel):
+    """Request to create a playthrough from a scenario."""
+    scenario_id: str  # e.g. "thornwick_betrayed"
+    player_name: str
+    player_gender: str  # "male" or "female"
+
+
+class QueryRequest(BaseModel):
+    """Request for semantic query."""
+    query: str
+
+
+# =============================================================================
+# APPLICATION FACTORY
+# =============================================================================
+
+def create_app(
+    graph_name: str = "blood_ledger",
+    host: str = "localhost",
+    port: int = 6379,
+    playthroughs_dir: str = "playthroughs"
+) -> FastAPI:
+    """
+    Create the FastAPI application.
+
+    Args:
+        graph_name: FalkorDB graph name
+        host: FalkorDB host
+        port: FalkorDB port
+        playthroughs_dir: Directory for playthrough data
+
+    Returns:
+        Configured FastAPI app
+    """
+    app = FastAPI(
+        title="Blood Ledger API",
+        description="API for The Blood Ledger narrative RPG",
+        version="0.1.0"
+    )
+
+    # CORS middleware
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],  # Configure properly for production
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # Per-playthrough orchestrators
+    _orchestrators: Dict[str, Orchestrator] = {}
+    _debug_sse_clients: list = []  # list of queues for debug/mutation events
+    _playthroughs_dir = Path(playthroughs_dir)
+
+    # Register mutation listener to broadcast to debug SSE clients
+    def _mutation_event_handler(event: Dict[str, Any]):
+        """Handle mutation events and broadcast to debug SSE clients."""
+        for queue in _debug_sse_clients:
+            try:
+                queue.put_nowait(event)
+            except:
+                pass  # Queue full or closed
+
+    add_mutation_listener(_mutation_event_handler)
+
+    def get_orchestrator(playthrough_id: str) -> Orchestrator:
+        """Get or create orchestrator for a playthrough."""
+        if playthrough_id not in _orchestrators:
+            _orchestrators[playthrough_id] = Orchestrator(
+                playthrough_id=playthrough_id,
+                graph_name=graph_name,
+                host=host,
+                port=port,
+                playthroughs_dir=playthroughs_dir
+            )
+        return _orchestrators[playthrough_id]
+
+    def get_graph_queries() -> GraphQueries:
+        """Get graph queries instance for default graph."""
+        return GraphQueries(graph_name=graph_name, host=host, port=port)
+
+    def get_playthrough_queries(playthrough_id: str) -> GraphQueries:
+        """Get graph queries instance for a specific playthrough."""
+        from engine.physics.graph import get_playthrough_graph_name
+        pt_graph_name = get_playthrough_graph_name(playthrough_id)
+        return GraphQueries(graph_name=pt_graph_name, host=host, port=port)
+
+    def get_graph_ops() -> GraphOps:
+        """Get graph ops instance."""
+        return GraphOps(graph_name=graph_name, host=host, port=port)
+
+    # =========================================================================
+    # MOMENTS ROUTER (Moment Graph API)
+    # =========================================================================
+
+    # Mount the moments API router for moment graph operations
+    # Endpoints: GET /api/moments/current, POST /api/moments/click, etc.
+    moments_router = create_moments_router(
+        host=host,
+        port=port,
+        playthroughs_dir=playthroughs_dir
+    )
+    app.include_router(moments_router, prefix="/api")
+
+    # Mount the playthroughs API router for playthrough management
+    # Endpoints: POST /api/playthrough/create, POST /api/moment, discussion trees
+    playthroughs_router = create_playthroughs_router(
+        graph_name=graph_name,
+        host=host,
+        port=port,
+        playthroughs_dir=playthroughs_dir
+    )
+    app.include_router(playthroughs_router, prefix="/api")
+
+    # =========================================================================
+    # HEALTH CHECK
+    # =========================================================================
+
+    @app.get("/health")
+    async def health_check():
+        """Health check endpoint."""
+        return {"status": "ok", "timestamp": datetime.utcnow().isoformat()}
+
+    # =========================================================================
+    # PLAYTHROUGH ENDPOINTS
+    # =========================================================================
+
+    @app.post("/api/playthrough")
+    async def create_playthrough(request: NewPlaythroughRequest):
+        """
+        Create a new playthrough.
+
+        Sets up playthrough directory for mutations and world injections.
+        Player psychology tracked in narrator's conversation context.
+        Story notes live in the graph (narrative.narrator_notes, tension.narrator_notes).
+        """
+        import uuid
+        playthrough_id = f"pt_{uuid.uuid4().hex[:8]}"
+        playthrough_dir = _playthroughs_dir / playthrough_id
+        playthrough_dir.mkdir(parents=True, exist_ok=True)
+
+        # Create mutations directory
+        (playthrough_dir / "mutations").mkdir(exist_ok=True)
+
+        # Initialize orchestrator
+        get_orchestrator(playthrough_id)
+
+        return {
+            "playthrough_id": playthrough_id,
+            "drive": request.drive,
+            "companion": request.companion,
+            "status": "created"
+        }
+
+    @app.post("/api/playthrough/scenario")
+    async def create_scenario_playthrough(request: ScenarioPlaythroughRequest):
+        """
+        Create a new playthrough from a scenario.
+
+        1. Creates playthrough folder structure
+        2. Loads scenario YAML
+        3. Applies scenario nodes/links/tensions to graph
+        4. Saves player.yaml with character info
+        5. Creates initial scene.json from scenario opening
+        """
+        import uuid
+        import yaml
+
+        # Validate scenario exists
+        scenarios_dir = Path(__file__).parent.parent.parent / "scenarios"
+        scenario_file = scenarios_dir / f"{request.scenario_id}.yaml"
+
+        if not scenario_file.exists():
+            raise HTTPException(status_code=404, detail=f"Scenario not found: {request.scenario_id}")
+
+        # Load scenario
+        scenario = yaml.safe_load(scenario_file.read_text())
+
+        # Generate playthrough ID
+        playthrough_id = f"pt_{uuid.uuid4().hex[:8]}"
+        playthrough_dir = _playthroughs_dir / playthrough_id
+        playthrough_dir.mkdir(parents=True, exist_ok=True)
+
+        # Create subdirectories
+        (playthrough_dir / "mutations").mkdir(exist_ok=True)
+        (playthrough_dir / "conversations").mkdir(exist_ok=True)
+
+        # Save player.yaml
+        player_data = {
+            "name": request.player_name,
+            "gender": request.player_gender,
+            "scenario": request.scenario_id,
+            "created": datetime.utcnow().isoformat()
+        }
+        (playthrough_dir / "player.yaml").write_text(yaml.dump(player_data))
+
+        # Apply scenario to graph
+        from engine.physics.graph import GraphOps
+        graph_ops = GraphOps(graph_name=graph_name, host=host, port=port)
+
+        # Update player node with name/gender in scenario data
+        for node in scenario.get("nodes", []):
+            if node.get("id") == "char_player":
+                node["name"] = request.player_name
+                node["gender"] = request.player_gender
+
+        # Apply nodes, links, tensions
+        try:
+            result = graph_ops.apply(data=scenario, playthrough=playthrough_id)
+            logger.info(f"Applied scenario {request.scenario_id}: {result}")
+        except Exception as e:
+            logger.error(f"Failed to apply scenario: {e}")
+            # Continue anyway - scenario may have partial success
+
+        # Create initial scene.json from scenario opening
+        opening = scenario.get("opening", {})
+        initial_scene = {
+            "id": f"scene_{request.scenario_id}_opening",
+            "location": {
+                "place": scenario.get("location", "place_unknown"),
+                "name": scenario.get("name", "Unknown"),
+                "region": "England",
+                "time": opening.get("time", "dawn")
+            },
+            "characters": opening.get("characters_present", []),
+            "atmosphere": [opening.get("weather", "")],
+            "narration": [
+                {"text": line.strip(), "clickable": {}}
+                for line in opening.get("narration", "").strip().split("\n")
+                if line.strip()
+            ],
+            "voices": []
+        }
+        (playthrough_dir / "scene.json").write_text(json.dumps(initial_scene, indent=2))
+
+        # Initialize orchestrator
+        get_orchestrator(playthrough_id)
+
+        return {
+            "playthrough_id": playthrough_id,
+            "scenario": request.scenario_id,
+            "player_name": request.player_name,
+            "player_gender": request.player_gender,
+            "status": "created"
+        }
+
+    @app.get("/api/playthrough/{playthrough_id}")
+    async def get_playthrough(playthrough_id: str):
+        """Get playthrough status and info."""
+        playthrough_dir = _playthroughs_dir / playthrough_id
+        if not playthrough_dir.exists():
+            raise HTTPException(status_code=404, detail="Playthrough not found")
+
+        return {
+            "playthrough_id": playthrough_id,
+            "has_world_injection": (playthrough_dir / "world_injection.md").exists()
+        }
+
+    # =========================================================================
+    # MOMENT GRAPH ENDPOINTS
+    # =========================================================================
+
+    class MomentClickRequest(BaseModel):
+        """Request for clicking a word using Moment Graph architecture."""
+        playthrough_id: str
+        moment_id: str
+        word: str
+        player_id: str = "char_player"
+
+    class MomentClickResponse(BaseModel):
+        """Response for Moment Graph click."""
+        flipped: bool
+        flipped_moments: list
+        weight_updates: list
+        queue_narrator: bool
+
+    @app.post("/api/moment/click", response_model=MomentClickResponse)
+    async def moment_click(request: MomentClickRequest):
+        """
+        Handle a word click using the Moment Graph architecture.
+
+        This is the instant-response path (<50ms target).
+        No LLM calls in this path.
+
+        1. Find CAN_LEAD_TO links from moment where word is in require_words
+        2. Apply weight_transfer to target moments
+        3. Check for flips (weight > 0.8)
+        4. Return flipped moments, or queue_narrator=True if nothing flips
+        """
+        try:
+            ops = get_graph_ops()
+            result = ops.handle_click(
+                moment_id=request.moment_id,
+                clicked_word=request.word,
+                player_id=request.player_id
+            )
+            return MomentClickResponse(**result)
+        except Exception as e:
+            logger.error(f"Moment click failed: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.get("/api/moment/view/{playthrough_id}")
+    async def get_moment_view(
+        playthrough_id: str,
+        location_id: str = Query(..., description="Current location ID"),
+        player_id: str = Query("char_player", description="Player character ID")
+    ):
+        """
+        Get the current view using Moment Graph architecture.
+
+        Returns moments visible to player at location, ordered by weight.
+        This replaces scene.json reads with live graph queries.
+        """
+        try:
+            read = get_playthrough_queries(playthrough_id)
+            view = read.get_current_view(
+                player_id=player_id,
+                location_id=location_id
+            )
+            return view
+        except Exception as e:
+            logger.error(f"Get moment view failed: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.get("/api/view/{playthrough_id}")
+    async def get_current_view(
+        playthrough_id: str,
+        player_id: str = Query("char_player", description="Player character ID"),
+        location_id: Optional[str] = Query(
+            None,
+            description="Override location ID; defaults to player's current AT edge"
+        )
+    ):
+        """
+        Resolve the player's current location (unless overridden) and return the
+        CurrentView payload described in docs/engine/moments/API_Moments.md.
+        """
+        try:
+            read = get_playthrough_queries(playthrough_id)
+            resolved_location_id = location_id
+            location = None
+
+            if not resolved_location_id:
+                location = read.get_player_location(player_id=player_id)
+                if not location:
+                    raise HTTPException(
+                        status_code=404,
+                        detail=f"Player '{player_id}' has no AT link. Move the player before requesting view."
+                    )
+                resolved_location_id = location.get("id")
+
+            view = read.get_current_view(
+                player_id=player_id,
+                location_id=resolved_location_id
+            )
+
+            # If we already fetched location data, ensure the view includes it.
+            if location:
+                view["location"] = location
+
+            return view
+        except HTTPException:
+            raise
+        except Exception as e:
+            logger.error(f"Get current view failed: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.get("/api/moment/view/{playthrough_id}/scene-tree")
+    async def get_moment_view_as_scene_tree(
+        playthrough_id: str,
+        location_id: str = Query(..., description="Current location ID"),
+        player_id: str = Query("char_player", description="Player character ID")
+    ):
+        """
+        Get the current view as a SceneTree for backward compatibility.
+
+        Fetches from Moment Graph but converts to SceneTree format
+        so existing frontend components work unchanged.
+        """
+        try:
+            from engine.physics.graph.graph_queries import view_to_scene_tree
+
+            read = get_playthrough_queries(playthrough_id)
+            view = read.get_current_view(
+                player_id=player_id,
+                location_id=location_id
+            )
+            scene_tree = view_to_scene_tree(view)
+            return {"scene": scene_tree}
+        except Exception as e:
+            logger.error(f"Get scene tree failed: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.post("/api/moment/weight")
+    async def update_moment_weight(request: Request):
+        """
+        Manually update a moment's weight.
+
+        Request body: {"moment_id": "...", "weight_delta": 0.2, "reason": "..."}
+        """
+        try:
+            body = await request.json()
+            ops = get_graph_ops()
+            result = ops.update_moment_weight(
+                moment_id=body.get("moment_id"),
+                weight_delta=body.get("weight_delta", 0.0),
+                reason=body.get("reason", "api_call")
+            )
+            return result
+        except Exception as e:
+            logger.error(f"Weight update failed: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    # =========================================================================
+    # DEBUG SSE ENDPOINT (Graph Mutations)
+    # =========================================================================
+
+    @app.get("/api/debug/stream")
+    async def debug_stream(request: Request):
+        """
+        SSE endpoint for graph mutation events.
+
+        Clients connect here to receive real-time updates when mutations are applied.
+        Events include: apply_start, node_created, link_created, movement, apply_complete
+
+        Use this for the debug panel in the frontend.
+        """
+        async def event_generator() -> AsyncGenerator[str, None]:
+            queue = asyncio.Queue(maxsize=100)
+
+            # Register this client
+            _debug_sse_clients.append(queue)
+
+            try:
+                # Send initial connection event
+                yield f"event: connected\ndata: {{\"message\": \"Debug stream connected\"}}\n\n"
+
+                while True:
+                    # Check if client disconnected
+                    if await request.is_disconnected():
+                        break
+
+                    try:
+                        # Wait for events with timeout
+                        event = await asyncio.wait_for(queue.get(), timeout=30)
+                        event_type = event.get('type', 'mutation')
+                        yield f"event: {event_type}\ndata: {json.dumps(event)}\n\n"
+                    except asyncio.TimeoutError:
+                        # Send keepalive
+                        yield f"event: ping\ndata: {{}}\n\n"
+            finally:
+                # Unregister client
+                if queue in _debug_sse_clients:
+                    _debug_sse_clients.remove(queue)
+
+        return StreamingResponse(
+            event_generator(),
+            media_type="text/event-stream",
+            headers={
+                "Cache-Control": "no-cache",
+                "Connection": "keep-alive",
+            }
+        )
+
+    # =========================================================================
+    # VIEW ENDPOINTS
+    # =========================================================================
+
+    @app.get("/api/{playthrough_id}/map")
+    async def get_map(playthrough_id: str, player_id: str = "char_player"):
+        """
+        Get map data showing places and connections.
+        """
+        try:
+            read = get_playthrough_queries(playthrough_id)
+
+            # Get all places
+            places = read.query("""
+                MATCH (p:Place)
+                RETURN p.id, p.name, p.type, p.mood
+            """)
+
+            # Get connections
+            connections = read.query("""
+                MATCH (p1:Place)-[r:CONNECTS]->(p2:Place)
+                WHERE r.path > 0.5
+                RETURN p1.id, p2.id, r.path_distance, r.path_difficulty
+            """)
+
+            # Get player location
+            player_loc = read.query(f"""
+                MATCH (c:Character {{id: '{player_id}'}})-[:AT]->(p:Place)
+                RETURN p.id
+            """)
+
+            # Handle dict results from FalkorDB
+            player_location = None
+            if player_loc and player_loc[0]:
+                if isinstance(player_loc[0], dict):
+                    player_location = player_loc[0].get('p.id')
+                else:
+                    player_location = player_loc[0][0]
+
+            return {
+                "places": places,
+                "connections": connections,
+                "player_location": player_location
+            }
+        except Exception as e:
+            logger.error(f"Failed to get map: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.get("/api/{playthrough_id}/ledger")
+    async def get_ledger(playthrough_id: str, player_id: str = "char_player"):
+        """
+        Get ledger data showing debts, oaths, and blood ties.
+        """
+        try:
+            read = get_playthrough_queries(playthrough_id)
+
+            # Get core narratives (oath, debt, blood) that player believes
+            ledger_items = read.query(f"""
+                MATCH (c:Character {{id: '{player_id}'}})-[b:BELIEVES]->(n:Narrative)
+                WHERE n.type IN ['oath', 'debt', 'blood', 'enmity']
+                  AND b.heard > 0.5
+                RETURN n.id, n.name, n.content, n.type, n.tone, b.believes
+                ORDER BY b.believes DESC
+            """)
+
+            return {"items": ledger_items}
+        except Exception as e:
+            logger.error(f"Failed to get ledger: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.get("/api/{playthrough_id}/faces")
+    async def get_faces(playthrough_id: str, player_id: str = "char_player"):
+        """
+        Get faces data showing known characters.
+        """
+        try:
+            read = get_playthrough_queries(playthrough_id)
+
+            # Get characters the player knows about (major characters and those in narratives)
+            # Note: about_characters is stored as JSON string, so we use a simpler query
+            characters = read.query("""
+                MATCH (c:Character)
+                WHERE c.type IN ['major', 'minor'] AND c.type <> 'player'
+                RETURN DISTINCT c.id, c.name, c.type, c.face
+            """)
+
+            # Get companion info
+            companions = read.query("""
+                MATCH (c:Character {type: 'companion'})
+                RETURN c.id, c.name, c.face, c.voice_tone
+            """)
+
+            return {
+                "known_characters": characters,
+                "companions": companions
+            }
+        except Exception as e:
+            logger.error(f"Failed to get faces: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.get("/api/{playthrough_id}/chronicle")
+    async def get_chronicle(playthrough_id: str, player_id: str = "char_player"):
+        """
+        Get chronicle data showing event history.
+        """
+        try:
+            read = get_playthrough_queries(playthrough_id)
+
+            # Get memory and account narratives the player believes
+            events = read.query(f"""
+                MATCH (c:Character {{id: '{player_id}'}})-[b:BELIEVES]->(n:Narrative)
+                WHERE n.type IN ['memory', 'account']
+                  AND b.heard > 0.5
+                RETURN n.id, n.name, n.content, n.type, n.tone, b.believes
+                ORDER BY n.weight DESC
+                LIMIT 50
+            """)
+
+            return {"events": events}
+        except Exception as e:
+            logger.error(f"Failed to get chronicle: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    # =========================================================================
+    # QUERY ENDPOINT
+    # =========================================================================
+
+    @app.post("/api/{playthrough_id}/query")
+    async def semantic_query_post(playthrough_id: str, request: QueryRequest):
+        """
+        Natural language query via embeddings (POST).
+        """
+        try:
+            from engine.world.map import get_semantic_search
+            search = get_semantic_search(graph_name=graph_name, host=host, port=port)
+            results = search.find(request.query, limit=10)
+            return {"results": results, "query": request.query}
+        except Exception as e:
+            logger.error(f"Failed to execute query: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.get("/api/{playthrough_id}/query")
+    async def semantic_query_get(playthrough_id: str, query: str = Query(..., description="Search query")):
+        """
+        Natural language query via embeddings (GET).
+        """
+        try:
+            from engine.world.map import get_semantic_search
+            search = get_semantic_search(graph_name=graph_name, host=host, port=port)
+            results = search.find(query, limit=10)
+            return {"results": results, "query": query}
+        except Exception as e:
+            logger.error(f"Failed to execute query: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    # =========================================================================
+    # INJECTION ENDPOINT
+    # =========================================================================
+
+    @app.post("/api/inject")
+    async def inject_event(request: Request):
+        """
+        Write an injection to the queue for hook processing.
+        Used by frontend for player UI actions (stop, location change, etc.)
+        """
+        try:
+            body = await request.json()
+            injection_file = _playthroughs_dir / "default" / "injection_queue.jsonl"
+            injection_file.parent.mkdir(parents=True, exist_ok=True)
+
+            with open(injection_file, "a") as f:
+                f.write(json.dumps(body) + "\n")
+
+            return {"status": "ok", "injection": body}
+        except Exception as e:
+            logger.error(f"Failed to inject: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    return app
+
+
+# =============================================================================
+# MAIN ENTRY POINT
+# =============================================================================
+
+# Use absolute path to project root's playthroughs directory
+_project_root = Path(__file__).parent.parent.parent
+_default_playthroughs = str(_project_root / "playthroughs")
+
+app = create_app(playthroughs_dir=_default_playthroughs)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

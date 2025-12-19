@@ -9,7 +9,7 @@ import json
 import logging
 from typing import List, Dict, Any, Optional, Set
 
-from engine.db.graph_queries import GraphQueries
+from engine.physics.graph.graph_queries import GraphQueries
 
 logger = logging.getLogger(__name__)
 

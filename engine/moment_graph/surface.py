@@ -10,8 +10,8 @@ No LLM. Pure mechanical weight calculations.
 import logging
 from typing import Dict, Any, List
 
-from engine.db.graph_ops import GraphOps
-from engine.db.graph_queries import GraphQueries
+from engine.physics.graph.graph_ops import GraphOps
+from engine.physics.graph.graph_queries import GraphQueries
 
 logger = logging.getLogger(__name__)
 

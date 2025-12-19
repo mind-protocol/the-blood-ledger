@@ -1,0 +1,209 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "ping?",
+      "timestamp": "2025-12-19T00:38:24.361442"
+    },
+    {
+      "role": "assistant",
+      "content": "Pong. I'm here and ready. What do you need?",
+      "timestamp": "2025-12-19T00:38:32.025188"
+    },
+    {
+      "role": "system",
+      "content": "--- New Session ---",
+      "timestamp": "2025-12-19T01:16:52.256063"
+    },
+    {
+      "role": "user",
+      "content": "can you do a project overview (red view)",
+      "timestamp": "2025-12-19T01:18:52.487700"
+    },
+    {
+      "role": "system",
+      "content": "--- New Session ---",
+      "timestamp": "2025-12-19T01:21:30.333814"
+    },
+    {
+      "role": "user",
+      "content": "use global view command",
+      "timestamp": "2025-12-19T01:25:05.230993"
+    },
+    {
+      "role": "assistant",
+      "content": "The map is large (56k tokens). Let me show the key sections.## Global View \u2014 `docs/map.md`\n\n### Statistics\n\n| Metric | Value |\n|--------|-------|\n| **Files** | 276 |\n| **Directories** | 63 |\n| **Total Size** | 2.5M |\n| **Doc Files** | 159 |\n| **Code Files** | 108 |\n| **Areas** | 12 |\n| **Tests** | 14 files (242K) |\n\n### By Language\n\n```\nmarkdown:   159\npython:      58\ntsx:         35\ntypescript:  12\n```\n\n---\n\n### Structure at a Glance\n\n```\nthe-blood-ledger/\n\u251c\u2500\u2500 agents/           63K   # LLM agent instructions (narrator, world_runner, developer)\n\u251c\u2500\u2500 docs/            1.3M   # 159 markdown docs across 12 areas\n\u2502   \u251c\u2500\u2500 engine/     804K   # Core engine docs\n\u2502   \u2502   \u251c\u2500\u2500 moments/  259K   # Heart of the system\n\u2502   \u2502   \u251c\u2500\u2500 narrator/  83K\n\u2502   \u2502   \u251c\u2500\u2500 graph/     70K\n\u2502   \u2502   \u251c\u2500\u2500 world_runner/ 68K\n\u2502   \u2502   \u251c\u2500\u2500 scene_memory/ 64K\n\u2502   \u2502   \u2514\u2500\u2500 map/       61K\n\u2502   \u251c\u2500\u2500 vision/      55K   # Game design vision\n\u2502   \u251c\u2500\u2500 opening/     69K   # Opening experience\n\u2502   \u2514\u2500\u2500 ...\n\u251c\u2500\u2500 engine/         812K   # Python backend\n\u2502   \u251c\u2500\u2500 api/         65K   # FastAPI endpoints\n\u2502   \u251c\u2500\u2500 db/         162K   # Graph ops (98K) + queries (62K)\n\u2502   \u251c\u2500\u2500 tests/      242K   # 14 test modules\n\u2502   \u251c\u2500\u2500 physics/     22K   # Energy tick system\n\u2502   \u2514\u2500\u2500 orchestration/ 31K # Narrator, runner, orchestrator\n\u251c\u2500\u2500 frontend/       192K   # Next.js app\n\u2502   \u251c\u2500\u2500 components/ 125K   # Scene, moment, map, panel\n\u2502   \u251c\u2500\u2500 hooks/       19K   # useGameState, useMoments\n\u2502   \u2514\u2500\u2500 types/       16K   # TypeScript definitions\n\u2514\u2500\u2500 tools/           25K   # Image gen, streaming\n```\n\n---\n\n### Key Entry Points\n\n| File | Size | Purpose |\n|------|------|---------|\n| `engine/api/app.py` | 48K | Main FastAPI app |\n| `engine/db/graph_ops.py` | 99K | Graph mutations |\n| `engine/db/graph_queries.py` | 62K | Graph reads |\n| `engine/physics/tick.py` | 18K | Energy physics |\n| `frontend/components/scene/CenterStage.tsx` | 14K | Main scene UI |\n| `frontend/hooks/useGameState.ts` | 13K | State management |\n\n---\n\n### Documentation Coverage\n\n| Area | Size | Key Files |\n|------|------|-----------|\n| **moments/** | 259K | ALGORITHM_Energy (64K), IMPLEMENTATION (32K), SCHEMA (22K) |\n| **narrator/** | 83K | ALGORITHM_Scene_Generation, TOOL_REFERENCE |\n| **graph/** | 70K | VALIDATION_Living_Graph (38K), ALGORITHM_Energy_Flow |\n| **world_runner/** | 68K | ALGORITHM_World_Runner (17K), TOOL_REFERENCE |\n| **scene_memory/** | 64K | ALGORITHM (19K), VALIDATION (21K) |\n| **vision/** | 55K | BEHAVIORS (17K), PATTERNS (14K) |\n\n---\n\n### Test Coverage\n\n14 test modules totaling 242K:\n- `test_moment_graph.py` (33K)\n- `test_models.py` (29K)\n- `test_implementation.py` (29K)\n- `test_integration_scenarios.py` (20K)\n- `test_spec_consistency.py` (19K)\n- `test_behaviors.py` (18K)\n- ...\n\n---\n\n### Observations\n\n1. **Documentation-heavy** \u2014 159 docs vs 108 code files. Well-documented project.\n2. **Moments is the core** \u2014 259K of docs, the largest module by far\n3. **Graph ops is the workhorse** \u2014 99K file handling all mutations\n4. **Agent instructions are detailed** \u2014 narrator CLAUDE.md is 33K\n5. **Tests exist** \u2014 14 modules, decent coverage of core functionality\n\nThe map is now at `docs/map.md` for future reference.",
+      "timestamp": "2025-12-19T01:25:49.728957"
+    },
+    {
+      "role": "user",
+      "content": "I want to refactor the docs: most of it is in docs/engine/moments, the rest is probably updated. I want to redefine areas completely",
+      "timestamp": "2025-12-19T01:26:42.384730"
+    },
+    {
+      "role": "assistant",
+      "content": "Let me understand the current docs structure first, then we can design the new areas.Current structure:\n\n```\ndocs/                          TOTAL\n\u251c\u2500\u2500 engine/                    984K  \u2190 60% of all docs\n\u2502   \u251c\u2500\u2500 moments/               288K  \u2190 the heart\n\u2502   \u251c\u2500\u2500 narrator/              120K\n\u2502   \u251c\u2500\u2500 world_runner/          92K\n\u2502   \u251c\u2500\u2500 graph/                 88K\n\u2502   \u251c\u2500\u2500 scene_memory/          80K\n\u2502   \u251c\u2500\u2500 map/                   80K\n\u2502   \u2514\u2500\u2500 (root: SCHEMA, etc)    ~200K\n\u251c\u2500\u2500 opening/                   108K\n\u251c\u2500\u2500 async-architecture/        76K\n\u251c\u2500\u2500 vision/                    72K\n\u251c\u2500\u2500 history/                   60K\n\u251c\u2500\u2500 embeddings/                60K\n\u251c\u2500\u2500 world-scraping/            52K\n\u251c\u2500\u2500 views/scene/               36K\n\u251c\u2500\u2500 image-generation/          36K\n\u251c\u2500\u2500 documentation_system/      32K\n\u251c\u2500\u2500 frontend/                  20K\n\u2514\u2500\u2500 scenarios/                 16K\n```\n\n**Issues I see:**\n1. `engine/` is a dumping ground (984K, 6 subdirs + 16 root files)\n2. `moments/` buried 2 levels deep but is the core concept\n3. `async-architecture/` is cross-cutting, not an area\n4. `views/scene/` is redundant nesting\n5. Mixed concerns in `engine/` root (SCHEMA, ANALYSIS, IMPL_PHASE, etc.)\n\n---\n\n**What's your vision for the new structure?** Some options:\n\n**A) Flatten around core concepts:**\n```\ndocs/\n\u251c\u2500\u2500 moments/          # The core (promoted from engine/)\n\u251c\u2500\u2500 graph/            # Data layer\n\u251c\u2500\u2500 narrator/         # Agent\n\u251c\u2500\u2500 world-runner/     # Agent\n\u251c\u2500\u2500 frontend/         # Presentation\n\u251c\u2500\u2500 world/            # map, geography, scraping merged\n\u2514\u2500\u2500 design/           # vision, opening, patterns\n```\n\n**B) By system boundary:**\n```\ndocs/\n\u251c\u2500\u2500 core/             # moments, graph, physics\n\u251c\u2500\u2500 agents/           # narrator, world-runner\n\u251c\u2500\u2500 presentation/     # frontend, views, scene\n\u251c\u2500\u2500 content/          # world, scenarios, opening\n\u2514\u2500\u2500 infrastructure/   # embeddings, history, async\n```\n\n**C) Something else?**\n\nWhat direction feels right?",
+      "timestamp": "2025-12-19T01:27:18.251151"
+    },
+    {
+      "role": "user",
+      "content": "read the map more, and key file to understand the architecture we want",
+      "timestamp": "2025-12-19T01:28:27.285449"
+    },
+    {
+      "role": "assistant",
+      "content": "Now I understand the architecture. Let me summarize what I see:\n\n## The Real Architecture\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                         DESIGN VISION                            \u2502\n\u2502     \"Web of narratives under tension\" / Norman England 1067     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                              \u2502\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25bc\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                           AGENTS                                 \u2502\n\u2502    Narrator (scenes, clickables)  \u2502  World Runner (time, flips) \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                              \u2502\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25bc\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                          PHYSICS                                 \u2502\n\u2502   Energy, Weight, Flips, Handlers, Canon  (\"moments\" system)    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                              \u2502\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25bc\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                           GRAPH                                  \u2502\n\u2502      Character, Place, Narrative, Thing  \u2502  Links  \u2502  Queries   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n**Current docs/engine/moments/** is actually TWO things merged:\n1. **Physics** \u2014 energy, weight, flips, handlers, canon\n2. **Schema** \u2014 node/link definitions (overlaps with graph/)\n\n**Scattered concerns:**\n- `async-architecture/` \u2192 orchestration patterns (belongs with agents)\n- `vision/` + `opening/` \u2192 design (separate concern)\n- `embeddings/`, `history/` \u2192 infrastructure\n- `scene_memory/` \u2192 probably obsolete or merge into physics\n\n---\n\n## Proposed New Structure\n\n```\ndocs/\n\u251c\u2500\u2500 design/                    # WHY \u2014 Vision, UX, game design\n\u2502   \u251c\u2500\u2500 PATTERNS_Vision.md\n\u2502   \u251c\u2500\u2500 BEHAVIORS_Vision.md\n\u2502   \u251c\u2500\u2500 opening/               # Opening experience\n\u2502   \u2514\u2500\u2500 scenarios/             # Scenario design\n\u2502\n\u251c\u2500\u2500 schema/                    # WHAT \u2014 Node/link definitions\n\u2502   \u251c\u2500\u2500 SCHEMA.md              # The master schema\n\u2502   \u251c\u2500\u2500 SCHEMA_Moments.md\n\u2502   \u2514\u2500\u2500 VALIDATION.md\n\u2502\n\u251c\u2500\u2500 physics/                   # HOW \u2014 Energy mechanics (core \"moments\" system)\n\u2502   \u251c\u2500\u2500 PATTERNS_Physics.md    # (from PATTERNS_Moments)\n\u2502   \u251c\u2500\u2500 ALGORITHM_Energy.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Handlers.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Canon.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Flips.md\n\u2502   \u2514\u2500\u2500 ...\n\u2502\n\u251c\u2500\u2500 agents/                    # WHO \u2014 Narrator, World Runner\n\u2502   \u251c\u2500\u2500 narrator/\n\u2502   \u2502   \u251c\u2500\u2500 PATTERNS_Narrator.md\n\u2502   \u2502   \u251c\u2500\u2500 ALGORITHM_Scene_Generation.md\n\u2502   \u2502   \u251c\u2500\u2500 TOOL_REFERENCE.md\n\u2502   \u2502   \u2514\u2500\u2500 ...\n\u2502   \u2514\u2500\u2500 world-runner/\n\u2502       \u251c\u2500\u2500 PATTERNS_World_Runner.md\n\u2502       \u251c\u2500\u2500 ALGORITHM_World_Runner.md\n\u2502       \u2514\u2500\u2500 ...\n\u2502\n\u251c\u2500\u2500 world/                     # WHERE \u2014 Geography, map, content\n\u2502   \u251c\u2500\u2500 map/                   # Map rendering, routes\n\u2502   \u251c\u2500\u2500 geography/             # Places, regions\n\u2502   \u2514\u2500\u2500 scraping/              # World content generation\n\u2502\n\u251c\u2500\u2500 frontend/                  # DISPLAY \u2014 Presentation layer\n\u2502   \u2514\u2500\u2500 ...\n\u2502\n\u2514\u2500\u2500 infrastructure/            # PLUMBING \u2014 Embeddings, history, async\n    \u251c\u2500\u2500 embeddings/\n    \u251c\u2500\u2500 history/\n    \u2514\u2500\u2500 async/\n```\n\n**Key changes:**\n1. **Promote `physics/`** \u2014 The moments energy system becomes top-level (it's the core)\n2. **Extract `schema/`** \u2014 SCHEMA.md is its own concern, not buried in engine/\n3. **Flatten `agents/`** \u2014 narrator + world_runner at top level\n4. **Merge world content** \u2014 map + geography + scraping \u2192 `world/`\n5. **Demote infrastructure** \u2014 embeddings, history, async are plumbing\n\n---\n\nDoes this structure match your vision? Or do you see it differently?",
+      "timestamp": "2025-12-19T01:29:27.951055"
+    },
+    {
+      "role": "user",
+      "content": "okay. How to orchestrate the refactor?",
+      "timestamp": "2025-12-19T01:31:11.488220"
+    },
+    {
+      "role": "assistant",
+      "content": "Here's the orchestration plan:\n\n## Phase 1: Map the Migration\n\nFirst, let me create the file mapping:## Migration Mapping\n\nHere's the complete file mapping:\n\n```\nNEW STRUCTURE                          \u2190 OLD LOCATION\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ndocs/\n\u251c\u2500\u2500 design/                            # Game design & vision\n\u2502   \u251c\u2500\u2500 PATTERNS_Vision.md             \u2190 vision/PATTERNS_Vision.md\n\u2502   \u251c\u2500\u2500 BEHAVIORS_Vision.md            \u2190 vision/BEHAVIORS_Vision.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Vision.md            \u2190 vision/ALGORITHM_Vision.md\n\u2502   \u251c\u2500\u2500 VALIDATION_Vision.md           \u2190 vision/VALIDATION_Vision.md\n\u2502   \u251c\u2500\u2500 SYNC_Vision.md                 \u2190 vision/SYNC_Vision.md\n\u2502   \u251c\u2500\u2500 opening/                       \u2190 opening/* (keep as-is)\n\u2502   \u2514\u2500\u2500 scenarios/                     \u2190 scenarios/* (keep as-is)\n\u2502\n\u251c\u2500\u2500 schema/                            # Node/link definitions\n\u2502   \u251c\u2500\u2500 SCHEMA.md                      \u2190 engine/SCHEMA.md\n\u2502   \u251c\u2500\u2500 SCHEMA_Moments.md              \u2190 engine/moments/SCHEMA_Moments.md\n\u2502   \u2514\u2500\u2500 VALIDATION.md                  \u2190 engine/graph/VALIDATION.md + VALIDATION_Living_Graph.md\n\u2502\n\u251c\u2500\u2500 physics/                           # Energy mechanics (the core)\n\u2502   \u251c\u2500\u2500 PATTERNS_Physics.md            \u2190 engine/moments/PATTERNS_Moments.md (rename)\n\u2502   \u251c\u2500\u2500 BEHAVIORS_Physics.md           \u2190 engine/moments/BEHAVIORS_Moments.md (rename)\n\u2502   \u251c\u2500\u2500 ALGORITHM_Energy.md            \u2190 engine/moments/ALGORITHM_Energy.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Physics.md           \u2190 engine/moments/ALGORITHM_Physics.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Handlers.md          \u2190 engine/moments/ALGORITHM_Handlers.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Canon.md             \u2190 engine/moments/ALGORITHM_Canon.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Actions.md           \u2190 engine/moments/ALGORITHM_Actions.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Input.md             \u2190 engine/moments/ALGORITHM_Input.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Questions.md         \u2190 engine/moments/ALGORITHM_Questions.md\n\u2502   \u251c\u2500\u2500 ALGORITHM_Speed.md             \u2190 engine/moments/ALGORITHM_Speed.md\n\u2502   \u251c\u2500\u2500 API_Physics.md                 \u2190 engine/moments/API_Moments.md (rename)\n\u2502   \u251c\u2500\u2500 IMPLEMENTATION_Physics.md      \u2190 engine/moments/IMPLEMENTATION_Moments.md (rename)\n\u2502   \u251c\u2500\u2500 VALIDATION_Physics.md          \u2190 engine/moments/VALIDATION_Moments.md (rename)\n\u2502   \u251c\u2500\u2500 TEST_Physics.md                \u2190 engine/moments/TEST_Moments.md (rename)\n\u2502   \u251c\u2500\u2500 SYNC_Physics.md                \u2190 engine/moments/SYNC_Moments.md (rename)\n\u2502   \u2514\u2500\u2500 graph/                         # Graph mechanics (sub-module)\n\u2502       \u251c\u2500\u2500 PATTERNS_Graph.md          \u2190 engine/graph/PATTERNS_Graph.md\n\u2502       \u251c\u2500\u2500 BEHAVIORS_Graph.md         \u2190 engine/graph/BEHAVIORS_Graph.md\n\u2502       \u251c\u2500\u2500 ALGORITHM_Energy_Flow.md   \u2190 engine/graph/ALGORITHM_Energy_Flow.md\n\u2502       \u251c\u2500\u2500 ALGORITHM_Weight.md        \u2190 engine/graph/ALGORITHM_Weight_Computation.md\n\u2502       \u2514\u2500\u2500 SYNC_Graph.md              \u2190 engine/graph/SYNC_Graph.md\n\u2502\n\u251c\u2500\u2500 agents/                            # Narrator & World Runner\n\u2502   \u251c\u2500\u2500 narrator/                      \u2190 engine/narrator/* (move all)\n\u2502   \u2514\u2500\u2500 world-runner/                  \u2190 engine/world_runner/* (move all)\n\u2502\n\u251c\u2500\u2500 world/                             # Geography & content\n\u2502   \u251c\u2500\u2500 map/                           \u2190 engine/map/* (move all)\n\u2502   \u2514\u2500\u2500 scraping/                      \u2190 world-scraping/* (move all)\n\u2502\n\u251c\u2500\u2500 frontend/                          \u2190 frontend/* (keep)\n\u2502   \u251c\u2500\u2500 PATTERNS_Presentation_Layer.md\n\u2502   \u251c\u2500\u2500 SYNC_Frontend.md\n\u2502   \u2514\u2500\u2500 scene/                         \u2190 views/scene/* (move)\n\u2502\n\u2514\u2500\u2500 infrastructure/                    # Plumbing\n    \u251c\u2500\u2500 embeddings/                    \u2190 embeddings/* (move all)\n    \u251c\u2500\u2500 history/                       \u2190 history/* (move all)\n    \u251c\u2500\u2500 async/                         \u2190 async-architecture/* (move all)\n    \u251c\u2500\u2500 image-generation/              \u2190 image-generation/* (move all)\n    \u2514\u2500\u2500 scene-memory/                  \u2190 engine/scene_memory/* (move all)\n\nDELETE (obsolete/transitional):\n\u251c\u2500\u2500 engine/ANALYSIS_Moment_Graph_Architecture.md\n\u251c\u2500\u2500 engine/ARCHITECTURE_REVIEW_Moment_Graph.md\n\u251c\u2500\u2500 engine/IMPL_PHASE_1_Moment_Graph.md\n\u251c\u2500\u2500 engine/MAP_Moment_Graph.md\n\u251c\u2500\u2500 engine/SCHEMA_DELTA_Moment_Graph.md\n\u251c\u2500\u2500 engine/UI_API_CHANGES_Moment_Graph.md\n\u251c\u2500\u2500 engine/WORLD_RUNNER_INTEGRATION_Moment_Graph.md\n\u251c\u2500\u2500 engine/GRAPH_OPERATIONS_GUIDE.md\n\u251c\u2500\u2500 engine/*_Engine.md (generic, replaced by specific)\n\u251c\u2500\u2500 documentation_system/* (meta, move to .ngram/)\n\u2514\u2500\u2500 all *_archive_*.md files\n```\n\n---\n\n## Execution Strategy\n\n**Option A: Script it** (faster, riskier)\n- Write a bash script that does all moves\n- Run once, fix issues\n\n**Option B: Incremental** (slower, safer)\n- Create new structure\n- Move one area at a time\n- Verify after each move\n\n**Option C: Agent swarm** (parallel)\n- Launch agents to handle each area\n- Merge results\n\nWhich approach do you prefer?",
+      "timestamp": "2025-12-19T01:32:11.379402"
+    },
+    {
+      "role": "user",
+      "content": "script it. Then we'll fix with doctor",
+      "timestamp": "2025-12-19T01:32:47.105812"
+    },
+    {
+      "role": "assistant",
+      "content": "Migration complete. Doctor found issues but most are pre-existing code issues, not doc migration problems.Migration complete. New structure:\n\n```\ndocs/                              OLD \u2192 NEW\n\u251c\u2500\u2500 agents/         150K           \u2190 engine/narrator/ + engine/world_runner/\n\u2502   \u251c\u2500\u2500 narrator/    83K\n\u2502   \u2514\u2500\u2500 world-runner/ 68K\n\u251c\u2500\u2500 design/         134K           \u2190 vision/ + opening/ + scenarios/\n\u2502   \u251c\u2500\u2500 opening/     69K\n\u2502   \u2514\u2500\u2500 scenarios/   10K\n\u251c\u2500\u2500 physics/        ???            \u2190 engine/moments/ + engine/graph/\n\u2502   \u2514\u2500\u2500 graph/\n\u251c\u2500\u2500 schema/                        \u2190 engine/SCHEMA.md + validations\n\u251c\u2500\u2500 world/                         \u2190 engine/map/ + world-scraping/\n\u2502   \u251c\u2500\u2500 map/\n\u2502   \u2514\u2500\u2500 scraping/\n\u251c\u2500\u2500 frontend/        21K           \u2190 frontend/ + views/scene/\n\u2502   \u2514\u2500\u2500 scene/       12K\n\u2514\u2500\u2500 infrastructure/ 213K           \u2190 embeddings/ + history/ + async/ + etc\n    \u251c\u2500\u2500 async/       45K\n    \u251c\u2500\u2500 embeddings/  42K\n    \u251c\u2500\u2500 history/     46K\n    \u2514\u2500\u2500 ...\n```\n\n**Stats change:**\n- Files: 276 \u2192 216 (60 deleted/consolidated)\n- Doc files: 159 \u2192 122 (37 obsolete removed)\n- Areas: 12 \u2192 7 (cleaner structure)**New structure:**\n\n| Area | Size | Purpose |\n|------|------|---------|\n| `physics/` | 308K | Core energy system (formerly \"moments\") |\n| `infrastructure/` | 312K | Plumbing (async, embeddings, history, etc.) |\n| `agents/` | 208K | Narrator + World Runner |\n| `design/` | 196K | Vision, opening, scenarios |\n| `world/` | 128K | Map + geography + scraping |\n| `schema/` | 120K | Node/link definitions |\n| `frontend/` | 52K | Presentation layer |\n\n---\n\n**Done:**\n- Migrated 122 docs to new 7-area structure\n- Deleted 37 obsolete/transitional files\n- Removed all archive files\n- Moved documentation_system \u2192 `.ngram/docs/`\n\n**Doctor warnings to address later:**\n- 3 monolith code files (app.py, graph_ops.py, graph_queries.py)\n- 38 undocumented code directories \u2192 need modules.yaml mappings\n- 7 stale SYNC files \u2192 need updates\n- Multiple ALGORITHM files per area (expected, not a problem)\n\nWant me to update `modules.yaml` with the new doc paths, or update `SYNC_Project_State.md` with this migration?",
+      "timestamp": "2025-12-19T01:35:17.728034"
+    },
+    {
+      "role": "user",
+      "content": "run doctor",
+      "timestamp": "2025-12-19T01:36:46.378617"
+    },
+    {
+      "role": "assistant",
+      "content": "**Health Score: 0/100** (but most issues are pre-existing, not from migration)\n\n## Issue Breakdown\n\n| Category | Count | Notes |\n|----------|-------|-------|\n| **MONOLITH** | 3 | Large code files (app.py, graph_ops.py, graph_queries.py) |\n| **UNDOCUMENTED** | 38 | Code dirs without modules.yaml mapping |\n| **STALE_SYNC** | 7 | SYNC files need refresh |\n| **DOC_DUPLICATION** | 7 | Multiple ALGORITHMs per folder (expected - ignore) |\n| **HARDCODED_CONFIG** | 12 | Code config issues |\n| **NO_DOCS_REF** | 218 | Code files without DOCS: header |\n\n## What to fix now vs later\n\n**Fix now (quick):**\n- Update `modules.yaml` with new doc paths \u2192 clears 38 UNDOCUMENTED warnings\n- Silence DOC_DUPLICATION warnings (multiple ALGORITHMs per module is intentional)\n\n**Fix later:**\n- MONOLITH files (code refactoring)\n- HARDCODED_CONFIG (code cleanup)\n- NO_DOCS_REF (add headers to code files)\n\nWant me to update `modules.yaml` with the new structure? That'll clear the bulk of critical issues.",
+      "timestamp": "2025-12-19T01:37:20.449463"
+    },
+    {
+      "role": "user",
+      "content": "I'm surprised there is no \"UNIMPLEMENTED",
+      "timestamp": "2025-12-19T01:38:33.424341"
+    },
+    {
+      "role": "system",
+      "content": "--- New Session ---",
+      "timestamp": "2025-12-19T01:45:11.378030"
+    },
+    {
+      "role": "system",
+      "content": "/repair\nFound 175 issues:\n  - MONOLITH: engine/api/app.py\n  - MONOLITH: engine/db/graph_ops.py\n  - MONOLITH: engine/db/graph_queries.py\n  - MONOLITH: falkordb-browser/app/api/graph/model.ts\n  - MONOLITH: falkordb-browser/app/api/swagger/swagger-spec.ts\n  - UNDOCUMENTED: frontend\n  - UNDOCUMENTED: frontend/components\n  - UNDOCUMENTED: frontend/components/voices\n  - UNDOCUMENTED: frontend/components/chronicle\n  - UNDOCUMENTED: frontend/components/panel",
+      "timestamp": "2025-12-19T01:46:53.276189"
+    },
+    {
+      "role": "system",
+      "content": "--- New Session ---",
+      "timestamp": "2025-12-19T01:50:53.650485"
+    },
+    {
+      "role": "user",
+      "content": "use the docs/map.md to populate .ngramignore",
+      "timestamp": "2025-12-19T01:51:18.573339"
+    },
+    {
+      "role": "assistant",
+      "content": "Updated `.ngramignore`. Results:\n\n| Metric | Before | After | Change |\n|--------|--------|-------|--------|\n| Critical | 41 | 35 | -6 |\n| Warnings | 62 | 59 | -3 |\n| Info | 218 | 181 | -37 |\n\n**Now ignoring:**\n- `engine/tests/`, `engine/scripts/`, `engine/graph/health/` (tooling)\n- `data/`, `playthroughs/`, `mutations/`, `screenshots/` (data)\n- `falkordb-browser/`, `scenarios/`, `prompts/` (external/content)\n- `**/__init__.py`, `**/index.ts` (boilerplate)\n- Test files (`test_*.py`, `*_test.py`)\n\n**Remaining critical issues:**\n- 3 monolith code files (app.py, graph_ops.py, graph_queries.py)\n- 32 undocumented code directories \u2192 need `modules.yaml` mappings\n\nWant me to populate `modules.yaml` next?",
+      "timestamp": "2025-12-19T01:52:47.674849"
+    },
+    {
+      "role": "user",
+      "content": "populate `modules.yaml`",
+      "timestamp": "2025-12-19T01:54:09.395082"
+    },
+    {
+      "role": "assistant",
+      "content": "**Done.** Populated `modules.yaml` with 22 modules.\n\n## Results\n\n| Metric | Before | After | Change |\n|--------|--------|-------|--------|\n| **Critical** | 35 | 4 | **-31** |\n| Warnings | 59 | 59 | 0 |\n| Info | 181 | 205 | +24 |\n\n## Modules Created\n\n| Category | Modules |\n|----------|---------|\n| **Physics** | physics-core, graph-ops, graph-queries, moment-graph, memory |\n| **Agents** | orchestration |\n| **Schema** | models |\n| **API** | api |\n| **Infrastructure** | embeddings, history, queries-semantic |\n| **Frontend** | frontend, frontend-scene, frontend-moment, frontend-map, frontend-panel, frontend-hooks, frontend-lib, frontend-types |\n| **Tools** | image-generation, tools-streaming |\n| **Agent Instructions** | agent-narrator, agent-world-runner, agent-developer |\n\n## Remaining Critical Issues\n\n1. **MONOLITH:** `engine/api/app.py` (1045 lines)\n2. **MONOLITH:** `engine/db/graph_ops.py` (2445 lines)\n3. **MONOLITH:** `engine/db/graph_queries.py` (1440 lines)\n4. **BROKEN_IMPL_LINK:** `docs/physics/IMPLEMENTATION_Physics.md` references non-existent files\n\nThe UNDOCUMENTED warnings are gone - all code now maps to docs.",
+      "timestamp": "2025-12-19T01:56:23.973078"
+    },
+    {
+      "role": "system",
+      "content": "/repair\nFound 175 issues:\n  - MONOLITH: engine/api/app.py\n  - MONOLITH: engine/db/graph_ops.py\n  - MONOLITH: engine/db/graph_queries.py\n  - MONOLITH: falkordb-browser/app/api/graph/model.ts\n  - MONOLITH: falkordb-browser/app/api/swagger/swagger-spec.ts\n  - UNDOCUMENTED: frontend\n  - UNDOCUMENTED: frontend/components\n  - UNDOCUMENTED: frontend/components/voices\n  - UNDOCUMENTED: frontend/components/chronicle\n  - UNDOCUMENTED: frontend/components/panel",
+      "timestamp": "2025-12-19T01:57:32.169111"
+    },
+    {
+      "role": "system",
+      "content": "--- New Session ---",
+      "timestamp": "2025-12-19T01:58:38.965129"
+    },
+    {
+      "role": "system",
+      "content": "/repair\nFound 175 issues:\n  - MONOLITH: engine/api/app.py\n  - MONOLITH: engine/db/graph_ops.py\n  - MONOLITH: engine/db/graph_queries.py\n  - MONOLITH: falkordb-browser/app/api/graph/model.ts\n  - MONOLITH: falkordb-browser/app/api/swagger/swagger-spec.ts\n  - UNDOCUMENTED: frontend\n  - UNDOCUMENTED: frontend/components\n  - UNDOCUMENTED: frontend/components/voices\n  - UNDOCUMENTED: frontend/components/chronicle\n  - UNDOCUMENTED: frontend/components/panel",
+      "timestamp": "2025-12-19T01:59:53.965246"
+    },
+    {
+      "role": "system",
+      "content": "--- New Session ---",
+      "timestamp": "2025-12-19T02:02:43.700417"
+    },
+    {
+      "role": "system",
+      "content": "/repair\nFound 143 issues:\n  - MONOLITH: engine/db/graph_ops.py\n  - MONOLITH: engine/db/graph_queries.py\n  - MONOLITH: falkordb-browser/app/api/graph/model.ts\n  - MONOLITH: falkordb-browser/app/api/swagger/swagger-spec.ts\n  - UNDOCUMENTED: tools\n  - UNDOCUMENTED: tools/image_generation\n  - UNDOCUMENTED: falkordb-browser\n  - UNDOCUMENTED: falkordb-browser/components/ui\n  - UNDOCUMENTED: falkordb-browser/e2e/logic/api\n  - UNDOCUMENTED: falkordb-browser/e2e/logic/api/responses",
+      "timestamp": "2025-12-19T02:04:52.594931"
+    },
+    {
+      "role": "system",
+      "content": "--- New Session ---",
+      "timestamp": "2025-12-19T02:13:31.748369"
+    },
+    {
+      "role": "system",
+      "content": "--- New Session ---",
+      "timestamp": "2025-12-19T02:14:12.119397"
+    },
+    {
+      "role": "system",
+      "content": "/repair\nFound 72 issues:\n  - MONOLITH: engine/db/graph_ops.py\n  - MONOLITH: engine/db/graph_queries.py\n  - UNDOCUMENTED: tools\n  - UNDOCUMENTED: tools/image_generation\n  - UNDOCUMENTED: engine/scripts\n  - UNDOCUMENTED: engine/tests\n  - PLACEHOLDER: .ngram/state/SYNC_Project_State.md\n  - BROKEN_IMPL_LINK: docs/physics/IMPLEMENTATION_Physics.md\n  - YAML_DRIFT: modules.yaml#graph-queries\n  - YAML_DRIFT: modules.yaml#world-runner",
+      "timestamp": "2025-12-19T02:14:39.881085"
+    },
+    {
+      "role": "user",
+      "content": "how should we structure the code to match areas and modules",
+      "timestamp": "2025-12-19T02:15:51.686163"
+    },
+    {
+      "role": "assistant",
+      "content": "Good question. The docs refactor created a clean 7-area structure, but the code is still a flat `engine/` dumping ground. Here's how I'd align them:\n\n## Current Mismatch\n\n```\ndocs/                          engine/\n\u251c\u2500\u2500 physics/          vs       \u251c\u2500\u2500 physics/\n\u2502   \u2514\u2500\u2500 graph/                 \u251c\u2500\u2500 moments/\n\u251c\u2500\u2500 agents/                    \u251c\u2500\u2500 mechanisms/\n\u2502   \u251c\u2500\u2500 narrator/              \u251c\u2500\u2500 actions/\n\u2502   \u2514\u2500\u2500 world-runner/          \u251c\u2500\u2500 db/           \u2190 graph ops buried here\n\u251c\u2500\u2500 world/                     \u251c\u2500\u2500 characters/\n\u2502   \u251c\u2500\u2500 map/                   \u251c\u2500\u2500 queries/\n\u2502   \u2514\u2500\u2500 scraping/              \u251c\u2500\u2500 api/\n\u251c\u2500\u2500 infrastructure/            \u251c\u2500\u2500 embeddings/\n\u2502   \u251c\u2500\u2500 embeddings/            \u251c\u2500\u2500 history/\n\u2502   \u251c\u2500\u2500 history/               \u251c\u2500\u2500 memory/\n\u2502   \u2514\u2500\u2500 async/                 \u251c\u2500\u2500 orchestration/\n\u251c\u2500\u2500 schema/                    \u251c\u2500\u2500 models/\n\u2514\u2500\u2500 frontend/                  \u2514\u2500\u2500 ...\n```\n\n## Proposed Code Structure\n\n```\nengine/\n\u251c\u2500\u2500 physics/           # Core mechanics (moments, mechanisms, actions, db/graph_ops)\n\u2502   \u251c\u2500\u2500 core/          # tick.py, constants.py\n\u2502   \u251c\u2500\u2500 moments/       # moment handlers\n\u2502   \u251c\u2500\u2500 mechanisms/    # game mechanisms\n\u2502   \u251c\u2500\u2500 actions/       # action definitions\n\u2502   \u2514\u2500\u2500 graph/         # graph_ops, graph_queries (from db/)\n\u251c\u2500\u2500 world/             # Content layer\n\u2502   \u251c\u2500\u2500 characters/\n\u2502   \u251c\u2500\u2500 map/           # queries/ renamed\n\u2502   \u2514\u2500\u2500 data/          # world data\n\u251c\u2500\u2500 infrastructure/    # Supporting systems\n\u2502   \u251c\u2500\u2500 api/\n\u2502   \u251c\u2500\u2500 embeddings/\n\u2502   \u251c\u2500\u2500 history/\n\u2502   \u251c\u2500\u2500 memory/\n\u2502   \u2514\u2500\u2500 orchestration/\n\u2514\u2500\u2500 models/            # \u2192 schema (or keep as models/)\n```\n\n## Key Decisions Needed\n\n1. **Move graph ops into physics?** \u2014 They're the core of the energy system, not generic \"db\" utilities\n2. **Rename `queries/` \u2192 `world/map/`?** \u2014 Aligns with docs/world/map/\n3. **Keep `models/` or rename to `schema/`?** \u2014 Match docs/schema/ or keep Python convention?\n4. **Split the monoliths during move?** \u2014 Opportunity to break up graph_ops.py while relocating\n\nWhich direction appeals to you? I can script the migration once you confirm the target structure.",
+      "timestamp": "2025-12-19T02:16:17.512303"
+    },
+    {
+      "role": "user",
+      "content": "yes to all",
+      "timestamp": "2025-12-19T02:18:03.451063"
+    },
+    {
+      "role": "assistant",
+      "content": "Good - actions/, characters/, mechanisms/ are empty. Let me check queries/ and create the migration script.",
+      "timestamp": "2025-12-19T02:18:37.656940"
+    },
+    {
+      "role": "system",
+      "content": "--- New Session ---",
+      "timestamp": "2025-12-19T02:19:20.046564"
+    },
+    {
+      "role": "user",
+      "content": "yes",
+      "timestamp": "2025-12-19T02:20:14.163832"
+    },
+    {
+      "role": "assistant",
+      "content": "There are leftover directories. Let me clean those up and check what remained.Migration successful. Now updating imports.Let me verify the import updates and create necessary `__init__.py` files.Migration successful. Critical issues dropped from 10 to 5. Let me clean up.## Migration Complete\n\n**Code restructured to match docs areas:**\n\n```\nengine/\n\u251c\u2500\u2500 physics/           # Core mechanics\n\u2502   \u251c\u2500\u2500 graph/         # Graph ops (moved from db/)\n\u2502   \u251c\u2500\u2500 tick.py\n\u2502   \u2514\u2500\u2500 constants.py\n\u251c\u2500\u2500 world/             # Content layer\n\u2502   \u2514\u2500\u2500 map/           # Semantic search (moved from queries/)\n\u251c\u2500\u2500 infrastructure/    # Supporting systems\n\u2502   \u251c\u2500\u2500 api/           # FastAPI backend\n\u2502   \u251c\u2500\u2500 embeddings/\n\u2502   \u251c\u2500\u2500 history/\n\u2502   \u251c\u2500\u2500 memory/\n\u2502   \u2514\u2500\u2500 orchestration/\n\u251c\u2500\u2500 models/            # Data schemas\n\u251c\u2500\u2500 moments/           # Moment handlers\n\u2514\u2500\u2500 moment_graph/      # Moment graph ops\n```\n\n**Results:**\n- Critical issues: 10 \u2192 3 (2 monoliths + 1 broken doc link)\n- All Python imports updated and verified working\n- modules.yaml updated with new paths\n- Empty directories removed (actions/, characters/, mechanisms/)\n\n**Remaining work:**\n- Split monolith files (graph_ops.py: 1989L, graph_queries.py: 1147L)\n- Fix broken impl link in docs/physics/IMPLEMENTATION_Physics.md\n- Refresh 7 stale SYNC files",
+      "timestamp": "2025-12-19T02:23:38.260126"
+    },
+    {
+      "role": "user",
+      "content": "update sync, commit",
+      "timestamp": "2025-12-19T02:24:56.400219"
+    }
+  ]
+}

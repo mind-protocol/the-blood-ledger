@@ -56,7 +56,7 @@ def create_indexes(r: redis.Redis, graph_name: str):
 
 def load_initial_state(graph_name: str, host: str, port: int):
     """Load initial game state from YAML."""
-    from engine.db.graph_ops import GraphOps
+    from engine.physics.graph.graph_ops import GraphOps
 
     graph = GraphOps(graph_name=graph_name, host=host, port=port)
 
