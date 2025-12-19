@@ -17,6 +17,11 @@ Repaired the engine tests implementation doc by replacing bare filenames and
 glob references with full `engine/tests/...` paths, then logged the update in
 `docs/engine/tests/SYNC_Engine_Test_Suite.md`.
 
+Clarified the scene-memory implementation doc extraction candidates to keep
+them anchored in `engine/infrastructure/memory/moment_processor.py` and avoid
+nonexistent module paths. Logged in
+`docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
+
 Reverified the engine test suite implementation doc references already resolve
 to concrete `engine/tests/**` paths for the BROKEN_IMPL_LINK repair and noted
 the verification in `docs/engine/tests/SYNC_Engine_Test_Suite.md`.

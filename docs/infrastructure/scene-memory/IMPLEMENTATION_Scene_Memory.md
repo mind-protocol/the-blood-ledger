@@ -233,8 +233,8 @@ engine/infrastructure/memory/moment_processor.py
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `engine/infrastructure/memory/moment_processor.py` | ~583L | <400L | transcript store module (proposed) | `_load_transcript_line_count`, `_write_transcript`, `_append_to_transcript` |
-| `engine/infrastructure/memory/moment_processor.py` | ~583L | <400L | moment id helper module (proposed) | `_generate_id`, `_tick_to_time_of_day` |
+| `engine/infrastructure/memory/moment_processor.py` | ~583L | <400L | internal transcript helpers (stay in `engine/infrastructure/memory/moment_processor.py`) | `_load_transcript_line_count`, `_write_transcript`, `_append_to_transcript` |
+| `engine/infrastructure/memory/moment_processor.py` | ~583L | <400L | internal ID helpers (stay in `engine/infrastructure/memory/moment_processor.py`) | `_generate_id`, `_tick_to_time_of_day` |
 
 ### Missing Implementation
 

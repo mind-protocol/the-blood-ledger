@@ -127,6 +127,13 @@ See `docs/physics/` for current Moment Graph documentation.
 ## RECENT CHANGES
 ===============================================================================
 
+### 2025-12-19: Clarified extraction candidates to avoid stale file references
+- **What:** Reworded extraction target descriptions to emphasize they remain
+  internal helpers within `engine/infrastructure/memory/moment_processor.py`.
+- **Why:** Keep the implementation doc aligned with existing files while
+  avoiding references to nonexistent modules.
+- **Files:** `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md`
+
 ### 2025-12-19: Normalized code structure paths in implementation doc
 - **What:** Rewrote the code structure tree to use full file paths.
 - **Why:** Prevent bare filename references from being flagged as broken links.
