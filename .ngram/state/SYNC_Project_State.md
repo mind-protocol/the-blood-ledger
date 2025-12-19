@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Added `docs/world/map/ALGORITHM_Rendering.md` as a template-complete rendering
+summary that points to the canonical rendering pipeline doc, and logged the
+change in `docs/world/map/SYNC_Map.md` for repair #16.
+
 Expanded `docs/world/scraping/VALIDATION_World_Scraping.md` with the missing
 template sections (invariants, properties, error conditions, test coverage,
 verification procedure, sync status, gaps) to resolve DOC_TEMPLATE_DRIFT for
