@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Completed the missing template sections in `docs/physics/ALGORITHM_Physics.md`
+(overview, data structures, algorithm summary, decisions, data flow,
+complexity, helpers, interactions, gaps) to resolve DOC_TEMPLATE_DRIFT for
+repair #16 and noted the change in `docs/physics/SYNC_Physics.md`.
+
 Filled the missing DESIGN PATTERNS section in
 `docs/physics/IMPLEMENTATION_Physics.md` and recorded the update in
 `docs/physics/SYNC_Physics.md` to resolve DOC_TEMPLATE_DRIFT for repair #16.

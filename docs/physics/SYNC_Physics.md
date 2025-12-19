@@ -28,6 +28,28 @@ are captured in TODO so the scope stays explicit.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Added physics implementation design patterns
+
+- **What:** Added the DESIGN PATTERNS section (architecture, code patterns, anti-patterns, boundaries) to `docs/physics/IMPLEMENTATION_Physics.md`.
+- **Why:** Resolve the missing template section and align the implementation doc with the standard structure.
+- **Files:** `docs/physics/IMPLEMENTATION_Physics.md`
+
+### 2025-12-19: Completed archive SYNC template sections
+
+- **What:** Expanded the archived physics SYNC with full handoff, TODO,
+  consciousness trace, and pointers sections to satisfy the sync template.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the archive snapshot while keeping
+  the live physics SYNC unchanged.
+- **Files:** `docs/physics/SYNC_Physics_archive_2025-12.md`
+
+### 2025-12-19: Expanded physics patterns template sections
+
+- **What:** Added missing PATTERNS template sections (problem, pattern,
+  principles, dependencies, inspirations, scope, gaps) and expanded the core
+  principle text to meet template length guidance.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for `docs/physics/PATTERNS_Physics.md`.
+- **Files:** `docs/physics/PATTERNS_Physics.md`
+
 ### 2025-12-19: Added implementation design patterns section
 
 - **What:** Added the missing DESIGN PATTERNS section to
@@ -203,6 +225,7 @@ For next session:
 - `pytest engine/tests/test_behaviors.py -q` failed: missing `pytest_xprocess` (anchorpy plugin import).
 - `ngram validate` still reports pre-existing doc gaps and broken CHAIN links (schema/tempo/world-builder).
 - Filled the missing algorithm template sections in `docs/physics/ALGORITHM_Physics.md` for repair #16.
+- Expanded `docs/physics/PATTERNS_Physics.md` with the missing template sections for repair #16.
 
 ### Suggestions
 - [ ] Install `pytest_xprocess` (or disable the anchorpy pytest plugin) to run the physics behavior tests.
