@@ -33,6 +33,15 @@ invites opening the full map view when more context is needed.
 
 ---
 
+## SCOPE
+
+This pattern covers the UI snapshot rendered inside the minimap button,
+including location dots, connection lines, and current-location emphasis. It
+does not cover map navigation, pathfinding, or any state mutation beyond the
+single "open full map" action delegated to parent components.
+
+---
+
 ## PRINCIPLES
 
 ### Principle 1: Snapshot Over Navigation
@@ -58,6 +67,14 @@ space at a glance.
 |--------|---------------------|
 | `frontend/types/game` | MapRegion and location data shapes for rendering |
 | `frontend/components/map` | Full map view opened from the minimap action |
+
+---
+
+## INSPIRATIONS
+
+Compact minimap widgets from strategy titles and action RPGs influenced the
+idea of a glanceable, low-friction spatial cue, while tabletop map handouts
+inspired the "peek without leaving the scene" interaction posture.
 
 ---
 
