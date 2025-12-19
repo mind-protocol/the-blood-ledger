@@ -1,9 +1,45 @@
 # Narrator — Current State
 
 ```
-UPDATED: 2024-12-16
+UPDATED: 2024-12-19
 STATUS: Fully implemented with SSE streaming
 ```
+
+---
+
+## CHAIN
+
+```
+PATTERNS:        ./PATTERNS_Narrator.md
+PATTERNS:        ./PATTERNS_World_Building.md
+BEHAVIORS:       ./BEHAVIORS_Narrator.md
+ALGORITHM:       ./ALGORITHM_Scene_Generation.md
+ALGORITHM:       ./ALGORITHM_Rolling_Window.md
+ALGORITHM:       ./ALGORITHM_Prompt_Structure.md
+ALGORITHM:       ./ALGORITHM_Thread.md
+VALIDATION:      ./VALIDATION_Narrator.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Narrator.md
+TEST:            ./TEST_Narrator.md
+THIS:            SYNC_Narrator.md (you are here)
+
+IMPL:            agents/narrator/CLAUDE.md
+TOOLS:           tools/stream_dialogue.py
+```
+
+---
+
+## Documentation Status
+
+| Doc Type | File | Status |
+|----------|------|--------|
+| PATTERNS | `PATTERNS_Narrator.md`, `PATTERNS_World_Building.md` | Current |
+| BEHAVIORS | `BEHAVIORS_Narrator.md` | Current |
+| ALGORITHM | 4 files (Scene, Rolling Window, Prompt, Thread) | Current |
+| VALIDATION | `VALIDATION_Narrator.md` | Created 2024-12-19 |
+| IMPLEMENTATION | `IMPLEMENTATION_Narrator.md` | Created 2024-12-19 |
+| TEST | `TEST_Narrator.md` | Created 2024-12-19 |
+| SYNC | This file | Current |
+| REFERENCE | `INPUT_REFERENCE.md`, `TOOL_REFERENCE.md` | Current |
 
 ---
 
