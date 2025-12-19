@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded the flaky-test note in
+`docs/world/map/TEST_Map_Test_Coverage.md` to meet template length guidance
+and logged the update in `docs/world/map/SYNC_Map.md` for repair #16. Ran
+`ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
+gaps in schema/product/network/storms).
+
 Expanded `docs/agents/world-runner/PATTERNS_World_Runner.md` with the missing
 template sections (problem, pattern, principles, dependencies, inspirations,
 scope, gaps) and logged the update in
@@ -17,7 +23,8 @@ scope, gaps) and logged the update in
 Verified the World Runner SYNC template coverage by adding an explicit
 RECENT CHANGES note in `docs/agents/world-runner/SYNC_World_Runner.md` for
 repair #16; no behavior changes were introduced. Ran `ngram validate`;
-failures remain pre-existing (missing VIEW and doc-chain gaps).
+failures remain pre-existing (missing VIEW and doc-chain gaps). Encountered a
+dirty worktree with unrelated changes, so the repair commit is pending review.
 
 Added the missing FLAKY TESTS section to
 `docs/agents/world-runner/TEST_World_Runner_Coverage.md` and logged the update

@@ -96,7 +96,7 @@ pytest tests/world/test_map_semantic.py
 
 ## FLAKY TESTS
 
-None tracked.
+No flaky map tests are tracked yet because the suite is still pending.
 
 ---
 

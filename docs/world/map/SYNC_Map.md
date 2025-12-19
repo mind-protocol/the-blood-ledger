@@ -69,6 +69,18 @@ Files:
 - `docs/world/map/BEHAVIORS_Map.md`
 - `docs/world/map/SYNC_Map.md`
 
+### 2025-12-19: Expanded flaky test note
+
+- Expanded the FLAKY TESTS section in `docs/world/map/TEST_Map_Test_Coverage.md`
+  to meet the template length requirement without changing test status.
+
+### 2025-12-19: Expanded test coverage template note
+
+- Clarified the flaky test tracking status in the map test coverage doc.
+
+Files:
+- `docs/world/map/TEST_Map_Test_Coverage.md`
+
 ---
 
 ## Agent Observations
