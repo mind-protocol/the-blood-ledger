@@ -39,6 +39,15 @@ No active work on embeddings module.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Fill missing SCOPE in patterns
+
+- **What:** Added the SCOPE section and updated the timestamp in the embeddings
+  patterns doc.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT warning for missing section and short
+  template content.
+- **Files:** `docs/infrastructure/embeddings/PATTERNS_Embeddings.md`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Split large algorithm/test docs
 
 - **What:** Split ALGORITHM and TEST docs into focused subfiles with concise overviews; moved detailed examples to archive.

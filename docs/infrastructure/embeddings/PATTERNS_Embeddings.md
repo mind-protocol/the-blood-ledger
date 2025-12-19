@@ -3,7 +3,7 @@
 ```
 STATUS: DRAFT
 CREATED: 2024-12-16
-UPDATED: 2024-12-16
+UPDATED: 2025-12-19
 ```
 
 ---
@@ -159,6 +159,15 @@ GraphQL's idea of uniform field access. Every type has `detail`, so embedding lo
 
 **Cheap Local Models**
 The economics of local embedding models (sentence-transformers) make "embed everything" viable in ways that API-based embeddings don't.
+
+---
+
+## SCOPE
+
+This pattern covers embedding creation for graph nodes and links using local
+sentence-transformers models, plus storage on node/link attributes and
+query-time vector search. It does not define the UI or any narrative ranking
+logic beyond similarity-based retrieval.
 
 ---
 
