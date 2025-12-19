@@ -1,6 +1,6 @@
 # Async Architecture — State & Implementation Plan
 
-**Last Updated:** 2024-12-16
+**Last Updated:** 2025-12-19
 **Status:** DESIGNING
 **Version:** 2.0
 
@@ -9,6 +9,20 @@
 ## Overview
 
 This document tracks what exists, what needs to be built, and the implementation path for the async architecture.
+
+---
+
+## CHAIN
+
+```
+PATTERNS:       ./PATTERNS_Async_Architecture.md
+BEHAVIORS:      ./BEHAVIORS_Travel_Experience.md
+ALGORITHM:      ./ALGORITHM_Async_Architecture.md
+VALIDATION:     ./VALIDATION_Async_Architecture.md
+IMPLEMENTATION: ./IMPLEMENTATION_Async_Architecture.md
+TEST:           ./TEST_Async_Architecture.md
+THIS:           SYNC_Async_Architecture.md
+```
 
 ---
 
@@ -120,6 +134,7 @@ This unlocks real-time updates for all other phases.
 ## Recent Changes
 
 - Consolidated async algorithm docs into `ALGORITHM_Async_Architecture.md` and removed per-topic algorithm files to keep a single canonical algorithm reference.
+- Added `IMPLEMENTATION_Async_Architecture.md` and linked the async doc chain; documented current code surface for queues, SSE, and injections.
 
 
 ---

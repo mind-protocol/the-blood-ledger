@@ -20,6 +20,20 @@ The world materializes as you move through it. No skeleton. No pre-authored wayp
 
 ---
 
+## CHAIN
+
+```
+BEHAVIORS:      ./BEHAVIORS_Travel_Experience.md
+ALGORITHM:      ./ALGORITHM_Async_Architecture.md
+VALIDATION:     ./VALIDATION_Async_Architecture.md
+IMPLEMENTATION: ./IMPLEMENTATION_Async_Architecture.md
+TEST:           ./TEST_Async_Architecture.md
+THIS:           PATTERNS_Async_Architecture.md
+SYNC:           ./SYNC_Async_Architecture.md
+```
+
+---
+
 ## Component Responsibilities
 
 ### Graph — Source of Truth

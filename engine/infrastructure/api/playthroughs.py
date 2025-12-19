@@ -8,6 +8,7 @@ Extracted from app.py to reduce file size.
 
 Docs:
 - docs/physics/IMPLEMENTATION_Physics.md — code architecture
+- docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md — async queues + injection flow
 """
 
 import json
@@ -314,7 +315,10 @@ def create_playthroughs_router(
 
             if opening_narration:
                 # Split narration into lines and create moments
+                # Per SYNC I1: Create as 'possible' with energy, not 'active' with tick_spoken
+                # Canon Holder will record them to canon with proper THEN links
                 lines = [line.strip() for line in opening_narration.strip().split("\n") if line.strip()]
+                previous_moment_id = None
                 for i, line in enumerate(lines):
                     moment_id = f"opening_{playthrough_id[:8]}_{i}"
                     graph.add_moment(
@@ -323,10 +327,19 @@ def create_playthroughs_router(
                         type="narration",
                         tick=0,
                         place_id=location_id,
-                        status="active",
+                        status="possible",
                         weight=1.0,
-                        tick_spoken=0
+                        energy=1.0
                     )
+                    # Create ATTACHED_TO link to location (presence_required=false for opening)
+                    graph.query(
+                        """
+                        MATCH (m:Moment {id: $moment_id}), (p:Place {id: $place_id})
+                        MERGE (m)-[:ATTACHED_TO {presence_required: false, persistent: false}]->(p)
+                        """,
+                        params={"moment_id": moment_id, "place_id": location_id}
+                    )
+                    previous_moment_id = moment_id
                 logger.info(f"Created {len(lines)} opening moments for {playthrough_id}")
         except Exception as e:
             logger.error(f"Failed to create opening moments: {e}")
