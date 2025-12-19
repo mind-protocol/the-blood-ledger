@@ -179,6 +179,15 @@ than new scraping features or additional YAML outputs.
 - **Why:** Keep one canonical ALGORITHM doc for the scraping module.
 - **Files:** `docs/world/scraping/ALGORITHM_Pipeline.md`, `docs/world/scraping/PATTERNS_World_Scraping.md`
 
+### 2025-12-19: Filled algorithm template sections
+
+- **What:** Added the missing algorithm template sections (overview, data
+  structures, primary algorithm steps, decisions, data flow, complexity,
+  helpers, interactions, gaps) to the scraping pipeline doc.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT and keep the pipeline algorithm
+  documentation template-complete.
+- **Files:** `docs/world/scraping/ALGORITHM_Pipeline.md`
+
 ### 2025-12-19: Verified implementation architecture doc
 
 - **What:** Verified the implementation doc exists and the chain points to it; recorded refactoring targets for oversized scripts.
@@ -202,6 +211,15 @@ than new scraping features or additional YAML outputs.
 - **What:** Added missing world data YAML files (minor places, things, thing links) to the implementation architecture doc, along with injection notes.
 - **Why:** Keep the implementation doc aligned with the YAML inputs actually loaded by `data/scripts/inject_world.py`.
 - **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
+
+### 2025-12-19: Expanded test coverage template
+
+- **What:** Filled the missing TEST sections (strategy, unit/integration,
+  edge cases, coverage, run steps, gaps, flaky tracking, questions) and
+  expanded short entries to meet the template guidance.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the scraping test doc without
+  changing pipeline behavior or YAML outputs.
+- **Files:** `docs/world/scraping/TEST_World_Scraping.md`
 
 ---
 
@@ -295,6 +313,7 @@ for script entry points and YAML outputs.
   scrape pipeline scope and dependencies.
 - Template sections were filled in this SYNC to resolve doc drift without
   altering scraping behavior or data outputs.
+- Algorithm doc now captures data structures and decisions for future audits.
 
 ### Suggestions
 - [ ] Add a short provenance policy to `VALIDATION_World_Scraping.md` so

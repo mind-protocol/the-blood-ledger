@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/world/scraping/ALGORITHM_Pipeline.md` with the missing
+algorithm template sections (overview, data structures, decisions, data flow,
+complexity, helpers, interactions, gaps) and logged the change in
+`docs/world/scraping/SYNC_World_Scraping.md` for repair #16. Ran
+`ngram validate`; remaining failures are pre-existing missing VIEW and
+doc-chain gaps in schema/product/network/storms modules.
+
 Expanded `docs/world/scraping/PATTERNS_World_Scraping.md` with the missing
 template sections (problem, pattern, principles, dependencies, inspirations,
 scope, gaps) and logged the update in `docs/world/scraping/SYNC_World_Scraping.md`

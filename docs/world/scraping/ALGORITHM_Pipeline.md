@@ -18,7 +18,12 @@ SYNC:        ./SYNC_World_Scraping.md
 
 ---
 
-## Overview
+## OVERVIEW
+
+The pipeline aggregates historical geography, politics, events, and tensions
+into cohesive YAML datasets that seed the world graph. Each phase enriches the
+previous outputs, adds validation hooks, and preserves provenance so the final
+world data can be audited or re-scraped without losing traceability.
 
 ```
 Raw scrape → Clean → Enrich → Link → Verify
@@ -31,6 +36,193 @@ data/
 ├── world/         # Final game data
 └── scripts/       # Scraping tools
 ```
+
+--- 
+
+## DATA STRUCTURES
+
+### PlaceRecord
+
+```
+Represents a real settlement or feature with stable ID and coordinates.
+Fields: id, name, historical_name, type, position {lat, lng}
+Constraints: id prefix place_, coordinates required for routing.
+```
+
+### RouteRecord
+
+```
+Connects two places with travel cost and terrain metadata.
+Fields: from, to, path, path_km, path_hours, path_terrain
+Constraints: from/to must exist in places.yaml.
+```
+
+### CharacterRecord
+
+```
+Political actor with faction alignment and voice metadata.
+Fields: id, name, type, faction, voice {tone, style}
+Constraints: id prefix char_, type and faction from allowed sets.
+```
+
+### NarrativeRecord
+
+```
+Narrative atom that can be believed, contradicted, or linked to tensions.
+Fields: id, name, content, type, about {characters, places}, truth
+Constraints: about references must exist; truth is 0.0-1.0.
+```
+
+### TensionRecord
+
+```
+Conflict descriptor that drives pressure and future events.
+Fields: id, narratives, pressure_type, pressure, base_rate, breaking_point
+Constraints: narratives list 2+ items; breaking_point in 0.0-1.0.
+```
+
+--- 
+
+## ALGORITHM: run_scraping_pipeline
+
+### Step 1: Acquire and normalize sources
+
+Pull source datasets (Domesday, OSM, chronicles) and normalize identifiers so
+all downstream phases reference the same place and character keys.
+
+### Step 2: Build core geography layer
+
+Create places and routes, compute travel costs, and emit YAML that becomes the
+base for every later phase. Geography is the canonical reference layer.
+
+### Step 3: Layer political actors and holdings
+
+Generate characters and holdings, cross-check against geography, and attach
+faction metadata needed for narrative generation and tension templates.
+
+### Step 4: Curate events, narratives, and beliefs
+
+Curate historical events, generate narrative atoms, then distribute beliefs so
+characters have a minimally connected knowledge graph.
+
+### Step 5: Derive tensions and verify outputs
+
+Build tensions from conflicts and scheduled events, then validate referential
+integrity and count expectations before writing final YAML outputs.
+
+--- 
+
+## KEY DECISIONS
+
+### D1: Source fallback strategy
+
+```
+IF primary source is unavailable (e.g., OpenDomesday 404):
+    use manual historical records + curated enrichment
+    keep provenance notes in validation/docs for traceability
+ELSE:
+    ingest API results and normalize fields
+```
+
+### D2: Narrative seeding thresholds
+
+```
+IF a character has fewer than N narratives after templates:
+    add curated beliefs from local events or holdings
+ELSE:
+    keep generated set to avoid noise
+```
+
+### D3: Tension pressure baseline
+
+```
+IF tension is scheduled event:
+    set pressure_type = scheduled with date and low base_rate
+ELSE:
+    set gradual/event pressure with non-zero starting value
+```
+
+--- 
+
+## DATA FLOW
+
+```
+External sources + manual notes
+    ↓
+Raw scrape JSON (data/raw)
+    ↓
+Normalized YAML (data/clean)
+    ↓
+World YAML outputs (data/world)
+    ↓
+Graph injection (data/scripts/inject_world.py)
+```
+
+--- 
+
+## COMPLEXITY
+
+**Time:** O(P + R + C + N + B + T) — dominated by YAML generation and cross-
+reference checks across places, routes, characters, narratives, beliefs, and
+tensions.
+
+**Space:** O(P + R + C + N + B + T) — in-memory structures mirror YAML outputs
+so validation can check referential integrity before write.
+
+**Bottlenecks:**
+- External API calls and geocoding latency (OSM/Overpass).
+- Cross-referencing narratives/beliefs at scale for integrity checks.
+
+--- 
+
+## HELPER FUNCTIONS
+
+### `fetch_domesday_settlements()`
+
+**Purpose:** Pull and filter Domesday settlement data for target regions.
+
+**Logic:** Query API, filter by region/value thresholds, normalize IDs.
+
+### `enrich_coordinates()`
+
+**Purpose:** Add lat/lng coordinates to place records.
+
+**Logic:** Call OSM/Nominatim, cache results, apply manual overrides.
+
+### `generate_travel_times()`
+
+**Purpose:** Compute route travel hours from distances and terrain types.
+
+**Logic:** Apply terrain speed table and write hours to routes.yaml.
+
+### `distribute_beliefs()`
+
+**Purpose:** Seed belief graph with plausible knowledge distribution.
+
+**Logic:** Assign high certainty to owners/locals; decay with distance.
+
+--- 
+
+## INTERACTIONS
+
+| Module | What We Call | What We Get |
+|--------|--------------|-------------|
+| `data/scripts/scrape/phase1_geography.py` | build places/routes | `places.yaml`, `routes.yaml` |
+| `data/scripts/scrape/phase2_political.py` | build characters/holdings | `characters.yaml`, `holdings.yaml` |
+| `data/scripts/scrape/phase3_events.py` | curate events | `events.yaml` |
+| `data/scripts/scrape/phase4_narratives.py` | generate narratives/beliefs | `narratives.yaml`, `beliefs.yaml` |
+| `data/scripts/scrape/phase5_tensions.py` | generate tensions | `tensions.yaml` |
+| `data/scripts/inject_world.py` | load YAML into graph | seeded `seed` DB |
+
+--- 
+
+## GAPS / IDEAS / QUESTIONS
+
+- [ ] Confirm OpenDomesday availability or document the long-term fallback.
+- [ ] Add a provenance field to YAML outputs for multi-source traceability.
+- IDEA: Automate diff reports between runs to detect data regressions.
+- IDEA: Add a lightweight integrity script for minor places and things.
+- QUESTION: Should phase 6 (things) be explicitly formalized in the pipeline?
 
 ---
 
