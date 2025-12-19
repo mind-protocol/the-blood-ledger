@@ -1,3 +1,5 @@
+// DOCS: docs/frontend/PATTERNS_Presentation_Layer.md
+
 'use client';
 
 import { useState } from 'react';

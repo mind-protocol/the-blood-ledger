@@ -69,6 +69,13 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 - **Files:** `frontend/hooks/useGameState.ts`, `frontend/hooks/useMoments.ts`
 - **Struggles/Insights:** None.
 
+### 2025-12-19: Link app shell files to frontend documentation
+
+- **What:** Added DOCS references to `frontend/app` shell files (layout, start screen, globals stylesheet).
+- **Why:** Close the undocumented app gap for the layout and bootstrap screens in the App Router.
+- **Files:** `frontend/app/layout.tsx`, `frontend/app/start/page.tsx`, `frontend/app/globals.css`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Link toast UI component to frontend docs
 
 - **What:** Added a DOCS reference in `frontend/components/ui/Toast.tsx` and listed it as an entry point in `modules.yaml`.
