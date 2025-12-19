@@ -25,28 +25,9 @@ SYNC:       ./SYNC_Vision.md
 
 These behaviors define the lived experience: how scenes, choices, ledger
 weight, and voices feel to the player without requiring them to understand
-internal systems or hidden state.
-
----
-
-## CHAIN
-
-- `docs/design/PATTERNS_Vision.md` (design intent and scope)
-- `docs/design/BEHAVIORS_Vision.md` (this doc)
-- `docs/design/ALGORITHM_Vision.md` (systems that create the behaviors)
-- `docs/design/VALIDATION_Vision.md` (proof points and success criteria)
-- `docs/design/IMPLEMENTATION_Vision.md` (doc architecture and ownership)
-- `docs/design/TEST_Vision.md` (validation checklist and coverage)
-- `docs/design/SYNC_Vision.md` (current state, handoffs, open questions)
-
----
-
-## BEHAVIORS
-
-At the highest level, the player should feel present, weighted by obligation,
-and guided by specific relationships rather than abstract stats or checklists.
-These behaviors are detailed below as moment-to-moment actions, view-specific
-experiences, and the arc that shapes a full playthrough.
+internal systems or hidden state. At the highest level, the player should feel
+present, weighted by obligation, and guided by relationships rather than
+abstract stats or checklists.
 
 ---
 
