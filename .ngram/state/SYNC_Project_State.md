@@ -25,6 +25,7 @@ documentation mapping; logged the check in
 `docs/infrastructure/canon/SYNC_Canon.md`.
 
 Completed the world-builder documentation chain by adding PATTERNS and BEHAVIORS docs and mapping the module in `modules.yaml` (repair 18-INCOMPLETE_CHAIN-infrastructure-world-builder), with the update logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`.
+Verified the world-builder module mapping and DOCS references are already present for repair 23-UNDOCUMENTED-infrastructure-world_builder; no code changes required (logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`).
 
 Updated the scene-memory module tests mapping in `modules.yaml` to point at the
 concrete `engine/tests/test_moment.py` file so `ngram validate` no longer flags

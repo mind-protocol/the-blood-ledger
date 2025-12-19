@@ -27,6 +27,12 @@ All core files are complete and ready for integration testing:
 
 ## Recent Changes
 
+### 2025-12-19 — Documentation mapping verification (repair 23)
+
+- Confirmed `engine/infrastructure/world_builder/**` is mapped in `modules.yaml`.
+- Confirmed all world-builder source files already contain DOCS references.
+- No code or doc chain changes required for the undocumented mapping report.
+
 ### 2025-12-19 — Linked world-builder tests to docs
 
 - Added a DOCS reference in `tests/infrastructure/world_builder/__init__.py`.
@@ -208,7 +214,7 @@ THIS:            SYNC_World_Builder.md
 - Reconfirmed cache helper implementations during the latest repair verification; no code changes were required.
 
 ### Suggestions
-- [ ] Restore missing `PATTERNS_World_Builder.md` and `BEHAVIORS_World_Builder.md` to resolve CHAIN gaps noted in validation.
+- [x] Doc chain already includes PATTERNS/BEHAVIORS; no restoration needed for this repair.
 
 ### Propositions
 - Run `ngram validate` after doc chain restoration to confirm world-builder CHAIN links are resolved.
