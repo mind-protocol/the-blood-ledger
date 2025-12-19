@@ -222,6 +222,7 @@ Repeat
 - Repair task appears stale relative to `engine/physics/graph/graph_queries_moments.py`.
 - Repair task appears stale relative to `engine/physics/graph/graph_ops_types.py`.
 - Repair task appears stale relative to `engine/graph/health/check_health.py`.
+- Re-verified `engine/graph/health/check_health.py` already implements health report helpers; no code changes needed.
 
 ### Suggestions
 - None.
