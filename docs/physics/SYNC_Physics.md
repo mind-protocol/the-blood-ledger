@@ -28,6 +28,14 @@ are captured in TODO so the scope stays explicit.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Updated physics patterns template sections
+
+- **What:** Filled the missing PATTERNS sections (problem, pattern,
+  principles, dependencies, inspirations, scope, gaps) and aligned the core
+  principle text to the template guidance.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics patterns doc.
+- **Files:** `docs/physics/PATTERNS_Physics.md`
+
 ### 2025-12-19: Filled validation template sections
 
 - **What:** Added missing validation template sections (properties, error
@@ -253,6 +261,7 @@ For next session:
 - Expanded `docs/physics/VALIDATION_Physics.md` to include all required validation template sections for repair #16.
 - Expanded `docs/physics/PATTERNS_Physics.md` with the missing template sections for repair #16.
 - Reverified `docs/physics/PATTERNS_Physics.md` template coverage for repair #16.
+- Logged the physics patterns template update in RECENT CHANGES for this repair.
 
 ### Suggestions
 - [ ] Install `pytest_xprocess` (or disable the anchorpy pytest plugin) to run the physics behavior tests.

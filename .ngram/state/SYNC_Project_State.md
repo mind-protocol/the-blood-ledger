@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Verified `docs/physics/graph/SYNC_Graph_archive_2025-12.md` already contains
+the required template sections; no content edits were needed beyond noting
+the verification in the graph SYNC for repair #16.
+
+Updated `docs/physics/PATTERNS_Physics.md` with missing template sections and
+logged the repair in `docs/physics/SYNC_Physics.md` for repair #16.
+
 Filled the missing SYNC template sections (maturity, current state, in
 progress, known issues, handoffs, todo, consciousness trace, pointers) in
 `docs/physics/graph/SYNC_Graph.md` to resolve DOC_TEMPLATE_DRIFT for repair
