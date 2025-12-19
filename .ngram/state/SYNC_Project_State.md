@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reduced `docs/schema` size by splitting the schema into focused files under `docs/schema/SCHEMA/` and `docs/schema/SCHEMA_Moments/`, replacing the oversized index files with concise pointers, and adding a brief archive note in `docs/schema/archive/SYNC_archive_2024-12.md`. Ran `ngram validate`; failures remain for pre-existing missing VIEW/doc-chain gaps and broken CHAIN links elsewhere.
+
 Reduced narrator module doc size by condensing core narrator docs, archiving long-form examples in `docs/agents/narrator/archive/SYNC_archive_2024-12.md`, and aligning narrator `time_elapsed` guidance with the conversational/significant split; ran `ngram validate` (pre-existing schema/product/network/storms chain gaps and missing VIEW file remain) and logged in `docs/agents/narrator/SYNC_Narrator.md`.
 
 Condensed world-runner documentation to reduce size, moved verbose examples and schemas into `docs/agents/world-runner/archive/SYNC_archive_2024-12.md`, and updated the world-runner SYNC with the new archive and observations.
