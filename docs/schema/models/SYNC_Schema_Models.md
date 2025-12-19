@@ -34,6 +34,20 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Reconfirmed link helper implementations (repair 05)
+
+- **What:** Verified `belief_intensity`, `is_present`, `has_item`, and `is_here` remain implemented in `engine/models/links.py`.
+- **Why:** Current INCOMPLETE_IMPL repair run required confirmation.
+- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task remains stale; no code changes required.
+
+### 2025-12-19: Revalidated link helper implementations (repair 05)
+
+- **What:** Rechecked `belief_intensity`, `is_present`, `has_item`, and `is_here` in `engine/models/links.py`; implementations already present.
+- **Why:** Current INCOMPLETE_IMPL repair run required verification.
+- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task appears stale; no code changes required.
+
 ### 2025-12-19: Reverified GameTimestamp comparison helpers (repair 04)
 
 - **What:** Rechecked `GameTimestamp.__str__`, `__le__`, and `__gt__` and confirmed implementations already exist.
@@ -121,6 +135,7 @@ pytest engine/tests/test_models.py
 - Repair task for `engine/models/links.py` flagged missing helpers, but implementations are already present.
 - Repair task for `engine/models/nodes.py` flagged missing helpers, but implementations are already present.
 - Reverified GameTimestamp comparison helpers for the current repair run; no changes required.
+- Revalidated link helper implementations in `engine/models/links.py`; no changes required.
 
 ### Suggestions
 - [ ] Consider adding explicit tests for `GameTimestamp` ordering in `engine/tests/test_models.py`.

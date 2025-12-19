@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Revalidated `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) for the repair run; implementations already present and logged in `docs/schema/models/SYNC_Schema_Models.md`.
+
 Reverified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) for the current repair run; implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
 
 Reconfirmed `engine/infrastructure/memory/moment_processor.py` helper implementations for the repair run; no code changes required and logged the verification in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
