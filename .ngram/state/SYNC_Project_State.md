@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Normalized the scene-memory implementation doc code-structure tree to use full paths, avoiding bare filename references that trigger broken-link checks.
+
 Repaired broken embeddings implementation doc links by replacing method-only references with concrete file paths in `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md`, and logged the update in `docs/infrastructure/embeddings/SYNC_Embeddings.md`.
 
 Repaired broken file references in `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md` by swapping method/attribute-only mentions to concrete file paths and removing references to non-existent extraction target files.
@@ -23,6 +25,8 @@ Normalized remaining glob-style YAML references in the world scraping implementa
 Repaired broken narrator implementation references by removing the nonexistent `narrator_prompt.py` mention and clarifying the NarratorService entry point in `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, then logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
 
 Repaired broken implementation doc links in `docs/design/IMPLEMENTATION_Vision.md` by switching to concrete file paths and removing placeholder extraction target filenames; logged the update in `docs/design/SYNC_Vision.md`.
+Verified the vision implementation doc references already resolve to existing `docs/design/**` files for the BROKEN_IMPL_LINK repair; logged in `docs/design/SYNC_Vision.md`.
+Ran `ngram validate`; failures remain in `docs/schema/` (missing chain docs) and missing ALGORITHM docs under product/network/storms plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Completed the tempo documentation chain (PATTERNS/BEHAVIORS/VALIDATION/TEST),
 updated `docs/infrastructure/tempo/SYNC_Tempo.md`, and added an

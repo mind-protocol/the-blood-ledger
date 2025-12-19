@@ -127,6 +127,11 @@ See `docs/physics/` for current Moment Graph documentation.
 ## RECENT CHANGES
 ===============================================================================
 
+### 2025-12-19: Normalized code structure paths in implementation doc
+- **What:** Rewrote the code structure tree to use full file paths.
+- **Why:** Prevent bare filename references from being flagged as broken links.
+- **Files:** `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md`
+
 ### 2025-12-19: Fixed broken implementation doc references
 - **What:** Replaced method/attribute-only references with concrete file paths
   and line anchors, and removed non-existent extraction target paths from the

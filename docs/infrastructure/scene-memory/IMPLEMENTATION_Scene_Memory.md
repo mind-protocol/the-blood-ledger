@@ -28,11 +28,9 @@ IMPL:           engine/infrastructure/memory/moment_processor.py
 ## CODE STRUCTURE
 
 ```
-engine/
-└── infrastructure/
-    └── memory/
-        ├── __init__.py          # Exports MomentProcessor for external use
-        └── moment_processor.py  # Moment creation + transcript management
+engine/infrastructure/memory/
+├── engine/infrastructure/memory/__init__.py          # Exports MomentProcessor for external use
+└── engine/infrastructure/memory/moment_processor.py  # Moment creation + transcript management
 ```
 
 ### File Responsibilities
