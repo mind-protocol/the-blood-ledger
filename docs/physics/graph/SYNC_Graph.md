@@ -135,6 +135,9 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 ### 2025-12-19
 - Normalized SYNC headings (MATURITY, CURRENT STATE, RECENT CHANGES, and
   handoff sections) to match the required template labels for drift checks.
+- Expanded `docs/physics/graph/BEHAVIORS_Graph.md` with the missing template
+  sections (chain, behaviors, inputs/outputs, edge cases, anti-behaviors,
+  gaps) to resolve DOC_TEMPLATE_DRIFT for repair #16.
 - Filled missing SYNC template sections (maturity, state, handoffs, todo,
   consciousness trace, pointers) to resolve DOC_TEMPLATE_DRIFT for repair #16.
 - Expanded `docs/physics/graph/VALIDATION_Living_Graph.md` with the required
@@ -221,6 +224,7 @@ focus is on wiring, not redesigning, to avoid scope creep.
 
 ### Remarks
 - The mutation listener helpers already include guard checks to avoid duplicate registrations and safe removal.
+- Filled the graph behaviors template sections to eliminate drift warnings.
 
 ### Suggestions
 - [ ] Add a lightweight unit test for `emit_event` to cover listener registration/removal behavior.

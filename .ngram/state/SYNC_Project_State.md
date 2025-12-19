@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/physics/graph/BEHAVIORS_Graph.md` with the missing template
+sections (chain, behaviors, inputs/outputs, edge cases, anti-behaviors,
+gaps/ideas/questions) for repair #16 and logged the update in
+`docs/physics/graph/SYNC_Graph.md`.
+
 Re-verified `docs/physics/graph/SYNC_Graph_archive_2025-12.md` template
 completeness for repair #16; no additional edits were required beyond logging
 the verification in the graph SYNC.
@@ -20,7 +25,7 @@ logged the update in `docs/physics/graph/SYNC_Graph.md`. Ran `ngram validate`;
 failures remain pre-existing (missing VIEW file and doc-chain gaps in
 schema/product/network/storms modules).
 
-Removed the duplicate short DESIGN PATTERNS block in `docs/physics/IMPLEMENTATION_Physics.md` so the remaining section matches the template subheadings for repair #16.
+Expanded the DESIGN PATTERNS table in `docs/physics/IMPLEMENTATION_Physics.md` with an observer/event-emitter row and lengthened the `.py` extension note to align with template guidance for repair #16.
 
 Expanded `docs/physics/VALIDATION_Physics.md` validation guidance (invariants,
 properties, error conditions, test coverage, verification procedure, sync

@@ -7,6 +7,18 @@ STATUS: Canonical
 
 ---
 
+## CHAIN
+
+```
+PATTERNS:   ./PATTERNS_Graph.md
+THIS:       BEHAVIORS_Graph.md (you are here)
+ALGORITHM:  ./ALGORITHM_Energy_Flow.md
+VALIDATION: ./VALIDATION_Living_Graph.md
+SYNC:       ./SYNC_Graph.md
+```
+
+---
+
 ## Overview
 
 The graph exhibits five observable behaviors:
@@ -18,6 +30,13 @@ The graph exhibits five observable behaviors:
 | Decay | Unattended narratives fade; core oaths persist |
 | Pressure | Tensions build toward breaking; some scheduled, some gradual |
 | Flips | Things break; consequences cascade |
+
+---
+
+## BEHAVIORS
+
+These behaviors describe what the graph physics layer makes observable to
+players and agents, independent of UI framing, across ticks and flips.
 
 ---
 
@@ -197,6 +216,49 @@ The graph exhibits five observable behaviors:
 8. **Breaks cascade** — consequences compound
 9. **System self-regulates** — stays near criticality
 10. **Structure creates energy** — no injection, just physics
+
+---
+
+## INPUTS / OUTPUTS
+
+**Inputs:** graph topology, link strengths, proximity updates, tension
+schedules, tick cadence, and newly created narratives from handlers.
+
+**Outputs:** updated energy/pressure levels, flip events, cascade-triggered
+narratives, and graph state changes that surface as new moments.
+
+---
+
+## EDGE CASES
+
+- **Isolated nodes:** lone narratives with no links should decay gracefully
+  rather than oscillating or receiving phantom energy.
+- **Dense cycles:** highly connected clusters must avoid runaway energy loops;
+  decay and normalization prevent infinite amplification.
+- **Simultaneous flips:** when multiple tensions cross threshold in one tick,
+  order cascades deterministically to avoid inconsistent narrative forks.
+
+---
+
+## ANTI-BEHAVIORS
+
+- **No manual energy injection:** agents must never set energy directly;
+  energy is computed from structure and decay rules.
+- **No infinite cascades:** a hard cap prevents an endless flip storm from
+  starving the narrator of a stable presentation window.
+- **No orphaned pressure:** pressure cannot build without a possible release;
+  unresolved tensions must either flip or decay.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- QUESTION: How should energy routing behave when a nearby character is
+  incapacitated but still linked by proximity?
+- QUESTION: What normalization strategy best prevents dense clusters from
+  drowning out sparse but high-stakes narratives?
+- IDEA: Add a diagnostic view that highlights the top three pressure drivers
+  during each tick for debugging and balancing.
 
 ---
 
