@@ -5,6 +5,8 @@ Graph Health Check
 Validates all nodes and links in the graph against the schema definition.
 Reports missing required attributes, invalid enum values, and other issues.
 
+DOCS: docs/schema/graph-health/PATTERNS_Graph_Health_Validation.md
+
 Usage:
     python engine/graph/health/check_health.py
     python engine/graph/health/check_health.py --graph seed

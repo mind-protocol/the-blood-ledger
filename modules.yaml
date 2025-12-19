@@ -76,6 +76,20 @@ modules:
     notes: |
       Vision and experience design documentation for The Blood Ledger.
 
+  moment-graph:
+    code: "engine/moments/**"
+    docs: "docs/engine/moments/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/moments/__init__.py
+    patterns:
+      - "Schema-first moment graph contract"
+      - "Stub module until graph-backed implementation lands"
+    notes: |
+      Moment graph module with placeholder dataclass and docs. Schema lives in
+      docs/schema/SCHEMA_Moments.md.
+
   world-map:
     code: "engine/world/map/**"
     docs: "docs/world/map/"
@@ -87,6 +101,25 @@ modules:
       - "Semantic search over graph embeddings"
     notes: |
       Map system documentation and semantic search layer.
+
+  graph-health:
+    code: "engine/graph/health/**"
+    docs: "docs/schema/graph-health/"
+    tests: "engine/graph/health/test_schema.py"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/graph/health/check_health.py
+      - engine/graph/health/test_schema.py
+      - engine/graph/health/lint_terminology.py
+      - engine/graph/health/README.md
+    patterns:
+      - "Schema-driven graph validation"
+      - "CLI health checks and pytest schema tests"
+      - "Curated query library with quality ratings"
+    notes: |
+      Graph health tooling for schema validation, terminology linting, and
+      repeatable Cypher query inspection artifacts.
 
   world-scraping:
     code: "data/scripts/scrape/**"
@@ -418,3 +451,17 @@ modules:
       Canonical Pydantic models for the Blood Ledger schema (nodes, links,
       tensions, moments) with shared enums and helpers. Used by engine services
       and validation tests.
+
+  moment-graph:
+    code: "engine/moments/**"
+    docs: "docs/engine/moments/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/moments/__init__.py
+    patterns:
+      - "Graph-first moment records"
+      - "Lifecycle state tracked on moments"
+    notes: |
+      Moment graph module stub that anchors documentation for moment nodes,
+      lifecycle states, and schema alignment.

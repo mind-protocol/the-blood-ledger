@@ -9,11 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Documented the graph health module (`engine/graph/health/**`) with new PATTERNS/SYNC docs, mapped it in `modules.yaml`, and linked `check_health.py` to the doc chain.
+
 Verified the `tools/` documentation mapping (cli-tools + image-generation) already covers `tools/stream_dialogue.py` and `tools/image_generation/*`, and recorded the verification in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
 
 Mapped the canon infrastructure module in `modules.yaml`, linking `engine/infrastructure/canon/**` and `tests/infrastructure/canon/` to the existing docs.
 
-Normalized the DOCS header in `tools/image_generation/README.md` so `ngram context` resolves the image-generation mapping. Ran `ngram validate`; remaining failures are pre-existing in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/`.
+Normalized the DOCS header in `tools/image_generation/README.md` to a `# DOCS:` marker; `ngram context` still does not resolve markdown files. Ran `ngram validate`; remaining failures are pre-existing in `docs/schema/`, `docs/infrastructure/tempo/`, `docs/infrastructure/world-builder/`, and `docs/engine/moments/`.
 
 Linked `frontend/lib/api.ts` and `frontend/lib/map/*` utilities to the frontend documentation chain with DOCS references and updated frontend/map SYNC notes. Ran `ngram validate`; remaining failures are pre-existing in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/`.
 Added image-generation DOCS references in `tools/image_generation/README.md` and reordered `tools/image_generation/generate_image.py` DOCS links so the image-generation chain is primary.
@@ -148,6 +150,9 @@ Re-verified ConversationThread path helper implementations for repair 02-INCOMPL
 Reconfirmed moment graph query helper implementations in `engine/moment_graph/queries.py`; repair task was stale and required no code changes.
 Removed the deprecated narrator patterns doc (`docs/agents/narrator/PATTERNS_World_Building.md`) and cleaned duplicate PATTERNS chain references in narrator docs.
 Removed duplicate graph algorithm doc `docs/physics/graph/ALGORITHM_Weight.md` after consolidating weight computation into `docs/physics/graph/ALGORITHM_Energy_Flow.md` and updated the design doc listing.
+
+Documented the moment graph module with new PATTERNS + SYNC docs, a module
+mapping in `modules.yaml`, and a DOCS reference in `engine/moments/__init__.py`.
 
 ---
 
