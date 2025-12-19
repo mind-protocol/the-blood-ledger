@@ -1,5 +1,68 @@
 # API — Algorithm
 
+## OVERVIEW
+
+This algorithm doc describes how the API module wires the FastAPI app, handles
+core runtime helpers (graph access, health checks, SSE debug streaming), and
+executes the playthrough-creation flow that seeds the game graph and scene
+payloads for the frontend.
+
+## DATA STRUCTURES
+
+- Playthrough folder layout: per-player directory containing queues, scene
+  snapshots, and metadata files for API and agent coordination.
+- Scenario YAML payloads: structured nodes, links, and opening narration blocks
+  injected into the per-playthrough graph.
+- Moment records: narration lines stored as moment nodes with status/weight,
+  linked to locations for initial scene rendering.
+- Debug SSE queues: per-client in-memory queues carrying event payloads.
+
+## ALGORITHM: create_scenario_playthrough
+
+The primary flow accepts a scenario request, generates a unique playthrough id,
+creates the on-disk playthrough structure, initializes the FalkorDB graph,
+injects scenario nodes/links, seeds opening narration moments, and returns the
+scene payload plus identifiers required for the frontend to continue.
+
+## KEY DECISIONS
+
+- Use a single app factory to centralize shared resources, keeping endpoints
+  thin and delegating heavy logic to orchestration and graph layers.
+- Isolate debug SSE streams from gameplay SSE to avoid cross-talk and stalled
+  consumers.
+- Keep playthrough graphs isolated per player by using a unique graph name.
+
+## DATA FLOW
+
+Client requests enter FastAPI routes, the API loads scenario data from disk,
+executes graph mutations through GraphOps, writes playthrough artifacts to
+disk, and returns a scene payload that the frontend rehydrates into the game
+view while SSE streams deliver ongoing updates.
+
+## COMPLEXITY
+
+Runtime cost is dominated by I/O and graph writes; scenario injection scales
+roughly with the number of nodes/links in the scenario, while playthrough
+folder creation and scene serialization are linear in payload size.
+
+## HELPER FUNCTIONS
+
+Graph helpers cache GraphQueries/GraphOps instances per request context, health
+checks validate read/write access with lightweight queries, and debug SSE
+streams maintain per-client queues that emit events or keepalive pings.
+
+## INTERACTIONS
+
+This module coordinates with graph physics for mutations, with orchestration
+services for playthrough actions, with scenario files for seed content, and
+with frontend hooks that call playthrough and view endpoints.
+
+## GAPS / IDEAS / QUESTIONS
+
+- [ ] Document API versioning once public clients exist and endpoints stabilize.
+- [ ] Clarify how auth and rate limiting should be layered (API vs gateway).
+- QUESTION: Should health checks validate scenario assets on disk?
+
 ## Graph Helpers
 
 1. On first access, construct `GraphQueries` or `GraphOps` with `graph_name`, `host`, and `port`.
@@ -30,6 +93,51 @@
 ### Overview
 
 End-to-end flow when a player creates a new playthrough, from frontend form submission through graph initialization to first scene render.
+
+### Data Structures
+
+- `PlaythroughCreateRequest` carries `scenario_id`, `player_name`, and `player_gender` for creating a new run with consistent inputs.
+- `player.yaml`, `scene.json`, and the queue files (`message_queue.json`, `injection_queue.json`, `stream.jsonl`) persist state on disk for later endpoints.
+- Scenario YAML provides `nodes`, `links`, and `opening` blocks that seed the graph and opening scene.
+
+### Algorithm: create_playthrough
+
+1. Slugify the player name and pick a unique playthrough ID by checking the playthroughs directory.
+2. Create the playthrough directory structure and write `player.yaml` with scenario metadata.
+3. Load the scenario YAML and initialize a dedicated graph using `load_initial_state()`.
+4. Apply scenario nodes/links with `GraphOps.apply`, updating the player node name/gender.
+5. Create opening moments from `opening.narration` and attach them to the opening place.
+6. Build `scene.json` from the opening template (fallback to a minimal scene if absent).
+7. Return the playthrough ID, scenario ID, and scene payload for the frontend to render.
+
+### Key Decisions
+
+- Use the playthrough ID as the graph name to isolate player sessions without cross-talk.
+- Continue after seed-data or scenario injection failures so the frontend can still render a starter scene.
+- Store queues and transcripts on disk so async systems can resume from simple file state.
+
+### Data Flow
+
+Request data flows from the frontend form into `create_playthrough`, then into disk state (`player.yaml`, queues) and graph mutations (seed + scenario), culminating in `scene.json` plus a response payload.
+
+### Complexity
+
+Time scales linearly with the number of scenario nodes, links, and opening lines; disk I/O and graph calls dominate runtime for larger scenarios.
+
+### Helper Functions
+
+- `_opening_to_scene_tree` transforms the opening template into the `scene.json` structure.
+- `load_initial_state` seeds the base world graph before scenario injection.
+- `GraphOps.apply` and `GraphOps.add_moment` write scenario content and opening moments.
+
+### Interactions
+
+Creates playthrough artifacts consumed by `GET /api/view/{playthrough_id}`, relies on `engine/physics/graph` for mutations, and loads scenario assets from `scenarios/*.yaml`.
+
+### Gaps / Ideas / Questions
+
+- [ ] Should scenario YAML be schema-validated before graph injection to surface errors earlier?
+- [ ] Should playthrough creation fail hard if seed data fails, or continue as it does now?
 
 ### Flow Diagram
 

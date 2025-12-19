@@ -14,6 +14,11 @@ template sections (invariants, properties, error conditions, test coverage,
 verification procedure, sync status, gaps) and logged the update in
 `docs/infrastructure/api/SYNC_Api.md` for repair #16.
 
+Expanded `docs/infrastructure/api/PATTERNS_Api.md` with the missing template
+sections (problem, pattern, principles, dependencies, inspirations, scope,
+gaps) to resolve DOC_TEMPLATE_DRIFT for repair #16 and recorded the update in
+`docs/infrastructure/api/SYNC_Api.md`.
+
 Filled missing SYNC template sections in `docs/infrastructure/api/SYNC_Api.md`
 to resolve DOC_TEMPLATE_DRIFT for repair #16 and recorded the change in the
 API SYNC. Ran `ngram validate`; failures remain pre-existing (missing VIEW and
@@ -23,6 +28,12 @@ doc-chain gaps in schema/product/network/storms modules). Files updated:
 Expanded `docs/infrastructure/api/PATTERNS_Api.md` with the missing template
 sections (problem, pattern, principles, dependencies, inspirations, scope,
 gaps) for repair #16 and recorded the update in
+`docs/infrastructure/api/SYNC_Api.md`.
+
+Expanded `docs/infrastructure/api/ALGORITHM_Api.md` with the missing algorithm
+template sections (overview, data structures, primary algorithm summary, key
+decisions, data flow, complexity, helpers, interactions, gaps) to resolve
+DOC_TEMPLATE_DRIFT for repair #16 and logged the update in
 `docs/infrastructure/api/SYNC_Api.md`.
 
 Filled missing MATURITY, RECENT CHANGES, and CONSCIOUSNESS TRACE sections in

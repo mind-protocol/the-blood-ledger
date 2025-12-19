@@ -41,6 +41,16 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Fill API algorithm template sections (repair 16)
+
+- **What:** Added overview, data structures, primary algorithm summary,
+  key decisions, data flow, complexity, helper functions, interactions, and
+  gaps sections to `ALGORITHM_Api.md`.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the API algorithm doc and align with
+  required template headings.
+- **Files:**
+  - `docs/infrastructure/api/ALGORITHM_Api.md`
+
 ### 2025-12-19: Expand API validation template sections (repair 16)
 
 - **What:** Added invariants, properties, error conditions, test coverage, verification procedure, sync status, and gaps sections to the API validation doc.
