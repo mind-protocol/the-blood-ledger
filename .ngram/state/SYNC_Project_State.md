@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/infrastructure/history/ALGORITHM_History.md` with the missing
+entry-point template sections (overview, algorithm routing, helpers) and
+logged the update in `docs/infrastructure/history/SYNC_History.md` for
+repair #16.
+
 Re-verified `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
 meets template requirements (ALGORITHM and HELPER FUNCTIONS present) and
 logged the verification in `docs/infrastructure/embeddings/SYNC_Embeddings.md`
