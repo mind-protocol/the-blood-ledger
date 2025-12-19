@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md` with the
+missing ALGORITHM and HELPER FUNCTIONS sections plus template-compliant
+overview/data flow content, and logged the update in
+`docs/infrastructure/embeddings/SYNC_Embeddings.md` for repair #16.
+
 Filled missing MATURITY and CONSCIOUSNESS TRACE sections and expanded the
 IN PROGRESS entry in `docs/infrastructure/embeddings/SYNC_Embeddings.md` to
 resolve the remaining DOC_TEMPLATE_DRIFT warning for repair #16. Ran

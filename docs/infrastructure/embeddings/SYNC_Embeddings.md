@@ -55,6 +55,15 @@ runtime indexing behavior with the documented detail-first embedding spec.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Expand algorithm entry template sections
+
+- **What:** Added the missing ALGORITHM and HELPER FUNCTIONS sections plus
+  expanded overview/data flow content in the embeddings algorithm entry file.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for missing template headings and short
+  sections while keeping the sub-docs canonical.
+- **Files:** `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Add maturity and consciousness trace
 
 - **What:** Added MATURITY and CONSCIOUSNESS TRACE sections and expanded the
