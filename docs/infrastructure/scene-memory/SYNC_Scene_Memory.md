@@ -2,7 +2,7 @@
 
 ```
 LAST_UPDATED: 2025-12-19
-UPDATED_BY: Claude (repair agent)
+UPDATED_BY: Codex (repair agent)
 STATUS: CANONICAL
 ```
 
@@ -156,6 +156,8 @@ processor.link_narrative_to_moments(narrative_id, moment_ids)
 ===============================================================================
 
 ### 2025-12-19
+- Noted that the repair task flagged `moment_processor.py` functions as incomplete,
+  but implementations already exist; no code changes required.
 - **MAJOR UPDATE:** Refreshed SYNC to reflect Moment Graph architecture
 - Original Scene-based design was superseded
 - Documented all implemented components with file locations
@@ -171,3 +173,23 @@ processor.link_narrative_to_moments(narrative_id, moment_ids)
 - Changed from `sources: []` array to `FROM` links
 - Added SAID links for dialogue attribution
 - Added THEN links for moment sequencing
+
+===============================================================================
+## CONFLICTS
+===============================================================================
+
+### DECISION: Moment Processor Incomplete Impl
+- Conflict: Repair task flagged `_write_transcript`, `last_moment_id`,
+  `transcript_line_count`, and `get_moment_processor` as incomplete, but the file
+  already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes.
+- Reasoning: Each function provides concrete behavior used by the moment
+  processing flow and transcript management.
+- Updated: `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`
+
+===============================================================================
+## Agent Observations
+===============================================================================
+
+### Remarks
+- Repair task appears stale relative to `engine/infrastructure/memory/moment_processor.py`.
