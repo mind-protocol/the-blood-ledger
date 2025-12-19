@@ -2,7 +2,7 @@
 
 ```
 LAST_UPDATED: 2025-12-19
-UPDATED_BY: Claude Opus 4.5
+UPDATED_BY: Codex
 STATUS: CANONICAL
 ```
 
@@ -17,6 +17,14 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-19: Re-verify playthrough helpers for repair 01-INCOMPLETE_IMPL-api-playthroughs
+
+- **What:** Confirmed `_count_branches` and `_get_playthrough_queries` in `engine/infrastructure/api/playthroughs.py` already contain real logic; no code changes required.
+- **Why:** Repair task flagged empty implementations, but the functions are implemented.
+- **Files:**
+  - `engine/infrastructure/api/playthroughs.py`
+  - `docs/infrastructure/api/SYNC_Api.md`
 
 ### 2025-12-19: Add /api/action endpoint and fix scenario path
 
@@ -83,6 +91,7 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 - Repair task flagged playthrough helper functions as empty, but they are already implemented.
 - Re-validated playthroughs helper implementations for this repair run; no code changes required.
  - Confirmed playthrough helper implementations for repair 01-INCOMPLETE_IMPL-api-playthroughs.
+- Reconfirmed `_count_branches` and `_get_playthrough_queries` implementations during this repair run.
 
 ### Suggestions
 - [ ] Consider splitting `engine/infrastructure/api/app.py` into smaller router modules once the API surface stabilizes.

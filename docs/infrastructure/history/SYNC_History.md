@@ -12,6 +12,7 @@ STATUS: CANONICAL
 
 **Implementation complete.** The History module is fully functional.
 Repair 02-INCOMPLETE_IMPL-history-conversations confirmed ConversationThread path helpers already implemented; no code changes required.
+Re-verified `__init__`, `_get_file_path`, and `_get_relative_path` in `engine/infrastructure/history/conversations.py`; still implemented.
 
 ### Code Structure
 
@@ -156,6 +157,7 @@ History module now has full implementation. HistoryService provides query_histor
 - Repair task appears stale relative to `engine/infrastructure/history/conversations.py`.
 - Re-verified ConversationThread path helpers are implemented; no code changes required.
 - Logged this repair run's verification of conversation helpers; no code changes required.
+ - Re-verified `__init__`, `_get_file_path`, and `_get_relative_path`; no implementation gaps found.
 
 ### Suggestions
 - None.

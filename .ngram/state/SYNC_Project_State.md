@@ -2,7 +2,7 @@
 
 ```
 LAST_UPDATED: 2025-12-19
-UPDATED_BY: Codex
+UPDATED_BY: Codex (repair agent)
 ```
 
 ---
@@ -66,6 +66,7 @@ Consolidated graph weight computation into `docs/physics/graph/ALGORITHM_Energy_
 Consolidated schema validation docs by merging graph integrity rules into `docs/schema/VALIDATION_Living_Graph.md` and redirecting `docs/schema/VALIDATION_Graph.md`.
 Consolidated async algorithm docs into `docs/infrastructure/async/ALGORITHM_Async_Architecture.md` and removed per-topic async ALGORITHM files; updated async doc chains.
 Reverified playthrough helper implementations for repair 01-INCOMPLETE_IMPL-api-playthroughs; no code changes required.
+Re-verified ConversationThread path helper implementations for repair 02-INCOMPLETE_IMPL-history-conversations; no code changes required.
 
 ---
 
@@ -138,6 +139,7 @@ Repair task appears stale relative to current code.
 - Physics tick energy helper implementations already exist; no code changes required.
 - Graph health report helper implementations already exist; no code changes required.
 - Health check helpers in `engine/graph/health/check_health.py` verified; repair task was stale.
+- Reverified repair 00-INCOMPLETE_IMPL-health-check_health; functions were already implemented.
 - `ngram validate` still reports pre-existing missing docs in `docs/schema/` and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 - `engine/models/base.py` comparison helpers already exist; repair 04-INCOMPLETE_IMPL-models-base required no code changes.
 
