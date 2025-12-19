@@ -56,6 +56,73 @@ Original file: SYNC_History.md
 
 ---
 
+## CURRENT STATE
+
+Archive snapshot from 2025-12-19 capturing the state of the history module
+after the restructure and verification pass, intended as a fixed reference
+point rather than a live status update for ongoing work.
+
+---
+
+## IN PROGRESS
+
+No active work is tracked in this archived snapshot; the live history SYNC
+file is the source of truth for current tasks and ongoing integration work.
+
+---
+
+## KNOWN ISSUES
+
+At the time of archival, automated tests and full agent integrations were
+still pending, so history behaviors were implemented but not yet verified
+end-to-end with the narrator and world-runner workflows.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+Use the live `docs/infrastructure/history/SYNC_History.md` and implementation
+docs for current status, then validate tests and integration hooks rather than
+treating this archive as a directive for ongoing changes.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+This archive preserves a past snapshot and should not be treated as the
+current plan; please review the live SYNC if you need a status update or
+decision context beyond this historical record.
+
+---
+
+## TODO
+
+- [ ] Write unit tests for HistoryService and ConversationThread based on the
+      current SYNC expectations and VALIDATION docs.
+- [ ] Verify narrator/world-runner integration in a playthrough environment
+      before relying on history propagation in production.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+Confidence is moderate: the archive reflects a stable implementation snapshot,
+but verification and integration status should be confirmed in the live SYNC.
+
+---
+
+## POINTERS
+
+- docs/infrastructure/history/PATTERNS_History.md
+- docs/infrastructure/history/BEHAVIORS_History.md
+- docs/infrastructure/history/ALGORITHM/ALGORITHM_Overview.md
+- docs/infrastructure/history/VALIDATION_History.md
+- docs/infrastructure/history/TEST/TEST_Overview.md
+- docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md
+- docs/infrastructure/history/SYNC_History.md
+
+---
+
 
 
 ---
@@ -183,3 +250,66 @@ engine/infrastructure/history/
 
 ---
 
+## CURRENT STATE
+
+Archive snapshot of history documentation as of 2025-12-19, capturing the
+post-restructure SYNC state alongside the conversation thread verification
+notes and service implementation summary for future reference.
+
+---
+
+## IN PROGRESS
+
+No in-progress work is tracked in this archive; active development moved to
+the live `docs/infrastructure/history/SYNC_History.md` record after this
+snapshot was captured.
+
+---
+
+## KNOWN ISSUES
+
+Tests and integrations were still pending at archive time; history behavior
+was implemented but not yet verified with automated coverage or agent wiring.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+When revisiting history, start from the live SYNC and implementation docs to
+confirm current integration status, then update tests and agent hooks as
+needed rather than relying solely on this archived snapshot.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+This archive is informational only; it summarizes the state at the time of
+archival and does not reflect subsequent integration or testing decisions.
+
+---
+
+## TODO
+
+- [ ] Add unit tests for HistoryService and ConversationThread using the live
+      behavior expectations captured in the current SYNC and VALIDATION docs.
+- [ ] Validate integration with Narrator and World-Runner before relying on
+      history propagation in active playthroughs.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+Confidence is moderate: the archive captures a stable implementation snapshot,
+but verification and integration status should be rechecked in the live SYNC.
+
+---
+
+## POINTERS
+
+- docs/infrastructure/history/PATTERNS_History.md
+- docs/infrastructure/history/BEHAVIORS_History.md
+- docs/infrastructure/history/ALGORITHM/ALGORITHM_Overview.md
+- docs/infrastructure/history/VALIDATION_History.md
+- docs/infrastructure/history/TEST/TEST_Overview.md
+- docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md
+- docs/infrastructure/history/SYNC_History.md
