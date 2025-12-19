@@ -3,6 +3,8 @@ Blood Ledger — Embedding Service
 
 Generates embeddings for semantic search using sentence-transformers.
 Based on Mind Protocol's embedding_service.py pattern.
+
+DOCS: docs/infrastructure/embeddings/
 """
 
 import logging

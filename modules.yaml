@@ -62,3 +62,507 @@ modules:
 #     Core type definitions. Changes affect entire codebase.
 
 # Add more modules as they emerge...
+
+  design-vision:
+    code: "docs/design/**"
+    docs: "docs/design/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - docs/design/PATTERNS_Vision.md
+      - docs/design/SYNC_Vision.md
+    patterns:
+      - "Documentation chain for vision and experience goals"
+    notes: |
+      Vision and experience design documentation for The Blood Ledger.
+
+  moment-graph:
+    code: "engine/moments/**"
+    docs: "docs/engine/moments/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/moments/__init__.py
+    patterns:
+      - "Schema-first moment graph contract"
+      - "Stub module until graph-backed implementation lands"
+    notes: |
+      Moment graph module with placeholder dataclass and docs. Schema lives in
+      docs/schema/SCHEMA_Moments.md.
+
+  world-map:
+    code: "engine/world/map/**"
+    docs: "docs/world/map/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/world/map/semantic.py
+    patterns:
+      - "Semantic search over graph embeddings"
+    notes: |
+      Map system documentation and semantic search layer.
+
+  graph-health:
+    code: "engine/graph/health/**"
+    docs: "docs/schema/graph-health/"
+    tests: "engine/graph/health/test_schema.py"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/graph/health/check_health.py
+      - engine/graph/health/test_schema.py
+      - engine/graph/health/lint_terminology.py
+      - engine/graph/health/README.md
+    patterns:
+      - "Schema-driven graph validation"
+      - "CLI health checks and pytest schema tests"
+      - "Curated query library with quality ratings"
+    notes: |
+      Graph health tooling for schema validation, terminology linting, and
+      repeatable Cypher query inspection artifacts.
+
+  world-scraping:
+    code: "data/scripts/scrape/**"
+    docs: "docs/world/scraping/"
+    additional_code:
+      - "data/scripts/inject_world.py"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - data/scripts/scrape/phase1_geography.py
+      - data/scripts/inject_world.py
+    patterns:
+      - "Pipeline ETL with phase scripts"
+      - "YAML intermediates for auditability"
+    notes: |
+      World data scraping pipeline and injection scripts.
+      Outputs to data/world and loads into FalkorDB via GraphOps.
+
+  world-runner:
+    code: "engine/infrastructure/orchestration/world_runner.py"
+    docs: "docs/agents/world-runner/"
+    additional_code:
+      - "agents/world_runner/**"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/orchestration/world_runner.py
+      - agents/world_runner/CLAUDE.md
+    patterns:
+      - "Stateless LLM runner"
+      - "Interrupt/resume injection"
+    notes: |
+      World Runner agent and orchestration service. Converts flipped tensions
+      into graph mutations and narrator injection payloads.
+
+  scene-memory:
+    code: "engine/infrastructure/memory/**"
+    docs: "docs/infrastructure/scene-memory/"
+    tests: "engine/tests/test_moment*.py"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/memory/moment_processor.py
+    patterns:
+      - "Moment processor facade"
+      - "Transcript append-only log"
+    notes: |
+      Moment processing and transcript persistence for playthroughs.
+
+  async-architecture:
+    code: "engine/scripts/check_injection.py"
+    docs: "docs/infrastructure/async/"
+    additional_code:
+      - "engine/scripts/inject_to_narrator.py"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/scripts/check_injection.py
+    patterns:
+      - "Hook-based interrupts via JSONL queue"
+      - "File-backed FIFO injection queue"
+    notes: |
+      Async travel architecture documentation and injection queue hooks.
+      Core integration points live in infrastructure/api and agent modules.
+
+  cli-tools:
+    code: "tools/**"
+    docs: "docs/infrastructure/cli-tools/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - tools/stream_dialogue.py
+      - tools/image_generation/generate_image.py
+    patterns:
+      - "CLI tools as agent interface layer"
+      - "Graph-native streaming events"
+    notes: |
+      Agent-facing CLI utilities for streaming dialogue/narration and
+      generating images via Ideogram.
+
+  history:
+    code: "engine/infrastructure/history/**"
+    docs: "docs/infrastructure/history/"
+    tests: "engine/tests/test_history.py"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/history/service.py
+      - engine/infrastructure/history/conversations.py
+    patterns:
+      - "Narratives + beliefs over centralized event logs"
+      - "Conversation threads stored as markdown sections"
+    notes: |
+      Distributed history service for querying and recording memories.
+      Provides HistoryService and ConversationThread APIs.
+
+  canon:
+    code: "engine/infrastructure/canon/**"
+    docs: "docs/infrastructure/canon/"
+    tests: "tests/infrastructure/canon/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/canon/canon_holder.py
+    patterns:
+      - "Single gatekeeper for recording moments"
+      - "Graph-first canon chain via THEN links"
+    notes: |
+      Canon holder logic for recording moments to the story canon.
+      Includes speaker resolution and SSE broadcast on record.
+
+  image-generation:
+    code: "tools/image_generation/**"
+    docs: "docs/infrastructure/image-generation/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - tools/image_generation/generate_image.py
+    patterns:
+      - "Pipeline-style CLI tool"
+      - "Table-driven image type configuration"
+    notes: |
+      Ideogram 3.0 image generation CLI for scene banners, portraits, and icons.
+
+  embeddings:
+    code: "engine/infrastructure/embeddings/**"
+    docs: "docs/infrastructure/embeddings/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/embeddings/service.py
+      - engine/infrastructure/embeddings/__init__.py
+    patterns:
+      - "Sentence-transformers embedding service"
+      - "Lazy model loading with singleton access"
+    notes: |
+      EmbeddingService for semantic search and node-to-text embedding helpers.
+
+  infrastructure-async:
+    code: "engine/infrastructure/api/playthroughs.py"
+    docs: "docs/infrastructure/async/"
+    additional_code:
+      - "engine/infrastructure/api/app.py"
+      - "engine/infrastructure/api/moments.py"
+      - "engine/infrastructure/api/sse_broadcast.py"
+      - "engine/scripts/check_injection.py"
+      - "engine/scripts/inject_to_narrator.py"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/infrastructure/api/playthroughs.py
+      - engine/scripts/check_injection.py
+    patterns:
+      - "Event-driven queues + SSE"
+      - "File-backed injection and message queues"
+    notes: |
+      Async travel architecture documentation and current queue/SSE scaffolding.
+
+  ops-scripts:
+    code: "engine/scripts/**"
+    docs: "docs/infrastructure/ops-scripts/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/scripts/seed_moment_sample.py
+      - engine/scripts/generate_images_for_existing.py
+      - engine/scripts/check_injection.py
+      - engine/scripts/inject_to_narrator.py
+    patterns:
+      - "Thin CLI wrappers around shared engine utilities"
+      - "Explicit graph/playthrough targeting"
+    notes: |
+      Operational scripts for seeding sample data, backfilling assets, and
+      managing injection queues. Injection scripts are documented under
+      docs/infrastructure/async/ to avoid duplicating their behavior docs.
+
+  frontend:
+    code: "frontend/**"
+    docs: "docs/frontend/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/app/page.tsx
+    patterns:
+      - "Next.js App Router"
+      - "Backend-driven state via hooks + SSE"
+    notes: |
+      Presentation layer for The Blood Ledger game.
+
+  history:
+    code: "engine/infrastructure/history/**"
+    docs: "docs/infrastructure/history/"
+    tests: "engine/tests/test_history.py"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/history/service.py
+      - engine/infrastructure/history/conversations.py
+    patterns:
+      - "Distributed history via narratives and beliefs"
+      - "Conversation threads as file-backed sources"
+    notes: |
+      History service for querying and recording narratives, beliefs, and
+      conversation threads for player-experienced events.
+
+  frontend:
+    code: "frontend/**"
+    docs: "docs/frontend/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/app/page.tsx
+      - frontend/app/start/page.tsx
+      - frontend/components/GameClient.tsx
+    patterns:
+      - "Next.js App Router with hooks for state"
+      - "Tailwind utility styling"
+    notes: |
+      Presentation layer for The Blood Ledger. Renders scenes, moments, and
+      panels, with REST + SSE updates from the backend.
+
+  frontend:
+    code: "frontend/**"
+    docs: "docs/frontend/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/app/page.tsx
+      - frontend/app/start/page.tsx
+      - frontend/components/GameClient.tsx
+      - frontend/components/voices/Voices.tsx
+      - frontend/components/ui/Toast.tsx
+    patterns:
+      - "Next.js app router"
+      - "Backend-owned game state"
+    notes: |
+      Presentation layer for The Blood Ledger, rendering scene, moments, and
+      map views while delegating state to the backend.
+
+  frontend-types:
+    code: "frontend/types/**"
+    docs: "docs/frontend/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/types/game.ts
+      - frontend/types/moment.ts
+      - frontend/types/map.ts
+    patterns:
+      - "Shared TypeScript shapes for frontend state"
+    notes: |
+      Type definitions for game state, moments, and map rendering.
+
+  frontend-right-panel:
+    code: "frontend/components/panel/**"
+    docs: "docs/frontend/right-panel/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - frontend/components/panel/RightPanel.tsx
+    patterns:
+      - "Tabbed right-side panel for context"
+      - "Read-only rendering from parent state"
+    notes: |
+      Chronicle, conversations, and ledger panels presented as tabs alongside
+      the main scene view.
+
+  frontend-moment-components:
+    code: "frontend/components/moment/**"
+    docs: "docs/frontend/scene/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/components/moment/index.ts
+      - frontend/components/moment/MomentStream.tsx
+    patterns:
+      - "Moment stream with interactive words"
+      - "Type-driven rendering per moment"
+    notes: |
+      Moment display components (stream, display, debug) used by the scene
+      view. Documented under the Scene module.
+
+  frontend-minimap:
+    code: "frontend/components/minimap/**"
+    docs: "docs/frontend/minimap/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - frontend/components/minimap/Minimap.tsx
+    patterns:
+      - "Read-only minimap preview"
+      - "Discovered-only rendering"
+    notes: |
+      Compact minimap button that previews discovered locations and opens the
+      full map view on click.
+
+  frontend-map:
+    code: "frontend/components/map/**"
+    docs: "docs/frontend/map/"
+    additional_code:
+      - "frontend/app/map/**"
+      - "frontend/lib/map/**"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - frontend/components/map/MapClient.tsx
+      - frontend/components/map/MapCanvas.tsx
+    patterns:
+      - "Canvas-based parchment map rendering"
+      - "Visibility-driven fog of war"
+    notes: |
+      Full map view and canvas renderer for locations, routes, fog of war, and
+      player markers. Uses static seed data and placeholder travel actions.
+
+  frontend-scenarios:
+    code: "frontend/app/scenarios/**"
+    docs: "docs/frontend/scenarios/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - frontend/app/scenarios/page.tsx
+    patterns:
+      - "Curated scenario list with preview panel"
+      - "Session-gated playthrough creation"
+    notes: |
+      Scenario selection page that mirrors scenario IDs from `scenarios/*.yaml`
+      and triggers playthrough creation. See `docs/design/scenarios/README.md`
+      for scenario system details.
+
+  frontend-scene:
+    code: "frontend/components/scene/**"
+    docs: "docs/frontend/scene/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/components/scene/SceneView.tsx
+      - frontend/components/scene/CenterStage.tsx
+    patterns:
+      - "Scene composed of header, banner, people, voices, actions"
+      - "CenterStage animated text flow"
+    notes: |
+      Scene presentation components for the main game view, including the
+      banner, character rows, hotspot rows, and action controls.
+
+  schema-models:
+    code: "engine/models/**"
+    docs: "docs/schema/models/"
+    tests: "engine/tests/test_models.py"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/models/__init__.py
+      - engine/models/base.py
+      - engine/models/nodes.py
+      - engine/models/links.py
+      - engine/models/tensions.py
+    patterns:
+      - "Pydantic schema models for nodes, links, and tensions"
+      - "Enums + shared models in base.py"
+    notes: |
+      Canonical Pydantic models for the Blood Ledger schema (nodes, links,
+      tensions, moments) with shared enums and helpers. Used by engine services
+      and validation tests.
+
+  moment-graph:
+    code: "engine/moments/**"
+    docs: "docs/engine/moments/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/moments/__init__.py
+    patterns:
+      - "Graph-first moment records"
+      - "Lifecycle state tracked on moments"
+    notes: |
+      Moment graph module stub that anchors documentation for moment nodes,
+      lifecycle states, and schema alignment.
+
+  engine-test-suite:
+    code: "engine/tests/**"
+    docs: "docs/engine/tests/"
+    tests: "engine/tests/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/tests/__init__.py
+      - engine/tests/test_behaviors.py
+      - engine/tests/test_implementation.py
+      - engine/tests/test_spec_consistency.py
+    patterns:
+      - "Spec-linked layered test suite"
+      - "Integration tests skip when dependencies are missing"
+    notes: |
+      Engine-wide test suite covering spec consistency, physics behaviors, and
+      integration/E2E checks. Integration tests expect FalkorDB and may skip
+      when the database is unavailable.
+
+
+  physics:
+    code: "engine/physics/**"
+    docs: "docs/physics/"
+    tests: "engine/tests/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/physics/__init__.py
+      - engine/physics/tick.py
+      - engine/physics/graph/graph_ops.py
+      - engine/physics/graph/graph_queries.py
+    patterns:
+      - "Graph-first physics tick"
+      - "Energy flow with decay and flip detection"
+    notes: |
+      Graph physics engine for energy flow, decay, pressure, and flip detection.
+      Includes graph operations/queries and per-tick propagation logic.
+
+  physics-graph:
+    code: "engine/physics/graph/**"
+    docs: "docs/physics/graph/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/physics/graph/graph_ops.py
+      - engine/physics/graph/graph_queries.py
+    patterns:
+      - "GraphOps write mixins + GraphQueries read mixins"
+      - "FalkorDB-backed graph operations"
+    notes: |
+      Graph operations and queries for the physics engine. Uses mixins for
+      domain-specific mutations and queries.
+
+  physics-graph:
+    code: "engine/physics/graph/**"
+    docs: "docs/physics/graph/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/physics/graph/graph_ops.py
+      - engine/physics/graph/graph_queries.py
+    patterns:
+      - "FalkorDB graph operations and query mixins"
+      - "Mutation apply pipeline with optional event hooks"
+    notes: |
+      Graph operations and query helpers layered under the physics engine.
+      Provides GraphOps write helpers and GraphQueries read helpers for the
+      living graph.

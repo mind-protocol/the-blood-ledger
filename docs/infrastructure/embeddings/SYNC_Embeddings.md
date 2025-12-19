@@ -37,6 +37,15 @@ updated IMPL paths.
 
 No active work on embeddings module.
 
+## RECENT CHANGES
+
+### 2025-12-19: Documentation mapping and DOCS linkage
+
+- **What:** Added modules.yaml mapping for embeddings and a DOCS reference in the service file.
+- **Why:** Connect existing embeddings docs to the code path for `ngram context` and validation coverage.
+- **Files:** `modules.yaml`, `engine/infrastructure/embeddings/service.py`
+- **Struggles/Insights:** None.
+
 ---
 
 ## KNOWN ISSUES

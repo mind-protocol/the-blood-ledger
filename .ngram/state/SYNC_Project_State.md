@@ -9,6 +9,8 @@ UPDATED_BY: {AGENT/HUMAN}
 
 ## CURRENT STATE
 
+Documented the embeddings module mapping by adding a modules.yaml entry, linking `engine/infrastructure/embeddings/service.py` with a DOCS reference, and logging the update in `docs/infrastructure/embeddings/SYNC_Embeddings.md`.
+
 {Narrative of the project's current state. Not a feature list — the story of where things are.}
 
 ---
