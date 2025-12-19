@@ -31,9 +31,13 @@ data/scripts/scrape/phase3_events.py
 data/scripts/scrape/phase4_narratives.py
 data/scripts/scrape/phase5_tensions.py
 data/world/places.yaml
+data/world/places_minor.yaml
 data/world/routes.yaml
 data/world/characters.yaml
 data/world/holdings.yaml
+data/world/things.yaml
+data/world/thing_locations.yaml
+data/world/thing_ownership.yaml
 data/world/events.yaml
 data/world/narratives.yaml
 data/world/beliefs.yaml
@@ -52,6 +56,10 @@ data/world/tensions.yaml
 | `data/scripts/scrape/phase4_narratives.py` | Generates narratives and belief network from prior phases, writes `data/world/narratives.yaml` and `data/world/beliefs.yaml`. | ~431 | WATCH |
 | `data/scripts/scrape/phase5_tensions.py` | Generates tensions from narrative contradictions, writes `data/world/tensions.yaml`. | ~361 | OK |
 | `data/scripts/inject_world.py` | Loads `data/world/` YAML and injects into FalkorDB via `engine/physics/graph/graph_ops.py`. | ~476 | WATCH |
+| `data/world/places_minor.yaml` | Curated minor locations merged with `places.yaml` during injection. | n/a | OK |
+| `data/world/things.yaml` | Curated world objects injected as Thing nodes. | n/a | OK |
+| `data/world/thing_locations.yaml` | Thing-to-place links injected as LOCATED_AT relationships. | n/a | OK |
+| `data/world/thing_ownership.yaml` | Character-to-thing links injected as CARRIES relationships. | n/a | OK |
 
 ---
 
@@ -71,12 +79,14 @@ OSM / manual sources
   -> data/scripts/scrape/phase3_events.py -> data/world/events.yaml
   -> data/scripts/scrape/phase4_narratives.py -> data/world/narratives.yaml, data/world/beliefs.yaml
   -> data/scripts/scrape/phase5_tensions.py -> data/world/tensions.yaml
+  -> data/world/places_minor.yaml, data/world/things.yaml, data/world/thing_locations.yaml, data/world/thing_ownership.yaml
   -> data/scripts/inject_world.py -> FalkorDB (GraphOps)
 ```
 
 Notes:
 - Each phase reads prior phase outputs from `data/world/`.
 - `data/scripts/inject_world.py` maps YAML fields into graph nodes/edges and normalizes values (e.g., travel difficulty).
+- `data/world/places_minor.yaml` is merged into `places.yaml` during injection; thing YAMLs are loaded directly for Thing, LOCATED_AT, and CARRIES relationships.
 
 ---
 

@@ -131,6 +131,12 @@ THIS:            SYNC_World_Scraping.md (you are here)
 - **Why:** Ensure all implementation references resolve to existing paths.
 - **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
 
+### 2025-12-19: Documented thing and minor-place YAML inputs
+
+- **What:** Added missing world data YAML files (minor places, things, thing links) to the implementation architecture doc, along with injection notes.
+- **Why:** Keep the implementation doc aligned with the YAML inputs actually loaded by `data/scripts/inject_world.py`.
+- **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
+
 ---
 
 ## Blockers Resolved

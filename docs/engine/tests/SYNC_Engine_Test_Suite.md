@@ -40,6 +40,13 @@ No active work.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Verified implementation doc file references
+
+- **What:** Confirmed `IMPLEMENTATION_Test_File_Layout.md` references concrete `engine/tests/**` paths instead of missing or wildcard tokens.
+- **Why:** Close the BROKEN_IMPL_LINK repair for test file layout references.
+- **Files:** `docs/engine/tests/IMPLEMENTATION_Test_File_Layout.md`, `docs/engine/tests/SYNC_Engine_Test_Suite.md`
+- **Struggles/Insights:** The implementation doc already used full paths, so no doc edits were required beyond recording verification.
+
 ### 2025-12-19: Documented engine tests module
 
 - **What:** Added module docs and mapping for `engine/tests`.

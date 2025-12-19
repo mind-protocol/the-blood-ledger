@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Updated the world scraping implementation doc to include minor place and thing YAML inputs loaded by `data/scripts/inject_world.py`; ran `ngram validate` (pre-existing schema/product/network/storms doc gaps and broken CHAIN links remain).
+
 Documented the legacy narrator prompt file in the narrator implementation doc so the file list matches the module directory, and logged the change in `docs/agents/narrator/SYNC_Narrator.md`. Ran `ngram validate`; existing schema/product/network/storms documentation gaps and broken CHAIN links remain.
 
 Repaired the engine tests implementation doc by replacing bare filenames and
