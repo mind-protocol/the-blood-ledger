@@ -59,6 +59,7 @@ Frontend map UI exists under `frontend/components/map` but is static demo data.
 | `PATTERNS_Map.md` | Why this design | Updated, concise |
 | `BEHAVIORS_Map.md` | Visibility, interaction | Updated, concise |
 | `ALGORITHM_Map.md` | Entry point | New split |
+| `ALGORITHM_Rendering.md` | Rendering summary | Added template-complete stub |
 | `ALGORITHM/ALGORITHM_Rendering_Pipeline.md` | Rendering pipeline | New split |
 | `ALGORITHM/ALGORITHM_Places.md` | Places | New split |
 | `ALGORITHM/ALGORITHM_Routes.md` | Routes | New split |
@@ -90,6 +91,15 @@ Frontend map UI exists under `frontend/components/map` but is static demo data.
 
 Files:
 - `docs/world/map/BEHAVIORS_Map.md`
+
+### 2025-12-19: Added rendering summary algorithm stub
+
+- Added `docs/world/map/ALGORITHM_Rendering.md` as a template-complete summary
+  that points to the canonical rendering pipeline doc and aligns with the
+  map algorithm chain.
+
+Files:
+- `docs/world/map/ALGORITHM_Rendering.md`
 
 ### 2025-12-19: Expanded map patterns template sections
 
