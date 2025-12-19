@@ -11,6 +11,11 @@ UPDATED_BY: Codex (repair agent)
 
 Completed the missing template sections in `docs/frontend/scene/BEHAVIORS_Scene.md` (behaviors, inputs/outputs, edge cases, anti-behaviors, gaps) and logged the update in `docs/frontend/scene/SYNC_Scene.md` for repair #16.
 
+Filled missing SCOPE and INSPIRATIONS sections in
+`docs/frontend/map/PATTERNS_Parchment_Map_View.md`, expanded short template
+entries, and noted the update in `docs/frontend/map/SYNC_Map_View.md` for
+repair #16.
+
 Filled missing test template sections in `docs/frontend/scene/TEST_Scene.md`
 (strategy, unit/integration coverage, edge cases, run guidance, gaps, flaky
 tracking) and logged the update in `docs/frontend/scene/SYNC_Scene.md` for

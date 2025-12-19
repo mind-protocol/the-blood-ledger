@@ -33,6 +33,14 @@ provide hover/select affordances for place detail without mutating game state.
 
 ---
 
+## SCOPE
+
+This pattern covers the full-screen map view, its canvas layering strategy,
+visibility-driven reveals, and read-only interaction affordances for map detail
+inspection during play sessions.
+
+---
+
 ## PRINCIPLES
 
 ### Principle 1: Layered Canvas Rendering
@@ -63,18 +71,25 @@ keeping the map focused on exploration.
 
 ---
 
+## INSPIRATIONS
+
+- Hand-illustrated atlas spreads with worn parchment textures and inked routes.
+- Strategy maps that reveal territory through fog-of-war gradients and halos.
+
+---
+
 ## WHAT THIS DOES NOT SOLVE
 
-- Live travel or backend-driven state updates.
-- Persisting player travel decisions from the map itself.
-- Editing map data from the UI.
-- Mobile-first interaction or pinch/zoom controls.
+- Live travel or backend-driven state updates; the map stays read-only today.
+- Persisting player travel decisions from the map itself or autoplaying routes.
+- Editing map data from the UI or authoring new routes directly in the client.
+- Mobile-first interaction patterns such as pinch/zoom or drag inertia support.
 
 ---
 
 ## GAPS / IDEAS / QUESTIONS
 
-- [ ] Replace sample data with backend-provided map state.
-- [ ] Wire travel actions into the real playthrough flow.
-- [ ] Decide how map zoom/pan should behave for large regions.
-- [ ] Confirm visibility radius tuning for rumored vs known places.
+- [ ] Replace sample data with backend-provided map state once APIs are ready.
+- [ ] Wire travel actions into the real playthrough flow with confirmations.
+- [ ] Decide how map zoom/pan should behave for large regions or continents.
+- [ ] Confirm visibility radius tuning for rumored vs known places in playtests.
