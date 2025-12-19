@@ -25,8 +25,8 @@ SYNC:            ./SYNC_Ops_Scripts.md
 
 | File | Role | Entry Point | Notes |
 |------|------|-------------|-------|
-| `engine/scripts/seed_moment_sample.py` | Seed sample moment YAML into FalkorDB | `main()` | Uses `engine.physics.graph.GraphOps`. |
-| `engine/scripts/generate_images_for_existing.py` | Backfill missing node images | `main()` | Uses `db.graph_ops` + image generation helper. |
+| `engine/scripts/seed_moment_sample.py` | Seed sample moment YAML into FalkorDB | `main()` | Uses `engine/physics/graph/graph_ops.py` (`GraphOps`). |
+| `engine/scripts/generate_images_for_existing.py` | Backfill missing node images | `main()` | Uses `engine/physics/graph/graph_ops.py` (`GraphOps`) + `engine/physics/graph/graph_ops_image.py`. |
 | `engine/scripts/check_injection.py` | Injection queue hook reader | `main()` | Documented under `docs/infrastructure/async/`. |
 | `engine/scripts/inject_to_narrator.py` | Manual injection CLI | `main()` | Documented under `docs/infrastructure/async/`. |
 
@@ -34,8 +34,8 @@ SYNC:            ./SYNC_Ops_Scripts.md
 
 ## ENTRY POINTS
 
-- `python engine/scripts/seed_moment_sample.py`
-- `python engine/scripts/generate_images_for_existing.py`
+- `engine/scripts/seed_moment_sample.py`
+- `engine/scripts/generate_images_for_existing.py`
 
 ---
 

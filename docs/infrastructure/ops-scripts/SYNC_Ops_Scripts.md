@@ -51,6 +51,12 @@ assets. Injection-related scripts in the same directory are documented under
 
 ## RECENT CHANGES
 
+### 2025-12-19: Fixed ops-scripts implementation links
+
+- **What:** Updated ops-scripts implementation doc links to point at existing engine paths.
+- **Why:** Repair task flagged broken file references in the implementation doc.
+- **Files:** `docs/infrastructure/ops-scripts/IMPLEMENTATION_Engine_Scripts_Layout.md`
+
 ### 2025-12-19: Documented ops scripts module
 
 - **What:** Added minimal docs and module mapping for engine operational scripts.
