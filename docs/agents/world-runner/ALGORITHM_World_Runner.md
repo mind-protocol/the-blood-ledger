@@ -8,9 +8,35 @@ STATUS: Canonical
 
 ---
 
+## OVERVIEW
+
+The World Runner advances time in discrete ticks, inspects tension flips, and
+returns an Injection that either interrupts the Narrator (player-impacting
+flip) or completes the requested duration with accumulated world changes and
+news. The loop is intentionally short-lived and stateless across calls.
+
+---
+
+## DATA STRUCTURES
+
+- **Injection:** Structured response containing interrupt/completion flags,
+  elapsed time, remaining time, event payload, world changes, and news items.
+- **Flip:** Result of a tick when tension crosses a breaking threshold, with
+  location, involved characters, urgency, and references to source tensions.
+- **PlayerContext:** Player location/route, companions, and time context used
+  by `affects_player` for intersection decisions.
+- **WorldChange:** Background mutation records derived from non-player flips.
+- **NewsItem:** Propagated summary items for changes that did not interrupt.
+
+---
+
 ## Core Principle: Runner Owns the Tick Loop
 
 The Runner advances time in 5-minute ticks, checks for flips, and stops only when the player is affected or time runs out.
+
+---
+
+## ALGORITHM: run_world
 
 ```python
 def run_world(action, max_minutes, player_context):
@@ -82,6 +108,59 @@ def affects_player(flip, player_context, current_tick):
 
 ---
 
+## KEY DECISIONS
+
+- **Fixed tick size (5 minutes):** Keeps loop predictable and bounded while
+  still allowing timely interrupts for player-facing flips.
+- **Early return on player impact:** Prioritizes immediate narrative response
+  over accumulating further background changes in the same call.
+- **Clustered context cap (~30 nodes):** Limits injection size while preserving
+  enough related graph context for the Narrator to write coherently.
+
+---
+
+## DATA FLOW
+
+1. Input action + player context enter `run_world`.
+2. Tick calls `run_graph_tick`, producing flips and updated tension state.
+3. Player-impacting flips create an `Event` and short-circuit to Injection.
+4. Non-player flips create background `WorldChange` mutations and `NewsItem`s.
+5. Injection (interrupted or completed) is returned to the Narrator pipeline.
+
+---
+
+## COMPLEXITY
+
+Let **T** be the number of ticks (`max_minutes / 5`), **F** flips per tick, and
+**N** news items emitted. The loop is `O(T * (F + N))` in the common case, with
+constant-time checks for player intersection per flip. Memory is `O(F + N)`
+for accumulated changes within a single call.
+
+---
+
+## HELPER FUNCTIONS
+
+- `run_graph_tick(elapsed_minutes)` handles tension propagation and flip
+  detection for a single tick.
+- `affects_player(flip, player_context, current_tick)` decides whether a flip
+  is player-impacting based on location, companions, and urgency.
+- `process_flip_for_player(flip)` builds the event payload for the Injection.
+- `process_flip_background(flip)` produces non-interrupting world changes.
+- `propagate_news(minutes)` aggregates news items based on elapsed time.
+
+---
+
+## INTERACTIONS
+
+- **GraphQueries/GraphOps:** Tick processing reads current graph state and
+  persists background changes derived from flips.
+- **Narrator service:** Receives the Injection and turns it into player-facing
+  narrative content or summaries.
+- **Async injection queue:** World Runner outputs may be serialized for the
+  narrator injection pipeline depending on orchestration mode.
+
+---
+
 ## Stateless Between Calls
 
 Each call is independent. The graph is the memory.
@@ -91,6 +170,17 @@ Each call is independent. The graph is the memory.
 ## Cluster Context for Flips
 
 For any flip, return a compact cluster of linked nodes (tension, narratives, key characters, and places). Cap total nodes (~30). This gives the Narrator enough context to write the scene without dumping the full graph.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- Should tick size be adaptive for very long actions to reduce runtime while
+  preserving interrupt sensitivity?
+- News propagation rules are high-level; decide if distance/importance weights
+  should be formalized in validation or tests.
+- Clarify whether background changes are persisted immediately or batched
+  for atomic application after the loop finishes.
 
 ---
 

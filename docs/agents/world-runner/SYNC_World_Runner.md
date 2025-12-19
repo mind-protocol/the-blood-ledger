@@ -61,6 +61,9 @@ STATUS: CANONICAL — fully implemented and documented
 - Condensed PATTERNS/BEHAVIORS/ALGORITHM to remove duplicated interface examples.
 - Moved verbose examples and JSON schema into `archive/SYNC_archive_2024-12.md`.
 - Simplified TOOL_REFERENCE and INPUT_REFERENCE to keep current, high-signal content.
+- Expanded `ALGORITHM_World_Runner.md` with the missing template sections
+  (overview, structures, key decisions, data flow, complexity, helpers,
+  interactions, gaps) for repair #16.
 
 ---
 
@@ -68,6 +71,8 @@ STATUS: CANONICAL — fully implemented and documented
 
 ### Remarks
 - The doc chain repeated large schema/examples across multiple files; consolidating references reduced redundancy.
+- The algorithm doc now carries explicit helper and data-flow sections to
+  keep the procedural description aligned with orchestration behavior.
 
 ### Suggestions
 - [ ] Consider adding a short link in `agents/world_runner/CLAUDE.md` pointing to the archived full JSON schema if prompt usage needs it.
