@@ -149,6 +149,7 @@ Repair task appears stale relative to current code.
 - Reverified repair 00-INCOMPLETE_IMPL-health-check_health; functions were already implemented.
 - `ngram validate` still reports pre-existing missing docs in `docs/schema/` and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 - `engine/models/base.py` comparison helpers already exist; repair 04-INCOMPLETE_IMPL-models-base required no code changes.
+- Attempted `python3 -m pytest` for link model helper tests; pytest failed to load due to missing `pytest_xprocess`.
 - Link model property helpers in `engine/models/links.py` already exist; repair 05-INCOMPLETE_IMPL-models-links required no code changes.
 - `engine/models/nodes.py` helper properties already exist; repair 06-INCOMPLETE_IMPL-models-nodes required no code changes.
 
