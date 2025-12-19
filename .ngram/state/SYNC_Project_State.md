@@ -16,7 +16,9 @@ Frontend-backend integration fixes for playthrough flow:
 - Implemented free text input in CenterStage.tsx (calls `sendMoment` API)
 - Added emoji fallbacks for player/character avatars (👤/🗣️)
 - Updated API IMPLEMENTATION and SYNC docs
+Re-verified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) are implemented; no code changes required for repair 04-INCOMPLETE_IMPL-models-base.
 Verified health check helper implementations in `engine/graph/health/check_health.py` for repair 00-INCOMPLETE_IMPL-health-check_health; no code changes required.
+Verified moment processor functions for repair 03-INCOMPLETE_IMPL-memory-moment_processor; no code changes required.
 
 Previous: Regenerated global repository map (`docs/map.md`). Fixed `modules.yaml` world-runner code pattern.
 Logged repair 02-INCOMPLETE_IMPL-history-conversations verification in `docs/infrastructure/history/SYNC_History.md` (no code changes).
