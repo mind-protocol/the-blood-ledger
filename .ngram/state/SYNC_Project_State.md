@@ -30,6 +30,8 @@ code changes required. Updated `docs/physics/graph/SYNC_Graph.md` and ran
 
 Revalidated `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) with line references (`engine/models/links.py:66`, `engine/models/links.py:120`, `engine/models/links.py:140`, `engine/models/links.py:160`); implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
 
+Logged the current repair run in `docs/schema/models/SYNC_Schema_Models.md` for the link helper verification.
+
 Updated `docs/schema/models/SYNC_Schema_Models.md` to note the current repair run verification for link helper properties.
 
 Revalidated `engine/models/nodes.py` helper properties (`is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, `can_surface`) for the current incomplete-impl repair; implementations already present, no code changes required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
