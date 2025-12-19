@@ -9,6 +9,9 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Logged the BROKEN_IMPL_LINK verification for the engine test suite
+implementation doc and noted the latest `ngram validate` results.
+
 Aligned narrator documentation with the current prompt builder location by correcting input reference script paths, refreshed narrator implementation file metadata, added a DOCS reference in `engine/infrastructure/orchestration/narrator.py`, and mapped the narrator module in `modules.yaml`.
 
 Updated the world scraping implementation doc to include minor place and thing YAML inputs loaded by `data/scripts/inject_world.py`; ran `ngram validate` (pre-existing schema/product/network/storms doc gaps and broken CHAIN links remain).
