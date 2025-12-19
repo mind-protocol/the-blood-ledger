@@ -70,6 +70,7 @@ vision chain before further revisions or expansion.
 - 2025-12-19: Expanded TEST_Vision sections (strategy, coverage, gaps, run guidance) to resolve doc-template drift for repair #16.
 - 2025-12-19: Verified TEST_Vision template completeness for repair #16; no further content changes required.
 - 2025-12-19: Repair 125 follow-up check confirmed TEST_Vision stays template-complete.
+- 2025-12-19: Added playtest log guidance to TEST_Vision test strategy for repair #16.
 - 2025-12-19: Fixed broken IMPLEMENTATION references and validated the chain.
 - 2025-12-19: Condensed PATTERNS/BEHAVIORS content and archived long-form notes.
 - 2025-12-19: Updated the file map/line counts in IMPLEMENTATION to match edits.

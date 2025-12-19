@@ -9,14 +9,25 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/design/opening/VALIDATION_Opening.md` with missing template
+sections (properties, error conditions, test coverage, verification procedure,
+sync status) and recorded the update in `docs/design/opening/SYNC_Opening.md`
+for repair #16.
+
 Expanded `docs/design/opening/TEST_Opening.md` with missing test template
 sections (strategy, unit/integration coverage, edge cases, run guidance,
 gaps, flaky tracking) and logged the update in
 `docs/design/opening/SYNC_Opening.md` for repair #16.
 
+Expanded `docs/design/opening/ALGORITHM_Opening.md` with the missing template
+sections (overview, data structures, algorithm, decisions, data flow,
+complexity, helpers, interactions, gaps) and logged the update in
+`docs/design/opening/SYNC_Opening.md` for repair #16.
+
 Updated `docs/design/BEHAVIORS_Vision.md` with explicit CHAIN and BEHAVIORS
-sections to satisfy the template requirements for repair #16 and recorded the
-change in `docs/design/SYNC_Vision.md`.
+sections (removing duplicate CHAIN/BEHAVIORS blocks) to satisfy the template
+requirements for repair #16 and recorded the change in
+`docs/design/SYNC_Vision.md`.
 Ran `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
 gaps in schema/product/network/storms modules).
 
@@ -32,6 +43,10 @@ repair #16 without further content edits.
 
 Recorded repair 125 verification for the vision test template completeness so
 the DOC_TEMPLATE_DRIFT audit trail stays explicit.
+
+Added a playtest log guidance sentence to the TEST STRATEGY section in
+`docs/design/TEST_Vision.md` and recorded the change in
+`docs/design/SYNC_Vision.md` for repair #16.
 
 Expanded `docs/design/ALGORITHM_Vision.md` with missing template sections
 (chain, overview, data structures, algorithm, decisions, data flow, complexity,

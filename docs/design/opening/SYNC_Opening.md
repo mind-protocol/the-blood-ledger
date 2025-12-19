@@ -76,10 +76,14 @@ to avoid drift warnings in the doc health checks.
 
 ## RECENT CHANGES
 
+- 2025-12-19: Expanded ALGORITHM_Opening.md with full template sections to
+  document the SceneTree generation flow for repair #16.
 - 2025-12-19: Filled missing SYNC template sections and expanded notes to
   satisfy DOC_TEMPLATE_DRIFT checks for repair #16.
 - 2025-12-19: Expanded TEST_Opening.md with full test template sections and
   noted current gaps for repair #16.
+- 2025-12-19: Expanded VALIDATION_Opening.md with properties, error conditions,
+  test coverage, verification procedure, and sync status for repair #16.
 
 ---
 
@@ -147,6 +151,7 @@ opening behavior, avoiding changes that would imply unverified behavior.
 
 ### Remarks
 - TEST_Opening.md now reflects intended coverage but remains unimplemented in code.
+- ALGORITHM_Opening.md now documents the opening SceneTree construction flow.
 
 ### Suggestions
 - [ ] Add a lightweight test harness for opening.json replay in engine/tests.

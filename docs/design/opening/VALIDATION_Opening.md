@@ -90,6 +90,22 @@ Things that must always be true:
 6. **Something concrete changes** — The relationship shifts
 
 ═══════════════════════════════════════════════════════════════════════════════
+## PROPERTIES
+═══════════════════════════════════════════════════════════════════════════════
+
+The opening should consistently produce a usable player profile, establish a
+named companion dynamic, and yield at least one concrete future hook that the
+narrator can reference without inventing new facts.
+
+═══════════════════════════════════════════════════════════════════════════════
+## ERROR CONDITIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+Validation fails if the opening ends without a stated relationship shift,
+if Aldric contradicts the player’s answers, or if the questions devolve into
+menu-like prompts that prevent freeform responses.
+
+═══════════════════════════════════════════════════════════════════════════════
 ## METRICS (if we instrument)
 ═══════════════════════════════════════════════════════════════════════════════
 
@@ -135,6 +151,22 @@ Things that must always be true:
 - Expected: Aldric reveals himself, mutual vulnerability, strongest bond
 
 ═══════════════════════════════════════════════════════════════════════════════
+## TEST COVERAGE
+═══════════════════════════════════════════════════════════════════════════════
+
+Coverage should include scripted transcript replays for each scenario above,
+assertions that PROFILE_NOTES.md captures the inferred profile, and checks that
+the post-opening scene tree embeds at least one callback seed.
+
+═══════════════════════════════════════════════════════════════════════════════
+## VERIFICATION PROCEDURE
+═══════════════════════════════════════════════════════════════════════════════
+
+Run the opening flow in a controlled playthrough, review the generated
+PROFILE_NOTES.md and scene tree output, then confirm the narrator can cite the
+opening in the next scene without contradicting captured answers.
+
+═══════════════════════════════════════════════════════════════════════════════
 ## POST-OPENING VERIFICATION
 ═══════════════════════════════════════════════════════════════════════════════
 
@@ -146,6 +178,15 @@ After the opening, verify the narrator can:
 4. **Match companion behavior** — Aldric acts as agreed
 5. **Match complexity** — Simple or intricate based on appetite
 6. **Match darkness** — Appropriate tone
+
+═══════════════════════════════════════════════════════════════════════════════
+## SYNC STATUS
+═══════════════════════════════════════════════════════════════════════════════
+
+Validation guidance aligns with the current scripted opening flow in
+`docs/design/opening/opening.json` and the bootstrap path in
+`engine/infrastructure/api/playthroughs.py`, with tests still pending in
+`docs/design/opening/TEST_Opening.md`.
 
 ═══════════════════════════════════════════════════════════════════════════════
 ## GAPS / IDEAS / QUESTIONS

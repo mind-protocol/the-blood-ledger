@@ -43,7 +43,8 @@ SYNC:        ./SYNC_Vision.md
 
 Focus on mixed-method validation: qualitative playtests for experiential goals,
 paired with lightweight instrumentation and checklist-based reviews so design
-claims can be traced to specific observations rather than anecdotes.
+claims can be traced to specific observations rather than anecdotes. Capture
+notes in a shared playtest log so session results can be compared over time.
 
 ---
 
