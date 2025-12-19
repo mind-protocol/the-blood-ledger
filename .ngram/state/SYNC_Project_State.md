@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/world/map/PATTERNS_Map.md` to deepen the template sections
+(problem/pattern/principles/dependencies/scope/gaps), removed the redundant
+design-principles list, and logged the update in `docs/world/map/SYNC_Map.md`
+for repair #16. Ran `ngram validate`; failures remain pre-existing (missing
+VIEW and doc-chain gaps in schema/product/network/storms modules).
+
 Reviewed commit `684b456` for `docs/agents/world-runner/BEHAVIORS_World_Runner.md`
 and logged duplicated template sections as Review Observations in
 `docs/agents/world-runner/SYNC_World_Runner.md`.

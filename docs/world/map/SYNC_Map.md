@@ -93,9 +93,9 @@ Files:
 
 ### 2025-12-19: Expanded map patterns template sections
 
-- Added missing PATTERNS template sections (problem, pattern, principles,
-  dependencies, inspirations, scope, gaps) to bring the map module into
-  DOC_TEMPLATE_DRIFT compliance.
+- Filled the PATTERNS template sections with expanded context, added a
+  hand-drawn rendering principle, and removed the redundant design-principles
+  list to keep the template canonical and non-duplicative.
 
 Files:
 - `docs/world/map/PATTERNS_Map.md`
@@ -133,6 +133,7 @@ Files:
 
 ### Remarks
 - The algorithm spec was duplicated and overly verbose, obscuring canonical rules.
+- The map patterns doc now follows the template without redundant sections.
 
 ### Suggestions
 - [ ] Add automated tests for semantic search to match VALIDATION invariants.
