@@ -273,7 +273,7 @@ pause ──set_speed('1x')──▶ 1x
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `SALIENCE_THRESHOLD` | `engine/infrastructure/tempo/tempo_controller.py:24` | 0.3 | Min salience for surfacing |
+| `SALIENCE_THRESHOLD` | `engine/infrastructure/tempo/tempo_controller.py:24` | `SALIENCE_THRESHOLD` | Min salience for surfacing |
 | `MAX_MOMENTS_PER_TICK` | `engine/infrastructure/tempo/tempo_controller.py:25` | `3` | Max moments recorded per tick |
 | `BACKPRESSURE_LIMIT` | `engine/infrastructure/tempo/tempo_controller.py:26` | `5` | Queue size before slowdown |
 

@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Updated the tempo implementation doc to replace the `SALIENCE_THRESHOLD` default
+literal with the constant label so link checks stop flagging it as a missing
+file token. Ran `ngram validate`; pre-existing schema/product/network/storms
+documentation gaps and broken CHAIN links remain.
+
 Repaired broken ops-scripts implementation doc links by pointing to existing
 `engine/` script paths and GraphOps/image helper files. Logged in
 `docs/infrastructure/ops-scripts/SYNC_Ops_Scripts.md`.

@@ -138,6 +138,12 @@ None.
 
 ## Recent Changes
 
+### 2025-12-19: Repair tempo config token reference
+
+- Replaced the `SALIENCE_THRESHOLD` default literal in
+  `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md` with a constant label to
+  avoid non-file token link checks.
+
 ### 2025-12-19: Repair broken implementation links
 
 - Normalized `IMPLEMENTATION_Tempo.md` references to full paths for
