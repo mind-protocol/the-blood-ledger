@@ -22,6 +22,7 @@ Repair 01-INCOMPLETE_IMPL-history-conversations reconfirmed helper implementatio
 Updated the implementation doc chain, added a DOCS reference in `engine/infrastructure/history/service.py`, and mapped the history module in `modules.yaml`.
 Added implementation architecture doc and linked the history doc chain.
 Verified repair 57-UNDOCUMENTED-infrastructure-history is already resolved; docs and module mapping exist, no code changes required.
+Repaired broken implementation doc references by replacing method-only tokens and planned file paths with concrete file paths or planned-module labels.
 
 ## IN PROGRESS
 

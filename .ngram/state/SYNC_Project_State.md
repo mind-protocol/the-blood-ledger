@@ -15,6 +15,8 @@ Repaired broken file references in `docs/infrastructure/scene-memory/IMPLEMENTAT
 
 Repaired broken method-qualified references in the map implementation doc by pointing semantic search mentions at `engine/world/map/semantic.py` and logged the change in `docs/world/map/SYNC_Map.md`.
 
+Repaired broken history implementation doc links by replacing method-only tokens and planned file references with concrete file paths or planned-module labels; logged in `docs/infrastructure/history/SYNC_History.md`.
+
 Repaired broken file references in the world scraping implementation doc by normalizing YAML output paths, GraphOps location, and extraction targets, then logged the update in `docs/world/scraping/SYNC_World_Scraping.md`.
 Normalized remaining glob-style YAML references in the world scraping implementation doc to concrete directory paths, and logged the update in `docs/world/scraping/SYNC_World_Scraping.md`.
 

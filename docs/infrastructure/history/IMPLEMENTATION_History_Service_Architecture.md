@@ -30,8 +30,8 @@ IMPL:           engine/infrastructure/history/service.py
 ```
 engine/infrastructure/history/
 ├── __init__.py          # Module exports and usage examples
-├── service.py           # HistoryService query/record workflows
-├── conversations.py     # ConversationThread file handling
+├── engine/infrastructure/history/service.py           # HistoryService query/record workflows
+├── engine/infrastructure/history/conversations.py     # ConversationThread file handling
 └── README.md            # Implementation overview and examples
 ```
 
@@ -89,9 +89,9 @@ Why this pattern:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| `HistoryService.query_history` | `engine/infrastructure/history/service.py:54` | Narrator/history queries |
-| `HistoryService.record_player_history` | `engine/infrastructure/history/service.py:208` | Scene completion |
-| `HistoryService.record_world_history` | `engine/infrastructure/history/service.py:312` | World runner events |
+| `HistoryService method query_history` | `engine/infrastructure/history/service.py:54` | Narrator/history queries |
+| `HistoryService method record_player_history` | `engine/infrastructure/history/service.py:208` | Scene completion |
+| `HistoryService method record_world_history` | `engine/infrastructure/history/service.py:312` | World runner events |
 
 ---
 
@@ -101,29 +101,29 @@ Why this pattern:
 
 ```
 Scene outcome
-  -> HistoryService.record_player_history()
-    -> ConversationThread.append_section()
-    -> HistoryService._create_narrative_node()
-    -> HistoryService._create_belief_edge() for each witness
+  -> HistoryService record_player_history
+    -> ConversationThread append_section
+    -> HistoryService _create_narrative_node
+    -> HistoryService _create_belief_edge for each witness
 ```
 
 ### World-Generated Recording
 
 ```
 World event
-  -> HistoryService.record_world_history()
-    -> HistoryService._create_narrative_node()
-    -> HistoryService._create_belief_edge() for witnesses
-    -> HistoryService._propagate_beliefs() (optional)
+  -> HistoryService record_world_history
+    -> HistoryService _create_narrative_node
+    -> HistoryService _create_belief_edge for witnesses
+    -> HistoryService _propagate_beliefs (optional)
 ```
 
 ### Query Flow
 
 ```
 Narrator query
-  -> HistoryService.query_history()
+  -> HistoryService query_history
     -> Graph query for BELIEVES + Narrative
-    -> ConversationThread.read_section() when source reference exists
+    -> ConversationThread read_section when source reference exists
 ```
 
 ---
@@ -141,10 +141,10 @@ engine/infrastructure/history/service.py
 
 | Package | Used For | Imported By |
 |---------|----------|-------------|
-| `logging` | runtime logging | `service.py`, `conversations.py` |
-| `uuid` | narrative id creation | `service.py` |
-| `datetime` | timestamp parsing support | `service.py` |
-| `pathlib` | file path management | `conversations.py` |
+| `logging` | runtime logging | `engine/infrastructure/history/service.py`, `engine/infrastructure/history/conversations.py` |
+| `uuid` | narrative id creation | `engine/infrastructure/history/service.py` |
+| `datetime` | timestamp parsing support | `engine/infrastructure/history/service.py` |
+| `pathlib` | file path management | `engine/infrastructure/history/conversations.py` |
 
 ---
 
@@ -152,8 +152,8 @@ engine/infrastructure/history/service.py
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| Conversations base dir | `ConversationThread.base_dir` | instance | set on init, reused |
-| Narrative ids | `HistoryService.record_*` | local | per call |
+| Conversations base dir | `ConversationThread base_dir` | instance | set on init, reused |
+| Narrative ids | `HistoryService record_* methods` | local | per call |
 
 ---
 
@@ -161,7 +161,7 @@ engine/infrastructure/history/service.py
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `conversations_dir` | `HistoryService.__init__` | required | Base directory for conversation files |
+| `conversations_dir` | `HistoryService init` | required | Base directory for conversation files |
 
 ---
 
@@ -171,7 +171,7 @@ engine/infrastructure/history/service.py
 
 | File | Line | Reference |
 |------|------|-----------|
-| `engine/infrastructure/history/service.py` | 1 | `DOCS: docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md` |
+| `engine/infrastructure/history/service.py` | 1 | `docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md` |
 
 ### Docs -> Code
 
@@ -190,8 +190,8 @@ engine/infrastructure/history/service.py
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `engine/infrastructure/history/service.py` | ~563L | <400L | `engine/infrastructure/history/queries.py` | `query_history`, `get_shared_history`, `who_knows` |
-| `engine/infrastructure/history/service.py` | ~563L | <400L | `engine/infrastructure/history/recording.py` | `record_*` and `_propagate_beliefs` helpers |
+| `engine/infrastructure/history/service.py` | ~563L | <400L | history queries module (planned) | `query_history`, `get_shared_history`, `who_knows` |
+| `engine/infrastructure/history/service.py` | ~563L | <400L | history recording module (planned) | `record_*` and `_propagate_beliefs` helpers |
 
 ### Missing Implementation
 
