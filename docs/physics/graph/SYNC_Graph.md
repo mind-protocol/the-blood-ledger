@@ -2,115 +2,100 @@
 
 ```
 UPDATED: 2025-12-19
-STATUS: Documented, not implemented
+STATUS: Implemented, needs API endpoint
 ```
 
 ---
 
-## What Exists
+## What Exists ✓
 
-### Documentation
-- [x] PATTERNS_Graph.md — Core philosophy (energy as attention, computed weight)
-- [x] BEHAVIORS_Graph.md — What the graph does (flow, propagation, decay, pressure, flips, criticality)
-- [x] ALGORITHM_Energy_Flow.md — Per-tick processing with link-type propagation and weight recomputation
-- [x] ALGORITHM_Weight.md — Redirect to ALGORITHM_Energy_Flow.md (deprecated duplicate)
-- [x] VALIDATION_Living_Graph.md — Validation spec tying behaviors to tests and desired feel
-
-### Data
-- [x] `/data/graph.json` — Narrative graph with characters, narratives, tensions
-
-### Frontend
-- [x] Scene tree types that reference graph entities
-- [x] Click → lookup response (graph not queried yet, uses pre-baked trees)
+| Component | Status | Location |
+|-----------|--------|----------|
+| GraphTick | ✓ Complete | `engine/physics/tick.py` |
+| Orchestrator | ✓ Complete | `engine/infrastructure/orchestration/orchestrator.py` |
+| World Runner | ✓ Complete | `engine/infrastructure/orchestration/world_runner.py` |
+| Narrator | ✓ Complete | `engine/infrastructure/orchestration/narrator.py` |
+| API app | ✓ Running | `engine/infrastructure/api/app.py` |
 
 ---
 
-## What's Missing
+## What's Missing: ONE ENDPOINT
 
-### Graph Engine (not started)
-- [ ] Character energy computation
-- [ ] Energy flow (characters → narratives)
-- [ ] Energy propagation (narratives → narratives)
-- [ ] Energy decay
-- [ ] Pressure tick (gradual, scheduled, hybrid)
-- [ ] Flip detection
-- [ ] Weight computation
+### ⚠️ AGENT TASK: Add /api/action endpoint
 
-### Integration (not started)
-- [ ] Orchestrator calls graph engine
-- [ ] Graph engine triggers World Runner on flips
-- [ ] Narrator reads graph for context
+The Orchestrator is built. It calls tick, detects flips, triggers World Runner.
+**But no API endpoint calls it.**
+
+**Add this to `engine/infrastructure/api/app.py`:**
+
+```python
+@app.post("/api/action")
+async def player_action(request: ActionRequest):
+    """
+    Full game loop: narrator → tick → flips → world runner.
+    
+    This is the main gameplay endpoint. Use for:
+    - Free text input
+    - Clicking words that need narrator response
+    - Any action that should advance time
+    """
+    orchestrator = get_orchestrator(request.playthrough_id)
+    
+    if request.stream:
+        # TODO: SSE streaming version
+        pass
+    
+    result = orchestrator.process_action(
+        player_action=request.action,
+        player_id=request.player_id,
+        player_location=request.location
+    )
+    return result
+```
+
+**ActionRequest already exists in app.py:**
+```python
+class ActionRequest(BaseModel):
+    playthrough_id: str
+    action: str
+    player_id: str = "char_player"
+    location: Optional[str] = None
+    stream: bool = False
+```
+
+**After adding:**
+1. Test: `curl -X POST http://localhost:8000/api/action -d '{"playthrough_id":"test","action":"look around"}'`
+2. Verify tick runs (check logs for `[GraphTick]`)
+3. Verify flips trigger World Runner
 
 ---
 
-## Parameters
+## Two Paths (Both Valid)
 
-| Parameter | Value | Notes |
-|-----------|-------|-------|
-| belief_flow_rate | 0.1 | Character → Narrative |
-| propagation_factor | 0.2 | Narrative → Narrative |
-| max_propagation_hops | 3 | Prevents infinite chains |
-| decay_rate | 0.02 (dynamic) | Adjusted by criticality |
-| decay_rate range | 0.005 - 0.1 | Clamped bounds |
-| min_weight | 0.01 | Never fully zero |
-| base_rate (pressure) | 0.001/min | |
-| default_breaking_point | 0.9 | |
-| tick_threshold | 5 min | |
-| max_cascade_depth | 5 | |
+| Path | Endpoint | Use Case |
+|------|----------|----------|
+| Instant | `/api/moment/click` | Quick clicks, weight updates, no LLM |
+| Full Loop | `/api/action` (ADD THIS) | Narrator response, time passes, tick runs |
+
+Frontend should use:
+- Moment click → instant feedback
+- Action → when narrator response needed
 
 ---
 
-## Criticality Targets
+## Known False Positives
 
-The Narrator maintains the system near critical threshold:
-
-| Measure | Target |
-|---------|--------|
-| Average pressure | 0.4 - 0.6 |
-| Max pressure | At least one > 0.7 |
-| Break frequency | 0.5 - 2.0 per game-hour |
-
----
-
-## Open Questions
-
-1. **Where does graph engine run?**
-   - Python script? TypeScript? Same as orchestrator?
-
-2. **Graph storage during play**
-   - JSON files? In-memory? FalkorDB?
-
-3. **Tick timing**
-   - Who triggers ticks? Narrator's time_elapsed? Real time?
+If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
+- `tick.py` — fully implemented
+- `orchestrator.py` — fully implemented  
+- `graph_ops_events.py` — mutation listeners optional
 
 ---
 
 ## Recent Changes
 
-### 2025-12-19: Consolidated weight algorithm docs
-
-- Redirected `ALGORITHM_Weight.md` to the canonical `ALGORITHM_Energy_Flow.md` to remove duplication.
-
-### 2025-12-19: Verified graph health check helpers
-
-- Confirmed `engine/graph/health/check_health.py` already implements health report helpers; repair task marked stale.
-
----
-
-## Agent Observations
-
-### Remarks
-- Health check helper implementations already exist; repair task was stale.
-
----
-
-## ARCHIVE
-
-Older content archived to: `SYNC_Graph_archive_2025-12.md`
-
-
----
-
-## ARCHIVE
-
-Older content archived to: `SYNC_Graph_archive_2025-12.md`
+### 2025-12-19
+- Confirmed tick.py, orchestrator.py are complete
+- Identified gap: no API endpoint calls orchestrator.process_action()
+- Created task spec for agents to add endpoint
+- Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py` are already implemented; repair flagged as INCOMPLETE_IMPL is stale.
