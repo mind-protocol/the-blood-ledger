@@ -9,10 +9,14 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Repaired broken implementation doc links in `docs/world/map/IMPLEMENTATION_Map_Code_Architecture.md` by qualifying method references with the semantic search file path and cleaning the DOCS reference; noted in `docs/world/map/SYNC_Map.md`.
+
 Updated the world-runner implementation doc to remove method-name file references so broken-link checks resolve cleanly, and logged the change in `docs/agents/world-runner/SYNC_World_Runner.md`.
 Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Repaired broken narrator implementation links in `docs/agents/narrator/IMPLEMENTATION_Narrator.md` and logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
+
+Removed the `asyncio.Queue` file reference from `docs/infrastructure/api/IMPLEMENTATION_Api.md` so broken-link checks no longer flag the debug stream doc entry; noted the fix in `docs/infrastructure/api/SYNC_Api.md`.
 
 Repaired broken file references in `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md` by aligning paths to `frontend/**`, removing the missing playthrough route, and logging the change in `docs/frontend/SYNC_Frontend.md`. Ran `ngram validate`; failures remain in pre-existing `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` gaps.
 

@@ -7,6 +7,19 @@ STATUS: Partial implementation - semantic search complete, visual map pending
 
 ---
 
+## CHAIN
+
+PATTERNS:        ./PATTERNS_Map.md
+BEHAVIORS:       ./BEHAVIORS_Map.md
+ALGORITHM:       ./ALGORITHM_Rendering.md
+VALIDATION:      ./VALIDATION_Map_Invariants.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Map_Code_Architecture.md
+TEST:            ./TEST_Map_Test_Coverage.md
+THIS:            ./SYNC_Map.md
+
+IMPL:            engine/world/map/semantic.py
+---
+
 ## Current State
 
 **Documentation complete.** Map system fully specified, with places/routes consolidated into a single algorithm doc. Consolidation verified during repair 17:
@@ -15,6 +28,9 @@ STATUS: Partial implementation - semantic search complete, visual map pending
 - Canvas rendering with 7 layers
 - Visibility system with 4 levels
 - Interaction behaviors
+Documentation repair 65: fixed implementation doc references to point at `engine/world/map/semantic.py` methods and removed the broken `DOCS:` path label.
+
+Documentation chain completed for validation, implementation, and test coverage.
 
 **Partial implementation:**
 
@@ -75,8 +91,11 @@ Player-specific knowledge tracking:
 | Doc | Purpose | Status |
 |-----|---------|--------|
 | `PATTERNS_Map.md` | Why this design | Complete |
-| `ALGORITHM_Rendering.md` | Rendering, places, routes, movement | Complete |
 | `BEHAVIORS_Map.md` | Visibility, interaction | Complete |
+| `ALGORITHM_Rendering.md` | Rendering, places, routes, movement | Complete |
+| `VALIDATION_Map_Invariants.md` | Semantic search invariants | Complete |
+| `IMPLEMENTATION_Map_Code_Architecture.md` | Code architecture | Complete |
+| `TEST_Map_Test_Coverage.md` | Test coverage | Complete (no tests yet) |
 | `SYNC_Map.md` | Current state | This file |
 
 ---
