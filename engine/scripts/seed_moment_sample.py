@@ -6,6 +6,8 @@ Usage:
     python engine/scripts/seed_moment_sample.py \
         --graph blood_ledger --db-host localhost --db-port 6379 \
         --sample data/samples/moment_sample.yaml
+
+DOCS: docs/infrastructure/ops-scripts/PATTERNS_Operational_Seeding_And_Backfill_Scripts.md
 """
 
 import argparse

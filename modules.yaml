@@ -264,6 +264,24 @@ modules:
     notes: |
       Async travel architecture documentation and current queue/SSE scaffolding.
 
+  ops-scripts:
+    code: "engine/scripts/**"
+    docs: "docs/infrastructure/ops-scripts/"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - engine/scripts/seed_moment_sample.py
+      - engine/scripts/generate_images_for_existing.py
+      - engine/scripts/check_injection.py
+      - engine/scripts/inject_to_narrator.py
+    patterns:
+      - "Thin CLI wrappers around shared engine utilities"
+      - "Explicit graph/playthrough targeting"
+    notes: |
+      Operational scripts for seeding sample data, backfilling assets, and
+      managing injection queues. Injection scripts are documented under
+      docs/infrastructure/async/ to avoid duplicating their behavior docs.
+
   frontend:
     code: "frontend/**"
     docs: "docs/frontend/"
@@ -465,3 +483,21 @@ modules:
     notes: |
       Moment graph module stub that anchors documentation for moment nodes,
       lifecycle states, and schema alignment.
+
+  physics:
+    code: "engine/physics/**"
+    docs: "docs/physics/"
+    tests: "engine/tests/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/physics/__init__.py
+      - engine/physics/tick.py
+      - engine/physics/graph/graph_ops.py
+      - engine/physics/graph/graph_queries.py
+    patterns:
+      - "Graph-first physics tick"
+      - "Energy flow with decay and flip detection"
+    notes: |
+      Graph physics engine for energy flow, decay, pressure, and flip detection.
+      Includes graph operations/queries and per-tick propagation logic.

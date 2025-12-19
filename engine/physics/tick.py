@@ -4,6 +4,8 @@ Blood Ledger — Graph Tick
 The per-tick algorithm that runs the living world.
 No LLM - pure math. Fast enough to run frequently.
 
+DOCS: docs/physics/PATTERNS_Physics.md
+
 Algorithm:
 1. Compute character energies
 2. Flow energy from characters to narratives

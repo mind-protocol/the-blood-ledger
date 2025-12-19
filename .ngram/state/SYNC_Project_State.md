@@ -18,7 +18,13 @@ Documented the ops-scripts module for `engine/scripts`, added a module mapping i
 `modules.yaml`, and linked `seed_moment_sample.py` to the new docs with a DOCS
 reference.
 
+Linked `engine/scripts/generate_images_for_existing.py` to the ops-scripts doc
+chain and added a DOCS pointer for `engine/scripts/inject_to_narrator.py` in the
+async implementation docs so `ngram context` resolves for all engine scripts.
+
 Documented the graph health module (`engine/graph/health/**`) with new PATTERNS/SYNC docs, mapped it in `modules.yaml`, and linked `check_health.py` to the doc chain.
+
+Mapped the physics engine module (`engine/physics/**`) to existing docs in `docs/physics/` and added a DOCS reference in `engine/physics/tick.py` for `ngram context`.
 
 Verified the `tools/` documentation mapping (cli-tools + image-generation) already covers `tools/stream_dialogue.py` and `tools/image_generation/*`, and recorded the verification in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
 
