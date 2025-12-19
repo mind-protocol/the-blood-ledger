@@ -7,6 +7,14 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
+**2025-12-19: Repair 12 re-verified physics tick energy helpers**
+- Confirmed `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` already have implementations
+- Repair task marked as stale; no runtime changes
+
+**2025-12-19: Reconfirmed moment graph query helpers already implemented**
+- Rechecked `get_dormant_moments`, `get_wait_triggers`, and `get_moments_attached_to_tension` in `engine/moment_graph/queries.py`
+- Repair task marked as stale; no runtime changes
+
 **2025-12-19: Repair 13 verified physics tick energy helpers already implemented**
 - Confirmed `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` contain concrete logic
 - Repair task marked as stale; no runtime changes
@@ -82,6 +90,12 @@ UPDATED: 2025-12-19
 - Updated CHAIN section to distinguish existing vs planned implementation paths
 
 ---
+
+## GAPS
+
+- Completed: Verified `engine/moment_graph/queries.py` helpers are implemented; no code changes needed.
+- Remaining: Commit the SYNC updates once guidance is given on unrelated working tree changes.
+- Blocker: Unexpected existing modifications in the working tree need user direction before committing.
 
 ## CHAIN
 
@@ -171,6 +185,7 @@ For next session:
 - Moment graph query helpers now normalize FalkorDB dict/list row shapes for traversal workflows.
 - Moment graph traversal helpers in `engine/moment_graph/traversal.py` were already implemented; repair task was stale.
 - Physics tick energy helper implementations in `engine/physics/tick.py` were already present; repair task was stale.
+- Reverified physics tick energy helper implementations for repair 12; no code changes needed.
 
 ### Suggestions
 
