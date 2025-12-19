@@ -1,5 +1,7 @@
 'use client';
 
+// DOCS: docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md
+
 import { useState, useRef, useEffect } from 'react';
 import { ChronicleEntry, Player } from '@/types/game';
 

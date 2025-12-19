@@ -84,6 +84,18 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ## RECENT CHANGES
 
+### 2025-12-19: Link chronicle component to frontend docs
+
+- **What:** Added DOCS reference in `frontend/components/chronicle/ChroniclePanel.tsx`
+- **Why:** Ensure the chronicle component is discoverable via `ngram context`
+- **Files:** `frontend/components/chronicle/ChroniclePanel.tsx`
+
+### 2025-12-19: Link voices component to frontend docs
+
+- **What:** Added DOCS reference in `frontend/components/voices/Voices.tsx` and listed it as a frontend entry point
+- **Why:** Ensure the voices component is discoverable via `ngram context` and mapped in the module manifest
+- **Files:** `frontend/components/voices/Voices.tsx`, `modules.yaml`
+
 ### 2025-12-19: Map frontend module in manifest
 
 - **What:** Added frontend module mapping in modules.yaml for `frontend/**` (covers `frontend/components`)
