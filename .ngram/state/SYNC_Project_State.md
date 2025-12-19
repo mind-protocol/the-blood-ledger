@@ -34,7 +34,8 @@ Filled missing template sections in
 `docs/infrastructure/history/archive/SYNC_History_archive_2025-12.md` to
 resolve DOC_TEMPLATE_DRIFT for repair #16 and logged the update in
 `docs/infrastructure/history/SYNC_History.md`, including the initial archive
-block that previously lacked the full section set.
+block that previously lacked the full section set, and removed the duplicate
+archive block that was missing required headings.
 
 Verified `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md` already
 meets the algorithm template requirements, and recorded the verification in

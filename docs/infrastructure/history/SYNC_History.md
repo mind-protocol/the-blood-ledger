@@ -33,6 +33,8 @@ Expanded the PATTERNS scope statement to meet template length guidance for repai
 Added a SCOPE section to `docs/infrastructure/history/PATTERNS_History.md` to resolve DOC_TEMPLATE_DRIFT (#16).
 Filled missing template sections in `docs/infrastructure/history/archive/SYNC_History_archive_2025-12.md`
 to resolve DOC_TEMPLATE_DRIFT for #16, including the initial archive block.
+Removed the duplicate archive block that lacked required sections to keep the
+history archive snapshot template-compliant.
 Expanded `docs/infrastructure/history/ALGORITHM_History.md` with the missing
 entry-point template sections (overview, algorithm routing, helpers) to resolve
 DOC_TEMPLATE_DRIFT for repair #16. Ran `ngram validate`; failures remain
