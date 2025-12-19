@@ -43,9 +43,9 @@ TOOLS:           tools/stream_dialogue.py
 
 ### 2025-12-19: Fixed broken implementation links
 
-- **What:** Updated narrator implementation doc paths to point at existing files and removed stale narrator_prompt references.
+- **What:** Updated narrator implementation doc paths to point at existing files, clarified prompt ownership in the runtime flow, and pinned playthrough file references to existing examples.
 - **Why:** Repair BROKEN_IMPL_LINK report and keep documentation references accurate.
-- **Files:** `docs/agents/narrator/IMPLEMENTATION_Narrator.md`
+- **Files:** `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/SYNC_Narrator.md`
 
 ### 2025-12-19: Removed duplicate narrator patterns doc
 

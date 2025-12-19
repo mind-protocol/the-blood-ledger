@@ -202,7 +202,7 @@ engine/infrastructure/orchestration/narrator.py
 | Agent memory | Claude `--continue` session | Playthrough | Persistent via CLI state |
 | Graph state | FalkorDB | Global | Persistent |
 | Current scene | Query result | Request | Ephemeral |
-| Player profile | `engine/infrastructure/api/playthroughs.py` creates PROFILE_NOTES.md in the playthrough dir | Playthrough | File-based |
+| Player profile | `playthroughs/kl/PROFILE_NOTES.md` (example, created by `engine/infrastructure/api/playthroughs.py`) | Playthrough | File-based |
 
 ### State Transitions
 
@@ -212,8 +212,8 @@ The narrator doesn't have internal state transitions — it maintains context th
 3. **File reads** — loads player profile, world injections
 
 Orchestrator scene context uses graph world tick when available to derive
-`time_of_day`/`day`, and reads current_action.json from the playthrough
-directory to populate the recent action field.
+`time_of_day`/`day`, and reads `playthroughs/default/current_action.json` to
+populate the recent action field.
 
 ---
 
@@ -224,10 +224,11 @@ directory to populate the recent action field.
 ```
 1. Orchestrator starts
 2. On first player action:
-   a. Build scene context (narrator.py `_build_prompt`)
-   b. Invoke Claude CLI (first call, no --continue)
-   c. Claude loads CLAUDE.md as system instructions
-   d. Session established
+   a. Build scene context (orchestrator)
+   b. Build prompt (`engine/infrastructure/orchestration/narrator.py:_build_prompt`)
+   c. Invoke Claude CLI (first call, no --continue)
+   d. Claude loads CLAUDE.md as system instructions
+   e. Session established
 3. System ready for subsequent calls with --continue
 ```
 
@@ -235,8 +236,8 @@ directory to populate the recent action field.
 
 ```
 1. Player action arrives
-2. Orchestrator builds prompt with context
-3. Claude invoked with --continue
+2. Orchestrator gathers scene context
+3. Narrator builds prompt and invokes Claude with --continue
 4. Narrator:
    a. Classifies action (conversational vs significant)
    b. Streams immediate response (dialogue tool)
