@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Verified the `tools/` documentation mapping (cli-tools + image-generation) already covers `tools/stream_dialogue.py` and `tools/image_generation/*`, and recorded the verification in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
+
 Mapped the canon infrastructure module in `modules.yaml`, linking `engine/infrastructure/canon/**` and `tests/infrastructure/canon/` to the existing docs.
 
 Normalized the DOCS header in `tools/image_generation/README.md` so `ngram context` resolves the image-generation mapping. Ran `ngram validate`; remaining failures are pre-existing in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/`.

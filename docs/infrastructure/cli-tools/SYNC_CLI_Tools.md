@@ -2,7 +2,7 @@
 
 ```
 LAST_UPDATED: 2025-12-19
-UPDATED_BY: repair-agent
+UPDATED_BY: Codex (repair agent)
 STATUS: CANONICAL
 ```
 
@@ -51,6 +51,16 @@ Both CLI tools are functional and actively used by agents:
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-19: Verified tools documentation mapping
+
+- **What:** Confirmed `tools/` files map to existing cli-tools and image-generation docs
+- **Why:** Repair task flagged tools as undocumented; mapping already exists
+- **Files:**
+  - `modules.yaml`
+  - `tools/stream_dialogue.py`
+  - `tools/image_generation/generate_image.py`
+  - `tools/image_generation/README.md`
 
 ### 2025-12-19: Sync DOCS reference line numbers
 
