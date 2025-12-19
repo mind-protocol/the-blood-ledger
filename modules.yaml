@@ -32,10 +32,13 @@ modules:
       - graph_queries.py
     internal:
       - graph_query_utils.py
+      - graph_queries_moments.py
+      - graph_queries_search.py
     notes: |
       Graph database operations - the core of the physics system.
       graph_ops.py: MONOLITH (2445 lines) - needs splitting.
-      graph_queries.py: 1589 lines (reduced from 1717) - needs further splitting.
+      graph_queries.py: 892 lines (reduced via SearchQueryMixin extraction).
+      graph_queries_search.py: 285 lines (extracted search methods).
 
   physics-moments:
     code: "engine/moments/**"

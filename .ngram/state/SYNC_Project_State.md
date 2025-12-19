@@ -33,6 +33,17 @@ All Python imports updated and verified working. Health score improved from 10 c
 
 ## RECENT CHANGES
 
+### 2025-12-19: graph_queries.py Monolith Split
+
+- **What:** Extracted SearchQueryMixin from graph_queries.py
+- **Why:** File was 1132 lines (threshold: 800)
+- **Impact:**
+  - Created new file `graph_queries_search.py` (285 lines)
+  - `graph_queries.py` reduced to 892 lines (now under threshold)
+  - Extracted: `search()`, `_to_markdown()`, `_cosine_similarity()`, `_find_similar_by_embedding()`, `_get_connected_cluster()`
+  - Added `SearchQueryMixin` to class inheritance (alongside existing `MomentQueryMixin`)
+  - Updated IMPLEMENTATION_Physics.md and modules.yaml
+
 ### 2025-12-19: Code Restructure Migration
 
 - **What:** Moved engine files to match docs area structure
@@ -58,7 +69,7 @@ All Python imports updated and verified working. Health score improved from 10 c
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
 | graph_ops.py monolith | critical | `engine/physics/graph/` | 1989 lines, needs splitting |
-| graph_queries.py monolith | critical | `engine/physics/graph/` | 1147 lines, needs splitting |
+| ~~graph_queries.py monolith~~ | ~~critical~~ | `engine/physics/graph/` | RESOLVED: 892 lines (extracted SearchQueryMixin) |
 | Broken impl link | critical | `docs/physics/` | IMPLEMENTATION_Physics.md has stale references |
 | 7 stale SYNCs | warning | various | Need refresh |
 
@@ -105,7 +116,7 @@ Code restructured to match docs areas. All imports updated and verified working.
 ### High Priority
 
 - [ ] Split graph_ops.py (1989 lines → target <800)
-- [ ] Split graph_queries.py (1147 lines → target <800)
+- [x] Split graph_queries.py (1147 lines → target <800) — DONE: Now 892 lines
 - [ ] Fix docs/physics/IMPLEMENTATION_Physics.md broken references
 
 ### Backlog

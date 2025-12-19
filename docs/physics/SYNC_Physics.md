@@ -2,8 +2,26 @@
 
 ```
 STATUS: CANONICAL
-UPDATED: 2024-12-18
+UPDATED: 2025-12-19
 ```
+
+## Recent Changes
+
+**2025-12-19: Extracted SearchQueryMixin from graph_queries.py**
+- Created new file `graph_queries_search.py` (285 lines)
+- Extracted search methods: `search()`, `_to_markdown()`, `_cosine_similarity()`, `_find_similar_by_embedding()`, `_get_connected_cluster()`
+- `graph_queries.py` reduced from ~1132 lines to 892 lines
+- Added `SearchQueryMixin` to `GraphQueries` class inheritance alongside `MomentQueryMixin`
+- Updated IMPLEMENTATION_Physics.md with new file in code structure
+- Updated modules.yaml with new file and corrected line counts
+
+**2024-12-19: Fixed broken implementation links**
+- Updated IMPLEMENTATION_Physics.md to clearly separate existing vs planned code
+- Added full `engine/` prefix to all file paths for clarity
+- Added missing file `graph_ops_apply.py` to code structure
+- Updated all test file references to match actual test files
+- Separated "Existing" and "Planned" tables in File Responsibilities, Entry Points, Module Dependencies, and Bidirectional Links sections
+- Updated CHAIN section to distinguish existing vs planned implementation paths
 
 ---
 
@@ -21,7 +39,8 @@ API:             ./API_Physics.md
 VALIDATION:      ./VALIDATION_Physics.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Physics.md (+ Runtime Patterns from INFRASTRUCTURE.md)
 TEST:            ./TEST_Physics.md, ../../engine/tests/test_moment_graph.py
-IMPL:            ../../engine/physics/tick.py, ../../engine/handlers/, ../../engine/canon/
+IMPL (existing): ../../engine/physics/tick.py, ../../engine/physics/graph/
+IMPL (planned):  ../../engine/handlers/, ../../engine/canon/, ../../engine/infrastructure/orchestration/speed.py
 ```
 
 ---

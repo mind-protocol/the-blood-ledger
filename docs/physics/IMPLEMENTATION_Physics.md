@@ -28,75 +28,139 @@ SYNC:            ./SYNC_Physics.md
 
 ## CODE STRUCTURE
 
+### Existing Code (Implemented)
+
 ```
 engine/
 ├── physics/
 │   ├── __init__.py              # Exports GraphTick, TickResult
 │   ├── tick.py                  # Physics tick loop (v1 exists, v2 WIP)
-│   └── constants.py             # Energy/decay constants (exists)
+│   ├── constants.py             # Energy/decay constants
+│   └── graph/                   # Graph database operations
+│       ├── __init__.py
+│       ├── graph_queries.py     # Read operations (892 lines)
+│       ├── graph_ops.py         # Write operations
+│       ├── graph_ops_apply.py   # Apply operations
+│       ├── graph_queries_moments.py  # Moment-specific queries
+│       ├── graph_queries_search.py   # Search/cluster queries (285 lines)
+│       ├── graph_ops_moments.py      # Moment-specific ops
+│       └── graph_query_utils.py      # Query utilities
 │
-├── handlers/                    # TO CREATE
-│   ├── __init__.py              # Exports CharacterHandler, dispatch
-│   ├── base.py                  # BaseHandler class
+├── moment_graph/
+│   ├── __init__.py              # Exports MomentGraph facade
+│   ├── queries.py               # Query layer
+│   ├── traversal.py             # Click/wait traversal
+│   └── surface.py               # Surfacing algorithm
+│
+├── infrastructure/
+│   ├── orchestration/
+│   │   ├── __init__.py          # Exports Orchestrator
+│   │   ├── orchestrator.py      # Main coordinator
+│   │   ├── narrator.py          # Claude CLI caller
+│   │   └── world_runner.py      # Background world
+│   │
+│   ├── api/
+│   │   ├── __init__.py          # Exports FastAPI app
+│   │   ├── app.py               # FastAPI entry
+│   │   ├── moments.py           # Moments endpoints
+│   │   └── playthroughs.py      # Playthrough endpoints
+│   │
+│   ├── history/
+│   │   ├── __init__.py
+│   │   ├── conversations.py     # Conversation history
+│   │   └── service.py           # History service
+│   │
+│   ├── memory/
+│   │   ├── __init__.py
+│   │   └── moment_processor.py  # Moment processing
+│   │
+│   └── embeddings/
+│       ├── __init__.py
+│       └── service.py           # Embeddings service
+│
+├── models/
+│   ├── __init__.py              # Exports all models
+│   ├── base.py                  # Base model class
+│   ├── nodes.py                 # Moment, Narrative, etc.
+│   ├── links.py                 # Link types
+│   └── tensions.py              # Tension detection (computed, not stored)
+│
+└── tests/
+    ├── test_moment_graph.py     # Moment graph tests
+    ├── test_e2e_moment_graph.py # E2E moment graph tests
+    ├── test_implementation.py   # Behavior tests
+    ├── test_behaviors.py        # Physics tests
+    ├── test_moment.py           # Moment tests
+    ├── test_moment_standalone.py # Standalone moment tests
+    ├── test_moment_lifecycle.py # Lifecycle tests
+    ├── test_models.py           # Model tests
+    ├── test_history.py          # History tests
+    ├── test_moments_api.py      # API tests
+    ├── test_narrator_integration.py # Narrator tests
+    ├── test_integration_scenarios.py # Integration tests
+    └── test_spec_consistency.py # Spec consistency tests
+```
+
+### Planned Code (Not Yet Implemented)
+
+The following modules are designed but not yet created:
+
+```
+engine/
+├── handlers/                    # PLANNED - Character handler system
+│   ├── __init__.py              # Will export CharacterHandler, dispatch
+│   ├── base.py                  # Will define BaseHandler class
 │   ├── player.py                # Player handler (special)
 │   ├── companion.py             # Companion handler
 │   ├── npc.py                   # NPC handler
 │   └── grouped.py               # Grouped character handler
 │
-├── canon/                       # TO CREATE
-│   ├── __init__.py              # Exports CanonHolder
+├── canon/                       # PLANNED - Canon recording system
+│   ├── __init__.py              # Will export CanonHolder
 │   ├── holder.py                # Canon Holder (records, then links)
 │   └── conflict.py              # Conflict resolution
 │
-├── moment_graph/
-│   ├── __init__.py              # Exports MomentGraph facade (exists)
-│   ├── queries.py               # Query layer (exists)
-│   ├── traversal.py             # Click/wait traversal (exists)
-│   └── surface.py               # Surfacing algorithm (exists)
-│
-├── orchestration/
-│   ├── __init__.py              # Exports Orchestrator
-│   ├── orchestrator.py          # Main coordinator (exists)
-│   ├── narrator.py              # Claude CLI caller (exists)
-│   ├── world_runner.py          # Background world (exists)
-│   └── speed.py                 # TO CREATE: Speed controller
-│
-├── models/
-│   ├── __init__.py              # Exports all models
-│   ├── nodes.py                 # Moment, Narrative, etc. (exists)
-│   ├── links.py                 # Link types (exists)
-│   └── tensions.py              # Tension detection (computed, not stored)
-│
-├── api/
-│   ├── __init__.py              # Exports FastAPI app
-│   ├── app.py                   # FastAPI entry (exists)
-│   └── moments.py               # Moments endpoints (exists)
-│
-├── db/
-│   ├── __init__.py              # Exports graph clients
-│   ├── graph_queries.py         # Read operations (exists)
-│   └── graph_ops.py             # Write operations (exists)
-│
-└── tests/
-    ├── test_moment_graph.py     # Moment graph tests (exists)
-    ├── test_implementation.py   # Behavior tests (exists)
-    └── test_behaviors.py        # Physics tests (exists)
+└── infrastructure/
+    └── orchestration/
+        └── speed.py             # PLANNED - Speed controller (1x/2x/3x + The Snap)
 ```
 
 ### File Responsibilities
 
-| File | Purpose | Status |
-|------|---------|--------|
-| `physics/tick.py` | Physics tick: inject, decay, propagate, detect flips | v1 EXISTS, v2 WIP |
-| `physics/constants.py` | All energy/decay/pressure constants | EXISTS |
-| `handlers/base.py` | BaseHandler abstract class | TO CREATE |
-| `handlers/companion.py` | Handler for companion characters | TO CREATE |
-| `canon/holder.py` | Canon Holder: record, then links | TO CREATE |
-| `moment_graph/queries.py` | Fast graph queries (<50ms) | EXISTS |
-| `moment_graph/traversal.py` | Click/wait/status transitions | EXISTS |
-| `orchestration/orchestrator.py` | Ties physics, handlers, canon together | EXISTS, needs v2 update |
-| `orchestration/speed.py` | Speed controller (1x/2x/3x + The Snap) | TO CREATE |
-| `api/moments.py` | REST endpoints for frontend | EXISTS |
+**Existing Files:**
+
+| File | Purpose |
+|------|---------|
+| `engine/physics/tick.py` | Physics tick: inject, decay, propagate, detect flips (v1 exists, v2 WIP) |
+| `engine/physics/constants.py` | All energy/decay/pressure constants |
+| `engine/physics/graph/graph_queries.py` | Graph read operations |
+| `engine/physics/graph/graph_ops.py` | Graph write operations |
+| `engine/physics/graph/graph_ops_apply.py` | Apply operations to graph |
+| `engine/physics/graph/graph_queries_moments.py` | Moment-specific query operations |
+| `engine/physics/graph/graph_queries_search.py` | Search/cluster query operations (285 lines) |
+| `engine/physics/graph/graph_ops_moments.py` | Moment-specific write operations |
+| `engine/physics/graph/graph_query_utils.py` | Query utilities |
+| `engine/moment_graph/queries.py` | Fast graph queries (<50ms) |
+| `engine/moment_graph/traversal.py` | Click/wait/status transitions |
+| `engine/moment_graph/surface.py` | Surfacing algorithm |
+| `engine/infrastructure/orchestration/orchestrator.py` | Ties physics together (needs v2 update for handlers/canon) |
+| `engine/infrastructure/orchestration/narrator.py` | Claude CLI caller |
+| `engine/infrastructure/orchestration/world_runner.py` | Background world runner |
+| `engine/infrastructure/api/moments.py` | REST endpoints for frontend |
+| `engine/infrastructure/api/app.py` | FastAPI entry point |
+
+**Planned Files (not yet created):**
+
+| File | Purpose |
+|------|---------|
+| `engine/handlers/base.py` | BaseHandler abstract class |
+| `engine/handlers/companion.py` | Handler for companion characters |
+| `engine/handlers/npc.py` | Handler for NPC characters |
+| `engine/handlers/player.py` | Handler for player character |
+| `engine/handlers/grouped.py` | Handler for grouped characters |
+| `engine/canon/holder.py` | Canon Holder: record, then links |
+| `engine/canon/conflict.py` | Conflict resolution |
+| `engine/infrastructure/orchestration/speed.py` | Speed controller (1x/2x/3x + The Snap) |
 
 ---
 
@@ -152,15 +216,22 @@ THEN:
 
 ## ENTRY POINTS
 
-| Entry Point | File:Line | Triggered By |
-|-------------|-----------|--------------|
-| Physics tick | `physics/tick.py:79` (GraphTick.run) | Scheduler / elapsed time |
-| Click word | `moment_graph/traversal.py:38` (handle_click) | Frontend click event |
-| Player input | `api/moments.py` (WIP) | Free text input from frontend |
-| Flip detected | `physics/tick.py:514` (_detect_flips) | Physics finds weight >= 0.8 |
-| Handler dispatch | `handlers/__init__.py` (TO CREATE) | Flip triggers handler |
-| Canon record | `canon/holder.py` (TO CREATE) | Handler returns moment |
-| Speed change | `orchestration/speed.py` (TO CREATE) | Direct address / interrupt |
+**Existing Entry Points:**
+
+| Entry Point | File | Triggered By |
+|-------------|------|--------------|
+| Physics tick | `engine/physics/tick.py` (GraphTick.run) | Scheduler / elapsed time |
+| Click word | `engine/moment_graph/traversal.py` (handle_click) | Frontend click event |
+| Player input | `engine/infrastructure/api/moments.py` | Free text input from frontend |
+| Flip detected | `engine/physics/tick.py` (_detect_flips) | Physics finds weight >= 0.8 |
+
+**Planned Entry Points (not yet implemented):**
+
+| Entry Point | Planned File | Triggered By |
+|-------------|--------------|--------------|
+| Handler dispatch | `engine/handlers/__init__.py` | Flip triggers handler |
+| Canon record | `engine/canon/holder.py` | Handler returns moment |
+| Speed change | `engine/infrastructure/orchestration/speed.py` | Direct address / interrupt |
 
 ---
 
@@ -175,7 +246,7 @@ THEN:
            │ elapsed_minutes
            ▼
 ┌─────────────────────┐
-│   GraphTick.run()   │ ← physics/tick.py
+│   GraphTick.run()   │ ← engine/physics/tick.py
 │   - inject energy   │
 │   - decay           │
 │   - propagate       │
@@ -212,16 +283,16 @@ THEN:
 └──────────┬──────────┘
            │ raw text
            ▼
-┌─────────────────────┐
-│  Input Parser       │ ← Extract entities, intent
-│  api/moments.py     │
-└──────────┬──────────┘
+┌───────────────────────────────────┐
+│  Input Parser                     │ ← Extract entities, intent
+│  infrastructure/api/moments.py    │
+└──────────┬────────────────────────┘
            │ InputResult { type, refs, text }
            ▼
-┌─────────────────────┐
-│  Create Moment      │ ← type=question, attached to Aldric
-│  graph_ops.py       │
-└──────────┬──────────┘
+┌───────────────────────────────────┐
+│  Create Moment                    │ ← type=question, attached to Aldric
+│  physics/graph/graph_ops.py       │
+└──────────┬────────────────────────┘
            │ moment_id
            ▼
 ┌─────────────────────┐
@@ -328,38 +399,47 @@ flip_info
 
 ## MODULE DEPENDENCIES
 
-### Internal Dependencies
+### Internal Dependencies (Existing)
 
 ```
-orchestrator.py
-    └── imports → physics/tick.py
-    └── imports → handlers/__init__.py (TO CREATE)
-    └── imports → canon/holder.py (TO CREATE)
-    └── imports → moment_graph/queries.py
-    └── imports → api/moments.py
+engine/infrastructure/orchestration/orchestrator.py
+    └── imports → engine/physics/tick.py
+    └── imports → engine/moment_graph/queries.py
+    └── imports → engine/infrastructure/api/moments.py
 
-physics/tick.py
-    └── imports → db/graph_queries.py
-    └── imports → db/graph_ops.py
-    └── imports → physics/constants.py
+engine/physics/tick.py
+    └── imports → engine/physics/graph/graph_queries.py
+    └── imports → engine/physics/graph/graph_ops.py
+    └── imports → engine/physics/constants.py
+```
 
-handlers/base.py (TO CREATE)
-    └── imports → models/nodes.py
-    └── imports → db/graph_queries.py
+### Planned Dependencies (for future modules)
 
-canon/holder.py (TO CREATE)
-    └── imports → db/graph_ops.py
-    └── imports → moment_graph/traversal.py
+```
+# When handlers/ is created:
+engine/handlers/base.py
+    └── will import → engine/models/nodes.py
+    └── will import → engine/physics/graph/graph_queries.py
+
+# When canon/ is created:
+engine/canon/holder.py
+    └── will import → engine/physics/graph/graph_ops.py
+    └── will import → engine/moment_graph/traversal.py
+
+# Orchestrator will need updates to import:
+engine/infrastructure/orchestration/orchestrator.py
+    └── will import → engine/handlers/__init__.py
+    └── will import → engine/canon/holder.py
 ```
 
 ### External Dependencies
 
 | Package | Used For | Imported By |
 |---------|----------|-------------|
-| `falkordb` | Graph database | `db/graph_*.py` |
-| `pydantic` | Model validation | `models/*.py` |
-| `fastapi` | REST API | `api/app.py` |
-| `subprocess` | Claude CLI calls | `orchestration/narrator.py`, `handlers/*.py` |
+| `falkordb` | Graph database | All graph modules in engine/physics/graph/ |
+| `pydantic` | Model validation | All models in engine/models/ |
+| `fastapi` | REST API | engine/infrastructure/api/app.py |
+| `subprocess` | Claude CLI calls | engine/infrastructure/orchestration/narrator.py |
 
 ---
 
@@ -370,10 +450,10 @@ canon/holder.py (TO CREATE)
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
 | Graph state | FalkorDB | Global | Persistent |
-| Current tick | `Orchestrator.tick` | Session | Per playthrough |
-| Active handlers | `Orchestrator.pending_handlers` | Request | Per tick cycle |
-| Speed mode | `SpeedController.mode` | Session | Player controlled |
-| Canon queue | `CanonHolder.queue` | Request | Per handler batch |
+| Current tick | Orchestrator class (tick property) | Session | Per playthrough |
+| Active handlers | Orchestrator class (pending_handlers property) | Request | Per tick cycle |
+| Speed mode | SpeedController class (mode property) - PLANNED | Session | Player controlled |
+| Canon queue | CanonHolder class (queue property) - PLANNED | Request | Per handler batch |
 
 ### State Transitions
 
@@ -447,13 +527,13 @@ speed.mode:
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `DECAY_RATE` | `physics/constants.py` | `0.02` | Base decay per tick |
-| `FLIP_THRESHOLD` | `physics/constants.py` | `0.8` | Weight at which moment flips |
-| `PUMP_RATE` | `physics/constants.py` | `0.1` | Character energy → narratives per tick |
-| `TENSION_DRAW` | `physics/constants.py` | `0.2` | How much tension pulls from participants |
-| `ACTUALIZATION_COST` | `physics/constants.py` | `0.5` | Energy cost per moment flip |
-| `MIN_TICK_MINUTES` | `physics/constants.py` | `5` | Minimum elapsed time for tick |
-| `HANDLER_TIMEOUT` | `handlers/base.py` | `30s` | Max time for handler response |
+| `DECAY_RATE` | `engine/physics/constants.py` | `0.02` | Base decay per tick |
+| `FLIP_THRESHOLD` | `engine/physics/constants.py` | `0.8` | Weight at which moment flips |
+| `PUMP_RATE` | `engine/physics/constants.py` | `0.1` | Character energy → narratives per tick |
+| `TENSION_DRAW` | `engine/physics/constants.py` | `0.2` | How much tension pulls from participants |
+| `ACTUALIZATION_COST` | `engine/physics/constants.py` | `0.5` | Energy cost per moment flip |
+| `MIN_TICK_MINUTES` | `engine/physics/constants.py` | `5` | Minimum elapsed time for tick |
+| `HANDLER_TIMEOUT` | Planned: `engine/handlers/base.py` | `30s` | Max time for handler response (not yet implemented) |
 
 ---
 
@@ -463,27 +543,32 @@ speed.mode:
 
 Files that reference this documentation:
 
-| File | Line | Reference |
-|------|------|-----------|
-| `physics/tick.py` | 1-35 | Docstring references ALGORITHM_Physics |
-| `moment_graph/traversal.py` | 1-6 | Docstring references moment graph docs |
-| `physics/constants.py` | 1-25 | Docstring references VALIDATION_Complete_Spec |
+| File | Reference |
+|------|-----------|
+| `engine/physics/tick.py` | Docstring references ALGORITHM_Physics |
+| `engine/moment_graph/traversal.py` | Docstring references moment graph docs |
+| `engine/physics/constants.py` | Docstring references VALIDATION_Complete_Spec |
 
-### Docs → Code
+### Docs → Code (Existing Implementation)
 
 | Doc Section | Implemented In |
 |-------------|----------------|
-| ALGORITHM_Physics: Step 1 (Inject) | `physics/tick.py:_flow_energy_to_narratives` (partial) |
-| ALGORITHM_Physics: Step 2 (Decay) | `physics/tick.py:_decay_energy` |
-| ALGORITHM_Physics: Step 3 (Propagate) | `physics/tick.py:_propagate_energy` |
-| ALGORITHM_Physics: Step 4 (Detect) | `physics/tick.py:_detect_flips` |
-| ALGORITHM_Handlers: dispatch | TO IMPLEMENT in `handlers/__init__.py` |
-| ALGORITHM_Canon: record | TO IMPLEMENT in `canon/holder.py` |
-| ALGORITHM_Speed: controller | TO IMPLEMENT in `orchestration/speed.py` |
-| BEHAVIOR B1 (click word) | `moment_graph/traversal.py:handle_click` |
-| BEHAVIOR B2 (wait trigger) | `moment_graph/traversal.py:process_wait_triggers` |
+| ALGORITHM_Physics: Step 1 (Inject) | `engine/physics/tick.py:_flow_energy_to_narratives` (partial) |
+| ALGORITHM_Physics: Step 2 (Decay) | `engine/physics/tick.py:_decay_energy` |
+| ALGORITHM_Physics: Step 3 (Propagate) | `engine/physics/tick.py:_propagate_energy` |
+| ALGORITHM_Physics: Step 4 (Detect) | `engine/physics/tick.py:_detect_flips` |
+| BEHAVIOR B1 (click word) | `engine/moment_graph/traversal.py:handle_click` |
+| BEHAVIOR B2 (wait trigger) | `engine/moment_graph/traversal.py:process_wait_triggers` |
 | VALIDATION I1 (graph truth) | All graph operations use FalkorDB |
-| VALIDATION I2 (THEN after) | TO IMPLEMENT in `canon/holder.py` |
+
+### Docs → Code (Planned - Not Yet Implemented)
+
+| Doc Section | Planned Location |
+|-------------|------------------|
+| ALGORITHM_Handlers: dispatch | `engine/handlers/__init__.py` |
+| ALGORITHM_Canon: record | `engine/canon/holder.py` |
+| ALGORITHM_Speed: controller | `engine/infrastructure/orchestration/speed.py` |
+| VALIDATION I2 (THEN after) | `engine/canon/holder.py` |
 
 ---
 
@@ -491,31 +576,31 @@ Files that reference this documentation:
 
 ### Phase 1: Core v2 Updates (CURRENT)
 
-1. **Update `physics/tick.py`**
+1. **Update `engine/physics/tick.py`**
    - Add moment weight tracking (not just narrative weight)
    - Add `FLIP_THRESHOLD` constant
    - Return flip info for moments, not just tensions
 
-2. **Create `handlers/` module**
+2. **Create `engine/handlers/` module**
    - `base.py` — BaseHandler with scope isolation
    - `companion.py` — First handler type
    - `__init__.py` — Dispatcher
 
-3. **Create `canon/holder.py`**
+3. **Create `engine/canon/holder.py`**
    - Record moment to graph
    - Create THEN links (after, not before)
    - Push to frontend queue
 
 ### Phase 2: Speed Controller
 
-4. **Create `orchestration/speed.py`**
+4. **Create `engine/infrastructure/orchestration/speed.py`**
    - 1x/2x/3x modes
    - Interrupt detection
    - "The Snap" transition
 
 ### Phase 3: Integration
 
-5. **Update `orchestrator.py`**
+5. **Update `engine/infrastructure/orchestration/orchestrator.py`**
    - Wire physics → handlers → canon
    - Handle async handler results
    - Integrate speed controller
@@ -524,13 +609,20 @@ Files that reference this documentation:
 
 ## GAPS / IDEAS / QUESTIONS
 
-- [ ] `handlers/` module does not exist yet — needs creation
-- [ ] `canon/holder.py` does not exist yet — needs creation
-- [ ] `orchestration/speed.py` does not exist yet — needs creation
-- [ ] Physics tick still uses narrative-centric model, needs moment-centric update
+**Planned modules not yet created:**
+- [ ] `engine/handlers/` module — character handler system
+- [ ] `engine/canon/` module — canon recording system
+- [ ] `engine/infrastructure/orchestration/speed.py` — speed controller
+
+**Existing code needing updates:**
+- [ ] `engine/physics/tick.py` still uses narrative-centric model, needs moment-centric update
 - [ ] Player input → energy injection path not fully implemented
+
+**Ideas for future:**
 - IDEA: Handler pre-generation during 2x/3x modes
 - IDEA: Canon Holder batching for efficiency
+
+**Open questions:**
 - QUESTION: How to handle handler timeout gracefully?
 - QUESTION: What happens if handler fails mid-generation?
 
