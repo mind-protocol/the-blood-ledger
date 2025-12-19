@@ -11,6 +11,7 @@ STATUS: CANONICAL
 ## CURRENT STATE
 
 **Implementation complete.** The History module is fully functional.
+Verified `ConversationThread` path helper implementations for repair 02-INCOMPLETE_IMPL-history-conversations; no code changes required.
 Revalidated ConversationThread helper implementations for repair 01-INCOMPLETE_IMPL-history-conversations; no code changes required.
 Revalidated ConversationThread helper implementations for the current repair run; no code changes required.
 Reverified `ConversationThread` path helpers for the current repair run; implementations already present, no code changes made.
@@ -142,6 +143,7 @@ SYNC: ./SYNC_History.md
 - Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder doc gaps and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 - Reverified ConversationThread path helper implementations for this repair; no code changes required.
 - Revalidated ConversationThread helper implementations for this repair; no code changes required.
+- Reconfirmed the ConversationThread path helpers remain implemented for this repair run; no code changes required.
 
 ### Suggestions
 - None.
