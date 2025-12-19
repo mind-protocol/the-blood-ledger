@@ -9,7 +9,8 @@ UPDATED_BY: agent (repair)
 
 ## CURRENT STATE
 
-Verified graph health check helpers are already implemented; documentation updated for the stale repair task.
+Revalidated playthroughs API helper implementations; documentation updated for the stale repair task.
+Confirmed `engine/models/base.py` comparison helpers were already implemented; no code change required.
 
 ---
 
@@ -31,6 +32,29 @@ Verified graph health check helpers are already implemented; documentation updat
 - **What:** Confirmed `engine/graph/health/check_health.py` helper implementations are present; updated `docs/physics/graph/SYNC_Graph.md`.
 - **Why:** Repair task flagged incomplete implementations that were already done.
 - **Impact:** No runtime behavior change; documentation refreshed.
+
+### 2025-12-19: Re-validate playthroughs API helpers
+
+- **What:** Reconfirmed `_count_branches` and `_get_playthrough_queries` in `engine/infrastructure/api/playthroughs.py` are implemented.
+- **Why:** Repair task still flagged them as incomplete, so docs were refreshed.
+- **Impact:** No runtime behavior change; documentation refreshed.
+
+### 2025-12-19: Confirm base model comparison helpers
+
+- **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` are already implemented in `engine/models/base.py`.
+- **Why:** Repair task flagged incomplete implementations, but the functions are present.
+- **Impact:** No runtime behavior change.
+
+## Agent Observations
+
+### Remarks
+- The repair task appears to be stale for `engine/models/base.py`; functions are implemented.
+
+### Suggestions
+- [ ] Run `ngram validate` to confirm no other stale repair tasks are active.
+
+### Propositions
+- Consider adding module docs for `engine/models` once new changes are planned.
 
 ---
 
