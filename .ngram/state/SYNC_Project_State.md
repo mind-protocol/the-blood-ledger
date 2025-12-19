@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing test template sections in `docs/frontend/scene/TEST_Scene.md`
+(strategy, unit/integration coverage, edge cases, run guidance, gaps, flaky
+tracking) and logged the update in `docs/frontend/scene/SYNC_Scene.md` for
+repair #16.
+
 Expanded `docs/frontend/scene/PATTERNS_Scene.md` with missing template sections
 (CHAIN, problem/pattern framing, principles, scope, dependencies,
 inspirations, gaps) and logged the update in

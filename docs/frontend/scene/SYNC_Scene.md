@@ -62,6 +62,15 @@ The scene view is **implemented and functional**. It is the main game view where
 
 ## RECENT CHANGES
 
+### 2025-12-19: Fill scene test template sections
+
+- **What:** Added missing TEST_Scene sections (strategy, unit/integration
+  coverage, edge cases, run guidance, gaps, flaky tracking).
+- **Why:** Resolve doc-template drift so the scene test doc is complete.
+- **Files:** `docs/frontend/scene/TEST_Scene.md`
+- **Struggles/Insights:** Documented the lack of automated tests without
+  asserting unverified coverage.
+
 ### 2025-12-19: Expanded scene PATTERNS template sections
 
 - **What:** Added CHAIN, problem/pattern framing, scope, dependencies,
@@ -190,6 +199,7 @@ Scene view is implemented and works. The core layout exists with header, image, 
 
 ### Remarks
 - The validation doc now mirrors the actual SceneView/SceneBanner fallbacks, reducing drift risk.
+- The test doc now records the missing automation coverage to keep gaps visible.
 
 ### Suggestions
 - [ ] Add basic component tests for SceneView and SceneBanner to cover fallback rendering.
