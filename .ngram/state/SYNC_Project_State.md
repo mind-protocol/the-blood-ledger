@@ -9,6 +9,17 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections in `docs/physics/ALGORITHM_Physics.md`
+(overview, data structures, algorithm summary, decisions, data flow,
+complexity, helpers, interactions, gaps) to resolve DOC_TEMPLATE_DRIFT for
+repair #16 and logged the update in `docs/physics/SYNC_Physics.md`.
+
+Expanded `docs/physics/TEST_Physics.md` with the missing test template
+sections (strategy, unit/integration coverage, edge cases, run guidance, gaps,
+flaky tracking) and logged the update in `docs/physics/SYNC_Physics.md` for
+repair #16. Ran `ngram validate`; failures remain pre-existing (missing VIEW,
+schema/module doc-chain gaps).
+
 Completed the missing template sections in `docs/physics/ALGORITHM_Physics.md`
 (overview, data structures, primary algorithm, decisions, data flow,
 complexity, helpers, interactions, gaps) for repair #16 and logged the update

@@ -648,6 +648,82 @@ Travel and conversation interleaved. Time passes, but emotional beats preserved.
 
 ---
 
+## TEST STRATEGY
+
+Use narrative trace scenarios to validate end-to-end behavior while keeping
+unit tests focused on tick math, decay/propagation, and flip detection logic.
+Integration tests cover graph-backed queries and playthrough loops where a
+FalkorDB connection is available.
+
+---
+
+## UNIT TESTS
+
+Current unit coverage concentrates in `engine/tests/test_moment_graph.py`,
+`engine/tests/test_moment.py`, and related helpers, exercising energy flow,
+moment lifecycle, and invariants without requiring full orchestration.
+
+---
+
+## INTEGRATION TESTS
+
+Integration-level checks live in `engine/tests/test_e2e_moment_graph.py`,
+`engine/tests/test_integration_scenarios.py`, and
+`engine/tests/test_narrator_integration.py`, and may skip when external
+dependencies (database, agent runtime) are unavailable.
+
+---
+
+## EDGE CASES
+
+Edge coverage should include zero-energy ticks, decay to `MIN_WEIGHT`,
+simultaneous flips in the same tick, empty graphs with no characters,
+presence-gated links with missing locations, and invalid action targets that
+should surface as blocked consequences.
+
+---
+
+## TEST COVERAGE
+
+Trace scenarios below cover dialogue, silence fallback, multi-party dynamics,
+cascades, action conflicts, and speed snaps. Automated tests in
+`engine/tests/` currently validate core physics mechanics, but the file list
+later in this document is a target decomposition rather than an exact inventory.
+
+---
+
+## HOW TO RUN
+
+From the repo root, run `pytest engine/tests/test_moment_graph.py -v` for a
+focused physics pass, or `pytest engine/tests -v` for the broader suite.
+Integration tests may skip unless FalkorDB and agent services are running.
+
+---
+
+## KNOWN TEST GAPS
+
+Dedicated tests for handler dispatch, canon ordering across multiple flips,
+action queue validation, and speed-controller display rules are still missing
+or only represented in trace scenarios.
+
+---
+
+## FLAKY TESTS
+
+No flaky physics tests are currently tracked, but environment issues such as
+optional pytest plugins should be recorded here when they cause intermittent
+failures.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- Should trace scenarios be converted into executable integration tests?
+- Do we need deterministic seeds for energy propagation to make tests stable?
+- Which canon ordering rules should be asserted explicitly in test fixtures?
+
+---
+
 ## Test Coverage Summary
 
 | Trace | Tests |
