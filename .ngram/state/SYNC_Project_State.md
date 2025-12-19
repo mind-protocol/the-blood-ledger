@@ -11,6 +11,8 @@ UPDATED_BY: Codex (repair agent)
 
 Added `NEXT_PUBLIC_API_URL=http://localhost:8000` to `.env` so the frontend uses the expected local backend by default.
 
+Reconfirmed ConversationThread helper implementations in `engine/infrastructure/history/conversations.py` for the repair run; no code changes required.
+
 Verified the graph health report helpers in `engine/graph/health/check_health.py`; the incomplete-impl task was stale and required no code changes (logged in `docs/schema/graph-health/SYNC_Graph_Health.md`).
 
 Aligned tempo API calls with the shared frontend `API_BASE` so speed controls and tempo SSE respect `NEXT_PUBLIC_API_URL`. Verified via `cd frontend && npm run build`.
