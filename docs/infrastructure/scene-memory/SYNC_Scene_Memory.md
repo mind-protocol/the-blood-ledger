@@ -62,6 +62,9 @@ STATUS: CANONICAL
 - Added `docs/infrastructure/scene-memory/archive/SYNC_archive_2024-12.md` to
   preserve legacy summary context.
 - Trimmed IMPLEMENTATION doc to focus on current code structure and entry points.
+- Completed missing template sections in
+  `docs/infrastructure/scene-memory/SYNC_Scene_Memory_archive_2025-12.md` so the
+  archive SYNC stays aligned with the standard headings for repair #16.
 - Expanded `docs/infrastructure/scene-memory/ALGORITHM_Scene_Memory.md` with the
   missing algorithm template sections and legacy clarifications for repair #16.
 - Expanded `docs/infrastructure/scene-memory/PATTERNS_Scene_Memory.md` with the

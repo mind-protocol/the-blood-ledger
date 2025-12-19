@@ -9,6 +9,9 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Added a Scene Memory SYNC observation noting the legacy algorithm template
+expansion and its canonical Moment Graph references for repair #16.
+
 Expanded `docs/infrastructure/scene-memory/ALGORITHM_Scene_Memory.md` with the
 missing OVERVIEW section and lengthened the template sections (data structures,
 algorithm steps, decisions, data flow, complexity, helpers, interactions, gaps)
