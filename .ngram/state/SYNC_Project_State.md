@@ -9,6 +9,13 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Created new documentation modules for the Distributed Content Generation Network: network (Voyager System, Bleed-Through, Transposition, World Scavenger, Shadow Feed, Ghost Dialogue), infrastructure (Storms, Storm Loader), product (Billing, Ledger Lock, Chronicle System, Business Model, GTM Strategy), plus the cross-cutting concept Subjective Truth & Rumor. Added DOCS pointers to the source data specs under `data/Distributed-Content-Generation-Network/` and updated `modules.yaml` mappings.
+
+Revalidated the graph health helper implementations in `engine/graph/health/check_health.py` for repair 00-INCOMPLETE_IMPL-health-check_health; functions were already implemented and the graph-health SYNC was refreshed.
+
+Aligned playthrough creation to the router implementation by adding a `/api/playthrough/scenario` alias in `engine/infrastructure/api/playthroughs.py` and removing the duplicate scenario endpoint in `engine/infrastructure/api/app.py` that returned a mismatched response shape. Updated the backend run script to point uvicorn at `engine.infrastructure.api.app:app` so `engine/run.py` boots correctly.
+Added stub IMPLEMENTATION_*.md and TEST_*.md files for each new module to complete doc chains.
+
 Revalidated `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) for the repair run; no code changes required and logged in `docs/schema/models/SYNC_Schema_Models.md`.
 Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder docs and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
