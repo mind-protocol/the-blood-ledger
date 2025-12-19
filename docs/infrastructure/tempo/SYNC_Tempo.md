@@ -139,3 +139,14 @@ This is why `_record_narrator_output` was deleted from Orchestrator — it incor
 - IMPLEMENTATION: `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md` ✓
 - TEST: `docs/infrastructure/tempo/TEST_Tempo.md` ❌
 - **SYNC: This file** ✓
+
+## Agent Observations
+
+### Remarks
+- Backpressure relies on the frontend reporting queue size; invalid values now get clamped.
+
+### Suggestions
+- [ ] Add TempoController tests for stop behavior and backpressure handling.
+
+### Propositions
+- Consider emitting a tempo shutdown event so the frontend can clear UI state.
