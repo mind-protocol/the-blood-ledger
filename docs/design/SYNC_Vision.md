@@ -23,6 +23,7 @@ All documents ready for validation.
 
 ### 2025-12-19 Update
 - Fixed broken file references in `docs/design/IMPLEMENTATION_Vision.md` by listing concrete paths and removing placeholder target filenames so link validation resolves cleanly.
+- Verified the remaining implementation doc references resolve to existing vision/opening/scenarios files for the BROKEN_IMPL_LINK repair.
 
 ---
 
