@@ -14,6 +14,7 @@ PATTERNS:    ./PATTERNS_History.md
 THIS:        BEHAVIORS_History.md (you are here)
 ALGORITHM:   ./ALGORITHM_History.md
 VALIDATION:  ./VALIDATION_History.md
+IMPLEMENTATION: ./IMPLEMENTATION_History_Service_Architecture.md
 TEST:        ./TEST_History.md
 SYNC:        ./SYNC_History.md
 ```

@@ -135,3 +135,32 @@ modules:
       - "Transcript append-only log"
     notes: |
       Moment processing and transcript persistence for playthroughs.
+
+  frontend:
+    code: "frontend/**"
+    docs: "docs/frontend/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - frontend/app/page.tsx
+    patterns:
+      - "Next.js App Router"
+      - "Backend-driven state via hooks + SSE"
+    notes: |
+      Presentation layer for The Blood Ledger game.
+
+  history:
+    code: "engine/infrastructure/history/**"
+    docs: "docs/infrastructure/history/"
+    tests: "engine/tests/test_history.py"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/history/service.py
+      - engine/infrastructure/history/conversations.py
+    patterns:
+      - "Distributed history via narratives and beliefs"
+      - "Conversation threads as file-backed sources"
+    notes: |
+      History service for querying and recording narratives, beliefs, and
+      conversation threads for player-experienced events.

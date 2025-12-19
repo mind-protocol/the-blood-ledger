@@ -7,6 +7,8 @@ History exists as narratives + beliefs, not as a central event log.
 Every query filters through what the querying character BELIEVES.
 The player's history is what the player believes. Aldric's history is what Aldric believes.
 They may differ.
+
+DOCS: docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md
 """
 
 import logging
