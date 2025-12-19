@@ -31,6 +31,10 @@ requirements for repair #16 and recorded the change in
 Ran `ngram validate`; failures remain pre-existing (missing VIEW and doc-chain
 gaps in schema/product/network/storms modules).
 
+Confirmed the vision behaviors template repair by removing duplicate CHAIN and
+BEHAVIORS blocks in `docs/design/BEHAVIORS_Vision.md` and reran `ngram validate`
+with the same pre-existing failures.
+
 Expanded `docs/design/opening/SYNC_Opening.md` with the missing template
 sections (maturity, current state, in progress, recent changes, known issues,
 handoffs, todo, consciousness trace, pointers) and logged the update for
