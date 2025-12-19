@@ -78,6 +78,7 @@ Consolidated graph weight algorithm docs by redirecting `docs/physics/graph/ALGO
 Consolidated world scraping algorithm docs into `docs/world/scraping/ALGORITHM_Pipeline.md` and removed duplicate phase-specific ALGORITHM files.
 Recorded scraping doc consolidation in `docs/world/scraping/SYNC_World_Scraping.md` to align pipeline status with the canonical algorithm.
 Consolidated world scraping ALGORITHM docs into `docs/world/scraping/ALGORITHM_Pipeline.md`, redirected per-phase docs, and updated chain links for scraping docs.
+Added world scraping IMPLEMENTATION doc, updated scraping doc CHAIN links, added a DOCS reference in `data/scripts/inject_world.py`, and mapped the module in `modules.yaml`.
 Verified map algorithm consolidation state and recorded the check in `docs/world/map/SYNC_Map.md`.
 Moved `docs/schema/VALIDATION_Living_Graph.md` into `docs/physics/graph/VALIDATION_Living_Graph.md` to eliminate duplicate VALIDATION docs in `docs/schema/`.
 Updated `docs/schema/VALIDATION_Graph.md` redirect to point at `docs/physics/graph/VALIDATION_Living_Graph.md` after the move.

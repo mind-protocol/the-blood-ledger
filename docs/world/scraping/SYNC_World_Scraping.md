@@ -6,6 +6,20 @@
 
 ---
 
+## CHAIN
+
+```
+PATTERNS:        ./PATTERNS_World_Scraping.md
+BEHAVIORS:       ./BEHAVIORS_World_Scraping.md
+ALGORITHM:       ./ALGORITHM_Pipeline.md
+VALIDATION:      ./VALIDATION_World_Scraping.md
+IMPLEMENTATION:  ./IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md
+TEST:            ./TEST_World_Scraping.md
+THIS:            SYNC_World_Scraping.md (you are here)
+```
+
+---
+
 ## Phase Status
 
 | Phase | Name | Status | Output |
@@ -99,6 +113,12 @@
 - **Why:** Keep one canonical ALGORITHM doc for the scraping module.
 - **Files:** `docs/world/scraping/ALGORITHM_Pipeline.md`, `docs/world/scraping/PATTERNS_World_Scraping.md`
 
+### 2025-12-19: Added implementation architecture doc
+
+- **What:** Added implementation architecture doc and linked CHAIN entries; added DOCS reference in injection script; mapped module in `modules.yaml`.
+- **Why:** Complete the documentation chain and tie code to docs.
+- **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`, `docs/world/scraping/*.md`, `data/scripts/inject_world.py`, `modules.yaml`
+
 ---
 
 ## Blockers Resolved
@@ -132,6 +152,7 @@
 ## Updates
 
 - Consolidated phase-level ALGORITHM docs into the canonical `docs/world/scraping/ALGORITHM_Pipeline.md` and left per-phase stubs as redirects.
+- Added the missing IMPLEMENTATION doc and updated chain links across scraping docs.
 
 ## ARCHIVE
 

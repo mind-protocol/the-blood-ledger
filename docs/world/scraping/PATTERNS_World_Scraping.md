@@ -5,6 +5,20 @@
 
 ---
 
+## CHAIN
+
+```
+THIS:            PATTERNS_World_Scraping.md (you are here)
+BEHAVIORS:       ./BEHAVIORS_World_Scraping.md
+ALGORITHM:       ./ALGORITHM_Pipeline.md
+VALIDATION:      ./VALIDATION_World_Scraping.md
+IMPLEMENTATION:  ./IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md
+TEST:            ./TEST_World_Scraping.md
+SYNC:            ./SYNC_World_Scraping.md
+```
+
+---
+
 ## Core Principle
 
 **The world existed before you. It will exist after. You are entering a story already in motion.**
@@ -94,5 +108,6 @@ Not generated — discovered.
 
 - `ALGORITHM_Pipeline.md` — Five-phase scraping pipeline (all phases consolidated)
 - `VALIDATION_World_Scraping.md` — How we know it worked
+- `IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md` — Pipeline code layout and data flow
 - `TEST_World_Scraping.md` — Test coverage and gaps
 - `SYNC_World_Scraping.md` — Current state & progress

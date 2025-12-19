@@ -15,6 +15,7 @@ BEHAVIORS:   ./BEHAVIORS_World_Scraping.md
 ALGORITHM:   ./ALGORITHM_Pipeline.md
 VALIDATION:  ./VALIDATION_World_Scraping.md
 THIS:        TEST_World_Scraping.md (you are here)
+IMPLEMENTATION:  ./IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md
 SYNC:        ./SYNC_World_Scraping.md
 ```
 

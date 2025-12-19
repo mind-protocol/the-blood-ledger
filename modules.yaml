@@ -75,6 +75,23 @@ modules:
     notes: |
       Map system documentation and semantic search layer.
 
+  world-scraping:
+    code: "data/scripts/scrape/**"
+    docs: "docs/world/scraping/"
+    additional_code:
+      - "data/scripts/inject_world.py"
+    maturity: DESIGNING
+    owner: agent
+    entry_points:
+      - data/scripts/scrape/phase1_geography.py
+      - data/scripts/inject_world.py
+    patterns:
+      - "Pipeline ETL with phase scripts"
+      - "YAML intermediates for auditability"
+    notes: |
+      World data scraping pipeline and injection scripts.
+      Outputs to data/world and loads into FalkorDB via GraphOps.
+
   world-runner:
     code: "engine/infrastructure/orchestration/world_runner.py"
     docs: "docs/agents/world-runner/"
