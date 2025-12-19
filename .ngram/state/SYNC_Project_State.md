@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Removed the duplicate short DESIGN PATTERNS block in `docs/physics/IMPLEMENTATION_Physics.md` so the remaining section matches the template subheadings for repair #16.
+
 Expanded `docs/physics/VALIDATION_Physics.md` validation guidance (invariants,
 properties, error conditions, test coverage, verification procedure, sync
 status) and logged the update in `docs/physics/SYNC_Physics.md` for repair #16.
