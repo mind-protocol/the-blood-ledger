@@ -18,6 +18,14 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Remove duplicate playthrough algorithm doc
+
+- **What:** Deleted `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md` so the API folder has a single canonical ALGORITHM doc.
+- **Why:** The redirect file still counted as a duplicate ALGORITHM doc in the same folder, which triggers duplication warnings.
+- **Files:**
+  - `docs/infrastructure/api/ALGORITHM_Api.md`
+  - `docs/infrastructure/api/SYNC_Api.md`
+
 ### 2025-12-19: Reconfirm playthrough helper implementations (repair 01-INCOMPLETE_IMPL-api-playthroughs)
 
 - **What:** Verified `_count_branches` and `create_scenario_playthrough` implementations; no code changes required.
@@ -66,11 +74,11 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ### 2025-12-19: Consolidate API algorithm documentation
 
-- **What:** Merged playthrough creation flow into `docs/infrastructure/api/ALGORITHM_Api.md` and replaced the duplicate algorithm file with a redirect.
+- **What:** Merged playthrough creation flow into `docs/infrastructure/api/ALGORITHM_Api.md` and removed the duplicate algorithm file.
 - **Why:** Remove duplicate ALGORITHM docs in the API folder and keep a single canonical algorithm reference.
 - **Files:**
   - `docs/infrastructure/api/ALGORITHM_Api.md`
-  - `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`
+  - `docs/infrastructure/api/SYNC_Api.md`
 
 ### 2025-12-19: Re-verify playthrough helpers for repair 01-INCOMPLETE_IMPL-api-playthroughs
 
