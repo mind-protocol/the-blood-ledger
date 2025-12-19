@@ -41,6 +41,15 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Refresh API implementation coverage (repair 16)
+
+- **What:** Expanded `IMPLEMENTATION_Api.md` with the missing template sections
+  and rewrote the implementation narrative to match current router layout.
+- **Why:** The implementation doc still lacked template coverage for code
+  structure, data flow, configuration, and concurrency details.
+- **Files:**
+  - `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+
 ### 2025-12-19: Expand API test template coverage (repair 16)
 
 - **What:** Added missing test template sections (strategy, unit/integration
