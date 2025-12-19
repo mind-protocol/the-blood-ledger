@@ -8,6 +8,22 @@ STATUS: CANONICAL
 
 ---
 
+## MATURITY
+
+STATUS: CANONICAL
+
+What's canonical (v1):
+- HistoryService query/record flow and conversation thread storage.
+- Narrative + belief graph model for distributed memory queries.
+
+What's still being designed:
+- Integration timing with narrator/world-runner pipelines.
+- Test coverage strategy for file-backed conversation threads.
+
+What's proposed (v2):
+- Belief decay and contradiction resolution workflows.
+- Chronicle integration beyond current narrative pointers.
+
 ## CURRENT STATE
 
 **Implementation complete.** No code changes in this repair.
@@ -22,10 +38,20 @@ entry-point template sections (overview, algorithm routing, helpers) to resolve
 DOC_TEMPLATE_DRIFT for repair #16. Ran `ngram validate`; failures remain
 pre-existing (missing VIEW and doc-chain gaps in schema/product/network/storms
 modules).
+Expanded `docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md`
+with the missing SCHEMA, LOGIC CHAINS, RUNTIME BEHAVIOR, and CONCURRENCY MODEL
+sections to resolve DOC_TEMPLATE_DRIFT for repair #16.
 
 ## IN PROGRESS
 
-No active work.
+No active work in progress; awaiting follow-on test coverage and integration
+tasks for the history service and conversation-thread workflows.
+
+## RECENT CHANGES
+
+- Filled missing SYNC template sections (maturity, recent changes, trace) and
+  expanded the in-progress note for repair #16. Ran `ngram validate`; failures
+  remain pre-existing (missing VIEW and doc-chain gaps in other modules).
 
 ---
 
@@ -138,6 +164,7 @@ SYNC: ./SYNC_History.md
 - Split large history docs into ALGORITHM/ and TEST/ with overview entry points.
 - Archived and condensed long-form examples to keep core docs current and short.
 - Ran `ngram validate`; remaining failures are in other modules (pre-existing).
+- Filled missing implementation template sections in the history service doc.
 
 ### Suggestions
 - None.
@@ -146,6 +173,18 @@ SYNC: ./SYNC_History.md
 - None.
 
 ---
+
+## CONSCIOUSNESS TRACE
+
+**Project momentum:**
+Documentation drift cleanup continues; history module now matches template
+sections while keeping prior state intact.
+
+**Architectural concerns:**
+None surfaced in this edit; updates are documentation-only.
+
+**Opportunities noticed:**
+Keep test and integration TODOs visible as the next concrete work items.
 
 ## ARCHIVE
 
