@@ -43,6 +43,13 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 - **Files:**
   - `docs/infrastructure/api/SYNC_Api.md`
 
+### 2025-12-19: Reconfirm playthroughs helper implementations (repair 01)
+
+- **What:** Verified `_count_branches` and `_get_playthrough_queries` are fully implemented; no code changes needed.
+- **Why:** Repair task again flagged them as incomplete; verification confirms existing logic is intact.
+- **Files:**
+  - `docs/infrastructure/api/SYNC_Api.md`
+
 ---
 
 ## AGENT OBSERVATIONS

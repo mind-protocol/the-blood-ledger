@@ -18,17 +18,23 @@ Validated moment processor implementations; repair task appears stale.
 Verified moment graph query helpers in `engine/moment_graph/queries.py` are already implemented; repair task appears stale.
 Verified moment graph traversal helpers in `engine/moment_graph/traversal.py` are already implemented; repair task appears stale.
 Verified moment query helpers in `engine/physics/graph/graph_queries_moments.py`; repair task appears stale.
+Verified graph health report helpers in `engine/graph/health/check_health.py` are already implemented; repair task appears stale.
+Re-verified ConversationThread path helpers in `engine/infrastructure/history/conversations.py`; repair task was stale and required no code changes.
 Implemented markdown formatting and cosine similarity helpers in `engine/physics/graph/graph_queries_search.py` to complete the search mixin methods.
 Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still reports pre-existing docs/schema gaps and broken CHAIN links.
 Recorded moment query verification in `docs/physics/graph/SYNC_Graph.md`.
 Recorded playthroughs helper verification in `docs/infrastructure/api/SYNC_Api.md`.
+Reconfirmed playthroughs helper implementations for repair 01; no code changes required.
+Logged the repair-01 reconfirmation entry in `docs/infrastructure/api/SYNC_Api.md`.
 Consolidated narrator algorithm docs into `docs/agents/narrator/ALGORITHM_Prompt_Structure.md` and updated narrator doc chains.
 Reconfirmed traversal helper implementations for repair 08-INCOMPLETE_IMPL-moment_graph-traversal; no code changes required.
 Consolidated narrator PATTERNS docs into `docs/agents/narrator/PATTERNS_Narrator.md` and deprecated `docs/agents/narrator/PATTERNS_World_Building.md`.
 Consolidated map algorithm docs into `docs/world/map/ALGORITHM_Rendering.md`; removed `docs/world/map/ALGORITHM_Places.md` and `docs/world/map/ALGORITHM_Routes.md`.
 Repair 17 revalidated map algorithm consolidation and updated `docs/world/map/SYNC_Map.md` wording to note the verification.
+Completed world map documentation chain by adding validation, implementation, and test docs; added DOCS reference in `engine/world/map/semantic.py` and mapped module in `modules.yaml`.
 Consolidated world-runner algorithm docs into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
 Consolidated world runner algorithm docs by merging graph tick details into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and redirecting `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
+Completed the World Runner documentation chain with VALIDATION/IMPLEMENTATION/TEST docs, updated chain links, added a DOCS reference, and mapped the module in `modules.yaml`.
 Consolidated graph weight algorithm docs by redirecting `docs/physics/graph/ALGORITHM_Weight.md` to `docs/physics/graph/ALGORITHM_Energy_Flow.md`.
 Consolidated world scraping algorithm docs into `docs/world/scraping/ALGORITHM_Pipeline.md` and removed duplicate phase-specific ALGORITHM files.
 Recorded scraping doc consolidation in `docs/world/scraping/SYNC_World_Scraping.md` to align pipeline status with the canonical algorithm.
@@ -109,6 +115,7 @@ Repair task appears stale relative to current code.
 ### Remarks
 - Moment traversal helper implementations already exist; no code changes required.
 - Physics tick energy helper implementations already exist; no code changes required.
+- Graph health report helper implementations already exist; no code changes required.
 - `ngram validate` still reports pre-existing missing docs in `docs/schema/` and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 ### Suggestions
