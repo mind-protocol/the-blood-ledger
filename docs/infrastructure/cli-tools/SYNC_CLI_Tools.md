@@ -52,6 +52,13 @@ Both CLI tools are functional and actively used by agents:
 
 ## RECENT CHANGES
 
+### 2025-12-19: Repair implementation doc link paths
+
+- **What:** Replaced bare filename/module tokens with concrete paths and removed the nonexistent extraction target filename
+- **Why:** Broken-link repair flagged non-existent file references in the implementation doc
+- **Files:**
+  - `docs/infrastructure/cli-tools/IMPLEMENTATION_CLI_Tools_Architecture.md`
+
 ### 2025-12-19: Verified tools documentation mapping
 
 - **What:** Confirmed `tools/` files map to existing cli-tools and image-generation docs

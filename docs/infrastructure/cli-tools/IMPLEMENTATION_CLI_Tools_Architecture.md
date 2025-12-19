@@ -29,11 +29,9 @@ IMPL:           tools/stream_dialogue.py
 ## CODE STRUCTURE
 
 ```
-tools/
-├── stream_dialogue.py                # CLI stream events + graph moments
-└── image_generation/
-    ├── generate_image.py             # Ideogram API client + file save
-    └── README.md                     # Usage and flags
+tools/stream_dialogue.py                # CLI stream events + graph moments
+tools/image_generation/generate_image.py # Ideogram API client + file save
+tools/image_generation/README.md         # Usage and flags
 ```
 
 ### File Responsibilities
@@ -78,7 +76,7 @@ tools/
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
 | CLI tools | CLI parsing, graph writes, stream file I/O, HTTP calls | Orchestrators and agents | `python3 tools/...` command interface |
-| Graph layer | `engine.physics.graph` queries/ops | CLI scripts | `GraphOps`, `GraphQueries` |
+| Graph layer | `engine/physics/graph/` queries/ops | CLI scripts | `GraphOps`, `GraphQueries` |
 | Image API | Ideogram API calls | CLI scripts | HTTP requests via `requests` |
 
 ---
@@ -103,7 +101,7 @@ tools/
          │ args
          ▼
 ┌────────────────────┐
-│ stream_dialogue.py │ ← parse clickables + resolve tick/place
+│ tools/stream_dialogue.py │ ← parse clickables + resolve tick/place
 └────────┬───────────┘
          │ graph writes
          ▼
@@ -126,7 +124,7 @@ tools/
          │ args
          ▼
 ┌────────────────────┐
-│ generate_image.py   │ ← build payload + call API
+│ tools/image_generation/generate_image.py │ ← build payload + call API
 └────────┬───────────┘
          │ image bytes
          ▼
@@ -142,9 +140,9 @@ tools/
 ### Internal Dependencies
 
 ```
-stream_dialogue.py
-    └── imports → engine.physics.graph.graph_ops.GraphOps
-    └── imports → engine.physics.graph.graph_queries.GraphQueries
+tools/stream_dialogue.py
+    └── imports → engine/physics/graph/graph_ops.py:GraphOps
+    └── imports → engine/physics/graph/graph_queries.py:GraphQueries
 ```
 
 ### External Dependencies
@@ -172,8 +170,8 @@ stream_dialogue.py
 
 | File | Line | Reference |
 |------|------|-----------|
-| `tools/stream_dialogue.py` | 2 | `# DOCS: docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md` |
-| `tools/image_generation/generate_image.py` | 4 | `# DOCS: docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md` |
+| `tools/stream_dialogue.py` | 2 | `docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md` |
+| `tools/image_generation/generate_image.py` | 4 | `docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md` |
 
 ### Docs -> Code
 
@@ -193,7 +191,7 @@ stream_dialogue.py
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `tools/stream_dialogue.py` | ~400L | <400L | `tools/stream_clickables.py` | `parse_inline_clickables`, clickable parsing helpers |
+| `tools/stream_dialogue.py` | ~400L | <400L | clickables helper module (planned) | `parse_inline_clickables`, clickable parsing helpers |
 
 ### Ideas
 

@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Repaired cli-tools implementation doc references by swapping bare filenames/module tokens for concrete paths and removing the non-existent extraction target filename. Logged in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
+
 Fixed the image-generation implementation doc code-to-docs reference entry to remove the `# DOCS:` prefix that was being flagged as a broken link; logged in `docs/infrastructure/image-generation/SYNC_Image_Generation.md`.
 
 Updated the tempo implementation doc to replace the `SALIENCE_THRESHOLD` default
