@@ -9,6 +9,14 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Updated `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` by adding the
+missing SYNC template sections and recording the repair log entry for #16.
+
+Expanded `docs/infrastructure/scene-memory/BEHAVIORS_Scene_Memory.md` with the
+missing template sections (behaviors, inputs/outputs, anti-behaviors,
+gaps/questions) and logged the update in
+`docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` for repair #16.
+
 Filled missing template sections in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`
 for repair #16 (maturity, current state, in progress, known issues, handoffs,
 todo, consciousness trace, pointers) to resolve DOC_TEMPLATE_DRIFT.

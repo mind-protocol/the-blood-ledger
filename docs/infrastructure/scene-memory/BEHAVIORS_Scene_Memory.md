@@ -51,6 +51,55 @@ Moment Graph docs for canonical behavior definitions:
 - Locate moments by place via `AT` links.
 
 ===============================================================================
+## BEHAVIORS
+===============================================================================
+
+- Capture every narration line, hint, and player action as a Moment record so
+  later systems can reconstruct what happened without reinterpreting text.
+- Ensure narratives and beliefs are linked to their source Moments for
+  traceability in debugging and story audits, even in the legacy flow.
+- Append each displayed line to the transcript in order so the history is
+  readable, append-only, and consistent with the scene playback order.
+
+===============================================================================
+## INPUTS / OUTPUTS
+===============================================================================
+
+**Inputs:**
+- Structured scene payloads (who/where/when) and narration lines from the
+  narrator, plus explicit player action selections or freeform inputs.
+- Presence updates that indicate which characters are in the scene when a
+  narrative is created, used to assign beliefs.
+
+**Outputs:**
+- Moment nodes and relationships (`FROM`, `SAID`, `AT`, `BELIEVES`) that encode
+  the legacy memory graph, plus ordered transcript entries for UI playback.
+- Metadata-enriched IDs for ambiguous names to preserve uniqueness across the
+  legacy scene boundaries.
+
+===============================================================================
+## ANTI-BEHAVIORS
+===============================================================================
+
+- Do not overwrite or reorder transcript entries to "fix" story flow; the
+  legacy system relies on append-only history for auditability.
+- Do not create beliefs for characters who were not present when a narrative
+  was created, even if they appear later in the same scene.
+- Do not collapse multiple narration lines into a single Moment; each line is
+  its own unit of memory for downstream linking.
+
+===============================================================================
+## GAPS / IDEAS / QUESTIONS
+===============================================================================
+
+- Gap: The legacy design assumes scene containers, but the canonical Moment
+  Graph uses global moment lifecycle states; reconcile any remaining docs.
+- Idea: Provide a migration note that maps legacy `SAID`/`FROM` links to the
+  modern moment graph query helpers for easier cross-referencing.
+- Question: Should legacy name-expansion rules be fully retired once all
+  moments are minted through the canonical processor?
+
+===============================================================================
 ## LEGACY EDGE CASES
 ===============================================================================
 
