@@ -170,6 +170,10 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 
 ## RECENT CHANGES
 
+### 2025-12-19: Restored frontend sync archive file
+- Recreated `docs/frontend/SYNC_Frontend_archive_2025-12.md` with full template
+  sections to resolve doc-template drift for the archived snapshot.
+
 ### 2025-12-19: Algorithm template completion
 - Added missing template sections (CHAIN, data structures, complexity, helpers).
 - Expanded data flow narrative and clarified interactions for SSE + REST paths.

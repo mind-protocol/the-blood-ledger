@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Created `docs/frontend/SYNC_Frontend_archive_2025-12.md` to restore the missing
+archive sync file with the required template sections (current state, handoffs,
+todo, consciousness trace, pointers) for the frontend repair.
+
 Completed the frontend data flow algorithm template by adding the missing CHAIN,
 overview, structures, complexity, helper, and interaction sections, and logged
 the update in `docs/frontend/SYNC_Frontend.md`.
