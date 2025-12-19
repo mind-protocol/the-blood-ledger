@@ -54,6 +54,66 @@ Original file: SYNC_Embeddings.md
 
 ---
 
+## CURRENT STATE
+
+Archive snapshot of the embeddings module SYNC as of 2025-12-19, reflecting
+canonical status in modules.yaml and a stable service implementation with
+remaining spec-alignment work noted in the implementation plan below.
+
+---
+
+## IN PROGRESS
+
+No active in-progress work tracked in this archived snapshot; open items remain
+in the implementation plan and TODO sections for future follow-up.
+
+---
+
+## KNOWN ISSUES
+
+Specification alignment is incomplete: node/link embedding rules (detail/name
+thresholds, per-label indexes) are documented but not yet enforced in code.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+If revisiting embeddings, start from the current SYNC and IMPLEMENTATION docs
+to confirm the service paths and then decide which Phase 1-4 items to execute.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+This archive is informational only; no new decisions were made beyond logging
+the 2025-12-19 path update and canonical status shift in modules.yaml.
+
+---
+
+## TODO
+
+- [ ] Align EmbeddingService behavior with the documented detail/name rules.
+- [ ] Define and create vector indexes for node labels and link embeddings.
+- [ ] Wire embedding indexing into graph operations or batch ingestion.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+Confidence is moderate: the archive reflects a stable implementation with clear
+gaps, but the spec-vs-code alignment should be verified before execution.
+
+---
+
+## POINTERS
+
+- docs/infrastructure/embeddings/PATTERNS_Embeddings.md
+- docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md
+- docs/infrastructure/embeddings/VALIDATION_Embeddings.md
+- docs/infrastructure/embeddings/TEST/TEST_Overview.md
+
+---
+
 
 ## IMPLEMENTATION PLAN
 
@@ -79,4 +139,3 @@ Original file: SYNC_Embeddings.md
 2. Add `index_world()` for batch indexing
 
 ---
-

@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections in
+`docs/infrastructure/embeddings/SYNC_Embeddings_archive_2025-12.md` and logged
+the update in `docs/infrastructure/embeddings/SYNC_Embeddings.md` for #16. Ran
+`ngram validate`; failures remain pre-existing (missing VIEW and doc-chain gaps
+in schema/product/network/storms modules).
+
 Expanded `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md` with the
 missing SCHEMA, LOGIC CHAINS, and CONCURRENCY MODEL sections plus longer
 template-compliant entries, and logged the change in
