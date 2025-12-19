@@ -25,21 +25,20 @@ IMPL:           ../../../engine/tests/__init__.py
 ===============================================================================
 
 ```
-engine/tests/
-├── __init__.py
-├── test_behaviors.py
-├── test_e2e_moment_graph.py
-├── test_history.py
-├── test_implementation.py
-├── test_integration_scenarios.py
-├── test_models.py
-├── test_moment.py
-├── test_moment_graph.py
-├── test_moment_lifecycle.py
-├── test_moment_standalone.py
-├── test_moments_api.py
-├── test_narrator_integration.py
-└── test_spec_consistency.py
+engine/tests/__init__.py
+engine/tests/test_behaviors.py
+engine/tests/test_e2e_moment_graph.py
+engine/tests/test_history.py
+engine/tests/test_implementation.py
+engine/tests/test_integration_scenarios.py
+engine/tests/test_models.py
+engine/tests/test_moment.py
+engine/tests/test_moment_graph.py
+engine/tests/test_moment_lifecycle.py
+engine/tests/test_moment_standalone.py
+engine/tests/test_moments_api.py
+engine/tests/test_narrator_integration.py
+engine/tests/test_spec_consistency.py
 ```
 
 ===============================================================================
@@ -49,8 +48,11 @@ engine/tests/
 **Primary module header:** `engine/tests/__init__.py`
 
 **Key files by role:**
-- `test_behaviors.py`: Physics and tension formula invariants.
-- `test_spec_consistency.py`: Schema/spec consistency checks.
-- `test_implementation.py`: Integration stubs for DB-backed systems.
-- `test_integration_scenarios.py`: Multi-module scenario validation.
-- `test_moment*.py`: Moment processing and lifecycle coverage.
+- `engine/tests/test_behaviors.py`: Physics and tension formula invariants.
+- `engine/tests/test_spec_consistency.py`: Schema/spec consistency checks.
+- `engine/tests/test_implementation.py`: Integration stubs for DB-backed systems.
+- `engine/tests/test_integration_scenarios.py`: Multi-module scenario validation.
+- `engine/tests/test_moment.py`: Moment processing and lifecycle coverage.
+- `engine/tests/test_moment_graph.py`: Moment graph transitions and attachments.
+- `engine/tests/test_moment_lifecycle.py`: Moment lifecycle state coverage.
+- `engine/tests/test_moment_standalone.py`: Moment behavior without graph fixtures.
