@@ -7,6 +7,17 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
+**2025-12-19: Completed ApplyOperationsMixin extraction from graph_ops.py**
+- `graph_ops_apply.py` (697 lines) contains ApplyOperationsMixin class with:
+  - `apply()` method for mutation file/dict processing
+  - `_get_existing_node_ids()`, `_node_has_links()`, `_validate_link_targets()`, `_link_id()` helpers
+  - All `_extract_*` methods for node and link argument extraction
+  - `_apply_node_update()`, `_apply_tension_update()` update helpers
+- `graph_ops.py` reduced from 2252 lines to 1611 lines
+- `GraphOps` now inherits from both `MomentOperationsMixin` and `ApplyOperationsMixin`
+- Updated IMPLEMENTATION_Physics.md with line counts
+- Updated modules.yaml with new internal file and updated notes
+
 **2025-12-19: Extracted SearchQueryMixin from graph_queries.py**
 - Created new file `graph_queries_search.py` (285 lines)
 - Extracted search methods: `search()`, `_to_markdown()`, `_cosine_similarity()`, `_find_similar_by_embedding()`, `_get_connected_cluster()`

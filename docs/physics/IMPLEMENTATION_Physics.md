@@ -39,8 +39,8 @@ engine/
 │   └── graph/                   # Graph database operations
 │       ├── __init__.py
 │       ├── graph_queries.py     # Read operations (892 lines)
-│       ├── graph_ops.py         # Write operations
-│       ├── graph_ops_apply.py   # Apply operations
+│       ├── graph_ops.py         # Write operations (1611 lines)
+│       ├── graph_ops_apply.py   # Apply mixin (697 lines)
 │       ├── graph_queries_moments.py  # Moment-specific queries
 │       ├── graph_queries_search.py   # Search/cluster queries (285 lines)
 │       ├── graph_ops_moments.py      # Moment-specific ops
@@ -101,29 +101,22 @@ engine/
     └── test_spec_consistency.py # Spec consistency tests
 ```
 
-### Planned Code (Not Yet Implemented)
+### Planned Modules (Not Yet Implemented)
 
-The following modules are designed but not yet created:
+The following modules are designed but not yet created. These are DESIGN DOCUMENTATION only - the files do not exist yet.
 
-```
-engine/
-├── handlers/                    # PLANNED - Character handler system
-│   ├── __init__.py              # Will export CharacterHandler, dispatch
-│   ├── base.py                  # Will define BaseHandler class
-│   ├── player.py                # Player handler (special)
-│   ├── companion.py             # Companion handler
-│   ├── npc.py                   # NPC handler
-│   └── grouped.py               # Grouped character handler
-│
-├── canon/                       # PLANNED - Canon recording system
-│   ├── __init__.py              # Will export CanonHolder
-│   ├── holder.py                # Canon Holder (records, then links)
-│   └── conflict.py              # Conflict resolution
-│
-└── infrastructure/
-    └── orchestration/
-        └── speed.py             # PLANNED - Speed controller (1x/2x/3x + The Snap)
-```
+**handlers module** (to be created at engine/handlers/):
+- Character handler system for responding to moment flips
+- Will contain: base handler class, player handler, companion handler, NPC handler, grouped handler
+- Will export: CharacterHandler, dispatch function
+
+**canon module** (to be created at engine/canon/):
+- Canon recording system for persisting spoken moments
+- Will contain: canon holder class, conflict resolution
+- Will export: CanonHolder
+
+**speed controller** (to be created at engine/infrastructure/orchestration/):
+- Speed controller for 1x/2x/3x display modes with "The Snap" transition
 
 ### File Responsibilities
 
@@ -151,16 +144,10 @@ engine/
 
 **Planned Files (not yet created):**
 
-| File | Purpose |
-|------|---------|
-| `engine/handlers/base.py` | BaseHandler abstract class |
-| `engine/handlers/companion.py` | Handler for companion characters |
-| `engine/handlers/npc.py` | Handler for NPC characters |
-| `engine/handlers/player.py` | Handler for player character |
-| `engine/handlers/grouped.py` | Handler for grouped characters |
-| `engine/canon/holder.py` | Canon Holder: record, then links |
-| `engine/canon/conflict.py` | Conflict resolution |
-| `engine/infrastructure/orchestration/speed.py` | Speed controller (1x/2x/3x + The Snap) |
+See "Planned Modules" section above for the design of modules that don't exist yet:
+- handlers module: BaseHandler, companion handler, NPC handler, player handler, grouped handler
+- canon module: Canon Holder, conflict resolution
+- speed controller: 1x/2x/3x speed modes with "The Snap"
 
 ---
 
@@ -227,11 +214,11 @@ THEN:
 
 **Planned Entry Points (not yet implemented):**
 
-| Entry Point | Planned File | Triggered By |
-|-------------|--------------|--------------|
-| Handler dispatch | `engine/handlers/__init__.py` | Flip triggers handler |
-| Canon record | `engine/canon/holder.py` | Handler returns moment |
-| Speed change | `engine/infrastructure/orchestration/speed.py` | Direct address / interrupt |
+| Entry Point | Planned Module | Triggered By |
+|-------------|----------------|--------------|
+| Handler dispatch | handlers module | Flip triggers handler |
+| Canon record | canon module | Handler returns moment |
+| Speed change | speed controller | Direct address / interrupt |
 
 ---
 
@@ -415,22 +402,14 @@ engine/physics/tick.py
 
 ### Planned Dependencies (for future modules)
 
-```
-# When handlers/ is created:
-engine/handlers/base.py
-    └── will import → engine/models/nodes.py
-    └── will import → engine/physics/graph/graph_queries.py
+When the handlers module is created:
+- Will import from: models (nodes), physics graph queries
 
-# When canon/ is created:
-engine/canon/holder.py
-    └── will import → engine/physics/graph/graph_ops.py
-    └── will import → engine/moment_graph/traversal.py
+When the canon module is created:
+- Will import from: physics graph ops, moment_graph traversal
 
-# Orchestrator will need updates to import:
-engine/infrastructure/orchestration/orchestrator.py
-    └── will import → engine/handlers/__init__.py
-    └── will import → engine/canon/holder.py
-```
+When integrating with orchestrator:
+- Orchestrator will import handlers and canon modules
 
 ### External Dependencies
 
@@ -563,12 +542,12 @@ Files that reference this documentation:
 
 ### Docs → Code (Planned - Not Yet Implemented)
 
-| Doc Section | Planned Location |
-|-------------|------------------|
-| ALGORITHM_Handlers: dispatch | `engine/handlers/__init__.py` |
-| ALGORITHM_Canon: record | `engine/canon/holder.py` |
-| ALGORITHM_Speed: controller | `engine/infrastructure/orchestration/speed.py` |
-| VALIDATION I2 (THEN after) | `engine/canon/holder.py` |
+| Doc Section | Planned Module |
+|-------------|----------------|
+| ALGORITHM_Handlers: dispatch | handlers module |
+| ALGORITHM_Canon: record | canon module |
+| ALGORITHM_Speed: controller | speed controller |
+| VALIDATION I2 (THEN after) | canon module |
 
 ---
 
@@ -576,31 +555,31 @@ Files that reference this documentation:
 
 ### Phase 1: Core v2 Updates (CURRENT)
 
-1. **Update `engine/physics/tick.py`**
+1. **Update physics tick** (existing: engine/physics/tick.py)
    - Add moment weight tracking (not just narrative weight)
-   - Add `FLIP_THRESHOLD` constant
+   - Add FLIP_THRESHOLD constant
    - Return flip info for moments, not just tensions
 
-2. **Create `engine/handlers/` module**
-   - `base.py` — BaseHandler with scope isolation
-   - `companion.py` — First handler type
-   - `__init__.py` — Dispatcher
+2. **Create handlers module** (new: engine/handlers/)
+   - BaseHandler with scope isolation
+   - First handler type (companion)
+   - Dispatcher
 
-3. **Create `engine/canon/holder.py`**
+3. **Create canon holder** (new: engine/canon/)
    - Record moment to graph
    - Create THEN links (after, not before)
    - Push to frontend queue
 
 ### Phase 2: Speed Controller
 
-4. **Create `engine/infrastructure/orchestration/speed.py`**
+4. **Create speed controller** (new: engine/infrastructure/orchestration/speed.py)
    - 1x/2x/3x modes
    - Interrupt detection
    - "The Snap" transition
 
 ### Phase 3: Integration
 
-5. **Update `engine/infrastructure/orchestration/orchestrator.py`**
+5. **Update orchestrator** (existing: engine/infrastructure/orchestration/orchestrator.py)
    - Wire physics → handlers → canon
    - Handle async handler results
    - Integrate speed controller
@@ -610,12 +589,12 @@ Files that reference this documentation:
 ## GAPS / IDEAS / QUESTIONS
 
 **Planned modules not yet created:**
-- [ ] `engine/handlers/` module — character handler system
-- [ ] `engine/canon/` module — canon recording system
-- [ ] `engine/infrastructure/orchestration/speed.py` — speed controller
+- [ ] handlers module — character handler system
+- [ ] canon module — canon recording system
+- [ ] speed controller — speed control for display modes
 
 **Existing code needing updates:**
-- [ ] `engine/physics/tick.py` still uses narrative-centric model, needs moment-centric update
+- [ ] physics tick (engine/physics/tick.py) still uses narrative-centric model, needs moment-centric update
 - [ ] Player input → energy injection path not fully implemented
 
 **Ideas for future:**
