@@ -7,6 +7,68 @@ STATUS: Draft — validating with Nicolas
 
 ---
 
+## CHAIN
+
+- `docs/design/PATTERNS_Vision.md` (this doc)
+- `docs/design/BEHAVIORS_Vision.md` (player-facing experience outcomes)
+- `docs/design/ALGORITHM_Vision.md` (system-level drivers for the vision)
+- `docs/design/VALIDATION_Vision.md` (proof and validation criteria)
+- `docs/design/IMPLEMENTATION_Vision.md` (doc architecture and ownership)
+- `docs/design/TEST_Vision.md` (vision validation checklist)
+- `docs/design/SYNC_Vision.md` (current state and handoffs)
+
+---
+
+## THE PROBLEM
+
+Most narrative games fake relational depth with stats or scripts, which creates
+shallow bonds and brittle consequences that fail to feel personal or earned.
+
+---
+
+## THE PATTERN
+
+Model relationships as a living narrative graph where tension accumulates,
+breaks, and resolves into specific story events instead of pre-authored arcs.
+
+---
+
+## PRINCIPLES
+
+The guiding principles for this vision are summarized below and expanded in
+the "Design Principles" section that follows, so decisions stay consistent.
+
+---
+
+## DEPENDENCIES
+
+This vision depends on a graph-backed narrative model, reliable tension
+signals, and an LLM layer that can interpret contradictions into scenes.
+
+---
+
+## INSPIRATIONS
+
+Primary reference points include Game of Thrones, Crusader Kings 3, and The
+Expanse, chosen for political intimacy, emergent character arcs, and scale.
+
+---
+
+## SCOPE
+
+In scope: relationship-driven narrative play, emergent tension resolution, and
+text-first delivery with selective sensory reinforcement. Out of scope: MMO
+scale, tactical combat depth, and pre-authored quest-line branching.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+Open questions remain around graph pruning, character depth generation, and
+long-session consistency; answers should land before production commitments.
+
+---
+
 ## The Core Insight
 
 **The game is a web of narratives under tension, not a simulation of characters making decisions.**

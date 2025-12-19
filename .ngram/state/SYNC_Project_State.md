@@ -9,6 +9,9 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/design/PATTERNS_Vision.md` with missing pattern template sections (chain, problem, pattern, principles, dependencies, inspirations, scope, gaps) and logged the change in `docs/design/SYNC_Vision.md` for repair #16.
+Ran `ngram validate`; failures remain pre-existing (missing VIEW file and doc-chain gaps in schema/product/network/storms modules).
+
 Expanded `docs/design/VALIDATION_Vision.md` layer status lines to clarify pending implementation dependencies and meet template length guidance, and recorded the change in `docs/design/SYNC_Vision.md` for repair #16.
 
 Expanded `docs/design/TEST_Vision.md` with the missing test template sections
