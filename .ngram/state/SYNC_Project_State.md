@@ -16,7 +16,9 @@ Frontend-backend integration fixes for playthrough flow:
 - Implemented free text input in CenterStage.tsx (calls `sendMoment` API)
 - Added emoji fallbacks for player/character avatars (👤/🗣️)
 - Updated API IMPLEMENTATION and SYNC docs
+Verified `engine/models/nodes.py` moment/narrative helper properties for repair 06; implementations already present, no code changes required.
 Re-verified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) are implemented; no code changes required for repair 04-INCOMPLETE_IMPL-models-base.
+Verified `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) are already implemented; repair 05-INCOMPLETE_IMPL-models-links required no code changes.
 Verified health check helper implementations in `engine/graph/health/check_health.py` for repair 00-INCOMPLETE_IMPL-health-check_health; no code changes required.
 Verified moment processor functions for repair 03-INCOMPLETE_IMPL-memory-moment_processor; no code changes required.
 
@@ -39,6 +41,7 @@ Rechecked `engine/graph/health/check_health.py` for the health-check repair; fun
 Re-verified ConversationThread path helpers in `engine/infrastructure/history/conversations.py`; repair task was stale and required no code changes.
 Logged this repair run's verification of ConversationThread helpers in `docs/infrastructure/history/SYNC_History.md`.
 Verified `engine/models/base.py` comparison helpers are already implemented; repair 04-INCOMPLETE_IMPL-models-base is stale.
+Verified link model helpers (`belief_intensity`, `is_present`, `has_item`, `is_here`) in `engine/models/links.py`; repair 05-INCOMPLETE_IMPL-models-links appears stale with no code changes required.
 Implemented markdown formatting and cosine similarity helpers in `engine/physics/graph/graph_queries_search.py` to complete the search mixin methods.
 Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still reports pre-existing docs/schema gaps and broken CHAIN links.
 Recorded moment query verification in `docs/physics/graph/SYNC_Graph.md`.
@@ -70,6 +73,7 @@ Consolidated schema validation docs by merging graph integrity rules into `docs/
 Consolidated async algorithm docs into `docs/infrastructure/async/ALGORITHM_Async_Architecture.md` and removed per-topic async ALGORITHM files; updated async doc chains.
 Reverified playthrough helper implementations for repair 01-INCOMPLETE_IMPL-api-playthroughs; no code changes required.
 Re-verified ConversationThread path helper implementations for repair 02-INCOMPLETE_IMPL-history-conversations; no code changes required.
+Reconfirmed moment graph query helper implementations in `engine/moment_graph/queries.py`; repair task was stale and required no code changes.
 
 ---
 
@@ -145,6 +149,8 @@ Repair task appears stale relative to current code.
 - Reverified repair 00-INCOMPLETE_IMPL-health-check_health; functions were already implemented.
 - `ngram validate` still reports pre-existing missing docs in `docs/schema/` and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 - `engine/models/base.py` comparison helpers already exist; repair 04-INCOMPLETE_IMPL-models-base required no code changes.
+- Link model property helpers in `engine/models/links.py` already exist; repair 05-INCOMPLETE_IMPL-models-links required no code changes.
+- `engine/models/nodes.py` helper properties already exist; repair 06-INCOMPLETE_IMPL-models-nodes required no code changes.
 
 ### Suggestions
 
