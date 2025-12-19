@@ -14,6 +14,10 @@ sections (invariants, properties, error conditions, test coverage,
 verification procedure, sync status, gaps) and logged the update in
 `docs/frontend/scene/SYNC_Scene.md` for repair #16.
 
+Verified `docs/frontend/scene/VALIDATION_Scene.md` already satisfies the
+template requirements and recorded the verification in
+`docs/frontend/scene/SYNC_Scene.md` for repair #16.
+
 Expanded `docs/frontend/minimap/SYNC_Minimap.md` with the missing template
 sections (in progress, known issues, human handoff, consciousness trace,
 pointers) and expanded short entries to meet length requirements for repair
