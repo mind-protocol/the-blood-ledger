@@ -19,6 +19,8 @@ Linked `frontend/lib/api.ts` and `frontend/lib/map/*` utilities to the frontend 
 Added image-generation DOCS references in `tools/image_generation/README.md` and reordered `tools/image_generation/generate_image.py` DOCS links so the image-generation chain is primary.
 Updated image-generation and cli-tools implementation docs to reflect the new DOCS comment line numbers.
 
+Documented the schema models module (`engine/models/**`) with new PATTERNS and SYNC docs, added a `modules.yaml` mapping, and linked `engine/models/__init__.py` to the documentation chain via a DOCS reference.
+
 Documented the frontend scenario selection module with new docs, a modules.yaml mapping, and a DOCS reference in `frontend/app/scenarios/page.tsx`.
 Added `frontend/app/start/page.tsx` as an explicit frontend entry point in `modules.yaml` to map the start screen to the frontend docs.
 Linked `frontend/types/game.ts`, `frontend/types/map.ts`, and `frontend/types/moment.ts` to the frontend documentation chain and added a `frontend/types/**` mapping in `modules.yaml`.
