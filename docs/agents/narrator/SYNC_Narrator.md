@@ -41,6 +41,12 @@ TOOLS:           tools/stream_dialogue.py
 
 ## RECENT CHANGES
 
+### 2025-12-19: Clarified narrator implementation file references
+
+- **What:** Removed colon-qualified file references, standardized full paths in boundary/chain tables, and noted that the prompt builder lives in `engine/infrastructure/orchestration/narrator.py`.
+- **Why:** Avoid broken file link detection and keep the implementation doc aligned with the current code layout.
+- **Files:** `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/SYNC_Narrator.md`
+
 ### 2025-12-19: Fixed broken implementation links
 
 - **What:** Updated narrator implementation doc paths to point at existing files, clarified prompt ownership in the runtime flow, and pinned playthrough file references to existing examples.

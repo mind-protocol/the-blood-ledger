@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Adjusted narrator implementation doc references to avoid broken-link parsing (removed colon-qualified paths, standardized file paths, and noted prompt builder location), and logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
+
 Repaired broken canon implementation doc references by switching to full-path file entries and removing stray `# DOCS:` labels, then logged the update in `docs/infrastructure/canon/SYNC_Canon.md`.
 
 Repaired broken implementation doc links in `docs/world/map/IMPLEMENTATION_Map_Code_Architecture.md` by qualifying method references with the semantic search file path and cleaning the DOCS reference; noted in `docs/world/map/SYNC_Map.md`.

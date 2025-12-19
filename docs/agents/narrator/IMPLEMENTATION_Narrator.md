@@ -38,6 +38,8 @@ engine/physics/graph/graph_ops.py         # Write operations (mutations)
 engine/physics/graph/graph_queries.py     # Read operations (queries)
 ```
 
+The prompt builder lives in `engine/infrastructure/orchestration/narrator.py`; there is no standalone `narrator_prompt.py`.
+
 ### File Responsibilities
 
 | File | Purpose | Lines | Status |
@@ -89,7 +91,7 @@ Traditional code can't provide the creative generation needed. An LLM agent with
 
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
-| Agent Instructions | CLAUDE.md | Orchestrator, tools | Claude CLI invocation |
+| Agent Instructions | agents/narrator/CLAUDE.md | Orchestrator, tools | Claude CLI invocation |
 | Graph Access | engine/physics/graph/graph_ops.py, engine/physics/graph/graph_queries.py | CLAUDE.md | Python tool calls |
 | Output Streaming | tools/stream_dialogue.py | Frontend | SSE events |
 
@@ -101,8 +103,8 @@ Traditional code can't provide the creative generation needed. An LLM agent with
 |-------------|------|--------------|
 | Narrator invocation | `engine/infrastructure/orchestration/narrator.py` (`NarratorService.generate`) | Orchestrator on player action |
 | Streaming dialogue | `tools/stream_dialogue.py` | Narrator tool call |
-| Graph query | `engine/physics/graph/graph_queries.py:search()` | Narrator tool call |
-| Mutation apply | `engine/physics/graph/graph_ops.py:apply()` | Narrator tool call |
+| Graph query | `engine/physics/graph/graph_queries.py` (search) | Narrator tool call |
+| Mutation apply | `engine/physics/graph/graph_ops.py` (apply) | Narrator tool call |
 
 ---
 
@@ -225,7 +227,7 @@ populate the recent action field.
 1. Orchestrator starts
 2. On first player action:
    a. Build scene context (orchestrator)
-   b. Build prompt (`engine/infrastructure/orchestration/narrator.py:_build_prompt`)
+   b. Build prompt (`engine/infrastructure/orchestration/narrator.py` `_build_prompt`)
    c. Invoke Claude CLI (first call, no --continue)
    d. Claude loads CLAUDE.md as system instructions
    e. Session established
@@ -286,11 +288,11 @@ Files that reference this documentation:
 
 | Doc Section | Implemented In |
 |-------------|----------------|
-| ALGORITHM_Scene_Generation: Two modes | `CLAUDE.md:§2 The Two Paths` |
+| ALGORITHM_Scene_Generation: Two modes | `agents/narrator/CLAUDE.md` (section "The Two Paths") |
 | BEHAVIORS: DialogueChunk | `tools/stream_dialogue.py` |
-| BEHAVIORS: GraphMutation | `CLAUDE.md:§1 Invention Is Creation` |
-| PATTERNS: Pre-baked trees | `CLAUDE.md:§3 What You Produce` |
-| VALIDATION: V1 Classification | `CLAUDE.md:§2` decision logic |
+| BEHAVIORS: GraphMutation | `agents/narrator/CLAUDE.md` (section "Invention Is Creation") |
+| PATTERNS: Pre-baked trees | `agents/narrator/CLAUDE.md` (section "What You Produce") |
+| VALIDATION: V1 Classification | `agents/narrator/CLAUDE.md` (classification decision logic) |
 
 ---
 
