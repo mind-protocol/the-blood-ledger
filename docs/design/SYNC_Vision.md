@@ -60,10 +60,14 @@ vision chain before further revisions or expansion.
 ## RECENT CHANGES
 
 - 2025-12-19: Filled missing SYNC template sections and lengthened entries.
+- 2025-12-19: Filled VALIDATION_Vision template sections (chain, invariants, properties, errors, verification) for repair #16.
+- 2025-12-19: Expanded TEST_Vision sections (strategy, coverage, gaps, run guidance) to resolve doc-template drift for repair #16.
 - 2025-12-19: Fixed broken IMPLEMENTATION references and validated the chain.
 - 2025-12-19: Condensed PATTERNS/BEHAVIORS content and archived long-form notes.
 - 2025-12-19: Updated the file map/line counts in IMPLEMENTATION to match edits.
+- 2025-12-19: Added SCHEMA and LOGIC CHAINS sections to the implementation doc and expanded bidirectional link notes.
 - 2025-12-19: Verified SYNC template sections meet required headings and length guidance.
+- 2025-12-19: Ran `ngram validate`; failures remain for missing VIEW and doc-chain gaps in schema/product/network/storms modules.
 
 ---
 
@@ -226,6 +230,7 @@ and should be treated as validation priorities.
 
 ### Remarks
 - The vision docs had overlapping rationale and validation detail; trimming helped reduce redundancy without changing intent.
+- The implementation doc now captures schema expectations and logic flows for the vision documentation chain.
 
 ### Suggestions
 - [ ] Consider moving any future long-form research quotes directly into the archive to keep the vision docs concise.

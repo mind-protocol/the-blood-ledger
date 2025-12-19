@@ -9,10 +9,21 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/design/TEST_Vision.md` with the missing test template sections
+(strategy, unit/integration coverage, edge cases, run guidance, gaps, flaky
+tracking) and logged the change in `docs/design/SYNC_Vision.md` for repair #16.
+
+Expanded `docs/design/VALIDATION_Vision.md` with missing validation template
+sections (CHAIN, invariants, properties, error conditions, test coverage,
+verification procedure, sync status, gaps) and logged the update in
+`docs/design/SYNC_Vision.md` for repair #16.
+
+Added SCHEMA and LOGIC CHAINS sections to `docs/design/IMPLEMENTATION_Vision.md`
+and expanded bidirectional link notes to satisfy the DOC_TEMPLATE_DRIFT warning
+for repair #16. Logged the update in `docs/design/SYNC_Vision.md`.
+
 Expanded `docs/schema/models/SYNC_Schema_Models.md` IN PROGRESS notes to keep
 the schema-model doc chain aligned after template repairs for #16.
-
-Applied the physics implementation doc anti-pattern update (hidden writes in query helpers) for repair #16 and verified it against the DESIGN PATTERNS template.
 
 Expanded `docs/design/SYNC_Vision.md` with the missing template sections
 (maturity, current state, in progress, recent changes, known issues, handoffs,

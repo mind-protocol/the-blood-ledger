@@ -7,6 +7,20 @@ STATUS: Draft — validating with Nicolas
 
 ---
 
+## CHAIN
+
+```
+PATTERNS:        ./PATTERNS_Vision.md
+BEHAVIORS:       ./BEHAVIORS_Vision.md
+ALGORITHM:       ./ALGORITHM_Vision.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Vision.md
+THIS:            VALIDATION_Vision.md (you are here)
+TEST:            ./TEST_Vision.md
+SYNC:            ./SYNC_Vision.md
+```
+
+---
+
 ## The Core Question
 
 > **Does it feel like real relationships with people who remember?**
@@ -187,6 +201,68 @@ If yes to all five, the vision is working.
 > "I'll send Aldric because I know he'll come back — [specific reasons from your relationship]."
 
 If the player can fill in that bracket with real, accurate information they learned through play, we've succeeded.
+
+---
+
+## INVARIANTS
+
+Things that must always be true for the vision to be considered intact:
+
+1. **Relationships drive consequences** — character behavior must change based on remembered interactions, not only scripted beats.
+2. **Memory shapes choices** — dialogue and options must reflect past events in specific, traceable ways instead of vague callbacks.
+3. **Specificity over genericity** — scenes and breaks must feel grounded in this world and these people, not a generic fantasy template.
+4. **Player agency is legible** — the player can explain why they choose an action based on character knowledge, not opaque system logic.
+
+---
+
+## PROPERTIES
+
+Qualities the experience should exhibit across multiple sessions:
+
+- **Consistency under variation** — different sessions should produce different stories without breaking character integrity.
+- **Narrative traceability** — players can point to a belief or event and link it back to earlier moments in play.
+- **Emotional accrual** — the sense of relationship deepens over time rather than resetting each session.
+- **Actionable understanding** — knowledge of companions leads to concrete, reliable predictions about their behavior.
+
+---
+
+## ERROR CONDITIONS
+
+Conditions that fail the vision even if systems appear to function:
+
+- **Memory without consequence** — past events are referenced but do not meaningfully affect character decisions or outcomes.
+- **Interchangeable personalities** — characters sound distinct in isolation but behave the same when stakes arise.
+- **Scene drift** — scenes expand into exposition that obscures agency and does not yield actionable choices.
+- **Untraceable events** — outcomes feel random because they cannot be connected to graph state or prior actions.
+
+---
+
+## TEST COVERAGE
+
+Current coverage is qualitative and draft-level, with no automated tests tied to vision outcomes yet. Planned coverage includes player playtests for relationship recall, scripted scenario replays to measure narrative traceability, and instrumentation of memory callbacks once the graph systems are in place.
+
+---
+
+## VERIFICATION PROCEDURE
+
+1. Run the POC milestones in order and document outcomes in `docs/design/TEST_Vision.md`.
+2. Conduct at least three multi-hour play sessions and log remembered callbacks, choice quality, and character predictability.
+3. Review logs against invariants and properties, then record a go/no-go decision in `docs/design/SYNC_Vision.md`.
+
+---
+
+## SYNC STATUS
+
+This validation document is now aligned with the template sections but still requires human review to confirm the acceptance thresholds. Update `docs/design/SYNC_Vision.md` after validation sessions to keep the chain authoritative and current.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- [ ] What minimum number of recalled moments constitutes a believable relationship in the first 2 hours of play?
+- [ ] How should we measure "predictability" without collapsing into rote or deterministic character behavior?
+- [ ] Should the ultimate test include failure cases (death, betrayal) to prove memory still shapes outcomes?
+- IDEA: Add a short, structured survey for playtesters to capture relationship depth and perceived memory fidelity.
 
 ---
 
