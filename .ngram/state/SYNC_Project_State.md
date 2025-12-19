@@ -25,9 +25,11 @@ Consolidated narrator algorithm docs into `docs/agents/narrator/ALGORITHM_Prompt
 Reconfirmed traversal helper implementations for repair 08-INCOMPLETE_IMPL-moment_graph-traversal; no code changes required.
 Consolidated narrator PATTERNS docs into `docs/agents/narrator/PATTERNS_Narrator.md` and deprecated `docs/agents/narrator/PATTERNS_World_Building.md`.
 Consolidated map algorithm docs into `docs/world/map/ALGORITHM_Rendering.md`; removed `docs/world/map/ALGORITHM_Places.md` and `docs/world/map/ALGORITHM_Routes.md`.
+Repair 17 revalidated map algorithm consolidation and updated `docs/world/map/SYNC_Map.md` wording to note the verification.
 Consolidated world-runner algorithm docs into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and deprecated `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
 Consolidated world runner algorithm docs by merging graph tick details into `docs/agents/world-runner/ALGORITHM_World_Runner.md` and redirecting `docs/agents/world-runner/ALGORITHM_Graph_Ticks.md`.
 Consolidated world scraping algorithm docs into `docs/world/scraping/ALGORITHM_Pipeline.md` and removed duplicate phase-specific ALGORITHM files.
+Recorded scraping doc consolidation in `docs/world/scraping/SYNC_World_Scraping.md` to align pipeline status with the canonical algorithm.
 Consolidated world scraping ALGORITHM docs into `docs/world/scraping/ALGORITHM_Pipeline.md`, redirected per-phase docs, and updated chain links for scraping docs.
 Verified map algorithm consolidation state and recorded the check in `docs/world/map/SYNC_Map.md`.
 

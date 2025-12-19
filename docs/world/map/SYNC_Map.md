@@ -9,7 +9,7 @@ STATUS: Partial implementation - semantic search complete, visual map pending
 
 ## Current State
 
-**Documentation complete.** Map system fully specified, with places/routes consolidated into a single algorithm doc:
+**Documentation complete.** Map system fully specified, with places/routes consolidated into a single algorithm doc. Consolidation verified during repair 17:
 - Place schema and hierarchy
 - Route computation and movement rules
 - Canvas rendering with 7 layers
