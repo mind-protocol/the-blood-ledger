@@ -84,6 +84,12 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ## RECENT CHANGES
 
+### 2025-12-19: Link debug component to frontend docs
+
+- **What:** Added DOCS reference in `frontend/components/debug/DebugPanel.tsx`
+- **Why:** Ensure the debug panel is discoverable via `ngram context`
+- **Files:** `frontend/components/debug/DebugPanel.tsx`
+
 ### 2025-12-19: Link chronicle component to frontend docs
 
 - **What:** Added DOCS reference in `frontend/components/chronicle/ChroniclePanel.tsx`

@@ -9,7 +9,7 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
-Completed async architecture documentation chain by adding an IMPLEMENTATION doc, linking CHAIN sections, mapping the module in `modules.yaml`, and adding a DOCS reference in `engine/infrastructure/api/playthroughs.py`.
+Completed async architecture implementation documentation, linked CHAIN sections, mapped the module in `modules.yaml`, added a DOCS reference in `engine/scripts/check_injection.py`, and logged the injection queue format conflict in `docs/infrastructure/async/SYNC_Async_Architecture.md`.
 
 Completed image-generation documentation chain by adding IMPLEMENTATION doc, linking CHAIN references, and mapping the module in `modules.yaml`.
 
@@ -20,6 +20,7 @@ Completed docs/design chain by adding IMPLEMENTATION_Vision.md, updating TEST_Vi
 Linked the History implementation doc into the module chain, added a CHAIN block in `docs/infrastructure/history/SYNC_History.md`, and mapped `engine/infrastructure/history/**` in `modules.yaml`.
 Mapped frontend module in `modules.yaml` to cover `frontend/**`, aligning docs with `docs/frontend/` and closing the unmapped `frontend/components` gap.
 Linked `frontend/components/voices/Voices.tsx` to frontend docs via a DOCS reference for `ngram context` discoverability.
+Linked `frontend/components/debug/DebugPanel.tsx` to frontend docs via a DOCS reference.
 Repair 22: corrected the history module implementation chain link and registered history in `modules.yaml`.
 
 Frontend-backend integration fixes for playthrough flow:

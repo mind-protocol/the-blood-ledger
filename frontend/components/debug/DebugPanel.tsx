@@ -1,5 +1,7 @@
 'use client';
 
+// DOCS: docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md
+
 import { useEffect, useState, useRef } from 'react';
 
 interface MutationEvent {
