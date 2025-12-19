@@ -34,6 +34,20 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Logged repair 04 verification (current run)
+
+- **What:** Recorded the current repair run verification for `GameTimestamp` helpers in `engine/models/base.py`; no code changes needed.
+- **Why:** Repair task required confirmation for this run.
+- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task remains stale; verification only.
+
+### 2025-12-19: Logged repair 06 verification (current run)
+
+- **What:** Recorded the current repair run verification for node helper properties in `engine/models/nodes.py`; no code changes needed.
+- **Why:** Repair task required confirmation for this run.
+- **Files:** `engine/models/nodes.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task remains stale; verification only.
+
 ### 2025-12-19: Revalidated node helper implementations (repair 06)
 
 - **What:** Rechecked `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` in `engine/models/nodes.py`; implementations already present.
