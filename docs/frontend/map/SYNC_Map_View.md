@@ -24,8 +24,35 @@ splitting map-related SYNC data across modules. See the canonical map system
 SYNC for the combined status and open work:
 [Map System — Sync: Current State](../../world/map/SYNC_Map.md).
 
+## IN PROGRESS
+
+No standalone frontend-only tasks are tracked here; active work is logged in
+the canonical map system sync so the UI and backend stay aligned.
+
+## KNOWN ISSUES
+
+None noted in this frontend-only sync entry; see the canonical map system sync
+for any cross-module risks or open defects.
+
+## HANDOFF: FOR HUMAN
+
+No human decisions needed for this sync note; coordinate changes through the
+canonical map system sync if priorities shift.
+
+## CONSCIOUSNESS TRACE
+
+This sync file remains intentionally thin to prevent duplicate map tracking;
+the shared map sync is treated as the single source of truth.
+
+## POINTERS
+
+- Canonical status lives at `docs/world/map/SYNC_Map.md` for map-wide planning.
+- Frontend behavior and scope live in `docs/frontend/map/PATTERNS_Parchment_Map_View.md`.
+
 ## Updates
 
 - 2025-12-19: Filled missing SCOPE and INSPIRATIONS sections in
   `docs/frontend/map/PATTERNS_Parchment_Map_View.md` and expanded short
   template entries to satisfy doc-template drift checks.
+- 2025-12-19: Added missing SYNC template sections and expanded entries to
+  meet the doc-template length requirements for the map view sync.

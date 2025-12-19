@@ -80,6 +80,10 @@ Expanded `docs/frontend/scenarios/SYNC_Scenario_Selection.md` with required
 template sections (in-progress, known issues, human handoff, consciousness
 trace, pointers) to resolve doc-template drift.
 
+Expanded `docs/frontend/map/SYNC_Map_View.md` with the missing template
+sections (in progress, known issues, human handoff, consciousness trace,
+pointers) and logged the update for repair #16.
+
 Created `docs/frontend/SYNC_Frontend_archive_2025-12.md` to restore the missing
 archive sync file with the required template sections (current state, handoffs,
 todo, consciousness trace, pointers) for the frontend repair.
