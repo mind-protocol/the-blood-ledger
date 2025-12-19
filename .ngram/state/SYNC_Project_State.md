@@ -139,6 +139,7 @@ Check `modules.yaml` (project root) for full manifest.
 - Confirmed `engine/graph/health/check_health.py` functions flagged by repair are already implemented; documented in `docs/physics/graph/SYNC_Graph.md`.
 - Verified `engine/graph/health/check_health.py` functions flagged as empty are already implemented; no code changes required for graph health helpers.
 - Verified `engine/infrastructure/history/conversations.py` functions flagged as empty are already implemented; no code changes required for ConversationThread helpers.
+- Re-validated `engine/infrastructure/history/conversations.py` implementations for current repair; no code changes required.
 - Verified `engine/infrastructure/api/moments.py` functions flagged as empty are already implemented; no code changes required for moments API helpers.
 - Verified `engine/infrastructure/api/playthroughs.py` helpers `_count_branches` and `_get_playthrough_queries` are already implemented; no code changes required.
 - Implemented FalkorDB dict/list row normalization in `engine/moment_graph/queries.py` for dormant moments, wait triggers, and tension-attached queries.
