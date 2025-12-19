@@ -7,6 +7,10 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
+**2025-12-19: Normalized moment graph query row handling**
+- `engine/moment_graph/queries.py` now normalizes dict/list query rows for dormant moments, wait triggers, and tension-attached moments
+- Keeps traversal/reactivation logic stable across FalkorDB result formats
+
 **2025-12-19: Moment API resolves playthrough graph names from configured directory**
 - `engine/infrastructure/api/moments.py` now reads `player.yaml` under the router's `playthroughs_dir` when resolving graph names
 - Falls back to `get_playthrough_graph_name()` if no playthrough metadata is present
@@ -149,6 +153,7 @@ For next session:
 
 ### Remarks
 - Moments API now resolves graph names from the router-configured `playthroughs_dir` before falling back to `get_playthrough_graph_name()`.
+- Moment graph query helpers now normalize FalkorDB dict/list row shapes for traversal workflows.
 
 ### Suggestions
 

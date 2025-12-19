@@ -340,7 +340,21 @@ class MomentQueries:
         """
         try:
             results = self.read.query(cypher, {"loc_id": location_id})
-            return [{'id': r[0], 'text': r[1], 'weight': r[2]} for r in results]
+            dormant = []
+            for row in results:
+                if isinstance(row, dict):
+                    dormant.append({
+                        'id': row.get('id'),
+                        'text': row.get('text'),
+                        'weight': row.get('weight')
+                    })
+                else:
+                    dormant.append({
+                        'id': row[0],
+                        'text': row[1],
+                        'weight': row[2]
+                    })
+            return dormant
         except Exception as e:
             logger.error(f"[MomentQueries] get_dormant_moments failed: {e}")
             return []
@@ -363,12 +377,23 @@ class MomentQueries:
         """
         try:
             results = self.read.query(cypher, {"tick": tick})
-            return [{
-                'from_id': r[0],
-                'to_id': r[1],
-                'weight_transfer': r[2],
-                'consumes_origin': r[3]
-            } for r in results]
+            triggers = []
+            for row in results:
+                if isinstance(row, dict):
+                    triggers.append({
+                        'from_id': row.get('from_id'),
+                        'to_id': row.get('to_id'),
+                        'weight_transfer': row.get('weight_transfer'),
+                        'consumes_origin': row.get('consumes_origin')
+                    })
+                else:
+                    triggers.append({
+                        'from_id': row[0],
+                        'to_id': row[1],
+                        'weight_transfer': row[2],
+                        'consumes_origin': row[3]
+                    })
+            return triggers
         except Exception as e:
             logger.error(f"[MomentQueries] get_wait_triggers failed: {e}")
             return []
@@ -385,7 +410,19 @@ class MomentQueries:
         """
         try:
             results = self.read.query(cypher, {"tension_id": tension_id})
-            return [{'id': r[0], 'weight': r[1]} for r in results]
+            attached = []
+            for row in results:
+                if isinstance(row, dict):
+                    attached.append({
+                        'id': row.get('id'),
+                        'weight': row.get('weight')
+                    })
+                else:
+                    attached.append({
+                        'id': row[0],
+                        'weight': row[1]
+                    })
+            return attached
         except Exception as e:
             logger.error(f"[MomentQueries] get_moments_attached_to_tension failed: {e}")
             return []

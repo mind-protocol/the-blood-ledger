@@ -139,6 +139,7 @@ Check `modules.yaml` (project root) for full manifest.
 - Verified `engine/graph/health/check_health.py` functions flagged as empty are already implemented; no code changes required for graph health helpers.
 - Verified `engine/infrastructure/history/conversations.py` functions flagged as empty are already implemented; no code changes required for ConversationThread helpers.
 - Verified `engine/infrastructure/api/moments.py` functions flagged as empty are already implemented; no code changes required for moments API helpers.
+- Implemented FalkorDB dict/list row normalization in `engine/moment_graph/queries.py` for dormant moments, wait triggers, and tension-attached queries.
 - Implemented orchestrator time/day/recent action helpers using world tick and playthrough `current_action.json`, with resilient world injection path handling.
 - Verified `engine/models/base.py` functions flagged as empty are already implemented; no code changes required for GameTimestamp comparisons.
 - Verified `engine/infrastructure/memory/moment_processor.py` functions flagged as empty are already implemented; no code changes required for moment processor helpers.
