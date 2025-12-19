@@ -9,6 +9,16 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/agents/world-runner/PATTERNS_World_Runner.md` with the missing
+template sections (problem, pattern, principles, dependencies, inspirations,
+scope, gaps) and logged the update in
+`docs/agents/world-runner/SYNC_World_Runner.md` for repair #16.
+
+Verified the World Runner SYNC template coverage by adding an explicit
+RECENT CHANGES note in `docs/agents/world-runner/SYNC_World_Runner.md` for
+repair #16; no behavior changes were introduced. Ran `ngram validate`;
+failures remain pre-existing (missing VIEW and doc-chain gaps).
+
 Added the missing FLAKY TESTS section to
 `docs/agents/world-runner/TEST_World_Runner_Coverage.md` and logged the update
 in `docs/agents/world-runner/SYNC_World_Runner.md` for repair #16. Ran

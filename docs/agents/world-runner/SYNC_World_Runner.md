@@ -86,6 +86,9 @@ What's proposed (v2):
 - Added the missing FLAKY TESTS section in
   `docs/agents/world-runner/TEST_World_Runner_Coverage.md` to satisfy the test
   template coverage for repair #16.
+- Expanded `docs/agents/world-runner/PATTERNS_World_Runner.md` with the missing
+  template sections (problem, pattern, principles, dependencies, inspirations,
+  scope, gaps) for repair #16.
 
 ## Updates
 
@@ -146,6 +149,15 @@ current state. Review only if you want a single canonical schema artifact.
 
 - [ ] Decide where the canonical World Runner JSON schema should live and add a
   lightweight pointer in both TOOL_REFERENCE and INPUT_REFERENCE.
+
+## GAPS
+
+- Completed: Added the missing FLAKY TESTS section in
+  `docs/agents/world-runner/TEST_World_Runner_Coverage.md` and logged the update
+  in this SYNC file.
+- Remaining: Commit the doc-template fix and project SYNC update for repair #16.
+- Blocker: Worktree contains unexpected pre-existing changes; need direction on
+  whether to commit only the world-runner doc updates or wait for cleanup.
 
 ## CONSCIOUSNESS TRACE
 
