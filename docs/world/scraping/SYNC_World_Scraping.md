@@ -107,6 +107,12 @@ THIS:            SYNC_World_Scraping.md (you are here)
 
 ## Recent Changes
 
+### 2025-12-19: Verified implementation doc file list
+
+- **What:** Confirmed the implementation doc already lists all scrape scripts and current `data/world/` YAML outputs (including things and minor places).
+- **Why:** Close the stale implementation warning without changing code.
+- **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
+
 ### 2025-12-19: Consolidated scraping algorithm docs
 
 - **What:** Merged phase algorithm docs into `ALGORITHM_Pipeline.md` and removed duplicates.

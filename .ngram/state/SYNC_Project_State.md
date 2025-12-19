@@ -10,12 +10,17 @@ UPDATED_BY: Codex (repair agent)
 ## CURRENT STATE
 
 Updated the world scraping implementation doc to include minor place and thing YAML inputs loaded by `data/scripts/inject_world.py`; ran `ngram validate` (pre-existing schema/product/network/storms doc gaps and broken CHAIN links remain).
+Verified the scraping implementation doc already lists all scrape scripts and current `data/world/` YAML outputs (including things and minor places), so the stale-impl warning is resolved without further edits to the doc itself.
 
 Documented the legacy narrator prompt file in the narrator implementation doc so the file list matches the module directory, and logged the change in `docs/agents/narrator/SYNC_Narrator.md`. Ran `ngram validate`; existing schema/product/network/storms documentation gaps and broken CHAIN links remain.
 
 Repaired the engine tests implementation doc by replacing bare filenames and
 glob references with full `engine/tests/...` paths, then logged the update in
 `docs/engine/tests/SYNC_Engine_Test_Suite.md`.
+
+Refreshed scene-memory implementation doc line counts to match current
+`engine/infrastructure/memory/` file sizes, and logged the update in
+`docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
 
 Clarified the scene-memory implementation doc extraction candidates to keep
 them anchored in `engine/infrastructure/memory/moment_processor.py` and avoid
@@ -25,6 +30,8 @@ nonexistent module paths. Logged in
 Reverified the engine test suite implementation doc references already resolve
 to concrete `engine/tests/**` paths for the BROKEN_IMPL_LINK repair and noted
 the verification in `docs/engine/tests/SYNC_Engine_Test_Suite.md`.
+Ran `ngram validate`; pre-existing schema/product/network/storms doc gaps and
+broken CHAIN links in `docs/schema/SCHEMA_Moments.md` remain.
 
 Repaired cli-tools implementation doc references by replacing remaining bare filename mentions and clarifying GraphOps/GraphQueries import paths. Logged in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
 
