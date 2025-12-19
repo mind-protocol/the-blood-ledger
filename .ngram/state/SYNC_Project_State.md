@@ -11,12 +11,13 @@ UPDATED_BY: agent (manager)
 
 The Blood Ledger is a narrative game engine set in Norman England (1067), using FalkorDB graph database to model "narratives under tension." The codebase has been restructured to align code organization with documentation areas.
 
-**Just completed:** Major code restructure - moved files from flat `engine/` layout to area-based structure matching `docs/`:
-- `engine/db/` → `engine/physics/graph/` (graph ops are the physics core)
-- `engine/queries/` → `engine/world/map/`
-- `engine/api|embeddings|history|memory|orchestration/` → `engine/infrastructure/`
+**Just completed:** Split graph_ops.py monolith from 1094 → 792 lines:
+- Extracted `graph_ops_image.py` (163 lines): Image generation helpers
+- Extracted `graph_ops_events.py` (66 lines): Event emitter for mutations
+- Extracted `graph_ops_types.py` (59 lines): Types and exceptions (WriteError, SimilarNode, ApplyResult)
+- Removed __main__ example block
 
-All Python imports updated and verified working. Health score improved from 10 critical issues to 3.
+All Python imports updated and verified working.
 
 ---
 
@@ -35,7 +36,7 @@ All Python imports updated and verified working. Health score improved from 10 c
 
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
-| graph_ops.py monolith | warning | `engine/physics/graph/` | 1094 lines (reduced from 1611 via LinkCreationMixin extraction), still above 800 threshold |
+| ~~graph_ops.py monolith~~ | ~~warning~~ | `engine/physics/graph/` | RESOLVED: 792 lines (extracted image, events, types) |
 | ~~graph_queries.py monolith~~ | ~~critical~~ | `engine/physics/graph/` | RESOLVED: 892 lines (extracted SearchQueryMixin) |
 | ~~Broken impl link~~ | ~~critical~~ | `docs/physics/` | RESOLVED: Fixed tree structure (ASCII), removed false positive backticks |
 | 2 stale SYNCs | warning | various | Need refresh (scene, map, world-runner, scene-memory, embeddings done) |
@@ -81,7 +82,7 @@ Code restructured to match docs areas. All imports updated and verified working.
 
 ### High Priority
 
-- [ ] Split graph_ops.py further (1094 lines → target <800) — PARTIAL: ApplyOperationsMixin + LinkCreationMixin extracted, now at 1094 lines
+- [x] Split graph_ops.py further (1094 lines → target <800) — DONE: Now 792 lines (extracted image, events, types)
 - [x] Split graph_queries.py (1147 lines → target <800) — DONE: Now 892 lines
 - [x] Fix docs/physics/IMPLEMENTATION_Physics.md broken references — MOSTLY DONE: Reduced 51→34, remaining are false positives
 - [x] Complete narrator doc chain — DONE: Added VALIDATION, IMPLEMENTATION, TEST docs (2024-12-19)
