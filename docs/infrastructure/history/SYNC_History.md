@@ -13,6 +13,7 @@ STATUS: CANONICAL
 **Implementation complete.** No code changes in this repair.
 Condensed history documentation and split ALGORITHM/TEST into subfolders to reduce module size.
 Moved archived material into `docs/infrastructure/history/archive/` and added a condensed archive note.
+Added a SCOPE section to `docs/infrastructure/history/PATTERNS_History.md` to resolve DOC_TEMPLATE_DRIFT (#16).
 
 ## IN PROGRESS
 

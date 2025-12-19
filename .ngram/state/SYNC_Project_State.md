@@ -14,6 +14,12 @@ missing ALGORITHM and HELPER FUNCTIONS sections plus template-compliant
 overview/data flow content, and logged the update in
 `docs/infrastructure/embeddings/SYNC_Embeddings.md` for repair #16.
 
+Added the missing SCOPE section to `docs/infrastructure/history/PATTERNS_History.md`
+to resolve DOC_TEMPLATE_DRIFT for repair #16, and updated
+`docs/infrastructure/history/SYNC_History.md`. Ran `ngram validate`; failures
+remain pre-existing (missing VIEW and doc-chain gaps in schema/product/network/
+storms modules).
+
 Filled missing MATURITY and CONSCIOUSNESS TRACE sections and expanded the
 IN PROGRESS entry in `docs/infrastructure/embeddings/SYNC_Embeddings.md` to
 resolve the remaining DOC_TEMPLATE_DRIFT warning for repair #16. Ran

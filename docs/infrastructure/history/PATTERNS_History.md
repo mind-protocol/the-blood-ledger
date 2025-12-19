@@ -123,6 +123,12 @@ Beliefs about events stored as edges, not as a separate timeline. The Blood Ledg
 
 ---
 
+## SCOPE
+
+This module covers narrative nodes, belief edges, and conversation-thread storage needed to record and query history from character perspective, including the history service API and data conventions for timestamps and sources.
+
+---
+
 ## WHAT THIS DOES NOT SOLVE
 
 **Contradiction Resolution**
