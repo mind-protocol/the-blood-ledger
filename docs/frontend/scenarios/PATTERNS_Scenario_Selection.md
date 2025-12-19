@@ -33,6 +33,23 @@ ID to the playthrough creation API.
 
 ---
 
+## SCOPE
+
+This pattern covers only the scenario selection page UX, the curated list
+content, and the handoff of the selected scenario ID to create a playthrough.
+It does not define scenario authoring, backend validation, or broader session
+state beyond the immediate selection flow.
+
+---
+
+## INSPIRATIONS
+
+The layout borrows from tabletop campaign pickers and visual novel episode
+selectors: short atmospheric summaries, a focused preview panel, and a clear
+commit action once the player knows what kind of story they are entering.
+
+---
+
 ## PRINCIPLES
 
 ### Principle 1: Scenario IDs Are the Contract
@@ -61,11 +78,35 @@ understand the promise before they begin.
 
 ---
 
+## INSPIRATIONS
+
+- **Narrative selection menus** — RPG prologue pickers that pair a strong visual with a succinct promise to anchor the player's choice.
+- **Streaming adventure hubs** — Two-column layouts that keep the list visible while the detail pane updates, reducing selection anxiety.
+- **Visual novel prologues** — Character-driven scenario intros that emphasize tone, stakes, and starting constraints up front.
+
+---
+
+## SCOPE
+
+### In Scope
+
+- Curate a small, readable scenario list with previews that reflect the current YAML catalog and keep IDs in sync.
+- Enforce session-gated flow by redirecting to the start screen if player identity or setup data is missing.
+- Provide enough preview detail (tone, tagline, starting items) to set expectations before the playthrough begins.
+
+### Out of Scope
+
+- Authoring, validating, or versioning the scenario YAML content; those workflows live outside the selection UI.
+- Handling every playthrough creation edge case beyond retry and logging; deeper error recovery belongs to the API layer.
+- Persisting player identity beyond session storage or adding account-level scenario unlock logic for v1.
+
+---
+
 ## WHAT THIS DOES NOT SOLVE
 
-- Authoring or validating scenario YAML content.
-- Persisting player state beyond session storage.
-- Handling playthrough creation failures beyond logging and retry.
+- Authoring, validating, or versioning scenario YAML content lives in tooling and docs outside this UI surface.
+- Persisting player state beyond session storage or offering account-level save migration in the selection flow.
+- Handling playthrough creation failures beyond logging and retry; deeper recovery paths belong to the backend API.
 
 ---
 

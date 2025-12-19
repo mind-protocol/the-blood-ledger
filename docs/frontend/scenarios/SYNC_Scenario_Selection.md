@@ -49,6 +49,12 @@ selected scenario before triggering playthrough creation.
 - **Why:** Repair task flagged `frontend/app/scenarios` as undocumented.
 - **Files:** `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md`, `docs/frontend/scenarios/SYNC_Scenario_Selection.md`, `modules.yaml`, `frontend/app/scenarios/page.tsx`
 
+### 2025-12-19: Filled missing pattern template sections
+
+- **What:** Added SCOPE and INSPIRATIONS sections to the scenario selection patterns doc.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for missing template fields.
+- **Files:** `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md`
+
 ---
 
 ## IN PROGRESS
@@ -111,3 +117,16 @@ behavior, keeping uncertainty explicit around future metadata sourcing.
 
 - `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md` for design intent.
 - `frontend/app/scenarios/page.tsx` for the live UI flow and scenario list.
+
+---
+
+## Agent Observations
+
+### Remarks
+- The scenario selection pattern now includes scope and inspiration notes to match template expectations.
+
+### Suggestions
+- [ ] Add a brief note on how the UI should react if a selected scenario YAML is missing.
+
+### Propositions
+- Consider adding a lightweight visual tone tag guide once categories are standardized.

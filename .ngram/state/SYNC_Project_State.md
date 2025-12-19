@@ -9,8 +9,14 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections (in progress, known issues, human handoff,
+consciousness trace, pointers, observations) in
+`docs/frontend/right-panel/SYNC_Right_Panel.md` for repair #16.
+
 Filled the missing SCOPE section in `docs/frontend/PATTERNS_Presentation_Layer.md` and expanded short template sections, logging the update in `docs/frontend/SYNC_Frontend.md`.
 Expanded frontend presentation-layer dependencies, inspirations, and gaps to meet template length requirements for repair #16.
+
+Filled the missing SCOPE and INSPIRATIONS sections in `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md` and logged the template-drift fix in `docs/frontend/scenarios/SYNC_Scenario_Selection.md`.
 
 Expanded `docs/frontend/scenarios/SYNC_Scenario_Selection.md` with required
 template sections (in-progress, known issues, human handoff, consciousness
