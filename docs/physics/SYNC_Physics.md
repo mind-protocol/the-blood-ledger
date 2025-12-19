@@ -95,6 +95,15 @@ are captured in TODO so the scope stays explicit.
 - **Why:** Resolve doc-template drift for the physics algorithm document.
 - **Files:** `docs/physics/ALGORITHM_Physics.md`
 
+### 2025-12-19: Expanded physics validation template sections
+
+- **What:** Added the required validation sections (invariants, properties,
+  error conditions, test coverage, verification procedure, sync status, gaps)
+  and expanded them to meet template length guidance in
+  `docs/physics/VALIDATION_Physics.md`.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics validation doc.
+- **Files:** `docs/physics/VALIDATION_Physics.md`
+
 ### 2025-12-19: Completed physics tick energy flow for repair 13
 
 - **What:** Normalized belief-based injection and enforced zero-sum propagation with supersedes drain, clamping to `MIN_WEIGHT`.
@@ -221,10 +230,12 @@ For next session:
 ## Agent Observations
 
 ### Remarks
+- `ngram validate` still reports the pre-existing missing VIEW and doc-chain gaps outside physics (schema/network/product/storms).
 - Verified `docs/physics/BEHAVIORS_Physics.md` already includes the required template sections for repair #16.
 - `pytest engine/tests/test_behaviors.py -q` failed: missing `pytest_xprocess` (anchorpy plugin import).
 - `ngram validate` still reports pre-existing doc gaps and broken CHAIN links (schema/tempo/world-builder).
 - Filled the missing algorithm template sections in `docs/physics/ALGORITHM_Physics.md` for repair #16.
+- Expanded `docs/physics/VALIDATION_Physics.md` to include all required validation template sections for repair #16.
 - Expanded `docs/physics/PATTERNS_Physics.md` with the missing template sections for repair #16.
 
 ### Suggestions

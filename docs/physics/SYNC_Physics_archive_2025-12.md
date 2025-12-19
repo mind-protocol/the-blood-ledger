@@ -109,32 +109,74 @@ belong in the live SYNC file, not here.
 ## KNOWN ISSUES
 
 No archive-specific issues are tracked here; any active physics concerns are
-documented in the current physics SYNC file instead.
+documented in the current physics SYNC file instead. This snapshot should not
+be used to infer active defects or blocker status.
 
 ## HANDOFF: FOR AGENTS
 
-Use this archive only for historical context. For new work, follow
-VIEW_Implement_Write_Or_Modify_Code and update `docs/physics/SYNC_Physics.md`.
+**Your likely VIEW:** VIEW_Implement_Write_Or_Modify_Code
+
+**Where I stopped:** This archive is a closed snapshot; no active work
+continues here, and updates should be logged in the live SYNC file.
+
+**What you need to understand:**
+The entries above are historical repair notes and should not be treated as
+current TODOs without verifying the latest physics SYNC status.
+
+**Watch out for:**
+Avoid editing archive entries to reflect new work; record new work in
+`docs/physics/SYNC_Physics.md` to prevent historical drift.
+
+**Open questions I had:**
+None recorded in this snapshot; consult the current SYNC for live questions.
 
 ## HANDOFF: FOR HUMAN
 
-This archive preserves prior repair notes for reference and should not be used
-as the authoritative status report for physics work.
+**Executive summary:**
+This archive captures the physics doc state from 2025-12-19, including
+verification notes and consolidation history. It is retained for
+traceability only.
+
+**Decisions made:**
+Archived historical repair context rather than deleting it, preserving an
+audit trail for physics documentation changes.
+
+**Needs your input:**
+None for this archive; any new physics decisions should be recorded in the
+current SYNC file.
 
 ## TODO
 
-No action items belong in the archive; track new tasks in the live physics
-SYNC to keep the active backlog accurate.
+### Doc/Impl Drift
+
+This archive snapshot does not track active drift items. Use
+`docs/physics/SYNC_Physics.md` for live doc/implementation alignment tasks.
+
+### Tests to Run
+
+No tests are associated with this archive record; see the current SYNC for
+any pending physics test runs.
+
+### Immediate
+
+- [ ] Review the current physics SYNC before acting on any archived notes.
+
+### Later
+
+- IDEA: If archive length grows, split into smaller dated snapshots.
 
 ## CONSCIOUSNESS TRACE
 
-Archival focus only: this update preserves traceable repair history without
-implying any new physics changes or runtime modifications.
+This archive is intended as a stable memory of a completed repair pass. The
+mental state at the time was focused on documentation hygiene and preserving
+traceability without altering runtime behavior.
 
 ## POINTERS
 
-- `docs/physics/SYNC_Physics.md` for current status and handoffs.
-- `docs/physics/ALGORITHM_Physics.md` for canonical mechanics.
+| What | Where |
+| --- | --- |
+| Current physics SYNC | `docs/physics/SYNC_Physics.md` |
+| Physics algorithm doc | `docs/physics/ALGORITHM_Physics.md` |
 
 ## Agent Observations
 

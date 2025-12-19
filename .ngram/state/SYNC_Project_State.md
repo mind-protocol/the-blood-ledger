@@ -9,6 +9,16 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/physics/PATTERNS_Physics.md` with missing template sections
+(problem, pattern, principles, dependencies, inspirations, scope, gaps) and
+logged the update in `docs/physics/SYNC_Physics.md` for repair #16.
+
+Expanded the archive physics SYNC handoff, todo, consciousness trace, and
+pointers sections to meet template requirements, and logged the change in
+`docs/physics/SYNC_Physics.md` for repair #16.
+
+Added the missing DESIGN PATTERNS section to `docs/physics/IMPLEMENTATION_Physics.md` (architecture pattern, code patterns, anti-patterns, boundaries) to resolve the DOC_TEMPLATE_DRIFT warning for repair #16.
+
 Completed the missing template sections in `docs/physics/ALGORITHM_Physics.md`
 (overview, data structures, algorithm summary, decisions, data flow,
 complexity, helpers, interactions, gaps) to resolve DOC_TEMPLATE_DRIFT for
