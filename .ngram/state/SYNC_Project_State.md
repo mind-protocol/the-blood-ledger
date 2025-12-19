@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reverified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) for the incomplete-impl repair; implementations are already present, so no code changes were required (logged in `docs/schema/models/SYNC_Schema_Models.md`).
+
 Verified `engine/infrastructure/world_builder/world_builder.py` helper implementations (`_hash_query`, `clear_cache`) for the incomplete-impl repair; task was stale with no code changes (logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`).
 
 Implemented missing playthrough helper logic in `engine/infrastructure/api/playthroughs.py` (branch counting, per-playthrough GraphQueries caching, and embedding service fallback) and updated API implementation docs.
