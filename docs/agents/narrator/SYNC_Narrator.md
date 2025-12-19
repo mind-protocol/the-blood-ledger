@@ -1,7 +1,7 @@
 # Narrator — Current State
 
 ```
-UPDATED: 2024-12-19
+UPDATED: 2025-12-19
 STATUS: Fully implemented with SSE streaming
 ```
 
@@ -11,7 +11,6 @@ STATUS: Fully implemented with SSE streaming
 
 ```
 PATTERNS:        ./PATTERNS_Narrator.md
-PATTERNS:        ./PATTERNS_World_Building.md
 BEHAVIORS:       ./BEHAVIORS_Narrator.md
 ALGORITHM:       ./ALGORITHM_Scene_Generation.md
 ALGORITHM:       ./ALGORITHM_Rolling_Window.md
@@ -32,7 +31,7 @@ TOOLS:           tools/stream_dialogue.py
 
 | Doc Type | File | Status |
 |----------|------|--------|
-| PATTERNS | `PATTERNS_Narrator.md`, `PATTERNS_World_Building.md` | Current |
+| PATTERNS | `PATTERNS_Narrator.md` | Current |
 | BEHAVIORS | `BEHAVIORS_Narrator.md` | Current |
 | ALGORITHM | 4 files (Scene, Rolling Window, Prompt, Thread) | Current |
 | VALIDATION | `VALIDATION_Narrator.md` | Created 2024-12-19 |
@@ -40,6 +39,12 @@ TOOLS:           tools/stream_dialogue.py
 | TEST | `TEST_Narrator.md` | Created 2024-12-19 |
 | SYNC | This file | Current |
 | REFERENCE | `INPUT_REFERENCE.md`, `TOOL_REFERENCE.md` | Current |
+
+---
+
+## Recent Updates
+
+- Consolidated narrator PATTERNS docs into `PATTERNS_Narrator.md` and deprecated `PATTERNS_World_Building.md`.
 
 ---
 

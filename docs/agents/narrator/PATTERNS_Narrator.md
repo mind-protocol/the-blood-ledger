@@ -25,6 +25,80 @@ The narrator doesn't "generate content." It authors a play. Every word, every cl
 
 Pre-generation isn't caching. It's ontology. Aldric's answer about his grandmother exists whether asked or not. The world has depth that exceeds any single playthrough.
 
+### World Building Through Pre-Generation
+
+Pre-generation is world-building. The narrator generates responses the player may never see, and those responses become canon. If a player asks about Thornwick in scene 5 instead of scene 2, the answer already exists because it was authored ahead of time.
+
+This does three things:
+- **Consistency:** The same question yields the same answer across time and scenes.
+- **Depth on demand:** Later discoveries feel rooted in a history that already exists.
+- **Graph enrichment:** Generated responses write back to the narrative graph, expanding what is true.
+
+Example graph enrichment:
+
+```
+Player never asked about grandmother.
+But narrator generated:
+
+"She died before the Harrying. At least she didn't see what they did to Thornwick."
+
+→ New narrative node created:
+  narr_aldric_grandmother {
+    summary: "Aldric's grandmother died before the Harrying",
+    content: "Wulfhild died in her sleep, the winter before.
+              Aldric says 'at least' when he speaks of it.",
+    truth: 1.0,
+    connections: [narr_aldric_thornwick, narr_harrying_memory]
+  }
+```
+
+### Graph Enrichment Protocol
+
+When generating responses, the narrator can:
+
+```typescript
+interface GeneratedInsight {
+  type: 'new_narrative';
+  content: {
+    summary: string;
+    detail: string;
+    connections: string[];
+  };
+  source: {
+    scene: string;
+    clickable: string;
+    generated_for: string;
+  };
+}
+```
+
+```typescript
+interface NarrativeEnrichment {
+  type: 'enrichment';
+  narrative_id: string;
+  additions: {
+    detail?: string;
+    emotion?: string;
+    connection?: string;
+  };
+}
+```
+
+```typescript
+interface CharacterKnowledge {
+  type: 'knowledge';
+  character_id: string;
+  knows: {
+    about: string;
+    detail: string;
+    certainty: number;
+    source: string;
+  };
+}
+```
+
+Rule of thumb: If a generated detail could be referenced later, it becomes canon and is written to the graph. Conversational filler is excluded.
+
 ### 3. Graph Is Memory, Narrator Is Voice
 
 The graph stores what's true. The narrator decides what speaks, when, how. Same graph, different narrator = different game. The narrator is authorial style.
@@ -214,3 +288,15 @@ The graph is truth. The narrator is interpretation. The scene tree is presentati
 ---
 
 *"The narrator works while you sleep. When you click, you're reading what was already written."*
+
+---
+
+## CHAIN
+
+PATTERNS:        ./PATTERNS_Narrator.md
+BEHAVIORS:       ./BEHAVIORS_Narrator.md
+ALGORITHM:       ./ALGORITHM_Scene_Generation.md
+VALIDATION:      ./VALIDATION_Narrator.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Narrator.md
+TEST:            ./TEST_Narrator.md
+SYNC:            ./SYNC_Narrator.md
