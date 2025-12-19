@@ -161,7 +161,8 @@ Narrator query
 
 Conversation files are Markdown with `#` title and `##` section headers:
 `## Day N, Time — Location`. Narratives store `source_file` and
-`source_section` to load the exact dialogue block later.
+`source_section` to load the exact dialogue block later. These files are
+per-playthrough artifacts and are not stored inside the graph.
 
 ---
 
@@ -198,6 +199,9 @@ record_world_history(content, detail, ...)
   -> optional _propagate_beliefs(...) for nearby chars
   -> return narrative_id + belief ids
 ```
+
+These chains describe the current orchestration order; GraphOps is responsible
+for transaction boundaries and persistence guarantees during writes.
 
 ---
 
@@ -258,6 +262,9 @@ engine/infrastructure/history/service.py
 4. IDs returned to caller for downstream tracking
 ```
 
+Logging occurs on missing conversation files or sections to aid debugging,
+but queries still return narrative metadata when dialogue is unavailable.
+
 ---
 
 ## CONCURRENCY MODEL
@@ -269,6 +276,8 @@ concurrent writes could interleave, so high-concurrency usage should add a
 queue or per-thread file lock in the caller if needed. Graph writes execute
 via the provided GraphOps/GraphQueries objects and assume the database
 connection handles transaction isolation.
+Reads can race with writes and may return partial sections if callers do not
+serialize per-playthrough history recording.
 
 ---
 

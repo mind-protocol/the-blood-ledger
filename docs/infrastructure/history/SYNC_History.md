@@ -40,6 +40,9 @@ entry-point template sections (overview, algorithm routing, helpers) to resolve
 DOC_TEMPLATE_DRIFT for repair #16. Ran `ngram validate`; failures remain
 pre-existing (missing VIEW and doc-chain gaps in schema/product/network/storms
 modules).
+Expanded the History implementation doc with longer schema/logic-chain notes
+and runtime/concurrency clarifications to satisfy the DOC_TEMPLATE_DRIFT
+template guidance for repair #16.
 Expanded `docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md`
 with the missing SCHEMA, LOGIC CHAINS, RUNTIME BEHAVIOR, and CONCURRENCY MODEL
 sections to resolve DOC_TEMPLATE_DRIFT for repair #16.
