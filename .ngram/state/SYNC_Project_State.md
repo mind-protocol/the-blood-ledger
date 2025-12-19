@@ -10,10 +10,11 @@ UPDATED_BY: Codex (repair agent)
 ## CURRENT STATE
 
 Updated the world-runner implementation doc to remove method-name file references so broken-link checks resolve cleanly, and logged the change in `docs/agents/world-runner/SYNC_World_Runner.md`.
+Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/` plus broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Repaired broken narrator implementation links in `docs/agents/narrator/IMPLEMENTATION_Narrator.md` and logged the update in `docs/agents/narrator/SYNC_Narrator.md`.
 
-Repaired broken file references in `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md` by aligning paths to `frontend/**` and logging the change in `docs/frontend/SYNC_Frontend.md`.
+Repaired broken file references in `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md` by aligning paths to `frontend/**`, removing the missing playthrough route, and logging the change in `docs/frontend/SYNC_Frontend.md`.
 
 Verified the canon module documentation mapping already exists; recorded this check in `docs/infrastructure/canon/SYNC_Canon.md`.
 
