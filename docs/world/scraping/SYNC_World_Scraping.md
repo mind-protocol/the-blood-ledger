@@ -107,6 +107,20 @@ THIS:            SYNC_World_Scraping.md (you are here)
 
 ## Recent Changes
 
+### 2025-12-19: Filled behaviors template sections
+
+- **What:** Added BEHAVIORS, INPUTS/OUTPUTS, EDGE CASES, ANTI-BEHAVIORS, and
+  GAPS/IDEAS/QUESTIONS sections with expanded notes for the scraping pipeline.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the world scraping behaviors doc.
+- **Files:** `docs/world/scraping/BEHAVIORS_World_Scraping.md`
+
+### 2025-12-19: Expanded validation template coverage
+
+- **What:** Added invariants, properties, error conditions, test coverage, and
+  verification procedure guidance to the validation doc.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT and keep validation expectations explicit.
+- **Files:** `docs/world/scraping/VALIDATION_World_Scraping.md`
+
 ### 2025-12-19: Verified implementation doc file list
 
 - **What:** Confirmed the implementation doc already lists all scrape scripts and current `data/world/` YAML outputs (including things and minor places).
@@ -178,6 +192,33 @@ THIS:            SYNC_World_Scraping.md (you are here)
 - Consolidated phase-level ALGORITHM docs into the canonical `docs/world/scraping/ALGORITHM_Pipeline.md` and left per-phase stubs as redirects.
 - Verified the IMPLEMENTATION doc is present and linked across scraping docs.
 - DOCS references are still absent in `data/scripts/` because the directory is gitignored; add an exception if code-doc linking is required.
+
+## Agent Observations
+
+### Remarks
+- Behaviors doc now spells out pipeline expectations, but source citation
+  handling still needs a clear multi-citation standard.
+
+### Suggestions
+- [ ] Add a short provenance policy to `VALIDATION_World_Scraping.md` so
+  multi-source attribution is consistently enforced.
+
+### Propositions
+- Consider a follow-up doc pass to align export format expectations with
+  downstream validation tooling and diff workflows.
+
+---
+
+## Agent Observations
+
+### Remarks
+- Validation now captures the required invariants and verification steps for the pipeline.
+
+### Suggestions
+- [ ] Add an automated diff report between pipeline runs to spot regressions.
+
+### Propositions
+- Consider a lightweight validation script that checks minor place and thing linkage integrity.
 
 ## ARCHIVE
 

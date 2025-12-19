@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/world/scraping/VALIDATION_World_Scraping.md` with the missing
+template sections (invariants, properties, error conditions, test coverage,
+verification procedure, sync status, gaps) to resolve DOC_TEMPLATE_DRIFT for
+repair #16 and logged the change in `docs/world/scraping/SYNC_World_Scraping.md`.
+
 Expanded `docs/world/map/PATTERNS_Map.md` to deepen the template sections
 (problem/pattern/principles/dependencies/scope/gaps), removed the redundant
 design-principles list, and logged the update in `docs/world/map/SYNC_Map.md`
@@ -31,6 +36,11 @@ logged the update in `docs/world/map/SYNC_Map.md` for repair #16.
 Expanded `docs/world/map/PATTERNS_Map.md` with the missing template sections
 (problem, pattern, principles, dependencies, inspirations, scope, gaps) and
 logged the update in `docs/world/map/SYNC_Map.md` for repair #16.
+
+Expanded `docs/world/scraping/BEHAVIORS_World_Scraping.md` with the missing
+template sections (behaviors, inputs/outputs, edge cases, anti-behaviors,
+gaps/ideas/questions) and logged the update in
+`docs/world/scraping/SYNC_World_Scraping.md` for repair #16.
 
 Updated `docs/agents/world-runner/SYNC_World_Runner.md` GAPS notes to reflect
 completion of the behaviors template repair for #16. Ran `ngram validate`;

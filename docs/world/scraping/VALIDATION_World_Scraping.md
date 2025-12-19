@@ -23,6 +23,68 @@ SYNC:        ./SYNC_World_Scraping.md
 
 ## How We Know It Works
 
+We validate the pipeline by checking data volume, historical placement, and
+travel realism against the documented targets and the known 1067 context.
+The checks below are designed to catch missing content, anachronisms, and
+route realism regressions before data is injected into the graph.
+
+---
+
+## Invariants
+
+- Every place, character, narrative, belief, and tension has a stable ID and
+  a non-empty display name that matches the schema requirements.
+- Routes never cross major rivers without a matching crossing or bridge
+  feature in the places or route metadata.
+- All historical figures placed in 1067 have a birth date earlier than 1067
+  and no death date earlier than 1067.
+- YAML output files remain loadable and pass schema validation before graph
+  injection begins.
+
+---
+
+## Properties
+
+- The dataset preserves the feel of 1067 England by keeping geography,
+  political control, and narrative references consistent with known sources.
+- Scraped and curated records remain internally consistent (holdings belong
+  to characters, characters are placed in known locations, tensions reference
+  existing nodes).
+- The pipeline is deterministic when run on the same inputs so outputs can be
+  diffed and reviewed reliably.
+
+---
+
+## Error Conditions
+
+- Missing or empty YAML outputs for any phase (places, routes, characters,
+  narratives, tensions, things) should be treated as a hard failure.
+- Invalid or duplicate IDs, or broken references between data types, are
+  errors that block injection into FalkorDB.
+- Any anachronistic placements (death before 1067, post-1067 events marked as
+  current) are treated as data corruption.
+
+---
+
+## Test Coverage
+
+- Unit-style validation scripts assert counts, required fields, and reference
+  integrity for YAML outputs before injection.
+- Spot checks verify geography realism and political correctness using known
+  historical anchors (York, Durham, Malet, etc.).
+- Manual playtests validate the narrative feel and detect subtle anachronisms
+  or implausible travel behavior.
+
+---
+
+## Verification Procedure
+
+1. Run the scraping pipeline to regenerate YAML outputs for all phases.
+2. Execute validation scripts (counts, schema fields, reference integrity).
+3. Run manual spot checks for historical placements and geography realism.
+4. Inject into the `seed` database only after validation passes.
+5. Conduct the playtest checklist to confirm experiential fidelity.
+
 ---
 
 ## Geography Tests
@@ -136,3 +198,19 @@ Manual verification:
 - [ ] No obvious anachronisms in dialogue
 - [ ] Place descriptions match terrain
 - [ ] Travel times feel reasonable
+
+---
+
+## Sync Status
+
+Validation notes should align with the current scrape counts and phase status
+recorded in `docs/world/scraping/SYNC_World_Scraping.md` to avoid drift.
+
+---
+
+## Gaps / Ideas / Questions
+
+- Do we need automated diff reports between pipeline runs to catch subtle
+  regressions in narrative counts or political placements?
+- How should we verify that minor places and things remain connected to the
+  main narrative web without manual inspection?
