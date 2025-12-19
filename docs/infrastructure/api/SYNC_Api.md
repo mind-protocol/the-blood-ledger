@@ -18,6 +18,14 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Consolidate API algorithm documentation
+
+- **What:** Merged playthrough creation flow into `docs/infrastructure/api/ALGORITHM_Api.md` and replaced the duplicate algorithm file with a redirect.
+- **Why:** Remove duplicate ALGORITHM docs in the API folder and keep a single canonical algorithm reference.
+- **Files:**
+  - `docs/infrastructure/api/ALGORITHM_Api.md`
+  - `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`
+
 ### 2025-12-19: Re-verify playthrough helpers for repair 01-INCOMPLETE_IMPL-api-playthroughs
 
 - **What:** Confirmed `_count_branches` and `_get_playthrough_queries` in `engine/infrastructure/api/playthroughs.py` already contain real logic; no code changes required.

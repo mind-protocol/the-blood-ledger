@@ -17,6 +17,7 @@ Frontend-backend integration fixes for playthrough flow:
 - Implemented free text input in CenterStage.tsx (calls `sendMoment` API)
 - Added emoji fallbacks for player/character avatars (👤/🗣️)
 - Updated API IMPLEMENTATION and SYNC docs
+Consolidated API algorithm docs for playthrough creation into `docs/infrastructure/api/ALGORITHM_Api.md` and redirected the duplicate file.
 Consolidated duplicate world-runner IMPLEMENTATION docs into `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md` and removed the redundant file; updated chain links.
 Revalidated moment graph traversal helpers in `engine/moment_graph/traversal.py` for repair 08; `make_dormant` and `process_wait_triggers` are already implemented, so no code changes were needed.
 Verified `engine/models/nodes.py` moment/narrative helper properties for repair 06; implementations already present, no code changes required.
