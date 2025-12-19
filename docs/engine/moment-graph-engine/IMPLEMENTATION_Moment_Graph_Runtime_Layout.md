@@ -25,7 +25,7 @@ IMPL:            ../../../engine/moment_graph/__init__.py
 ===============================================================================
 
 - `engine/moment_graph/__init__.py`
-  Exposes `MomentTraversal`, `MomentQueries`, and `MomentSurface` as the public
+  Exposes MomentTraversal, MomentQueries, and MomentSurface as the public
   interface for the runtime module.
 
 - `engine/moment_graph/queries.py`
@@ -34,7 +34,7 @@ IMPL:            ../../../engine/moment_graph/__init__.py
 
 - `engine/moment_graph/traversal.py`
   Traversal and lifecycle mutations for click/wait triggers, status changes,
-  weight updates, and history (`THEN`) links.
+  weight updates, and history (THEN) links.
 
 - `engine/moment_graph/surface.py`
   Surfacing logic for flips, decay, scene change handling, and tension boosts.
@@ -43,17 +43,17 @@ IMPL:            ../../../engine/moment_graph/__init__.py
 ## DATA FLOW
 ===============================================================================
 
-1. Callers request a view via `MomentQueries.get_current_view`.
-2. Player actions invoke `MomentTraversal.handle_click` or `process_wait_triggers`.
-3. Per-tick systems call `MomentSurface.check_for_flips` and `apply_decay`.
-4. Scene transitions call `MomentSurface.handle_scene_change` and
-   `MomentTraversal.reactivate_dormant`.
+1. Callers request a view via MomentQueries.get_current_view.
+2. Player actions invoke MomentTraversal.handle_click or process_wait_triggers.
+3. Per-tick systems call MomentSurface.check_for_flips and apply_decay.
+4. Scene transitions call MomentSurface.handle_scene_change and
+   MomentTraversal.reactivate_dormant.
 
 ===============================================================================
 ## DEPENDENCIES
 ===============================================================================
 
-- `engine.physics.graph.graph_queries.GraphQueries`
+- `engine/physics/graph/graph_queries.py`
   Provides read access to the graph backend.
-- `engine.physics.graph.graph_ops.GraphOps`
+- `engine/physics/graph/graph_ops.py`
   Provides write access for mutations and link creation.
