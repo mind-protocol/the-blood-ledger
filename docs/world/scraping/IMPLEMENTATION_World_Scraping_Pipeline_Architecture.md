@@ -90,6 +90,93 @@ Notes:
 
 ---
 
+## SCHEMA
+
+The YAML schema is enforced by the expectations in `data/scripts/inject_world.py`,
+which maps each file into specific `GraphOps` calls. The schema contracts live
+in the script and align with the engine models documented under `docs/schema/`.
+
+| YAML Input | Inject Function | GraphOps Method |
+|------------|-----------------|-----------------|
+| `data/world/places.yaml` | `inject_places` | `add_place` |
+| `data/world/routes.yaml` | `inject_routes` | `add_geography` |
+| `data/world/characters.yaml` | `inject_characters` | `add_character` |
+| `data/world/holdings.yaml` | `inject_holdings` | `add_presence` |
+| `data/world/events.yaml` | `inject_events` | `add_narrative` |
+| `data/world/narratives.yaml` | `inject_narratives` | `add_narrative` |
+| `data/world/beliefs.yaml` | `inject_beliefs` | `add_belief` |
+| `data/world/tensions.yaml` | `inject_tensions` | `add_tension` |
+| `data/world/things.yaml` | `inject_things` | `add_thing` |
+| `data/world/thing_locations.yaml` | `inject_thing_locations` | `add_thing_location` |
+| `data/world/thing_ownership.yaml` | `inject_thing_ownership` | `add_character_thing` |
+
+---
+
+## LOGIC CHAINS
+
+1. Phase scripts write YAML to `data/world/` in order: geography → political →
+   events → narratives → tensions, plus curated minor places and things.
+2. `data/scripts/inject_world.py` optionally clears the graph, then injects
+   YAML in dependency order: places → routes → characters → holdings → things →
+   thing locations → thing ownership → events → narratives → beliefs → tensions.
+3. Verification queries run after injection to confirm counts and connectivity.
+
+---
+
+## MODULE DEPENDENCIES
+
+- `engine/physics/graph/graph_ops.py` provides the `GraphOps` API used by
+  `data/scripts/inject_world.py`.
+- `pyyaml` serialization for loading and writing YAML artifacts.
+- FalkorDB for the target graph database; connection details are passed via CLI.
+- `data/world/` acts as the intermediate contract between scrape and injection.
+
+---
+
+## STATE MANAGEMENT
+
+Pipeline state is stored in filesystem YAML outputs under `data/world/`.
+`data/scripts/inject_world.py` mutates the FalkorDB graph; optional `--clear`
+removes prior state before insertion. There is no additional shared state or
+incremental checkpoint store outside these artifacts.
+
+---
+
+## RUNTIME BEHAVIOR
+
+The pipeline is a manual, offline batch process. Each phase script is executed
+as a one-shot generator, and injection runs synchronously as a CLI command.
+There is no resident service or scheduler; reruns overwrite YAML outputs and
+reseed the graph as needed.
+
+---
+
+## CONCURRENCY MODEL
+
+The scripts run single-process and sequentially; there is no built-in parallel
+execution, locking, or queueing. Concurrency risk is limited to running two
+injects at the same time against the same graph, which is not supported.
+
+---
+
+## CONFIGURATION
+
+`data/scripts/inject_world.py` exposes CLI flags for connectivity and control:
+`--host`, `--port`, `--graph`, and `--clear`. File paths are hard-coded to
+`data/world/` and the phase scripts embed the source lists and constants used
+for output generation.
+
+---
+
+## BIDIRECTIONAL LINKS
+
+- `data/scripts/inject_world.py` includes a `DOCS:` reference back to this
+  implementation doc for traceability.
+- Phase scripts in `data/scripts/scrape/` do not currently include `DOCS:`
+  references, so `ngram context` cannot navigate from those files to docs yet.
+
+---
+
 ## DESIGN PATTERNS
 
 ### Architecture Pattern
@@ -130,7 +217,12 @@ Notes:
 
 ---
 
-## GAPS
+## GAPS / IDEAS / QUESTIONS
+
+The pipeline is documented but still missing a few implementation-facing
+anchors: formalized schema definitions for each YAML file, DOCS references in
+all phase scripts, and a clearer split between curated constants and generated
+outputs. The extraction targets below are still pending.
 
 ### Extraction Candidates
 

@@ -167,6 +167,16 @@ than new scraping features or additional YAML outputs.
 - **Why:** Resolve DOC_TEMPLATE_DRIFT and keep validation expectations explicit.
 - **Files:** `docs/world/scraping/VALIDATION_World_Scraping.md`
 
+### 2025-12-19: Filled implementation template sections
+
+- **What:** Added the missing implementation template sections (schema, logic
+  chains, module dependencies, state management, runtime behavior, concurrency
+  model, configuration, bidirectional links, and gaps framing) to the world
+  scraping implementation architecture doc.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the implementation doc without
+  changing code or pipeline behavior.
+- **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
+
 ### 2025-12-19: Verified implementation doc file list
 
 - **What:** Confirmed the implementation doc already lists all scrape scripts and current `data/world/` YAML outputs (including things and minor places).
@@ -329,9 +339,12 @@ for script entry points and YAML outputs.
 
 ### Remarks
 - Validation now captures the required invariants and verification steps for the pipeline.
+- Implementation doc now documents injection CLI flags and the sequential
+  runtime/concurrency expectations for the pipeline scripts.
 
 ### Suggestions
 - [ ] Add an automated diff report between pipeline runs to spot regressions.
+- [ ] Add `DOCS:` references to the scrape phase scripts if ignore rules allow it.
 
 ### Propositions
 - Consider a lightweight validation script that checks minor place and thing linkage integrity.

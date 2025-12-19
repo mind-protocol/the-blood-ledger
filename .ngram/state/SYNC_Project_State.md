@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections in
+`docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
+(schema, logic chains, dependencies, state management, runtime behavior,
+concurrency, configuration, bidirectional links, gaps framing) and logged the
+update in `docs/world/scraping/SYNC_World_Scraping.md` for repair #16.
+
 Expanded `docs/physics/BEHAVIORS_Physics.md` with missing behavior template
 sections (BEHAVIORS, INPUTS/OUTPUTS, EDGE CASES, ANTI-BEHAVIORS, GAPS) and
 logged the update in `docs/physics/SYNC_Physics.md` for repair #16.
