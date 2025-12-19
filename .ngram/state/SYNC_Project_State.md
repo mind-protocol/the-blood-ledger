@@ -203,6 +203,7 @@ reference in `engine/moments/__init__.py`, and aligned the module docs with the
 existing `modules.yaml` entry.
 
 Verified repair 57-UNDOCUMENTED-infrastructure-history is already resolved; history docs and module mapping already exist and are recorded in `docs/infrastructure/history/SYNC_History.md`.
+Repaired broken link references in `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md` and logged the update in `docs/agents/world-runner/SYNC_World_Runner.md`.
 
 ---
 

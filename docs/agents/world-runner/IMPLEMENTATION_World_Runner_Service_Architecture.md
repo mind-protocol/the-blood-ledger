@@ -80,7 +80,7 @@ engine/
 
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
-| World Runner Service | prompt build, CLI call, JSON parsing, fallback | graph tick detection, mutation application, injection storage | `WorldRunnerService.process_flips()` |
+| World Runner Service | prompt build, CLI call, JSON parsing, fallback | graph tick detection, mutation application, injection storage | WorldRunnerService.process_flips() |
 | Agent Contract | structure and guidance in `agents/world_runner/CLAUDE.md` | orchestration flow and graph data fetching | `WORLD RUNNER INSTRUCTION` sections |
 
 ---
@@ -106,8 +106,8 @@ WorldRunnerOutput:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| `WorldRunnerService.__init__` | `engine/infrastructure/orchestration/world_runner.py:22` | Orchestrator startup |
-| `WorldRunnerService.process_flips` | `engine/infrastructure/orchestration/world_runner.py:32` | Orchestrator `_process_flips` |
+| WorldRunnerService.__init__ | `engine/infrastructure/orchestration/world_runner.py:22` | Orchestrator startup |
+| WorldRunnerService.process_flips | `engine/infrastructure/orchestration/world_runner.py:32` | Orchestrator `_process_flips` |
 
 ---
 
@@ -234,8 +234,8 @@ Synchronous subprocess call with a timeout. Orchestrator call blocks until CLI r
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `working_dir` | `WorldRunnerService.__init__` | `Path.cwd()` | Working directory for CLI invocation |
-| `timeout` | `WorldRunnerService.__init__` | `600` | CLI timeout in seconds |
+| `working_dir` | WorldRunnerService.__init__ | `Path.cwd()` | Working directory for CLI invocation |
+| `timeout` | WorldRunnerService.__init__ | `600` | CLI timeout in seconds |
 
 ---
 
@@ -245,7 +245,7 @@ Synchronous subprocess call with a timeout. Orchestrator call blocks until CLI r
 
 | File | Line | Reference |
 |------|------|-----------|
-| `engine/infrastructure/orchestration/world_runner.py` | 8 | `# DOCS: docs/agents/world-runner/PATTERNS_World_Runner.md` |
+| `engine/infrastructure/orchestration/world_runner.py` | 8 | `docs/agents/world-runner/PATTERNS_World_Runner.md` |
 
 ### Docs → Code
 
@@ -263,7 +263,7 @@ Synchronous subprocess call with a timeout. Orchestrator call blocks until CLI r
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `agents/world_runner/CLAUDE.md` | ~650L | <400L | `agents/world_runner/CLAUDE_PROMPT.md` | Prompt body vs reference sections |
+| `agents/world_runner/CLAUDE.md` | ~650L | <400L | Split prompt body into a new file (proposed) | Prompt body vs reference sections |
 
 ### Missing Implementation
 
