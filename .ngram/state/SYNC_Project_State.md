@@ -33,6 +33,8 @@ Documented the frontend minimap module with new docs, a modules.yaml mapping, an
 
 Mapped the frontend scene components to `docs/frontend/scene/` in `modules.yaml` and linked `frontend/components/scene/SceneView.tsx` to the scene documentation chain.
 
+Mapped `frontend/lib/map/**` to the existing frontend map docs and added a DOCS reference in `frontend/lib/map/index.ts` to close the map helper documentation gap.
+
 World scraping documentation chain finalized with implementation details and extraction candidates; DOCS references remain absent because `data/` is gitignored. Frontend module is now mapped in `modules.yaml` with existing docs and a DOCS reference in `frontend/app/page.tsx`. Added a DOCS reference to `frontend/components/chronicle/ChroniclePanel.tsx` to link it to frontend implementation documentation.
 Completed cli-tools documentation chain (BEHAVIORS/ALGORITHM/VALIDATION/IMPLEMENTATION/TEST), updated CHAIN references, and added a `modules.yaml` mapping.
 Completed docs/design chain by adding IMPLEMENTATION_Vision.md, updating TEST_Vision.md chain, and refreshing SYNC_Vision.md; mapped design-vision in modules.yaml.

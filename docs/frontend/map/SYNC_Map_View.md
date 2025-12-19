@@ -44,6 +44,12 @@ interactions.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Link map utilities to map documentation
+
+- **What:** Added DOCS references in `frontend/lib/map/index.ts`, `frontend/lib/map/projection.ts`, and `frontend/lib/map/random.ts`.
+- **Why:** Ensure map helper utilities are discoverable through `ngram context`.
+- **Files:** `frontend/lib/map/index.ts`, `frontend/lib/map/projection.ts`, `frontend/lib/map/random.ts`
+
 ### 2025-12-19: Documented map view module
 
 - **What:** Added map module docs, mapping, and DOCS reference.
@@ -55,6 +61,12 @@ interactions.
 - **What:** Added the app route (`frontend/app/map/**`) to the map module mapping and linked the route to map docs.
 - **Why:** Ensure the map view entrypoint is discoverable from docs and manifest.
 - **Files:** `modules.yaml`, `frontend/app/map/page.tsx`
+
+### 2025-12-19: Mapped map helper library
+
+- **What:** Added `frontend/lib/map/**` to the map module mapping and linked the index file to map docs.
+- **Why:** Keep map projection and seeded-random helpers discoverable in the map documentation chain.
+- **Files:** `modules.yaml`, `frontend/lib/map/index.ts`
 
 ---
 
