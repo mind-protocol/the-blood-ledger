@@ -220,6 +220,8 @@ modules:
     code: "engine/infrastructure/canon/**"
     docs: "docs/infrastructure/canon/"
     tests: "tests/infrastructure/canon/"
+    additional_code:
+      - "tests/infrastructure/canon/**"
     maturity: CANONICAL
     owner: agent
     entry_points:
@@ -257,6 +259,22 @@ modules:
       - "Lazy model loading with singleton access"
     notes: |
       EmbeddingService for semantic search and node-to-text embedding helpers.
+
+  world-builder:
+    code: "engine/infrastructure/world_builder/**"
+    docs: "docs/infrastructure/world-builder/"
+    tests: "tests/infrastructure/world_builder/"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/world_builder/query.py
+      - engine/infrastructure/world_builder/world_builder.py
+    patterns:
+      - "Query-as-moment enrichment"
+      - "Sparse-triggered LLM generation"
+    notes: |
+      World Builder module for recording queries as thought moments, detecting
+      sparsity, and enriching the graph via LLM when results are thin.
 
   infrastructure-async:
     code: "engine/infrastructure/api/playthroughs.py"
