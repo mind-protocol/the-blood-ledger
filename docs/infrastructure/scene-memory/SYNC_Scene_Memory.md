@@ -122,6 +122,18 @@ See `docs/physics/` for current Moment Graph documentation.
 - Repair task appears stale relative to `engine/infrastructure/memory/moment_processor.py`.
 - Added IMPLEMENTATION/TEST docs and DOCS reference for the module.
 
+===============================================================================
+## RECENT CHANGES
+===============================================================================
+
+### 2025-12-19: Added DOCS references for memory module entry points
+- **What:** Added `# DOCS: docs/infrastructure/scene-memory/` to
+  `engine/infrastructure/memory/__init__.py` and standardized the comment in
+  `engine/infrastructure/memory/moment_processor.py`.
+- **Why:** Ensure `ngram` doc mapping resolves both files in the module.
+- **Files:** `engine/infrastructure/memory/__init__.py`,
+  `engine/infrastructure/memory/moment_processor.py`
+
 
 ---
 

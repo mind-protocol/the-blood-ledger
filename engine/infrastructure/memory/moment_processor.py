@@ -3,9 +3,9 @@ Blood Ledger — Moment Processor
 
 Converts narrator output (dialogue, narration) into Moment nodes.
 Manages transcript.json - the full record of all narrated content.
-
-DOCS: docs/infrastructure/scene-memory/
 """
+
+# DOCS: docs/infrastructure/scene-memory/
 
 import json
 import logging
