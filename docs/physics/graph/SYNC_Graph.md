@@ -85,6 +85,14 @@ The Narrator maintains the system near critical threshold:
 
 ---
 
+## Recent Changes
+
+### 2025-12-19: Consolidated weight algorithm docs
+
+- Redirected `ALGORITHM_Weight.md` to the canonical `ALGORITHM_Energy_Flow.md` to remove duplication.
+
+---
+
 ## ARCHIVE
 
 Older content archived to: `SYNC_Graph_archive_2025-12.md`

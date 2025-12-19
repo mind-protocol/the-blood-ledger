@@ -1,21 +1,12 @@
-# Graph — Algorithm: Weight Computation (Redirect)
+# Graph — Algorithm: Weight Computation (Deprecated)
 
 ```
 CREATED: 2024-12-16
-STATUS: Deprecated (redirect)
+STATUS: Deprecated (consolidated)
 ```
 
 ---
 
-Weight computation is consolidated into the energy flow algorithm:
+This content is now consolidated into the canonical graph algorithm:
 
-See [Graph — Algorithm: Energy Flow](./ALGORITHM_Energy_Flow.md)
-
----
-
-## CHAIN
-
-PATTERNS: ./PATTERNS_Graph.md
-BEHAVIORS: ./BEHAVIORS_Graph.md
-ALGORITHM: ./ALGORITHM_Energy_Flow.md
-SYNC: ./SYNC_Graph.md
+See [Graph — Algorithm: Energy Flow](./ALGORITHM_Energy_Flow.md).
