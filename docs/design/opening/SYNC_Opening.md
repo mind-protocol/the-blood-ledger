@@ -23,7 +23,25 @@ MATURITY: CANONICAL
 
 ---
 
-## Current State
+## MATURITY
+
+STATUS: CANONICAL
+
+What's stable (v1):
+- Scripted opening flow in `opening.json`, plus scene conversion in playthroughs bootstrap.
+- Canonical companion voice and question sequence tracked in CONTENT.md for revisions.
+
+What's still being designed:
+- Automated answer extraction into ledger/tension mapping for downstream systems.
+- Testing harness for replaying scripted openings with persistence assertions.
+
+What's proposed (v2):
+- Adaptive follow-ups based on answer sentiment without rewriting core prompts.
+- Opening recap surfaced as a reusable memory artifact in later scenes.
+
+---
+
+## CURRENT STATE
 
 **What's working:**
 - `opening.json` provides structured question flow (10 beats, 17 questions)
@@ -45,6 +63,66 @@ Since 2025-12 restructure:
 - `engine/infrastructure/api/playthroughs.py` — opening scene generation, moment creation
 - `docs/design/opening/opening.json` — structured question template
 - Orchestration now at `engine/infrastructure/orchestration/` (not `engine/orchestration/`)
+
+---
+
+## IN PROGRESS
+
+This opening flow remains in active design maintenance, with current work
+focused on documenting the authored questions and aligning the sync template
+to avoid drift warnings in the doc health checks.
+
+---
+
+## RECENT CHANGES
+
+- 2025-12-19: Filled missing SYNC template sections and expanded notes to
+  satisfy DOC_TEMPLATE_DRIFT checks for repair #16.
+
+---
+
+## KNOWN ISSUES
+
+- Opening answer capture is still manual, so downstream systems do not receive
+  structured ledger or tension updates without human transcription.
+- Tests for the opening sequence are still marked TODO and have not been run.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+If you continue, use VIEW_Implement_Write_Or_Modify_Code and verify whether
+`opening.json` still matches CONTENT.md before editing any prompts. Focus on
+automating answer extraction without changing the authored question list.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+This repair only filled in missing SYNC template sections; no behavior or
+script content changed. If you want the opening to feed the ledger, confirm
+the desired mapping rules before implementation begins.
+
+---
+
+## TODO
+
+- [ ] Define the answer-to-ledger mapping rules and where they should live.
+- [ ] Implement a replayable opening test harness per TEST_Opening.md.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+I focused on template alignment and kept content faithful to the existing
+opening behavior, avoiding changes that would imply unverified behavior.
+
+---
+
+## POINTERS
+
+- `docs/design/opening/CONTENT.md` for the scripted question list and beats.
+- `engine/infrastructure/api/playthroughs.py` for the current opening scene flow.
 
 ---
 
