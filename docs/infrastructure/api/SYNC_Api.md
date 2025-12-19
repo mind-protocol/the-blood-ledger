@@ -2,7 +2,7 @@
 
 ```
 LAST_UPDATED: 2025-12-19
-UPDATED_BY: Codex (repair agent)
+UPDATED_BY: Claude Opus 4.5
 STATUS: CANONICAL
 ```
 
@@ -17,6 +17,15 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-19: Add /api/action endpoint and fix scenario path
+
+- **What:** Added `POST /api/action` endpoint for full game loop. Fixed scenario path in playthroughs.py (was looking in `engine/scenarios` instead of project root `scenarios/`).
+- **Why:** The action endpoint was missing - frontend click path had no way to trigger the full narrator/tick/flips loop. Scenario path was wrong due to incorrect parent traversal.
+- **Files:**
+  - `engine/infrastructure/api/app.py` — added `/api/action` endpoint
+  - `engine/infrastructure/api/playthroughs.py` — fixed scenarios_dir path
+  - `docs/infrastructure/api/IMPLEMENTATION_Api.md` — documented new endpoints
 
 ### 2025-12-19: Verify playthroughs helper implementations (repair 01-INCOMPLETE_IMPL-api-playthroughs)
 

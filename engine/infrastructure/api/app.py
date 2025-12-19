@@ -385,6 +385,26 @@ def create_app(
             "status": "created"
         }
 
+    @app.post("/api/action")
+    async def player_action(request: ActionRequest):
+        """
+        Full game loop: narrator -> tick -> flips -> world runner.
+
+        This is the main endpoint for player actions after the initial
+        instant-response click path (/api/moment/click).
+        """
+        try:
+            orchestrator = get_orchestrator(request.playthrough_id)
+            result = orchestrator.process_action(
+                player_action=request.action,
+                player_id=request.player_id,
+                player_location=request.location
+            )
+            return result
+        except Exception as e:
+            logger.error(f"Action processing failed: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
     @app.get("/api/playthrough/{playthrough_id}")
     async def get_playthrough(playthrough_id: str):
         """Get playthrough status and info."""

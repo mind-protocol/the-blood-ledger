@@ -17,6 +17,21 @@
 - Mutation events are broadcast to all queues via `add_mutation_listener`.
 - Events are serialized with `json.dumps(..., default=str)` to avoid serialization failures.
 
+## Action Endpoint
+
+- `POST /api/action` runs the full game loop: narrator → tick → flips → world runner.
+- Request body: `ActionRequest` with `playthrough_id`, `action`, `player_id`, `location`.
+- Calls `Orchestrator.process_action()` which coordinates all subsystems.
+- This is the main endpoint after instant click responses from `/api/moment/click`.
+
+## Playthrough Creation
+
+- `POST /api/playthrough/create` (router) creates a playthrough from a scenario.
+- Loads scenario YAML from `scenarios/` directory (project root, not engine/).
+- Creates playthrough directory with mutations/, conversations/ subdirs.
+- Injects scenario nodes/links into a new graph named after the playthrough ID.
+- Generates opening scene from opening.json template.
+
 ---
 
 ## CHAIN

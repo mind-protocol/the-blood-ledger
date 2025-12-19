@@ -260,7 +260,7 @@ def create_playthroughs_router(
         (playthrough_dir / "player.yaml").write_text(yaml.dump(player_data))
 
         # 2. Load and inject scenario
-        scenarios_dir = Path(__file__).parent.parent.parent / "scenarios"
+        scenarios_dir = Path(__file__).parent.parent.parent.parent / "scenarios"
         scenario_file = scenarios_dir / f"{request.scenario_id}.yaml"
 
         if not scenario_file.exists():

@@ -70,12 +70,16 @@ export function useGameState(playthroughId: string = DEFAULT_PLAYTHROUGH): UseGa
       let sceneTree: SceneTree | undefined;
 
       const view = await api.getCurrentView(playthroughId);
-      if (view && view.moments && view.moments.length > 0) {
+      // Backend returns active_moments, frontend type says moments - handle both
+      const moments = (view as any)?.active_moments || view?.moments || [];
+      if (view && moments.length > 0) {
+        // Normalize view to always have moments field
+        const normalizedView = { ...view, moments } as api.CurrentView;
         // Transform view to scene format
-        scene = transformViewToScene(view);
-        voices = transformMomentsToVoices(view.moments);
+        scene = transformViewToScene(normalizedView);
+        voices = transformMomentsToVoices(moments);
         // Scene tree is the raw view with clickable moments
-        sceneTree = view as unknown as SceneTree;
+        sceneTree = normalizedView as unknown as SceneTree;
         setNeedsOpening(false);
         console.log('Loaded view from moment system');
       } else {

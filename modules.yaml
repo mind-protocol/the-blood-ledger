@@ -2,186 +2,92 @@
 # MODULE MANIFEST
 # =============================================================================
 #
-# Maps code to documentation. Used by `ngram doctor` to identify unmapped code.
-# Updated 2025-12-19: Code restructured to match docs areas.
+# This file maps code to documentation and carries rich context about each module.
+#
+# WHEN TO UPDATE:
+# - Creating new code directories → add module mapping
+# - Creating new doc modules → add mapping
+# - Refactoring/moving code → update patterns
+# - Changing module maturity → update status
+#
+# VALIDATION:
+# `ngram validate` warns about unmapped code directories.
 #
 # =============================================================================
 
 modules:
   # ---------------------------------------------------------------------------
-  # PHYSICS - Core energy/weight mechanics (engine/physics/)
+  # EXAMPLE MODULE (delete or modify)
   # ---------------------------------------------------------------------------
-  physics-core:
-    code: "engine/physics/**"
-    docs: "docs/physics/"
-    maturity: CANONICAL
-    owner: agent
-    entry_points:
-      - tick.py
-      - constants.py
-    notes: |
-      Core physics engine: energy flow, weight computation, narrative mechanics.
-      Includes graph/ subdirectory with database operations.
+  # example:
+  #   code: "src/example/**"           # Glob pattern for source files
+  #   docs: "docs/area/example/"       # Path to documentation
+  #   tests: "tests/example/"          # Path to tests (optional)
+  #
+  #   maturity: DESIGNING              # DESIGNING | CANONICAL | PROPOSED | DEPRECATED
+  #   owner: agent                     # agent | human | team-name
+  #
+  #   entry_points:                    # Main files to start reading (optional)
+  #     - index.ts
+  #     - Example.tsx
+  #
+  #   internal:                        # Implementation details, not public API (optional)
+  #     - helpers.ts
+  #     - utils.ts
+  #
+  #   depends_on:                      # Other modules this requires (optional)
+  #     - types
+  #     - utils
+  #
+  #   patterns:                        # Conventions to follow (optional)
+  #     - "React functional components"
+  #     - "Tailwind styling"
+  #
+  #   notes: |                         # Quick context (optional)
+  #     Brief description of what this module does
+  #     and any important context for working with it.
 
-  physics-graph:
-    code: "engine/physics/graph/**"
-    docs: "docs/physics/"
-    maturity: CANONICAL
-    entry_points:
-      - graph_ops.py
-      - graph_queries.py
-    internal:
-      - graph_query_utils.py
-      - graph_queries_moments.py
-      - graph_queries_search.py
-      - graph_ops_apply.py
-      - graph_ops_moments.py
-      - graph_ops_links.py
-      - graph_ops_events.py
-      - graph_ops_image.py
-      - graph_ops_types.py
-    notes: |
-      Graph database operations - the core of the physics system.
-      graph_ops.py: 792 lines (reduced from 1094 via additional extractions).
-      graph_ops_apply.py: 698 lines (apply() method and helpers).
-      graph_ops_links.py: 573 lines (link creation methods).
-      graph_ops_events.py: 66 lines (event emitter for mutations).
-      graph_ops_image.py: 163 lines (image generation helpers).
-      graph_ops_types.py: 59 lines (types and exceptions).
-      graph_queries.py: 892 lines.
-      graph_queries_search.py: 285 lines (search methods).
+# =============================================================================
+# YOUR MODULES
+# =============================================================================
 
-  physics-moments:
-    code: "engine/moments/**"
-    docs: "docs/physics/"
-    maturity: CANONICAL
-    notes: |
-      Moment handlers and lifecycle management.
+# Uncomment and modify as you create modules:
 
-  moment-graph:
-    code: "engine/moment_graph/**"
-    docs: "docs/physics/"
-    maturity: CANONICAL
-    notes: |
-      Moment graph specific operations.
+# types:
+#   code: "src/types/**"
+#   docs: "docs/core/types/"
+#   maturity: CANONICAL
+#   owner: human
+#   notes: |
+#     Core type definitions. Changes affect entire codebase.
 
-  graph-health:
-    code: "engine/graph/**"
-    docs: "docs/physics/"
-    maturity: CANONICAL
-    notes: |
-      Graph health checks and validation utilities.
+# Add more modules as they emerge...
 
-  # ---------------------------------------------------------------------------
-  # WORLD - Content layer (engine/world/)
-  # ---------------------------------------------------------------------------
   world-map:
     code: "engine/world/map/**"
     docs: "docs/world/map/"
-    maturity: CANONICAL
-    notes: |
-      Semantic search and map queries.
-
-  # ---------------------------------------------------------------------------
-  # INFRASTRUCTURE - Supporting systems (engine/infrastructure/)
-  # ---------------------------------------------------------------------------
-  api:
-    code: "engine/infrastructure/api/**"
-    docs: "docs/infrastructure/"
-    maturity: CANONICAL
-    entry_points:
-      - app.py
-    notes: |
-      FastAPI backend. app.py is MONOLITH (1055 lines) - needs splitting.
-
-  embeddings:
-    code: "engine/infrastructure/embeddings/**"
-    docs: "docs/infrastructure/embeddings/"
-    maturity: CANONICAL
-    notes: |
-      Vector embeddings for semantic search.
-
-  history:
-    code: "engine/infrastructure/history/**"
-    docs: "docs/infrastructure/history/"
-    maturity: CANONICAL
-    notes: |
-      Playthrough history and chronicle.
-
-  memory:
-    code: "engine/infrastructure/memory/**"
-    docs: "docs/infrastructure/"
-    maturity: CANONICAL
-    notes: |
-      Scene memory and context management.
-
-  orchestration:
-    code: "engine/infrastructure/orchestration/**"
-    docs: "docs/infrastructure/"
-    maturity: CANONICAL
-    notes: |
-      Agent orchestration and coordination.
-
-  # ---------------------------------------------------------------------------
-  # SCHEMA - Data models (engine/models/)
-  # ---------------------------------------------------------------------------
-  models:
-    code: "engine/models/**"
-    docs: "docs/schema/"
-    maturity: CANONICAL
-    notes: |
-      Data models and type definitions.
-
-  # ---------------------------------------------------------------------------
-  # AGENTS - AI agents (agents/)
-  # ---------------------------------------------------------------------------
-  narrator:
-    code: "agents/narrator/**"
-    docs: "docs/agents/narrator/"
-    maturity: CANONICAL
+    maturity: DESIGNING
     owner: agent
     entry_points:
-      - CLAUDE.md
+      - engine/world/map/semantic.py
+    patterns:
+      - "Semantic search over graph embeddings"
     notes: |
-      AI narrator agent for scene generation.
+      Map system documentation and semantic search layer.
 
   world-runner:
-    code: "agents/world_runner/**"
+    code: "engine/infrastructure/orchestration/world_runner.py"
     docs: "docs/agents/world-runner/"
-    maturity: CANONICAL
-    notes: |
-      World simulation agent for background events.
-
-  # ---------------------------------------------------------------------------
-  # FRONTEND - Next.js application (frontend/)
-  # ---------------------------------------------------------------------------
-  frontend:
-    code: "frontend/**"
-    docs: "docs/frontend/"
+    additional_code:
+      - "agents/world_runner/**"
     maturity: CANONICAL
     owner: agent
+    entry_points:
+      - engine/infrastructure/orchestration/world_runner.py
+      - agents/world_runner/CLAUDE.md
     patterns:
-      - "Next.js App Router"
-      - "React Server Components"
-      - "Tailwind CSS"
+      - "Stateless LLM runner"
+      - "Interrupt/resume injection"
     notes: |
-      Next.js frontend application.
-
-  frontend-scene:
-    code: "frontend/components/scene/**"
-    docs: "docs/frontend/scene/"
-    maturity: CANONICAL
-    notes: |
-      Scene display components.
-
-  # ---------------------------------------------------------------------------
-  # CLI TOOLS - Agent utilities (tools/)
-  # ---------------------------------------------------------------------------
-  cli-tools:
-    code: "tools/**"
-    docs: "docs/infrastructure/cli-tools/"
-    maturity: CANONICAL
-    notes: |
-      CLI utilities for agents: stream_dialogue.py for narration streaming,
-      image_generation for Ideogram API integration.
-
+      World Runner agent and orchestration service. Converts flipped tensions
+      into graph mutations and narrator injection payloads.

@@ -1,23 +1,34 @@
 # Repository Map: the-blood-ledger
 
-*Generated: 2025-12-19 01:59*
+*Generated: 2025-12-19 07:06*
 
-- **Files:** 219
-- **Directories:** 64
-- **Total Size:** 2.2M
-- **Doc Files:** 122
-- **Code Files:** 92
+- **Files:** 233
+- **Directories:** 68
+- **Total Size:** 2.4M
+- **Doc Files:** 131
+- **Code Files:** 97
 - **Areas:** 7 (docs/ subfolders)
-- **Modules:** 13 (subfolders in areas)
-- **DOCS Links:** 1 (0.01 avg per code file)
+- **Modules:** 15 (subfolders in areas)
+- **DOCS Links:** 9 (0.09 avg per code file)
 
-- markdown: 122
-- python: 51
+- markdown: 131
+- python: 56
 - tsx: 30
 - typescript: 8
 - css: 1
 - html: 1
 - shell: 1
+
+```mermaid
+graph TD
+    world_map[world-map]
+    world_runner[world-runner]
+```
+
+| Module | Code | Docs | Lines | Files | Dependencies |
+|--------|------|------|-------|-------|--------------|
+| world-map | `engine/world/map/**` | `docs/world/map/` | 267 | 2 | - |
+| world-runner | `engine/infrastructure/orchestration/world_runner.py` | `docs/agents/world-runner/` | 134 | 1 | - |
 
 ```
 ├── agents/ (63.7K)
@@ -27,37 +38,41 @@
 │   │   └── CLAUDE.md (33.5K)
 │   └── world_runner/ (23.9K)
 │       └── CLAUDE.md (23.9K)
-├── docs/ (1.1M)
-│   ├── agents/ (150.6K)
-│   │   ├── narrator/ (83.0K)
-│   │   │   ├── ALGORITHM_Prompt_Structure.md (9.6K)
-│   │   │   ├── ALGORITHM_Rolling_Window.md (7.4K)
-│   │   │   ├── ALGORITHM_Scene_Generation.md (9.5K)
-│   │   │   ├── ALGORITHM_Thread.md (4.7K)
+├── docs/ (1.3M)
+│   ├── agents/ (198.3K)
+│   │   ├── narrator/ (106.3K)
+│   │   │   ├── ALGORITHM_Scene_Generation.md (28.3K)
 │   │   │   ├── BEHAVIORS_Narrator.md (9.1K)
 │   │   │   ├── HANDOFF_Rolling_Window_Architecture.md (6.8K)
+│   │   │   ├── IMPLEMENTATION_Narrator.md (11.3K)
 │   │   │   ├── INPUT_REFERENCE.md (6.8K)
-│   │   │   ├── PATTERNS_Narrator.md (6.4K)
-│   │   │   ├── PATTERNS_World_Building.md (6.0K)
+│   │   │   ├── PATTERNS_Narrator.md (8.4K)
+│   │   │   ├── SYNC_Narrator.md (2.6K)
+│   │   │   ├── TEST_Narrator.md (9.0K)
 │   │   │   ├── TOOL_REFERENCE.md (12.6K)
+│   │   │   ├── VALIDATION_Narrator.md (7.5K)
 │   │   │   └── (..3 more files)
-│   │   └── world-runner/ (67.6K)
-│   │       ├── ALGORITHM_Graph_Ticks.md (4.7K)
-│   │       ├── ALGORITHM_World_Runner.md (17.1K)
-│   │       ├── BEHAVIORS_World_Runner.md (13.6K)
-│   │       ├── INPUT_REFERENCE.md (6.2K)
-│   │       ├── PATTERNS_World_Runner.md (8.1K)
-│   │       ├── SYNC_World_Runner.md (1.3K)
-│   │       └── TOOL_REFERENCE.md (16.6K)
-│   ├── design/ (134.4K)
-│   │   ├── opening/ (69.4K)
+│   │   └── world-runner/ (92.1K)
+│   │       ├── ALGORITHM_World_Runner.md (19.4K)
+│   │       ├── BEHAVIORS_World_Runner.md (14.4K)
+│   │       ├── IMPLEMENTATION_World_Runner_Service.md (7.9K)
+│   │       ├── IMPLEMENTATION_World_Runner_Service_Architecture.md (8.2K)
+│   │       ├── INPUT_REFERENCE.md (6.6K)
+│   │       ├── PATTERNS_World_Runner.md (8.9K)
+│   │       ├── SYNC_World_Runner.md (3.0K)
+│   │       ├── TEST_World_Runner_Coverage.md (2.2K)
+│   │       ├── TOOL_REFERENCE.md (17.0K)
+│   │       ├── VALIDATION_World_Runner_Invariants.md (3.8K)
+│   │       └── (..1 more files)
+│   ├── design/ (135.5K)
+│   │   ├── opening/ (70.5K)
 │   │   │   ├── ALGORITHM_Opening.md (915)
 │   │   │   ├── BEHAVIORS_Opening.md (6.8K)
 │   │   │   ├── CLAUDE.md (26.2K)
 │   │   │   ├── CONTENT.md (10.2K)
 │   │   │   ├── GUIDE.md (9.5K)
 │   │   │   ├── PATTERNS_Opening.md (6.9K)
-│   │   │   ├── SYNC_Opening.md (1.1K)
+│   │   │   ├── SYNC_Opening.md (2.2K)
 │   │   │   ├── TEST_Opening.md (627)
 │   │   │   └── VALIDATION_Opening.md (7.2K)
 │   │   ├── scenarios/ (10.3K)
@@ -68,41 +83,54 @@
 │   │   ├── SYNC_Vision.md (3.8K)
 │   │   ├── TEST_Vision.md (996)
 │   │   └── VALIDATION_Vision.md (6.2K)
-│   ├── frontend/ (20.7K)
-│   │   ├── scene/ (11.9K)
+│   ├── frontend/ (64.2K)
+│   │   ├── scene/ (14.8K)
 │   │   │   ├── ALGORITHM_Scene.md (1.3K)
 │   │   │   ├── BEHAVIORS_Scene.md (1.3K)
 │   │   │   ├── PATTERNS_Scene.md (5.7K)
-│   │   │   ├── SYNC_Scene.md (1.8K)
+│   │   │   ├── SYNC_Scene.md (4.7K)
 │   │   │   ├── TEST_Scene.md (839)
 │   │   │   └── VALIDATION_Scene.md (1.0K)
+│   │   ├── ALGORITHM_Frontend_Data_Flow.md (8.6K)
+│   │   ├── BEHAVIORS_Frontend_State_And_Interaction.md (6.6K)
+│   │   ├── IMPLEMENTATION_Frontend_Code_Architecture.md (13.5K)
 │   │   ├── PATTERNS_Presentation_Layer.md (4.5K)
-│   │   └── SYNC_Frontend.md (4.3K)
-│   ├── infrastructure/ (213.5K)
-│   │   ├── async/ (44.7K)
-│   │   │   ├── ALGORITHM_Discussion_Trees.md (4.6K)
-│   │   │   ├── ALGORITHM_Fog_Of_War.md (2.8K)
-│   │   │   ├── ALGORITHM_Graph_SSE.md (3.4K)
-│   │   │   ├── ALGORITHM_Hook_Injection.md (4.5K)
-│   │   │   ├── ALGORITHM_Image_Generation.md (2.8K)
-│   │   │   ├── ALGORITHM_Runner_Protocol.md (3.8K)
-│   │   │   ├── ALGORITHM_Waypoint_Creation.md (2.3K)
+│   │   ├── SYNC_Frontend.md (5.6K)
+│   │   ├── TEST_Frontend_Coverage.md (4.9K)
+│   │   └── VALIDATION_Frontend_Invariants.md (5.7K)
+│   ├── infrastructure/ (236.1K)
+│   │   ├── api/ (7.5K)
+│   │   │   ├── ALGORITHM_Api.md (1.2K)
+│   │   │   ├── BEHAVIORS_Api.md (711)
+│   │   │   ├── IMPLEMENTATION_Api.md (913)
+│   │   │   ├── PATTERNS_Api.md (784)
+│   │   │   ├── SYNC_Api.md (2.6K)
+│   │   │   ├── TEST_Api.md (627)
+│   │   │   └── VALIDATION_Api.md (716)
+│   │   ├── async/ (43.9K)
+│   │   │   ├── ALGORITHM_Async_Architecture.md (23.4K)
 │   │   │   ├── BEHAVIORS_Travel_Experience.md (2.9K)
-│   │   │   ├── PATTERNS_Async_Architecture.md (10.8K)
-│   │   │   ├── SYNC_Async_Architecture.md (4.7K)
-│   │   │   └── (..2 more files)
-│   │   ├── embeddings/ (42.5K)
+│   │   │   ├── PATTERNS_Async_Architecture.md (10.5K)
+│   │   │   ├── SYNC_Async_Architecture.md (4.8K)
+│   │   │   ├── TEST_Async_Architecture.md (1.1K)
+│   │   │   └── VALIDATION_Async_Architecture.md (1.1K)
+│   │   ├── cli-tools/ (8.2K)
+│   │   │   ├── PATTERNS_CLI_Agent_Utilities.md (5.1K)
+│   │   │   └── SYNC_CLI_Tools.md (3.1K)
+│   │   ├── embeddings/ (43.6K)
 │   │   │   ├── ALGORITHM_Embeddings.md (8.2K)
 │   │   │   ├── BEHAVIORS_Embeddings.md (6.5K)
 │   │   │   ├── PATTERNS_Embeddings.md (6.1K)
-│   │   │   ├── SYNC_Embeddings.md (6.0K)
+│   │   │   ├── SYNC_Embeddings.md (4.6K)
+│   │   │   ├── SYNC_Embeddings_archive_2025-12.md (2.5K)
 │   │   │   ├── TEST_Embeddings.md (8.7K)
 │   │   │   └── VALIDATION_Embeddings.md (7.1K)
-│   │   ├── history/ (46.2K)
+│   │   ├── history/ (49.5K)
 │   │   │   ├── ALGORITHM_History.md (10.6K)
 │   │   │   ├── BEHAVIORS_History.md (7.0K)
 │   │   │   ├── PATTERNS_History.md (5.5K)
-│   │   │   ├── SYNC_History.md (6.0K)
+│   │   │   ├── SYNC_History.md (5.1K)
+│   │   │   ├── SYNC_History_archive_2025-12.md (4.2K)
 │   │   │   ├── TEST_History.md (9.5K)
 │   │   │   └── VALIDATION_History.md (7.6K)
 │   │   ├── image-generation/ (16.3K)
@@ -112,71 +140,51 @@
 │   │   │   ├── SYNC_Image_Generation.md (2.6K)
 │   │   │   ├── TEST_Image_Generation.md (824)
 │   │   │   └── VALIDATION_Image_Generation.md (803)
-│   │   └── scene-memory/ (63.8K)
+│   │   └── scene-memory/ (67.1K)
 │   │       ├── ALGORITHM_Scene_Memory.md (18.8K)
 │   │       ├── BEHAVIORS_Scene_Memory.md (12.4K)
 │   │       ├── PATTERNS_Scene_Memory.md (6.6K)
-│   │       ├── SYNC_Scene_Memory.md (5.3K)
+│   │       ├── SYNC_Scene_Memory.md (8.6K)
 │   │       └── VALIDATION_Scene_Memory.md (20.6K)
-│   ├── physics/ (267.4K)
-│   │   ├── graph/ (29.9K)
-│   │   │   ├── ALGORITHM_Energy_Flow.md (11.2K)
-│   │   │   ├── ALGORITHM_Weight.md (4.5K)
+│   ├── physics/ (331.5K)
+│   │   ├── graph/ (91.3K)
+│   │   │   ├── ALGORITHM_Energy_Flow.md (15.3K)
 │   │   │   ├── BEHAVIORS_Graph.md (6.6K)
 │   │   │   ├── PATTERNS_Graph.md (2.3K)
-│   │   │   └── SYNC_Graph.md (5.1K)
-│   │   ├── ALGORITHM_Actions.md (11.8K)
-│   │   ├── ALGORITHM_Canon.md (15.0K)
-│   │   ├── ALGORITHM_Energy.md (64.1K)
-│   │   ├── ALGORITHM_Handlers.md (11.6K)
-│   │   ├── ALGORITHM_Physics.md (12.4K)
-│   │   ├── ALGORITHM_Questions.md (10.6K)
-│   │   ├── BEHAVIORS_Physics.md (11.7K)
-│   │   ├── IMPLEMENTATION_Physics.md (31.9K)
-│   │   ├── TEST_Physics.md (16.7K)
-│   │   ├── VALIDATION_Physics.md (13.9K)
-│   │   └── (..5 more files)
-│   ├── schema/ (109.9K)
+│   │   │   ├── SYNC_Graph.md (2.7K)
+│   │   │   ├── SYNC_Graph_archive_2025-12.md (23.8K)
+│   │   │   ├── VALIDATION_Living_Graph.md (40.3K)
+│   │   │   └── (..1 more files)
+│   │   ├── ALGORITHM_Physics.md (138.7K)
+│   │   ├── API_Physics.md (6.9K)
+│   │   ├── BEHAVIORS_Physics.md (11.5K)
+│   │   ├── IMPLEMENTATION_Physics.md (35.7K)
+│   │   ├── PATTERNS_Physics.md (6.6K)
+│   │   ├── SYNC_Physics.md (10.5K)
+│   │   ├── TEST_Physics.md (16.6K)
+│   │   └── VALIDATION_Physics.md (13.8K)
+│   ├── schema/ (70.4K)
 │   │   ├── SCHEMA.md (48.2K)
-│   │   ├── SCHEMA_Moments.md (21.5K)
-│   │   ├── VALIDATION_Graph.md (2.3K)
-│   │   └── VALIDATION_Living_Graph.md (37.9K)
-│   ├── world/ (89.3K)
-│   │   ├── map/ (60.7K)
-│   │   │   ├── ALGORITHM_Places.md (9.3K)
-│   │   │   ├── ALGORITHM_Rendering.md (17.0K)
-│   │   │   ├── ALGORITHM_Routes.md (12.2K)
-│   │   │   ├── BEHAVIORS_Map.md (14.0K)
-│   │   │   ├── PATTERNS_Map.md (6.5K)
-│   │   │   └── SYNC_Map.md (1.7K)
-│   │   └── scraping/ (28.6K)
-│   │       ├── ALGORITHM_Events.md (3.0K)
-│   │       ├── ALGORITHM_Geography.md (2.7K)
-│   │       ├── ALGORITHM_Narratives.md (3.5K)
-│   │       ├── ALGORITHM_Pipeline.md (2.3K)
-│   │       ├── ALGORITHM_Political.md (3.2K)
-│   │       ├── ALGORITHM_Tensions.md (2.8K)
+│   │   ├── SCHEMA_Moments.md (22.0K)
+│   │   └── (..1 more files)
+│   ├── world/ (115.3K)
+│   │   ├── map/ (95.0K)
+│   │   │   ├── ALGORITHM_Rendering.md (57.6K)
+│   │   │   ├── BEHAVIORS_Map.md (13.8K)
+│   │   │   ├── IMPLEMENTATION_Map_Code_Architecture.md (7.4K)
+│   │   │   ├── PATTERNS_Map.md (6.7K)
+│   │   │   ├── SYNC_Map.md (3.6K)
+│   │   │   ├── TEST_Map_Test_Coverage.md (2.5K)
+│   │   │   └── VALIDATION_Map_Invariants.md (3.6K)
+│   │   └── scraping/ (20.2K)
+│   │       ├── ALGORITHM_Pipeline.md (8.8K)
 │   │       ├── BEHAVIORS_World_Scraping.md (1.1K)
-│   │       ├── PATTERNS_World_Scraping.md (2.6K)
-│   │       ├── SYNC_World_Scraping.md (3.7K)
-│   │       ├── VALIDATION_World_Scraping.md (2.8K)
-│   │       └── (..1 more files)
-│   └── map.md (147.3K)
-├── engine/ (859.6K)
-│   ├── api/ (87.3K)
-│   │   ├── app.py (48.2K)
-│   │   ├── moments.py (16.9K)
-│   │   ├── playthroughs.py (22.1K)
-│   │   └── (..1 more files)
-│   ├── db/ (187.7K)
-│   │   ├── __init__.py (1.8K)
-│   │   ├── graph_ops.py (98.7K)
-│   │   ├── graph_ops_moments.py (20.0K)
-│   │   ├── graph_queries.py (58.5K)
-│   │   └── graph_query_utils.py (8.7K) →
-│   ├── embeddings/ (6.0K)
-│   │   ├── service.py (5.6K)
-│   │   └── (..1 more files)
+│   │       ├── PATTERNS_World_Scraping.md (2.4K)
+│   │       ├── SYNC_World_Scraping.md (4.2K)
+│   │       ├── TEST_World_Scraping.md (858)
+│   │       └── VALIDATION_World_Scraping.md (2.8K)
+│   └── map.md (159.9K)
+├── engine/ (833.4K)
 │   ├── graph/ (119.2K)
 │   │   └── health/ (119.2K)
 │   │       ├── README.md (3.4K)
@@ -186,59 +194,83 @@
 │   │       ├── query_outputs.md (23.3K)
 │   │       ├── query_results.md (16.2K)
 │   │       └── test_schema.py (29.3K)
-│   ├── history/ (34.6K)
-│   │   ├── README.md (6.7K)
-│   │   ├── __init__.py (1.5K)
-│   │   ├── conversations.py (6.7K)
-│   │   └── service.py (19.7K)
-│   ├── memory/ (19.5K)
-│   │   ├── moment_processor.py (19.3K)
+│   ├── infrastructure/ (162.6K)
+│   │   ├── api/ (69.7K)
+│   │   │   ├── app.py (29.4K) →
+│   │   │   ├── moments.py (18.0K)
+│   │   │   ├── playthroughs.py (22.1K)
+│   │   │   └── (..1 more files)
+│   │   ├── embeddings/ (6.0K)
+│   │   │   ├── service.py (5.6K)
+│   │   │   └── (..1 more files)
+│   │   ├── history/ (34.7K)
+│   │   │   ├── README.md (6.7K)
+│   │   │   ├── __init__.py (1.6K)
+│   │   │   ├── conversations.py (6.7K)
+│   │   │   └── service.py (19.7K)
+│   │   ├── memory/ (19.5K)
+│   │   │   ├── moment_processor.py (19.3K)
+│   │   │   └── (..1 more files)
+│   │   ├── orchestration/ (32.6K)
+│   │   │   ├── __init__.py (522)
+│   │   │   ├── narrator.py (7.9K)
+│   │   │   ├── orchestrator.py (19.2K)
+│   │   │   └── world_runner.py (5.0K) →
 │   │   └── (..1 more files)
-│   ├── models/ (37.5K)
+│   ├── models/ (37.9K)
 │   │   ├── __init__.py (2.3K)
 │   │   ├── base.py (12.8K)
 │   │   ├── links.py (7.2K)
-│   │   ├── nodes.py (10.6K)
+│   │   ├── nodes.py (11.0K) →
 │   │   └── tensions.py (4.6K)
-│   ├── moment_graph/ (30.9K)
-│   │   ├── queries.py (13.8K)
+│   ├── moment_graph/ (32.3K)
+│   │   ├── queries.py (15.2K)
 │   │   ├── surface.py (9.0K)
 │   │   ├── traversal.py (7.7K)
 │   │   └── (..1 more files)
 │   ├── moments/ (1.1K)
 │   │   └── __init__.py (1.1K)
-│   ├── orchestration/ (30.9K)
-│   │   ├── __init__.py (507)
-│   │   ├── narrator.py (7.9K)
-│   │   ├── orchestrator.py (17.6K)
-│   │   └── world_runner.py (5.0K)
-│   ├── physics/ (21.9K)
+│   ├── physics/ (196.7K)
+│   │   ├── graph/ (174.8K)
+│   │   │   ├── graph_ops.py (28.6K)
+│   │   │   ├── graph_ops_apply.py (29.1K)
+│   │   │   ├── graph_ops_events.py (2.0K)
+│   │   │   ├── graph_ops_image.py (5.0K)
+│   │   │   ├── graph_ops_links.py (17.8K)
+│   │   │   ├── graph_ops_moments.py (20.0K)
+│   │   │   ├── graph_queries.py (29.7K)
+│   │   │   ├── graph_queries_moments.py (17.7K) →
+│   │   │   ├── graph_queries_search.py (12.9K) →
+│   │   │   ├── graph_query_utils.py (8.7K) →
+│   │   │   └── (..2 more files)
 │   │   ├── constants.py (3.7K)
 │   │   ├── tick.py (17.7K)
-│   │   └── (..1 more files)
-│   ├── queries/ (9.7K)
-│   │   ├── semantic.py (9.2K)
 │   │   └── (..1 more files)
 │   ├── scripts/ (18.0K)
 │   │   ├── check_injection.py (1.4K)
 │   │   ├── generate_images_for_existing.py (11.3K)
 │   │   ├── inject_to_narrator.py (3.6K)
 │   │   └── seed_moment_sample.py (1.8K)
-│   ├── tests/ (242.5K)
+│   ├── tests/ (243.0K)
 │   │   ├── test_behaviors.py (18.3K)
 │   │   ├── test_e2e_moment_graph.py (16.7K)
-│   │   ├── test_history.py (15.0K)
-│   │   ├── test_implementation.py (28.8K)
+│   │   ├── test_history.py (15.1K)
+│   │   ├── test_implementation.py (28.9K)
 │   │   ├── test_integration_scenarios.py (19.9K)
 │   │   ├── test_models.py (28.6K)
-│   │   ├── test_moment_graph.py (33.2K)
+│   │   ├── test_moment_graph.py (33.3K)
 │   │   ├── test_moments_api.py (15.5K)
-│   │   ├── test_narrator_integration.py (16.4K)
+│   │   ├── test_narrator_integration.py (16.5K)
 │   │   ├── test_spec_consistency.py (18.7K)
 │   │   └── (..4 more files)
+│   ├── world/ (9.8K)
+│   │   ├── map/ (9.7K)
+│   │   │   ├── semantic.py (9.3K) →
+│   │   │   └── (..1 more files)
+│   │   └── (..1 more files)
 │   ├── .env.example (540)
 │   ├── Dockerfile (664)
-│   ├── __init__.py (696)
+│   ├── __init__.py (711)
 │   ├── init_db.py (8.7K)
 │   ├── run.py (1.8K)
 │   └── (..1 more files)
@@ -310,14 +342,14 @@
 │   └── (..4 more files)
 ├── prompts/ (4.4K)
 │   └── discussion_generator.md (4.4K)
-├── tools/ (24.8K)
-│   ├── image_generation/ (11.1K)
+├── tools/ (25.0K)
+│   ├── image_generation/ (11.3K)
 │   │   ├── README.md (2.2K)
-│   │   └── generate_image.py (9.0K)
-│   └── stream_dialogue.py (13.6K)
+│   │   └── generate_image.py (9.1K) →
+│   └── stream_dialogue.py (13.7K) →
 ├── .gitignore (617)
 ├── .ngramignore (806)
-├── AGENTS.md (2.9K)
+├── AGENTS.md (22.0K)
 ├── CLAUDE.md (4.0K)
 ├── README.md (1.6K)
 ├── project_map.html (12.0K)
@@ -405,7 +437,9 @@
 - ## Moment Links
 
 **Sections:**
-- # Narrator — Algorithm: Prompt Structure
+- # Narrator — Algorithm: Scene Generation
+- ## CHAIN
+- ## Purpose
 - ## The Orchestration
 - ## File Locations
 - ## Prompt Structure
@@ -415,9 +449,6 @@
 - ## Required Output Schema
 - ## Time Elapsed Guidelines
 - ## Handling Different Injection Types
-- ## The --continue Flag
-- # First scene of playthrough
-- # All subsequent scenes
 - ## Orchestrator Pseudocode
 - # 1. Check for world injection
 - # 2. Build prompt
@@ -428,25 +459,6 @@
 - # 7. Trigger graph tick with time_elapsed
 - # 8. If flips, run World Runner
 - # 9. Return scene for frontend
-
-**Sections:**
-- # Narrator — Algorithm: Rolling Window Generation
-- ## The Model
-- ## The Window
-- ## On Scene Load
-- ## On Click
-- ## Generation Priority
-- ## Handling Slow Generation
-- ## Scene Transitions
-- ## Caching Strategy
-- ## Background Worker
-- ## Metrics to Track
-- ## Example Flow
-- ## Free Input Handling
-
-**Sections:**
-- # Narrator — Algorithm: Scene Generation
-- ## Purpose
 - ## Two Generation Modes
 - ## Input: Scene Context
 - ## Conversational Generation
@@ -457,23 +469,11 @@
 - ## Clickable Word Selection
 - ## Invention Guidelines
 - ## Background Generation
+- ## Rolling Window Generation
+- ## Thread Continuity
+- # First scene of playthrough
+- # All subsequent scenes
 - ## Quality Control
-
-**Sections:**
-- # Narrator — Algorithm: The Thread
-- ## The Thread
-- ## Why Continuity Matters
-- ## The Implementation
-- # First scene
-- # Subsequent scenes (same conversation)
-- # Continue indefinitely
-- ## Thread State
-- ## When to Start Fresh
-- ## Thread Management
-- ## Generation Flow
-- ## The Narrator's Memory
-- ## Thread vs Graph
-- ## Error Handling
 
 **Sections:**
 - # Narrator — Behaviors: What the Narrator Produces
@@ -511,6 +511,32 @@
 - ## Files Changed
 - ## Next Steps
 
+**Code refs:**
+- `engine/infrastructure/orchestration/narrator.py`
+- `engine/infrastructure/orchestration/narrator_prompt.py`
+- `graph_ops.py`
+- `narrator.py`
+- `narrator_prompt.py`
+- `stream_dialogue.py`
+- `tools/stream_dialogue.py`
+
+**Doc refs:**
+- `agents/narrator/CLAUDE.md`
+
+**Sections:**
+- # Narrator — Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
 **Sections:**
 - # Narrator Input Reference
 - ## Script Locations
@@ -534,19 +560,49 @@
 - ## The Narrator's Workflow
 - ## Why This Matters
 - ## Connection to Graph
+- ## CHAIN
+
+**Code refs:**
+- `engine/physics/graph_tick.py`
+
+**Doc refs:**
+- `docs/agents/narrator/ALGORITHM_Scene_Generation.md`
+- `docs/agents/narrator/IMPLEMENTATION_Narrator.md`
+- `docs/agents/narrator/SYNC_Narrator.md`
+- `docs/agents/narrator/TEST_Narrator.md`
+- `docs/agents/narrator/VALIDATION_Narrator.md`
 
 **Sections:**
-- # Narrator — Patterns: World Building Through Pre-Generation
-- ## The Core Insight
-- ## What This Creates
-- ## The World Thickens
-- ## The Player Feels This
-- ## Graph Enrichment Protocol
-- ## The Accumulation Effect
-- ## What Gets Written Back
-- ## The Narrator as Archeologist
-- ## Why This Matters for Engagement
-- ## Implementation Note
+- # Narrator — Current State
+- ## CHAIN
+- ## Documentation Status
+- ## RECENT CHANGES
+- ## Recent Updates
+- ## Open Questions (Resolved)
+- ## Remaining Work
+- ## ARCHIVE
+
+**Code refs:**
+- `engine/tests/test_narrator_integration.py`
+
+**Sections:**
+- # Narrator — Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## BEHAVIORAL TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run narrator integration tests
+- # Run with coverage
+- # Run schema validation tests
+- # Manual test: invoke narrator directly
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GOLD STANDARD SESSIONS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # Narrator Tool Reference
@@ -568,14 +624,20 @@
 - ## JSON Schema (for programmatic validation)
 
 **Sections:**
-- # World Runner — Algorithm: Graph Ticks vs Narrative Flips
-- ## Two Different Things
-- ## Graph Ticks (Mechanical)
-- ## Narrative Flips (World Runner)
-- ## The Flow
-- ## Why This Split
-- ## Tick Frequency
-- ## Cascade Handling
+- # Narrator — Validation: Behavioral Invariants and Output Verification
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- # Run narrator integration tests
+- # Validate mutation schemas
+- # Load narrator output and validate
+- # Check clickable validity
+- ## EXPERIENCE VALIDATION
+- ## QUALITY GATES
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # World Runner — Algorithm: How It Works
@@ -585,6 +647,7 @@
 - # Interrupt — something happened TO THE PLAYER
 - # Process non-player flips (world keeps moving)
 - # Completed without interruption
+- ## Graph Ticks vs Narrative Flips
 - ## The Full Flow
 - ## The Trigger
 - ## Player Context
@@ -595,6 +658,7 @@
 - # Companion: flip involves someone traveling with player?
 - # High-stakes: flip is critical enough to reach player?
 - ## Stateless Between Calls
+- ## Graph Ticks vs Narrative Flips
 - ## Step 1: Energy Flow
 - ## Step 2: Identify Breaks
 - ## Step 3: Process Breaks
@@ -624,6 +688,7 @@
 - # Characters who believe those narratives
 - # Places involved
 - # Connected narratives (1 hop)
+- ## CHAIN
 
 **Sections:**
 - # World Runner — Behaviors: What It Produces
@@ -651,6 +716,54 @@
 - ## Graph Mutations (Applied During Run)
 - ## Output by Duration
 - ## The Resume Pattern
+- ## CHAIN
+- ## CHAIN
+
+**Code refs:**
+- `engine/infrastructure/orchestration/world_runner.py`
+
+**Doc refs:**
+- `agents/world_runner/CLAUDE.md`
+
+**Sections:**
+- # World Runner — Implementation: Service and Agent Wiring
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/infrastructure/orchestration/world_runner.py`
+
+**Doc refs:**
+- `agents/world_runner/CLAUDE.md`
+- `agents/world_runner/CLAUDE_PROMPT.md`
+
+**Sections:**
+- # World Runner — Implementation: Service Architecture and Boundaries
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # World Runner Input Reference
@@ -661,6 +774,7 @@
 - ## Player Context (Where Player Is)
 - ## Complete Example Input
 - ## Processing Guidance
+- ## CHAIN
 
 **Sections:**
 - # World Runner — Patterns: Why This Shape
@@ -679,23 +793,65 @@
 - # Direct: Does the flip involve the player?
 - # Companion: Does it involve someone WITH the player?
 - # Critical urgency reaching player's area?
+- ## CHAIN
+- ## CHAIN
+
+**Code refs:**
+- `engine/infrastructure/orchestration/world_runner.py`
+- `engine/orchestration/world_runner.py`
+
+**Doc refs:**
+- `agents/world_runner/CLAUDE.md`
 
 **Sections:**
 - # World Runner — Sync: Current State
 - ## Current State
 - ## Documentation Status
-- ## Next Steps
-- ## ARCHIVE
+- ## Integration
+- ## Notes
+- ## Updates
+- ## CHAIN
+
+**Sections:**
+- # World Runner — Test: Coverage and Gaps
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # No test suite currently exists for this module.
+- # Proposed location:
+- # pytest tests/agents/world_runner/
+- ## KNOWN TEST GAPS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # World Runner Tool Reference
 - ## Complete Output Schema
+- ## CHAIN
 - ## Graph Mutations
 - ## World Injection
 - ## Complete Example
 - ## Validation Rules
 - ## Processing Order
 - ## JSON Schema (for programmatic validation)
+
+**Code refs:**
+- `engine/infrastructure/orchestration/world_runner.py`
+
+**Sections:**
+- # World Runner — Validation: Service Invariants and Failure Behavior
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- # No automated tests for World Runner service yet.
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # The Opening — Algorithm
@@ -779,13 +935,17 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
+- `engine/infrastructure/api/playthroughs.py`
+- `engine/infrastructure/orchestration/opening.py`
 - `engine/orchestration/opening.py`
 
 **Sections:**
 - # The Opening — Sync
 - ## Chain Reference
-- ## Current Notes
+- ## Current State
+- ## Code Locations
 - ## Upcoming Work
+- ## Notes
 
 **Sections:**
 - # The Opening — Tests
@@ -936,16 +1096,36 @@
 - ## My Current Thinking
 - ## Links
 
+**Code refs:**
+- `Atmosphere.tsx`
+- `CenterStage.tsx`
+- `CharacterRow.tsx`
+- `Hotspot.tsx`
+- `HotspotRow.tsx`
+- `ObjectRow.tsx`
+- `SceneActions.tsx`
+- `SceneBanner.tsx`
+- `SceneHeader.tsx`
+- `SceneImage.tsx`
+- `SceneView.tsx`
+- `SettingStrip.tsx`
+- `frontend/hooks/useMoments.ts`
+- `frontend/types/game.ts`
+
 **Doc refs:**
+- `docs/frontend/SYNC_Frontend.md`
+- `docs/frontend/scene/PATTERNS_Scene.md`
 - `docs/physics/API_Physics.md`
 
 **Sections:**
 - # Scene View — Sync: Current State
-- ## Snapshot
-- ## Open Questions
-- ## Next Deliverables
-- ## Dependencies
-- ## Handoff Notes
+- ## MATURITY
+- ## CURRENT STATE
+- ## DESIGN QUESTIONS (from PATTERNS)
+- ## INTEGRATION
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## POINTERS
 
 **Sections:**
 - # Scene View — Tests
@@ -958,6 +1138,83 @@
 - ## CHAIN
 - ## Invariants
 - ## Checks
+
+**Code refs:**
+- `frontend/hooks/useGameState.ts`
+
+**Sections:**
+- # Frontend — Algorithm: Data Flow and State Transformation
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: Initial State Loading
+- ## ALGORITHM: View to Scene Transformation
+- ## ALGORITHM: Moment Click Traversal
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `frontend/app/page.ts`
+
+**Sections:**
+- # Frontend — Behaviors: State Management and User Interaction
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `app/page.tsx`
+- `components/GameClient.tsx`
+- `components/GameLayout.tsx`
+- `components/moment/ClickableText.tsx`
+- `components/moment/MomentDebugPanel.tsx`
+- `components/moment/MomentDisplay.tsx`
+- `components/moment/MomentStream.tsx`
+- `components/scene/Atmosphere.tsx`
+- `components/scene/CenterStage.tsx`
+- `components/scene/CenterStageContent.tsx`
+- `components/scene/CharacterRow.tsx`
+- `components/scene/Hotspot.tsx`
+- `components/scene/HotspotRow.tsx`
+- `components/scene/ObjectRow.tsx`
+- `components/scene/SceneActions.tsx`
+- `components/scene/SceneBanner.tsx`
+- `components/scene/SceneHeader.tsx`
+- `components/scene/SceneImage.tsx`
+- `components/scene/SceneView.tsx`
+- `components/scene/SettingStrip.tsx`
+- `frontend/app/page.ts`
+- `frontend/app/page.tsx`
+- `hooks/transformers.ts`
+- `hooks/useGameState.ts`
+- `hooks/useMoments.ts`
+- `lib/api.ts`
+- `lib/api/moments.ts`
+- `types/game.ts`
+- `types/map.ts`
+- `types/moment.ts`
+
+**Sections:**
+- # Frontend — Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `engine/api/moments.py`
@@ -976,6 +1233,7 @@
 
 **Code refs:**
 - `frontend/app/map/page.tsx`
+- `frontend/app/page.ts`
 - `frontend/app/page.tsx`
 - `frontend/app/scenarios/page.tsx`
 - `frontend/app/start/page.tsx`
@@ -993,6 +1251,7 @@
 
 **Sections:**
 - # Frontend — Sync: Current State
+- ## CHAIN
 - ## MATURITY
 - ## CURRENT STATE
 - ## RECENT CHANGES
@@ -1002,103 +1261,141 @@
 - ## TODO
 - ## POINTERS
 
-**Sections:**
-- # Discussion Trees — Algorithm
-- ## Principle
-- ## Lifecycle
-- ## Tree Structure
-- ## Player Triggered
-- ## Idle Triggered
-- ## Generation Prompt
-- ## File Format
-- ## Deletion on Use
-- # Delete the explored branch
-- # Save updated tree
-- # Check if regeneration needed
+**Code refs:**
+- `hooks/useGameState.ts`
+- `hooks/useMoments.ts`
+- `lib/api.ts`
 
 **Sections:**
-- # Fog of War — Algorithm
-- ## Principle
-- ## Visibility States
-- ## Reveal Triggers
-- ## Graph Storage
-- ## SSE Event
-- ## Frontend Rendering
-- ## Travel Revelation
-- # Update position
-- # Reveal place
-- # SSE broadcast handled by graph
+- # Frontend — Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## E2E TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Currently no test suite configured
+- # Future commands:
+- # Run all tests
+- # Run with coverage
+- # Run E2E tests
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## RECOMMENDED IMPLEMENTATION ORDER
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `frontend/hooks/useGameState.ts`
 
 **Sections:**
-- # Graph SSE — Algorithm
-- ## Principle
-- ## Connection
-- ## Event Types
-- ## Backend Implementation
-- # Write to graph
-- # Emit SSE
-- # Update graph
-- # Emit SSE
-- ## Frontend Handling
-- ## Connection Management
-- ## Performance Considerations
+- # Frontend — Validation: Invariants and Verification
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- # Build (type checking)
+- # Lint
+- # No dedicated test suite yet (see TEST doc)
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # API — Algorithm
+- ## Graph Helpers
+- ## Health Check
+- ## Debug Mutation Stream
+- ## CHAIN
+
+**Sections:**
+- # API — Behaviors
+- ## Health Check
+- ## Debug Mutation Stream
+- ## CHAIN
+
+**Sections:**
+- # API — Implementation
+- ## Graph Access Helpers
+- ## Health Check
+- ## Debug Mutation Stream
+- ## CHAIN
+
+**Sections:**
+- # API — Patterns
+- ## App Factory First
+- ## Lightweight Health Checks
+- ## SSE Debug Streams
+- ## CHAIN
+
+**Code refs:**
+- `engine/infrastructure/api/app.py`
+- `engine/infrastructure/api/playthroughs.py`
+
+**Doc refs:**
+- `docs/infrastructure/api/BEHAVIORS_Api.md`
+- `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+- `docs/infrastructure/api/SYNC_Api.md`
+
+**Sections:**
+- # API — Sync: Current State
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## AGENT OBSERVATIONS
+- ## CHAIN
+
+**Sections:**
+- # API — Test
+- ## Health Check
+- ## Debug Mutation Stream
+- ## CHAIN
+
+**Sections:**
+- # API — Validation
+- ## Invariants
+- ## Failure Modes
+- ## CHAIN
 
 **Code refs:**
 - `engine/scripts/check_injection.py`
 
 **Sections:**
-- # Hook Injection — Algorithm
-- ## Principle
-- ## Injection File
-- ## Writers
-- ## Hook Script
+- # Async Architecture — Algorithm
+- ## CHAIN
+- ## Runner Protocol
+- # May need to re-spawn Runner for remaining journey
+- ## Hook Injection
 - # Take first injection
 - # Rewrite file with remaining injections
 - # Return to Claude Code
 - # No injection
-- ## Narrator Receives
 - # In Narrator's context
 - # Insert dialogue, then continue
 - # Generate stop scene at current position
-- ## Injection Types
-- ## When Character Activation Triggers Hook
-- ## Key Clarifications
-
-**Sections:**
-- # Image Generation — Algorithm
-- ## Principle
-- ## Trigger
-- ## Process
-- ## Prompt Construction
-- ## Output
-- ## Implementation
+- ## Graph SSE
+- # Write to graph
+- # Emit SSE
+- # Update graph
+- # Emit SSE
+- ## Waypoint Creation
+- # Write to graph (triggers SSE + image generation)
+- ## Fog of War
+- # Update position
+- # Reveal place
+- # SSE broadcast handled by graph
+- ## Image Generation
 - # Generate image (async)
 - # Save to disk
 - # Update graph
 - # SSE broadcast happens automatically from graph
-- ## Graph Hook
 - # Broadcast place_created (no image yet)
 - # Queue image generation
-
-**Sections:**
-- # Runner Protocol — Algorithm
-- ## Invocation
-- ## Reading Output
-- ## During Processing
-- ## Completion Payload
-- ## Narrator Handling
-- # May need to re-spawn Runner for remaining journey
-- ## Key Clarifications
-
-**Sections:**
-- # Waypoint Creation — Algorithm
-- ## Principle
-- ## Creation Flow
-- ## Place Node Schema
-- ## Naming Patterns
-- ## Persistence
-- ## Graph Write
-- # Write to graph (triggers SSE + image generation)
+- ## Discussion Trees
+- # Delete the explored branch
+- # Save updated tree
+- # Check if regeneration needed
 
 **Sections:**
 - # Travel Experience — Behaviors
@@ -1137,7 +1434,64 @@
 - ## Key Decisions Made
 - ## Open Questions
 - ## Next Action
+- ## Recent Changes
 - ## ARCHIVE
+
+**Code refs:**
+- `tests/async/test_hook_injection.py`
+- `tests/async/test_runner_protocol.py`
+- `tests/async/test_sse_queue.py`
+
+**Sections:**
+- # Async Architecture — Tests
+- ## CHAIN
+- ## Planned Coverage
+- ## Manual Verification
+- ## Gaps
+
+**Sections:**
+- # Async Architecture — Validation
+- ## CHAIN
+- ## Invariants
+- ## Verification Steps
+
+**Code refs:**
+- `engine/db/graph_ops.py`
+- `engine/db/graph_queries.py`
+- `tools/stream_dialogue.py`
+
+**Sections:**
+- # CLI Agent Utilities — Patterns: Agent-Invocable Command Line Tools
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## THE TOOLS
+- # Dialogue with clickable
+- # Narration with tone
+- # Complete the stream
+- ## DEPENDENCIES
+- ## WHAT THIS DOES NOT SOLVE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `generate_image.py`
+- `stream_dialogue.py`
+- `tools/image_generation/generate_image.py`
+- `tools/stream_dialogue.py`
+
+**Doc refs:**
+- `tools/image_generation/README.md`
+
+**Sections:**
+- # CLI Tools — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## POINTERS
 
 **Code refs:**
 - `engine/embeddings/service.py`
@@ -1212,20 +1566,24 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `engine/embeddings/service.py`
+- `engine/infrastructure/embeddings/service.py`
 
 **Sections:**
 - # Embeddings — Sync: Current State
-- ## MATURITY
 - ## CURRENT STATE
 - ## IN PROGRESS
-- ## RECENT CHANGES
 - ## KNOWN ISSUES
-- ## IMPLEMENTATION PLAN
 - ## HANDOFF: FOR AGENTS
 - ## HANDOFF: FOR HUMAN
 - ## TODO
 - ## POINTERS
+- ## ARCHIVE
+
+**Sections:**
+- # Archived: SYNC_Embeddings.md
+- ## MATURITY
+- ## RECENT CHANGES
+- ## IMPLEMENTATION PLAN
 
 **Code refs:**
 - `engine/embeddings/service.py`
@@ -1320,18 +1678,36 @@
 - ## WHAT THIS DOES NOT SOLVE
 - ## GAPS / IDEAS / QUESTIONS
 
+**Code refs:**
+- `engine/infrastructure/history/conversations.py`
+
+**Doc refs:**
+- `docs/infrastructure/history/SYNC_History.md`
+
 **Sections:**
 - # History — Sync: Current State
-- ## MATURITY
 - ## CURRENT STATE
 - ## IN PROGRESS
-- ## RECENT CHANGES
 - ## KNOWN ISSUES
+- ## CONFLICTS
 - ## HANDOFF: FOR AGENTS
 - ## HANDOFF: FOR HUMAN
 - ## TODO
-- ## CONSCIOUSNESS TRACE
 - ## POINTERS
+- ## Agent Observations
+- ## ARCHIVE
+- ## ARCHIVE
+
+**Code refs:**
+- `engine/infrastructure/history/conversations.py`
+
+**Sections:**
+- # Archived: SYNC_History.md
+- ## MATURITY
+- ## RECENT CHANGES
+- # Archived: SYNC_History.md
+- ## MATURITY
+- ## RECENT CHANGES
 
 **Sections:**
 - # History — Test: Test Cases and Coverage
@@ -1505,16 +1881,34 @@
 - ## GAPS / IDEAS / QUESTIONS
 - ## NEXT IN CHAIN
 
+**Code refs:**
+- `engine/infrastructure/api/moments.py`
+- `engine/infrastructure/memory/moment_processor.py`
+- `engine/models/nodes.py`
+- `engine/physics/graph/graph_ops_moments.py`
+- `engine/physics/graph/graph_queries_moments.py`
+- `moment_processor.py`
+
 **Sections:**
 - # Scene Memory System — Sync
 - ## DOCUMENT CHAIN
+- ## ARCHITECTURE EVOLUTION
 - ## IMPLEMENTATION STATUS
+- ## MOMENT NODE TYPE
+- # Moment Graph fields
+- # Tick tracking
+- # Transcript reference
+- ## LINK TYPES (IMPLEMENTED)
+- ## MOMENT PROCESSOR API
+- # Immediate moments (added to transcript)
+- # Potential moments (graph only)
+- # Links
 - ## INTEGRATION POINTS
-- ## SCHEMA DEPENDENCIES
+- ## DECISIONS MADE (HISTORICAL)
 - ## OPEN QUESTIONS
-- ## DECISIONS MADE
-- ## NEXT STEPS
 - ## CHANGELOG
+- ## CONFLICTS
+- ## Agent Observations
 
 **Sections:**
 - # Scene Memory System — Validation
@@ -1584,12 +1978,18 @@
 - # - breaking_point (changes story meaning)
 - # - belief_flow_rate (changes character importance)
 - # - link propagation factors (changes story structure)
-- ## Step 5: Tick Pressures
+- ## Step 5: Recompute Weights
+- # Clamp and apply focus evolution
+- # Direct: player believes it
+- # Indirect: about someone player knows
+- # Distant: no direct connection
+- # Bonus is limited by weaker of the two
+- ## Step 6: Tick Pressures
 - # Check for flip
 - # Tick gradual component
 - # Find scheduled floor
 - # Use higher of ticked or floor
-- ## Step 6: Detect Flips
+- ## Step 7: Detect Flips
 - ## Full Tick
 - # 1. Character energies (relationship × proximity)
 - # 2. Flow into narratives (characters pump)
@@ -1597,8 +1997,9 @@
 - # 4. Decay
 - # 5. Check conservation (soft global constraint)
 - # 6. Adjust criticality (dynamic decay_rate)
-- # 7. Pressure ticks
-- # 8. Detect flips
+- # 7. Weight recomputation
+- # 8. Pressure ticks
+- # 9. Detect flips
 - ## Automatic Tension from Approach
 - # Edmund's energy as player approaches York
 - # Day 1 (one day travel):
@@ -1611,24 +2012,7 @@
 - ## Link Type Factors
 - ## Conservation Parameters
 - ## Never Adjust Dynamically
-
-**Sections:**
-- # Graph — Algorithm: Weight Computation
-- ## What Weight Means
-- ## Weight Formula
-- # Clamp and apply focus evolution
-- ## Component: Belief Intensity
-- ## Component: Player Connection
-- # Direct: player believes it
-- # Indirect: about someone player knows
-- # Distant: no direct connection
-- ## Component: Contradiction Bonus
-- # Bonus is limited by weaker of the two
-- ## Component: Recency Factor
-- ## Focus Evolution
-- ## When Weight Is Recomputed
-- ## Weight Thresholds
-- ## Example Computation
+- ## CHAIN
 
 **Sections:**
 - # Graph — Behaviors: What Should Happen
@@ -1658,33 +2042,320 @@
 - # Graph — Current State
 - ## What Exists
 - ## What's Missing
-- ## Key Design Decisions
 - ## Parameters
 - ## Criticality Targets
-- ## The Full Energy Cycle
 - ## Open Questions
-- ## Next Steps
+- ## Recent Changes
+- ## ARCHIVE
+- ## ARCHIVE
 
 **Code refs:**
-- `engine/orchestration/orchestrator.py`
+- `engine/graph/health/check_health.py`
+- `engine/physics/graph/graph_ops_events.py`
+- `engine/physics/graph/graph_ops_types.py`
+- `engine/physics/graph/graph_queries_moments.py`
+- `engine/physics/graph/graph_queries_search.py`
+
+**Doc refs:**
+- `docs/physics/graph/ALGORITHM_Energy_Flow.md`
+- `docs/physics/graph/ALGORITHM_Weight.md`
+- `docs/physics/graph/SYNC_Graph.md`
 
 **Sections:**
-- # Physics — Algorithm: Action Processing
+- # Archived: SYNC_Graph.md
+- ## Key Design Decisions
+- ## The Full Energy Cycle
+- ## Next Steps
+- ## CONFLICTS
+- # Archived: SYNC_Graph.md
+- ## Key Design Decisions
+- ## The Full Energy Cycle
+- ## Next Steps
+- ## CONFLICTS
+- # Archived: SYNC_Graph.md
+- ## Key Design Decisions
+- ## The Full Energy Cycle
+- ## Next Steps
+- ## CONFLICTS
+- ## Agent Observations
+- # Archived: SYNC_Graph.md
+- ## Key Design Decisions
+- ## The Full Energy Cycle
+- ## Next Steps
+- ## CONFLICTS
+- ## Agent Observations
+
+**Sections:**
+- # THE BLOOD LEDGER — Validation Specification
+- # Version: 1.0
+- # =============================================================================
+- # PURPOSE
+- # =============================================================================
+- # =============================================================================
+- # GRAPH INTEGRITY RULES
+- # =============================================================================
+- # No links — char_wulfric would be orphaned
+- # result.persisted = ["char_aldric", "narr_oath", "link_belief_1"]
+- # result.rejected = [
+- # {"item": "char_wulfric", "error": "orphaned_node", "fix": "Add link..."}
+- # ]
+- # =============================================================================
+- # VISION MAPPING
+- # =============================================================================
+- # --- COVERED BY ENERGY SYSTEM ---
+- # --- REQUIRES NARRATOR/CONTENT ---
+- # =============================================================================
+- # EXPECTED BEHAVIORS
+- # =============================================================================
+- # ---------------------------------------------------------------------------
+- # PRESENCE & PROXIMITY
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # LIVING WORLD
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # NARRATIVE TENSION
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # COMPANION DEPTH
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # SYSTEM HEALTH
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # TIME & PRESSURE
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # ENGAGEMENT
+- # ---------------------------------------------------------------------------
+- # =============================================================================
+- # ANTI-PATTERNS
+- # =============================================================================
+- # =============================================================================
+- # TEST SUITE
+- # =============================================================================
+- # ---------------------------------------------------------------------------
+- # PRESENCE & PROXIMITY
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # LIVING WORLD
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # NARRATIVE TENSION
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # COMPANION DEPTH
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # SYSTEM HEALTH
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # TIME & PRESSURE
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # ENGAGEMENT
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # CRITICALITY
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # CASCADE
+- # ---------------------------------------------------------------------------
+- # ---------------------------------------------------------------------------
+- # ANTI-PATTERNS
+- # ---------------------------------------------------------------------------
+- # =============================================================================
+- # SUMMARY
+- # =============================================================================
+
+**Code refs:**
+- `engine/physics/energy.py`
+
+**Sections:**
+- # Physics — Algorithm: System Overview
 - ## CHAIN
-- ## Core Principle
-- ## Why Actions Are Special
-- ## Action Queue
-- ## Action Processing Steps
+- ## Consolidation Note
+- ## Energy Mechanics
+- ## NODE TYPES
+- ## LINK TYPES
+- ## NARRATIVE TYPES
+- ## LINK STRENGTH
+- ## STRENGTH MECHANICS (Six Categories)
+- # Speaking is stronger than thinking
+- # Direct address is strongest
+- # Speaker's belief activated
+- # ABOUT links activated
+- # Check what this evidence supports
+- # Check what this evidence contradicts
+- # Create new association if co-occurrence is strong enough
+- # Recent narratives in same conversation
+- # Co-occurring narratives associate
+- # How much does receiver trust source?
+- # Average trust from relationship narratives
+- # Direct witness vs secondhand
+- # Higher cost = stronger commitment
+- # What beliefs motivated this action?
+- # Tension pressure
+- # Danger
+- # Emotional weight of moment
+- # All strength changes multiplied by intensity
+- ## ENERGY SOURCES
+- # Baseline regeneration
+- # State modifier
+- # Pump budget
+- # Distribute by belief strength only
+- # Things don't hold energy — redirect to related narratives
+- # Character arrives — they bring their energy with them
+- # News creates/energizes a narrative
+- # Discovery energizes existing narrative
+- # Draw energy from involved characters
+- # Inject into related narratives
+- ## ENERGY SINKS
+- # Core types resist decay
+- # Draw from speakers
+- # Draw from attached narratives
+- ## ENERGY TRANSFER (Links)
+- # A pulls from B
+- # B pulls from A
+- # Energy flows toward equilibrium
+- # Additional drain: old loses extra (world moved on)
+- # Things don't hold energy — skip
+- # Forward flow
+- # Reverse flow only if bidirectional
+- # Only if character is awake and present
+- # Only nodes with energy
+- # Reverse flow: target → moment
+- # Partial drain — recent speech still has presence
+- # Status change
+- # Remaining energy decays normally from here
+- ## MOMENT ENERGY & WEIGHT
+- ## FULL TICK CYCLE
+- # 1. Characters pump into narratives
+- # 2. Narrative-to-narrative transfer
+- # 3. ABOUT links (focal point pulls)
+- # 4. Moment energy flow
+- # 5. Tension injection (structural pressure)
+- # 6. Decay (energy leaves system)
+- # 7. Detect breaks
+- # Energy decay (fast)
+- # Check for status transition
+- # Weight decay (slow, only without reinforcement)
+- ## PHYSICAL GATING
+- ## PARAMETERS
+- ## EMERGENT BEHAVIORS
+- ## M11: FLIP DETECTION
+- # Check still valid (state may have changed)
+- # Flip to active
+- # Handler needed?
+- # Async - handler will call record_to_canon when done
+- # Direct record
+- # ... process ...
+- ## M12: CANON HOLDER
+- # 1. Status change
+- # 2. Energy cost (actualization)
+- # 3. THEN link (history chain)
+- # 4. Time passage
+- # 5. Strength mechanics
+- # 6. Actions
+- # 7. Notify frontend
+- # ABOUT links activated
+- # Confirming evidence
+- # Contradicting evidence
+- # Recent narratives in same conversation
+- # Adjust by text length
+- # Check for time-based events
+- # Decay check (large time jumps)
+- # Apply Commitment mechanic (M5)
+- # Winner proceeds to canon
+- # Loser returns to possible, decayed
+- ## M13: AGENT DISPATCH
+- # Detect and process breaks
+- # Scheduled events
+- ## WHAT WE DON'T DO
+- ## Physics Tick
+- # 1. PUMP — Characters inject energy into narratives
+- # 2. TRANSFER — Energy flows through narrative links
+- # 3. TENSION — Structural tensions concentrate energy
+- # 4. DECAY — Energy leaves the system
+- # 5. WEIGHT — Recompute moment weights from sources
+- # 6. DETECT — Find moments that crossed threshold
+- # 7. EMIT — Send flipped moments to Canon Holder
+- # 8. BREAKS — Return any structural breaks for handling
+- # Baseline regeneration
+- # State modifier (dead/unconscious = 0, sleeping = 0.2, awake = 1.0)
+- # Distribute by belief strength only - no proximity filter
+- # Narrative links
+- # ABOUT links (focal point pulls)
+- # Draw from participants
+- # Inject into related narratives
+- # Narrative decay
+- # Character decay
+- # From characters who can speak it
+- # From attached narratives
+- # From attached present characters
+- # Actualization cost
+- # Record to canon
+- # Trigger handlers for attached characters
+- ## Canon Holder
+- # 1. Status change
+- # 2. Energy cost (actualization)
+- # 3. THEN link (history chain)
+- # 4. Time passage
+- # 5. Strength mechanics
+- # 6. Actions
+- # 7. Notify frontend
+- # Check still valid (state may have changed)
+- # Flip to active
+- # Handler needed?
+- # Async - handler will call record_to_canon when done
+- # Direct record
+- # ... process ...
+- # ABOUT links activated
+- # Confirming evidence
+- # Contradicting evidence
+- # Recent narratives in same conversation
+- # Change AT link
+- # Change CARRIES link
+- # Change CARRIES link
+- # Complex — may trigger combat
+- # Thing-specific effects
+- # Apply Commitment mechanic (M5)
+- # Adjust by text length
+- # Check for time-based events
+- # Decay check (large time jumps)
+- # Winner proceeds to canon
+- # Loser returns to possible, decayed
+- ## Character Handlers
+- # Note: NO weight field. Physics assigns weight.
+- # Build prompt based on character type and speed
+- # LLM call
+- # Parse structured output
+- # Inject into graph (physics assigns weights)
+- # Speed-aware framing
+- # Calculate link strength (how much character energy flows to this moment)
+- # Create moment (weight will be computed by physics tick)
+- # Create CAN_SPEAK link (character energy → moment weight)
+- # Create ATTACHED_TO link
+- # Process additional links
+- # Queue questions for async answering
+- # "You there, guard on the left!"
+- # individual now has own node, inherits group properties
+- ## In handler output
+- # Parallel execution
+- # Each handler only writes its own character
+- # No conflicts because of isolation
+- # Create a synthetic "arrival" moment
+- # Trigger handler with arrival as trigger
+- # By the time player engages, potentials exist
+- ## Action Processing
 - # 1. VALIDATE — Is action still possible?
 - # 2. EXECUTE — Modify graph state
 - # 3. CONSEQUENCES — Generate consequence moments
 - # 4. INJECT — Consequences enter graph with energy
-- ## Step 1: Validate
 - # Can actor travel to destination?
 - # Is thing still present and unowned?
 - # Is target still present and alive?
 - # Does actor have the thing? Is recipient present?
-- ## Step 2: Execute
 - # Remove old AT link
 - # Create new AT link
 - # Handle moment dormancy (see ALGORITHM_Lifecycle.md)
@@ -1696,400 +2367,120 @@
 - # Update relationship
 - # Remove actor's CARRIES link
 - # Create recipient's CARRIES link
-- ## Step 3: Generate Consequences
 - # Departure noticed
 - # Arrival noticed
 - # Witness reactions will be generated by their handlers
-- ## Step 4: Inject Consequences
 - # Create moment with initial energy
 - # Create links
 - # Physics takes over — consequence may flip, trigger handlers
-- ## Mutex Handling
 - # First action already processed (it's first in queue)
 - # Second action validation will fail
 - # Generate "blocked" consequence
 - # Blocked consequence triggers actor_b's handler
 - # Handler can generate reaction: frustration, new plan, etc.
-- ## Action Types Reference
-- ## Sequential Processing
-- ## What Action Processing Does NOT Do
-- ## Invariants
-
-**Code refs:**
-- `engine/canon/holder.py`
-
-**Sections:**
-- # Physics — Algorithm: Canon Holder
-- ## CHAIN
-- ## Core Principle
-- ## The Flow
-- ## Canon Holder Responsibilities
-- ## The Code Shape
-- # 1. Status change
-- # 2. Energy cost (actualization)
-- # 3. THEN link (history chain)
-- # 4. Time passage
-- # 5. Strength mechanics
-- # 6. Actions
-- # 7. Notify frontend
-- ## Flip Detection
-- # Check still valid (state may have changed)
-- # Flip to active
-- # Handler needed?
-- # Async - handler will call record_to_canon when done
-- # Direct record
-- ## Status Progression
-- ## Who Speaks?
-- ## Rate Limiting
-- # ... process ...
-- ## Actualization Cost
-- ## Strength Mechanics Applied
-- # ABOUT links activated
-- # Confirming evidence
-- # Contradicting evidence
-- # Recent narratives in same conversation
-- ## Action Processing
-- # Change AT link
-- # Change CARRIES link
-- # Change CARRIES link
-- # Complex — may trigger combat
-- # Thing-specific effects
-- # Apply Commitment mechanic (M5)
-- ## Time Passage
-- # Adjust by text length
-- # Check for time-based events
-- # Decay check (large time jumps)
-- ## THEN Links
-- ## Frontend Notification
-- ## Simultaneous Actions Are Drama
-- ## True Mutex (Rare)
-- # Winner proceeds to canon
-- # Loser returns to possible, decayed
-- ## History Is Queryable
-- ## Parameters
-- ## Invariants
-- ## What Canon Holder Does NOT Do
-
-**Code refs:**
-- `engine/physics/energy.py`
-
-**Sections:**
-- # Graph — Algorithm: Energy Mechanics
-- ## CHAIN
-- ## Core Principles
-- # NODE TYPES
-- ## Weight vs Energy
-- ## Why Both Matter
-- ## Surfacing / Relevance
-- ## Character Attributes
-- ## Narrative Attributes
-- ## Moment Attributes
-- # LINK TYPES
-- ## Character Links
-- ## Narrative Links
-- ## Moment Links
-- ## Link Properties
-- # NARRATIVE TYPES
-- # LINK STRENGTH
-- ## Principle
-- ## Timescales (No Circularity)
-- ## Default Initial Strength
-- ## Base Functions
-- # STRENGTH MECHANICS (Six Categories)
-- ## Principle
-- ## M1: ACTIVATION
-- # Speaking is stronger than thinking
-- # Direct address is strongest
-- # Speaker's belief activated
-- # ABOUT links activated
-- ## M2: EVIDENCE
-- # Check what this evidence supports
-- # Check what this evidence contradicts
-- ## M3: ASSOCIATION
-- # Create new association if co-occurrence is strong enough
-- # Recent narratives in same conversation
-- # Co-occurring narratives associate
-- ## M4: SOURCE
-- # How much does receiver trust source?
-- # Average trust from relationship narratives
-- # Direct witness vs secondhand
-- ## M5: COMMITMENT
-- # Higher cost = stronger commitment
-- # What beliefs motivated this action?
-- ## M6: INTENSITY
-- # Tension pressure
-- # Danger
-- # Emotional weight of moment
-- # All strength changes multiplied by intensity
-- ## Summary
-- ## Agents That Modify Strength
-- ## Emergent Scenarios
-- ## Why Conservation
-- ## The Energy Equation
-- # ENERGY SOURCES
-- ## S1: Character Pumping
-- # Baseline regeneration
-- # State modifier
-- # Pump budget
-- # Distribute by belief strength only
-- ## S2: Player Focus Injection
-- # Things don't hold energy — redirect to related narratives
-- ## S3: World Events
-- # Character arrives — they bring their energy with them
-- # News creates/energizes a narrative
-- # Discovery energizes existing narrative
-- ## S4: Tension Pressure (Structural)
-- # Draw energy from involved characters
-- # Inject into related narratives
-- # ENERGY SINKS
-- ## K1: Decay
-- # Core types resist decay
-- ## K2: Actualization
-- # Draw from speakers
-- # Draw from attached narratives
-- # ENERGY TRANSFER (Links)
-- ## Principle
-- ## T1: CONTRADICTS (Bidirectional)
-- # A pulls from B
-- # B pulls from A
-- ## T2: SUPPORTS (Bidirectional)
-- # Energy flows toward equilibrium
-- ## T3: ELABORATES (Unidirectional, Parent → Child)
-- ## T4: SUBSUMES (Unidirectional, Specific → General)
-- ## T5: SUPERSEDES (Draining)
-- # Additional drain: old loses extra (world moved on)
-- ## T6: ABOUT (Focal Point Pulls)
-- # Things don't hold energy — skip
-- ## T7: CAN_LEAD_TO (Moment to Moment)
-- # Forward flow
-- # Reverse flow only if bidirectional
-- ## T8: CAN_SPEAK (Character to Moment)
-- # Only if character is awake and present
-- ## T9: ATTACHED_TO (Moment from Sources)
-- # Only nodes with energy
-- # Reverse flow: target → moment
-- ## Actualization (Energy Spent)
-- # Partial drain — recent speech still has presence
-- # Status change
-- # Remaining energy decays normally from here
-- ## Moment Decay by Status
-- # MOMENT ENERGY & WEIGHT
-- ## Surfacing Logic
-- ## Energy Flow Into Moments
-- ## Weight Evolution
-- ## Example
-- # FULL TICK CYCLE
-- # 1. Characters pump into narratives
-- # 2. Narrative-to-narrative transfer
-- # 3. ABOUT links (focal point pulls)
-- # 4. Moment energy flow
-- # 5. Tension injection (structural pressure)
-- # 6. Decay (energy leaves system)
-- # 7. Detect breaks
-- # Energy decay (fast)
-- # Check for status transition
-- # Weight decay (slow, only without reinforcement)
-- # PHYSICAL GATING
-- ## How It Works
-- ## Gating Queries
-- ## What This Replaces
-- ## Example
-- # PARAMETERS
-- ## Transfer Factors
-- ## Moment Decay Rates
-- ## Actualization
-- ## Source Rates
-- ## Sink Rates
-- ## Weight Parameters
-- ## Floors & Ceilings
-- # EMERGENT BEHAVIORS
-- ## "Arguments Heat Both Sides"
-- ## "Approach Creates Tension"
-- ## "Forgotten Things Bite Back"
-- ## "The World Feels Alive"
-- ## "Thinking About Someone Far Away"
-- # M11: FLIP DETECTION
-- ## Status Progression
-- ## Detection Query
-- ## Processing Multiple Ready Moments
-- # Check still valid (state may have changed)
-- # Flip to active
-- # Handler needed?
-- # Async - handler will call record_to_canon when done
-- # Direct record
-- ## Rate Limiting
-- # ... process ...
-- ## Speaker Resolution
-- # M12: CANON HOLDER
-- ## The Flow
-- ## Canon Holder Responsibilities
-- ## Recording Function
-- # 1. Status change
-- # 2. Energy cost (actualization)
-- # 3. THEN link (history chain)
-- # 4. Time passage
-- # 5. Strength mechanics
-- # 6. Actions
-- # 7. Notify frontend
-- ## Strength Mechanics on Record
-- # ABOUT links activated
-- # Confirming evidence
-- # Contradicting evidence
-- # Recent narratives in same conversation
-- ## Time Passage
-- # Adjust by text length
-- # Check for time-based events
-- # Decay check (large time jumps)
-- ## Action Processing
-- # Apply Commitment mechanic (M5)
-- ## THEN Links
-- ## Frontend Notification
-- ## Simultaneous Actions Are Drama
-- ## True Mutex (Rare)
-- # Winner proceeds to canon
-- # Loser returns to possible, decayed
-- ## What Canon Holder Does NOT Do
-- # M13: AGENT DISPATCH
-- ## The Agents
-- ## Runner (World)
-- # Detect and process breaks
-- # Scheduled events
-- ## Narrator (Scene)
-- ## Citizen (Character)
-- ## Main Loop
-- # WHAT WE DON'T DO
-
-**Sections:**
-- # Physics — Algorithm: Character Handlers
-- ## CHAIN
-- ## Core Principle
-- ## When Handlers Run
-- ## What Handler Receives
-- ## What Handler Produces
-- # Note: NO weight field. Physics assigns weight.
-- ## Handler Implementation
-- # Build prompt based on character type and speed
-- # LLM call
-- # Parse structured output
-- # Inject into graph (physics assigns weights)
-- # Speed-aware framing
-- ## Moment Injection (Physics Side)
-- # Calculate link strength (how much character energy flows to this moment)
-- # Create moment (weight will be computed by physics tick)
-- # Create CAN_SPEAK link (character energy → moment weight)
-- # Create ATTACHED_TO link
-- # Process additional links
-- # Queue questions for async answering
-- ## Handler Scaling
-- # "You there, guard on the left!"
-- # individual now has own node, inherits group properties
-- # In handler output
-- ## Parallel Execution
-- # Parallel execution
-- # Each handler only writes its own character
-- # No conflicts because of isolation
-- ## Reaction Scope
-- ## Pre-Generation Strategy
-- # Create a synthetic "arrival" moment
-- # Trigger handler with arrival as trigger
-- # By the time player engages, potentials exist
-- ## What Handler Does NOT Do
-- ## Invariants
-
-**Code refs:**
-- `engine/physics/tick.py`
-
-**Sections:**
-- # Physics — Algorithm: Physics Tick
-- ## CHAIN
-- ## Core Principle
-- ## What Triggers a Tick
-- ## Tick Steps (Sequential)
-- # 1. PUMP — Characters inject energy into narratives
-- # 2. TRANSFER — Energy flows through narrative links
-- # 3. TENSION — Structural tensions concentrate energy
-- # 4. DECAY — Energy leaves the system
-- # 5. WEIGHT — Recompute moment weights from sources
-- # 6. DETECT — Find moments that crossed threshold
-- # 7. EMIT — Send flipped moments to Canon Holder
-- # 8. BREAKS — Return any structural breaks for handling
-- ## Step 1: Character Pumping
-- # Baseline regeneration
-- # State modifier (dead/unconscious = 0, sleeping = 0.2, awake = 1.0)
-- # Distribute by belief strength only - no proximity filter
-- ## Step 2: Energy Transfer
-- # Narrative links
-- # ABOUT links (focal point pulls)
-- ## Step 3: Tension Injection
-- # Draw from participants
-- # Inject into related narratives
-- ## Step 4: Decay
-- # Narrative decay
-- # Character decay
-- ## Step 5: Moment Weight Computation
-- # From characters who can speak it
-- # From attached narratives
-- # From attached present characters
-- ## Step 6: Flip Detection
-- ## Step 7: Emit to Canon Holder
-- # Actualization cost
-- # Record to canon
-- # Trigger handlers for attached characters
-- ## Parameters
-- ## Graph States
-- ## Tick Rate by Speed
-- ## What Physics Does NOT Do
-- ## Invariants
-- ## Relationship to ALGORITHM_Energy.md
-
-**Sections:**
-- # Physics — Algorithm: Question Answering
-- ## CHAIN
-- ## Core Principle
-- ## When Questions Arise
-- # In character handler
+- ## Player Input Processing
+- # Character names
+- # Also check nicknames, titles
+- # Place names
+- # Thing names
+- # ATTACHED_TO player (they said it)
+- # ATTACHED_TO current location
+- # ATTACHED_TO all present characters (they heard it)
+- # REFERENCES for recognized names/things (strong energy transfer)
+- # CAN_SPEAK link (player spoke this)
+- # Direct references get full energy
+- # Boost all moments attached to this character
+- # All present characters get partial energy (they heard)
+- ## "Aldric, what do you think?"
+- ## Aldric directly referenced → full energy boost
+- ## "What does everyone think?"
+- ## No direct reference → distributed partial energy
+- # 1. Parse
+- # 2. Create moment
+- # 3. Create links
+- # 4. Inject energy
+- # 5. Emit player moment to display (immediate)
+- # 6. Trigger physics tick (may be immediate based on settings)
+- # After physics tick, check if anything flipped
+- # No response from NPCs
+- # Energy flows back to player character
+- # Player character's handler will produce observation
+- # "The silence stretches. No one meets your eye."
+- # Or: pause until submit
+- ## Question Answering
+- ## In character handler
 - # Handler needs to know about father
 - # Queue question for answering
 - # Handler continues with what it knows
 - # Does NOT block waiting for answer
-- ## Not Async in "Fire and Forget" Sense
-- ## Question Answerer Flow
 - # 1. GATHER — Get relevant existing facts
 - # 2. GENERATE — Invent answer via LLM
 - # 3. VALIDATE — Check consistency
 - # 4. INJECT — Create nodes in graph
-- ## Step 1: Gather Existing Facts
 - # Character's existing family
 - # Character's origin place
 - # Character's existing beliefs/narratives
 - # Historical events character witnessed
-- ## Step 2: Generate Answer
-- ## Step 3: Validate Consistency
 - # Check family conflicts
 - # Check place conflicts
 - # Check temporal conflicts
-- ## Step 4: Inject Answer
 - # Create new character nodes
 - # Create relationship link
 - # Create new place nodes
 - # Create relationship link
 - # Create potential memory moments
 - # Create ANSWERED_BY link for traceability
-- ## No Special Mechanism for Integration
-- # After injection, physics handles integration:
-- # New father character exists
-- # Memory moments attached to asker exist
-- # These have initial weight (e.g., 0.4)
-- # Next tick:
-- # - Energy propagates through FAMILY links
-- # - Memory moments may get boosted if relevant
-- # - If weight crosses threshold, memory surfaces
-- # No special "integrate answer" logic
-- # Just physics
-- ## Constraints
-- ## Example: "Who is my father?"
-- ## What Question Answerer Does NOT Do
-- ## Invariants
+- ## After injection, physics handles integration:
+- ## New father character exists
+- ## Memory moments attached to asker exist
+- ## These have initial weight (e.g., 0.4)
+- ## Next tick:
+- ## - Energy propagates through FAMILY links
+- ## - Memory moments may get boosted if relevant
+- ## - If weight crosses threshold, memory surfaces
+- ## No special "integrate answer" logic
+- ## Just physics
+- ## Speed Controller
+- # Player character directly addressed
+- # Combat initiated
+- # Major character arrival
+- # Tension threshold crossed
+- # Decision point (player choices available)
+- # Discovery (new significant narrative)
+- # Danger to player or companions
+- # Phase 1: Running (player sees this already)
+- # - Motion blur effect
+- # - Muted colors
+- # - Text small, streaming upward
+- # Phase 2: The Beat (300-500ms)
+- # Phase 3: Arrival
+- # - Crystal clear, full color
+- # - Large, centered, deliberate
+- # Player can resume after input processed
+- ## At 3x, low-weight moments:
+- ## - Actualize in graph ✓
+- ## - Create THEN links ✓
+- ## - Become history ✓
+- ## - Display to player ✗ (filtered)
+- ## Player can review history later
+
+**Code refs:**
+- `engine/api/app.py`
+
+**Sections:**
+- # Physics — API Reference
+- ## CHAIN
+- ## Endpoints
+- ## Removed Endpoints
+- ## Frontend Types
+- ## SSE Callbacks
+- ## Narrator Output Format
+- ## Graph Operations
+- # Creation
+- # Links
+- # Status changes
+- # Queries
+- # Lifecycle
 
 **Sections:**
 - # Physics — Behaviors: What Should Happen
@@ -2110,23 +2501,27 @@
 - ## Summary: What To Expect
 
 **Code refs:**
-- `__init__.py`
-- `api/app.py`
-- `api/moments.py`
-- `base.py`
-- `canon/holder.py`
-- `companion.py`
-- `handlers/__init__.py`
-- `handlers/base.py`
-- `handlers/companion.py`
-- `moment_graph/queries.py`
-- `moment_graph/traversal.py`
-- `orchestration/narrator.py`
-- `orchestration/orchestrator.py`
-- `orchestration/speed.py`
-- `orchestrator.py`
-- `physics/constants.py`
-- `physics/tick.py`
+- `engine/infrastructure/api/app.py`
+- `engine/infrastructure/api/moments.py`
+- `engine/infrastructure/orchestration/narrator.py`
+- `engine/infrastructure/orchestration/orchestrator.py`
+- `engine/infrastructure/orchestration/world_runner.py`
+- `engine/moment_graph/queries.py`
+- `engine/moment_graph/surface.py`
+- `engine/moment_graph/traversal.py`
+- `engine/physics/constants.py`
+- `engine/physics/graph/graph_ops.py`
+- `engine/physics/graph/graph_ops_apply.py`
+- `engine/physics/graph/graph_ops_events.py`
+- `engine/physics/graph/graph_ops_image.py`
+- `engine/physics/graph/graph_ops_links.py`
+- `engine/physics/graph/graph_ops_moments.py`
+- `engine/physics/graph/graph_ops_types.py`
+- `engine/physics/graph/graph_queries.py`
+- `engine/physics/graph/graph_queries_moments.py`
+- `engine/physics/graph/graph_queries_search.py`
+- `engine/physics/graph/graph_query_utils.py`
+- `engine/physics/tick.py`
 
 **Sections:**
 - # Physics — Implementation: Code Architecture and Structure
@@ -2165,6 +2560,50 @@
 - ## FLASHBACK PATTERN
 - ## FORWARD-ONLY CITIZENS
 - ## IMPLEMENTATION CHECKLIST (Runtime Patterns)
+
+**Sections:**
+- # Physics — Patterns: Why This Shape
+- ## CHAIN
+- ## Core Principle
+- ## P1: Potential vs Actual
+- ## P2: The Graph Is Alive
+- ## P3: Everything Is Moments
+- ## P4: Moments Are Specific, Narratives Emerge
+- ## P5: Energy Must Land
+- ## P6: Sequential Actions, Parallel Potentials
+- ## P7: The World Moves Without You
+- ## P8: Time Is Elastic
+- ## P9: Physics Is The Scheduler
+- ## P10: Simultaneous Actions Are Drama
+- ## What This Pattern Does NOT Solve
+- ## The Philosophy
+
+**Code refs:**
+- `engine/handlers/base.py`
+- `engine/infrastructure/api/moments.py`
+- `engine/moment_graph/queries.py`
+- `engine/moment_graph/traversal.py`
+- `engine/physics/tick.py`
+- `graph_ops.py`
+- `graph_ops_apply.py`
+- `graph_ops_events.py`
+- `graph_ops_image.py`
+- `graph_ops_types.py`
+- `graph_queries.py`
+- `graph_queries_search.py`
+
+**Doc refs:**
+- `docs/physics/ALGORITHM_Physics.md`
+
+**Sections:**
+- # Physics — Current State
+- ## Recent Changes
+- ## CHAIN
+- ## Architecture Summary
+- ## Open Questions
+- ## Next Steps
+- ## Handoff Notes
+- ## Agent Observations
 
 **Code refs:**
 - `engine/tests/test_moment_graph.py`
@@ -2595,97 +3034,24 @@
 - # No attributes
 - # EXAMPLE: Creating a Scene
 
-**Sections:**
-- # Graph Validation
-- ## Rules
-- ## Valid Mutation
-- ## Invalid Mutation
-- # No links — char_wulfric would be orphaned
-- ## Error Handling
-- ## Error Types
-- ## Partial Persistence
-- # result.persisted = ["char_aldric", "narr_oath", "link_belief_1"]
-- # result.rejected = [
-- # {"item": "char_wulfric", "error": "orphaned_node", "fix": "Add link..."}
-- # ]
+**Code refs:**
+- `engine/world/map/semantic.py`
 
 **Sections:**
-- # THE BLOOD LEDGER — Validation Specification
-- # Version: 1.0
-- # =============================================================================
-- # PURPOSE
-- # =============================================================================
-- # =============================================================================
-- # VISION MAPPING
-- # =============================================================================
-- # --- COVERED BY ENERGY SYSTEM ---
-- # --- REQUIRES NARRATOR/CONTENT ---
-- # =============================================================================
-- # EXPECTED BEHAVIORS
-- # =============================================================================
-- # ---------------------------------------------------------------------------
-- # PRESENCE & PROXIMITY
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # LIVING WORLD
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # NARRATIVE TENSION
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # COMPANION DEPTH
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # SYSTEM HEALTH
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # TIME & PRESSURE
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # ENGAGEMENT
-- # ---------------------------------------------------------------------------
-- # =============================================================================
-- # ANTI-PATTERNS
-- # =============================================================================
-- # =============================================================================
-- # TEST SUITE
-- # =============================================================================
-- # ---------------------------------------------------------------------------
-- # PRESENCE & PROXIMITY
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # LIVING WORLD
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # NARRATIVE TENSION
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # COMPANION DEPTH
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # SYSTEM HEALTH
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # TIME & PRESSURE
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # ENGAGEMENT
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # CRITICALITY
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # CASCADE
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # ANTI-PATTERNS
-- # ---------------------------------------------------------------------------
-- # =============================================================================
-- # SUMMARY
-- # =============================================================================
-
-**Sections:**
-- # Map System — Algorithm: Places
+- # Map System — Algorithm: Rendering, Places, Routes
+- ## CHAIN
+- ## Canvas Layers
+- ## Projection
+- ## Layer 0: Parchment Background
+- ## Layer 1: Coastline + Water
+- ## Layer 2: Routes
+- ## Layer 3: Fog of War
+- ## Layer 4: Place Icons + Labels
+- ## Layer 5: Dynamic Markers
+- ## Layer 6: UI Overlay
+- ## Seeded Random
+- ## Hit Detection
+- ## Performance Optimization
 - ## Place Schema
 - ## Scale Levels
 - # region can contain settlement
@@ -2711,24 +3077,74 @@
 - # Regions
 - # Settlements
 - # Districts
-
-**Sections:**
-- # Map System — Algorithm: Rendering
-- ## Canvas Layers
-- ## Projection
-- ## Layer 0: Parchment Background
-- ## Layer 1: Coastline + Water
-- ## Layer 2: Routes
-- ## Layer 3: Fog of War
-- ## Layer 4: Place Icons + Labels
-- ## Layer 5: Dynamic Markers
-- ## Layer 6: UI Overlay
-- ## Seeded Random
-- ## Hit Detection
-- ## Performance Optimization
-
-**Sections:**
-- # Map System — Algorithm: Routes
+- ## ROUTE Link Schema
+- # Stored (traced input)
+- # Computed at creation
+- # Optional
+- ## Route Types
+- ## Distance Computation
+- ## Travel Time Computation
+- ## Creating Routes
+- # Result:
+- # {
+- # "from": "place_york",
+- # "to": "place_durham",
+- # "waypoints": [...],
+- # "road_type": "roman",
+- # "distance_km": 96.5,
+- # "travel_minutes": 1158,  # ~19.3 hours
+- # "difficulty": "easy",
+- # "detail": "The old Roman road north..."
+- # }
+- ## Graph Storage
+- # Forward
+- # Reverse (swap endpoints, reverse waypoints)
+- # Downstream (fast)
+- # Upstream (slower - 3 km/h instead of 8)
+- ## Movement Rules
+- # Same place
+- # Get parents
+- # Same parent → use scale-based default
+- # Different parents → check for route at settlement level
+- # Same settlement, different districts
+- # Different settlements → need route
+- # No direct route
+- ## Route Queries
+- ## Position Along Route
+- # Interpolate within segment
+- # At end
+- ## Data File
+- # York to Durham (Roman road)
+- # York to Scarborough (track)
+- # York to Whitby (path through moors)
+- ## Route Tracing Tool
+- ## Places
+- ## Place Schema
+- ## Scale Levels
+- # region can contain settlement
+- # settlement can contain district
+- # district can contain building
+- # building can contain room
+- # room contains nothing
+- ## Place Types
+- ## CONTAINS Link (Hierarchy)
+- ## Creating Places
+- # Required fields
+- # ID format
+- # Coordinates
+- # Scale
+- ## Example Places
+- ## Coordinate System
+- ## Scale-Based Defaults
+- ## Embedding Detail
+- # Get all places with embeddings
+- # Compute similarities
+- # Return top-k
+- ## Data File
+- # Regions
+- # Settlements
+- # Districts
+- ## Routes
 - ## ROUTE Link Schema
 - # Stored (traced input)
 - # Computed at creation
@@ -2771,8 +3187,12 @@
 - # York to Whitby (path through moors)
 - ## Route Tracing Tool
 
+**Code refs:**
+- `engine/world/map/semantic.py`
+
 **Sections:**
 - # Map System — Behaviors: Visibility & Interaction
+- ## CHAIN
 - ## Visibility System
 - ## PlayerVisibility Schema
 - # playthroughs/{id}/visibility.yaml
@@ -2804,8 +3224,33 @@
 - ## Integration with Narrator
 - # In Narrator's graph_mutations
 
+**Code refs:**
+- `engine/world/map/__init__.py`
+- `engine/world/map/semantic.py`
+
+**Sections:**
+- # Map System — Implementation: Semantic Search Code Architecture
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/world/map/semantic.py`
+
 **Sections:**
 - # Map System — Patterns: Why This Design
+- ## CHAIN
 - ## The Core Insight
 - ## What the Map Does
 - ## Design Principles
@@ -2814,86 +3259,79 @@
 - ## What the Map Is NOT
 - ## Player Experience
 
+**Code refs:**
+- `engine/world/map/semantic.py`
+
 **Sections:**
 - # Map System — Sync: Current State
+- ## CHAIN
 - ## Current State
+- ## What's Implemented
+- ## What's NOT Implemented
 - ## Documentation Status
-- ## Summary Table
+- ## Dependencies for Visual Map
 - ## ARCHIVE
 
-**Sections:**
-- # Phase 3: Historical Events — Algorithm
-- ## Sources
-- ## Output
-- ## Key Events Timeline
-- ## Script
-- # scripts/scrape/phase3_events.py
-- # Mostly manual curation from Chronicle
-- # Script validates and links to places/characters
-- # Link to our place IDs
-- # Link to our character IDs
-- # Validate dates
-- ## The Harrying (Critical Context)
-- ## Event Categories
-- ## Verification
+**Code refs:**
+- `tests/world/test_map_semantic.py`
 
 **Sections:**
-- # Phase 1: Geography — Algorithm
-- ## Sources
-- ## Output
-- ## Script
-- # scripts/scrape/phase1_geography.py
-- # 1. Get Domesday settlements
-- # 2. Enrich with coordinates
-- # 3. Add Roman roads
-- # 4. Compute travel times
-- # 5. Output
-- ## Travel Time Calculation
-- ## Verification
+- # Map System — Test: Semantic Search Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # No tests exist yet.
+- # Suggested:
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/world/map/semantic.py`
 
 **Sections:**
-- # Phase 4: Narratives & Beliefs — Algorithm
-- ## Sources
-- ## Output
-- ## Narrative Templates
-- ## Belief Distribution Rules
-- ## Narrative Types
-- ## Verification
+- # Map System — Validation: Semantic Search Invariants
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- # No automated tests yet for world map semantic search.
+- # Suggested location: tests/world/test_map_semantic.py
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # Scraping Pipeline — Algorithm
+- ## CHAIN
 - ## Overview
 - ## Phases
-- ## Data Sources
-- ## Phase Dependencies
-- ## Output Files
-
-**Sections:**
-- # Phase 2: Political Structure — Algorithm
-- ## Sources
-- ## Output
-- ## Script
+- ## Phase 1: Geography
+- # scripts/scrape/phase1_geography.py
+- # 1. Get Domesday settlements
+- # 2. Enrich with coordinates (OSM)
+- # 3. Add Roman roads
+- # 4. Compute travel times
+- # 5. Output places.yaml + routes.yaml
+- ## Phase 2: Political Structure
 - # scripts/scrape/phase2_political.py
 - # 1. Get Norman lords from Domesday
-- # 2. Get their holdings
-- # Map to our place IDs
+- # 2. Pull holdings for each lord
 - # 3. Get dispossessed Saxons (1066 holders)
 - # 4. Cross-reference with Chronicle for 1067 state
-- # (Manual curation needed - see phase2_manual.md)
-- # 5. Output
-- ## Key Historical Figures
-- ## Faction Relationships
-- ## Verification
-
-**Sections:**
-- # Phase 5: Tensions — Algorithm
-- ## Sources
-- ## Output
-- ## Tension Templates
-- ## Pressure Types
-- ## Breaking Points
-- ## Initial Pressure Distribution
-- ## Verification
+- # 5. Output characters.yaml + holdings.yaml
+- ## Phase 3: Historical Events
+- # scripts/scrape/phase3_events.py
+- # Mostly manual curation from Chronicle
+- # Script validates and links to places/characters
+- ## Phase 4: Narratives & Beliefs
+- ## Phase 5: Tensions
+- ## Output Files (Summary)
 
 **Sections:**
 - # World Scraping — Behaviors
@@ -2907,6 +3345,10 @@
 - ## Target Density
 - ## Related Documents
 
+**Doc refs:**
+- `docs/world/scraping/ALGORITHM_Pipeline.md`
+- `docs/world/scraping/PATTERNS_World_Scraping.md`
+
 **Sections:**
 - # World Scraping — State & Progress
 - ## Phase Status
@@ -2915,9 +3357,21 @@
 - ## New Content: Tensions
 - ## Narrative Breakdown (Updated)
 - ## Data Sources
+- ## Recent Changes
 - ## Blockers Resolved
 - ## Optional Expansion
+- ## Updates
 - ## ARCHIVE
+
+**Code refs:**
+- `tests/world/test_narratives.py`
+- `tests/world/test_pipeline.py`
+- `tests/world/test_positions.py`
+- `tests/world/test_routes.py`
+
+**Sections:**
+- # World Scraping — Tests
+- ## CHAIN
 
 **Sections:**
 - # World Scraping — Validation
@@ -2932,18 +3386,50 @@
 - ## Playtest Checklist
 
 **Code refs:**
+- `Atmosphere.tsx`
+- `CenterStage.tsx`
+- `CharacterRow.tsx`
 - `ClickableText.tsx`
+- `Hotspot.tsx`
+- `HotspotRow.tsx`
 - `MomentDebugPanel.tsx`
 - `MomentDisplay.tsx`
 - `MomentStream.tsx`
+- `ObjectRow.tsx`
+- `SceneActions.tsx`
+- `SceneBanner.tsx`
+- `SceneHeader.tsx`
+- `SceneImage.tsx`
+- `SceneView.tsx`
+- `SettingStrip.tsx`
 - `__init__.py`
 - `api/app.py`
 - `api/moments.py`
+- `app/page.tsx`
 - `base.py`
 - `canon/holder.py`
 - `check_health.py`
 - `check_injection.py`
 - `companion.py`
+- `components/GameClient.tsx`
+- `components/GameLayout.tsx`
+- `components/moment/ClickableText.tsx`
+- `components/moment/MomentDebugPanel.tsx`
+- `components/moment/MomentDisplay.tsx`
+- `components/moment/MomentStream.tsx`
+- `components/scene/Atmosphere.tsx`
+- `components/scene/CenterStage.tsx`
+- `components/scene/CenterStageContent.tsx`
+- `components/scene/CharacterRow.tsx`
+- `components/scene/Hotspot.tsx`
+- `components/scene/HotspotRow.tsx`
+- `components/scene/ObjectRow.tsx`
+- `components/scene/SceneActions.tsx`
+- `components/scene/SceneBanner.tsx`
+- `components/scene/SceneHeader.tsx`
+- `components/scene/SceneImage.tsx`
+- `components/scene/SceneView.tsx`
+- `components/scene/SettingStrip.tsx`
 - `engine/api/app.py`
 - `engine/api/moments.py`
 - `engine/canon/holder.py`
@@ -2951,8 +3437,23 @@
 - `engine/db/graph_ops.py`
 - `engine/db/graph_queries.py`
 - `engine/embeddings/service.py`
+- `engine/graph/health/check_health.py`
+- `engine/handlers/__init__.py`
+- `engine/handlers/base.py`
 - `engine/history/conversations.py`
 - `engine/history/service.py`
+- `engine/infrastructure/api/app.py`
+- `engine/infrastructure/api/moments.py`
+- `engine/infrastructure/api/playthroughs.py`
+- `engine/infrastructure/embeddings/service.py`
+- `engine/infrastructure/history/conversations.py`
+- `engine/infrastructure/memory/moment_processor.py`
+- `engine/infrastructure/orchestration/narrator.py`
+- `engine/infrastructure/orchestration/narrator_prompt.py`
+- `engine/infrastructure/orchestration/opening.py`
+- `engine/infrastructure/orchestration/orchestrator.py`
+- `engine/infrastructure/orchestration/speed.py`
+- `engine/infrastructure/orchestration/world_runner.py`
 - `engine/init_db.py`
 - `engine/memory/moment_processor.py`
 - `engine/models/base.py`
@@ -2971,6 +3472,17 @@
 - `engine/orchestration/world_runner.py`
 - `engine/physics/constants.py`
 - `engine/physics/energy.py`
+- `engine/physics/graph/graph_ops.py`
+- `engine/physics/graph/graph_ops_apply.py`
+- `engine/physics/graph/graph_ops_events.py`
+- `engine/physics/graph/graph_ops_image.py`
+- `engine/physics/graph/graph_ops_links.py`
+- `engine/physics/graph/graph_ops_moments.py`
+- `engine/physics/graph/graph_ops_types.py`
+- `engine/physics/graph/graph_queries.py`
+- `engine/physics/graph/graph_queries_moments.py`
+- `engine/physics/graph/graph_queries_search.py`
+- `engine/physics/graph/graph_query_utils.py`
 - `engine/physics/graph_tick.py`
 - `engine/physics/tick.py`
 - `engine/queries/semantic.py`
@@ -2992,6 +3504,7 @@
 - `engine/tests/test_moments_api.py`
 - `engine/tests/test_narrator_integration.py`
 - `engine/tests/test_spec_consistency.py`
+- `engine/world/map/semantic.py`
 - `frontend/app/map/page.tsx`
 - `frontend/app/page.ts`
 - `frontend/app/page.tsx`
@@ -3037,16 +3550,24 @@
 - `frontend/lib/map/random.ts`
 - `frontend/types/game.ts`
 - `frontend/types/moment.ts`
+- `generate_image.py`
 - `generate_images_for_existing.py`
 - `graph_ops.py`
 - `graph_queries.py`
 - `handlers/__init__.py`
 - `handlers/base.py`
 - `handlers/companion.py`
+- `hooks/transformers.ts`
+- `hooks/useGameState.ts`
+- `hooks/useMoments.ts`
+- `lib/api.ts`
+- `lib/api/moments.ts`
 - `lint_terminology.py`
 - `moment_graph/queries.py`
 - `moment_graph/traversal.py`
+- `moment_processor.py`
 - `narrator.py`
+- `narrator_prompt.py`
 - `orchestration/narrator.py`
 - `orchestration/orchestrator.py`
 - `orchestration/speed.py`
@@ -3081,6 +3602,9 @@
 - `tests/world/test_routes.py`
 - `tools/image_generation/generate_image.py`
 - `tools/stream_dialogue.py`
+- `types/game.ts`
+- `types/map.ts`
+- `types/moment.ts`
 - `world_runner.py`
 
 **Doc refs:**
@@ -3165,6 +3689,9 @@
 - `docs/frontend/scene/TEST_Scene.md`
 - `docs/frontend/scene/VALIDATION_Scene.md`
 - `docs/history/PATTERNS_History.md`
+- `docs/infrastructure/api/BEHAVIORS_Api.md`
+- `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+- `docs/infrastructure/api/SYNC_Api.md`
 - `docs/infrastructure/async/ALGORITHM_Discussion_Trees.md`
 - `docs/infrastructure/async/ALGORITHM_Fog_Of_War.md`
 - `docs/infrastructure/async/ALGORITHM_Graph_SSE.md`
@@ -3251,249 +3778,21 @@
 - `graph/VALIDATION.md`
 - `physics/graph/health/README.md`
 - `tools/image_generation/README.md`
+- `views/VIEW_Analyze_Structural_Analysis.md`
+- `views/VIEW_Collaborate_Pair_Program_With_Human.md`
+- `views/VIEW_Debug_Investigate_And_Fix_Issues.md`
+- `views/VIEW_Document_Create_Module_Documentation.md`
+- `views/VIEW_Extend_Add_Features_To_Existing.md`
+- `views/VIEW_Implement_Write_Or_Modify_Code.md`
+- `views/VIEW_Ingest_Process_Raw_Data_Sources.md`
+- `views/VIEW_Onboard_Understand_Existing_Codebase.md`
+- `views/VIEW_Refactor_Improve_Code_Structure.md`
+- `views/VIEW_Review_Evaluate_Changes.md`
+- `views/VIEW_Specify_Design_Vision_And_Architecture.md`
+- `views/VIEW_Test_Write_Tests_And_Verify.md`
 
 **Sections:**
 - # Repository Map: the-blood-ledger
-
-**Definitions:**
-- `class ActionRequest`
-- `class SceneResponse`
-- `class DialogueChunk`
-- `class NewPlaythroughRequest`
-- `class ScenarioPlaythroughRequest`
-- `class QueryRequest`
-- `def create_app()`
-- `def _mutation_event_handler()`
-- `def get_orchestrator()`
-- `def get_graph_queries()`
-- `def get_playthrough_queries()`
-- `def get_graph_ops()`
-- `async def health_check()`
-- `async def create_playthrough()`
-- `async def create_scenario_playthrough()`
-- `async def get_playthrough()`
-- `class MomentClickRequest`
-- `class MomentClickResponse`
-- `async def moment_click()`
-- `async def get_moment_view()`
-- `async def get_current_view()`
-- `async def get_moment_view_as_scene_tree()`
-- `async def update_moment_weight()`
-- `async def debug_stream()`
-- `async def event_generator()`
-- `async def get_map()`
-- `async def get_ledger()`
-- `async def get_faces()`
-- `async def get_chronicle()`
-- `async def semantic_query_post()`
-- `async def semantic_query_get()`
-- `async def inject_event()`
-- `class PlaythroughCreateRequest`
-- `def _opening_to_scene_tree()`
-- `def build_beat_narration()`
-- `async def create_playthrough()`
-- `class MomentRequest`
-- `async def send_moment()`
-- `async def get_discussion_topics()`
-- `async def get_discussion_topic()`
-- `async def use_discussion_branch()`
-- `def _count_branches()`
-- `def count_clickables()`
-- `def _delete_branch()`
-
-**Definitions:**
-- `def _get_queries()`
-- `def _get_traversal()`
-- `def _get_surface()`
-- `def _get_graph_queries()`
-- `class MomentResponse`
-- `class TransitionResponse`
-- `class CurrentMomentsResponse`
-- `class ClickRequest`
-- `class ClickResponse`
-- `class SurfaceRequest`
-- `def create_moments_router()`
-- `def broadcast_moment_event()`
-- `async def get_current_moments()`
-- `async def click_word()`
-- `async def get_moment_stats()`
-- `async def get_moment()`
-- `async def surface_moment()`
-- `async def moment_stream()`
-- `async def event_generator()`
-- `def get_moments_router()`
-
-**Definitions:**
-- `class PlaythroughCreateRequest`
-- `class MomentRequest`
-- `def _opening_to_scene_tree()`
-- `def build_beat_narration()`
-- `def _count_branches()`
-- `def count_clickables()`
-- `def _delete_branch()`
-- `def create_playthroughs_router()`
-- `def _get_playthrough_queries()`
-- `async def create_playthrough()`
-- `async def send_moment()`
-- `async def get_discussion_topics()`
-- `async def get_discussion_topic()`
-- `async def use_discussion_branch()`
-
-**Definitions:**
-- `def get_playthrough_graph_name()`
-
-**Definitions:**
-- `def _get_image_path()`
-- `def _generate_node_image_async()`
-- `def _generate_node_image()`
-- `def add_mutation_listener()`
-- `def remove_mutation_listener()`
-- `def _emit_event()`
-- `class WriteError`
-- `def __init__()`
-- `class SimilarNode`
-- `def __str__()`
-- `class ApplyResult`
-- `def success()`
-- `def has_duplicates()`
-- `class GraphOps`
-- `def __init__()`
-- `def _query()`
-- `def _cosine_similarity()`
-- `def _find_similar_nodes()`
-- `def check_duplicate()`
-- `def apply()`
-- `def _get_existing_node_ids()`
-- `def _node_has_links()`
-- `def _validate_link_targets()`
-- `def _link_id()`
-- `def _extract_character_args()`
-- `def _extract_place_args()`
-- `def _extract_thing_args()`
-- `def _extract_narrative_args()`
-- `def _extract_tension_args()`
-- `def _extract_moment_args()`
-- `def _extract_belief_args()`
-- `def _extract_presence_args()`
-- `def _extract_possession_args()`
-- `def _extract_geography_args()`
-- `def _extract_narrative_link_args()`
-- `def _extract_thing_location_args()`
-- `def _apply_node_update()`
-- `def _apply_tension_update()`
-- `def add_character()`
-- `def add_place()`
-- `def add_thing()`
-- `def add_narrative()`
-- `def add_tension()`
-- `def add_moment()`
-- `def add_said()`
-- `def add_moment_at()`
-- `def add_moment_then()`
-- `def add_narrative_from_moment()`
-- `def add_can_speak()`
-- `def add_attached_to()`
-- `def add_can_lead_to()`
-- `def handle_click()`
-- `def update_moment_weight()`
-- `def propagate_embedding_energy()`
-- `def _get_current_tick()`
-- `def decay_moments()`
-- `def on_player_leaves_location()`
-- `def on_player_arrives_location()`
-- `def garbage_collect_moments()`
-- `def boost_moment_weight()`
-- `def add_belief()`
-- `def add_narrative_link()`
-- `def add_presence()`
-- `def move_character()`
-- `def add_possession()`
-- `def add_thing_location()`
-- `def add_geography()`
-- `def apply_mutations()`
-- `def get_graph()`
-
-**Definitions:**
-- `class MomentOperationsMixin`
-- `def handle_click()`
-- `def update_moment_weight()`
-- `def propagate_embedding_energy()`
-- `def _get_current_tick()`
-- `def decay_moments()`
-- `def on_player_leaves_location()`
-- `def on_player_arrives_location()`
-- `def garbage_collect_moments()`
-- `def boost_moment_weight()`
-
-**Definitions:**
-- `class QueryError`
-- `def __init__()`
-- `class GraphQueries`
-- `def __init__()`
-- `def _connect()`
-- `def _query()`
-- `def query()`
-- `def search()`
-- `def _to_markdown()`
-- `def _cosine_similarity()`
-- `def _find_similar_by_embedding()`
-- `def _get_connected_cluster()`
-- `def _extract_node_props()`
-- `def _extract_link_props()`
-- `def _parse_node()`
-- `def get_character()`
-- `def get_all_characters()`
-- `def get_characters_at()`
-- `def get_place()`
-- `def get_path_between()`
-- `def get_narrative()`
-- `def get_character_beliefs()`
-- `def get_narrative_believers()`
-- `def get_narratives_by_type()`
-- `def get_narratives_about()`
-- `def get_high_weight_narratives()`
-- `def get_contradicting_narratives()`
-- `def get_tension()`
-- `def get_all_tensions()`
-- `def get_flipped_tensions()`
-- `def get_moment()`
-- `def get_moments_at_place()`
-- `def get_moments_by_character()`
-- `def get_moments_in_tick_range()`
-- `def get_moment_sequence()`
-- `def get_narrative_moments()`
-- `def get_narratives_from_moment()`
-- `def search_moments()`
-- `def _find_similar_by_embedding()`
-- `def build_scene_context()`
-- `def get_player_location()`
-- `def get_current_view()`
-- `def get_live_moments()`
-- `def resolve_speaker()`
-- `def get_available_transitions()`
-- `def get_clickable_words()`
-- `def view_to_scene_tree()`
-- `def get_queries()`
-
-**Docs:** `None yet (extracted during monolith split)`
-
-**Definitions:**
-- `def cosine_similarity()`
-- `def extract_node_props()`
-- `def extract_link_props()`
-- `def to_markdown()`
-- `def view_to_scene_tree()`
-
-**Definitions:**
-- `class EmbeddingService`
-- `def __init__()`
-- `def _load_model()`
-- `def embed()`
-- `def embed_batch()`
-- `def embed_node()`
-- `def _node_to_text()`
-- `def similarity()`
-- `def get_embedding_service()`
 
 **Code refs:**
 - `check_health.py`
@@ -3620,6 +3919,92 @@
 - `def test_player_exists()`
 - `def main()`
 
+**Docs:** `docs/infrastructure/api/`
+
+**Definitions:**
+- `class ActionRequest`
+- `class SceneResponse`
+- `class DialogueChunk`
+- `class NewPlaythroughRequest`
+- `class ScenarioPlaythroughRequest`
+- `class QueryRequest`
+- `def create_app()`
+- `def _mutation_event_handler()`
+- `def get_orchestrator()`
+- `def get_graph_queries()`
+- `def get_playthrough_queries()`
+- `def get_graph_ops()`
+- `async def health_check()`
+- `async def create_playthrough()`
+- `async def create_scenario_playthrough()`
+- `async def get_playthrough()`
+- `class MomentClickRequest`
+- `class MomentClickResponse`
+- `async def moment_click()`
+- `async def get_moment_view()`
+- `async def get_current_view()`
+- `async def get_moment_view_as_scene_tree()`
+- `async def update_moment_weight()`
+- `async def debug_stream()`
+- `async def event_generator()`
+- `async def get_map()`
+- `async def get_ledger()`
+- `async def get_faces()`
+- `async def get_chronicle()`
+- `async def semantic_query_post()`
+- `async def semantic_query_get()`
+- `async def inject_event()`
+
+**Definitions:**
+- `def _resolve_graph_name()`
+- `def _get_queries()`
+- `def _get_traversal()`
+- `def _get_surface()`
+- `def _get_graph_queries()`
+- `class MomentResponse`
+- `class TransitionResponse`
+- `class CurrentMomentsResponse`
+- `class ClickRequest`
+- `class ClickResponse`
+- `class SurfaceRequest`
+- `def create_moments_router()`
+- `def broadcast_moment_event()`
+- `async def get_current_moments()`
+- `async def click_word()`
+- `async def get_moment_stats()`
+- `async def get_moment()`
+- `async def surface_moment()`
+- `async def moment_stream()`
+- `async def event_generator()`
+- `def get_moments_router()`
+
+**Definitions:**
+- `class PlaythroughCreateRequest`
+- `class MomentRequest`
+- `def _opening_to_scene_tree()`
+- `def build_beat_narration()`
+- `def _count_branches()`
+- `def count_clickables()`
+- `def _delete_branch()`
+- `def create_playthroughs_router()`
+- `def _get_playthrough_queries()`
+- `async def create_playthrough()`
+- `async def send_moment()`
+- `async def get_discussion_topics()`
+- `async def get_discussion_topic()`
+- `async def use_discussion_branch()`
+
+**Definitions:**
+- `class EmbeddingService`
+- `def __init__()`
+- `def _load_model()`
+- `def embed()`
+- `def embed_batch()`
+- `def embed_node()`
+- `def _node_to_text()`
+- `def similarity()`
+- `def get_embedding_service()`
+
 **Doc refs:**
 - `docs/history/PATTERNS_History.md`
 
@@ -3706,6 +4091,49 @@
 - `def get_moment_processor()`
 
 **Definitions:**
+- `class NarratorService`
+- `def __init__()`
+- `def generate()`
+- `def _build_prompt()`
+- `def _call_claude()`
+- `def _fallback_response()`
+- `def reset_session()`
+
+**Definitions:**
+- `class Orchestrator`
+- `def __init__()`
+- `def process_action()`
+- `def process_action_streaming()`
+- `def _build_scene_context()`
+- `def _get_player_location()`
+- `def _get_time_of_day()`
+- `def _get_game_day()`
+- `def _get_player_goal()`
+- `def _get_recent_action()`
+- `def _apply_mutations()`
+- `def _parse_time()`
+- `def _process_flips()`
+- `def _build_graph_context()`
+- `def _get_character_location_by_id()`
+- `def _apply_wr_mutations()`
+- `def new_game()`
+- `def _world_injection_path()`
+- `def _get_world_tick()`
+- `def _load_world_injection()`
+- `def _save_world_injection()`
+- `def _clear_world_injection()`
+
+**Docs:** `docs/agents/world-runner/PATTERNS_World_Runner.md`
+
+**Definitions:**
+- `class WorldRunnerService`
+- `def __init__()`
+- `def process_flips()`
+- `def _build_prompt()`
+- `def _call_claude()`
+- `def _fallback_response()`
+
+**Definitions:**
 - `class CharacterType`
 - `class Face`
 - `class SkillLevel`
@@ -3763,6 +4191,8 @@
 - `class PlacePlace`
 - `def travel_days()`
 
+**Docs:** `docs/schema/`
+
 **Definitions:**
 - `class Character`
 - `def embeddable_text()`
@@ -3780,6 +4210,7 @@
 - `def is_active()`
 - `def is_spoken()`
 - `def can_surface()`
+- `class Config`
 
 **Definitions:**
 - `class Tension`
@@ -3832,44 +4263,147 @@
 - `def not_implemented()`
 
 **Definitions:**
-- `class NarratorService`
+- `class GraphOps`
 - `def __init__()`
-- `def generate()`
-- `def _build_prompt()`
-- `def _call_claude()`
-- `def _fallback_response()`
-- `def reset_session()`
+- `def _query()`
+- `def _cosine_similarity()`
+- `def _find_similar_nodes()`
+- `def check_duplicate()`
+- `def add_character()`
+- `def add_place()`
+- `def add_thing()`
+- `def add_narrative()`
+- `def add_tension()`
+- `def add_moment()`
+- `def apply_mutations()`
+- `def get_graph()`
 
 **Definitions:**
-- `class Orchestrator`
-- `def __init__()`
-- `def process_action()`
-- `def process_action_streaming()`
-- `def _build_scene_context()`
-- `def _get_player_location()`
-- `def _get_time_of_day()`
-- `def _get_game_day()`
-- `def _get_player_goal()`
-- `def _get_recent_action()`
-- `def _apply_mutations()`
-- `def _parse_time()`
-- `def _process_flips()`
-- `def _build_graph_context()`
-- `def _get_character_location_by_id()`
-- `def _apply_wr_mutations()`
-- `def new_game()`
-- `def _world_injection_path()`
-- `def _load_world_injection()`
-- `def _save_world_injection()`
-- `def _clear_world_injection()`
+- `class ApplyOperationsMixin`
+- `def apply()`
+- `def _get_existing_node_ids()`
+- `def _node_has_links()`
+- `def _validate_link_targets()`
+- `def _link_id()`
+- `def _extract_character_args()`
+- `def _extract_place_args()`
+- `def _extract_thing_args()`
+- `def _extract_narrative_args()`
+- `def _extract_tension_args()`
+- `def _extract_moment_args()`
+- `def _extract_belief_args()`
+- `def _extract_presence_args()`
+- `def _extract_possession_args()`
+- `def _extract_geography_args()`
+- `def _extract_narrative_link_args()`
+- `def _extract_thing_location_args()`
+- `def _apply_node_update()`
+- `def _apply_tension_update()`
 
 **Definitions:**
-- `class WorldRunnerService`
+- `def add_mutation_listener()`
+- `def remove_mutation_listener()`
+- `def emit_event()`
+
+**Definitions:**
+- `def get_image_path()`
+- `def _generate_node_image_async()`
+- `def generate_node_image()`
+
+**Definitions:**
+- `class LinkCreationMixin`
+- `def add_said()`
+- `def add_moment_at()`
+- `def add_moment_then()`
+- `def add_narrative_from_moment()`
+- `def add_can_speak()`
+- `def add_attached_to()`
+- `def add_can_lead_to()`
+- `def add_belief()`
+- `def add_presence()`
+- `def move_character()`
+- `def add_possession()`
+- `def add_narrative_link()`
+- `def add_thing_location()`
+- `def add_geography()`
+
+**Definitions:**
+- `class MomentOperationsMixin`
+- `def handle_click()`
+- `def update_moment_weight()`
+- `def propagate_embedding_energy()`
+- `def _get_current_tick()`
+- `def decay_moments()`
+- `def on_player_leaves_location()`
+- `def on_player_arrives_location()`
+- `def garbage_collect_moments()`
+- `def boost_moment_weight()`
+
+**Definitions:**
+- `class QueryError`
 - `def __init__()`
-- `def process_flips()`
-- `def _build_prompt()`
-- `def _call_claude()`
-- `def _fallback_response()`
+- `class GraphQueries`
+- `def __init__()`
+- `def _connect()`
+- `def _query()`
+- `def query()`
+- `def _parse_node()`
+- `def get_character()`
+- `def get_all_characters()`
+- `def get_characters_at()`
+- `def get_place()`
+- `def get_path_between()`
+- `def get_narrative()`
+- `def get_character_beliefs()`
+- `def get_narrative_believers()`
+- `def get_narratives_by_type()`
+- `def get_narratives_about()`
+- `def get_high_weight_narratives()`
+- `def get_contradicting_narratives()`
+- `def get_tension()`
+- `def get_all_tensions()`
+- `def get_flipped_tensions()`
+- `def build_scene_context()`
+- `def get_player_location()`
+- `def get_queries()`
+
+**Docs:** `docs/physics/IMPLEMENTATION_Physics.md`
+
+**Definitions:**
+- `class MomentQueryMixin`
+- `def get_moment()`
+- `def get_moments_at_place()`
+- `def get_moments_by_character()`
+- `def get_moments_in_tick_range()`
+- `def get_moment_sequence()`
+- `def get_narrative_moments()`
+- `def get_narratives_from_moment()`
+- `def search_moments()`
+- `def _find_similar_moments_by_embedding()`
+- `def get_current_view()`
+- `def get_live_moments()`
+- `def resolve_speaker()`
+- `def get_available_transitions()`
+- `def get_clickable_words()`
+
+**Docs:** `docs/physics/IMPLEMENTATION_Physics.md`
+
+**Definitions:**
+- `class SearchQueryMixin`
+- `def search()`
+- `def _to_markdown()`
+- `def _cosine_similarity()`
+- `def _find_similar_by_embedding()`
+- `def _get_connected_cluster()`
+
+**Docs:** `None yet (extracted during monolith split)`
+
+**Definitions:**
+- `def cosine_similarity()`
+- `def extract_node_props()`
+- `def extract_link_props()`
+- `def to_markdown()`
+- `def view_to_scene_tree()`
 
 **Definitions:**
 - `def distance_to_proximity()`
@@ -3893,19 +4427,6 @@
 - `def _adjust_criticality()`
 - `def _tick_pressures()`
 - `def _detect_flips()`
-
-**Definitions:**
-- `class SemanticSearch`
-- `def __init__()`
-- `def find()`
-- `def find_similar()`
-- `def find_narratives_like()`
-- `def find_characters_like()`
-- `def answer_question()`
-- `def _vector_search()`
-- `def _fallback_search()`
-- `def _get_node_with_embedding()`
-- `def get_semantic_search()`
 
 **Definitions:**
 - `def main()`
@@ -4388,6 +4909,21 @@
 - `def test_belief_source_types_make_sense()`
 - `def test_narrative_about_fields_valid()`
 
+**Docs:** `docs/world/map/PATTERNS_Map.md`
+
+**Definitions:**
+- `class SemanticSearch`
+- `def __init__()`
+- `def find()`
+- `def find_similar()`
+- `def find_narratives_like()`
+- `def find_characters_like()`
+- `def answer_question()`
+- `def _vector_search()`
+- `def _fallback_search()`
+- `def _get_node_with_embedding()`
+- `def get_semantic_search()`
+
 **Definitions:**
 - `def create_indexes()`
 - `def load_initial_state()`
@@ -4610,9 +5146,13 @@
 - ## Output
 - ## Style
 
+**Docs:** `docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md`
+
 **Definitions:**
 - `def generate_image()`
 - `def main()`
+
+**Docs:** `docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md`
 
 **Definitions:**
 - `def get_playthrough_graph_name()`
@@ -4626,17 +5166,48 @@
 - `def stream_event()`
 - `def main()`
 
-**Code refs:**
-- `run.py`
-- `test_history.py`
+**Doc refs:**
+- `views/VIEW_Analyze_Structural_Analysis.md`
+- `views/VIEW_Collaborate_Pair_Program_With_Human.md`
+- `views/VIEW_Debug_Investigate_And_Fix_Issues.md`
+- `views/VIEW_Document_Create_Module_Documentation.md`
+- `views/VIEW_Extend_Add_Features_To_Existing.md`
+- `views/VIEW_Implement_Write_Or_Modify_Code.md`
+- `views/VIEW_Ingest_Process_Raw_Data_Sources.md`
+- `views/VIEW_Onboard_Understand_Existing_Codebase.md`
+- `views/VIEW_Refactor_Improve_Code_Structure.md`
+- `views/VIEW_Review_Evaluate_Changes.md`
+- `views/VIEW_Specify_Design_Vision_And_Architecture.md`
+- `views/VIEW_Test_Write_Tests_And_Verify.md`
 
 **Sections:**
-- # Repository Guidelines
-- ## Project Structure & Module Organization
-- ## Build, Test, and Development Commands
-- ## Coding Style & Naming Conventions
-- ## Testing Guidelines
-- ## Commit & Pull Request Guidelines
+- # ngram
+- # Working Principles
+- ## Architecture: One Solution Per Problem
+- ## Verification: Test Before Claiming Built
+- ## Communication: Depth Over Brevity
+- ## Quality: Never Degrade
+- ## Experience: User Before Infrastructure
+- ## How These Principles Integrate
+- # ngram Framework
+- ## WHY THIS PROTOCOL EXISTS
+- ## COMPANION: PRINCIPLES.md
+- ## THE CORE INSIGHT
+- ## HOW TO USE THIS
+- ## FILE TYPES AND THEIR PURPOSE
+- ## KEY PRINCIPLES (from PRINCIPLES.md)
+- ## STRUCTURING YOUR DOCS
+- ## WHEN DOCS DON'T EXIST
+- ## THE DOCUMENTATION PROCESS
+- ## Maturity
+- ## THE PROTOCOL IS A TOOL
+- ## Before Any Task
+- ## Choose Your VIEW
+- ## After Any Change
+- ## CLI Commands
+- ## 4. Protocol-First Reading
+- ## 5. Parallel Work Awareness
+- ## 5. Communication Principles
 
 **Sections:**
 - # Context Protocol

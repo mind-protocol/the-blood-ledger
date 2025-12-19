@@ -3,7 +3,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Scene, Hotspot } from '@/types/game';
 import { useMoments } from '@/hooks/useMoments';
-import { type Moment } from '@/lib/api';
+import { type Moment, sendMoment } from '@/lib/api';
 
 // =============================================================================
 // Reading Time Calculator
@@ -264,11 +264,18 @@ export function CenterStage({
     clickWord(momentId, word);
   };
 
-  // Handle free text input (not implemented yet - would need API endpoint)
-  const handleSubmit = () => {
+  // Handle free text input - sends player freeform action to backend
+  const handleSubmit = async () => {
     if (inputValue.trim()) {
-      console.log('Free input not yet implemented:', inputValue.trim());
+      const text = inputValue.trim();
       setInputValue('');
+      try {
+        await sendMoment(playthroughId, text, 'player_freeform');
+        // Refresh moments after sending - narrator will process async
+        setTimeout(() => refresh(), 1000);
+      } catch (err) {
+        console.error('Failed to send moment:', err);
+      }
     }
   };
 
@@ -392,7 +399,7 @@ export function CenterStage({
                         />
                       ) : (
                         <div className="w-full h-full bg-stone-800 flex items-center justify-center text-2xl">
-                          {person.icon}
+                          {person.icon || (person.id === 'char_player' ? '👤' : '🗣️')}
                         </div>
                       )}
                     </div>

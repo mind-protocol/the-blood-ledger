@@ -2,14 +2,22 @@
 
 ```
 LAST_UPDATED: 2025-12-19
-UPDATED_BY: Codex (repair agent)
+UPDATED_BY: Claude Opus 4.5
 ```
 
 ---
 
 ## CURRENT STATE
 
-Regenerated global repository map (`docs/map.md`). Fixed `modules.yaml` world-runner code pattern from list to string (ngram CLI bug workaround).
+Frontend-backend integration fixes for playthrough flow:
+- Added `/api/action` endpoint for full game loop (narrator→tick→flips)
+- Fixed scenario path in playthroughs.py (was `engine/scenarios`, now `scenarios/`)
+- Fixed `active_moments` vs `moments` field mismatch in useGameState.ts
+- Implemented free text input in CenterStage.tsx (calls `sendMoment` API)
+- Added emoji fallbacks for player/character avatars (👤/🗣️)
+- Updated API IMPLEMENTATION and SYNC docs
+
+Previous: Regenerated global repository map (`docs/map.md`). Fixed `modules.yaml` world-runner code pattern.
 Logged repair 02-INCOMPLETE_IMPL-history-conversations verification in `docs/infrastructure/history/SYNC_History.md` (no code changes).
 Consolidated physics algorithm docs into `docs/physics/ALGORITHM_Physics.md`, removed standalone physics ALGORITHM files, and updated physics/schema doc chains to the consolidated algorithm.
 Repair 13 verified physics tick energy helpers in `engine/physics/tick.py`; repair task marked stale with no code changes.
@@ -17,6 +25,7 @@ Revalidated playthroughs API helper implementations; documentation updated for t
 Confirmed `engine/models/base.py` comparison helpers were already implemented; no code change required.
 Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py`; repair task is stale.
 Validated moment processor implementations; repair task appears stale.
+Rechecked moment processor helpers in `engine/infrastructure/memory/moment_processor.py`; all flagged functions are implemented (no code changes).
 Verified moment graph query helpers in `engine/moment_graph/queries.py` are already implemented; repair task appears stale.
 Verified moment graph traversal helpers in `engine/moment_graph/traversal.py` are already implemented; repair task appears stale.
 Verified moment query helpers in `engine/physics/graph/graph_queries_moments.py`; repair task appears stale.
@@ -25,6 +34,7 @@ Reconfirmed health check helpers for repair 00-INCOMPLETE_IMPL-health-check_heal
 Rechecked `engine/graph/health/check_health.py` for the health-check repair; functions remain implemented and no code changes were needed.
 Re-verified ConversationThread path helpers in `engine/infrastructure/history/conversations.py`; repair task was stale and required no code changes.
 Logged this repair run's verification of ConversationThread helpers in `docs/infrastructure/history/SYNC_History.md`.
+Verified `engine/models/base.py` comparison helpers are already implemented; repair 04-INCOMPLETE_IMPL-models-base is stale.
 Implemented markdown formatting and cosine similarity helpers in `engine/physics/graph/graph_queries_search.py` to complete the search mixin methods.
 Updated `docs/physics/SYNC_Physics.md` observations; `ngram validate` still reports pre-existing docs/schema gaps and broken CHAIN links.
 Recorded moment query verification in `docs/physics/graph/SYNC_Graph.md`.
@@ -127,6 +137,7 @@ Repair task appears stale relative to current code.
 - Graph health report helper implementations already exist; no code changes required.
 - Health check helpers in `engine/graph/health/check_health.py` verified; repair task was stale.
 - `ngram validate` still reports pre-existing missing docs in `docs/schema/` and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
+- `engine/models/base.py` comparison helpers already exist; repair 04-INCOMPLETE_IMPL-models-base required no code changes.
 
 ### Suggestions
 
