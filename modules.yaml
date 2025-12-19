@@ -269,6 +269,7 @@ modules:
       - frontend/app/page.tsx
       - frontend/components/GameClient.tsx
       - frontend/components/voices/Voices.tsx
+      - frontend/components/ui/Toast.tsx
     patterns:
       - "Next.js app router"
       - "Backend-owned game state"

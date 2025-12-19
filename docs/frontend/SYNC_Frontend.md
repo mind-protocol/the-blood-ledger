@@ -62,6 +62,13 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ## RECENT CHANGES
 
+### 2025-12-19: Link toast UI component to frontend docs
+
+- **What:** Added a DOCS reference in `frontend/components/ui/Toast.tsx` and listed it as an entry point in `modules.yaml`.
+- **Why:** Ensure the shared UI toast component is discoverable through the frontend documentation chain.
+- **Files:** `frontend/components/ui/Toast.tsx`, `modules.yaml`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Link moment component docs to Scene module
 
 - **What:** Noted Scene-owned documentation for moment components in `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`.
