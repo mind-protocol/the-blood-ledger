@@ -113,11 +113,11 @@ THIS:            SYNC_World_Scraping.md (you are here)
 - **Why:** Keep one canonical ALGORITHM doc for the scraping module.
 - **Files:** `docs/world/scraping/ALGORITHM_Pipeline.md`, `docs/world/scraping/PATTERNS_World_Scraping.md`
 
-### 2025-12-19: Added implementation architecture doc
+### 2025-12-19: Verified implementation architecture doc
 
-- **What:** Added implementation architecture doc and linked CHAIN entries; added DOCS reference in phase 1 script; clarified extraction candidates and design patterns.
-- **Why:** Complete the documentation chain and tie code to docs with clear refactoring targets.
-- **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`, `docs/world/scraping/PATTERNS_World_Scraping.md`, `data/scripts/scrape/phase1_geography.py`
+- **What:** Verified the implementation doc exists and the chain points to it; recorded refactoring targets for oversized scripts.
+- **Why:** Confirmed the documentation chain is complete for the module.
+- **Files:** `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`, `docs/world/scraping/PATTERNS_World_Scraping.md`
 
 ---
 
@@ -152,7 +152,8 @@ THIS:            SYNC_World_Scraping.md (you are here)
 ## Updates
 
 - Consolidated phase-level ALGORITHM docs into the canonical `docs/world/scraping/ALGORITHM_Pipeline.md` and left per-phase stubs as redirects.
-- Added the missing IMPLEMENTATION doc and updated chain links across scraping docs.
+- Verified the IMPLEMENTATION doc is present and linked across scraping docs.
+- DOCS references are still absent in `data/scripts/` because the directory is gitignored; add an exception if code-doc linking is required.
 
 ## ARCHIVE
 

@@ -9,7 +9,7 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
-World scraping documentation chain finalized with implementation details; added DOCS reference in phase 1 scraper and documented extraction candidates.
+World scraping documentation chain finalized with implementation details and extraction candidates; DOCS references remain absent because `data/` is gitignored.
 Completed docs/design chain by adding IMPLEMENTATION_Vision.md, updating TEST_Vision.md chain, and refreshing SYNC_Vision.md; mapped design-vision in modules.yaml.
 
 Frontend-backend integration fixes for playthrough flow:
