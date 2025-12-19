@@ -18,6 +18,20 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Fix asyncio queue reference in API implementation doc
+
+- **What:** Reworded the debug stream description to avoid `asyncio.Queue` being parsed as a file link.
+- **Why:** Link validation flags `asyncio.Queue` as a missing file path.
+- **Files:**
+  - `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+
+### 2025-12-19: Remove broken asyncio.Queue file reference
+
+- **What:** Reworded the debug stream description to avoid a broken file reference for `asyncio.Queue`.
+- **Why:** `ngram validate` treats `asyncio.Queue` as a file link; the target does not exist.
+- **Files:**
+  - `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+
 ### 2025-12-19: Map infrastructure API module and link DOCS reference
 
 - **What:** Mapped `engine/infrastructure/api/**` to `docs/infrastructure/api/` in `modules.yaml` and added a `# DOCS:` header in `engine/infrastructure/api/app.py` for `ngram context`.

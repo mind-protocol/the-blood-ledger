@@ -13,7 +13,7 @@
 
 ## Debug Mutation Stream
 
-- `GET /api/debug/stream` registers a per-client `asyncio.Queue`.
+- `GET /api/debug/stream` registers a per-client asyncio queue.
 - Mutation events are broadcast to all queues via `add_mutation_listener`.
 - Events are serialized with `json.dumps(..., default=str)` to avoid serialization failures.
 
