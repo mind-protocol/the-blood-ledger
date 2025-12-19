@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Reduced `docs/infrastructure/world-builder` to ~34K chars by splitting ALGORITHM/IMPLEMENTATION/VALIDATION/TEST into overview/detail subfiles with entry-point stubs, trimming verbose examples into `docs/infrastructure/world-builder/archive/SYNC_archive_2024-12.md`, and updating DOCS pointers in world-builder code and tests. `pytest tests/infrastructure/world_builder/test_world_builder.py -v` failed due to missing `pytest_xprocess` plugin; `ngram validate` still reports pre-existing missing VIEW and doc-chain gaps in other modules.
+
 Filled missing template sections (in progress, known issues, human handoff,
 consciousness trace, pointers, observations) in
 `docs/frontend/right-panel/SYNC_Right_Panel.md` for repair #16.
