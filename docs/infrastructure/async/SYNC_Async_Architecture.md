@@ -133,6 +133,9 @@ This unlocks real-time updates for all other phases.
 
 ## Recent Changes
 
+- Expanded the async algorithm entry point with full template sections (overview,
+  data structures, primary algorithm steps, decisions, data flow, complexity,
+  helpers, interactions, gaps) to resolve DOC_TEMPLATE_DRIFT for repair #16.
 - Verified the async implementation doc already lists the `engine/scripts/inject_to_narrator.py` code-to-docs link and aligned the hook-script path in this SYNC table.
 - Updated async implementation doc to replace runtime-only file references with configured script paths so all references point to tracked files.
 - Refreshed the async implementation doc to match current queue file formats/paths (JSONL default queue, JSON array per playthrough) and updated entry point lines and config table; noted the playthrough initialization mismatch as a gap.

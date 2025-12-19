@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/infrastructure/async/ALGORITHM_Async_Architecture.md` with the
+missing template sections (overview, data structures, primary algorithm,
+decisions, data flow, complexity, helpers, interactions, gaps) to resolve
+DOC_TEMPLATE_DRIFT for repair #16 and logged the update in
+`docs/infrastructure/async/SYNC_Async_Architecture.md`.
+
 Documented the API PATTERNS cleanup (duplicate template removal and ASCII
 scope arrows) in `docs/infrastructure/api/PATTERNS_Api.md` and recorded the
 update in `docs/infrastructure/api/SYNC_Api.md`.
