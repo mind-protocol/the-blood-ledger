@@ -9,6 +9,8 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Mapped `engine/infrastructure/api/**` to `docs/infrastructure/api/` in `modules.yaml` and added a `# DOCS:` header in `engine/infrastructure/api/app.py` so `ngram context` resolves the API documentation chain.
+
 Verified the history module already has documentation and a `modules.yaml`
 mapping; no code changes required beyond logging this verification.
 Ran `ngram validate`; failures remain in `docs/schema/`, `docs/infrastructure/tempo/`,

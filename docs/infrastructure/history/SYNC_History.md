@@ -17,54 +17,6 @@ Updated the implementation doc chain, added a DOCS reference in `engine/infrastr
 Added implementation architecture doc and linked the history doc chain.
 Verified repair 57-UNDOCUMENTED-infrastructure-history is already resolved; docs and module mapping exist, no code changes required.
 
-## RECENT CHANGES
-
-### 2025-12-19: Verified history documentation mapping
-
-- **What:** Confirmed existing docs chain and module mapping already cover `engine/infrastructure/history/**`; no code changes required.
-- **Why:** Repair task reported the module as undocumented, but docs and mapping already exist.
-- **Files:** `docs/infrastructure/history/SYNC_History.md`
-- **Struggles/Insights:** Repair task appears stale relative to current docs/mapping.
-
-### Code Structure
-
-```
-engine/infrastructure/history/
-├── __init__.py          # Module exports, usage examples
-├── service.py           # HistoryService class (~565 lines)
-├── conversations.py     # ConversationThread class (~217 lines)
-└── README.md            # Implementation documentation
-```
-
-### HistoryService (service.py)
-
-**Query operations:**
-- `query_history()` - Query what a character believes about the past
-- `get_shared_history()` - Get narratives both characters believe
-- `who_knows()` - Find all characters who know about an event
-
-**Record operations:**
-- `record_player_history()` - Record events from scenes (with conversation)
-- `record_world_history()` - Record off-screen events (with detail field)
-- `_propagate_beliefs()` - Spread news to nearby characters
-
-**Helpers:**
-- Timestamp parsing and comparison
-- Narrative node creation with OCCURRED_AT links
-- BELIEVES edge creation
-
-### ConversationThread (conversations.py)
-
-- `append_section()` - Add new conversation section to character's file
-- `read_section()` - Read specific section by header
-- `list_sections()` - List all sections in a file
-- `get_full_thread()` - Get complete conversation history
-- `search_sections()` - Search for keyword in sections
-
-**File format:** Markdown with `## Day N, Time — Location` headers.
-
----
-
 ## IN PROGRESS
 
 No active work.
@@ -187,6 +139,13 @@ SYNC: ./SYNC_History.md
 
 ### Propositions
 - None.
+
+---
+
+## ARCHIVE
+
+Older content archived to: `SYNC_History_archive_2025-12.md`
+
 
 ---
 
