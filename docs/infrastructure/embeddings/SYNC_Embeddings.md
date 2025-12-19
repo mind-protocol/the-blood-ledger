@@ -55,6 +55,25 @@ runtime indexing behavior with the documented detail-first embedding spec.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Verify algorithm entry template completeness
+
+- **What:** Confirmed the embeddings algorithm entry already includes the
+  required ALGORITHM and HELPER FUNCTIONS sections.
+- **Why:** Close the DOC_TEMPLATE_DRIFT repair after verifying the entry-point
+  doc is template-compliant.
+- **Files:** `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
+- **Struggles/Insights:** None.
+
+
+### 2025-12-19: Fill archive SYNC template sections
+
+- **What:** Added the missing CURRENT STATE, IN PROGRESS, KNOWN ISSUES, handoffs,
+  TODO, consciousness trace, and pointers in the 2025-12 embeddings archive.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the archived snapshot while keeping
+  the live SYNC focused on active state.
+- **Files:** `docs/infrastructure/embeddings/SYNC_Embeddings_archive_2025-12.md`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Expand algorithm entry template sections
 
 - **What:** Added the missing ALGORITHM and HELPER FUNCTIONS sections plus

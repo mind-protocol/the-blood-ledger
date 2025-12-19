@@ -9,10 +9,29 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled missing template sections in
+`docs/infrastructure/history/archive/SYNC_History_archive_2025-12.md` to
+resolve DOC_TEMPLATE_DRIFT for repair #16 and logged the update in
+`docs/infrastructure/history/SYNC_History.md`.
+
+Verified `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md` already
+meets the algorithm template requirements, and recorded the verification in
+`docs/infrastructure/embeddings/SYNC_Embeddings.md` for repair #16.
+
+Expanded the embeddings archive SYNC with the missing template sections and
+recorded the update in `docs/infrastructure/embeddings/SYNC_Embeddings.md` to
+resolve DOC_TEMPLATE_DRIFT for repair #16. Ran `ngram validate`; failures
+remain pre-existing (missing VIEW and doc-chain gaps in schema/product/network/
+storms modules).
+
 Expanded `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md` with the
 missing ALGORITHM and HELPER FUNCTIONS sections plus template-compliant
 overview/data flow content, and logged the update in
 `docs/infrastructure/embeddings/SYNC_Embeddings.md` for repair #16.
+
+Expanded the History patterns scope statement to meet template length guidance
+and recorded the change in `docs/infrastructure/history/SYNC_History.md` for
+repair #16.
 
 Added the missing SCOPE section to `docs/infrastructure/history/PATTERNS_History.md`
 to resolve DOC_TEMPLATE_DRIFT for repair #16, and updated

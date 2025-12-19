@@ -58,7 +58,8 @@ Original file: SYNC_Embeddings.md
 
 Archive snapshot of the embeddings module SYNC as of 2025-12-19, reflecting
 canonical status in modules.yaml and a stable service implementation with
-remaining spec-alignment work noted in the implementation plan below.
+remaining spec-alignment work noted in the implementation plan below. This
+snapshot is for reference only and does not imply current execution status.
 
 ---
 
