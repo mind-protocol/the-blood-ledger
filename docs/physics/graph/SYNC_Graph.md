@@ -7,6 +7,44 @@ STATUS: Implemented, needs API endpoint
 
 ---
 
+## Maturity
+
+STATUS: CANONICAL
+
+What's canonical (v1):
+- GraphOps/GraphQueries mixins and tick integration are stable and in use.
+- Energy flow, decay, and flip detection are treated as production behavior.
+
+What's still being designed:
+- External API integration for player actions and streaming responses.
+
+What's proposed (v2):
+- Extended orchestration telemetry and richer runtime diagnostics.
+
+---
+
+## Current State
+
+The graph physics engine and its GraphOps/GraphQueries helpers are
+implemented and in active use. The remaining gap is a single API endpoint
+to invoke the orchestrator loop so player actions drive ticks and flips.
+
+---
+
+## In Progress
+
+- Defining the `/api/action` endpoint contract and how it should integrate
+  with existing playthrough and narration flows without breaking clients.
+
+---
+
+## Known Issues
+
+- No API endpoint currently wires player actions to the orchestrator loop,
+  so full graph ticks require direct service calls instead of HTTP usage.
+
+---
+
 ## What Exists ✓
 
 | Component | Status | Location |
@@ -95,6 +133,8 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 ## Recent Changes
 
 ### 2025-12-19
+- Filled missing SYNC template sections (maturity, state, handoffs, todo,
+  consciousness trace, pointers) to resolve DOC_TEMPLATE_DRIFT for repair #16.
 - Expanded `docs/physics/graph/ALGORITHM_Energy_Flow.md` with explicit
   template sections (overview, data structures, algorithm entry point,
   decisions, data flow, complexity, helpers, interactions, gaps) to resolve
@@ -112,6 +152,45 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 - Removed duplicate graph algorithm doc by consolidating weight computation into `docs/physics/graph/ALGORITHM_Energy_Flow.md` and dropping `docs/physics/graph/ALGORITHM_Weight.md`.
 - Reconfirmed `engine/physics/graph/graph_ops_types.py` helper implementations for the current repair run; no code changes required.
 - Filled the missing template sections in `docs/physics/graph/SYNC_Graph_archive_2025-12.md` to align the archive with current SYNC requirements for repair #16.
+
+---
+
+## Handoff: For Agents
+
+Continue with VIEW_Implement_Write_Or_Modify_Code. Focus on adding the
+`/api/action` endpoint wiring to the orchestrator without altering graph
+physics internals. Keep doc updates confined to graph SYNC and API docs.
+
+---
+
+## Handoff: For Human
+
+The graph system is stable; the only blocking gap is an API endpoint that
+invokes the orchestrator. Once added, player actions will drive ticks and
+flip processing through the normal HTTP interface.
+
+---
+
+## TODO
+
+- [ ] Add `/api/action` endpoint in `engine/infrastructure/api/app.py`.
+- [ ] Add a minimal integration check that confirms ticks run via API.
+
+---
+
+## Consciousness Trace
+
+Confidence is high that the graph logic is correct and stable; the missing
+endpoint is a product integration gap rather than a physics defect. The
+focus is on wiring, not redesigning, to avoid scope creep.
+
+---
+
+## Pointers
+
+- `docs/physics/graph/ALGORITHM_Energy_Flow.md` for the propagation logic.
+- `docs/physics/graph/BEHAVIORS_Graph.md` for observable graph behaviors.
+- `engine/physics/tick.py` for the tick entry point and graph integration.
 
 ## Agent Observations
 

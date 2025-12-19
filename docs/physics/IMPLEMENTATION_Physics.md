@@ -169,6 +169,43 @@ See "Planned Modules" section above for the design of modules that don't exist y
 
 ---
 
+## DESIGN PATTERNS
+
+### Architecture Pattern
+
+**Pattern:** Graph-first orchestration with a thin coordinator layer.
+
+**Why this pattern:** Physics logic stays in the graph and tick loop while the
+orchestrator only sequences calls and never owns narrative state. This keeps
+storage authoritative and prevents split-brain behavior between runtime
+services and the graph.
+
+### Code Patterns in Use
+
+| Pattern | Applied To | Purpose |
+|---------|------------|---------|
+| Facade | `engine/physics/graph/graph_ops.py` | Provide a single, stable write entry point to graph mutations and hide mixin complexity. |
+| Mixins | `engine/physics/graph/graph_ops_*.py` | Keep domain-specific mutations isolated while composing them into GraphOps. |
+| Query/Command split | `engine/physics/graph/graph_queries.py` vs `graph_ops.py` | Separate read paths from write paths to reduce accidental side effects. |
+| Orchestrator | `engine/infrastructure/orchestration/orchestrator.py` | Centralize tick sequencing and handler dispatch without owning domain state. |
+
+### Anti-Patterns to Avoid
+
+- **Stateful orchestration**: Avoid caching graph state in orchestrator memory -> always query the graph so canon stays authoritative.
+- **God object GraphOps**: Don't add unrelated services into graph ops -> keep only graph mutations and query helpers there.
+- **Premature handler abstraction**: Avoid building a generic handler framework before real handlers exist -> start with concrete types first.
+
+### Boundaries
+
+| Boundary | Inside | Outside | Interface |
+|----------|--------|---------|-----------|
+| Physics tick | Energy injection, decay, propagation, flip detection | Handler generation, canon recording, UI streaming | `GraphTick.run()` |
+| Graph ops/queries | FalkorDB mutations and reads | Orchestrator sequencing, API parsing | `GraphOps` / `GraphQueries` |
+| Orchestration | Tick scheduling and handler dispatch | Graph persistence, physics math | `Orchestrator.tick()` |
+| API input | Input parsing + moment creation | Tick scheduling, handler selection | `moments.py` endpoints |
+
+---
+
 ## SCHEMA
 
 ### Moment (Node)

@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Filled the missing SYNC template sections (maturity, current state, in
+progress, known issues, handoffs, todo, consciousness trace, pointers) in
+`docs/physics/graph/SYNC_Graph.md` to resolve DOC_TEMPLATE_DRIFT for repair
+#16.
+
 Filled missing template sections (maturity, state, handoffs, pointers, and
 trace) in `docs/physics/graph/SYNC_Graph_archive_2025-12.md` and logged the
 update in `docs/physics/graph/SYNC_Graph.md` for repair #16.
@@ -45,7 +50,7 @@ repair #16 and noted the change in `docs/physics/SYNC_Physics.md`.
 
 Expanded the DESIGN PATTERNS section in `docs/physics/IMPLEMENTATION_Physics.md` with
 architecture, code patterns, anti-patterns, and boundaries, and recorded the update
-in `docs/physics/SYNC_Physics.md` for repair #16.
+in `docs/physics/SYNC_Physics.md` for repair #16; verified in repair 108.
 
 Filled missing template sections (maturity, current state, in progress, known
 issues, handoffs, todo, consciousness trace, pointers) in
