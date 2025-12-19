@@ -252,6 +252,7 @@ modules:
     owner: agent
     entry_points:
       - frontend/app/page.tsx
+      - frontend/app/start/page.tsx
       - frontend/components/GameClient.tsx
     patterns:
       - "Next.js App Router with hooks for state"
@@ -267,6 +268,7 @@ modules:
     owner: agent
     entry_points:
       - frontend/app/page.tsx
+      - frontend/app/start/page.tsx
       - frontend/components/GameClient.tsx
       - frontend/components/voices/Voices.tsx
       - frontend/components/ui/Toast.tsx

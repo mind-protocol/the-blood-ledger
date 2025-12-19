@@ -62,6 +62,13 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ## RECENT CHANGES
 
+### 2025-12-19: Map start screen entry point in module manifest
+
+- **What:** Added `frontend/app/start/page.tsx` as a frontend entry point in `modules.yaml`.
+- **Why:** Ensure the start screen is explicitly mapped to the frontend documentation chain.
+- **Files:** `modules.yaml`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Link frontend hooks to documentation chain
 
 - **What:** Added DOCS references in `frontend/hooks/useGameState.ts` and `frontend/hooks/useMoments.ts`.
