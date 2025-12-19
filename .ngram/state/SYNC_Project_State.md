@@ -43,6 +43,7 @@ Rechecked `engine/graph/health/check_health.py` for the health-check repair; fun
 Re-verified ConversationThread path helpers in `engine/infrastructure/history/conversations.py`; repair task was stale and required no code changes.
 Logged this repair run's verification of ConversationThread helpers in `docs/infrastructure/history/SYNC_History.md`.
 Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py` are already implemented; recorded in `docs/physics/graph/SYNC_Graph.md`.
+Logged repair 09-INCOMPLETE_IMPL-graph-graph_ops_events verification in `docs/physics/graph/SYNC_Graph.md`.
 Verified `engine/models/base.py` comparison helpers are already implemented; repair 04-INCOMPLETE_IMPL-models-base is stale.
 Verified link model helpers (`belief_intensity`, `is_present`, `has_item`, `is_here`) in `engine/models/links.py`; repair 05-INCOMPLETE_IMPL-models-links appears stale with no code changes required.
 Implemented markdown formatting and cosine similarity helpers in `engine/physics/graph/graph_queries_search.py` to complete the search mixin methods.
