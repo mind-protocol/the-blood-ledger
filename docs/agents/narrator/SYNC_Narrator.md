@@ -41,6 +41,12 @@ TOOLS:           tools/stream_dialogue.py
 
 ## RECENT CHANGES
 
+### 2025-12-19: Aligned narrator docs with current prompt builder
+
+- **What:** Updated narrator implementation file metadata, corrected input reference script locations, added a DOCS reference in the narrator service, and mapped the narrator module in `modules.yaml`.
+- **Why:** Remove stale references to the deprecated narrator prompt file and ensure code/doc links resolve in `ngram context`.
+- **Files:** `docs/agents/narrator/IMPLEMENTATION_Narrator.md`, `docs/agents/narrator/INPUT_REFERENCE.md`, `engine/infrastructure/orchestration/narrator.py`, `modules.yaml`, `docs/agents/narrator/SYNC_Narrator.md`
+
 ### 2025-12-19: Documented legacy narrator prompt file
 
 - **What:** Added `agents/narrator/CLAUDE_old.md` to the narrator implementation doc as a deprecated legacy prompt reference.

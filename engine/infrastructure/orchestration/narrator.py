@@ -3,6 +3,8 @@ Blood Ledger — Narrator Service
 
 Calls agent CLI to generate scenes.
 Uses --continue for persistent session across playthrough.
+
+DOCS: docs/agents/narrator/
 """
 
 import json

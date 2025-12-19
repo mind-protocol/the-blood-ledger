@@ -810,3 +810,24 @@ modules:
       - "Direct acquisition + chronicle flywheel"
     notes: |
       Go-to-market strategy for direct acquisition and weekly storm programs.
+
+  narrator:
+    code: "agents/narrator/**"
+    docs: "docs/agents/narrator/"
+    additional_code:
+      - "engine/infrastructure/orchestration/narrator.py"
+      - "engine/infrastructure/orchestration/agent_cli.py"
+      - "tools/stream_dialogue.py"
+      - "engine/physics/graph/graph_ops.py"
+      - "engine/physics/graph/graph_queries.py"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - agents/narrator/CLAUDE.md
+      - engine/infrastructure/orchestration/narrator.py
+    patterns:
+      - "Agent CLI invocation with persistent sessions"
+      - "Prompt builder embedded in narrator service"
+    notes: |
+      Narrator agent instructions and orchestration bridge for scene generation.
+      CLAUDE_old.md is archived reference material and not used by the CLI.
