@@ -18,6 +18,22 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Reconfirm playthrough helper implementations (repair 01-INCOMPLETE_IMPL-api-playthroughs)
+
+- **What:** Verified `_count_branches` and `create_scenario_playthrough` implementations; no code changes required.
+- **Why:** Repair task flagged empty implementations; current code already provides real logic.
+- **Files:**
+  - `engine/infrastructure/api/playthroughs.py`
+  - `docs/infrastructure/api/SYNC_Api.md`
+
+### 2025-12-19: Align playthrough scenario creation to router implementation
+
+- **What:** Added `/api/playthrough/scenario` alias in `engine/infrastructure/api/playthroughs.py` and removed the duplicate scenario endpoint in `engine/infrastructure/api/app.py`.
+- **Why:** The frontend expects a `scene` payload from scenario creation, which the router provides; the app-level endpoint returned a different shape and caused a mismatch.
+- **Files:**
+  - `engine/infrastructure/api/playthroughs.py`
+  - `engine/infrastructure/api/app.py`
+
 ### 2025-12-19: Finish playthrough helper implementations
 
 - **What:** Expanded discussion branch counting, added per-playthrough GraphQueries caching, and wired player moment embeddings to the embedding service with a safe fallback.
