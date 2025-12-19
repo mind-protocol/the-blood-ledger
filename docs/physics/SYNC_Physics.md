@@ -28,6 +28,13 @@ are captured in TODO so the scope stays explicit.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Expanded physics implementation design patterns
+
+- **What:** Added an observer/event-emitter row to the DESIGN PATTERNS table and
+  expanded the code-structure note about `.py` extensions to meet length guidance.
+- **Why:** Keep the implementation doc aligned with the full template requirements.
+- **Files:** `docs/physics/IMPLEMENTATION_Physics.md`
+
 ### 2025-12-19: Updated physics patterns template sections
 
 - **What:** Filled the missing PATTERNS sections (problem, pattern,

@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/schema/models/SYNC_Schema_Models.md` with missing template
+sections (in progress, known issues, human handoff, consciousness trace,
+pointers) for repair #16 and ran `ngram validate`; remaining failures are
+pre-existing missing VIEW and doc-chain gaps in schema/product/network/storms.
+
 Expanded `docs/physics/graph/BEHAVIORS_Graph.md` with the missing template
 sections (chain, behaviors, inputs/outputs, edge cases, anti-behaviors,
 gaps/ideas/questions) for repair #16 and logged the update in

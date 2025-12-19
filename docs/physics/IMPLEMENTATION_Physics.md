@@ -103,7 +103,7 @@ engine/
     +-- test_integration_scenarios   # Integration tests
     \-- test_spec_consistency    # Spec consistency tests
 
-All Python files use .py extension.
+All Python files use the .py extension so imports and tooling stay consistent.
 ```
 
 ### Planned Modules (Not Yet Implemented)
@@ -177,6 +177,7 @@ services and the graph.
 |---------|------------|---------|
 | Facade | `engine/physics/graph/graph_ops.py` | Provide a single, stable write entry point to graph mutations and hide mixin complexity. |
 | Mixins | `engine/physics/graph/graph_ops_*.py` | Keep domain-specific mutations isolated while composing them into GraphOps. |
+| Observer | `engine/physics/graph/graph_ops_events.py` | Emit mutation events without coupling graph ops to downstream listeners. |
 | Query/Command split | `engine/physics/graph/graph_queries.py` vs `graph_ops.py` | Separate read paths from write paths to reduce accidental side effects. |
 | Orchestrator | `engine/infrastructure/orchestration/orchestrator.py` | Centralize tick sequencing and handler dispatch without owning domain state. |
 
