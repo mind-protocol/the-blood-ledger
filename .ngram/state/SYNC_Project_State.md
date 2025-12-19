@@ -9,12 +9,16 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Verified `engine/infrastructure/world_builder/world_builder.py` helper implementations (`_hash_query`, `clear_cache`) for the incomplete-impl repair; task was stale with no code changes (logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`).
+
 Implemented missing playthrough helper logic in `engine/infrastructure/api/playthroughs.py` (branch counting, per-playthrough GraphQueries caching, and embedding service fallback) and updated API implementation docs.
 
 Reverified the moment processor helpers in `engine/infrastructure/memory/moment_processor.py` for repair 03; all implementations are present and no code changes were required (logged in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`).
 Added a reconfirmation entry in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` for the current repair run.
 
 Added `NEXT_PUBLIC_API_URL=http://localhost:8000` to `.env` so the frontend uses the expected local backend by default.
+
+Hardened `TempoController.stop` and `update_display_queue_size` with input cleanup, queue-size validation, and logging; documented the updates in tempo implementation/SYNC.
 
 Reconfirmed ConversationThread helper implementations in `engine/infrastructure/history/conversations.py` for the repair run; no code changes required.
 
