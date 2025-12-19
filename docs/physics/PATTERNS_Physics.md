@@ -24,11 +24,87 @@ SYNC:           ./SYNC_Physics.md
 
 ---
 
+## THE PROBLEM
+
+We need a world simulation that produces believable drama without hand-coded
+timelines or omniscient schedulers. The system must decide what happens next
+from the living graph itself, keep state authoritative, and avoid separate,
+contradictory sources of truth across subsystems.
+
+---
+
+## THE PATTERN
+
+Treat physics as a graph-native scheduler: energy, weight, and link topology
+drive what actualizes. Every subsystem reads from and writes to the same
+graph, so causality and canon emerge from shared structure instead of
+external orchestration rules.
+
+---
+
+## PRINCIPLES
+
+### Principle 1: Single source of truth
+
+Graph state is authoritative; handlers, tick loops, and canon logic are
+purely readers and writers that do not maintain parallel state.
+
+### Principle 2: Continuous propagation
+
+Energy always flows and decays, so the system never waits for a "start" cue
+and never suspends causality between ticks.
+
+### Principle 3: Potential before canon
+
+Potential moments compete by weight and energy until they actualize into
+canon, keeping the system probabilistic without being arbitrary.
+
+### Principle 4: Consequences emerge from links
+
+Link topology determines transfer, proximity, and gating, so structure
+drives behavior without ad hoc condition checks.
+
+---
+
+## DEPENDENCIES
+
+| Module | Why We Depend On It |
+|--------|---------------------|
+| `engine/physics/graph/**` | Supplies graph reads/writes for energy flow and flip detection. |
+| `docs/schema/SCHEMA_Moments.md` | Defines the moment and link fields that physics assumes. |
+| `docs/infrastructure/api/` | Feeds player input and surfaces physics outputs to clients. |
+
+---
+
+## INSPIRATIONS
+
+Systems-first narrative engines, emergent simulation design, and graph-based
+knowledge models where structure, not scripts, produces behavior. The tone
+leans toward "living world" sandboxes rather than deterministic story trees.
+
+---
+
+## SCOPE
+
+### In Scope
+
+- Energy propagation, decay, and flip detection in the living graph.
+- Canon actualization of moments and sequencing through THEN links.
+- Scheduler behavior derived from weights and proximity rules.
+
+### Out of Scope
+
+- LLM prompt design for narration or character voice (see narrator module).
+- Visual presentation concerns (see frontend scene/map modules).
+- World data ingestion or scraping pipelines (see world-scraping module).
+
+---
+
 ## Core Principle
 
 **The graph is the only truth.**
 
-Everything else — handlers, ticks, canon — are processes that read from and write to the graph. No process owns state. No process is authoritative except through what it writes to the graph.
+Everything else — handlers, ticks, canon — are processes that read from and write to the graph. No process owns state. No process is authoritative except through what it writes to the graph, so duplication is treated as a bug.
 
 ---
 
@@ -225,3 +301,11 @@ Cascades don't have boundaries because the graph never stops.
 ---
 
 *"The narrator weaves possibilities. Physics determines what actualizes. The graph remembers everything."*
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- How aggressively should energy decay when the world is in a "quiet" state?
+- What is the right threshold for flipping from potential to canon in dense scenes?
+- When do concurrent actions become mutually exclusive vs. staged drama?
