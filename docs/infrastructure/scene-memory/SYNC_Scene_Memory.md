@@ -127,6 +127,13 @@ See `docs/physics/` for current Moment Graph documentation.
 ## RECENT CHANGES
 ===============================================================================
 
+### 2025-12-19: Rechecked moment processor helper implementations for current repair run
+- **What:** Confirmed `_write_transcript`, `last_moment_id`, `transcript_line_count`,
+  and `get_moment_processor` are already implemented in
+  `engine/infrastructure/memory/moment_processor.py`.
+- **Why:** The INCOMPLETE_IMPL alert is stale for this repair task.
+- **Files:** `engine/infrastructure/memory/moment_processor.py`
+
 ### 2025-12-19: Revalidated moment processor helpers for current repair run
 - **What:** Rechecked `_write_transcript`, `last_moment_id`,
   `transcript_line_count`, and `get_moment_processor`; all implementations

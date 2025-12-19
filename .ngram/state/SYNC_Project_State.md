@@ -10,6 +10,7 @@ UPDATED_BY: Codex (repair agent)
 ## CURRENT STATE
 
 Rechecked `engine/infrastructure/memory/moment_processor.py` helper implementations for the current repair run; no code changes required and logged the verification in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
+Ran `ngram validate` after the scene-memory SYNC update; failures remain in pre-existing schema/tempo/world-builder docs and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.
 
 Logged the repair 03-INCOMPLETE_IMPL-world_builder-world_builder revalidation in `docs/infrastructure/world-builder/SYNC_World_Builder.md`; no code changes required.
 Revalidated repair 01-INCOMPLETE_IMPL-history-conversations conversation helpers; no code changes required (logged in `docs/infrastructure/history/SYNC_History.md`).

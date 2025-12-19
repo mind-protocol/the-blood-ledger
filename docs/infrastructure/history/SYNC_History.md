@@ -11,6 +11,7 @@ STATUS: CANONICAL
 ## CURRENT STATE
 
 **Implementation complete.** The History module is fully functional.
+Revalidated ConversationThread helper implementations for repair 01-INCOMPLETE_IMPL-history-conversations; no code changes required.
 Revalidated ConversationThread helper implementations for the current repair run; no code changes required.
 Reverified `ConversationThread` path helpers for the current repair run; implementations already present, no code changes made.
 Reconfirmed ConversationThread helper implementations for the current repair run; no code changes required.
