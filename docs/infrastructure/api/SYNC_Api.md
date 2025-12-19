@@ -41,6 +41,22 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Re-verify API validation template completeness (repair 16)
+
+- **What:** Reconfirmed `VALIDATION_Api.md` includes all required template sections and meets length guidance.
+- **Why:** Close the repair loop with an explicit verification entry for the API validation doc.
+- **Files:**
+  - `docs/infrastructure/api/VALIDATION_Api.md`
+
+### 2025-12-19: Normalize API PATTERNS content (repair 16)
+
+- **What:** Removed the duplicate template block in `PATTERNS_Api.md` and kept
+  a single, complete set of pattern sections.
+- **Why:** Ensure the API patterns doc has one authoritative template instance.
+- **Files:**
+  - `docs/infrastructure/api/PATTERNS_Api.md`
+  - `docs/infrastructure/api/SYNC_Api.md`
+
 ### 2025-12-19: Fill API algorithm template sections (repair 16)
 
 - **What:** Added overview, data structures, primary algorithm summary,

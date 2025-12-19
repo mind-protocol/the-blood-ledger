@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Re-verified `docs/infrastructure/api/VALIDATION_Api.md` template completeness
+for repair #16 and logged the verification entry in
+`docs/infrastructure/api/SYNC_Api.md`.
+
 Expanded `docs/infrastructure/api/VALIDATION_Api.md` with the missing validation
 template sections (invariants, properties, error conditions, test coverage,
 verification procedure, sync status, gaps) and logged the update in
@@ -16,8 +20,8 @@ verification procedure, sync status, gaps) and logged the update in
 
 Expanded `docs/infrastructure/api/PATTERNS_Api.md` with the missing template
 sections (problem, pattern, principles, dependencies, inspirations, scope,
-gaps) to resolve DOC_TEMPLATE_DRIFT for repair #16 and recorded the update in
-`docs/infrastructure/api/SYNC_Api.md`.
+gaps) and removed a duplicate template block to resolve DOC_TEMPLATE_DRIFT for
+repair #16, then recorded the update in `docs/infrastructure/api/SYNC_Api.md`.
 
 Filled missing SYNC template sections in `docs/infrastructure/api/SYNC_Api.md`
 to resolve DOC_TEMPLATE_DRIFT for repair #16 and recorded the change in the
