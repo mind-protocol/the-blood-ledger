@@ -19,6 +19,7 @@ Frontend-backend integration fixes for playthrough flow:
 - Updated API IMPLEMENTATION and SYNC docs
 Consolidated API algorithm docs for playthrough creation into `docs/infrastructure/api/ALGORITHM_Api.md` and redirected the duplicate file.
 Consolidated duplicate world-runner IMPLEMENTATION docs into `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md` and removed the redundant file; updated chain links.
+Aligned the World Runner implementation doc with current initialization logging behavior.
 Revalidated moment graph traversal helpers in `engine/moment_graph/traversal.py` for repair 08; `make_dormant` and `process_wait_triggers` are already implemented, so no code changes were needed.
 Verified `engine/models/nodes.py` moment/narrative helper properties for repair 06; implementations already present, no code changes required.
 Re-verified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) are implemented; no code changes required for repair 04-INCOMPLETE_IMPL-models-base.
