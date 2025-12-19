@@ -28,6 +28,13 @@ are captured in TODO so the scope stays explicit.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Added implementation design patterns section
+
+- **What:** Added the missing DESIGN PATTERNS section to
+  `docs/physics/IMPLEMENTATION_Physics.md` and expanded it to template length.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics implementation doc.
+- **Files:** `docs/physics/IMPLEMENTATION_Physics.md`
+
 ### 2025-12-19: Completed physics algorithm template compliance
 
 - **What:** Added missing template sections (overview, data structures,

@@ -24,6 +24,16 @@ SYNC:            ./SYNC_Physics.md
 
 ---
 
+## DESIGN PATTERNS
+
+The physics implementation follows a layered graph-first pattern: read-only
+queries live in `graph_queries*` modules, write operations in `graph_ops*`
+mixins, and orchestration code composes them without holding state. This keeps
+FalkorDB as the single source of truth while allowing the tick loop to evolve
+without rewriting query helpers.
+
+---
+
 ## CODE STRUCTURE
 
 ### Existing Code (Implemented)
