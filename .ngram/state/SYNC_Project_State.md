@@ -15,7 +15,7 @@ glob references with full `engine/tests/...` paths, then logged the update in
 
 Repaired cli-tools implementation doc references by swapping bare filenames/module tokens for concrete paths and removing the non-existent extraction target filename. Logged in `docs/infrastructure/cli-tools/SYNC_CLI_Tools.md`.
 
-Fixed the image-generation implementation doc code-to-docs reference entry to remove the `# DOCS:` prefix that was being flagged as a broken link; logged in `docs/infrastructure/image-generation/SYNC_Image_Generation.md`.
+Noted in the image-generation implementation doc that code-to-docs references use the path only (no `# DOCS:`) to avoid broken-link checks; logged in `docs/infrastructure/image-generation/SYNC_Image_Generation.md`.
 
 Updated the tempo implementation doc to replace the `SALIENCE_THRESHOLD` default
 literal with the constant label so link checks stop flagging it as a missing

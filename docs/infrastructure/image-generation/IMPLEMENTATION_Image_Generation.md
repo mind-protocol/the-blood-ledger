@@ -246,6 +246,8 @@ Files that reference this documentation:
 |------|------|-----------|
 | `tools/image_generation/generate_image.py` | 3 | `docs/infrastructure/image-generation/IMPLEMENTATION_Image_Generation.md` |
 
+Note: The Reference column lists the doc path only (without `# DOCS:`) to avoid false broken-link checks.
+
 ### Docs → Code
 
 | Doc Section | Implemented In |

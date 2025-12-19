@@ -93,9 +93,10 @@ Update this table when tasks complete or reprioritized.
 - Added DOCS references in `tools/image_generation/README.md` and prioritized the image-generation doc link in `tools/image_generation/generate_image.py`.
 - Replaced the HTML DOCS comment in `tools/image_generation/README.md` with a `# DOCS:` line to standardize the marker; `ngram context` still does not resolve markdown files.
 - Simplified the implementation doc code-to-docs reference entry to avoid false broken-link detection.
+- Noted in the implementation doc that the code reference column omits the `# DOCS:` marker to prevent broken-link checks from misreading it.
 
 ---
 
 ## Last Updated
 
-2025-12-19 — Simplified the implementation doc code-to-docs reference entry to avoid false broken-link detection.
+2025-12-19 — Documented the path-only reference convention in the implementation doc to prevent broken-link checks from misreading `# DOCS:` markers.
