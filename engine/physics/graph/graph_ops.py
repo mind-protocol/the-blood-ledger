@@ -23,226 +23,28 @@ Docs:
 """
 
 import json
-import yaml
 import logging
 import numpy as np
-import sys
-from pathlib import Path
-from typing import Dict, Any, List, Optional, Set, Tuple, Callable
+from typing import Dict, Any, List, Optional
 from datetime import datetime
-from dataclasses import dataclass, field
 from falkordb import FalkorDB
 from engine.physics.graph.graph_ops_moments import MomentOperationsMixin
 from engine.physics.graph.graph_ops_apply import ApplyOperationsMixin
 from engine.physics.graph.graph_ops_links import LinkCreationMixin
-
-# Add tools directory to path for image generation
-PROJECT_ROOT = Path(__file__).parent.parent.parent
-sys.path.insert(0, str(PROJECT_ROOT / "tools" / "image_generation"))
-
-try:
-    from generate_image import generate_image as _generate_image
-    IMAGE_GENERATION_AVAILABLE = True
-except ImportError:
-    IMAGE_GENERATION_AVAILABLE = False
-    _generate_image = None
+from engine.physics.graph.graph_ops_image import generate_node_image
+from engine.physics.graph.graph_ops_events import (
+    add_mutation_listener,
+    remove_mutation_listener,
+    emit_event as _emit_event
+)
+from engine.physics.graph.graph_ops_types import (
+    WriteError,
+    SimilarNode,
+    ApplyResult,
+    SIMILARITY_THRESHOLD
+)
 
 logger = logging.getLogger(__name__)
-
-
-import threading
-
-# Queue for async image generation
-_image_generation_queue: list = []
-_image_generation_lock = threading.Lock()
-
-
-def _get_image_path(node_type: str, node_id: str, playthrough: str) -> str:
-    """Get the expected path for a node's image."""
-    type_config = {
-        'character': 'characters',
-        'place': 'places',
-        'thing': 'things',
-    }
-    subdir = type_config.get(node_type, 'other')
-    return f"frontend/public/playthroughs/{playthrough}/images/{subdir}/{node_id}.png"
-
-
-def _generate_node_image_async(
-    node_type: str,
-    node_id: str,
-    image_prompt: str,
-    playthrough: str = "default"
-) -> None:
-    """Generate image in background thread."""
-    if not IMAGE_GENERATION_AVAILABLE or not _generate_image:
-        return
-
-    type_config = {
-        'character': {'image_type': 'character_portrait', 'subdir': 'characters'},
-        'place': {'image_type': 'setting_strip', 'subdir': 'places'},
-        'thing': {'image_type': 'object_icon', 'subdir': 'things'},
-    }
-
-    config = type_config.get(node_type)
-    if not config:
-        return
-
-    try:
-        logger.info(f"[GraphOps] Generating {config['image_type']} for {node_id} (async)...")
-        result = _generate_image(
-            prompt=image_prompt,
-            image_type=config['image_type'],
-            playthrough=playthrough,
-            name=f"{config['subdir']}/{node_id}",
-            save=True
-        )
-        if result and result.get('local_path'):
-            logger.info(f"[GraphOps] Image saved: {result['local_path']}")
-    except Exception as e:
-        logger.warning(f"[GraphOps] Image generation failed for {node_id}: {e}")
-
-
-import shutil
-
-def _generate_node_image(
-    node_type: str,
-    node_id: str,
-    image_prompt: str,
-    playthrough: str = "default"
-) -> Optional[str]:
-    """
-    Get or generate image for a node (character, place, or thing).
-
-    Priority:
-    1. Check if image exists in playthrough folder
-    2. Copy from default/seed folder if available
-    3. Generate async if not found anywhere
-
-    Args:
-        node_type: 'character', 'place', or 'thing'
-        node_id: The node ID (used as filename)
-        image_prompt: The prompt for image generation
-        playthrough: Playthrough folder name
-
-    Returns:
-        Path to image (may not exist yet if generating async)
-    """
-    if not image_prompt:
-        return None
-
-    # Check if image already exists in playthrough folder
-    expected_path = _get_image_path(node_type, node_id, playthrough)
-    if Path(expected_path).exists():
-        logger.debug(f"[GraphOps] Image already exists: {expected_path}")
-        return expected_path
-
-    # Check if image exists in default/seed folder - copy if found
-    if playthrough != "default":
-        seed_path = _get_image_path(node_type, node_id, "default")
-        if Path(seed_path).exists():
-            # Copy from seed to playthrough
-            dest_path = Path(expected_path)
-            dest_path.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(seed_path, dest_path)
-            logger.info(f"[GraphOps] Copied seed image: {seed_path} -> {expected_path}")
-            return expected_path
-
-    # Generate async if no existing image found
-    if not IMAGE_GENERATION_AVAILABLE or not _generate_image:
-        return None
-
-    thread = threading.Thread(
-        target=_generate_node_image_async,
-        args=(node_type, node_id, image_prompt, playthrough),
-        daemon=True
-    )
-    thread.start()
-
-    return expected_path
-
-
-# =============================================================================
-# GLOBAL EVENT EMITTER
-# =============================================================================
-
-# Callbacks registered for mutation events
-_mutation_listeners: List[Callable[[Dict[str, Any]], None]] = []
-
-
-def add_mutation_listener(callback: Callable[[Dict[str, Any]], None]) -> None:
-    """
-    Register a callback to receive mutation events.
-
-    The callback receives a dict with:
-        - type: 'node_created', 'node_updated', 'link_created', 'link_updated',
-                'movement', 'tension_update', 'apply_start', 'apply_complete', 'apply_error'
-        - timestamp: ISO timestamp
-        - data: Event-specific data
-    """
-    if callback not in _mutation_listeners:
-        _mutation_listeners.append(callback)
-
-
-def remove_mutation_listener(callback: Callable[[Dict[str, Any]], None]) -> None:
-    """Remove a mutation listener."""
-    if callback in _mutation_listeners:
-        _mutation_listeners.remove(callback)
-
-
-def _emit_event(event_type: str, data: Dict[str, Any]) -> None:
-    """Emit an event to all registered listeners."""
-    event = {
-        "type": event_type,
-        "timestamp": datetime.utcnow().isoformat(),
-        "data": data
-    }
-    for listener in _mutation_listeners:
-        try:
-            listener(event)
-        except Exception as e:
-            logger.warning(f"Mutation listener error: {e}")
-
-# Similarity threshold for duplicate detection
-SIMILARITY_THRESHOLD = 0.85
-
-
-class WriteError(Exception):
-    """Error with helpful fix instructions."""
-
-    def __init__(self, message: str, fix: str):
-        self.message = message
-        self.fix = fix
-        super().__init__(f"{message}\n\nHOW TO FIX:\n{fix}")
-
-
-@dataclass
-class SimilarNode:
-    """A node that is similar to one being created."""
-    id: str
-    name: str
-    node_type: str
-    similarity: float
-
-    def __str__(self):
-        return f"{self.name} ({self.id}) - {self.similarity:.0%} similar"
-
-
-@dataclass
-class ApplyResult:
-    """Result of applying a mutation file."""
-    persisted: List[str] = field(default_factory=list)
-    rejected: List[str] = field(default_factory=list)
-    errors: List[Dict[str, str]] = field(default_factory=list)
-    duplicates: List[Dict[str, Any]] = field(default_factory=list)  # Similar nodes found
-
-    @property
-    def success(self) -> bool:
-        return len(self.errors) == 0
-
-    @property
-    def has_duplicates(self) -> bool:
-        return len(self.duplicates) > 0
 
 
 class GraphOps(MomentOperationsMixin, ApplyOperationsMixin, LinkCreationMixin):
@@ -497,7 +299,7 @@ Error: {e}"""
 
         # Generate image if prompt provided
         if image_prompt:
-            image_path = _generate_node_image('character', id, image_prompt, pt)
+            image_path = generate_node_image('character', id, image_prompt, pt)
             if image_path:
                 props["image_path"] = image_path
 
@@ -560,7 +362,7 @@ Error: {e}"""
 
         # Generate image if prompt provided
         if image_prompt:
-            image_path = _generate_node_image('place', id, image_prompt, pt)
+            image_path = generate_node_image('place', id, image_prompt, pt)
             if image_path:
                 props["image_path"] = image_path
 
@@ -624,7 +426,7 @@ Error: {e}"""
 
         # Generate image if prompt provided
         if image_prompt:
-            image_path = _generate_node_image('thing', id, image_prompt, pt)
+            image_path = generate_node_image('thing', id, image_prompt, pt)
             if image_path:
                 props["image_path"] = image_path
 
@@ -988,107 +790,3 @@ def get_graph(
 ) -> GraphOps:
     """Get a GraphOps instance."""
     return GraphOps(graph_name=graph_name, host=host, port=port)
-
-
-# =============================================================================
-# EXAMPLE USAGE
-# =============================================================================
-
-if __name__ == "__main__":
-    # Example: Create initial game state
-    graph = get_graph("blood_ledger_test")
-
-    # Add characters
-    graph.add_character(
-        id="char_rolf",
-        name="Rolf",
-        type="player",
-        backstory_wound="Thornwick burned. Edmund took everything."
-    )
-
-    graph.add_character(
-        id="char_aldric",
-        name="Aldric",
-        type="companion",
-        voice_tone="quiet",
-        voice_style="blunt",
-        values=["loyalty", "survival"],
-        flaw="doubt"
-    )
-
-    # Add places
-    graph.add_place(
-        id="place_camp",
-        name="The Camp",
-        type="camp",
-        mood="watchful",
-        weather=["cold", "clear"]
-    )
-
-    graph.add_place(
-        id="place_york",
-        name="York",
-        type="city",
-        mood="tense"
-    )
-
-    # Add geography
-    graph.add_geography(
-        from_place_id="place_camp",
-        to_place_id="place_york",
-        path=1.0,
-        path_distance="2 days",
-        path_difficulty="moderate"
-    )
-
-    # Add narratives
-    graph.add_narrative(
-        id="narr_oath",
-        name="Rolf's Oath",
-        content="I swore to find Edmund and reclaim what he stole.",
-        type="oath",
-        tone="cold",
-        about_characters=["char_rolf", "char_edmund"]
-    )
-
-    graph.add_narrative(
-        id="narr_aldric_loyalty",
-        name="Aldric's Loyalty",
-        content="Aldric follows by choice, not obligation.",
-        type="bond",
-        tone="warm",
-        about_characters=["char_aldric", "char_rolf"]
-    )
-
-    # Add beliefs
-    graph.add_belief(
-        character_id="char_rolf",
-        narrative_id="narr_oath",
-        heard=1.0,
-        believes=1.0,
-        originated=1.0,
-        source="witnessed"
-    )
-
-    graph.add_belief(
-        character_id="char_aldric",
-        narrative_id="narr_oath",
-        heard=1.0,
-        believes=1.0,
-        source="witnessed"
-    )
-
-    # Add presence
-    graph.add_presence("char_rolf", "place_camp")
-    graph.add_presence("char_aldric", "place_camp")
-
-    # Add tension
-    graph.add_tension(
-        id="tension_confrontation",
-        narratives=["narr_oath"],
-        description="Edmund draws closer. The reckoning approaches.",
-        pressure=0.3,
-        pressure_type="hybrid"
-    )
-
-    print("Initial game state created!")

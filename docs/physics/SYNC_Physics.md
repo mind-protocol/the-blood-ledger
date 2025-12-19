@@ -7,6 +7,20 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
+**2025-12-19: Split graph_ops.py monolith (1094 → 792 lines)**
+- Extracted image generation helpers to `graph_ops_image.py` (163 lines)
+  - `generate_node_image()`, `get_image_path()`, `_generate_node_image_async()`
+  - Async image generation for characters, places, things
+- Extracted event emitter to `graph_ops_events.py` (66 lines)
+  - `add_mutation_listener()`, `remove_mutation_listener()`, `emit_event()`
+  - Used by graph_ops_apply.py for mutation events
+- Extracted types/exceptions to `graph_ops_types.py` (59 lines)
+  - `WriteError`, `SimilarNode`, `ApplyResult`, `SIMILARITY_THRESHOLD`
+- Removed `__main__` example block (98 lines of example code)
+- Updated imports in graph_ops.py and graph_ops_apply.py
+- Updated IMPLEMENTATION_Physics.md with new files in code structure and file responsibilities
+- Updated modules.yaml with new internal files
+
 **2025-12-19: Fixed BROKEN_IMPL_LINK validation errors in IMPLEMENTATION_Physics.md**
 - Converted tree structure from Unicode box-drawing (├── │ └──) to ASCII (+-- | \--) to prevent file reference extraction from tree visualization
 - Removed file extensions from tree structure names (clarity: they're all .py files, noted at end)

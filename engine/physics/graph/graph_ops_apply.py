@@ -71,7 +71,8 @@ class ApplyOperationsMixin:
                 to: place_castle
         """
         # Import here to avoid circular imports
-        from engine.physics.graph.graph_ops import ApplyResult, WriteError, _emit_event
+        from engine.physics.graph.graph_ops_types import ApplyResult, WriteError
+        from engine.physics.graph.graph_ops_events import emit_event as _emit_event
 
         self._current_playthrough = playthrough  # Store for use in add_* methods
         result = ApplyResult()
@@ -456,7 +457,7 @@ class ApplyOperationsMixin:
 
     def _validate_link_targets(self, id1: str, id2: str, existing: Set[str], new: Set[str]):
         """Validate that link targets exist."""
-        from engine.physics.graph.graph_ops import WriteError
+        from engine.physics.graph.graph_ops_types import WriteError
 
         all_ids = existing | new
         if id1 and id1 not in all_ids:

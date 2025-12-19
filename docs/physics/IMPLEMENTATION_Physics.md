@@ -39,11 +39,15 @@ engine/
 |   \-- graph/                   # Graph database operations
 |       +-- __init__
 |       +-- graph_queries        # Read operations (892 lines)
-|       +-- graph_ops            # Write operations (1611 lines)
+|       +-- graph_ops            # Write operations (792 lines)
 |       +-- graph_ops_apply      # Apply mixin (697 lines)
+|       +-- graph_ops_events     # Event emitter (65 lines)
+|       +-- graph_ops_image      # Image generation helpers (161 lines)
+|       +-- graph_ops_links      # Link creation mixin (573 lines)
+|       +-- graph_ops_moments    # Moment lifecycle ops (594 lines)
+|       +-- graph_ops_types      # Types/exceptions (58 lines)
 |       +-- graph_queries_moments    # Moment-specific queries
 |       +-- graph_queries_search     # Search/cluster queries (285 lines)
-|       +-- graph_ops_moments        # Moment-specific ops
 |       \-- graph_query_utils        # Query utilities
 |
 +-- moment_graph/
@@ -124,25 +128,29 @@ The following modules are designed but not yet created. These are DESIGN DOCUMEN
 
 **Existing Files:**
 
-| File | Purpose |
-|------|---------|
-| `engine/physics/tick.py` | Physics tick: inject, decay, propagate, detect flips (v1 exists, v2 WIP) |
-| `engine/physics/constants.py` | All energy/decay/pressure constants |
-| `engine/physics/graph/graph_queries.py` | Graph read operations |
-| `engine/physics/graph/graph_ops.py` | Graph write operations |
-| `engine/physics/graph/graph_ops_apply.py` | Apply operations to graph |
-| `engine/physics/graph/graph_queries_moments.py` | Moment-specific query operations |
-| `engine/physics/graph/graph_queries_search.py` | Search/cluster query operations (285 lines) |
-| `engine/physics/graph/graph_ops_moments.py` | Moment-specific write operations |
-| `engine/physics/graph/graph_query_utils.py` | Query utilities |
-| `engine/moment_graph/queries.py` | Fast graph queries (<50ms) |
-| `engine/moment_graph/traversal.py` | Click/wait/status transitions |
-| `engine/moment_graph/surface.py` | Surfacing algorithm |
-| `engine/infrastructure/orchestration/orchestrator.py` | Ties physics together (needs v2 update for handlers/canon) |
-| `engine/infrastructure/orchestration/narrator.py` | Claude CLI caller |
-| `engine/infrastructure/orchestration/world_runner.py` | Background world runner |
-| `engine/infrastructure/api/moments.py` | REST endpoints for frontend |
-| `engine/infrastructure/api/app.py` | FastAPI entry point |
+| File | Lines | Purpose |
+|------|-------|---------|
+| `engine/physics/tick.py` | - | Physics tick: inject, decay, propagate, detect flips (v1 exists, v2 WIP) |
+| `engine/physics/constants.py` | - | All energy/decay/pressure constants |
+| `engine/physics/graph/graph_queries.py` | 892 | Graph read operations |
+| `engine/physics/graph/graph_ops.py` | 792 | Graph write operations (main entry) |
+| `engine/physics/graph/graph_ops_apply.py` | 698 | Apply mixin (mutation file processing) |
+| `engine/physics/graph/graph_ops_events.py` | 66 | Event emitter for mutation events |
+| `engine/physics/graph/graph_ops_image.py` | 163 | Image generation helpers (async) |
+| `engine/physics/graph/graph_ops_links.py` | 573 | Link creation mixin |
+| `engine/physics/graph/graph_ops_moments.py` | 594 | Moment lifecycle operations mixin |
+| `engine/physics/graph/graph_ops_types.py` | 59 | Types and exceptions |
+| `engine/physics/graph/graph_queries_moments.py` | 512 | Moment-specific query operations |
+| `engine/physics/graph/graph_queries_search.py` | 285 | Search/cluster query operations |
+| `engine/physics/graph/graph_query_utils.py` | 270 | Query utilities |
+| `engine/moment_graph/queries.py` | - | Fast graph queries (<50ms) |
+| `engine/moment_graph/traversal.py` | - | Click/wait/status transitions |
+| `engine/moment_graph/surface.py` | - | Surfacing algorithm |
+| `engine/infrastructure/orchestration/orchestrator.py` | - | Ties physics together (needs v2 update for handlers/canon) |
+| `engine/infrastructure/orchestration/narrator.py` | - | Claude CLI caller |
+| `engine/infrastructure/orchestration/world_runner.py` | - | Background world runner |
+| `engine/infrastructure/api/moments.py` | - | REST endpoints for frontend |
+| `engine/infrastructure/api/app.py` | - | FastAPI entry point |
 
 **Planned Files (not yet created):**
 

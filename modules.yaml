@@ -37,13 +37,19 @@ modules:
       - graph_ops_apply.py
       - graph_ops_moments.py
       - graph_ops_links.py
+      - graph_ops_events.py
+      - graph_ops_image.py
+      - graph_ops_types.py
     notes: |
       Graph database operations - the core of the physics system.
-      graph_ops.py: 1094 lines (reduced from 1611 via LinkCreationMixin extraction).
-      graph_ops_apply.py: 697 lines (extracted apply() method and helpers).
-      graph_ops_links.py: 573 lines (extracted link creation methods).
-      graph_queries.py: 892 lines (reduced via SearchQueryMixin extraction).
-      graph_queries_search.py: 285 lines (extracted search methods).
+      graph_ops.py: 792 lines (reduced from 1094 via additional extractions).
+      graph_ops_apply.py: 698 lines (apply() method and helpers).
+      graph_ops_links.py: 573 lines (link creation methods).
+      graph_ops_events.py: 66 lines (event emitter for mutations).
+      graph_ops_image.py: 163 lines (image generation helpers).
+      graph_ops_types.py: 59 lines (types and exceptions).
+      graph_queries.py: 892 lines.
+      graph_queries_search.py: 285 lines (search methods).
 
   physics-moments:
     code: "engine/moments/**"
