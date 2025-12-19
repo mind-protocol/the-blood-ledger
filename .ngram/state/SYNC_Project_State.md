@@ -9,12 +9,20 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Completed the tempo documentation chain (PATTERNS/BEHAVIORS/VALIDATION/TEST),
+updated `docs/infrastructure/tempo/SYNC_Tempo.md`, and added an
+`infrastructure-tempo` mapping in `modules.yaml`.
+
+Linked `tests/infrastructure/world_builder/__init__.py` to the world-builder
+TEST documentation and corrected the TEST doc IMPL path to the actual test
+file location.
+
 Verified `tests/infrastructure/canon/**` is already listed under the canon
 module `additional_code` in `modules.yaml` so canon tests are covered by the
 documentation mapping; logged the check in
 `docs/infrastructure/canon/SYNC_Canon.md`.
 
-Completed the world-builder documentation chain by adding PATTERNS and BEHAVIORS docs and mapping the module in `modules.yaml`, with the update logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`.
+Completed the world-builder documentation chain by adding PATTERNS and BEHAVIORS docs and mapping the module in `modules.yaml` (repair 18-INCOMPLETE_CHAIN-infrastructure-world-builder), with the update logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`.
 
 Updated the scene-memory module tests mapping in `modules.yaml` to point at the
 concrete `engine/tests/test_moment.py` file so `ngram validate` no longer flags

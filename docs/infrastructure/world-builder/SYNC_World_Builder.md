@@ -27,6 +27,11 @@ All core files are complete and ready for integration testing:
 
 ## Recent Changes
 
+### 2025-12-19 — Linked world-builder tests to docs
+
+- Added a DOCS reference in `tests/infrastructure/world_builder/__init__.py`.
+- Corrected the TEST doc IMPL path to `tests/infrastructure/world_builder/test_world_builder.py`.
+
 ### 2025-12-19 — Documentation chain completion
 
 - Added `PATTERNS_World_Builder.md` and `BEHAVIORS_World_Builder.md` to complete the world-builder doc chain and align CHAIN links.

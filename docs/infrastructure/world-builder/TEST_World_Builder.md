@@ -18,7 +18,7 @@ IMPLEMENTATION:  ./IMPLEMENTATION_World_Builder.md
 THIS:            TEST_World_Builder.md
 SYNC:            ./SYNC_World_Builder.md
 
-IMPL:            tests/infrastructure/test_world_builder.py
+IMPL:            tests/infrastructure/world_builder/test_world_builder.py
 ```
 
 > **Contract:** Read docs before modifying. After changes: update IMPL or add TODO to SYNC. Run tests.
