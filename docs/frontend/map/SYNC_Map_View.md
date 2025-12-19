@@ -57,5 +57,8 @@ the shared map sync is treated as the single source of truth.
   template entries to satisfy doc-template drift checks.
 - 2025-12-19: Added missing SYNC template sections and expanded entries to
   meet the doc-template length requirements for the map view sync.
+- 2025-12-19: Restored `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
+  as a deprecated pointer to the canonical parchment map patterns, including
+  the missing template sections noted by the repair task.
 - 2025-12-19: Added `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md` with
   the missing SCOPE and INSPIRATIONS sections expanded to template length.

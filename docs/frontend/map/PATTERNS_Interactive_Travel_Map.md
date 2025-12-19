@@ -1,8 +1,9 @@
-# Map View — Patterns: Interactive Travel Map
+# Interactive Travel Map — Patterns (Deprecated)
 
 ```
-STATUS: DESIGNING
+STATUS: DEPRECATED
 CREATED: 2025-12-19
+UPDATED: 2025-12-19
 ```
 
 ---
@@ -10,53 +11,46 @@ CREATED: 2025-12-19
 ## CHAIN
 
 ```
-THIS:  PATTERNS_Interactive_Travel_Map.md
-SYNC:  ./SYNC_Map_View.md
-IMPL:  frontend/components/map/MapClient.tsx
+THIS:       PATTERNS_Interactive_Travel_Map.md (deprecated)
+CANONICAL:  ./PATTERNS_Parchment_Map_View.md
+SYNC:       ./SYNC_Map_View.md
+IMPL:       frontend/components/map/MapClient.tsx
 ```
 
 ---
 
 ## THE PROBLEM
 
-Players need a clear, low-friction way to initiate travel from the map without
-leaving the fiction or losing spatial context. The current read-only view does
-not yet express intent, confirmations, or travel cost feedback.
+The earlier map work framed the view as a travel planner with route actions,
+which was removed to avoid duplicating the canonical parchment map patterns.
 
 ---
 
 ## THE PATTERN
 
-Use the map as an interaction surface where route selection, destination
-preview, and travel intent flow through a lightweight confirmation layer before
-any backend actions are triggered.
+The interactive travel pattern has been folded into the parchment map view.
+Keep this doc only as a legacy pointer to the canonical map view patterns.
 
 ---
 
 ## SCOPE
 
-This pattern covers destination selection, route preview, and travel intent UI
-states within the map view, including confirmation and feedback affordances
-that keep players grounded in place.
+This legacy scope covered interactive route selection, confirmations, and
+travel intent previews; the canonical map view now owns the active UI design.
 
 ---
 
 ## PRINCIPLES
 
-### Principle 1: Intent Before Action
+### Principle 1: Map First, Actions Second
 
-Travel starts as an intent state with clear confirmation so the player can
-review the route and cost without accidental state changes.
+Travel actions should follow map comprehension, not interrupt the scan of
+routes, landmarks, and fog-of-war cues.
 
-### Principle 2: Context-Preserving Feedback
+### Principle 2: Confirm Before Committing
 
-Route details, distance, and estimated impact render inline on the map so the
-player never has to leave the spatial context to decide.
-
-### Principle 3: Map Remains the Anchor
-
-Interactions should reinforce the map as the primary surface, avoiding modal
-flows that distract from geography.
+Any travel action should require explicit confirmation so players do not
+accidentally advance the world state from exploration clicks.
 
 ---
 
@@ -64,33 +58,30 @@ flows that distract from geography.
 
 | Module | Why We Depend On It |
 |--------|---------------------|
-| `frontend/types/map` | Map route and location shapes for destination selection UI |
-| `frontend/lib/map` | Distance and path helpers needed for travel previews |
-| `frontend/components/map` | Canvas and interaction surfaces that capture intent |
+| `frontend/types/map` | Shared map and visibility types used by the canvas and client UI |
+| `frontend/lib/map` | Projection and distance helpers for rendering and travel estimates |
+| `frontend/data/map-data` | Seed data for places, routes, and coastline geometry |
 
 ---
 
 ## INSPIRATIONS
 
-- Strategy travel overlays that show route intent and movement costs without
-  committing the action until the player confirms.
-- RPG travel screens that keep a map visible while surfacing journey risks,
-  distance, or time to travel.
+- Strategy RPG travel screens that separate route planning from the map scan.
+- Narrative atlas interfaces that keep the map readable before any action.
 
 ---
 
 ## WHAT THIS DOES NOT SOLVE
 
-- Backend travel execution or server-side validation of routes.
-- Persisting travel history or route optimization decisions.
-- Advanced map navigation like zoom, drag inertia, or touch gestures.
-- Multiplayer or concurrent route selection states.
+- Current map interactions remain read-only; this doc does not reintroduce
+  travel state mutations or backend integration.
+- Mobile-first gesture handling is still out of scope for the map view module.
 
 ---
 
 ## GAPS / IDEAS / QUESTIONS
 
-- [ ] Decide the minimum confirmation UI before travel requests are sent.
-- [ ] Define the travel cost vocabulary (time, danger, supplies) for previews.
-- [ ] Determine how intent interacts with fog-of-war visibility rules.
-- [ ] Coordinate map actions with the main scene timeline and narration.
+- [ ] Decide if interactive travel actions re-enter the map view or live in a
+  separate travel confirmation panel.
+- [ ] Confirm how travel intent should be communicated to the backend when it
+  becomes available.
