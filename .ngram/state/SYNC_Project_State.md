@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/world/scraping/TEST_World_Scraping.md` with missing test
+template sections (strategy, unit/integration coverage, edge cases, run
+guidance, gaps, flaky tracking) and logged the update in
+`docs/world/scraping/SYNC_World_Scraping.md` for repair #16.
+
 Expanded `docs/world/scraping/ALGORITHM_Pipeline.md` with the missing
 algorithm template sections (overview, data structures, decisions, data flow,
 complexity, helpers, interactions, gaps) and logged the change in
