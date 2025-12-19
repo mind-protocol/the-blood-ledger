@@ -9,6 +9,12 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/design/opening/PATTERNS_Opening.md` with the missing template
+sections (problem, pattern, principles, dependencies, inspirations, scope) and
+recorded the update in `docs/design/opening/SYNC_Opening.md` for repair #16.
+Ran `ngram validate`; failures remain pre-existing (missing VIEW file and
+doc-chain gaps in schema/product/network/storms modules).
+
 Expanded `docs/design/opening/BEHAVIORS_Opening.md` with the missing BEHAVIORS,
 INPUTS / OUTPUTS, and ANTI-BEHAVIORS sections to resolve template drift for
 repair #16, and recorded the update in `docs/design/opening/SYNC_Opening.md`.
@@ -723,6 +729,8 @@ Verified ConversationThread path helpers in `engine/infrastructure/history/conve
 Revalidated the graph health helper implementations in `engine/graph/health/check_health.py` for repair 00-INCOMPLETE_IMPL-health-check_health; functions were already implemented and the graph-health SYNC was refreshed.
 
 Aligned playthrough creation to the router implementation by adding a `/api/playthrough/scenario` alias in `engine/infrastructure/api/playthroughs.py` and removing the duplicate scenario endpoint in `engine/infrastructure/api/app.py` that returned a mismatched response shape. Updated the backend run script to point uvicorn at `engine.infrastructure.api.app:app` so `engine/run.py` boots correctly.
+
+Removed the unsupported `energy` argument from opening-moment creation in `engine/infrastructure/api/playthroughs.py` to prevent exceptions during scenario playthrough creation.
 Added stub IMPLEMENTATION_*.md and TEST_*.md files for each new module to complete doc chains.
 
 Revalidated `engine/models/links.py` helper properties (`belief_intensity`, `is_present`, `has_item`, `is_here`) for the repair run; no code changes required and logged in `docs/schema/models/SYNC_Schema_Models.md`.

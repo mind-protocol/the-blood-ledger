@@ -76,6 +76,8 @@ to avoid drift warnings in the doc health checks.
 
 ## RECENT CHANGES
 
+- 2025-12-19: Filled missing PATTERNS_Opening.md template sections (problem,
+  pattern, principles, dependencies, inspirations, scope) for repair #16.
 - 2025-12-19: Expanded ALGORITHM_Opening.md with full template sections and
   longer descriptions to resolve DOC_TEMPLATE_DRIFT for repair #16.
 - 2025-12-19: Filled missing SYNC template sections and expanded notes to

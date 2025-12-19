@@ -20,6 +20,49 @@ SYNC:        ./SYNC_Opening.md
 ```
 
 ═══════════════════════════════════════════════════════════════════════════════
+## THE PROBLEM
+═══════════════════════════════════════════════════════════════════════════════
+
+Most openings frontload exposition or mechanics, which forces the player into
+passive intake before any relationship or personal stake can form.
+
+═══════════════════════════════════════════════════════════════════════════════
+## THE PATTERN
+═══════════════════════════════════════════════════════════════════════════════
+
+Use a fixed, authored sequence of open questions, delivered by a companion who
+evaluates the player, so the player's answers become the dynamic content.
+
+═══════════════════════════════════════════════════════════════════════════════
+## PRINCIPLES
+═══════════════════════════════════════════════════════════════════════════════
+
+The opening must feel like a real conversation, preserve silence and rhythm,
+and let the companion respond as a person rather than a service interface.
+
+═══════════════════════════════════════════════════════════════════════════════
+## DEPENDENCIES
+═══════════════════════════════════════════════════════════════════════════════
+
+Relies on the authored script in `CONTENT.md`, a consistent companion voice,
+and the bootstrap flow that turns the script into playable scene beats.
+
+═══════════════════════════════════════════════════════════════════════════════
+## INSPIRATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+Campfire confession scenes, low-key travel conversations, and character-driven
+openings from story RPGs informed the tone and pacing of this pattern.
+
+═══════════════════════════════════════════════════════════════════════════════
+## SCOPE
+═══════════════════════════════════════════════════════════════════════════════
+
+In scope: the opening conversation, its authored questions, and companion
+responses that shape the initial relationship. Out of scope: combat tutorials,
+system explanations, or dynamic question generation.
+
+═══════════════════════════════════════════════════════════════════════════════
 ## THE INSIGHT
 ═══════════════════════════════════════════════════════════════════════════════
 
