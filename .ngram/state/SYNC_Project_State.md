@@ -16,6 +16,8 @@ Filled missing template sections in `docs/agents/narrator/BEHAVIORS_Narrator.md`
 Expanded `docs/agents/narrator/VALIDATION_Narrator.md` with the missing SYNC
 STATUS section and longer validation entries to resolve doc-template drift,
 and logged the update in `docs/agents/narrator/SYNC_Narrator.md` for repair #16.
+Ran `ngram validate`; failures remain in pre-existing missing VIEW/doc-chain
+gaps outside the narrator module.
 
 Expanded narrator PATTERNS template sections (problem, pattern, principles,
 dependencies, inspirations, scope, gaps) and logged the update in
