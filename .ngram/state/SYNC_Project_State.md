@@ -33,6 +33,12 @@ All Python imports updated and verified working. Health score improved from 10 c
 
 ## RECENT CHANGES
 
+### 2025-12-19: SYNC_Scene.md Refreshed
+
+- **What:** Updated stale SYNC file for frontend/scene module
+- **Why:** SYNC was 367 days old, claimed "Layout skeleton: Not started" when scene is implemented
+- **Impact:** SYNC now reflects reality - 12 scene components documented, maturity set to CANONICAL, design questions tracked
+
 ### 2025-12-19: graph_queries.py Monolith Split
 
 - **What:** Extracted SearchQueryMixin from graph_queries.py
@@ -70,8 +76,8 @@ All Python imports updated and verified working. Health score improved from 10 c
 |-------|----------|------|-------|
 | graph_ops.py monolith | critical | `engine/physics/graph/` | 1989 lines, needs splitting |
 | ~~graph_queries.py monolith~~ | ~~critical~~ | `engine/physics/graph/` | RESOLVED: 892 lines (extracted SearchQueryMixin) |
-| Broken impl link | critical | `docs/physics/` | IMPLEMENTATION_Physics.md has stale references |
-| 7 stale SYNCs | warning | various | Need refresh |
+| ~~Broken impl link~~ | ~~warning~~ | `docs/physics/` | MOSTLY RESOLVED: 51→34 references remaining are false positives (tree filenames, constants) |
+| 6 stale SYNCs | warning | various | Need refresh (scene fixed) |
 
 ---
 
@@ -89,7 +95,7 @@ All Python imports updated and verified working. Health score improved from 10 c
 
 **Watch out for:**
 - Old import paths in any files not yet updated
-- IMPLEMENTATION_Physics.md has 47 broken file references - needs rewrite
+- IMPLEMENTATION_Physics.md reports 34 "broken links" but most are false positives from tree structure parsing
 
 ---
 
@@ -121,7 +127,7 @@ Code restructured to match docs areas. All imports updated and verified working.
 
 ### Backlog
 
-- [ ] Refresh 7 stale SYNC files
+- [ ] Refresh 6 remaining stale SYNC files (scene done)
 - [ ] Add DOCS: references to code files
 
 ---

@@ -1,55 +1,141 @@
 # Scene View — Sync: Current State
 
 ```
-LAST_UPDATED: 2024-12-17
-UPDATED_BY: Codex agent
-STATUS: DESIGNING → IMPLEMENTING
+LAST_UPDATED: 2025-12-19
+UPDATED_BY: ngram repair agent
+STATUS: CANONICAL
 ```
 
 ---
 
-## Snapshot
+## MATURITY
 
-| Area | Status | Owner | Notes |
-|------|--------|-------|-------|
-| Layout skeleton | Not started | Frontend | Need wireframe for header/voices/moments sidebar |
-| Data contract | Specced | Engine | `/api/view` definition lives in docs/physics/API_Physics.md |
-| Click/Wait loop | Specced | Engine/Frontend | Requires moment graph implementation |
-| Image integration | Ready | Image-gen | Use banner assets from SYNC_Image_Generation.md |
+**What's canonical (v1):**
+- Scene view layout with header, banner, people, voices, actions
+- CenterStage with animated line rendering and reading time calculations
+- Clickable text/word interaction system
+- Integration with useMoments hook
+- Dark atmospheric styling with Tailwind CSS
 
----
+**What's still being designed:**
+- Voice selection algorithm (which narratives speak, how many)
+- Choice generation (how to make choices feel emergent)
+- Conversation flow (what happens when you talk to someone)
 
-## Open Questions
-
-| Question | Decision Needed By | Impact |
-|----------|--------------------|--------|
-| Voice slots per view | Before UI build | Determines layout + emphasis |
-| Choice surfacing | Before hook implementation | Affects UX + backend contract |
-| Idle/Wait feedback | Before first playtest | Ensures players notice auto-advances |
-| Ledger linking UI | After basic view works | Aligns with ledger team work |
-
----
-
-## Next Deliverables
-
-1. **UI wireframe** (Figma or low-fi) showing: atmosphere header, moment stack, voices, choices.
-2. **Frontend stub** hitting mocked `/api/view` data (use `docs/physics/API_Physics.md` example).
-3. **Interaction loop** handling click + wait + SSE events once backend ready.
-
-Each deliverable should update this SYNC with owner + ETA.
+**What's proposed (v2+):**
+- Real-time image generation
+- Audio/ambient sound integration
+- Enhanced animations and transitions
 
 ---
 
-## Dependencies
+## CURRENT STATE
 
-- Moment graph implementation (docs/physics/SYNC_Physics.md)
-- Opening conversion so first scene emits moments
-- Image generation banners for every place (see SYNC_Image_Generation.md)
+The scene view is **implemented and functional**. It is the main game view where players experience the world.
+
+**Implementation:** `frontend/components/scene/`
+
+| File | Purpose |
+|------|---------|
+| `SceneView.tsx` | Main scene component - header, banner, people, voices, actions |
+| `CenterStage.tsx` | Animated text display with reading time, typing indicators, clickable words |
+| `SceneHeader.tsx` | Scene title/location header |
+| `SceneBanner.tsx` | Scene banner image display |
+| `SceneImage.tsx` | Scene image component |
+| `Atmosphere.tsx` | Atmosphere text display |
+| `CharacterRow.tsx` | Character display row |
+| `HotspotRow.tsx` | Hotspot interaction row |
+| `Hotspot.tsx` | Individual hotspot component |
+| `ObjectRow.tsx` | Object display row |
+| `SceneActions.tsx` | Action buttons |
+| `SettingStrip.tsx` | Setting/location strip |
+
+**Key Features Implemented:**
+- Scene renders with atmosphere, location header, banner image
+- People present are displayed with portraits and descriptions
+- Voices display (sorted by weight, top 4 shown with opacity based on weight)
+- Action buttons: Talk (per person), Travel, Write
+- CenterStage provides animated text reveal with reading time calculations
+- Clickable word interactions for deeper exploration
 
 ---
 
-## Handoff Notes
+## DESIGN QUESTIONS (from PATTERNS)
 
-- Treat current state as design baseline; no production UI exists yet.
-- Prioritize feel (voices/weight) before polish (animations/audio).
-- Capture playtest learnings under “What We Learned” next time you update this file.
+These remain open for iteration:
+
+| Question | Status | Notes |
+|----------|--------|-------|
+| Voice selection (which narratives speak) | Open | Currently shows top 4 by weight |
+| How many voices per scene | Partially resolved | Limited to 4 in UI |
+| Choice emergence (not menu feel) | Open | Actions are hardcoded types |
+| Character consistency across scenes | Open | Needs character sheets in prompt |
+| Image generation pipeline | Partial | Static images used, no dynamic gen |
+| Conversation flow | Open | TBD how dialogue works |
+
+---
+
+## INTEGRATION
+
+**Hooks:**
+- `useMoments` - Used by CenterStage for moment system integration
+- `useGameState` - Used for broader game state (may deprecate)
+
+**API:**
+- Scene data comes from `/api/view` (see `docs/physics/API_Physics.md`)
+
+**Related Components:**
+- `frontend/components/moment/` - MomentDisplay, MomentStream, ClickableText
+- `frontend/components/panel/` - Right panel with Chronicle/Ledger tabs
+
+---
+
+## HANDOFF: FOR AGENTS
+
+**Your likely VIEW:** VIEW_Implement or VIEW_Extend
+
+**Where things are:**
+- Scene components: `frontend/components/scene/`
+- Main layout: `SceneView.tsx` (simpler) or `CenterStage.tsx` (animated)
+- Moment integration: Look at `useMoments` hook
+
+**Key patterns:**
+- Dark atmospheric styling (stone-900 backgrounds, amber accents)
+- Voices sorted by weight, opacity reflects weight
+- CenterStage uses reading time calculations for pacing
+
+**What might need work:**
+- Voice selection algorithm (currently just top 4 by weight)
+- Making choices feel emergent vs. menu-like
+- Conversation flow when talking to characters
+
+---
+
+## HANDOFF: FOR HUMAN
+
+**Executive summary:**
+Scene view is implemented and works. The core layout exists with header, image, people, voices, and actions. CenterStage provides animated text reveal for immersive experience.
+
+**Key design decisions made:**
+- Top 4 voices shown, sorted by weight
+- Opacity reflects voice weight (0.5 + weight * 0.5)
+- Talk action per person, plus Travel and Write global actions
+- Reading time calculations: 40ms per char, 800-4000ms bounds
+
+**Needs your input:**
+- Voice selection algorithm refinement
+- How should conversation flow work?
+- Should choice buttons feel different from current hardcoded actions?
+
+---
+
+## POINTERS
+
+| What | Where |
+|------|-------|
+| Scene components | `frontend/components/scene/` |
+| Moment components | `frontend/components/moment/` |
+| useMoments hook | `frontend/hooks/useMoments.ts` |
+| Types | `frontend/types/game.ts` |
+| Design patterns | `docs/frontend/scene/PATTERNS_Scene.md` |
+| Frontend overview | `docs/frontend/SYNC_Frontend.md` |
