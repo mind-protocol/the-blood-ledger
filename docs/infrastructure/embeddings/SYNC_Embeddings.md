@@ -55,6 +55,14 @@ runtime indexing behavior with the documented detail-first embedding spec.
 
 ## RECENT CHANGES
 
+### 2025-12-19: Re-verify algorithm entry template compliance
+
+- **What:** Re-checked that the embeddings algorithm entry includes the
+  required ALGORITHM and HELPER FUNCTIONS sections; no content edits were needed.
+- **Why:** Confirm the DOC_TEMPLATE_DRIFT target is satisfied in the current tree.
+- **Files:** `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Verify algorithm entry template completeness
 
 - **What:** Confirmed the embeddings algorithm entry already includes the

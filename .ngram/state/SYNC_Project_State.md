@@ -9,10 +9,16 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Re-verified `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
+meets template requirements (ALGORITHM and HELPER FUNCTIONS present) and
+logged the verification in `docs/infrastructure/embeddings/SYNC_Embeddings.md`
+for repair #16.
+
 Filled missing template sections in
 `docs/infrastructure/history/archive/SYNC_History_archive_2025-12.md` to
 resolve DOC_TEMPLATE_DRIFT for repair #16 and logged the update in
-`docs/infrastructure/history/SYNC_History.md`.
+`docs/infrastructure/history/SYNC_History.md`, including the initial archive
+block that previously lacked the full section set.
 
 Verified `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md` already
 meets the algorithm template requirements, and recorded the verification in
@@ -29,8 +35,8 @@ missing ALGORITHM and HELPER FUNCTIONS sections plus template-compliant
 overview/data flow content, and logged the update in
 `docs/infrastructure/embeddings/SYNC_Embeddings.md` for repair #16.
 
-Expanded the History patterns scope statement to meet template length guidance
-and recorded the change in `docs/infrastructure/history/SYNC_History.md` for
+Expanded the History PATTERNS scope statement to meet template length guidance
+and logged the update in `docs/infrastructure/history/SYNC_History.md` for
 repair #16.
 
 Added the missing SCOPE section to `docs/infrastructure/history/PATTERNS_History.md`
