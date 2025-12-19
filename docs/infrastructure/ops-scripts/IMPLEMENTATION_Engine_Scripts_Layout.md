@@ -36,6 +36,8 @@ SYNC:            ./SYNC_Ops_Scripts.md
 
 - `engine/scripts/seed_moment_sample.py`
 - `engine/scripts/generate_images_for_existing.py`
+- `engine/scripts/check_injection.py`
+- `engine/scripts/inject_to_narrator.py`
 
 ---
 

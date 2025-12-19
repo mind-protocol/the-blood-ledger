@@ -51,6 +51,12 @@ assets. Injection-related scripts in the same directory are documented under
 
 ## RECENT CHANGES
 
+### 2025-12-19: Listed full ops-scripts entry points
+
+- **What:** Added the injection scripts to the implementation entry points list.
+- **Why:** Ensure the implementation doc matches the module's script inventory.
+- **Files:** `docs/infrastructure/ops-scripts/IMPLEMENTATION_Engine_Scripts_Layout.md`
+
 ### 2025-12-19: Fixed ops-scripts implementation links
 
 - **What:** Updated ops-scripts implementation doc links to point at existing engine paths.
@@ -102,3 +108,16 @@ modules and update docs if new scripts are added.
 python engine/scripts/seed_moment_sample.py --help
 python engine/scripts/generate_images_for_existing.py --help
 ```
+
+---
+
+## Review Observations
+
+### Remarks
+- Implementation doc references now point to concrete `engine/physics/graph/*.py` files, resolving the broken-link warning without altering behaviors.
+
+### Suggestions
+- [ ] If operators need runnable command examples, consider adding them to `docs/infrastructure/ops-scripts/TEST_Operational_Scripts.md`.
+
+### Propositions
+- None.
