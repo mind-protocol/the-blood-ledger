@@ -143,6 +143,12 @@ Tests cover:
 - **Why:** Repair 60 flagged undocumented canon files; verification shows existing docs are authoritative.
 - **Files:** `modules.yaml`, `engine/infrastructure/canon/canon_holder.py`, `engine/infrastructure/canon/speaker.py`, `engine/infrastructure/canon/__init__.py`
 
+### 2025-12-19: Mapped canon tests for documentation coverage
+
+- **What:** Added `tests/infrastructure/canon/**` under the canon module's `additional_code`.
+- **Why:** Ensure `ngram validate` treats canon tests as mapped code and stops flagging them as undocumented.
+- **Files:** `modules.yaml`
+
 ### 2025-12-19: Mapped canon module in manifest
 
 - **What:** Added `modules.yaml` entry linking canon code/tests to docs.

@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Added `tests/infrastructure/canon/**` to the canon module `additional_code` in
+`modules.yaml` so canon tests are covered by documentation mapping; logged the
+update in `docs/infrastructure/canon/SYNC_Canon.md`.
+
 Completed the world-builder documentation chain by adding PATTERNS and BEHAVIORS docs and mapping the module in `modules.yaml`, with the update logged in `docs/infrastructure/world-builder/SYNC_World_Builder.md`.
 
 Updated the scene-memory module tests mapping in `modules.yaml` to point at the
@@ -153,6 +157,7 @@ Added `NEXT_PUBLIC_API_URL=http://localhost:8000` to `.env` so the frontend uses
 
 Hardened `TempoController.stop` and `update_display_queue_size` with input cleanup, queue-size validation, and logging; documented the updates in tempo implementation/SYNC.
 Added tempo SYNC observations for backpressure validation and testing gaps.
+Completed the tempo documentation chain by adding PATTERNS/BEHAVIORS/VALIDATION/TEST docs in `docs/infrastructure/tempo/`.
 
 Reconfirmed ConversationThread helper implementations in `engine/infrastructure/history/conversations.py` for the repair run; no code changes required.
 
