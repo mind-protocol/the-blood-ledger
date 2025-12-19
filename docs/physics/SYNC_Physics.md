@@ -7,6 +7,10 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
+**2025-12-19: Moment API resolves playthrough graph names from configured directory**
+- `engine/infrastructure/api/moments.py` now reads `player.yaml` under the router's `playthroughs_dir` when resolving graph names
+- Falls back to `get_playthrough_graph_name()` if no playthrough metadata is present
+
 **2025-12-19: Split graph_ops.py monolith (1094 → 792 lines)**
 - Extracted image generation helpers to `graph_ops_image.py` (163 lines)
   - `generate_node_image()`, `get_image_path()`, `_generate_node_image_async()`
@@ -138,6 +142,17 @@ For next session:
   - **Energy IS proximity** — no separate proximity calculation
   - **Physical gating is link attributes** (presence_required, AT), not functions
   - Transfer types: T1-T6 (narrative links), T7 (CAN_LEAD_TO), T8 (CAN_SPEAK), T9 (ATTACHED_TO)
+
+---
+
+## Agent Observations
+
+### Remarks
+- Moments API now resolves graph names from the router-configured `playthroughs_dir` before falling back to `get_playthrough_graph_name()`.
+
+### Suggestions
+
+### Propositions
   - Moment decay by status: possible (0.02), active (0.01), spoken (0.03), dormant (0.005)
   - Weight decays only after 100 ticks without reinforcement (very slow: 0.001)
 - SCHEMA updated with weight+energy fields on Character, Narrative, Moment

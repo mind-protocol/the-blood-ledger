@@ -9,6 +9,8 @@ Main API application with endpoints for:
 Docs:
 - docs/engine/moments/PATTERNS_Moments.md — architecture + rationale
 - docs/engine/moments/API_Moments.md — HTTP contract for the moment graph
+
+DOCS: docs/infrastructure/api/
 """
 
 import asyncio
@@ -146,6 +148,8 @@ def create_app(
     _orchestrators: Dict[str, Orchestrator] = {}
     _debug_sse_clients: list = []  # list of queues for debug/mutation events
     _playthroughs_dir = Path(playthroughs_dir)
+    _graph_queries: Optional[GraphQueries] = None
+    _graph_ops: Optional[GraphOps] = None
 
     # Register mutation listener to broadcast to debug SSE clients
     def _mutation_event_handler(event: Dict[str, Any]):
@@ -172,7 +176,14 @@ def create_app(
 
     def get_graph_queries() -> GraphQueries:
         """Get graph queries instance for default graph."""
-        return GraphQueries(graph_name=graph_name, host=host, port=port)
+        nonlocal _graph_queries
+        if _graph_queries is None:
+            _graph_queries = GraphQueries(
+                graph_name=graph_name,
+                host=host,
+                port=port
+            )
+        return _graph_queries
 
     def get_playthrough_queries(playthrough_id: str) -> GraphQueries:
         """Get graph queries instance for a specific playthrough."""
@@ -182,7 +193,10 @@ def create_app(
 
     def get_graph_ops() -> GraphOps:
         """Get graph ops instance."""
-        return GraphOps(graph_name=graph_name, host=host, port=port)
+        nonlocal _graph_ops
+        if _graph_ops is None:
+            _graph_ops = GraphOps(graph_name=graph_name, host=host, port=port)
+        return _graph_ops
 
     # =========================================================================
     # MOMENTS ROUTER (Moment Graph API)
@@ -214,7 +228,39 @@ def create_app(
     @app.get("/health")
     async def health_check():
         """Health check endpoint."""
-        return {"status": "ok", "timestamp": datetime.utcnow().isoformat()}
+        timestamp = datetime.utcnow().isoformat()
+        details = {
+            "graph_read": "ok",
+            "graph_write": "ok",
+            "orchestrators": len(_orchestrators)
+        }
+        errors: Dict[str, str] = {}
+
+        try:
+            read = get_graph_queries()
+            read.query("RETURN 1 AS ok")
+        except Exception as exc:
+            details["graph_read"] = "error"
+            errors["graph_read"] = str(exc)
+
+        try:
+            get_graph_ops()
+        except Exception as exc:
+            details["graph_write"] = "error"
+            errors["graph_write"] = str(exc)
+
+        if errors:
+            raise HTTPException(
+                status_code=503,
+                detail={
+                    "status": "degraded",
+                    "timestamp": timestamp,
+                    "details": details,
+                    "errors": errors
+                }
+            )
+
+        return {"status": "ok", "timestamp": timestamp, "details": details}
 
     # =========================================================================
     # PLAYTHROUGH ENDPOINTS
@@ -539,10 +585,13 @@ def create_app(
                         # Wait for events with timeout
                         event = await asyncio.wait_for(queue.get(), timeout=30)
                         event_type = event.get('type', 'mutation')
-                        yield f"event: {event_type}\ndata: {json.dumps(event)}\n\n"
+                        payload = json.dumps(event, default=str)
+                        yield f"event: {event_type}\ndata: {payload}\n\n"
                     except asyncio.TimeoutError:
                         # Send keepalive
                         yield f"event: ping\ndata: {{}}\n\n"
+                    except asyncio.CancelledError:
+                        break
             finally:
                 # Unregister client
                 if queue in _debug_sse_clients:

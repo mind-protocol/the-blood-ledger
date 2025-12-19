@@ -136,6 +136,7 @@ Check `modules.yaml` (project root) for full manifest.
 
 - Verified `engine/graph/health/check_health.py` functions flagged as empty are already implemented; no code changes required for graph health helpers.
 - Verified `engine/infrastructure/history/conversations.py` functions flagged as empty are already implemented; no code changes required for ConversationThread helpers.
+- Verified `engine/infrastructure/api/moments.py` functions flagged as empty are already implemented; no code changes required for moments API helpers.
 
 ## CONFLICTS
 
@@ -155,6 +156,12 @@ Check `modules.yaml` (project root) for full manifest.
 - Conflict: Repair task flagged empty implementations for `__init__`, `_get_file_path`, and `_get_relative_path` in `engine/infrastructure/history/conversations.py`, but the file already contains functional implementations.
 - Resolution: Treat the issue as already resolved; no code changes made.
 - Reasoning: The functions perform base directory setup and path mapping used by conversation operations.
+- Updated: `.ngram/state/SYNC_Project_State.md`
+
+### DECISION: Moments API Incomplete Impl
+- Conflict: Repair task flagged empty implementations for `_get_queries`, `_get_traversal`, `_get_surface`, `_get_graph_queries`, and `moment_stream` in `engine/infrastructure/api/moments.py`, but the file already contains functional implementations.
+- Resolution: Treat the issue as already resolved; no code changes made.
+- Reasoning: All five functions are fully implemented and actively used: `_get_*` functions resolve graph names and return appropriate query/traversal/surface objects; `moment_stream` is a complete SSE endpoint with async event generator.
 - Updated: `.ngram/state/SYNC_Project_State.md`
 
 ## Agent Observations

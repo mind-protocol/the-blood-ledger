@@ -149,7 +149,7 @@ The following modules are designed but not yet created. These are DESIGN DOCUMEN
 | `engine/infrastructure/orchestration/orchestrator.py` | - | Ties physics together (needs v2 update for handlers/canon) |
 | `engine/infrastructure/orchestration/narrator.py` | - | Claude CLI caller |
 | `engine/infrastructure/orchestration/world_runner.py` | - | Background world runner |
-| `engine/infrastructure/api/moments.py` | - | REST endpoints for frontend |
+| `engine/infrastructure/api/moments.py` | - | REST endpoints for frontend; resolves graph name via playthroughs_dir/player.yaml |
 | `engine/infrastructure/api/app.py` | - | FastAPI entry point |
 
 **Planned Files (not yet created):**

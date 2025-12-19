@@ -15,6 +15,8 @@ import logging
 from typing import List, Optional, Dict, Any, AsyncGenerator
 from pathlib import Path
 
+import yaml
+
 from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
@@ -25,27 +27,62 @@ from engine.physics.graph import GraphQueries, get_playthrough_graph_name
 logger = logging.getLogger(__name__)
 
 
-def _get_queries(playthrough_id: str, host: str, port: int) -> MomentQueries:
+def _resolve_graph_name(playthrough_id: str, playthroughs_dir: Optional[Path]) -> str:
+    """Resolve the graph name for a playthrough, honoring configured directories."""
+    if playthroughs_dir:
+        player_file = playthroughs_dir / playthrough_id / "player.yaml"
+        if player_file.exists():
+            try:
+                data = yaml.safe_load(player_file.read_text()) or {}
+                graph_name = data.get("graph_name")
+                if graph_name:
+                    return graph_name
+            except Exception as exc:
+                logger.warning(f"Failed to read graph name for {playthrough_id}: {exc}")
+    return get_playthrough_graph_name(playthrough_id)
+
+
+def _get_queries(
+    playthrough_id: str,
+    host: str,
+    port: int,
+    playthroughs_dir: Optional[Path] = None
+) -> MomentQueries:
     """Get MomentQueries for a specific playthrough."""
-    graph_name = get_playthrough_graph_name(playthrough_id)
+    graph_name = _resolve_graph_name(playthrough_id, playthroughs_dir)
     return MomentQueries(graph_name=graph_name, host=host, port=port)
 
 
-def _get_traversal(playthrough_id: str, host: str, port: int) -> MomentTraversal:
+def _get_traversal(
+    playthrough_id: str,
+    host: str,
+    port: int,
+    playthroughs_dir: Optional[Path] = None
+) -> MomentTraversal:
     """Get MomentTraversal for a specific playthrough."""
-    graph_name = get_playthrough_graph_name(playthrough_id)
+    graph_name = _resolve_graph_name(playthrough_id, playthroughs_dir)
     return MomentTraversal(graph_name=graph_name, host=host, port=port)
 
 
-def _get_surface(playthrough_id: str, host: str, port: int) -> MomentSurface:
+def _get_surface(
+    playthrough_id: str,
+    host: str,
+    port: int,
+    playthroughs_dir: Optional[Path] = None
+) -> MomentSurface:
     """Get MomentSurface for a specific playthrough."""
-    graph_name = get_playthrough_graph_name(playthrough_id)
+    graph_name = _resolve_graph_name(playthrough_id, playthroughs_dir)
     return MomentSurface(graph_name=graph_name, host=host, port=port)
 
 
-def _get_graph_queries(playthrough_id: str, host: str, port: int) -> GraphQueries:
+def _get_graph_queries(
+    playthrough_id: str,
+    host: str,
+    port: int,
+    playthroughs_dir: Optional[Path] = None
+) -> GraphQueries:
     """Get GraphQueries for a specific playthrough."""
-    graph_name = get_playthrough_graph_name(playthrough_id)
+    graph_name = _resolve_graph_name(playthrough_id, playthroughs_dir)
     return GraphQueries(graph_name=graph_name, host=host, port=port)
 
 # =============================================================================
@@ -164,12 +201,12 @@ def create_moments_router(
         things = present_things.split(",") if present_things else []
 
         # Get playthrough-specific instances
-        queries = _get_queries(playthrough_id, _host, _port)
+        queries = _get_queries(playthrough_id, _host, _port, _playthroughs_dir)
 
         # If no location, try to get player's current location
         if not location:
             try:
-                read = _get_graph_queries(playthrough_id, _host, _port)
+                read = _get_graph_queries(playthrough_id, _host, _port, _playthroughs_dir)
                 result = read.query(f"""
                     MATCH (c:Character {{id: '{player_id}'}})-[:AT]->(p:Place)
                     WHERE EXISTS((c)-[:AT {{present: 1.0}}]->(p))
@@ -246,7 +283,7 @@ def create_moments_router(
         """
         try:
             # Get playthrough-specific traversal instance
-            traversal = _get_traversal(request.playthrough_id, _host, _port)
+            traversal = _get_traversal(request.playthrough_id, _host, _port, _playthroughs_dir)
 
             # Traverse the graph
             result = traversal.handle_click(
@@ -318,7 +355,7 @@ def create_moments_router(
         Returns counts by status.
         """
         try:
-            surface = _get_surface(playthrough_id, _host, _port)
+            surface = _get_surface(playthrough_id, _host, _port, _playthroughs_dir)
             stats = surface.get_surface_stats()
             return {"stats": stats}
         except Exception as e:
@@ -337,7 +374,7 @@ def create_moments_router(
         Includes attachments, speakers, and transitions.
         """
         try:
-            queries = _get_queries(playthrough_id, _host, _port)
+            queries = _get_queries(playthrough_id, _host, _port, _playthroughs_dir)
             moment = queries.get_moment_by_id(moment_id)
 
             if not moment:
@@ -364,8 +401,8 @@ def create_moments_router(
         Sets the moment's status to 'active' and weight to 1.0.
         """
         try:
-            surface = _get_surface(request.playthrough_id, _host, _port)
-            traversal = _get_traversal(request.playthrough_id, _host, _port)
+            surface = _get_surface(request.playthrough_id, _host, _port, _playthroughs_dir)
+            traversal = _get_traversal(request.playthrough_id, _host, _port, _playthroughs_dir)
 
             surface.set_moment_weight(request.moment_id, 1.0)
             traversal.activate_moment(request.moment_id, tick=0)
