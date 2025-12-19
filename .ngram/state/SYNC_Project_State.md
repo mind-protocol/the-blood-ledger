@@ -37,7 +37,7 @@ All Python imports updated and verified working. Health score improved from 10 c
 |-------|----------|------|-------|
 | graph_ops.py monolith | warning | `engine/physics/graph/` | 1094 lines (reduced from 1611 via LinkCreationMixin extraction), still above 800 threshold |
 | ~~graph_queries.py monolith~~ | ~~critical~~ | `engine/physics/graph/` | RESOLVED: 892 lines (extracted SearchQueryMixin) |
-| ~~Broken impl link~~ | ~~warning~~ | `docs/physics/` | MOSTLY RESOLVED: 51→34 references remaining are false positives (tree filenames, constants) |
+| ~~Broken impl link~~ | ~~critical~~ | `docs/physics/` | RESOLVED: Fixed tree structure (ASCII), removed false positive backticks |
 | 3 stale SYNCs | warning | various | Need refresh (scene, map, world-runner, scene-memory fixed) |
 
 ---
@@ -56,7 +56,6 @@ All Python imports updated and verified working. Health score improved from 10 c
 
 **Watch out for:**
 - Old import paths in any files not yet updated
-- IMPLEMENTATION_Physics.md reports 34 "broken links" but most are false positives from tree structure parsing
 
 ---
 

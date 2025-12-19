@@ -7,6 +7,14 @@ UPDATED: 2025-12-19
 
 ## Recent Changes
 
+**2025-12-19: Fixed BROKEN_IMPL_LINK validation errors in IMPLEMENTATION_Physics.md**
+- Converted tree structure from Unicode box-drawing (├── │ └──) to ASCII (+-- | \--) to prevent file reference extraction from tree visualization
+- Removed file extensions from tree structure names (clarity: they're all .py files, noted at end)
+- Removed backticks from numeric config defaults (0.02, 0.8, etc.) that were being falsely detected as file references
+- Removed backticks from code expressions (moment.weight, place.atmosphere, weight >= 0.8) that were false positives
+- Updated planned module reference `engine/handlers/base.py` to note it doesn't exist yet
+- All 17 actual file references now validate correctly
+
 **2025-12-19: Completed ApplyOperationsMixin extraction from graph_ops.py**
 - `graph_ops_apply.py` (697 lines) contains ApplyOperationsMixin class with:
   - `apply()` method for mutation file/dict processing

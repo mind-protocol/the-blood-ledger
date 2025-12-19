@@ -32,73 +32,75 @@ SYNC:            ./SYNC_Physics.md
 
 ```
 engine/
-├── physics/
-│   ├── __init__.py              # Exports GraphTick, TickResult
-│   ├── tick.py                  # Physics tick loop (v1 exists, v2 WIP)
-│   ├── constants.py             # Energy/decay constants
-│   └── graph/                   # Graph database operations
-│       ├── __init__.py
-│       ├── graph_queries.py     # Read operations (892 lines)
-│       ├── graph_ops.py         # Write operations (1611 lines)
-│       ├── graph_ops_apply.py   # Apply mixin (697 lines)
-│       ├── graph_queries_moments.py  # Moment-specific queries
-│       ├── graph_queries_search.py   # Search/cluster queries (285 lines)
-│       ├── graph_ops_moments.py      # Moment-specific ops
-│       └── graph_query_utils.py      # Query utilities
-│
-├── moment_graph/
-│   ├── __init__.py              # Exports MomentGraph facade
-│   ├── queries.py               # Query layer
-│   ├── traversal.py             # Click/wait traversal
-│   └── surface.py               # Surfacing algorithm
-│
-├── infrastructure/
-│   ├── orchestration/
-│   │   ├── __init__.py          # Exports Orchestrator
-│   │   ├── orchestrator.py      # Main coordinator
-│   │   ├── narrator.py          # Claude CLI caller
-│   │   └── world_runner.py      # Background world
-│   │
-│   ├── api/
-│   │   ├── __init__.py          # Exports FastAPI app
-│   │   ├── app.py               # FastAPI entry
-│   │   ├── moments.py           # Moments endpoints
-│   │   └── playthroughs.py      # Playthrough endpoints
-│   │
-│   ├── history/
-│   │   ├── __init__.py
-│   │   ├── conversations.py     # Conversation history
-│   │   └── service.py           # History service
-│   │
-│   ├── memory/
-│   │   ├── __init__.py
-│   │   └── moment_processor.py  # Moment processing
-│   │
-│   └── embeddings/
-│       ├── __init__.py
-│       └── service.py           # Embeddings service
-│
-├── models/
-│   ├── __init__.py              # Exports all models
-│   ├── base.py                  # Base model class
-│   ├── nodes.py                 # Moment, Narrative, etc.
-│   ├── links.py                 # Link types
-│   └── tensions.py              # Tension detection (computed, not stored)
-│
-└── tests/
-    ├── test_moment_graph.py     # Moment graph tests
-    ├── test_e2e_moment_graph.py # E2E moment graph tests
-    ├── test_implementation.py   # Behavior tests
-    ├── test_behaviors.py        # Physics tests
-    ├── test_moment.py           # Moment tests
-    ├── test_moment_standalone.py # Standalone moment tests
-    ├── test_moment_lifecycle.py # Lifecycle tests
-    ├── test_models.py           # Model tests
-    ├── test_history.py          # History tests
-    ├── test_moments_api.py      # API tests
-    ├── test_narrator_integration.py # Narrator tests
-    ├── test_integration_scenarios.py # Integration tests
-    └── test_spec_consistency.py # Spec consistency tests
++-- physics/
+|   +-- __init__                 # Exports GraphTick, TickResult
+|   +-- tick                     # Physics tick loop (v1 exists, v2 WIP)
+|   +-- constants                # Energy/decay constants
+|   \-- graph/                   # Graph database operations
+|       +-- __init__
+|       +-- graph_queries        # Read operations (892 lines)
+|       +-- graph_ops            # Write operations (1611 lines)
+|       +-- graph_ops_apply      # Apply mixin (697 lines)
+|       +-- graph_queries_moments    # Moment-specific queries
+|       +-- graph_queries_search     # Search/cluster queries (285 lines)
+|       +-- graph_ops_moments        # Moment-specific ops
+|       \-- graph_query_utils        # Query utilities
+|
++-- moment_graph/
+|   +-- __init__                 # Exports MomentGraph facade
+|   +-- queries                  # Query layer
+|   +-- traversal                # Click/wait traversal
+|   \-- surface                  # Surfacing algorithm
+|
++-- infrastructure/
+|   +-- orchestration/
+|   |   +-- __init__             # Exports Orchestrator
+|   |   +-- orchestrator         # Main coordinator
+|   |   +-- narrator             # Claude CLI caller
+|   |   \-- world_runner         # Background world
+|   |
+|   +-- api/
+|   |   +-- __init__             # Exports FastAPI app
+|   |   +-- app                  # FastAPI entry
+|   |   +-- moments              # Moments endpoints
+|   |   \-- playthroughs         # Playthrough endpoints
+|   |
+|   +-- history/
+|   |   +-- __init__
+|   |   +-- conversations        # Conversation history
+|   |   \-- service              # History service
+|   |
+|   +-- memory/
+|   |   +-- __init__
+|   |   \-- moment_processor     # Moment processing
+|   |
+|   \-- embeddings/
+|       +-- __init__
+|       \-- service              # Embeddings service
+|
++-- models/
+|   +-- __init__                 # Exports all models
+|   +-- base                     # Base model class
+|   +-- nodes                    # Moment, Narrative, etc.
+|   +-- links                    # Link types
+|   \-- tensions                 # Tension detection (computed, not stored)
+|
+\-- tests/
+    +-- test_moment_graph        # Moment graph tests
+    +-- test_e2e_moment_graph    # E2E moment graph tests
+    +-- test_implementation      # Behavior tests
+    +-- test_behaviors           # Physics tests
+    +-- test_moment              # Moment tests
+    +-- test_moment_standalone   # Standalone moment tests
+    +-- test_moment_lifecycle    # Lifecycle tests
+    +-- test_models              # Model tests
+    +-- test_history             # History tests
+    +-- test_moments_api         # API tests
+    +-- test_narrator_integration    # Narrator tests
+    +-- test_integration_scenarios   # Integration tests
+    \-- test_spec_consistency    # Spec consistency tests
+
+All Python files use .py extension.
 ```
 
 ### Planned Modules (Not Yet Implemented)
@@ -340,9 +342,9 @@ moment.weight
 ```
 
 **Data transformation:**
-- Input: `moment.weight` — float 0.0-1.0
-- Check: `weight >= 0.8` — deterministic threshold
-- Output: `List[FlipInfo]` — character_id, moment_id, weight
+- Input: moment weight — float 0.0-1.0
+- Check: weight >= 0.8 — deterministic threshold
+- Output: List[FlipInfo] — character_id, moment_id, weight
 
 ### LC2: Energy Injection
 
@@ -506,13 +508,13 @@ speed.mode:
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `DECAY_RATE` | `engine/physics/constants.py` | `0.02` | Base decay per tick |
-| `FLIP_THRESHOLD` | `engine/physics/constants.py` | `0.8` | Weight at which moment flips |
-| `PUMP_RATE` | `engine/physics/constants.py` | `0.1` | Character energy → narratives per tick |
-| `TENSION_DRAW` | `engine/physics/constants.py` | `0.2` | How much tension pulls from participants |
-| `ACTUALIZATION_COST` | `engine/physics/constants.py` | `0.5` | Energy cost per moment flip |
-| `MIN_TICK_MINUTES` | `engine/physics/constants.py` | `5` | Minimum elapsed time for tick |
-| `HANDLER_TIMEOUT` | Planned: `engine/handlers/base.py` | `30s` | Max time for handler response (not yet implemented) |
+| `DECAY_RATE` | `engine/physics/constants.py` | 0.02 | Base decay per tick |
+| `FLIP_THRESHOLD` | `engine/physics/constants.py` | 0.8 | Weight at which moment flips |
+| `PUMP_RATE` | `engine/physics/constants.py` | 0.1 | Character energy → narratives per tick |
+| `TENSION_DRAW` | `engine/physics/constants.py` | 0.2 | How much tension pulls from participants |
+| `ACTUALIZATION_COST` | `engine/physics/constants.py` | 0.5 | Energy cost per moment flip |
+| `MIN_TICK_MINUTES` | `engine/physics/constants.py` | 5 | Minimum elapsed time for tick |
+| `HANDLER_TIMEOUT` | Planned: engine/handlers/base (not yet created) | 30s | Max time for handler response (not yet implemented) |
 
 ---
 
@@ -642,7 +644,7 @@ Place:
     details: ["merchants hawking", "Norman soldiers watching", "mud underfoot"]
 ```
 
-Narrator uses `place.atmosphere` for color. Not stored in scene — queried from place.
+Narrator uses the place atmosphere property for color. Not stored in scene — queried from place.
 
 ### Character Location State
 
