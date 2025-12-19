@@ -18,6 +18,10 @@ aligning `engine/moments/__init__.py` DOCS references. Ran `ngram validate`;
 failures remain in pre-existing schema/tempo/world-builder docs.
 
 Mapped `engine/physics/graph/**` to `docs/physics/graph/` in `modules.yaml` and
+linked `engine/physics/graph/graph_ops.py` to the graph docs via a DOCS
+reference.
+
+Mapped `engine/physics/graph/**` to `docs/physics/graph/` in `modules.yaml` and
 linked `engine/physics/graph/graph_ops.py` to the graph documentation via a
 DOCS reference.
 
