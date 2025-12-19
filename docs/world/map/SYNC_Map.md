@@ -116,9 +116,10 @@ Player-specific knowledge tracking:
 ### 2025-12-19: Consolidated frontend map patterns
 
 - **What:** Merged the frontend map view PATTERNS docs into the parchment map
-  doc and removed the duplicate file.
+  doc, expanded the visibility/read-only details, and removed the duplicate
+  file.
 - **Why:** Keep a single canonical PATTERNS doc for the frontend map view.
-- **Files:** `docs/frontend/map/PATTERNS_Parchment_Map_View.md`
+- **Files:** `docs/frontend/map/PATTERNS_Parchment_Map_View.md`, `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
 
 ### 2025-12-19: Consolidated map SYNC documentation
 

@@ -29,7 +29,7 @@ provide spatial context for travel or regional relationships.
 
 Render an atmospheric parchment map on a canvas with layered terrain, routes,
 places, and fog of war. Use visibility levels to control what is revealed and
-provide hover/select affordances for place detail.
+provide hover/select affordances for place detail without mutating game state.
 
 ---
 
@@ -43,12 +43,13 @@ for dense route and place overlays.
 ### Principle 2: Visibility Drives Revelation
 
 All routes and places flow through visibility state so the map respects
-discovery progression.
+discovery progression, using partial fog cutouts and muted colors instead of
+full disclosure.
 
-### Principle 3: Detail On Demand
+### Principle 3: Read-Only Interaction
 
-Place detail appears on hover/selection so the map stays readable while still
-supporting exploration.
+Hover and selection provide context without triggering travel or state updates,
+keeping the map focused on exploration.
 
 ---
 
@@ -65,6 +66,7 @@ supporting exploration.
 ## WHAT THIS DOES NOT SOLVE
 
 - Live travel or backend-driven state updates.
+- Persisting player travel decisions from the map itself.
 - Editing map data from the UI.
 - Mobile-first interaction or pinch/zoom controls.
 
@@ -75,3 +77,4 @@ supporting exploration.
 - [ ] Replace sample data with backend-provided map state.
 - [ ] Wire travel actions into the real playthrough flow.
 - [ ] Decide how map zoom/pan should behave for large regions.
+- [ ] Confirm visibility radius tuning for rumored vs known places.
