@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # DOCS: docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md
 # DOCS: docs/infrastructure/image-generation/PATTERNS_Image_Generation.md
+# DOCS: docs/infrastructure/image-generation/IMPLEMENTATION_Image_Generation.md
 """
 Image generation tool using Ideogram 3.0 API.
 

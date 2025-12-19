@@ -4,6 +4,18 @@ Guide for generating consistent, accurate images using Ideogram 3.0.
 
 ---
 
+## CHAIN
+
+```
+THIS:           PATTERNS_Image_Generation.md (you are here)
+BEHAVIORS:      ./BEHAVIORS_Image_Generation.md
+ALGORITHM:      ./ALGORITHM_Image_Generation.md
+VALIDATION:     ./VALIDATION_Image_Generation.md
+IMPLEMENTATION: ./IMPLEMENTATION_Image_Generation.md
+TEST:           ./TEST_Image_Generation.md
+SYNC:           ./SYNC_Image_Generation.md
+```
+
 ## Core Principles
 
 ### Natural Language Only

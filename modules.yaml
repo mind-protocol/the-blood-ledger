@@ -136,6 +136,22 @@ modules:
     notes: |
       Moment processing and transcript persistence for playthroughs.
 
+  history:
+    code: "engine/infrastructure/history/**"
+    docs: "docs/infrastructure/history/"
+    tests: "engine/tests/test_history.py"
+    maturity: CANONICAL
+    owner: agent
+    entry_points:
+      - engine/infrastructure/history/service.py
+      - engine/infrastructure/history/conversations.py
+    patterns:
+      - "Narratives + beliefs over centralized event logs"
+      - "Conversation threads stored as markdown sections"
+    notes: |
+      Distributed history service for querying and recording memories.
+      Provides HistoryService and ConversationThread APIs.
+
   image-generation:
     code: "tools/image_generation/**"
     docs: "docs/infrastructure/image-generation/"
@@ -221,6 +237,7 @@ modules:
     entry_points:
       - frontend/app/page.tsx
       - frontend/components/GameClient.tsx
+      - frontend/components/voices/Voices.tsx
     patterns:
       - "Next.js app router"
       - "Backend-owned game state"

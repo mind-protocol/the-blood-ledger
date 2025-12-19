@@ -4,6 +4,18 @@
 
 **STATUS: DESIGNING**
 
+## CHAIN
+
+```
+PATTERNS:       ./PATTERNS_Image_Generation.md
+BEHAVIORS:      ./BEHAVIORS_Image_Generation.md
+ALGORITHM:      ./ALGORITHM_Image_Generation.md
+VALIDATION:     ./VALIDATION_Image_Generation.md
+IMPLEMENTATION: ./IMPLEMENTATION_Image_Generation.md
+TEST:           ./TEST_Image_Generation.md
+THIS:           SYNC_Image_Generation.md (you are here)
+```
+
 ## What's Canonical (v2)
 
 - Ideogram 3.0 API integration via `tools/image_generation/generate_image.py`
@@ -75,6 +87,12 @@ Update this table when tasks complete or reprioritized.
 
 ---
 
+## Recent Changes
+
+- Added IMPLEMENTATION doc and linked CHAIN references for image-generation.
+
+---
+
 ## Last Updated
 
-2024-12-17 — Documented next tasks toward automation.
+2025-12-19 — Added implementation documentation and chain links.

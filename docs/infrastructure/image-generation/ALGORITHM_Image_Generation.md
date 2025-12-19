@@ -14,6 +14,7 @@ PATTERNS:    ./PATTERNS_Image_Generation.md
 BEHAVIORS:   ./BEHAVIORS_Image_Generation.md
 THIS:        ALGORITHM_Image_Generation.md (you are here)
 VALIDATION:  ./VALIDATION_Image_Generation.md
+IMPLEMENTATION: ./IMPLEMENTATION_Image_Generation.md
 TEST:        ./TEST_Image_Generation.md
 SYNC:        ./SYNC_Image_Generation.md
 ```
