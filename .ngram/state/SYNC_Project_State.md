@@ -9,6 +9,11 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/infrastructure/scene-memory/VALIDATION_Scene_Memory.md` with the
+missing validation template sections (properties, error conditions, test
+coverage, verification procedure, gaps/questions) and logged the update in
+`docs/infrastructure/scene-memory/SYNC_Scene_Memory.md` for repair #16.
+
 Expanded the LOGIC CHAINS and CONCURRENCY MODEL sections in
 `docs/infrastructure/scene-memory/IMPLEMENTATION_Scene_Memory.md` to document
 ordered persistence and single-playthrough serialization for repair #16. Ran
