@@ -11,7 +11,9 @@ UPDATED_BY: Codex (repair agent)
 
 Verified `engine/models/base.py` GameTimestamp comparison helpers for the
 INCOMPLETE_IMPL repair and attempted `pytest engine/tests/test_models.py`; the
-run failed due to missing `pytest_xprocess` in the environment.
+run failed due to missing `pytest_xprocess` in the environment. Ran
+`ngram validate`; failures remain in pre-existing schema/tempo/world-builder
+documentation gaps and broken CHAIN links.
 
 Verified `engine/models/base.py` comparison helpers (`__str__`, `__le__`, `__gt__`) for the current incomplete-impl repair; implementations already present and logged in `docs/schema/models/SYNC_Schema_Models.md`.
 Ran `ngram validate`; failures remain in pre-existing schema/tempo/world-builder doc gaps and broken CHAIN links in `docs/schema/SCHEMA_Moments.md`.

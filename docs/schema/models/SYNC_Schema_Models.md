@@ -34,6 +34,21 @@ by responsibility (base enums, nodes, links, tensions) and re-exported from
 
 ## RECENT CHANGES
 
+### 2025-12-19: Revalidated link helper implementations (repair 05, current run)
+
+- **What:** Confirmed `belief_intensity`, `is_present`, `has_item`, and `is_here` in `engine/models/links.py` remain implemented; no code changes made.
+- **Why:** Current INCOMPLETE_IMPL repair run required validation of the link helper properties.
+- **Files:** `engine/models/links.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Struggles/Insights:** Repair task remains stale; verification only.
+
+### 2025-12-19: Verified GameTimestamp helpers with test attempt (current run)
+
+- **What:** Confirmed `GameTimestamp.__str__`, `__le__`, and `__gt__` are implemented in `engine/models/base.py`; attempted `pytest engine/tests/test_models.py`.
+- **Why:** Current INCOMPLETE_IMPL repair requires evidence for comparison helpers.
+- **Files:** `engine/models/base.py`, `docs/schema/models/SYNC_Schema_Models.md`.
+- **Test:** `pytest engine/tests/test_models.py` (failed: missing `pytest_xprocess` dependency).
+- **Struggles/Insights:** Test dependency missing in environment; helper implementations still present.
+
 ### 2025-12-19: Verified GameTimestamp helper implementations (repair 04)
 
 - **What:** Confirmed `GameTimestamp.__str__`, `__le__`, and `__gt__` are implemented in `engine/models/base.py`; no code changes required.
@@ -174,6 +189,8 @@ pytest engine/tests/test_models.py
 - Revalidated link helper implementations in `engine/models/links.py`; no changes required.
 - Revalidated node helper implementations in `engine/models/nodes.py`; no changes required.
 - Confirmed the current repair run for `engine/models/base.py` remains a verification-only update; no code changes needed.
+- Attempted `pytest engine/tests/test_models.py`; missing `pytest_xprocess` prevented the test run.
+- Reconfirmed link helper properties for the current repair run; no code changes required.
 
 ### Suggestions
 - [ ] Consider adding explicit tests for `GameTimestamp` ordering in `engine/tests/test_models.py`.
