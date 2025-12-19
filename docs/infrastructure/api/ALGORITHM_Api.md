@@ -93,6 +93,7 @@ with frontend hooks that call playthrough and view endpoints.
 ### Overview
 
 End-to-end flow when a player creates a new playthrough, from frontend form submission through graph initialization to first scene render.
+This section supersedes the deprecated `ALGORITHM_Playthrough_Creation.md` alias.
 
 ### Data Structures
 

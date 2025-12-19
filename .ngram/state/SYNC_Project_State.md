@@ -14,6 +14,8 @@ Restored the legacy API playthrough algorithm alias in
 sections and a deprecation notice pointing to the canonical API algorithm doc,
 then updated `docs/infrastructure/api/SYNC_Api.md` with the change and the
 conflict decision for repair #16.
+Added an explicit supersession note in `docs/infrastructure/api/ALGORITHM_Api.md`
+to direct readers to the canonical algorithm location for playthrough creation.
 
 Expanded `docs/infrastructure/api/IMPLEMENTATION_Api.md` with the missing
 implementation template sections (code structure, design patterns, schema,

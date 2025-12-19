@@ -41,6 +41,33 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-19: Expand API test template coverage (repair 16)
+
+- **What:** Added missing test template sections (strategy, unit/integration
+  coverage, edge cases, run guidance, coverage, gaps, flaky tracking) in
+  `TEST_Api.md`.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the API test document by restoring
+  required sections with manual-first guidance.
+- **Files:**
+  - `docs/infrastructure/api/TEST_Api.md`
+
+### 2025-12-19: Clarify canonical playthrough algorithm location (repair 16)
+
+- **What:** Noted in `ALGORITHM_Api.md` that it supersedes the deprecated playthrough algorithm alias.
+- **Why:** Keep the canonical location explicit now that the legacy alias exists for backward references.
+- **Files:**
+  - `docs/infrastructure/api/ALGORITHM_Api.md`
+
+### 2025-12-19: Clean API PATTERNS duplication (repair 16)
+
+- **What:** Removed the duplicate template block in `PATTERNS_Api.md` and
+  replaced non-ASCII scope arrows with ASCII `->`.
+- **Why:** Keep one authoritative pattern template while matching ASCII-first
+  documentation constraints.
+- **Files:**
+  - `docs/infrastructure/api/PATTERNS_Api.md`
+  - `docs/infrastructure/api/SYNC_Api.md`
+
 ### 2025-12-19: Restore legacy playthrough algorithm alias (repair 16)
 
 - **What:** Added `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`
