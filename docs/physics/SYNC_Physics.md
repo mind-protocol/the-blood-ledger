@@ -38,9 +38,10 @@ are captured in TODO so the scope stays explicit.
 
 ### 2025-12-19: Filled validation template sections
 
-- **What:** Added missing validation template sections (properties, error
-  conditions, test coverage) to `docs/physics/VALIDATION_Physics.md` and
-  ensured the guidance aligns with the existing verification checklist.
+- **What:** Expanded validation sections (invariants, properties, error
+  conditions, test coverage, verification procedure, sync status) in
+  `docs/physics/VALIDATION_Physics.md` to meet template guidance and add
+  clearer verification notes.
 - **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics validation doc.
 - **Files:** `docs/physics/VALIDATION_Physics.md`
 
@@ -259,6 +260,7 @@ For next session:
 - `ngram validate` still reports pre-existing doc gaps and broken CHAIN links (schema/tempo/world-builder).
 - Filled the missing algorithm template sections in `docs/physics/ALGORITHM_Physics.md` for repair #16.
 - Expanded `docs/physics/VALIDATION_Physics.md` to include all required validation template sections for repair #16.
+- Refined validation guidance notes (invariants/procedure/sync status) for repair #16.
 - Expanded `docs/physics/PATTERNS_Physics.md` with the missing template sections for repair #16.
 - Reverified `docs/physics/PATTERNS_Physics.md` template coverage for repair #16.
 - Logged the physics patterns template update in RECENT CHANGES for this repair.

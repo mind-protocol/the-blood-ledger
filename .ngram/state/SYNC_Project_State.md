@@ -9,6 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Expanded `docs/physics/VALIDATION_Physics.md` validation guidance (invariants,
+properties, error conditions, test coverage, verification procedure, sync
+status) and logged the update in `docs/physics/SYNC_Physics.md` for repair #16.
+
 Expanded `docs/physics/graph/PATTERNS_Graph.md` with the missing template
 sections (chain, problem, pattern, principles, dependencies, inspirations,
 scope, gaps) for repair #16 and recorded the change in
