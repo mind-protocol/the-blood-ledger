@@ -9,7 +9,7 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
-Linked `frontend/lib/api.ts` and `frontend/lib/map/*` utilities to the frontend documentation chain with DOCS references and updated frontend/map SYNC notes.
+Linked `frontend/lib/api.ts` and `frontend/lib/map/*` utilities to the frontend documentation chain with DOCS references and updated frontend/map SYNC notes. Ran `ngram validate`; remaining failures are pre-existing in `docs/schema/`, `docs/infrastructure/tempo/`, and `docs/infrastructure/world-builder/`.
 
 Documented the frontend scenario selection module with new docs, a modules.yaml mapping, and a DOCS reference in `frontend/app/scenarios/page.tsx`.
 Added `frontend/app/start/page.tsx` as an explicit frontend entry point in `modules.yaml` to map the start screen to the frontend docs.

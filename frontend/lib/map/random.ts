@@ -1,3 +1,4 @@
+// DOCS: docs/frontend/map/PATTERNS_Interactive_Travel_Map.md
 /**
  * Seeded random utilities for consistent "hand-drawn" appearance
  */

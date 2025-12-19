@@ -62,6 +62,13 @@ The frontend is a functional Next.js 16 application with React 19. It serves as 
 
 ## RECENT CHANGES
 
+### 2025-12-19: Link frontend API client to documentation chain
+
+- **What:** Added a DOCS reference in `frontend/lib/api.ts`.
+- **Why:** Ensure the API client is discoverable via `ngram context`.
+- **Files:** `frontend/lib/api.ts`
+- **Struggles/Insights:** None.
+
 ### 2025-12-19: Link frontend types to documentation chain
 
 - **What:** Added DOCS references in `frontend/types/game.ts`, `frontend/types/map.ts`, and `frontend/types/moment.ts` plus a `modules.yaml` mapping for `frontend/types/**`.
