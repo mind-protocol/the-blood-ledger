@@ -9,7 +9,10 @@ UPDATED_BY: Codex (repair agent)
 
 ## CURRENT STATE
 
+Rechecked `engine/infrastructure/memory/moment_processor.py` helper implementations for the current repair run; no code changes required and logged the verification in `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
+
 Logged the repair 03-INCOMPLETE_IMPL-world_builder-world_builder revalidation in `docs/infrastructure/world-builder/SYNC_World_Builder.md`; no code changes required.
+Revalidated repair 01-INCOMPLETE_IMPL-history-conversations conversation helpers; no code changes required (logged in `docs/infrastructure/history/SYNC_History.md`).
 
 Logged the 04-INCOMPLETE_IMPL-models-base repair verification for `engine/models/base.py` comparison helpers in `docs/schema/models/SYNC_Schema_Models.md`; no code changes required.
 
@@ -285,6 +288,7 @@ existing `modules.yaml` entry.
 
 Verified repair 57-UNDOCUMENTED-infrastructure-history is already resolved; history docs and module mapping already exist and are recorded in `docs/infrastructure/history/SYNC_History.md`.
 Repaired broken link references in `docs/agents/world-runner/IMPLEMENTATION_World_Runner_Service_Architecture.md` and logged the update in `docs/agents/world-runner/SYNC_World_Runner.md`.
+Rechecked `engine/graph/health/check_health.py` for the current incomplete-impl repair; implementations are present and logged in `docs/schema/graph-health/SYNC_Graph_Health.md`.
 
 ---
 
