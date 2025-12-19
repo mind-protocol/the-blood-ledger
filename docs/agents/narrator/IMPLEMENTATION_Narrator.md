@@ -39,7 +39,7 @@ engine/physics/graph/graph_ops.py         # Write operations (mutations)
 engine/physics/graph/graph_queries.py     # Read operations (queries)
 ```
 
-The prompt builder lives in `engine/infrastructure/orchestration/narrator.py` (`_build_prompt`); there is no standalone prompt module.
+The prompt builder lives in `engine/infrastructure/orchestration/narrator.py` (method _build_prompt); there is no standalone prompt module.
 
 ### File Responsibilities
 
@@ -48,7 +48,7 @@ The prompt builder lives in `engine/infrastructure/orchestration/narrator.py` (`
 | `agents/narrator/CLAUDE.md` | AI agent instructions and behavior rules | ~878 | OK |
 | `tools/stream_dialogue.py` | Stream dialogue chunks via SSE | ~200 | OK |
 | `engine/infrastructure/orchestration/agent_cli.py` | Agent CLI command builder + parsing helpers | ~140 | OK |
-| `engine/infrastructure/orchestration/narrator.py` | Narrator caller + prompt builder (`_build_prompt`) | ~150 | OK |
+| `engine/infrastructure/orchestration/narrator.py` | Narrator caller + prompt builder (method _build_prompt) | ~150 | OK |
 
 **Size Thresholds:**
 - **OK** (<400 lines): Healthy size
@@ -79,7 +79,7 @@ Traditional code can't provide the creative generation needed. An LLM agent with
 |---------|------------|---------|
 | Tool Use | `tools/stream_dialogue.py`, `engine/physics/graph/graph_ops.py` | Narrator interacts with world via tool calls |
 | SSE Streaming | `engine/infrastructure/orchestration/narrator.py` → frontend | Real-time dialogue display |
-| Prompt Engineering | `engine/infrastructure/orchestration/narrator.py` (`_build_prompt`) | Structured context for consistent behavior |
+| Prompt Engineering | `engine/infrastructure/orchestration/narrator.py` (method _build_prompt) | Structured context for consistent behavior |
 | Persistent Session | `--continue` flag | Narrator remembers entire playthrough |
 
 ### Anti-Patterns to Avoid
@@ -103,7 +103,7 @@ Traditional code can't provide the creative generation needed. An LLM agent with
 
 | Entry Point | File | Triggered By |
 |-------------|------|--------------|
-| Narrator invocation | `engine/infrastructure/orchestration/narrator.py` (NarratorService generate) | Orchestrator on player action |
+| Narrator invocation | `engine/infrastructure/orchestration/narrator.py` (NarratorService.generate method) | Orchestrator on player action |
 | Streaming dialogue | `tools/stream_dialogue.py` | Narrator tool call |
 | Graph query | `engine/physics/graph/graph_queries.py` (search) | Narrator tool call |
 | Mutation apply | `engine/physics/graph/graph_ops.py` (apply) | Narrator tool call |

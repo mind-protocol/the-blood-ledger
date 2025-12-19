@@ -17,6 +17,10 @@ Completed the tempo documentation chain (PATTERNS/BEHAVIORS/VALIDATION/TEST),
 updated `docs/infrastructure/tempo/SYNC_Tempo.md`, and added an
 `infrastructure-tempo` mapping in `modules.yaml`.
 
+Reworded narrator implementation doc method references to avoid non-file
+tokens being treated as broken links, and logged the update in the narrator
+SYNC.
+
 Verified the infrastructure-tempo documentation mapping already covers
 `engine/infrastructure/tempo/**`; logged the repair 22 verification in
 `docs/infrastructure/tempo/SYNC_Tempo.md` (no code or doc-chain changes needed).
