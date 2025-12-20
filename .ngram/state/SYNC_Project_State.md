@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Graph Mutation Listener Repair Verification
+
+- **What:** Confirmed `add_mutation_listener` and `remove_mutation_listener` in `engine/physics/graph/graph_ops_events.py` are already implemented; documented the stale repair report as a resolved conflict.
+- **Why:** Repair issue #16 flagged these helpers as incomplete.
+- **Impact:** No code changes; graph SYNC now records the conflict resolution.
+
 ### 2025-12-20: Moment graph traversal helpers verification
 
 - **What:** Verified `make_dormant` and `process_wait_triggers` in
