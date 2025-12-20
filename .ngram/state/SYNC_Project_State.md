@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Link Helper Accessors Verified
+
+- **What:** Verified `engine/models/links.py` helpers (`belief_intensity`, `is_present`, `has_item`, `is_here`) already have implementations; no code changes required for issue #16.
+- **Why:** Repair task flagged empty implementations that are already complete.
+- **Impact:** Documentation-only update in models SYNC; functionality unchanged.
+
 ### 2025-12-20: Models Base Verification
 
 - **What:** Verified `engine/models/base.py` already implements `GameTimestamp.__str__`, `__le__`, and `__gt__`; logged the verification in `docs/engine/models/SYNC_Models.md`.

@@ -19,6 +19,12 @@ The `engine/models/` module provides the core data structures for the game. All 
 
 ## RECENT CHANGES
 
+### 2025-12-20: Link Helper Accessors Verified
+
+- **What:** Verified `belief_intensity`, `is_present`, `has_item`, and `is_here` in `engine/models/links.py` already have concrete implementations; no code changes required for issue #16.
+- **Why:** Repair task flagged these accessors as incomplete.
+- **Impact:** No functional changes; logged verification to prevent repeat flags.
+
 ### 2025-12-20: Base Timestamp Comparators Verified
 
 - **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` in `engine/models/base.py` are fully implemented; no code changes required for issue #16.
@@ -67,6 +73,7 @@ Confidence in the model definitions themselves is high, as Pydantic handles much
 
 ### Remarks
 - Base timestamp helper methods are already implemented; repair was verification-only.
+- Link helper accessors are already implemented; repair was verification-only.
 
 ### Suggestions
 - [ ] None.
