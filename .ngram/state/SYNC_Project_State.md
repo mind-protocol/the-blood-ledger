@@ -30,6 +30,18 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Chronicle validation consolidation
+
+- **What:** Merged the Chronicle metrics/success validation into `docs/product/chronicle-system/VALIDATION_Chronicle_Invariants.md` and replaced the duplicate metrics doc with a reference.
+- **Why:** Remove duplicate VALIDATION docs in the chronicle-system folder.
+- **Impact:** Single canonical validation doc; metrics doc now points to it.
+
+### 2025-12-20: Scene id deprecation cleanup
+
+- **What:** Scene transforms now use `placeId` as the scene id and fallback uses `place_camp`.
+- **Why:** Scene ids are deprecated; moment fetches require place ids.
+- **Impact:** Frontend location lookups stay consistent.
+
 ### 2025-12-20: Frontend map PATTERNS duplication check
 
 - **What:** Confirmed the duplicate frontend map PATTERNS document was already removed (repair 19); updated the map view SYNC to reflect the single canonical pattern doc.
@@ -45,6 +57,12 @@ false-positive escalation detection.
   map rendering algorithm docs.
 - **Why:** Eliminate duplicate ALGORITHM documentation in the map folder.
 - **Impact:** Single authoritative rendering algorithm location in map docs.
+
+### 2025-12-20: Consolidated map algorithm docs
+
+- **What:** Merged Places/Routes/Rendering algorithms into `docs/world/map/ALGORITHM_Map.md` and converted part docs into reference stubs.
+- **Why:** Remove duplicate ALGORITHM content in the map module.
+- **Impact:** Map algorithms now have a single canonical source with stubs pointing to it.
 
 ### 2025-12-20: Frontend map patterns consolidation
 

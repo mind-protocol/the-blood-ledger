@@ -10,12 +10,13 @@ The core concepts and initial implementation details of the Chronicle system are
 *   The overall design philosophy and GTM integration (`PATTERNS_Chronicle_Flywheel.md`).
 *   The observable behaviors and structure of different Chronicle types (`BEHAVIORS_Chronicle_Types_And_Structure.md`).
 *   The technical pipeline for generation, TTS, and video composition (`IMPLEMENTATION_Chronicle_Technical_Pipeline.md`).
-*   Key metrics and success criteria (`VALIDATION_Chronicle_Metrics_And_Success.md`).
+*   Validation invariants, metrics, and success criteria (`VALIDATION_Chronicle_Invariants.md`).
 
 ## Recent Changes
 
 *   Initial documentation created from `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`.
 *   Consolidated the GTM integration patterns into `PATTERNS_Chronicle_Flywheel.md` and left a reference in `PATTERNS_Chronicle_GTM_Integration.md` to avoid duplication.
+*   Consolidated validation metrics into `VALIDATION_Chronicle_Invariants.md` and left a reference in `VALIDATION_Chronicle_Metrics_And_Success.md`.
 
 ## Handoffs
 
@@ -53,5 +54,5 @@ The Blood Chronicle System presents a highly innovative and potentially disrupti
 PATTERNS:        ./PATTERNS_Chronicle_Flywheel.md
 BEHAVIORS:       ./BEHAVIORS_Chronicle_Types_And_Structure.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Chronicle_Technical_Pipeline.md
-VALIDATION:      ./VALIDATION_Chronicle_Metrics_And_Success.md
+VALIDATION:      ./VALIDATION_Chronicle_Invariants.md
 THIS:            ./SYNC_Chronicle_System.md
