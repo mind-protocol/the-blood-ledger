@@ -1,8 +1,8 @@
 # The Opening — Sync
 
 ```
-LAST_UPDATED: 2025-12-19
-UPDATED_BY: ngram repair agent
+LAST_UPDATED: 2025-12-20
+UPDATED_BY: codex
 STATUS: Scripted transcript active
 MATURITY: CANONICAL
 ```
@@ -76,6 +76,13 @@ to avoid drift warnings in the doc health checks.
 
 ## RECENT CHANGES
 
+- 2025-12-20: Updated IMPLEMENTATION_Opening.md data flow to include seed graph
+  initialization, scenario injection ordering, and opening moment creation.
+- 2025-12-20: Verified `_count_branches` and `create_scenario_playthrough`
+  in `engine/infrastructure/api/playthroughs.py` already contain real logic;
+  no code changes required for repair #16.
+- 2025-12-20: Added seed graph health indicator to HEALTH_Opening.md and
+  clarified docking/checker coverage.
 - 2025-12-19: Added clarification in ALGORITHM_Opening.md overview to explain
   how nested acknowledgments preserve question order for repair #16.
 - 2025-12-19: Filled missing PATTERNS_Opening.md template sections (problem,

@@ -79,6 +79,14 @@ false-positive escalation detection.
 - **Impact:** The escalation view remains instructional without triggering the escalation scanner.
 - **Repair run:** Confirmed during repair `03-ESCALATION-CLAUDE`; no further action needed.
 
+### 2025-12-20: Playthrough API Repair Verification
+
+- **What:** Verified `_count_branches` and `create_scenario_playthrough` in
+  `engine/infrastructure/api/playthroughs.py` already have real logic; no code
+  changes required for issue #16.
+- **Why:** Repair task flagged empty implementations that are already complete.
+- **Impact:** Documented verification in opening SYNC to prevent repeat repairs.
+
 ### 2025-12-20: Graph Health Check Helpers Verified
 
 - **What:** Verified `engine/graph/health/check_health.py` already implements health report helper methods tied to issue #16; no code edits required.
