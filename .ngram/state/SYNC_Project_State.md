@@ -36,6 +36,12 @@ false-positive escalation detection.
 - **Why:** Keep repair tracking explicit for issue #16.
 - **Impact:** Documentation-only update; functionality unchanged.
 
+### 2025-12-20: Physics tick helper verification
+
+- **What:** Verified the four energy-flow helpers in `engine/physics/tick.py` are already implemented; updated `docs/physics/SYNC_Physics.md`.
+- **Why:** Repair #16 flagged empty implementations; confirmed they are present to close the repair loop.
+- **Impact:** Documentation-only update; functionality unchanged.
+
 ### 2025-12-20: Moment graph sync conflict recorded
 
 - **What:** Added a conflict note in `docs/engine/moment-graph-engine/SYNC_Moment_Graph_Engine.md` about the missing moment graph module mapping in `modules.yaml`.
@@ -46,6 +52,12 @@ false-positive escalation detection.
 
 - **What:** Verified `SimilarNode.__str__` and `ApplyResult.success` are already implemented in `engine/physics/graph/graph_ops_types.py`.
 - **Why:** Repair task for issue #16 flagged these helpers as incomplete.
+- **Impact:** No code changes; graph SYNC updated to record verification.
+
+### 2025-12-20: Graph moment query helpers verification
+
+- **What:** Verified `get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, and `get_clickable_words` in `engine/physics/graph/graph_queries_moments.py` are already implemented.
+- **Why:** Repair task for issue #16 flagged the helpers as incomplete.
 - **Impact:** No code changes; graph SYNC updated to record verification.
 
 ### 2025-12-20: Models Base Repair Reconfirmed

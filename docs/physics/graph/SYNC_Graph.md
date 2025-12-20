@@ -87,6 +87,12 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 - Reasoning: Current implementations already match expected behavior for listener management.
 - Updated: `docs/physics/graph/SYNC_Graph.md`
 
+### DECISION: moment query helpers completeness
+- Conflict: Repair task flagged `get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, and `get_clickable_words` in `engine/physics/graph/graph_queries_moments.py` as incomplete, but all functions already implement Cypher queries and parsing logic.
+- Resolution: Treat the report as stale; no code changes required.
+- Reasoning: Existing implementations return parsed rows with expected fields and include trigger/word parsing behavior.
+- Updated: `docs/physics/graph/SYNC_Graph.md`
+
 ---
 
 ## HANDOFF: FOR AGENTS
@@ -141,6 +147,7 @@ VALIDATION: ./VALIDATION_Living_Graph.md
 ### Remarks
 - `graph_ops_types.py` already implements the previously flagged helpers; repair appears stale.
 - Energy flow algorithm documentation now matches the required template layout.
+- Moment query helpers in `engine/physics/graph/graph_queries_moments.py` are already implemented; no code changes required for issue #16.
 
 ### Suggestions
 - [ ] Add a DOCS reference in `engine/physics/graph/graph_ops_types.py` so `ngram context` resolves the graph documentation chain.

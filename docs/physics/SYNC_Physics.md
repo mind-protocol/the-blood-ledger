@@ -23,6 +23,12 @@ Physics documentation is consolidated in `docs/physics/`, the algorithm is canon
 
 ## RECENT CHANGES
 
+### 2025-12-20: Physics tick energy helpers verified
+
+- **What:** Verified `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` already contain concrete implementations.
+- **Why:** Repair #16 flagged these helpers as empty; confirmed they are implemented and align with the physics algorithm.
+- **Impact:** No code changes required; verification recorded to prevent repeat repairs.
+
 ### 2025-12-20: Ngram Framework Refactor
 
 - **What:** Refactored `IMPLEMENTATION_Physics.md` and renamed `TEST_Physics.md` to its new format (Health content).
@@ -71,7 +77,7 @@ SCHEMA:          ../schema/SCHEMA_Moments.md
 API:             ./API_Physics.md
 VALIDATION:      ./VALIDATION_Physics.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Physics.md (+ Runtime Patterns from INFRASTRUCTURE.md)
-TEST:            ./TEST_Physics.md
+HEALTH:          ./HEALTH_Physics.md
 IMPL (existing): ../../engine/physics/tick.py, ../../engine/physics/graph/
 IMPL (planned):  ../../engine/handlers/, ../../engine/canon/, ../../engine/infrastructure/orchestration/speed.py
 ```
