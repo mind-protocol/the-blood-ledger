@@ -602,7 +602,7 @@ Only `decay_rate` is safe to adjust — it's the temperature knob, not the story
 
 ## CHAIN
 
-PATTERNS: ./PATTERNS_Graph.md
-BEHAVIORS: ./BEHAVIORS_Graph.md
-ALGORITHM: ./ALGORITHM_Energy_Flow.md
-SYNC: ./SYNC_Graph.md
+PATTERNS: ../PATTERNS_Graph.md
+BEHAVIORS: ../BEHAVIORS_Graph.md
+ALGORITHM: ../../ALGORITHM_Physics.md
+SYNC: ../SYNC_Graph.md

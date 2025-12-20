@@ -11,7 +11,7 @@ TESTS:
 
 VALIDATES:
     V2: Node enums (CharacterType, PlaceType, ThingType, NarrativeType, etc.)
-    V3: Link enums (BeliefSource, PathDifficulty, PressureType)
+    V3: Link enums (BeliefSource, PathDifficulty)
 
 SEE ALSO:
     docs/engine/VALIDATION_Complete_Spec.md
@@ -255,16 +255,6 @@ class PathDifficulty(str, Enum):
 
 
 # =============================================================================
-# TENSION ENUMS
-# =============================================================================
-
-class PressureType(str, Enum):
-    GRADUAL = "gradual"
-    SCHEDULED = "scheduled"
-    HYBRID = "hybrid"
-
-
-# =============================================================================
 # MOMENT ENUMS
 # =============================================================================
 
@@ -402,13 +392,6 @@ class NarrativeVoice(BaseModel):
     """How a narrative speaks as a Voice."""
     style: NarrativeVoiceStyle = NarrativeVoiceStyle.REMIND
     phrases: List[str] = Field(default_factory=list)
-
-
-class TensionProgression(BaseModel):
-    """Timeline step for scheduled/hybrid tensions."""
-    at: str
-    pressure: Optional[float] = None
-    pressure_floor: Optional[float] = None
 
 
 # =============================================================================

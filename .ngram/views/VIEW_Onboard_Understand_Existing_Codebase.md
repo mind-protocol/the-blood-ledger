@@ -22,13 +22,16 @@ This view is about building mental models before building code.
 
 ### Quick Overview
 
-Run `ngram overview` to generate a comprehensive map:
+Run `ngram overview` to generate comprehensive maps of the project:
 - File tree with sizes
 - Bidirectional code↔docs links
 - Function definitions and section headers
 - Module dependencies
 
-Output: `docs/map.md` — scan this first to see what exists.
+Output:
+- `map.md` (project root) — scan this first to see what exists.
+- `map_{folder}.md` (e.g., `map_src.md`, `map_app.md`) — specific maps for core directories.
+- `docs/map.md` — a copy for the documentation directory.
 
 ### Start With State
 

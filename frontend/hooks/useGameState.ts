@@ -6,7 +6,7 @@ import { GameState, MapRegion, Character, LedgerEntry, ChronicleEntry, Scene, Vo
 import * as api from '@/lib/api';
 
 // Default playthrough for development
-const DEFAULT_PLAYTHROUGH = 'default';
+const DEFAULT_PLAYTHROUGH = 'beorn';
 
 // Loading messages that update as we progress
 const LOADING_STAGES = [
@@ -29,6 +29,8 @@ interface UseGameStateResult {
   clickWord: (word: string, path?: string[]) => Promise<void>;
 }
 
+type CurrentViewWithActiveMoments = api.CurrentView & { active_moments?: api.Moment[] };
+
 export function useGameState(playthroughId: string = DEFAULT_PLAYTHROUGH): UseGameStateResult {
   const [gameState, setGameState] = useState<GameState | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,10 +39,14 @@ export function useGameState(playthroughId: string = DEFAULT_PLAYTHROUGH): UseGa
   const [isConnected, setIsConnected] = useState(false);
   const [needsOpening, setNeedsOpening] = useState(false);
 
-  const fetchGameState = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
-    setLoadingMessage(LOADING_STAGES[0]);
+  const fetchGameState = useCallback(
+    async (options: { showLoading?: boolean } = {}) => {
+      const showLoading = options.showLoading ?? true;
+      if (showLoading) {
+        setIsLoading(true);
+        setLoadingMessage(LOADING_STAGES[0]);
+      }
+      setError(null);
 
     try {
       // Check backend health
@@ -70,9 +76,8 @@ export function useGameState(playthroughId: string = DEFAULT_PLAYTHROUGH): UseGa
       let voices: Voice[] = [];
       let sceneTree: SceneTree | undefined;
 
-      const view = await api.getCurrentView(playthroughId);
-      // Backend returns active_moments, frontend type says moments - handle both
-      const moments = (view as any)?.active_moments || view?.moments || [];
+      const view = (await api.getCurrentView(playthroughId)) as CurrentViewWithActiveMoments | null;
+      const moments = view ? (view.active_moments ?? view.moments ?? []) : [];
       if (view && moments.length > 0) {
         // Normalize view to always have moments field
         const normalizedView = { ...view, moments } as api.CurrentView;
@@ -167,9 +172,13 @@ export function useGameState(playthroughId: string = DEFAULT_PLAYTHROUGH): UseGa
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load game state');
     } finally {
-      setIsLoading(false);
+      if (showLoading) {
+        setIsLoading(false);
+      }
     }
-  }, [playthroughId]);
+    },
+    [playthroughId]
+  );
 
   const sendAction = useCallback(async (action: string) => {
     setLoadingMessage("The world responds...");
@@ -193,7 +202,7 @@ export function useGameState(playthroughId: string = DEFAULT_PLAYTHROUGH): UseGa
 
   // SSE subscription for real-time moment updates
   useEffect(() => {
-    if (!playthroughId || playthroughId === DEFAULT_PLAYTHROUGH) return;
+    if (!playthroughId) return;
 
     console.log('[SSE] Subscribing to moment stream for', playthroughId);
 
@@ -201,16 +210,16 @@ export function useGameState(playthroughId: string = DEFAULT_PLAYTHROUGH): UseGa
       onMomentActivated: (data) => {
         console.log('[SSE] Moment activated:', data.moment_id);
         // Refresh to get full moment data
-        fetchGameState();
+        fetchGameState({ showLoading: false });
       },
       onMomentSpoken: (data) => {
         console.log('[SSE] Moment spoken:', data.moment_id);
         // Update moment status in local state if needed
-        fetchGameState();
+        fetchGameState({ showLoading: false });
       },
       onMomentDecayed: (data) => {
         console.log('[SSE] Moment decayed:', data.moment_id);
-        fetchGameState();
+        fetchGameState({ showLoading: false });
       },
       onWeightUpdated: (data) => {
         console.log('[SSE] Weight updated:', data.moment_id, data.weight);
@@ -218,7 +227,7 @@ export function useGameState(playthroughId: string = DEFAULT_PLAYTHROUGH): UseGa
       },
       onClickTraversed: (data) => {
         console.log('[SSE] Click traversed:', data.word, data.from_moment_id, '->', data.to_moment_id);
-        fetchGameState();
+        fetchGameState({ showLoading: false });
       },
       onError: (error) => {
         console.warn('[SSE] Stream error (will reconnect):', error);
@@ -290,9 +299,11 @@ function transformScene(s: Record<string, unknown>): Scene {
     ? (narration.clickables as string[]) || []
     : [];
 
+  const placeId = (location?.place as string) || undefined;
+
   return {
-    id: (s.id as string) || 'scene_generated',
-    placeId: (location?.place as string) || undefined,
+    id: placeId || (s.id as string) || 'scene_generated',
+    placeId,
     type: mapPlaceType((location?.place as string) || 'camp'),
     name: (location?.name as string) || 'THE CAMP',
     location: (location?.region as string) || 'The North',
@@ -378,7 +389,7 @@ function transformViewToScene(view: api.CurrentView): Scene {
   }
 
   return {
-    id: `scene_${location.id}`,
+    id: location.id,
     placeId: location.id,
     type: mapPlaceType(location.type),
     name: location.name.toUpperCase(),
@@ -438,7 +449,8 @@ function createFallbackScene(
   const camp = mapData.places.find(p => p['p.id'] === 'place_camp');
 
   return {
-    id: 'scene_camp',
+    id: 'place_camp',
+    placeId: 'place_camp',
     type: 'CAMP',
     name: camp?.['p.name'] || 'THE CAMP',
     location: 'The North',

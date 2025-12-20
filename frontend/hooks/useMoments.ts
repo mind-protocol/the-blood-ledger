@@ -156,8 +156,11 @@ export function useMoments({
           const moment = prev.find(m => m.id === data.moment_id);
           if (moment) {
             setSpokenMoments(s => [...s, { ...moment, status: 'spoken' }]);
+            return prev.filter(m => m.id !== data.moment_id);
           }
-          return prev.filter(m => m.id !== data.moment_id);
+          // Player-originated moments may skip "active" state; refresh view.
+          fetchMoments();
+          return prev;
         });
       },
       onWeightUpdated: (data) => {
@@ -176,7 +179,7 @@ export function useMoments({
     return () => {
       close();
     };
-  }, [autoConnect, playthroughId]);
+  }, [autoConnect, playthroughId, fetchMoments]);
 
   // Initial fetch
   useEffect(() => {

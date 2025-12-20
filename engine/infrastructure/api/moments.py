@@ -121,6 +121,9 @@ class TransitionResponse(BaseModel):
 
 class CurrentMomentsResponse(BaseModel):
     """Response for GET /moments/current."""
+    location: Optional[Dict[str, Any]] = None
+    characters: List[Dict[str, Any]] = Field(default_factory=list)
+    things: List[Dict[str, Any]] = Field(default_factory=list)
     moments: List[MomentResponse]
     transitions: List[TransitionResponse]
     active_count: int
@@ -240,6 +243,7 @@ def create_moments_router(
                     tone=m.get("tone"),
                     tick_created=m.get("tick_created", 0),
                     tick_spoken=m.get("tick_spoken"),
+                    speaker=m.get("speaker"),
                     clickable_words=list(set(clickable))
                 ))
 
@@ -256,6 +260,9 @@ def create_moments_router(
             ]
 
             return CurrentMomentsResponse(
+                location=view.get("location"),
+                characters=view.get("characters", []),
+                things=view.get("things", []),
                 moments=moments,
                 transitions=transitions,
                 active_count=view.get("active_count", 0)
@@ -359,33 +366,6 @@ def create_moments_router(
             raise HTTPException(status_code=500, detail=str(e))
 
     # =========================================================================
-    # GET SINGLE MOMENT
-    # =========================================================================
-
-    @router.get("/{playthrough_id}/{moment_id}")
-    async def get_moment(playthrough_id: str, moment_id: str):
-        """
-        Get a single moment by ID with full details.
-
-        Includes attachments, speakers, and transitions.
-        """
-        try:
-            queries = _get_queries(playthrough_id, _host, _port, _playthroughs_dir)
-            moment = queries.get_moment_by_id(moment_id)
-
-            if not moment:
-                raise HTTPException(status_code=404, detail="Moment not found")
-
-            # TODO: Add attachments, speakers, transitions
-            return moment
-
-        except HTTPException:
-            raise
-        except Exception as e:
-            logger.error(f"get_moment failed: {e}")
-            raise HTTPException(status_code=500, detail=str(e))
-
-    # =========================================================================
     # SURFACE (ADMIN/DEBUG)
     # =========================================================================
 
@@ -465,6 +445,33 @@ def create_moments_router(
                 "X-Accel-Buffering": "no",  # Disable nginx buffering
             }
         )
+
+    # =========================================================================
+    # GET SINGLE MOMENT
+    # =========================================================================
+
+    @router.get("/{playthrough_id}/{moment_id}")
+    async def get_moment(playthrough_id: str, moment_id: str):
+        """
+        Get a single moment by ID with full details.
+
+        Includes attachments, speakers, and transitions.
+        """
+        try:
+            queries = _get_queries(playthrough_id, _host, _port, _playthroughs_dir)
+            moment = queries.get_moment_by_id(moment_id)
+
+            if not moment:
+                raise HTTPException(status_code=404, detail="Moment not found")
+
+            # TODO: Add attachments, speakers, transitions
+            return moment
+
+        except HTTPException:
+            raise
+        except Exception as e:
+            logger.error(f"get_moment failed: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
 
     # Expose broadcast function for use by other modules
     router.broadcast_moment_event = broadcast_moment_event

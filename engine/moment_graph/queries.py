@@ -35,22 +35,25 @@ class MomentQueries:
         location_id: str,
         present_chars: List[str],
         present_things: List[str] = None,
-        limit: int = 20
+        limit: int = 20,
+        history_limit: int = 10
     ) -> Dict[str, Any]:
         """
-        Get all visible moments for current scene.
-
-        This is THE core query. Must be instant.
+        Get all visible moments for current scene, including history.
 
         Args:
             player_id: Player character ID
             location_id: Current place ID
             present_chars: Character IDs present
             present_things: Thing IDs present (optional)
-            limit: Max moments to return
+            limit: Max possible/active moments to return
+            history_limit: Max spoken moments to return
 
         Returns:
             {
+                "location": {id, name, type, ...},
+                "characters": [{id, name, ...}],
+                "things": [{id, name, ...}],
                 "moments": [moment dicts],
                 "transitions": [transition dicts],
                 "active_count": int
@@ -61,20 +64,37 @@ class MomentQueries:
         # Build presence set for gating
         present_set = set([player_id, location_id] + present_chars + present_things)
 
-        # Query: Get moments where all presence_required targets are present
+        # 1. Get metadata (location, characters, things)
+        location = self.read.get_place(location_id)
+        characters = [self.read.get_character(cid) for cid in present_chars]
+        characters = [c for c in characters if c]
+        things = [self.read.get_thing(tid) for tid in present_things]
+        things = [t for t in things if t]
+
+        # 2. Query: Get moments that pass presence gating
+        # Statuses: 'active', 'possible' (live), 'spoken' (history)
         cypher = """
         MATCH (m:Moment)
-        WHERE m.status IN ['possible', 'active']
+        WHERE m.status IN ['possible', 'active', 'spoken']
 
-        // Get all presence-required attachments
+        // Presence gating: Get all presence-required attachments
         OPTIONAL MATCH (m)-[r:ATTACHED_TO]->(target)
         WHERE r.presence_required = true
-
-        // Collect required targets
         WITH m, collect(target.id) AS required_targets
 
+        // Location match for spoken moments
+        OPTIONAL MATCH (m)-[:AT]->(at:Place {id: $location_id})
+        WITH m, required_targets, at
+
         // Filter: all required must be in present set (or no requirements)
-        WHERE size(required_targets) = 0 OR ALL(req IN required_targets WHERE req IN $present_set)
+        // For 'spoken' moments, ensure they are at the current location
+        WHERE (size(required_targets) = 0 OR ALL(req IN required_targets WHERE req IN $present_set))
+          AND (m.status <> 'spoken' OR at IS NOT NULL)
+
+        // Get speaker via SAID or CAN_SPEAK
+        OPTIONAL MATCH (speaker:Character)-[:CAN_SPEAK]->(m)
+        WHERE speaker.id IN $present_set
+        OPTIONAL MATCH (said_by:Character)-[:SAID]->(m)
 
         RETURN m.id AS id,
                m.text AS text,
@@ -82,21 +102,30 @@ class MomentQueries:
                m.status AS status,
                m.weight AS weight,
                m.tone AS tone,
-               required_targets
+               m.tick_spoken AS tick_spoken,
+               COALESCE(said_by.id, speaker.id) AS speaker
 
-        ORDER BY m.weight DESC
+        ORDER BY 
+            CASE m.status 
+                WHEN 'active' THEN 1 
+                WHEN 'possible' THEN 2 
+                WHEN 'spoken' THEN 3 
+                ELSE 4 
+            END,
+            m.tick_spoken DESC,
+            m.weight DESC
         LIMIT $limit
         """
 
         try:
             results = self.read.query(cypher, {
                 "present_set": list(present_set),
-                "limit": limit
+                "location_id": location_id,
+                "limit": limit + history_limit
             })
 
             moments = []
             for row in results:
-                # Handle both dict and list results from FalkorDB
                 if isinstance(row, dict):
                     moments.append({
                         'id': row.get('id'),
@@ -105,7 +134,8 @@ class MomentQueries:
                         'status': row.get('status'),
                         'weight': row.get('weight'),
                         'tone': row.get('tone'),
-                        'required_targets': row.get('required_targets', [])
+                        'tick_spoken': row.get('tick_spoken'),
+                        'speaker': row.get('speaker')
                     })
                 else:
                     moments.append({
@@ -115,17 +145,21 @@ class MomentQueries:
                         'status': row[3],
                         'weight': row[4],
                         'tone': row[5],
-                        'required_targets': row[6] if len(row) > 6 else []
+                        'tick_spoken': row[6],
+                        'speaker': row[7]
                     })
         except Exception as e:
             logger.error(f"[MomentQueries] get_current_view failed: {e}")
             moments = []
 
-        # Get transitions for active moments
+        # 3. Get transitions for active moments
         active_ids = [m['id'] for m in moments if m.get('status') == 'active']
         transitions = self._get_transitions(active_ids) if active_ids else []
 
         return {
+            "location": location,
+            "characters": characters,
+            "things": things,
             "moments": moments,
             "transitions": transitions,
             "active_count": len(active_ids)
@@ -396,33 +430,4 @@ class MomentQueries:
             return triggers
         except Exception as e:
             logger.error(f"[MomentQueries] get_wait_triggers failed: {e}")
-            return []
-
-    def get_moments_attached_to_tension(
-        self,
-        tension_id: str
-    ) -> List[Dict]:
-        """Get moments attached to a tension."""
-        cypher = """
-        MATCH (m:Moment)-[:ATTACHED_TO]->(t:Tension {id: $tension_id})
-        WHERE m.status IN ['possible', 'active']
-        RETURN m.id AS id, m.weight AS weight
-        """
-        try:
-            results = self.read.query(cypher, {"tension_id": tension_id})
-            attached = []
-            for row in results:
-                if isinstance(row, dict):
-                    attached.append({
-                        'id': row.get('id'),
-                        'weight': row.get('weight')
-                    })
-                else:
-                    attached.append({
-                        'id': row[0],
-                        'weight': row[1]
-                    })
-            return attached
-        except Exception as e:
-            logger.error(f"[MomentQueries] get_moments_attached_to_tension failed: {e}")
             return []

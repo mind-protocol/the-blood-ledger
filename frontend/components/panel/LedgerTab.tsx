@@ -44,7 +44,7 @@ export function LedgerTab({ entries }: LedgerTabProps) {
       {/* Header */}
       <div className="sticky top-0 bg-stone-900/95 border-b border-stone-700 px-3 py-2">
         <h3 className="text-sm font-bold text-amber-200">The Blood Ledger</h3>
-        <p className="text-xs text-stone-500">What's owed. What's sworn. What's blood.</p>
+        <p className="text-xs text-stone-500">What&apos;s owed. What&apos;s sworn. What&apos;s blood.</p>
       </div>
 
       {/* Content */}

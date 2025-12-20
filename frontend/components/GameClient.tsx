@@ -41,7 +41,7 @@ export function GameClient({ fallbackState, playthroughId: propPlaythroughId }: 
 
   // Show immersive loading state (also while redirecting to opening)
   if (isLoading || needsOpening) {
-    const message = loadingMessage || LOADING_MESSAGES[Math.floor(Math.random() * LOADING_MESSAGES.length)];
+    const message = loadingMessage || LOADING_MESSAGES[0];
 
     return (
       <div className="flex items-center justify-center min-h-screen bg-stone-950">

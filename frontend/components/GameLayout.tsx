@@ -46,7 +46,7 @@ export function GameLayout({ initialState: gameState, playthroughId, onAction, t
           people={people}
           onEndConversation={handleEndConversation}
           playthroughId={playthroughId || ''}
-          location={currentScene.id}
+          location={currentScene.placeId || currentScene.id}
           tick={tick}
         />
       </div>

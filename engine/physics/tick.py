@@ -304,8 +304,11 @@ class GraphTick:
         """
         Flow energy from characters to narratives they believe.
         """
-        narrative_energies: Dict[str, float] = {}
-
+        # Start with current weights of all narratives to allow decay/accumulation
+        narrative_energies: Dict[str, float] = {
+            n['id']: n.get('weight', MIN_WEIGHT) 
+            for n in self.read.get_narratives_about()
+        }
         for char_id, char_energy in char_energies.items():
             # Get character's beliefs
             beliefs = self.read.get_character_beliefs(char_id)

@@ -16,7 +16,7 @@ BEHAVIORS:       ./BEHAVIORS_Api.md
 ALGORITHM:       ./ALGORITHM_Api.md
 VALIDATION:      ./VALIDATION_Api.md
 THIS:            IMPLEMENTATION_Api.md
-TEST:            ./TEST_Api.md
+HEALTH:          ./HEALTH_Api.md
 SYNC:            ./SYNC_Api.md
 
 IMPL:            engine/infrastructure/api/app.py

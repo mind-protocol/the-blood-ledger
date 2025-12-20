@@ -79,7 +79,7 @@ export function SceneView({
                   className="text-stone-300 text-sm italic"
                   style={{ opacity: 0.5 + voice.weight * 0.5 }}
                 >
-                  "{voice.content}"
+                  &ldquo;{voice.content}&rdquo;
                 </p>
               ))}
           </div>

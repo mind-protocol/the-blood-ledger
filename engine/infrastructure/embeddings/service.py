@@ -140,8 +140,6 @@ class EmbeddingService:
             if node.get('interpretation'):
                 parts.append(f"Meaning: {node['interpretation']}")
 
-        elif node_type == 'tension':
-            parts.append(f"Tension: {node.get('description', '')}")
 
         else:
             # Generic fallback

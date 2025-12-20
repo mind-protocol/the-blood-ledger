@@ -478,6 +478,16 @@ def create_playthroughs_router(
                 initial_status="spoken"
             )
 
+            # Broadcast to SSE listeners so UI refreshes immediately.
+            try:
+                from engine.infrastructure.api.sse_broadcast import broadcast_moment_event
+                broadcast_moment_event(request.playthrough_id, "moment_spoken", {
+                    "moment_id": moment_id,
+                    "tick": current_tick
+                })
+            except Exception as exc:
+                logger.warning(f"[moment] SSE broadcast failed: {exc}")
+
             logger.info(f"[moment] Created player moment {moment_id} for {request.playthrough_id}")
 
             return {

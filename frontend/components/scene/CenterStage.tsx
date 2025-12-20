@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
+import Image from 'next/image';
 import { Scene, Hotspot } from '@/types/game';
 import { useMoments } from '@/hooks/useMoments';
 import { type Moment, sendMoment } from '@/lib/api';
@@ -150,10 +151,13 @@ function MomentBlock({ moment, onClickWord, characters = [] }: MomentBlockProps)
       <div className="flex items-start gap-3">
         <div className="w-8 h-8 rounded-full overflow-hidden border border-stone-700/50 flex-shrink-0 mt-0.5">
           {character?.imageUrl ? (
-            <img
+            <Image
               src={character.imageUrl}
               alt={moment.speaker || 'Speaker'}
+              width={64}
+              height={64}
               className="w-full h-full object-cover"
+              unoptimized
             />
           ) : (
             <div className="w-full h-full bg-stone-800 flex items-center justify-center text-sm">
@@ -195,7 +199,11 @@ function useRevealAnimation(
   const [visibleCount, setVisibleCount] = useState(0);
 
   useEffect(() => {
-    setVisibleCount(0);
+    const frame = requestAnimationFrame(() => {
+      setVisibleCount(0);
+    });
+
+    return () => cancelAnimationFrame(frame);
   }, [resetKey]);
 
   useEffect(() => {
@@ -256,6 +264,7 @@ export function CenterStage({
   const [selectedPersonId, setSelectedPersonId] = useState<string | null>(
     people.length > 0 ? people[0].id : null
   );
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const selectedPerson = people.find(p => p.id === selectedPersonId) || people[0] || null;
 
@@ -270,12 +279,15 @@ export function CenterStage({
     if (inputValue.trim()) {
       const text = inputValue.trim();
       setInputValue('');
+      setIsSubmitting(true);
       try {
         await sendMoment(playthroughId, text, 'player_freeform');
-        // No polling needed - SSE subscription in useGameState will trigger refresh
       } catch (err) {
         console.error('Failed to send moment:', err);
+      } finally {
+        setIsSubmitting(false);
       }
+      // No polling needed - SSE subscription in useGameState will trigger refresh
     }
   };
 
@@ -296,11 +308,11 @@ export function CenterStage({
   };
 
   const resetKey = useMemo(() => {
-    return allMoments.map(m => m.id).join(',');
-  }, [allMoments]);
+    return sortedActiveMoments.map(m => m.id).join(',');
+  }, [sortedActiveMoments]);
 
-  const { visibleCount, isComplete } = useRevealAnimation(
-    allMoments,
+  const { visibleCount: activeVisibleCount, isComplete } = useRevealAnimation(
+    sortedActiveMoments,
     getReadTime,
     resetKey
   );
@@ -341,12 +353,15 @@ export function CenterStage({
         <div className="max-w-lg mx-auto w-full space-y-4">
           {/* Moments */}
           {allMoments.map((moment, i) => {
-            const isVisible = i < visibleCount;
             const isSpoken = spokenMoments.some(m => m.id === moment.id);
+            const activeIndex = sortedActiveMoments.findIndex(m => m.id === moment.id);
+            
+            // Spoken moments are always visible. Active moments are revealed by index.
+            const isVisible = isSpoken || (activeIndex !== -1 && activeIndex < activeVisibleCount);
 
             return (
               <AnimatedLine key={moment.id} isVisible={isVisible}>
-                <div className={isSpoken ? 'opacity-60' : ''}>
+                <div className={isSpoken ? 'opacity-50 grayscale-[0.2]' : ''}>
                   <MomentBlock
                     moment={moment}
                     onClickWord={handleWordClick}
@@ -391,17 +406,20 @@ export function CenterStage({
                         : 'border-stone-700/50'
                       }
                     `}>
-                      {person.imageUrl ? (
-                        <img
-                          src={person.imageUrl}
-                          alt={person.name}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-stone-800 flex items-center justify-center text-2xl">
-                          {person.icon || (person.id === 'char_player' ? '👤' : '🗣️')}
-                        </div>
-                      )}
+                    {person.imageUrl ? (
+                      <Image
+                        src={person.imageUrl}
+                        alt={person.name}
+                        width={64}
+                        height={64}
+                        className="w-full h-full object-cover"
+                        unoptimized
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-stone-800 flex items-center justify-center text-2xl">
+                        {person.icon || (person.id === 'char_player' ? '👤' : '🗣️')}
+                      </div>
+                    )}
                     </div>
                     <span className={`
                       text-xs mt-1 transition-colors
@@ -432,6 +450,12 @@ export function CenterStage({
                   className="w-full bg-transparent border border-stone-700/30 focus:border-amber-700/50 rounded-lg text-stone-300 placeholder-stone-600 p-3 outline-none transition-colors resize-none"
                   style={{ minHeight: '80px' }}
                 />
+                {isSubmitting && (
+                  <div className="mt-2 flex items-center gap-2 text-xs text-amber-300">
+                    <TypingIndicator />
+                    <span className="sr-only">Sending message</span>
+                  </div>
+                )}
               </div>
             </div>
           )}

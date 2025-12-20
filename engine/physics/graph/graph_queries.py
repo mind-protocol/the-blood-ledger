@@ -74,6 +74,27 @@ class GraphQueries(MomentQueryMixin, SearchQueryMixin):
         self.port = port
         self._connect()
 
+    ENERGY_BOOST_PER_READ = 0.05
+
+    def _inject_energy_for_node(
+        self,
+        label: str,
+        node_id: str,
+        amount: float = None
+    ) -> None:
+        """Increment energy for a node when it is read via GraphQueries."""
+        if not node_id:
+            return
+        boost = amount if amount is not None else self.ENERGY_BOOST_PER_READ
+        cypher = f"""
+        MATCH (n:{label} {{id: $id}})
+        SET n.energy = coalesce(n.energy, 0) + $amount
+        """
+        try:
+            self._query(cypher, {"id": node_id, "amount": boost})
+        except QueryError as exc:
+            logger.debug("[GraphQueries] Energy injection failed (%s:%s): %s", label, node_id, exc.message)
+
     def _connect(self):
         """Connect to FalkorDB."""
         try:
@@ -689,12 +710,12 @@ Error: {e}"""
         cypher = f"""
         MATCH (t:Tension)
         WHERE t.pressure >= {min_pressure}
-        RETURN t.id, t.description, t.pressure, t.breaking_point, t.pressure_type
+        RETURN t.id, t.description, t.pressure, t.breaking_point, t.pressure_type, t.narratives
         ORDER BY t.pressure DESC
         """
 
         rows = self._query(cypher)
-        fields = ["id", "description", "pressure", "breaking_point", "pressure_type"]
+        fields = ["id", "description", "pressure", "breaking_point", "pressure_type", "narratives"]
         return [self._parse_node(row, fields) for row in rows]
 
     def get_flipped_tensions(self) -> List[Dict[str, Any]]:

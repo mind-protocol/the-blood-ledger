@@ -11,10 +11,14 @@ export default function Home() {
 
   // Read playthrough ID from session storage on mount
   useEffect(() => {
-    const stored = sessionStorage.getItem('playthroughId');
-    if (stored) {
-      setPlaythroughId(stored);
-    }
+    const raf = requestAnimationFrame(() => {
+      const stored = sessionStorage.getItem('playthroughId');
+      if (stored) {
+        setPlaythroughId(stored);
+      }
+    });
+
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   // Static data as fallback when backend unavailable

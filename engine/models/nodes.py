@@ -203,7 +203,7 @@ class Moment(BaseModel):
     Links:
         Character -[CAN_SPEAK]-> Moment (who can say this)
         Character -[SAID]-> Moment (who said this - after spoken)
-        Moment -[ATTACHED_TO]-> Character|Place|Thing|Narrative|Tension
+        Moment -[ATTACHED_TO]-> Character|Place|Thing|Narrative
         Moment -[CAN_LEAD_TO]-> Moment (traversal)
         Moment -[THEN]-> Moment (sequence after spoken)
         Moment -[AT]-> Place (where it occurred)

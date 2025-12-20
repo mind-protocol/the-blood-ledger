@@ -132,9 +132,11 @@ When you ARE called, the time span affects what happened:
 
 ### Invocation
 
-You are called with:
-- `flip_ids` — List of tension IDs that crossed their breaking point
-- `playthrough_id` — Active game identifier
+You are called with a prompt containing:
+- `FLIPS` — A YAML list of tension flip events detected by the `GraphTick` engine.
+- `GRAPH_CONTEXT` — Relevant narratives, characters, places, and things from the graph.
+- `PLAYER_CONTEXT` — The player's current location and other pertinent state.
+- `TIME_SPAN` — The duration over which the flip occurred.
 
 ### Step 1: Read Context
 
@@ -157,28 +159,40 @@ Use these to orient your authorship decisions.
 
 ### Step 2: Gather Graph Context
 
-Query the graph directly using `GraphQueries`:
+Query the graph directly using `GraphQueries` to get *additional, specific* details about the flipped tensions, involved narratives, characters, and their locations. This is crucial for generating concrete, actionable outcomes.
 
 ```python
 from engine.db.graph_queries import GraphQueries
 read = GraphQueries(graph_name="blood_ledger")
 
-# Get tension details and involved narratives
+# Get comprehensive details for each flipped tension and its related narratives
 read.query("""
   MATCH (t:Tension) WHERE t.id IN $flip_ids
-  OPTIONAL MATCH (n:Narrative) WHERE n.id IN t.narratives
+  OPTIONAL MATCH (t)-[:INVOLVES]->(n:Narrative)
   OPTIONAL MATCH (c:Character)-[:BELIEVES]->(n)
-  RETURN t, collect(DISTINCT n), collect(DISTINCT c)
+  OPTIONAL MATCH (n)-[:ABOUT]->(about_c:Character)
+  OPTIONAL MATCH (n)-[:ABOUT]->(about_p:Place)
+  RETURN t.id, t.description, t.narrator_notes, t.pressure, t.breaking_point, t.pressure_type,
+         collect(DISTINCT {id: n.id, name: n.name, content: n.content, type: n.type, weight: n.weight, tone: n.tone}) AS involved_narratives,
+         collect(DISTINCT {id: about_c.id, name: about_c.name, type: about_c.type}) AS about_characters,
+         collect(DISTINCT {id: about_p.id, name: about_p.name, type: about_p.type}) AS about_places
 """, flip_ids=flip_ids)
 
-# Get character locations
+# Get current locations and statuses of all relevant characters
 read.query("""
-  MATCH (c:Character)-[:AT {present: 1}]->(p:Place)
-  RETURN c.id, p.id
+  MATCH (c:Character)-[r:AT]->(p:Place)
+  RETURN c.id, c.name, p.id AS place_id, p.name AS place_name, r.present, r.visible
 """)
 
-# Natural language search
-read.search("Who is involved with Edmund?", embed_fn=get_embedding)
+# Get character relationships (e.g., from BELIEVES links that might be strained)
+read.query("""
+  MATCH (c1:Character)-[b:BELIEVES]->(n:Narrative)-[rel:RELATES_TO]->(n2:Narrative)<-[b2:BELIEVES]-(c2:Character)
+  WHERE rel.contradicts > 0.5
+  RETURN c1.id, c2.id, n.id, n2.id, rel.contradicts, b.believes, b2.believes
+""")
+
+# Natural language search (if needed for deeper contextualization)
+# read.search("Who is involved with Edmund?", embed_fn=get_embedding)
 ```
 
 ### Applying Changes
@@ -198,7 +212,7 @@ When multiple tensions flip simultaneously, process them in **chronological orde
 ## 6. Processing Steps
 
 ### Step 1: Understand the Flips
-For each flip you receive, understand WHY it broke:
+For each flip you receive, understand WHY it broke. Analyze `FLIPS` data, especially `description`, `narratives`, `pressure`, and `breaking_point`.
 
 | Flip Type | What Happened |
 |-----------|---------------|
@@ -209,11 +223,12 @@ For each flip you receive, understand WHY it broke:
 | **Power vacuum collapsing** | Multiple control claims + claimants reached conflict proximity |
 
 ### Step 2: Determine What Happened
-For each flip, generate the specific event:
-1. **What** — The concrete thing that occurred
-2. **Where** — The exact location
-3. **Who witnessed** — Characters present
-4. **Why this, specifically** — Traced to the narratives involved
+For each flip, generate the specific event. Your goal is to create a plausible, dramatic outcome that is traceable to the tension and its involved narratives/characters.
+
+1. **What** — The concrete thing that occurred. Be specific. *Example: "Ligulf publicly denounced Robert Cumin in Durham market."*
+2. **Where** — The exact location. *Example: "place_durham_market"*
+3. **Who witnessed** — Characters present. Consider existing AT links and proximity. *Example: "[char_player, char_ligulf, char_townsfolk_1, char_townsfolk_2]"*
+4. **Why this, specifically** — Traced to the narratives involved. *Example: "This happened because tension_cumin_cruelty reached its breaking point, fueled by narr_cumin_tax_evidence and char_ligulf's long-standing desire for justice (narr_ligulf_fall)."*
 
 ### Step 3: Resolve Narratives
 When a tension breaks, decide what happens to the narratives involved:
@@ -228,21 +243,34 @@ When a tension breaks, decide what happens to the narratives involved:
 This is YOUR choice — pick what creates the most engaging drama.
 
 ### Step 4: Spawn New Narratives
-The break creates new stories:
-- What people now know happened
-- New rumors spreading from the event
-- Changed relationships resulting from it
+The break creates new stories. Be explicit about the new narratives.
+- What people now know happened.
+- New rumors spreading from the event.
+- Changed relationships resulting from it.
+- **Example:**
+  ```yaml
+  - type: narrative
+    id: narr_ligulf_denounces_cumin
+    name: "Ligulf Denounces Cumin"
+    content: "Ligulf publicly accused Robert Cumin of tyranny in Durham's market square, citing Cumin's excessive tax writs and cruel governance."
+    narrative_type: account
+    about: { characters: [char_ligulf, char_cumin, char_player], places: [place_durham_market], things: [thing_cumin_tax_writ] }
+    tone: defiant
+    focus: 2.0
+    truth: 1.0
+    narrator_notes: "This public denouncement directly escalates the conflict. Ligulf is now a clear leader of the resistance."
+  ```
 
 ### Step 5: Update Beliefs
 Who learned what:
-- Characters present: `heard: 1.0`
-- Characters told soon after: `heard: 0.8-1.0`
-- Distant characters: handled by automated news propagation (you don't manage this)
+- **Characters present:** `heard: 1.0`, `believes: 1.0` (unless actively contradicting).
+- **Characters told soon after:** `heard: 0.8-1.0`, `believes: 0.5-0.9` (adjust based on relationship and bias).
+- **Distant characters:** handled by automated news propagation (you don't manage this).
 
 **News Propagation:** General belief spread is automated by the engine. Only create specific news events when:
-- A messenger must physically arrive (dramatic entrance)
-- The manner of delivery matters to the story
-- You need to control exactly when/how player learns something
+- A messenger must physically arrive (dramatic entrance).
+- The manner of delivery matters to the story.
+- You need to control exactly when/how player learns something.
 
 ### Step 6: Report Potential Cascades
 Did this flip destabilize other tensions?
@@ -254,9 +282,9 @@ If yes → list them in your mutation output under `cascades: [tension_ids]`. **
 
 ### Step 7: Check for Interruptions
 Does this affect the player's current scene?
-- Flip at player's location → `witnessed`
-- Flip involves conversation partner → `interruption: message/arrival`
-- Critical event reaches player's area → `interruption: event`
+- **Flip at player's location:** `awareness: "witnessed"`
+- **Flip involves conversation partner:** `interruption: message/arrival`
+- **Critical event reaches player's area:** `interruption: event`
 
 ### Step 8: Build Output
 Compile graph mutations in a YAML file, call `write.apply()`.
@@ -276,7 +304,7 @@ Write injections for the Narrator.
 
 ### Mutation File
 
-Write a **YAML mutation file** and apply it:
+Write a **YAML mutation file** and apply it. This file should be named `mutations/wr_{flip_id}.yaml`.
 
 ```python
 write.apply(path="mutations/wr_{flip_id}.yaml")
@@ -287,22 +315,34 @@ If the operation fails, read the feedback and retry.
 **Mutation File Structure:**
 
 ```yaml
-# mutations/wr_{flip_id}.yaml
-
-thinking: |
-  Your reasoning — for debugging, not applied to graph.
+thinking: |\n  Your reasoning for the flip resolution. This is for debugging and future agent self-correction.
 
 event:
-  summary: "One sentence: what happened."
-  location: place_id
-  witnesses: [char_ids]
-  caused_by: [narr_ids]
+  summary: "One concise sentence describing the key outcome of the flip."
+  location: string # place_id where the event occurred
+  witnesses: [string] # List of character_ids who were present
+  caused_by: [string] # List of narrative_ids that led to this flip
+  impact: string # Short description of the immediate impact (e.g., "escalated conflict", "revealed truth")
 
-nodes: []      # New narratives, characters, places, things — see SCHEMA.md
-links: []      # Belief updates, narrative relationships — see SCHEMA.md
-updates: []    # Tension changes, modifiers
-movements: []  # Character location changes
-cascades: []   # Tension IDs to re-check for flips
+graph_mutations:
+  new_narratives: []      # List of new narrative nodes to create (see SCHEMA.md for structure)
+  new_beliefs: []         # List of new BELIEVES links to create (see SCHEMA.md for structure)
+  new_links: []           # Other new links to create (e.g., RELATES_TO between narratives)
+  tension_updates: []     # List of tension nodes to update (e.g., reset pressure after break)
+  character_movements: [] # List of character movements
+  new_tensions: []        # List of new tension nodes to create
+  modifier_changes: []    # List of changes to character/place/thing modifiers
+
+cascades: []   # List of tension IDs that are now destabilized by this event. These will be re-evaluated by the engine.
+
+world_injection:
+  time_since_last: string # Time since the last event processed by the Narrator (e.g., "1 hour")
+  breaks: [string] # List of tension IDs that just flipped
+  news_arrived: [string] # List of brief summaries of news that arrives with this event
+  tension_changes: dict # Map of tension_id to status change (e.g., {tension_edmund: "reset"})
+  interruption: string | null # Message if current scene/dialogue is interrupted
+  atmosphere_shift: string | null # Description of atmospheric change (e.g., "A palpable tension now hangs over York.")
+  narrator_notes: string # Notes for the Narrator on how to weave this into the story
 ```
 
 ### Injection Queue
@@ -360,7 +400,7 @@ The Narrator receives these via `PostToolUseHook` and must follow them.
 **Triggers:**
 
 | Trigger | When Narrator Receives It |
-|---------|---------------------------|
+|---------------------------|
 | `immediate` | Inject into current response |
 | `next_dialogue` | After next tool call completes |
 | `on_arrival` | When player arrives at specified location |
@@ -609,9 +649,6 @@ ROUTE:
   travel_minutes: int      # Computed from distance + road_type speed
   difficulty: string       # Computed from road_type (easy/moderate/hard/dangerous)
   detail: string           # Optional: "Crosses marshland near Humber"
-
-# Road type speeds (km/h on foot):
-# roman: 5.0, track: 3.5, path: 2.5, river: 8.0 (downstream), none: 1.5 (cross-country)
 ```
 
 ## Tensions
@@ -647,4 +684,5 @@ NARRATIVE -[FROM]-> MOMENT  # Source attribution for narratives
 
 ---
 
-*"The World Runner asks: Given this configuration and this time, what would happen — and what would make the best story? The answer becomes graph state and the Narrator's context."*
+*"The World Runner asks: Given this configuration and this time, what would happen — and what would make the best story? The answer becomes graph state and the Narrator's context."
+```

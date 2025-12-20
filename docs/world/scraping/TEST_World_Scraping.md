@@ -1,126 +1,147 @@
-# World Scraping — Tests
+# World Scraping — Health: Verification Mechanics and Coverage
 
 ```
+STATUS: STABLE
 CREATED: 2024-12-17
-STATUS: TODO
+UPDATED: 2025-12-20
 ```
+
+---
+
+## PURPOSE OF THIS FILE
+
+This file defines the health checks and verification mechanics for the World Scraping pipeline. It ensures that historical data remains accurate, geographically sound, and properly linked when injected into the simulation graph.
+
+What it protects:
+- **Historical Fidelity**: Correct placement of characters and holdings for 1067.
+- **Geographic Realism**: Accuracy of routes, travel times, and river crossings.
+- **Referential Integrity**: Stable connections between places, people, and narratives.
 
 ---
 
 ## CHAIN
 
 ```
-PATTERNS:    ./PATTERNS_World_Scraping.md
-BEHAVIORS:   ./BEHAVIORS_World_Scraping.md
-ALGORITHM:   ./ALGORITHM_Pipeline.md
-VALIDATION:  ./VALIDATION_World_Scraping.md
-THIS:        TEST_World_Scraping.md (you are here)
+PATTERNS:        ./PATTERNS_World_Scraping.md
+BEHAVIORS:       ./BEHAVIORS_World_Scraping.md
+ALGORITHM:       ./ALGORITHM_Pipeline.md
+VALIDATION:      ./VALIDATION_World_Scraping.md
 IMPLEMENTATION:  ./IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md
-SYNC:        ./SYNC_World_Scraping.md
+THIS:            TEST_World_Scraping.md
+SYNC:            ./SYNC_World_Scraping.md
+
+IMPL:            data/scripts/scrape/phase1_geography.py
+```
+
+> **Contract:** HEALTH checks verify the intermediate data quality and final graph state.
+
+---
+
+## FLOWS ANALYSIS (TRIGGERS + FREQUENCY)
+
+```yaml
+flows_analysis:
+  - flow_id: world_seeding
+    purpose: Seed the graph with authentic 1067 data.
+    triggers:
+      - type: manual
+        source: bin/inject-world.sh
+    frequency:
+      expected_rate: rare (weekly or on data updates)
+      peak_rate: 1/hr (during active development)
+      burst_behavior: Synchronous, blocks further updates until completion.
+    risks:
+      - Broken route connections
+      - Missing historical actors
 ```
 
 ---
 
-| Test | Path | Purpose |
-|------|------|---------|
-| Geography routes | `tests/world/test_routes.py` | Travel time + river crossing assertions |
-| Political placement | `tests/world/test_positions.py` | Historical NPC alignment |
-| Narrative integrity | `tests/world/test_narratives.py` | Conflicting accounts flagged |
-| Pipeline smoke | `tests/world/test_pipeline.py` | Ensures ETL stages run sequentially |
+## HEALTH INDICATORS SELECTED
 
-Gaps: tests currently conceptual; need to implement once world data scaffolding exists.
+```yaml
+health_indicators:
+  - name: route_traversability
+    flow_id: world_seeding
+    priority: high
+    rationale: If major cities aren't connected, travel narration fails.
+  - name: historical_accuracy
+    flow_id: world_seeding
+    priority: high
+    rationale: Misplaced characters break narrative immersion.
 ```
 
 ---
 
-## TEST STRATEGY
+## STATUS (RESULT INDICATOR)
 
-Use lightweight unit tests to validate YAML schema shape and deterministic
-transform logic, then use integration tests to exercise end-to-end ETL and
-inject-world flows against the `seed` database. Favor reproducible fixtures
-over live web calls because data/scripts access and external APIs are unstable.
-
----
-
-## UNIT TESTS
-
-### YAML Shape and Phase Outputs
-
-| Test | Input | Expected | Status |
-|------|-------|----------|--------|
-| `test_places_schema_fields` | `places.yaml` | required fields present | pending |
-| `test_routes_have_endpoints` | `routes.yaml` | each route has from/to | pending |
-| `test_holdings_have_rulers` | `holdings.yaml` | holder IDs resolve | pending |
-| `test_things_have_locations` | `things.yaml` | locations and owners valid | pending |
-
----
-
-## INTEGRATION TESTS
-
-### Seed Database Injection
-
-```
-GIVEN:  data/world YAML outputs and FalkorDB `seed` running
-WHEN:   data/scripts/inject_world.py is executed
-THEN:   place, character, narrative, and tension counts match expectations
-STATUS: pending
+```yaml
+status:
+  stream_destination: logs
+  result:
+    representation: enum
+    value: OK
+    updated_at: 2025-12-20T10:25:00Z
+    source: data_validation_script
 ```
 
 ---
 
-## EDGE CASES
+## CHECKER INDEX
 
-| Case | Test | Status |
-|------|------|--------|
-| Missing optional coordinates | `test_place_without_latlon` | pending |
-| Duplicate place slug | `test_duplicate_place_slug` | pending |
-| Narrative references unknown character | `test_narrative_unknown_character` | pending |
-| Thing references missing owner | `test_thing_missing_owner` | pending |
+```yaml
+checkers:
+  - name: geography_validator
+    purpose: Check travel times and river crossing rules.
+    status: active
+    priority: high
+  - name: density_checker
+    purpose: Verify node and link counts against targets.
+    status: active
+    priority: med
+```
 
 ---
 
-## TEST COVERAGE
+## INDICATOR: route_traversability
 
-| Component | Coverage | Notes |
-|-----------|----------|-------|
-| Phase YAML outputs | 0% | No automated schema checks yet |
-| Injection pipeline | 0% | No integration harness in place |
-| Narrative consistency | 0% | Manual review only |
+### VALUE TO CLIENTS & VALIDATION MAPPING
+
+```yaml
+value_and_validation:
+  indicator: route_traversability
+  client_value: Guarantees players can travel between known historical locations.
+  validation:
+    - validation_id: V1 (Geography)
+      criteria: York and Durham are connected by Roman roads.
+```
+
+### DOCKS SELECTED
+
+```yaml
+docks:
+  input:
+    id: yaml_output
+    method: data.scripts.scrape.phase1_geography.write_yaml
+    location: data/scripts/scrape/phase1_geography.py:400
+  output:
+    id: graph_injection
+    method: data.scripts.inject_world.inject_places
+    location: data/scripts/inject_world.py:150
+```
 
 ---
 
 ## HOW TO RUN
 
 ```bash
-# Tests are not implemented yet.
-# Suggested structure once files exist:
-pytest tests/world/test_routes.py
-pytest tests/world/test_positions.py
-pytest tests/world/test_narratives.py
-pytest tests/world/test_pipeline.py
+# Run data validation scripts
+python data/scripts/validate_yaml.py
 ```
 
 ---
 
-## KNOWN TEST GAPS
+## KNOWN GAPS
 
-- [ ] No automated schema validation for YAML outputs in `data/world/`.
-- [ ] No regression tests for pipeline phase ordering or data overwrites.
-- [ ] No integration tests for `data/scripts/inject_world.py` with FalkorDB.
-
----
-
-## FLAKY TESTS
-
-No flaky tests are tracked yet; once integration runs are added, record any
-DB timing, file IO, or external API timing instabilities here.
-
----
-
-## GAPS / IDEAS / QUESTIONS
-
-- [ ] Decide whether tests should run against a fixture YAML snapshot or the
-  live `data/world/` directory from the scrape pipeline.
-- IDEA: Add a YAML diff report to compare before/after outputs for regressions.
-- QUESTION: Should the injection test assert exact counts or ranges, given
-  manual edits to data files between runs?
+- [ ] Automated check for river/crossing intersection logic.
+- [ ] Visual verification of place coordinates on medieval map.

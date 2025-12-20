@@ -25,11 +25,11 @@ purpose: |
 ## CHAIN
 
 ```
-PATTERNS:  ./PATTERNS_Graph.md
-BEHAVIORS: ./BEHAVIORS_Graph.md
-ALGORITHM: ./ALGORITHM_Energy_Flow.md
-THIS:      VALIDATION_Living_Graph.md (you are here)
-SYNC:      ./SYNC_Graph.md
+PATTERNS:   ./PATTERNS_Graph.md
+BEHAVIORS:  ./BEHAVIORS_Graph.md
+ALGORITHM:  ../ALGORITHM_Physics.md
+THIS:       VALIDATION_Living_Graph.md
+SYNC:       ./SYNC_Graph.md
 ```
 
 # =============================================================================

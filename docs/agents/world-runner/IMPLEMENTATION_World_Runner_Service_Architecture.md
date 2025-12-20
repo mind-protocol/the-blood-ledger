@@ -3,6 +3,7 @@
 ```
 STATUS: STABLE
 CREATED: 2025-12-19
+UPDATED: 2025-12-20
 ```
 
 ---
@@ -15,7 +16,7 @@ BEHAVIORS:      ./BEHAVIORS_World_Runner.md
 ALGORITHM:      ./ALGORITHM_World_Runner.md
 VALIDATION:     ./VALIDATION_World_Runner_Invariants.md
 THIS:           IMPLEMENTATION_World_Runner_Service_Architecture.md
-TEST:           ./TEST_World_Runner_Coverage.md
+HEALTH:         ./HEALTH_World_Runner.md
 SYNC:           ./SYNC_World_Runner.md
 
 IMPL:           engine/infrastructure/orchestration/world_runner.py
@@ -46,58 +47,28 @@ engine/
 | `agents/world_runner/CLAUDE.md` | Agent instructions and output contract | — | ~650 | WATCH |
 | `engine/infrastructure/orchestration/world_runner.py` | Build prompt, call agent CLI, parse JSON | `WorldRunnerService` | ~156 | OK |
 
-**Size Thresholds:**
-- **OK** (<400 lines): Healthy size, easy to understand
-- **WATCH** (400-700 lines): Getting large, consider extraction opportunities
-- **SPLIT** (>700 lines): Too large, must split before adding more code
-
 ---
 
 ## DESIGN PATTERNS
 
 ### Architecture Pattern
 
-**Pattern:** Adapter + Service Wrapper (within layered orchestration)
+**Pattern:** Adapter + Service Wrapper.
 
-**Why this pattern:** The module isolates agent CLI interaction behind a small service interface (`process_flips`), so orchestrator logic stays decoupled from prompt formatting, subprocess handling, and JSON parsing while keeping the LLM boundary replaceable.
-
-### Code Patterns in Use
-
-| Pattern | Applied To | Purpose |
-|---------|------------|---------|
-| Builder | `engine/infrastructure/orchestration/world_runner.py:_build_prompt` | Assemble structured prompt text from YAML fragments |
-| Adapter | `engine/infrastructure/orchestration/world_runner.py:WorldRunnerService` | Wraps the external agent CLI into a stable Python interface |
-| Fail-safe fallback (Null Object) | `engine/infrastructure/orchestration/world_runner.py:_fallback_response` | Guarantees output shape even on failures |
-
-### Anti-Patterns to Avoid
-
-- **Prompt Sprawl**: Avoid embedding orchestration logic into `_build_prompt()`.
-- **Prompt Duplication**: Keep the schema/prompt contract centralized in `agents/world_runner/CLAUDE.md`.
-- **Hidden Exceptions**: Do not add silent failures without logging.
-- **God Object**: Keep WorldRunnerService focused on I/O, not graph logic.
-
-### Boundaries
-
-| Boundary | Inside | Outside | Interface |
-|----------|--------|---------|-----------|
-| World Runner Service | prompt build, CLI call, JSON parsing, fallback | graph tick detection, mutation application, injection storage | `engine/infrastructure/orchestration/world_runner.py:34` (process_flips) |
-| Agent Contract | structure and guidance in `agents/world_runner/CLAUDE.md` | orchestration flow and graph data fetching | `WORLD RUNNER INSTRUCTION` sections |
+**Why this pattern:** Isolates agent CLI interaction behind a stable interface, allowing the LLM boundary to be replaced or mocked without impacting the orchestrator.
 
 ---
 
 ## SCHEMA
 
-### WorldRunnerOutput (Summary)
+### WorldRunnerOutput (JSON)
 
 ```yaml
 WorldRunnerOutput:
   required:
-    - thinking: string
-    - graph_mutations: object
-    - world_injection: object
-  constraints:
-    - JSON parseable
-    - schema defined in docs/agents/world-runner/TOOL_REFERENCE.md
+    - thinking: string          # Agent's chain-of-thought
+    - graph_mutations: object   # Updates for FalkorDB
+    - world_injection: object   # Narrative events for the Narrator
 ```
 
 ---
@@ -106,60 +77,74 @@ WorldRunnerOutput:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| constructor | `engine/infrastructure/orchestration/world_runner.py:24` | Orchestrator startup |
-| process_flips | `engine/infrastructure/orchestration/world_runner.py:34` | Orchestrator `_process_flips` |
+| process_flips | `world_runner.py:34` | Orchestrator._process_flips |
 
 ---
 
-## DATA FLOW
+## DATA FLOW AND DOCKING (FLOW-BY-FLOW)
 
-### Flip Resolution: Orchestrator to World Runner
+### World Evolution: Ticks → Flips → Agent Resolution
 
+This flow handles the transition from detected tension flips in the graph to structured world changes and narrative injections.
+
+```yaml
+flow:
+  name: world_evolution
+  purpose: Resolve off-screen tension flips into concrete world changes.
+  scope: Tick Result -> World Runner Agent -> Mutations & Injections
+  steps:
+    - id: step_1_prompt
+      description: Assemble prompt from flips and graph context.
+      file: engine/infrastructure/orchestration/world_runner.py
+      function: _build_prompt
+      input: flips (List), graph_context (Dict)
+      output: prompt_string
+      trigger: process_flips call
+      side_effects: none
+    - id: step_2_call
+      description: Invoke agent CLI and capture stdout.
+      file: engine/infrastructure/orchestration/world_runner.py
+      function: _call_claude
+      input: prompt_string
+      output: json_response_string
+      trigger: process_flips workflow
+      side_effects: none
+    - id: step_3_resolve
+      description: Return structured output to Orchestrator.
+      file: engine/infrastructure/orchestration/world_runner.py
+      function: process_flips
+      input: json_response_string
+      output: WorldRunnerOutput (Dict)
+      trigger: return value
+      side_effects: none
+  docking_points:
+    guidance:
+      include_when: world state is being transformed or agents are triggered
+    available:
+      - id: runner_input
+        type: custom
+        direction: input
+        file: engine/infrastructure/orchestration/world_runner.py
+        function: process_flips
+        trigger: Orchestrator
+        payload: PromptContext
+        async_hook: optional
+        needs: none
+        notes: Context for world-state resolution
+      - id: runner_output
+        type: event
+        direction: output
+        file: engine/infrastructure/orchestration/world_runner.py
+        function: _call_claude
+        trigger: json.loads
+        payload: WorldRunnerOutput
+        async_hook: required
+        needs: none
+        notes: Results applied to graph and narrator queue
+    health_recommended:
+      - dock_id: runner_output
+        reason: Verification of background story consistency and schema.
 ```
-┌─────────────────────────┐
-│ Orchestrator._process_flips │
-└──────────────┬──────────┘
-               │ flips, graph_context, player_context
-               ▼
-┌─────────────────────────┐
-│ process_flips             │
-│ world_runner.py          │
-└──────────────┬──────────┘
-               │ builds prompt
-               ▼
-┌─────────────────────────┐
-│ WorldRunnerService._call_claude │
-│ subprocess agent CLI     │
-└──────────────┬──────────┘
-               │ JSON response
-               ▼
-┌─────────────────────────┐
-│ Orchestrator             │
-│ apply mutations + store injection │
-└─────────────────────────┘
-```
-
----
-
-## LOGIC CHAINS
-
-### LC1: Prompt Build → CLI Call → Parse
-
-**Purpose:** Resolve flips through the agent CLI and return structured output.
-
-```
-flips/context
-  → WorldRunnerService._build_prompt()
-    → WorldRunnerService._call_claude()
-      → json.loads(response)
-        → WorldRunnerOutput dict
-```
-
-**Data transformation:**
-- Input: `flips`, `graph_context`, `player_context`, `time_span`
-- After step 1: `prompt` string
-- After step 2: CLI `stdout`
-- Output: parsed dict matching WorldRunnerOutput
 
 ---
 
@@ -170,19 +155,7 @@ flips/context
 ```
 engine/infrastructure/orchestration/orchestrator.py
     └── imports → WorldRunnerService
-agents/world_runner/CLAUDE.md
-    └── prompt contract referenced by → engine/infrastructure/orchestration/world_runner.py
 ```
-
-### External Dependencies
-
-| Package | Used For | Imported By |
-|---------|----------|-------------|
-| `subprocess` | Calling agent CLI | `engine/infrastructure/orchestration/world_runner.py` |
-| `json` | Parse CLI output | `engine/infrastructure/orchestration/world_runner.py` |
-| `yaml` | Serialize prompt sections | `engine/infrastructure/orchestration/world_runner.py` |
-| `logging` | Service logging | `engine/infrastructure/orchestration/world_runner.py` |
-| `pathlib` | Default working directory | `engine/infrastructure/orchestration/world_runner.py` |
 
 ---
 
@@ -192,84 +165,12 @@ agents/world_runner/CLAUDE.md
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| `working_dir` | `engine/infrastructure/orchestration/world_runner.py:29` | instance | set on init, used per call |
-| `timeout` | `engine/infrastructure/orchestration/world_runner.py:30` | instance | set on init, used per call |
-
----
-
-## RUNTIME BEHAVIOR
-
-### Initialization
-
-```
-1. Orchestrator instantiates WorldRunnerService
-2. working_dir and timeout stored
-3. Logger emits initialization message
-4. service ready to process flips
-```
-
-### Main Request Cycle
-
-```
-1. Orchestrator detects flips
-2. process_flips() builds prompt
-3. Agent CLI runs and returns JSON
-4. JSON parsed or fallback returned
-5. Orchestrator applies mutations + stores injection
-```
-
-### Shutdown
-
-No explicit shutdown; subprocess calls are bounded by timeout.
+| CLI Config | `WorldRunnerService` | instance | persistent for service life |
 
 ---
 
 ## CONCURRENCY MODEL
 
-Synchronous subprocess call with a timeout. Orchestrator call blocks until CLI returns or times out.
-
----
-
-## CONFIGURATION
-
-| Config | Location | Default | Description |
-|--------|----------|---------|-------------|
-| `working_dir` | `engine/infrastructure/orchestration/world_runner.py:26` | `Path.cwd()` | Working directory for CLI invocation |
-| `timeout` | `engine/infrastructure/orchestration/world_runner.py:27` | `600` | CLI timeout in seconds |
-| `AGENTS_MODEL` | env | `claude` | CLI provider (`claude` or `codex`, loaded from `.env` if present) |
-
----
-
-## BIDIRECTIONAL LINKS
-
-### Code → Docs
-
-| File | Line | Reference |
-|------|------|-----------|
-| `engine/infrastructure/orchestration/world_runner.py` | 8 | `docs/agents/world-runner/PATTERNS_World_Runner.md` |
-
-### Docs → Code
-
-| Doc Section | Implemented In |
-|-------------|----------------|
-| Prompt build | `engine/infrastructure/orchestration/world_runner.py:_build_prompt` |
-| CLI call + fallback | `engine/infrastructure/orchestration/world_runner.py:_call_claude` |
-| Output parsing | `engine/infrastructure/orchestration/world_runner.py:_call_claude` |
-
----
-
-## GAPS / IDEAS / QUESTIONS
-
-### Extraction Candidates
-
-| File | Current | Target | Extract To | What to Move |
-|------|---------|--------|------------|--------------|
-| `agents/world_runner/CLAUDE.md` | ~650L | <400L | Split prompt body into a new file (proposed) | Prompt body vs reference sections |
-
-### Missing Implementation
-
-- [ ] Dedicated unit tests for `WorldRunnerService` fallback behaviors.
-
-### Questions
-
-- QUESTION: Should the service stream output or remain batch-only?
+| Component | Model | Notes |
+|-----------|-------|-------|
+| Agent Call | Sync/Subprocess | Blocks worker until agent returns or times out |

@@ -40,7 +40,7 @@ export function Voices({ voices }: VoicesProps) {
                 {voice.source}:
               </span>
               <p className="text-sm text-stone-300 italic mt-0.5">
-                "{voice.content}"
+                &ldquo;{voice.content}&rdquo;
               </p>
             </div>
           </div>

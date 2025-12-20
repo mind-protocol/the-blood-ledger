@@ -12,7 +12,7 @@ STATUS: Canonical
 ```
 THIS:       PATTERNS_Graph.md (you are here)
 BEHAVIORS:  ./BEHAVIORS_Graph.md
-ALGORITHM:  ./ALGORITHM_Energy_Flow.md
+ALGORITHM:  ../ALGORITHM_Physics.md
 VALIDATION: ./VALIDATION_Living_Graph.md
 SYNC:       ./SYNC_Graph.md
 ```

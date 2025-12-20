@@ -29,6 +29,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 from engine.infrastructure.orchestration import Orchestrator
+from engine.moment_graph import MomentTraversal, MomentQueries, MomentSurface
 from engine.physics.graph import GraphQueries, GraphOps, add_mutation_listener
 from engine.infrastructure.api.moments import create_moments_router
 from engine.infrastructure.api.playthroughs import create_playthroughs_router
@@ -186,6 +187,12 @@ def create_app(
         from engine.physics.graph import get_playthrough_graph_name
         pt_graph_name = get_playthrough_graph_name(playthrough_id)
         return GraphQueries(graph_name=pt_graph_name, host=host, port=port)
+
+    def get_moment_queries(playthrough_id: str) -> MomentQueries:
+        """Get moment queries instance for a specific playthrough."""
+        from engine.physics.graph import get_playthrough_graph_name
+        pt_graph_name = get_playthrough_graph_name(playthrough_id)
+        return MomentQueries(graph_name=pt_graph_name, host=host, port=port)
 
     def get_graph_ops() -> GraphOps:
         """Get graph ops instance."""
@@ -386,10 +393,17 @@ def create_app(
         This replaces scene.json reads with live graph queries.
         """
         try:
-            read = get_playthrough_queries(playthrough_id)
+            queries = get_playthrough_queries(playthrough_id)
+            read = get_moment_queries(playthrough_id)
+            
+            # Resolve present characters at the location
+            present = queries.get_characters_at(location_id)
+            present_ids = [c['id'] for c in present]
+            
             view = read.get_current_view(
                 player_id=player_id,
-                location_id=location_id
+                location_id=location_id,
+                present_chars=present_ids
             )
             return view
         except Exception as e:
@@ -410,12 +424,12 @@ def create_app(
         CurrentView payload described in docs/engine/moments/API_Moments.md.
         """
         try:
-            read = get_playthrough_queries(playthrough_id)
+            queries = get_playthrough_queries(playthrough_id)
+            moments = get_moment_queries(playthrough_id)
+            
             resolved_location_id = location_id
-            location = None
-
             if not resolved_location_id:
-                location = read.get_player_location(player_id=player_id)
+                location = queries.get_player_location(player_id=player_id)
                 if not location:
                     raise HTTPException(
                         status_code=404,
@@ -423,14 +437,15 @@ def create_app(
                     )
                 resolved_location_id = location.get("id")
 
-            view = read.get_current_view(
-                player_id=player_id,
-                location_id=resolved_location_id
-            )
+            # Get present characters
+            present = queries.get_characters_at(resolved_location_id)
+            present_ids = [c['id'] for c in present]
 
-            # If we already fetched location data, ensure the view includes it.
-            if location:
-                view["location"] = location
+            view = moments.get_current_view(
+                player_id=player_id,
+                location_id=resolved_location_id,
+                present_chars=present_ids
+            )
 
             return view
         except HTTPException:

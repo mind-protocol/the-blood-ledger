@@ -94,8 +94,12 @@ export default function ScenariosPage() {
       return;
     }
 
-    setPlayerName(name);
-    setPlayerGender(gender);
+    const raf = requestAnimationFrame(() => {
+      setPlayerName(name);
+      setPlayerGender(gender);
+    });
+
+    return () => cancelAnimationFrame(raf);
   }, [router]);
 
   const selected = SCENARIOS.find(s => s.id === selectedId);

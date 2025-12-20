@@ -20,8 +20,7 @@ Links (6 types):
 - ThingPlace: Where things are (ground truth)
 - PlacePlace: Geography (ground truth)
 
-Tensions:
-- Tension: Cluster of narratives under pressure
+
 """
 
 # Nodes
@@ -37,8 +36,7 @@ from .links import (
     PlacePlace
 )
 
-# Tensions
-from .tensions import Tension
+
 
 # Base types and enums
 from .base import (
@@ -53,8 +51,7 @@ from .base import (
     NarrativeType, NarrativeTone, NarrativeVoiceStyle,
     # Link enums
     BeliefSource, PathDifficulty,
-    # Tension enums
-    PressureType,
+
     # Modifier enums
     ModifierType, ModifierSeverity,
     # Shared models
@@ -68,8 +65,7 @@ __all__ = [
     # Links
     'CharacterNarrative', 'NarrativeNarrative',
     'CharacterPlace', 'CharacterThing', 'ThingPlace', 'PlacePlace',
-    # Tensions
-    'Tension',
+
     # Enums
     'CharacterType', 'Face', 'SkillLevel', 'VoiceTone', 'VoiceStyle',
     'Approach', 'Value', 'Flaw',
@@ -81,5 +77,5 @@ __all__ = [
     'ModifierType', 'ModifierSeverity',
     # Shared models
     'Modifier', 'Skills', 'CharacterVoice', 'Personality', 'Backstory',
-    'Atmosphere', 'NarrativeAbout', 'NarrativeVoice', 'TensionProgression'
+    'Atmosphere', 'NarrativeAbout', 'NarrativeVoice'
 ]

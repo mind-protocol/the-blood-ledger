@@ -9,12 +9,13 @@ STATUS: CANONICAL
 The comprehensive business model for Blood Ledger is documented, detailing the "Whale Economics" strategy, unit economics, conversion funnel, retention mechanisms, and market positioning. This includes:
 *   The core pattern of "Whale Economics" and the rationale behind the pay-as-you-go model (`PATTERNS_Whale_Economics.md`).
 *   Key algorithms enabling cost-efficiency and narrative integrity like the Semantic Cache, Hallucination Defense, and World Scavenger (`ALGORITHM_Semantic_Cache.md`, `ALGORITHM_Hallucination_Defense.md`, `ALGORITHM_World_Scavenger.md`).
-*   Behavioral aspects of the conversion funnel, including the "Ledger Lock" and retention drivers (`BEHAVIORS_Conversion_Funnel_And_Ledger_Lock.md`, `BEHAVIORS_Retention_Mechanisms.md`).
+*   Behavioral aspects of the conversion funnel, retention drivers, and unit economics signals (`BEHAVIORS_Retention_Mechanisms.md`).
 *   Strategic market comparison placing Blood Ledger as a unique service rather than a traditional game (`PATTERNS_Market_Comparison.md`).
 
 ## Recent Changes
 
 *   Initial documentation created from `data/Distributed-Content-Generation-Network/Blood Ledger — Business Model Stress Test.md`.
+*   Consolidated business model behaviors into `BEHAVIORS_Retention_Mechanisms.md` and converted the other BEHAVIORS docs to pointers to remove duplication.
 
 ## Handoffs
 
@@ -56,7 +57,6 @@ PATTERNS:        ./PATTERNS_Whale_Economics.md
 ALGORITHM:       ./ALGORITHM_Semantic_Cache.md
 ALGORITHM:       ./ALGORITHM_Hallucination_Defense.md
 ALGORITHM:       ./ALGORITHM_World_Scavenger.md
-BEHAVIORS:       ./BEHAVIORS_Conversion_Funnel_And_Ledger_Lock.md
 BEHAVIORS:       ./BEHAVIORS_Retention_Mechanisms.md
 PATTERNS:        ./PATTERNS_Market_Comparison.md
 THIS:            ./SYNC_Business_Model.md

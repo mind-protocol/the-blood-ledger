@@ -28,8 +28,11 @@ export function SceneBanner({ scene }: SceneBannerProps) {
   const [cacheBuster, setCacheBuster] = useState('');
 
   useEffect(() => {
-    // Update cache buster on mount and when scene changes
-    setCacheBuster(`?t=${Date.now()}`);
+    const raf = requestAnimationFrame(() => {
+      setCacheBuster(scene.bannerImage ? `?t=${Date.now()}` : '');
+    });
+
+    return () => cancelAnimationFrame(raf);
   }, [scene.bannerImage]);
 
   const hasBannerImage = scene.bannerImage && scene.bannerImage.length > 0;

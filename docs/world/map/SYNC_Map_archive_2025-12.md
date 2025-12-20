@@ -48,9 +48,9 @@ Files:
 
 Files:
 - `docs/world/map/ALGORITHM_Map.md`
-- `docs/world/map/ALGORITHM/ALGORITHM_Rendering_Pipeline.md`
-- `docs/world/map/ALGORITHM/ALGORITHM_Places.md`
-- `docs/world/map/ALGORITHM/ALGORITHM_Routes.md`
+- `docs/world/map/ALGORITHM/rendering/ALGORITHM_Rendering_Pipeline.md`
+- `docs/world/map/ALGORITHM/places/ALGORITHM_Places.md`
+- `docs/world/map/ALGORITHM/routes/ALGORITHM_Routes.md`
 - `docs/world/map/PATTERNS_Map.md`
 - `docs/world/map/BEHAVIORS_Map.md`
 - `docs/world/map/SYNC_Map.md`

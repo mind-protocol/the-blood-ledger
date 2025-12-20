@@ -24,7 +24,7 @@ A good escalation makes the human response immediately actionable without re-rea
 
 ## HOW ESCALATION WORKS
 
-1. Add an `@ngram&#58;escalation` marker in the most relevant file near the issue.
+1. Add an `@ngram:escalation` marker in the most relevant file near the issue.
 2. `ngram solve-markers` picks it up.
 3. The manager asks the human to resolve it.
 4. The human response is added in the same location with an explicit resolution note.
@@ -33,7 +33,7 @@ A good escalation makes the human response immediately actionable without re-rea
 
 ## HOW PROPOSITION WORKS
 
-1. An agent adds an `@ngram&#58;proposition` marker in the most relevant file near a suggested improvement.
+1. An agent adds an `@ngram:proposition` marker in the most relevant file near a suggested improvement.
 2. `ngram solve-markers` (or `ngram doctor`) picks it up.
 3. The proposition is presented for human review.
 4. If approved, the human applies the suggested changes and removes the marker.
@@ -99,7 +99,7 @@ Use one category:
 ## ESCALATION MARKER FORMAT (YAML)
 
 ```
-@ngram&#58;escalation
+@ngram:escalation
 
 task_name: "Choose streaming vs batch ingestion to meet dashboard freshness for analytics" # one-line decision with scope + goal
 
@@ -202,7 +202,7 @@ response: # optional human response fields (fill after decision)
 ## PROPOSITION MARKER FORMAT (YAML)
 
 ```
-@ngram&#58;proposition
+@ngram:proposition
 
 title: "Refactor `utils.py` into smaller, cohesive modules" # Concise title for the proposition
 

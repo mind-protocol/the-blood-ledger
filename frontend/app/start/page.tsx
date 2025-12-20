@@ -65,13 +65,13 @@ export default function StartPage() {
 
           <p>
             Most games give you a story. This one remembers yours.
-            The people here don't forget what you did for them — or to them.
+            The people here don&apos;t forget what you did for them — or to them.
           </p>
 
           <p>
             You begin with nothing. You rise through people — oaths sworn,
-            debts called in, loyalties earned or broken. The world won't wait
-            while you decide. If one day you become lord, you'll remember
+            debts called in, loyalties earned or broken. The world won&apos;t wait
+            while you decide. If one day you become lord, you&apos;ll remember
             every step. And so will they.
           </p>
 

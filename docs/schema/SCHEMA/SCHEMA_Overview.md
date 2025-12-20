@@ -30,3 +30,4 @@ VALIDATION: ../VALIDATION_Graph.md
 - Relationships are narratives; there is no separate relationship state.
 - Physical state is ground truth (presence, possession, location).
 - Narrative weight drives salience; contradictions accumulate into tension.
+- Every node and link carries `energy`/`weight` metrics so the physics engine can compute drama without downstream bookkeeping.

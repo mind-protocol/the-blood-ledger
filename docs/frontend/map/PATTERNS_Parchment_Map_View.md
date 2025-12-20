@@ -11,7 +11,7 @@ CREATED: 2025-12-19
 
 ```
 THIS:  PATTERNS_Parchment_Map_View.md
-SYNC:  ./SYNC_Map_View.md
+SYNC:  ../../world/map/SYNC_Map.md
 IMPL:  frontend/components/map/MapClient.tsx
 ```
 

@@ -26,14 +26,14 @@ This is analysis work, not implementation. The output is understanding and recom
 ngram overview
 ```
 
-This creates `docs/map.md` with:
+This creates `map.md` with:
 - File tree with character counts
 - Bidirectional links (code↔docs)
 - Function definitions and section headers
 - Module dependencies
 - Statistics
 
-**Read `docs/map.md` thoroughly.** This is your primary source of truth for what exists.
+**Read `map.md` thoroughly.** This is your primary source of truth for what exists.
 
 ### Step 2: Read Vision and Architecture
 

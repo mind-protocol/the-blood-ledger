@@ -45,6 +45,7 @@ import pytest
 from pathlib import Path
 import sys
 from typing import List, Dict, Any
+import json # Added to resolve NameError
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
@@ -590,36 +591,71 @@ class TestWorldRunnerImplementation:
     VALIDATES: V5.3 "The world moved"
     """
 
-    def test_world_runner_creates_narratives(self, graph_ops, graph_queries):
+    def test_world_runner_processes_flip_output(self, mocker, graph_ops, graph_queries):
         """
-        REQUIRES: WorldRunner.resolve_flip()
-        VALIDATES: World Runner creates new narratives when tension flips
+        REQUIRES: WorldRunnerService.process_flips() and agent_cli.run_agent()
+        VALIDATES: World Runner correctly parses agent output, returns mutations/injection, and applies mutations to graph.
         """
-        pytest.skip("WorldRunner not yet implemented")
+        from engine.infrastructure.orchestration.world_runner import WorldRunnerService
+        from engine.infrastructure.orchestration.agent_cli import AgentCliResult
+        import yaml
 
-        from engine.infrastructure.orchestration.world_runner import WorldRunner
+        # Load the example flip response
+        example_output_path = Path("mutations/example_wr_tension_flip.yaml")
+        example_output = yaml.safe_load(example_output_path.read_text())
 
-        runner = WorldRunner()
+        # Mock the run_agent call to return our example output
+        mocker.patch(
+            'engine.infrastructure.orchestration.world_runner.run_agent',
+            return_value=AgentCliResult(
+                returncode=0,
+                stdout=json.dumps(example_output), # Agent output is JSON
+                stderr=""
+            )
+        )
+        
+        # Mock graph_ops.apply to track calls
+        mock_apply = mocker.patch('engine.physics.graph.graph_ops.GraphOps.apply')
 
-        flip = {
-            'tension_id': 'tension_edmund',
-            'narratives': ['narr_edmund_betrayal', 'narr_edmund_forced'],
-            'trigger_reason': 'Pressure exceeded breaking point'
-        }
+        # Mock the GraphQueries instance that WorldRunnerService uses
+        mock_graph_queries_instance = mocker.Mock()
+        mock_graph_queries_instance.query.side_effect = [
+            [], # For tension_details (can be empty for this test)
+            [], # For all_characters_at_locations
+            []  # For character_relationships
+        ]
 
-        result = runner.resolve_flip(flip)
+        runner = WorldRunnerService(graph_ops=graph_ops, graph_queries=mock_graph_queries_instance)
 
-        # Should create new narratives
-        assert 'new_narratives' in result
-        assert len(result['new_narratives']) > 0
+        # Prepare minimal flip and context data
+        flips = [
+            {
+                'tension_id': 'tension_edmund',
+                'narratives': ['narr_edmund_betrayal', 'narr_edmund_forced'],
+                'trigger_reason': 'Pressure exceeded breaking point'
+            }
+        ]
+        graph_context = {"some": "context"}
+        player_context = {"player": "data"}
 
-    def test_world_runner_updates_beliefs(self):
-        """
-        REQUIRES: WorldRunner.resolve_flip()
-        VALIDATES: Characters present at event gain new beliefs
-        """
-        pytest.skip("WorldRunner not yet implemented")
+        result = runner.process_flips(flips, graph_context, player_context, "1 hour")
 
+        # Assertions based on example_wr_tension_flip.yaml
+        assert "thinking" in result
+        assert "graph_mutations" in result
+        assert "world_injection" in result
+
+        mutations = result["graph_mutations"]
+        assert "new_narratives" in mutations
+        assert len(mutations["new_narratives"]) == 2
+        assert mutations["new_narratives"][0]["id"] == "narr_edmund_confronted"
+
+        injection = result["world_injection"]
+        assert injection["news_arrived"][0] == "Edmund confronted in York"
+        assert injection["atmosphere_shift"] == "A palpable tension now hangs over York. People whisper openly in the streets."
+        
+        # Verify graph_ops.apply was called with the correct data
+        mock_apply.assert_called_once_with(data=mutations)
 
 # =============================================================================
 # NARRATOR TESTS

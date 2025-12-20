@@ -11,8 +11,8 @@ STATUS: Canonical
 
 ```
 PATTERNS:   ./PATTERNS_Graph.md
-THIS:       BEHAVIORS_Graph.md (you are here)
-ALGORITHM:  ./ALGORITHM_Energy_Flow.md
+THIS:       BEHAVIORS_Graph.md
+ALGORITHM:  ../ALGORITHM_Physics.md
 VALIDATION: ./VALIDATION_Living_Graph.md
 SYNC:       ./SYNC_Graph.md
 ```
@@ -226,6 +226,10 @@ schedules, tick cadence, and newly created narratives from handlers.
 
 **Outputs:** updated energy/pressure levels, flip events, cascade-triggered
 narratives, and graph state changes that surface as new moments.
+
+**Note:** The query helpers briefly bump the retrieved node’s stored `energy`
+by a small increment (≈0.05) so the field always reflects the most recent
+views without making agents responsible for writing in new values.
 
 ---
 

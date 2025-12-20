@@ -62,12 +62,3 @@ modules:
 #     Core type definitions. Changes affect entire codebase.
 
 # Add more modules as they emerge...
-
-  engine_models:
-    code: "engine/models/**"
-    docs: "docs/engine/models/"
-    maturity: DRAFT
-    owner: agent
-    notes: |
-      Pydantic models for all graph nodes, links, and tensions.
-      Defines the canonical data schema for the game world.

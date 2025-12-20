@@ -73,6 +73,13 @@ The module relies on physics graph ops/queries and is treated as a hot path.
 - **Files:** `engine/moment_graph/surface.py`
 - **Result:** API module import succeeds; surface helpers match docs.
 
+### 2025-12-20: Fix spoken location filter in get_current_view
+
+- **What:** Rewrote the spoken-location filter to avoid `EXISTS` pattern errors in FalkorDB.
+- **Why:** Query errors returned empty moment lists, causing UI to think no opening exists.
+- **Files:** `engine/moment_graph/queries.py`
+- **Result:** `get_current_view` returns moments without query failures.
+
 ### 2025-12-19: Revalidated traversal helpers
 
 - **What:** Checked `make_dormant` and `process_wait_triggers` in

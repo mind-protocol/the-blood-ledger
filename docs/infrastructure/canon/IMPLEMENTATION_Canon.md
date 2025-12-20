@@ -1,9 +1,9 @@
-# Canon Holder — Implementation: Code Architecture
+# Canon Holder — Implementation: Code Architecture and Structure
 
 ```
 STATUS: STABLE
 CREATED: 2025-12-19
-UPDATED: 2025-12-19
+UPDATED: 2025-12-20
 ```
 
 ---
@@ -16,7 +16,7 @@ BEHAVIORS:      ./BEHAVIORS_Canon.md
 ALGORITHM:      ./ALGORITHM_Canon_Holder.md
 VALIDATION:     ./VALIDATION_Canon.md
 THIS:           IMPLEMENTATION_Canon.md
-TEST:           ./TEST_Canon.md
+HEALTH:         ./HEALTH_Canon.md
 SYNC:           ./SYNC_Canon.md
 
 IMPL:           engine/infrastructure/canon/canon_holder.py
@@ -29,18 +29,18 @@ IMPL:           engine/infrastructure/canon/canon_holder.py
 ## CODE STRUCTURE
 
 ```
-engine/infrastructure/canon/__init__.py      # Exports record_to_canon, CanonHolder, determine_speaker
-engine/infrastructure/canon/canon_holder.py  # Main recording logic
-engine/infrastructure/canon/speaker.py       # Speaker resolution
+engine/infrastructure/canon/
+├── __init__.py          # Exports record_to_canon, CanonHolder
+├── canon_holder.py      # Core recording logic
+└── speaker.py           # Speaker resolution and rules
 ```
 
 ### File Responsibilities
 
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|----------------------|-------|--------|
-| `engine/infrastructure/canon/__init__.py` | Module exports | - | ~25 | OK |
-| `engine/infrastructure/canon/canon_holder.py` | Main recording logic | `CanonHolder`, `record_to_canon()` | ~310 | OK |
-| `engine/infrastructure/canon/speaker.py` | Speaker resolution | `determine_speaker()`, `get_moment_type()` | ~90 | OK |
+| `engine/infrastructure/canon/canon_holder.py` | Spoken status lifecycle | `CanonHolder` | ~310 | OK |
+| `engine/infrastructure/canon/speaker.py` | Speaker selection | `determine_speaker` | ~90 | OK |
 
 ---
 
@@ -48,84 +48,34 @@ engine/infrastructure/canon/speaker.py       # Speaker resolution
 
 ### Architecture Pattern
 
-**Pattern:** Class-based with graph state
+**Pattern:** Persistent Transactional Facade (Transactional conceptually).
 
-**Why this pattern:**
-- `CanonHolder` class holds playthrough context (id, graph connection)
-- State lives in FalkorDB graph, not in-memory
-- Class instance created per-orchestrator for connection reuse
-
-### Code Patterns in Use
-
-| Pattern | Applied To | Purpose |
-|---------|------------|---------|
-| Lazy Import | `engine/infrastructure/canon/canon_holder.py:132` | Avoid circular dependency with api module |
-| Query Builder | `engine/infrastructure/canon/speaker.py` | Construct Cypher queries for speaker resolution |
-| Event Emitter | `engine/infrastructure/canon/canon_holder.py` | SSE broadcast after recording |
-
-### Anti-Patterns to Avoid
-
-- **Dual State**: Don't cache moment state locally—always read from graph
-- **Silent Failures**: If recording fails, log warning (don't swallow)
-- **SSE Without Recording**: Never broadcast before graph write commits
-- **Circular Imports**: Use lazy imports when importing from api module
-
-### Boundaries
-
-| Boundary | Inside | Outside | Interface |
-|----------|--------|---------|-----------|
-| Canon Module | Recording logic | Moment creation, weight propagation | `CanonHolder.record_to_canon()` |
-| SSE | Notification | Client management | `broadcast_moment_event()` |
+**Why this pattern:** The Canon Holder ensures that multiple graph updates (status flip, energy cost, THEN link, SAID link) happen as a single logical unit before broadcasting to the player.
 
 ---
 
 ## SCHEMA
 
-### Moment (after recording)
+### Moment (Final Canon)
 
 ```yaml
 Moment:
   required:
-    - id: str                    # mom_xxx
-    - text: str                  # The spoken text
-    - type: str                  # narration | dialogue | action
-    - status: str                # 'spoken' after recording
-    - tick_spoken: int           # When recorded
-    - energy: float              # Reduced by 60% on recording
-  optional:
-    - action: str                # travel:place_xxx, take:thing_xxx
-  constraints:
-    - status must be 'spoken'
-    - tick_spoken must be set
-    - Speaker is NOT stored on moment (see SAID link)
+    - id: string
+    - status: 'spoken'
+    - tick_spoken: int
+    - energy: float (0.4x original)
 ```
 
-### SAID Link
+### Links
 
 ```yaml
 SAID:
   from: Character
   to: Moment
-  properties:
-    - tick: int                  # When spoken
-  notes:
-    - Created when dialogue moment is recorded
-    - Links speaker to moment they spoke
-    - Query SAID link to get speaker (not stored on moment)
-```
-
-### THEN Link
-
-```yaml
 THEN:
   from: Moment
   to: Moment
-  properties:
-    - tick: int                  # When link was created
-    - player_caused: bool        # True if player click triggered
-  notes:
-    - Links previous moment to current
-    - Forms history chain
 ```
 
 ---
@@ -134,94 +84,92 @@ THEN:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| `CanonHolder.record_to_canon()` | `engine/infrastructure/canon/canon_holder.py:54` | Orchestrator after narrator |
-| `CanonHolder.process_ready_moments()` | `engine/infrastructure/canon/canon_holder.py:153` | Tick loop (future) |
-| `determine_speaker()` | `engine/infrastructure/canon/speaker.py:20` | Called by record_to_canon |
-| `record_to_canon()` (convenience) | `engine/infrastructure/canon/canon_holder.py:282` | Direct calls |
+| record_to_canon | `canon_holder.py:54` | Orchestrator after narrating |
+| process_ready_moments | `canon_holder.py:153` | Batch tick processing |
 
 ---
 
-## DATA FLOW
+## DATA FLOW AND DOCKING (FLOW-BY-FLOW)
 
-### Recording Flow: Moment → Canon
+### Recording Flow: Creation → Reality → SSE
 
-```
-┌─────────────────────┐
-│  Active Moment      │ (in graph, status='active')
-└──────────┬──────────┘
-           │ moment_id
-           ▼
-┌─────────────────────┐
-│  engine/infrastructure/canon/canon_holder.py    │ ← CanonHolder.record_to_canon()
-│  1. validate status │
-│  2. update moment   │ (Q6 Step 1)
-│  3. create SAID     │ (Q6 Step 2)
-│  4. create THEN     │ (Q6 Step 3)
-│  5. broadcast SSE   │
-└──────────┬──────────┘
-           │ commit
-           ▼
-┌─────────────────────┐
-│  Spoken Moment      │ (in graph, status='spoken')
-│  + SAID link        │ (if dialogue)
-│  + THEN link        │ (if previous)
-└──────────┬──────────┘
-           │ event
-           ▼
-┌─────────────────────┐
-│  SSE to Frontend    │ (moment_spoken event)
-└─────────────────────┘
-```
+This flow handles the transition of a potential story beat into the immutable game history (canon).
 
-### Integration Flow: Orchestrator → Canon Holder
-
-```
-┌─────────────────────┐
-│    Orchestrator     │
-│  orchestrator.py    │
-└──────────┬──────────┘
-           │ narrator output (scene.narration, scene.voices)
-           ▼
-┌─────────────────────┐
-│ _record_narrator_   │ ← orchestrator.py:336
-│   output()          │
-│  - create Moment    │
-│  - call Canon       │
-└──────────┬──────────┘
-           │ for each narration/voice
-           ▼
-┌─────────────────────┐
-│ CanonHolder.        │
-│ record_to_canon()   │
-│  - engine/infrastructure/canon/speaker.py       │
-│  - sse_broadcast    │
-└─────────────────────┘
+```yaml
+flow:
+  name: canon_recording
+  purpose: Finalize a moment and notify the UI.
+  scope: Active Moment -> Graph Update -> Links -> SSE Broadcast
+  steps:
+    - id: step_1_validate
+      description: Check if moment exists and isn't already spoken.
+      file: engine/infrastructure/canon/canon_holder.py
+      function: record_to_canon
+      input: moment_id
+      output: boolean status
+      trigger: caller invocation
+      side_effects: none
+    - id: step_2_speaker
+      description: Identify the best character to voice the dialogue.
+      file: engine/infrastructure/canon/speaker.py
+      function: determine_speaker
+      input: moment_id, playthrough_id
+      output: speaker_id (str)
+      trigger: record_to_canon workflow
+      side_effects: none
+    - id: step_3_update
+      description: Flip status and links in FalkorDB.
+      file: engine/infrastructure/canon/canon_holder.py
+      function: _create_said_link, _create_then_link
+      input: speaker_id, previous_moment_id
+      output: void
+      trigger: successful validation
+      side_effects: Graph state mutated
+  docking_points:
+    guidance:
+      include_when: story facts are locked in or the player is notified
+    available:
+      - id: canon_input
+        type: custom
+        direction: input
+        file: engine/infrastructure/canon/canon_holder.py
+        function: record_to_canon
+        trigger: Orchestrator
+        payload: {moment_id, speaker_id, tick}
+        async_hook: optional
+        needs: none
+        notes: Boundary between narration and fact
+      - id: canon_output
+        type: event
+        direction: output
+        file: engine/infrastructure/api/sse_broadcast.py
+        function: broadcast_moment_event
+        trigger: successful graph write
+        payload: MomentSpokenEvent
+        async_hook: required
+        needs: none
+        notes: Real-time update for the frontend
+    health_recommended:
+      - dock_id: canon_output
+        reason: Verification of history chain continuity and delivery.
 ```
 
 ---
 
 ## LOGIC CHAINS
 
-### LC1: Record Single Moment (Q6)
+### LC1: Speaker Determination
 
-**Purpose:** Record one moment to canon
+**Purpose:** Select the highest-weight present speaker.
 
 ```
-moment (active)
-  → validate status != 'spoken'       # Early return if already spoken
-    → determine_speaker() if dialogue # Q5 from ALGORITHM
-      → Q6 Step 1: SET status, tick_spoken, energy
-        → Q6 Step 2: CREATE SAID link (if speaker)
-          → Q6 Step 3: CREATE THEN link (if previous)
-            → broadcast_moment_event()   # SSE to frontend
+moment_id
+  → speaker.py:determine_speaker()
+    → query characters at player_location
+      → filter by state='awake'
+        → sort by CAN_SPEAK.strength
+          → speaker_id
 ```
-
-**Data transformation:**
-- Input: `Moment` with status='active'
-- After Q6 Step 1: `Moment` with status='spoken', tick_spoken set, energy *= 0.4
-- After Q6 Step 2: New `SAID` edge from Character to Moment
-- After Q6 Step 3: New `THEN` edge from previous Moment
-- Output: SSE event sent, result dict returned
 
 ---
 
@@ -231,19 +179,10 @@ moment (active)
 
 ```
 engine/infrastructure/canon/canon_holder.py
-    └── imports → engine/infrastructure/canon/speaker.py (determine_speaker, get_moment_type)
-    └── lazy imports → sse_broadcast.py (broadcast_moment_event)
-    └── imports → GraphQueries (from engine.physics.graph)
-
-engine/infrastructure/canon/speaker.py
-    └── imports → GraphQueries (from engine.physics.graph)
+    ├── imports → engine.physics.graph
+    ├── imports → engine.infrastructure.canon.speaker
+    └── lazy imports → engine.infrastructure.api.sse_broadcast
 ```
-
-### External Dependencies
-
-| Package | Used For | Imported By |
-|---------|----------|-------------|
-| `logging` | Error/debug logging | All files |
 
 ---
 
@@ -253,42 +192,7 @@ engine/infrastructure/canon/speaker.py
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| Moment data | FalkorDB graph | Per-playthrough | Persistent |
-| Current tick | Passed as parameter | Per-call | Transient |
-| Last spoken moment | Queried from graph | Per-request | Transient |
-| SSE client queues | sse_broadcast module | Per-playthrough | Session |
-
-### State Transitions
-
-```
-active ──record_to_canon()──▶ spoken
-         (creates SAID, THEN links)
-```
-
----
-
-## RUNTIME BEHAVIOR
-
-### Initialization
-
-```
-1. Orchestrator creates CanonHolder(playthrough_id)
-2. CanonHolder connects to FalkorDB graph
-3. Ready to record moments
-```
-
-### Main Recording Cycle
-
-```
-1. Caller invokes record_to_canon(moment_id, speaker_id, previous_id, tick)
-2. Validate moment exists and status != 'spoken'
-3. For dialogue: resolve speaker if not provided
-4. Q6 Step 1: Update graph (status='spoken', tick_spoken, energy *= 0.4)
-5. Q6 Step 2: Create SAID link (if speaker_id)
-6. Q6 Step 3: Create THEN link (if previous_id)
-7. Broadcast SSE moment_spoken event
-8. Return result dict
-```
+| History Chain | FalkorDB (THEN links) | Global | Persistent |
 
 ---
 
@@ -296,70 +200,4 @@ active ──record_to_canon()──▶ spoken
 
 | Component | Model | Notes |
 |-----------|-------|-------|
-| `record_to_canon` | sync | Called from async context, graph ops are sync |
-| SSE broadcast | async queue | put_nowait into client queues |
-
-**Considerations:**
-- Graph writes are individual queries (not transactional)
-- Multiple concurrent recordings need sequencing by caller
-- Current design: orchestrator sequences calls
-
----
-
-## CONFIGURATION
-
-| Config | Location | Default | Description |
-|--------|----------|---------|-------------|
-| `ACTUALIZATION_COST` | `engine/infrastructure/canon/canon_holder.py:26` | 0.6 | Energy cost when speaking (keeps 40%) |
-| `MAX_MOMENTS_PER_TICK` | `engine/infrastructure/canon/canon_holder.py:27` | `3` | Max moments recorded per tick |
-
----
-
-## BIDIRECTIONAL LINKS
-
-### Code → Docs
-
-| File | Line | Reference |
-|------|------|-----------|
-| `engine/infrastructure/canon/canon_holder.py` | 1 | `docs/infrastructure/canon/IMPLEMENTATION_Canon.md` |
-| `engine/infrastructure/canon/speaker.py` | 1 | `docs/infrastructure/canon/IMPLEMENTATION_Canon.md` |
-| `engine/infrastructure/canon/__init__.py` | 1 | `docs/infrastructure/canon/IMPLEMENTATION_Canon.md` |
-
-### Docs → Code
-
-| Doc Section | Implemented In |
-|-------------|----------------|
-| ALGORITHM Q5 (speaker) | `engine/infrastructure/canon/speaker.py:20` (`determine_speaker`) |
-| ALGORITHM Q6 Step 1 | `engine/infrastructure/canon/canon_holder.py:113` (SET status='spoken') |
-| ALGORITHM Q6 Step 2 | `engine/infrastructure/canon/canon_holder.py:221` (`_create_said_link`) |
-| ALGORITHM Q6 Step 3 | `engine/infrastructure/canon/canon_holder.py:243` (`_create_then_link`) |
-| ALGORITHM Q7 | `engine/infrastructure/canon/canon_holder.py:269` (`_get_last_spoken_moment_id`) |
-
----
-
-## GAPS / IDEAS / QUESTIONS
-
-### Completed
-
-- [x] Create `engine/infrastructure/canon/` directory
-- [x] Implement `engine/infrastructure/canon/canon_holder.py` with `CanonHolder` class
-- [x] Implement `engine/infrastructure/canon/speaker.py` with `determine_speaker()`
-- [x] Integrate with orchestrator
-- [x] Create SAID link per ALGORITHM Q6 Step 2
-
-### Missing Implementation
-
-- [ ] Time advancement module (not implemented)
-- [ ] Strength mechanics module (not implemented)
-- [ ] Comprehensive test suite
-- [ ] detect_and_surface() for possible → active (tick loop)
-
-### Ideas
-
-- IDEA: Add transaction wrapper for atomic recording
-- IDEA: Metrics for recording latency
-
-### Questions
-
-- QUESTION: Should graph writes be transactional?
-- QUESTION: How to handle partial failures (SAID succeeds, THEN fails)?
+| Graph Update | Sync | Sequential per playthrough to maintain THEN chain |

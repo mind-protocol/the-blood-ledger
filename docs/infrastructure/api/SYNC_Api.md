@@ -24,6 +24,19 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 
 ## RECENT CHANGES
 
+### 2025-12-20: Broadcast player moments on SSE
+
+- **What:** Emit `moment_spoken` SSE events when `/api/moment` creates a player moment.
+- **Why:** UI relies on SSE to refresh; player messages were not appearing.
+- **Impact:** Frontend receives a refresh trigger after player input.
+
+### 2025-12-20: Fix moment stream route collision
+
+- **What:** Moved `/api/moments/stream/{playthrough_id}` above the generic
+  `/{playthrough_id}/{moment_id}` route in `engine/infrastructure/api/moments.py`.
+- **Why:** The generic route was capturing `/stream/{id}` and returning 404.
+- **Impact:** SSE stream endpoint responds with 200 as expected.
+
 ### 2025-12-20: Ngram Framework Refactor
 
 - **What:** Refactored `IMPLEMENTATION_Api.md` and updated `TEST_Api.md` to the Health format.

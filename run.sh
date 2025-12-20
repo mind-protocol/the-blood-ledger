@@ -5,13 +5,13 @@ LOG_DIR="data/logs"
 mkdir -p "$LOG_DIR"
 
 # Kill any existing processes
-pkill -f "uvicorn engine.api.app" 2>/dev/null
+pkill -f "uvicorn engine.infrastructure.api.app" 2>/dev/null
 pkill -f "next dev" 2>/dev/null
 sleep 1
 
 echo "Starting backend on :8000..."
 cd "$(dirname "$0")"
-python3 -m uvicorn engine.api.app:app --host 0.0.0.0 --port 8000 --reload 2>&1 | tee "$LOG_DIR/backend-console.log" &
+python3 -m uvicorn engine.infrastructure.api.app:app --host 0.0.0.0 --port 8000 --reload 2>&1 | tee "$LOG_DIR/backend-console.log" &
 BACKEND_PID=$!
 
 sleep 2

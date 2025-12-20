@@ -2,6 +2,7 @@
 
 // DOCS: docs/frontend/map/PATTERNS_Parchment_Map_View.md
 
+import Link from 'next/link';
 import { useState, useCallback, useEffect } from 'react';
 import { MapCanvas } from './MapCanvas';
 import { places, routes, sampleVisibility } from '@/data/map-data';
@@ -45,12 +46,12 @@ export function MapClient() {
         <h1 className="text-xl font-serif text-amber-200/90">
           Northumbria — 1067
         </h1>
-        <a
+        <Link
           href="/"
           className="text-sm text-stone-400 hover:text-amber-200 transition-colors"
         >
           Return to Scene
-        </a>
+        </Link>
       </header>
 
       {/* Map Container */}

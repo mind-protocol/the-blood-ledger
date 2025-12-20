@@ -28,7 +28,93 @@ false-positive escalation detection.
 
 ---
 
+## Structural Analysis — 2025-12-20
+
+### Summary
+- `docs/` currently has 11 areas, while `map.md` reports 10; archive folders and a non-module folder name likely skew the module count.
+- Multiple modules lack the required `PATTERNS_*.md`/`SYNC_*.md` chain entries (notably in `docs/schema/`, `docs/design/scenarios/`, and `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/`).
+- Duplicate doc names appear across infrastructure and agent modules (algorithm/test/reference files), increasing ambiguity about canonical sources.
+
+### Recommendations
+- [ ] Normalize area/module layout (move root-level design docs into a `design/vision/` module; move `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/` into a named module).
+- [ ] Add missing `PATTERNS_*.md` and `SYNC_*.md` for modules that currently only contain schema or README files.
+- [ ] Consolidate duplicate doc names across infrastructure/agents into single canonical sources with stub pointers.
+
+### Next Steps
+- Choose a target module layout for design, frontend, and schema docs.
+- Define which duplicate files are canonical before consolidating.
+- Update `map.md` after structural changes to verify corrected area/module counts.
+
+---
+
+## Graph Scope Classification — 2025-12-20
+
+### Summary
+- Generated a repo-wide classification into in-scope vs out-of-scope categories with confidence scores.
+- Output includes a low-confidence review list for manual triage.
+
+### Artifacts
+- `data/graph_scope_classification.yaml`
+
+### Notes
+- `modules.yaml` currently has no module entries, so module descriptions were not included in the output.
+
+---
+
+## Graph Scope Manual Classification — 2025-12-20
+
+### Summary
+- Manually curated in-scope doc modules and linked implementation files for graph-related subsystems.
+- Added a script to emit the classification from hardcoded lists (no heuristics).
+
+### Artifacts
+- `tools/graph_scope_manual_classify.py`
+- `data/graph_scope_classification.yaml`
+
+### Notes
+- The output records missing paths referenced by docs: `engine/models/tensions.py`, `engine/db/graph_ops.py`, `engine/api/app.py`, `engine/infrastructure/memory/transcript.py`.
+
+---
+
+## Graph Scope Dependency Map — 2025-12-20
+
+### Summary
+- Added a script to map doc↔code links and code imports for curated graph-scope files.
+- Generated YAML + text exports for the link graph.
+
+### Artifacts
+- `tools/graph_scope_links.py`
+- `data/graph_scope_links.yaml`
+- `data/graph_scope_links.txt`
+
+---
+
+## External Transfer Note — 2025-12-20
+
+### Summary
+- `data/ARCHITECTURE — Cybernetic Studio.md` indicates all graph-related files were transferred to the ngram repo.
+
+---
+
 ## RECENT CHANGES
+
+### 2025-12-21: Default playthrough re-enables SSE
+
+- **What:** Removed the guard in `frontend/hooks/useGameState.ts` so the default `'beorn'` session now subscribes to `/api/moments/stream/{playthrough_id}` and updated opening docs to call out the true default ID.
+- **Why:** The demo path used by the default dev scenario never listened for SSE events, leaving player messages stuck in the UI even though energy → canon → stream was working.
+- **Impact:** Player input on the default playthrough now fires the documented SSE refresh cycle; no manual refresh is required after sending a message.
+
+### 2025-12-21: Reverted the quick seeding and queried “cuthbert”
+
+- **What:** Removed `n_princes_aldrics_feelings` from `blood_ledger` and cleared the temporary `embedding` field on `char_aldric` so the canonical graph state is untouched; then ran the requested natural-language query directly against the live FalkorDB graph to confirm the semantic-search path works with the documented `engine.physics.embeddings`.
+- **Why:** The earlier seed was an experiment that shouldn’t persist, and the follow-up requirement was to inspect `cuthbert` for the highest-energy moment without mocking anything.
+- **Impact:** The live seed injection is gone, the search path still works thanks to the new physics shim, and the highest-weight nodes in `cuthbert` now serve as an observable data point (`thornwick_d1_night_player_freeform_1037326404` / “what?” at weight 1.0, plus several other spoken moments at 1.0).
+
+### 2025-12-20: Enabled the natural-language graph query flow
+
+- **What:** Added `engine/physics/embeddings.py` as a thin shim so the documented `engine.physics.embeddings.get_embedding` import works without forcing callers to reach directly into the infrastructure package.
+- **Why:** The tooling example referenced `engine.physics.embeddings.get_embedding`, but the package only lived under `engine.infrastructure`; this change keeps the documented import path working.
+- **Impact:** GraphQueries semantic search now runs directly from the physics namespace when the graph already holds the necessary embeddings.
 
 ### 2025-12-20: Chronicle implementation doc consolidation
 
@@ -425,3 +511,8 @@ Check `modules.yaml` (project root) for full manifest.
 
 **Coverage notes:**
 Module manifest needs to include docs for opening if you want full mapping coverage.
+### 2025-12-21: Inject small energy boost when reading nodes
+
+- **What:** GraphQueries now calls a lightweight energy-injection helper (`_inject_energy_for_node`) after it reads moments or narratives so every read implicitly nudges the physics state; the boost is now 0.05 per read, and docs enumerate `energy`/`weight` on all schema nodes/links.
+- **Why:** You asked for energy values when querying, and this ensures GraphQueries returns up-to-date energy while keeping the state synchronized with what the physics engine expects.
+- **Impact:** Every `get_*` moment/narrative helper now increments the retrieved node’s `energy` by `0.01`, and the schema overview/links pages document the required metrics.

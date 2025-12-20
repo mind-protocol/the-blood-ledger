@@ -46,6 +46,15 @@ class MomentQueryMixin:
         - self.get_character(char_id) method
     """
 
+    def _maybe_inject_energy(self, label: str, node_id: str) -> None:
+        injector = getattr(self, "_inject_energy_for_node", None)
+        if not injector or not node_id:
+            return
+        try:
+            injector(label, node_id)
+        except Exception as exc:
+            logger.debug("[MomentQueryMixin] Energy injection skipped (%s:%s): %s", label, node_id, exc)
+
     # =========================================================================
     # MOMENT QUERIES
     # =========================================================================
@@ -69,7 +78,9 @@ class MomentQueryMixin:
         fields = ["id", "text", "type", "tick", "line",
                   "status", "weight", "tone", "tick_spoken", "tick_decayed",
                   "speaker"]
-        return self._parse_node(rows[0], fields)
+        moment = self._parse_node(rows[0], fields)
+        self._maybe_inject_energy("Moment", moment.get("id"))
+        return moment
 
     def get_moments_at_place(
         self,
@@ -88,7 +99,12 @@ class MomentQueryMixin:
         """
         rows = self._query(cypher)
         fields = ["id", "text", "type", "tick", "line", "speaker"]
-        return [self._parse_node(row, fields) for row in rows]
+        moments = []
+        for row in rows:
+            moment = self._parse_node(row, fields)
+            self._maybe_inject_energy("Moment", moment.get("id"))
+            moments.append(moment)
+        return moments
 
     def get_moments_by_character(
         self,
@@ -106,7 +122,12 @@ class MomentQueryMixin:
         """
         rows = self._query(cypher)
         fields = ["id", "text", "type", "tick", "line"]
-        return [self._parse_node(row, fields) for row in rows]
+        moments = []
+        for row in rows:
+            moment = self._parse_node(row, fields)
+            self._maybe_inject_energy("Moment", moment.get("id"))
+            moments.append(moment)
+        return moments
 
     def get_moments_in_tick_range(
         self,
@@ -135,7 +156,12 @@ class MomentQueryMixin:
             """
         rows = self._query(cypher)
         fields = ["id", "text", "type", "tick", "line", "speaker"]
-        return [self._parse_node(row, fields) for row in rows]
+        moments = []
+        for row in rows:
+            moment = self._parse_node(row, fields)
+            self._maybe_inject_energy("Moment", moment.get("id"))
+            moments.append(moment)
+        return moments
 
     def get_moment_sequence(
         self,
@@ -153,7 +179,12 @@ class MomentQueryMixin:
         """
         rows = self._query(cypher)
         fields = ["id", "text", "type", "tick", "line", "speaker", "depth"]
-        return [self._parse_node(row, fields) for row in rows]
+        moments = []
+        for row in rows:
+            moment = self._parse_node(row, fields)
+            self._maybe_inject_energy("Moment", moment.get("id"))
+            moments.append(moment)
+        return moments
 
     def get_narrative_moments(
         self,
@@ -170,7 +201,12 @@ class MomentQueryMixin:
         """
         rows = self._query(cypher)
         fields = ["id", "text", "type", "tick", "line", "speaker"]
-        return [self._parse_node(row, fields) for row in rows]
+        moments = []
+        for row in rows:
+            moment = self._parse_node(row, fields)
+            self._maybe_inject_energy("Moment", moment.get("id"))
+            moments.append(moment)
+        return moments
 
     def get_narratives_from_moment(
         self,
@@ -185,7 +221,12 @@ class MomentQueryMixin:
         """
         rows = self._query(cypher)
         fields = ["id", "name", "content", "type"]
-        return [self._parse_node(row, fields) for row in rows]
+        narratives = []
+        for row in rows:
+            narrative = self._parse_node(row, fields)
+            self._maybe_inject_energy("Narrative", narrative.get("id"))
+            narratives.append(narrative)
+        return narratives
 
     def search_moments(
         self,
@@ -238,14 +279,18 @@ class MomentQueryMixin:
                 node_norm = np.linalg.norm(node_vec)
                 if query_norm > 0 and node_norm > 0:
                     similarity = float(np.dot(query_vec, node_vec) / (query_norm * node_norm))
-                    results.append({
-                        "id": row[0],
-                        "text": row[1],
-                        "type": row[2],
-                        "tick": row[3],
-                        "speaker": row[5],  # speaker is 6th field (index 5)
-                        "score": similarity
-                    })
+                moment_id = row[0]
+                if moment_id:
+                    self._maybe_inject_energy("Moment", moment_id)
+
+                results.append({
+                    "id": moment_id,
+                    "text": row[1],
+                    "type": row[2],
+                    "tick": row[3],
+                    "speaker": row[5],  # speaker is 6th field (index 5)
+                    "score": similarity
+                })
 
         # Sort by similarity and return top_k
         results.sort(key=lambda x: x["score"], reverse=True)
@@ -396,6 +441,7 @@ class MomentQueryMixin:
             moment = self._parse_node(row, fields)
             # Use actual_speaker if available, otherwise potential_speaker
             moment['speaker'] = moment.pop('actual_speaker') or moment.pop('potential_speaker')
+            self._maybe_inject_energy("Moment", moment.get("id"))
             moments.append(moment)
 
         return moments

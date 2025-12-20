@@ -9,12 +9,11 @@ the authoritative validation rules live with the physics graph module.
 ## CHAIN
 
 ```
-PATTERNS:        ../physics/graph/PATTERNS_Graph.md
-BEHAVIORS:       ../physics/graph/BEHAVIORS_Graph.md
-ALGORITHM:       ../physics/graph/ALGORITHM_Energy_Flow.md
-THIS:            VALIDATION_Graph.md (schema redirect)
-CANONICAL:       ../physics/graph/VALIDATION_Living_Graph.md
-SYNC:            ../physics/graph/SYNC_Graph.md
+PATTERNS:   ./PATTERNS_Graph.md
+BEHAVIORS:  ./BEHAVIORS_Graph.md
+ALGORITHM:  ../physics/ALGORITHM_Physics.md
+VALIDATION: ./VALIDATION_Living_Graph.md
+THIS:       VALIDATION_Graph.md
 ```
 
 ---

@@ -41,6 +41,47 @@ This unconventional comparison highlights Blood Ledger's ability to monetize dee
 *   A world that exists only for them.
 *   Investment in persistent relationships.
 
+## Whale Economics (Canonical)
+
+The core economic model is "Whale Economics": simulation is free, monetization occurs when players preserve narrative "Moments." This keeps ARPU high while maintaining strong margins.
+
+### The Core Insight: Simulation Is Free
+
+The simulation engine runs at zero API cost; LLM cost only appears when generating prose Moments. This makes the world rich even when no paid Moments are created.
+
+### Cost Per Moment Type
+
+| Moment Type | Input Tokens | Output Tokens | Cost (Sonnet) | Frequency | Margin @ $0.04 |
+|-------------|--------------|---------------|---------------|-----------|----------------|
+| **Simple Dialogue** | ~800 | ~150 | $0.0047 | 70% | **88%** |
+| **Action/Scene** | ~1,200 | ~250 | $0.0074 | 20% | **81%** |
+| **World Building** (Grandmother) | ~2,500 | ~400 | $0.0135 | 8% | **66%** |
+| **Major Event** (Flip) | ~3,000 | ~600 | $0.0180 | 2% | **55%** |
+
+*   **Weighted Average Cost:** $0.0062/Moment
+*   **Weighted Average Margin:** **84%**
+
+### The "Grandmother Query" Economics
+
+Expensive worldbuilding queries are cached into the graph. After initial generation, future references are cheaper, turning high upfront cost into reusable narrative capital.
+
+### The "Nothing Happening" Subsidy
+
+When a player is AFK, the simulation keeps running for free. The world evolves without LLM costs, and the player returns to meaningful change at no direct cost to the game.
+
+### Margin Defense Table
+
+| Scenario | Player Behavior | Our Cost | Revenue | Margin |
+|----------|-----------------|----------|---------|--------|
+| **Tourist** | 300 Moments, mostly dialogue | $1.86 | $12.00 | 84% |
+| **Regular** | 1,500 Moments, some worldbuilding | $10.50 | $60.00 | 82% |
+| **Passionate** | 5,000 Moments, heavy exploration | $40.00 | $200.00 | 80% |
+| **Whale** | 15,000 Moments, exhaustive | $135.00 | $600.00 | 77% |
+
+### Worst-Case Stress Test
+
+Even if a player spams expensive worldbuilding queries, caching ensures repeated use drives costs down and keeps the model profitable.
+
 ## Lifetime Value (LTV) Comparison
 
 Blood Ledger projects a significantly higher LTV compared to other market offerings due to its unique business model and retention mechanisms.
@@ -66,7 +107,7 @@ STATUS: CANONICAL
 
 ## CHAIN
 
-PATTERNS:        ./PATTERNS_Whale_Economics.md
+PATTERNS:        ./PATTERNS_Market_Comparison.md
 ALGORITHM:       ./ALGORITHM_Semantic_Cache.md
 ALGORITHM:       ./ALGORITHM_Hallucination_Defense.md
 ALGORITHM:       ./ALGORITHM_World_Scavenger.md

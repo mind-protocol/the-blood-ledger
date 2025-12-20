@@ -1,5 +1,14 @@
 # Schema Links
 
+## Common Metrics
+
+Every link carries `energy` and `weight` so the physics engine can trace salience through relationships just like nodes.
+
+```yaml
+energy: 0.0-1.0
+weight: 0.0-1.0
+```
+
 ## NARRATIVE -> NARRATIVE
 
 Purpose: How stories relate (contradict, support, elaborate, subsume, supersede).
@@ -15,6 +24,8 @@ supports: float
 elaborates: float
 subsumes: float
 supersedes: float
+energy: float
+weight: float
 ```
 
 ## CHARACTER -> PLACE (Presence)
@@ -25,6 +36,8 @@ Attributes:
 ```yaml
 present: float
 visible: float
+energy: float
+weight: float
 ```
 
 ## CHARACTER -> THING (Possession)
@@ -35,6 +48,8 @@ Attributes:
 ```yaml
 carries: float
 carries_hidden: float
+energy: float
+weight: float
 ```
 
 ## THING -> PLACE (Location)
@@ -46,13 +61,19 @@ Attributes:
 located: float
 hidden: float
 specific_location: string
+energy: float
+weight: float
 ```
 
 ## PLACE -> PLACE (Containment)
 
 Purpose: Hierarchical containment (binary).
 
-Attributes: none
+Attributes:
+```yaml
+energy: float
+weight: float
+```
 
 ## PLACE -> PLACE (Route)
 
@@ -66,4 +87,6 @@ distance_km: float (computed)
 travel_minutes: integer (computed)
 difficulty: enum [easy, moderate, hard, dangerous] (computed)
 detail: string
+energy: float
+weight: float
 ```

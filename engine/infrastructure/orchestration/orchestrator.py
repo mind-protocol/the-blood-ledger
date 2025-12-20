@@ -48,7 +48,7 @@ class Orchestrator:
 
         # Services
         self.narrator = NarratorService()
-        self.world_runner = WorldRunnerService()
+        self.world_runner = WorldRunnerService(graph_ops=self.write, graph_queries=self.read)
         self.tick_engine = GraphTick(graph_name=graph_name, host=host, port=port)
 
         # State
@@ -391,7 +391,7 @@ class Orchestrator:
         # Store world_injection for next Narrator call
         world_injection = wr_output.get('world_injection')
         if world_injection:
-            self._save_world_injection(world_injection)
+            self._save_world_injection(json.dumps(world_injection))
 
         logger.info(f"[Orchestrator] Processed {len(flips)} flips")
 
@@ -500,49 +500,84 @@ class Orchestrator:
 
         logger.info("[Orchestrator] New game started")
 
-    # -------------------------------------------------------------------------
-    # World Injection File Management
-    # -------------------------------------------------------------------------
+        # -------------------------------------------------------------------------
 
-    def _world_injection_path(self) -> Path:
-        """Get path to world_injection.md for this playthrough."""
-        if not self.playthrough_dir.exists():
-            self.playthrough_dir.mkdir(parents=True, exist_ok=True)
-        return self.playthrough_dir / "world_injection.md"
+        # World Injection File Management
 
-    def _get_world_tick(self) -> Optional[int]:
-        """Get current world tick from graph state."""
-        try:
-            result = self.read._query("""
-                MATCH (w:World)
-                RETURN w.tick
-                LIMIT 1
-            """)
-            if result and result[0]:
-                tick_value = result[0][0]
-                if tick_value is not None:
-                    return int(tick_value)
-        except Exception as exc:
-            logger.debug(f"[Orchestrator] Failed to load world tick: {exc}")
-        return None
+        # -------------------------------------------------------------------------
 
-    def _load_world_injection(self) -> Optional[str]:
-        """Load world_injection markdown from file if it exists."""
-        path = self._world_injection_path()
-        if path.exists():
+    
+
+        def _world_injection_path(self) -> Path:
+
+            """Get path to world_injection.json for this playthrough."""
+
+            if not self.playthrough_dir.exists():
+
+                self.playthrough_dir.mkdir(parents=True, exist_ok=True)
+
+            return self.playthrough_dir / "world_injection.json"
+
+    
+
+        def _get_world_tick(self) -> Optional[int]:
+
+            """Get current world tick from graph state."""
+
             try:
-                with open(path, 'r') as f:
-                    return f.read()
-            except Exception as e:
-                logger.error(f"[Orchestrator] Failed to load world_injection: {e}")
-        return None
 
-    def _save_world_injection(self, injection: str):
-        """Save world_injection markdown to file."""
+                result = self.read._query("""
+
+                    MATCH (w:World)
+
+                    RETURN w.tick
+
+                    LIMIT 1
+
+                """)
+
+                if result and result[0]:
+
+                    tick_value = result[0][0]
+
+                    if tick_value is not None:
+
+                        return int(tick_value)
+
+            except Exception as exc:
+
+                logger.debug(f"[Orchestrator] Failed to load world tick: {exc}")
+
+            return None
+
+    
+
+        def _load_world_injection(self) -> Optional[Dict[str, Any]]:
+
+            """Load world_injection dictionary from file if it exists."""
+
+            path = self._world_injection_path()
+
+            if path.exists():
+
+                try:
+
+                    with open(path, 'r') as f:
+
+                        return json.load(f)
+
+                except Exception as e:
+
+                    logger.error(f"[Orchestrator] Failed to load world_injection: {e}")
+
+            return None
+
+    def _save_world_injection(self, injection: Dict[str, Any]):
+        """Save world_injection dictionary to file."""
         path = self._world_injection_path()
         try:
             with open(path, 'w') as f:
-                f.write(injection)
+                json.dump(injection, f, indent=2)
             logger.info(f"[Orchestrator] Saved world_injection to {path}")
         except Exception as e:
             logger.error(f"[Orchestrator] Failed to save world_injection: {e}")

@@ -15,9 +15,9 @@ PATTERNS:        ./PATTERNS_*.md
 BEHAVIORS:       ./BEHAVIORS_*.md
 ALGORITHM:       ./ALGORITHM_*.md
 THIS:            VALIDATION_*.md (you are here)
-IMPLEMENTATION:  ./IMPLEMENTATION_*.md
-TEST:            ./TEST_*.md
-SYNC:            ./SYNC_*.md
+IMPLEMENTATION:  ./IMPLEMENTATION_{name}.md
+HEALTH:          ./HEALTH_{name}.md
+SYNC:            ./SYNC_{name}.md
 
 IMPL:            {path/to/main/source/file.py}
 ```
@@ -67,7 +67,7 @@ FORALL {variables}:
     {property that should hold}
 ```
 
-**Tested by:** `test_{name}` | NOT YET TESTED — {reason}
+**Verified by:** `health_check_{name}` | NOT YET VERIFIED — {reason}
 
 ### P2: {Property Name}
 
@@ -76,7 +76,7 @@ FORALL {variables}:
     {property}
 ```
 
-**Tested by:** `test_{name}` | NOT YET TESTED — {reason}
+**Verified by:** `health_check_{name}` | NOT YET VERIFIED — {reason}
 
 ---
 
@@ -90,7 +90,7 @@ THEN:    {expected error behavior}
 SYMPTOM: {how this manifests}
 ```
 
-**Tested by:** `test_{name}` | NOT YET TESTED — {reason}
+**Verified by:** `health_check_{name}` | NOT YET VERIFIED — {reason}
 
 ### E2: {Error Condition}
 
@@ -100,19 +100,17 @@ THEN:    {error behavior}
 SYMPTOM: {manifestation}
 ```
 
-**Tested by:** `test_{name}` | NOT YET TESTED — {reason}
+**Verified by:** `health_check_{name}` | NOT YET VERIFIED — {reason}
 
 ---
 
-## TEST COVERAGE
+## HEALTH COVERAGE
 
-| Requirement | Test(s) | Status |
-|-------------|---------|--------|
-| V1: {name} | `test_xxx` | ✓ covered |
-| V2: {name} | `test_yyy` | ✓ covered |
-| V3: {name} | — | ⚠ NOT YET TESTED |
-| P1: {name} | `test_prop_xxx` | ✓ covered |
-| E1: {name} | `test_error_xxx` | ✓ covered |
+| Invariant | Signal | Status |
+|-----------|--------|--------|
+| V1: {name} | {indicator} | ✓ VERIFIED |
+| V2: {name} | {indicator} | ⚠ NOT YET VERIFIED |
+| V3: {name} | — | ⚠ NOT YET VERIFIED |
 
 ---
 

@@ -1,5 +1,14 @@
 # Schema Nodes
 
+## Common Metrics
+
+Every node tracks `energy` and `weight` so the physics system can surface the highest-salience entities without duplicating state in downstream code.
+
+```yaml
+energy: 0.0-1.0    # Computed energy level (rising with focus/tension)
+weight: 0.0-1.0    # Derived visibility score used for surfacing
+```
+
 ## CHARACTER
 
 Purpose: A person who exists in the world and can act, speak, and remember.
@@ -24,6 +33,8 @@ personality: { approach, values[], flaw }
 backstory: { family, childhood, wound, why_here }
 modifiers: []
 image_prompt: string
+energy: float
+weight: float
 ```
 
 ## PLACE
@@ -47,6 +58,8 @@ type: enum [region, city, hold, village, monastery, camp, road, room, wilderness
 atmosphere: { weather[], mood, details[] }
 modifiers: []
 image_prompt: string
+energy: float
+weight: float
 ```
 
 ## THING
@@ -71,6 +84,8 @@ quantity: integer
 description: string
 modifiers: []
 image_prompt: string
+energy: float
+weight: float
 ```
 
 ## NARRATIVE
@@ -102,4 +117,5 @@ occurred_at: string
 visibility: enum [public, secret, known_to_few]
 deadline: datetime
 conditions: string[]
+energy: float
 ```
