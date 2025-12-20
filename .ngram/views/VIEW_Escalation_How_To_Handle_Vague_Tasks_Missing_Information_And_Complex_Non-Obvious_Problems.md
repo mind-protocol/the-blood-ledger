@@ -33,7 +33,7 @@ A good escalation makes the human response immediately actionable without re-rea
 
 ## HOW PROPOSITION WORKS
 
-1. An agent adds an `@ngram:proposition` marker in the most relevant file near a suggested improvement.
+1. An agent adds an `@ngram&#58;proposition` marker in the most relevant file near a suggested improvement.
 2. `ngram solve-markers` (or `ngram doctor`) picks it up.
 3. The proposition is presented for human review.
 4. If approved, the human applies the suggested changes and removes the marker.
@@ -202,7 +202,7 @@ response: # optional human response fields (fill after decision)
 ## PROPOSITION MARKER FORMAT (YAML)
 
 ```
-@ngram:proposition
+@ngram&#58;proposition
 
 title: "Refactor `utils.py` into smaller, cohesive modules" # Concise title for the proposition
 

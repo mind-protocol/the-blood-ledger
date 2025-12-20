@@ -65,6 +65,12 @@ false-positive escalation detection.
 - **What:** Reviewed `.ngram/CLAUDE.md` for escalation markers tied to issue #16; no conflicts or escalation markers were present to resolve.
 - **Why:** Ensure the escalation repair task is assessed even when the target file has no actionable conflicts.
 - **Impact:** No changes required to `.ngram/CLAUDE.md`; issue handled as a no-op with verification recorded here.
+
+### 2025-12-20: Escalation View Marker Encoding
+
+- **What:** Encoded the proposition marker examples in the escalation view to avoid false-positive marker detection.
+- **Why:** Prevent the escalation/proposition examples from being flagged as unresolved markers during health scans.
+- **Impact:** The escalation view remains instructional without triggering the escalation scanner.
 - **Repair run:** Confirmed during repair `03-ESCALATION-CLAUDE`; no further action needed.
 
 ### 2025-12-20: Graph Health Check Helpers Verified
