@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Node Helper Properties Verified
+
+- **What:** Verified `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` in `engine/models/nodes.py` already have concrete implementations; no code changes required for issue #16.
+- **Why:** Repair task flagged these helpers as incomplete.
+- **Impact:** Documentation updated to record the verification; functionality unchanged.
+
 ### 2025-12-20: Moment graph query helpers verification
 
 - **What:** Verified `get_dormant_moments` and `get_wait_triggers` are already
@@ -98,6 +104,13 @@ false-positive escalation detection.
 - **What:** Implemented missing `MomentSurface` in `engine/moment_graph/surface.py`.
 - **Why:** FastAPI boot failed when importing the moment graph module.
 - **Impact:** Backend can start; SSE and tempo endpoints can mount.
+
+### 2025-12-20: SSE route collision fixed
+
+- **What:** Reordered `/api/moments/stream/{playthrough_id}` ahead of the generic
+  `/{playthrough_id}/{moment_id}` route.
+- **Why:** The generic route was capturing `/stream/{id}` and returning 404.
+- **Impact:** SSE stream responds with 200.
 
 ### 2025-12-20: Conversation Thread Helpers Verified
 
@@ -169,7 +182,6 @@ false-positive escalation detection.
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
 | SSE stream 404 when backend is started with the old module path | high | `run.sh` | Use `engine.infrastructure.api.app:app` so `/api/moments/stream/{id}` is mounted |
-| Backend import error for MomentSurface | high | `engine/moment_graph/surface.py` | Implemented class; restart backend to apply |
 
 ---
 
