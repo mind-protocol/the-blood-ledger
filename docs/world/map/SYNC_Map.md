@@ -71,6 +71,12 @@ Frontend map UI exists under `frontend/components/map` but is static demo data.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Reorganized map algorithm subdocs
+
+- **What:** Moved map algorithm subdocs into `docs/world/map/ALGORITHM/{places,routes,rendering}/` and updated CHAIN links.
+- **Why:** Resolve duplicate ALGORITHM docs in a single folder.
+- **Impact:** Map algorithm references now point to subfolder paths.
+
 ### 2025-12-20: Consolidated Rendering Algorithm Docs
 
 - **What:** Moved the rendering algorithm details into the rendering pipeline doc and trimmed the overview to a pointer summary.
