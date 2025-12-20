@@ -19,10 +19,10 @@ The `engine/models/` module provides the core data structures for the game. All 
 
 ## RECENT CHANGES
 
-### 2025-12-20: Node Helper Properties Verified
+### 2025-12-20: Node Helper Properties Verified (Repair 12)
 
 - **What:** Verified `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` in `engine/models/nodes.py` already have concrete implementations; no code changes required for issue #16.
-- **Why:** Repair task flagged these helpers as incomplete.
+- **Why:** Repair 12 (INCOMPLETE_IMPL-models-nodes) flagged these helpers as incomplete.
 - **Impact:** No functional changes; logged verification to prevent repeat flags.
 
 ### 2025-12-20: Link Helper Accessors Verified (Repair 11)
@@ -35,7 +35,7 @@ The `engine/models/` module provides the core data structures for the game. All 
 
 - **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` in `engine/models/base.py` are fully implemented; no code changes required for issue #16.
 - **Why:** Repair task flagged empty implementations that are already present.
-- **Impact:** No functional changes; repair logged to prevent repeat flags.
+- **Impact:** No functional changes; reconfirmed during repair `10-INCOMPLETE_IMPL-models-base`.
 
 ### 2025-12-20: Initial Ngram Documentation Creation
 

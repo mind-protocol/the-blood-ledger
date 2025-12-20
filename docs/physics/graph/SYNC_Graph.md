@@ -1,7 +1,7 @@
 # Graph — Current State
 
 ```
-UPDATED: 2025-12-19
+UPDATED: 2025-12-20
 STATUS: Implemented, needs API endpoint
 ```
 
@@ -79,6 +79,14 @@ If ngram doctor flags these as INCOMPLETE_IMPL, mark stale:
 - `orchestrator.py` — fully implemented  
 - `graph_ops_events.py` — mutation listeners optional
 
+## CONFLICTS
+
+### DECISION: mutation listener completeness
+- Conflict: Repair task flagged `add_mutation_listener`/`remove_mutation_listener` in `engine/physics/graph/graph_ops_events.py` as empty, but both functions already implement guarded registration/removal.
+- Resolution: Treat the report as stale; no code changes required.
+- Reasoning: Current implementations already match expected behavior for listener management.
+- Updated: `docs/physics/graph/SYNC_Graph.md`
+
 ---
 
 ## HANDOFF: FOR AGENTS
@@ -114,9 +122,19 @@ focus is on wiring, not redesigning, to avoid scope creep.
 
 ## POINTERS
 
-- `docs/physics/graph/ALGORITHM_Energy_Flow.md` for the propagation logic.
+- `docs/physics/ALGORITHM_Physics.md` for the propagation logic.
 - `docs/physics/graph/BEHAVIORS_Graph.md` for observable graph behaviors.
 - `engine/physics/tick.py` for the tick entry point and graph integration.
+
+## CHAIN
+
+```
+THIS:       SYNC_Graph.md (you are here)
+PATTERNS:   ./PATTERNS_Graph.md
+BEHAVIORS:  ./BEHAVIORS_Graph.md
+ALGORITHM:  ../ALGORITHM_Physics.md
+VALIDATION: ./VALIDATION_Living_Graph.md
+```
 
 ## Agent Observations
 
@@ -136,6 +154,7 @@ focus is on wiring, not redesigning, to avoid scope creep.
 ### Remarks
 - The mutation listener helpers already include guard checks to avoid duplicate registrations and safe removal.
 - Filled the graph behaviors template sections to eliminate drift warnings.
+- Re-verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py` during repair #16; no code changes needed.
 
 ### Suggestions
 - [ ] Add a lightweight unit test for `emit_event` to cover listener registration/removal behavior.

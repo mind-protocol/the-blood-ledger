@@ -30,6 +30,16 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Moment graph traversal helpers verification
+
+- **What:** Verified `make_dormant` and `process_wait_triggers` in
+  `engine/moment_graph/traversal.py` already have implementations; no code
+  changes required for issue #16.
+- **Why:** Repair task flagged incomplete implementations for the traversal
+  helpers.
+- **Impact:** Documentation updated to record the verification; functionality
+  unchanged.
+
 ### 2025-12-20: Node Helper Properties Verified (Repair 12)
 
 - **What:** Verified `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` in `engine/models/nodes.py` already have concrete implementations; no code changes required for issue #16.
@@ -123,6 +133,12 @@ false-positive escalation detection.
 - **What:** Re-verified `engine/graph/health/check_health.py` helper implementations for issue #16; no code edits required.
 - **Why:** Confirm the incomplete-impl report is stale and note the verification in project state.
 - **Impact:** Repair is documentation-only; code remains unchanged.
+
+### 2025-12-20: Graph Mutation Listener Verification
+
+- **What:** Verified `add_mutation_listener` and `remove_mutation_listener` in `engine/physics/graph/graph_ops_events.py` are already implemented.
+- **Why:** Repair #16 flagged them as incomplete; verified no code change is needed.
+- **Impact:** Documentation-only update in graph SYNC; functionality unchanged.
 
 ### 2025-12-20: Principles Escalation Marker Wording
 
