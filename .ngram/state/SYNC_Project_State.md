@@ -36,6 +36,12 @@ false-positive escalation detection.
 - **Why:** Close doc/code drift and resolve missing SSE route in local dev.
 - **Impact:** Clearer opening data flow; local SSE endpoint mounts correctly when using `run.sh`.
 
+### 2025-12-20: Conversation Thread Helpers Verified
+
+- **What:** Verified `ConversationThread` path helper implementations in `engine/infrastructure/history/conversations.py` already exist for issue #16; no code changes required.
+- **Why:** The INCOMPLETE_IMPL repair targeted functions that are already implemented.
+- **Impact:** Recorded no-op repair to keep the repair ledger accurate.
+
 ### 2025-12-20: Graph Health Repair Verification
 
 - **What:** Re-verified `engine/graph/health/check_health.py` helper implementations for issue #16; no code edits required.
@@ -157,6 +163,19 @@ Seed graph init is best-effort today; drift risk if scenarios assume missing see
 
 **Opportunities noticed:**
 Automate opening health checks to validate graph + scene outputs together.
+
+---
+
+## Agent Observations
+
+### Remarks
+- Conversation thread helper functions are already implemented; the repair task is a verification-only update.
+
+### Suggestions
+- [ ] Consider aligning `engine/models/base.py` NarrativeSource file example with `engine/infrastructure/history/README.md` and tests (`conversations/aldric.md` vs `conversations/char_aldric.md`).
+
+### Propositions
+- None.
 
 ---
 
