@@ -58,10 +58,10 @@ Frontend map UI exists under `frontend/components/map` but is static demo data.
 |-----|---------|--------|
 | `PATTERNS_Map.md` | Why this design | Updated, concise |
 | `BEHAVIORS_Map.md` | Visibility, interaction | Updated, concise |
-| `ALGORITHM_Map.md` | Entry point | New split |
-| `ALGORITHM/ALGORITHM_Rendering_Pipeline.md` | Rendering pipeline | New split |
-| `ALGORITHM/ALGORITHM_Places.md` | Places | New split |
-| `ALGORITHM/ALGORITHM_Routes.md` | Routes | New split |
+| `ALGORITHM_Map.md` | Canonical algorithm | Consolidated |
+| `ALGORITHM/rendering/ALGORITHM_Rendering_Pipeline.md` | Rendering pipeline | Reference stub |
+| `ALGORITHM/places/ALGORITHM_Places.md` | Places | Reference stub |
+| `ALGORITHM/routes/ALGORITHM_Routes.md` | Routes | Reference stub |
 | `VALIDATION_Map_Invariants.md` | Semantic search invariants | Current |
 | `IMPLEMENTATION_Map_Code_Architecture.md` | Code architecture | Current |
 | `TEST_Map_Test_Coverage.md` | Test coverage | Current |
@@ -71,11 +71,22 @@ Frontend map UI exists under `frontend/components/map` but is static demo data.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Consolidated Rendering Algorithm Docs
+
+- **What:** Moved the rendering algorithm details into the rendering pipeline doc and trimmed the overview to a pointer summary.
+- **Why:** Remove duplicate ALGORITHM content between the overview and rendering-specific docs.
+- **Files:** `docs/world/map/ALGORITHM_Map.md`, `docs/world/map/ALGORITHM/rendering/ALGORITHM_Rendering_Pipeline.md`
+
 ### 2025-12-20: Map rendering algorithm consolidation
 
 - Removed `docs/world/map/ALGORITHM_Rendering.md` so rendering docs live in
   `docs/world/map/ALGORITHM_Map.md` and
-  `docs/world/map/ALGORITHM/ALGORITHM_Rendering_Pipeline.md`.
+  `docs/world/map/ALGORITHM/rendering/ALGORITHM_Rendering_Pipeline.md`.
+
+### 2025-12-20: Consolidated map algorithm docs
+
+- Merged Places, Routes, and Rendering algorithms into `docs/world/map/ALGORITHM_Map.md`.
+- Converted part files into reference stubs to eliminate duplicate ALGORITHM docs.
 
 ## IN PROGRESS
 
