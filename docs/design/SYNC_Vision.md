@@ -167,7 +167,8 @@ and should be treated as validation priorities.
 
 1. **Nicolas validates vision docs** — correct, refine, approve
 2. **Define documentation structure for engine** — areas and modules
-3. **Create engine module docs** — starting with graph/
+3. **Create engine module docs** — graph docs now live in the ngram repo (see
+   `data/ARCHITECTURE — Cybernetic Studio.md`)
 4. **Update SYNC_Project_State.md** — reflect actual project state
 
 ---

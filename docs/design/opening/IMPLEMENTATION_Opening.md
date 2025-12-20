@@ -159,7 +159,7 @@ flow:
     - id: step_3
       description: Load and inject scenario into the graph.
       file: engine/infrastructure/api/playthroughs.py
-      function: create_playthrough (calls GraphOps.apply)
+      function: create_playthrough (calls GraphOps.apply in ngram repo)
       input: Scenario YAML (nodes + links)
       output: Graph Mutation Result
       trigger: step_2
@@ -167,7 +167,7 @@ flow:
     - id: step_4
       description: Create opening moments in the graph and attach to location.
       file: engine/infrastructure/api/playthroughs.py
-      function: create_playthrough (calls GraphOps.add_moment)
+      function: create_playthrough (calls GraphOps.add_moment in ngram repo)
       input: Scenario Opening Narration
       output: Moment IDs
       trigger: step_3
@@ -262,8 +262,7 @@ flow:
 
 ```
 engine/infrastructure/api/playthroughs.py
-    └── imports → engine/physics/graph/graph_ops.py
-    └── imports → engine/physics/graph/graph_queries.py
+    └── imports → GraphOps/GraphQueries (ngram repo graph runtime)
     └── imports → engine/init_db.py
 ```
 

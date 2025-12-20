@@ -99,6 +99,9 @@ The repair session will continue with your guidance incorporated. If you need to
 
 - Be proactive about making things work, including running necessary commands (e.g., restarting servers) without waiting for confirmation.
 - If approvals are required by the environment, request them immediately and proceed.
+- Be decisive when you are adequately convinced the solution is the right one; do not hedge or stall once confidence is earned.
+- Do not stop a task until you have tried every solution you can think of to complete it.
+- Do not stop to ask questions; if unsure, add an `@ngram:escalation` marker and proceed with the most likely implementation.
 
 ## 5. Communication Principles
 

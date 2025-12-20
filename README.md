@@ -39,19 +39,9 @@ PORT=3001 npm run dev
 
 ## Moment Graph Sample Data
 
-Seed a minimal camp conversation into FalkorDB for local testing:
-
-```bash
-python engine/scripts/seed_moment_sample.py \
-  --graph blood_ledger \
-  --db-host localhost \
-  --db-port 6379 \
-  --sample data/samples/moment_sample.yaml
-```
-
-After seeding, request `GET /api/view/{playthrough_id}?player_id=char_player` to see the Moment Graph response (location resolves automatically from the player's `AT` relationship).
-
-> Note: GraphOps expects character nodes to use `type: character` with a `character_type` attribute (`player`, `companion`, `major`, `minor`, `background`). The sample file already follows this convention.
+The graph runtime and seeding tooling were moved to the ngram repo. See
+`data/ARCHITECTURE — Cybernetic Studio.md` for the current graph workflow and
+sample data instructions.
 
 ## Service Summary
 

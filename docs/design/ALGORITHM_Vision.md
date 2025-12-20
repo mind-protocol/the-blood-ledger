@@ -88,7 +88,8 @@ their complexity can be measured and optimized once implemented.
 
 ## INTERACTIONS
 
-- `docs/physics/graph/` for the graph and weight computation mechanics.
+- Graph implementation docs live in the ngram repo; see
+  `data/ARCHITECTURE — Cybernetic Studio.md` for current references.
 - `docs/agents/narrator/` for director and scene generation responsibilities.
 - `docs/frontend/scene/` for voice presentation and player-facing outputs.
 - `docs/world/map/` for the map view presentation and world awareness.
@@ -138,7 +139,8 @@ Lives in: `docs/views/` and the frontend
 These create the simulation. Presentation reads from them.
 
 ### The Graph
-> *Links to: `docs/physics/graph/` (not yet written)*
+> *Links to: graph implementation docs in the ngram repo (see
+> `data/ARCHITECTURE — Cybernetic Studio.md`).*
 
 **What it does:** Holds all state — characters, places, things, narratives, beliefs, connections.
 
@@ -157,7 +159,8 @@ These create the simulation. Presentation reads from them.
 ---
 
 ### Weight / Energy
-> *Links to: `docs/physics/graph/` or `docs/engine/mechanisms/` (TBD)*
+> *Links to: graph implementation docs in the ngram repo (see
+> `data/ARCHITECTURE — Cybernetic Studio.md`).*
 
 **What it does:** Computes importance of narratives based on beliefs, connections, contradictions.
 

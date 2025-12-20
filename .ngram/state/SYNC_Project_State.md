@@ -9,19 +9,21 @@ UPDATED_BY: codex
 
 ## CURRENT STATE
 
-Graph scope files listed in `data/graph_scope_classification.yaml` were deleted from this repo.
-ngram scaffolding has been reinitialized and the repository map regenerated.
+Graph scope files listed in `data/graph_scope_classification.yaml` were removed
+from this repo. ngram was reinitialized and repo maps regenerated. Vision,
+opening, and README references were updated to point to the ngram repo for
+graph runtime documentation.
 
 ---
 
 ## ACTIVE WORK
 
-### Graph Scope Cleanup
+### Graph Reference Cleanup
 
-- **Area:** repo-wide
-- **Status:** completed
+- **Area:** docs/design + README
+- **Status:** in progress
 - **Owner:** agent
-- **Context:** Removed curated graph scope files; reinitialized ngram and rebuilt map.
+- **Context:** Remove or replace references to graph runtime paths that no longer exist here.
 
 ---
 
@@ -33,11 +35,19 @@ ngram scaffolding has been reinitialized and the repository map regenerated.
 - **Why:** Graph-related files were transferred to the ngram repo per request.
 - **Impact:** 202 files deleted; 4 referenced paths already missing.
 
-### 2025-12-20: Reinitialize ngram and regenerate map
+### 2025-12-20: Reinitialize ngram and regenerate maps
 
-- **What:** Ran `ngram init` and `ngram overview`.
-- **Why:** Restore protocol scaffolding and regenerate `map.md`.
-- **Impact:** Fresh `.ngram/` structure and updated repo map.
+- **What:** Ran `ngram init` and `ngram overview` (twice) to restore scaffolding and map.
+- **Why:** Rebuild protocol files after the curated deletion and doc updates.
+- **Impact:** `.ngram/` refreshed and `map.md` regenerated.
+
+### 2025-12-20: Update vision/opening docs after graph move
+
+- **What:** Updated `README.md`, `docs/design/ALGORITHM_Vision.md`,
+  `docs/design/SYNC_Vision.md`, `docs/design/opening/CLAUDE.md`,
+  and `docs/design/opening/IMPLEMENTATION_Opening.md`.
+- **Why:** Remove references to graph runtime paths that no longer live here.
+- **Impact:** Docs now point to `data/ARCHITECTURE — Cybernetic Studio.md`.
 
 ---
 
@@ -45,7 +55,7 @@ ngram scaffolding has been reinitialized and the repository map regenerated.
 
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
-| Doc references to missing paths | medium | repo-wide | Missing: `engine/models/tensions.py`, `engine/db/graph_ops.py`, `engine/api/app.py`, `engine/infrastructure/memory/transcript.py`. |
+| Remaining graph references in other docs | medium | `docs/` | Need scan beyond vision/opening/README. |
 
 ---
 
@@ -53,30 +63,32 @@ ngram scaffolding has been reinitialized and the repository map regenerated.
 
 **Likely VIEW for continuing:** `VIEW_Analyze_Structural_Analysis.md`
 
-**Current focus:** Verify repo state after graph scope removal and update any remaining documentation references.
+**Current focus:** Finish cleaning graph references after the graph runtime move.
 
 **Key context:**
-Graph scope files were deleted on purpose. ngram scaffolding was reinitialized afterward.
+Graph scope files were deleted; use ngram repo for graph runtime docs.
 
 **Watch out for:**
-Docs still reference deleted paths; decide whether to clean or leave as historical references.
+Stale `engine/physics/graph`/`engine.db.graph_*` references outside design docs.
 
 ---
 
 ## HANDOFF: FOR HUMAN
 
 **Executive summary:**
-Curated graph scope files were deleted and the ngram framework was reinitialized.
-The repository map has been regenerated.
+Graph scope files were removed from this repo and documentation was updated to
+point to the ngram repo. ngram scaffolding and maps were regenerated.
 
 **Decisions made recently:**
-Delete all graph scope files listed in `data/graph_scope_classification.yaml` per request.
+Graph runtime documentation now lives in the ngram repo; this repo is cleaned
+to reflect that split.
 
 **Needs your input:**
-Whether to clean up remaining doc references to deleted files or leave them as historical references.
+Whether to purge all remaining graph references in non-design docs or keep them
+as historical context.
 
 **Concerns:**
-Any downstream tooling expecting those files will fail until references are updated or restored.
+Docs outside design/opening may still refer to deleted graph paths.
 
 ---
 
@@ -84,24 +96,24 @@ Any downstream tooling expecting those files will fail until references are upda
 
 ### High Priority
 
-- [ ] Confirm whether to remove or preserve doc references to deleted graph scope files.
+- [ ] Decide scope of graph reference cleanup beyond design/opening/README.
 
 ### Backlog
 
-- [ ] Rebuild or replace missing modules if the ngram repo transfer needs verification.
+- [ ] Re-run a full doc scan once cleanup scope is defined.
 
 ---
 
 ## CONSCIOUSNESS TRACE
 
 **Project momentum:**
-Work is progressing with major deletions completed; next steps depend on verification and cleanup decisions.
+Cleanup is progressing; remaining work is mostly documentation alignment.
 
 **Architectural concerns:**
-Deleting graph scope files may leave dangling dependencies in other modules.
+Decoupling docs across repos risks drift if references are not consolidated.
 
 **Opportunities noticed:**
-If the ngram repo is authoritative now, consider adding a pointer document that explains the split.
+Add a single pointer doc that enumerates where graph/runtime docs now live.
 
 ---
 
@@ -109,7 +121,7 @@ If the ngram repo is authoritative now, consider adding a pointer document that 
 
 | Area | Status | SYNC |
 |------|--------|------|
-| repo-wide | updated | `docs/**/SYNC_*.md` |
+| `docs/design/` | updating | `docs/design/SYNC_Vision.md` |
 
 ---
 

@@ -36,19 +36,9 @@ Player action → Classify → Tool calls (stream + query + persist) → Complet
 **Player psychology:** Track in your conversation context (see §5)
 
 **Graph Operations:**
-```python
-from engine.db.graph_ops import GraphOps
-from engine.db.graph_queries import GraphQueries
-
-read = GraphQueries(graph_name="blood_ledger")
-write = GraphOps(graph_name="blood_ledger")
-
-# Query with natural language
-context = read.search("Does Aldric have family?")
-
-# Persist mutations
-write.apply(path="playthroughs/default/mutations/char_edda.yaml")
-```
+Graph runtime code was moved to the ngram repo. Use the graph access helpers
+defined there (see `data/ARCHITECTURE — Cybernetic Studio.md`) instead of the
+previous `engine.db.graph_*` imports.
 
 ---
 
@@ -151,11 +141,8 @@ links:
     heard: 1.0
 EOF
 
-python3 -c "
-from engine.db.graph_ops import GraphOps
-write = GraphOps(graph_name='blood_ledger')
-write.apply(path='playthroughs/default/mutations/char_edda.yaml')
-"
+# GraphOps apply examples now live in the ngram repo; this repo no longer
+# includes the graph runtime.
 ```
 
 | You Invent... | You Persist... |

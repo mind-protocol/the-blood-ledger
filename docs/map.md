@@ -1,6 +1,6 @@
 # Repository Map: the-blood-ledger
 
-*Generated: 2025-12-20 17:12*
+*Generated: 2025-12-20 17:22*
 
 - **Files:** 362
 - **Directories:** 107
@@ -35,25 +35,25 @@
 │   ├── design/ (185.7K)
 │   │   ├── archive/ (905)
 │   │   │   └── SYNC_archive_2024-12.md (905)
-│   │   ├── opening/ (106.9K)
+│   │   ├── opening/ (106.7K)
 │   │   │   ├── ALGORITHM_Opening.md (3.8K)
 │   │   │   ├── BEHAVIORS_Opening.md (8.7K)
-│   │   │   ├── CLAUDE.md (26.2K)
+│   │   │   ├── CLAUDE.md (25.9K)
 │   │   │   ├── CONTENT.md (10.2K)
 │   │   │   ├── GUIDE.md (9.5K)
 │   │   │   ├── HEALTH_Opening.md (7.5K)
-│   │   │   ├── IMPLEMENTATION_Opening.md (10.5K)
+│   │   │   ├── IMPLEMENTATION_Opening.md (10.4K)
 │   │   │   ├── PATTERNS_Opening.md (10.8K)
 │   │   │   ├── SYNC_Opening.md (6.4K)
 │   │   │   ├── VALIDATION_Opening.md (10.7K)
 │   │   │   └── (..1 more files)
 │   │   ├── scenarios/ (10.3K)
 │   │   │   └── README.md (10.3K)
-│   │   ├── ALGORITHM_Vision.md (13.2K)
+│   │   ├── ALGORITHM_Vision.md (13.4K)
 │   │   ├── BEHAVIORS_Vision.md (10.1K)
 │   │   ├── IMPLEMENTATION_Vision.md (8.3K)
 │   │   ├── PATTERNS_Vision.md (11.9K)
-│   │   ├── SYNC_Vision.md (7.4K)
+│   │   ├── SYNC_Vision.md (7.5K)
 │   │   ├── SYNC_Vision_archive_2025-12.md (3.5K)
 │   │   ├── TEST_Vision.md (3.2K)
 │   │   └── VALIDATION_Vision.md (10.0K)
@@ -366,7 +366,7 @@
 │   │       ├── SYNC_World_Scraping_archive_2025-12.md (6.1K)
 │   │       ├── TEST_World_Scraping.md (3.4K)
 │   │       └── VALIDATION_World_Scraping.md (5.8K)
-│   └── map.md (206.7K)
+│   └── map.md (206.8K)
 ├── engine/ (255.7K)
 │   ├── infrastructure/ (105.4K)
 │   │   ├── canon/ (14.5K)
@@ -499,11 +499,11 @@
 │   └── graph_scope_manual_classify.py (15.2K)
 ├── .gitignore (690)
 ├── .ngramignore (839)
-├── AGENTS.md (24.9K)
+├── AGENTS.md (25.3K)
 ├── Isomorphic_Architecture.md (20.1K)
-├── README.md (1.6K)
+├── README.md (1.2K)
 ├── create_project_files_pack_from_maps_and_repo.py (14.4K)
-├── map.md (206.8K)
+├── map.md (207.0K)
 ├── map_frontend.md (9.1K)
 ├── project_map.html (12.0K)
 └── run.sh (1.0K)
@@ -658,19 +658,20 @@
 - `tools/stream_dialogue.py`
 
 **Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 - `docs/design/opening/GUIDE.md`
 
 **Sections:**
 - # Narrator Agent
 - ## Quick Reference
-- # Query with natural language
-- # Persist mutations
 - ## 1. Execution Interface
 - # Dialogue with inline clickables
 - # Narration with clickables
 - # Scene with pre-baked responses
 - # Signal time elapsed (significant actions only)
 - # Signal completion
+- # GraphOps apply examples now live in the ngram repo; this repo no longer
+- # includes the graph runtime.
 - ## 2. The Two Paths
 - ## 3. What You Produce
 - ## 4. Clickable Words
@@ -863,6 +864,7 @@
 - ## Design Principles
 
 **Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 - `docs/design/ALGORITHM_Vision.md`
 - `docs/design/BEHAVIORS_Vision.md`
 - `docs/design/IMPLEMENTATION_Vision.md`
@@ -983,6 +985,7 @@
 - ## Open Questions
 
 **Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 - `docs/design/BEHAVIORS_Vision.md`
 - `docs/design/IMPLEMENTATION_Vision.md`
 - `docs/design/PATTERNS_Vision.md`
@@ -6302,6 +6305,9 @@
 - ## 6. Operational Proactivity
 - ## 5. Communication Principles
 
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
+
 **Sections:**
 - # The Blood Ledger
 - ## Launch Protocol
@@ -6687,6 +6693,7 @@
 - `agents/world_runner/CLAUDE_PROMPT.md`
 - `archive/SYNC_History_archive_2025-12.md`
 - `archive/SYNC_archive_2024-12.md`
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 - `data/Distributed-Content-Generation-Network/ALGORITHM Character & Narrative Transposition Logic.md`
 - `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`
 - `data/Distributed-Content-Generation-Network/Blood Ledger — Billing Architecture.md`
