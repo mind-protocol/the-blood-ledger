@@ -51,14 +51,26 @@ modules:
 # YOUR MODULES
 # =============================================================================
 
-# Uncomment and modify as you create modules:
+physics:
+  code: "engine/physics/**"
+  docs: "docs/physics/"
+  maturity: CANONICAL
+  owner: agent
+  notes: |
+    Living world simulation, energy flow, and narrative flips.
 
-# types:
-#   code: "src/types/**"
-#   docs: "docs/core/types/"
-#   maturity: CANONICAL
-#   owner: human
-#   notes: |
-#     Core type definitions. Changes affect entire codebase.
+api:
+  code: "engine/infrastructure/api/**"
+  docs: "docs/infrastructure/api/"
+  maturity: CANONICAL
+  owner: agent
+  notes: |
+    FastAPI entry points and interaction loop.
 
-# Add more modules as they emerge...
+narrator:
+  code: "engine/infrastructure/orchestration/narrator.py"
+  docs: "docs/agents/narrator/"
+  maturity: CANONICAL
+  owner: agent
+  notes: |
+    Authorial intelligence and scene generation.
