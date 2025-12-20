@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Graph moment query helpers verification
+
+- **What:** Verified `get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, and `get_clickable_words` in `engine/physics/graph/graph_queries_moments.py` already have implementations; no code changes required.
+- **Why:** Repair task flagged incomplete implementations for issue #16.
+- **Impact:** Documentation-only update in graph SYNC; functionality unchanged.
+
 ### 2025-12-20: Models Base Repair 10 Noted
 
 - **What:** Clarified the repair 10 reference in `docs/engine/models/SYNC_Models.md` for the base timestamp comparator verification.

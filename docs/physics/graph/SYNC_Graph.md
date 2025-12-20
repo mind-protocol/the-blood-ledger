@@ -165,6 +165,7 @@ VALIDATION: ./VALIDATION_Living_Graph.md
 - Logged the graph ops types verification in project state for issue #16 to keep the repair ledger aligned.
 - Confirmed `SimilarNode.__str__` and `ApplyResult.success` are already implemented in `engine/physics/graph/graph_ops_types.py` during this repair run.
 - Verified `SimilarNode.__str__` and `ApplyResult.success` are already implemented in `engine/physics/graph/graph_ops_types.py`; no code changes required for issue #16.
+- Verified `get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, and `get_clickable_words` are already implemented in `engine/physics/graph/graph_queries_moments.py`; no code changes required for issue #16.
 
 ### Suggestions
 - [ ] Add a lightweight unit test for `emit_event` to cover listener registration/removal behavior.
