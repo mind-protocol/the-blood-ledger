@@ -30,10 +30,10 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
-### 2025-12-20: Node Helper Properties Verified
+### 2025-12-20: Node Helper Properties Verified (Repair 12)
 
 - **What:** Verified `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` in `engine/models/nodes.py` already have concrete implementations; no code changes required for issue #16.
-- **Why:** Repair task flagged these helpers as incomplete.
+- **Why:** Repair 12 (INCOMPLETE_IMPL-models-nodes) flagged these helpers as incomplete.
 - **Impact:** Documentation updated to record the verification; functionality unchanged.
 
 ### 2025-12-20: Moment graph query helpers verification
