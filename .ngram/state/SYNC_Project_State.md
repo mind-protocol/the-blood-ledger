@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Physics Tick Energy Helpers Verified
+
+- **What:** Recorded verification that `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` are already implemented.
+- **Why:** Repair issue #16 flagged these helpers as incomplete.
+- **Impact:** Documentation-only update; functionality unchanged.
+
 ### 2025-12-20: Graph moment query helpers verification
 
 - **What:** Verified `get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, and `get_clickable_words` in `engine/physics/graph/graph_queries_moments.py` already have implementations; no code changes required.
