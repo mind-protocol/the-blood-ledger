@@ -60,6 +60,12 @@ false-positive escalation detection.
 - **Why:** The repair task flagged empty implementations that are already filled.
 - **Impact:** Documentation updated to record the verification; functionality unchanged.
 
+### 2025-12-20: Base Timestamp Comparators Verified
+
+- **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` are already implemented in `engine/models/base.py`; no code changes required for issue #16.
+- **Why:** The INCOMPLETE_IMPL repair flagged empty implementations that are already present.
+- **Impact:** Documentation updated to record the verification; functionality unchanged.
+
 ### 2025-12-20: Moment Processor Repair Verification
 
 - **What:** Verified `engine/infrastructure/memory/moment_processor.py` already
