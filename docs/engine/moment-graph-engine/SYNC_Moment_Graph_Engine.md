@@ -1,8 +1,8 @@
 # Moment Graph Engine — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
-UPDATED_BY: Codex (repair agent)
+LAST_UPDATED: 2025-12-20
+UPDATED_BY: codex
 STATUS: DESIGNING
 ```
 
@@ -47,6 +47,22 @@ The module relies on physics graph ops/queries and is treated as a hot path.
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-20: Verified query helpers remain implemented
+
+- **What:** Re-checked `get_dormant_moments` and `get_wait_triggers` in
+  `engine/moment_graph/queries.py` for the repair task.
+- **Why:** The INCOMPLETE_IMPL repair flagged these as empty.
+- **Files:** `engine/moment_graph/queries.py`
+- **Result:** Implementations already present; no code changes required.
+
+### 2025-12-20: Restored MomentSurface implementation
+
+- **What:** Implemented `MomentSurface` with flip/decay/scene-change helpers,
+  plus `get_surface_stats` and `set_moment_weight`.
+- **Why:** FastAPI startup was failing because `MomentSurface` was missing.
+- **Files:** `engine/moment_graph/surface.py`
+- **Result:** API module import succeeds; surface helpers match docs.
 
 ### 2025-12-19: Revalidated traversal helpers
 

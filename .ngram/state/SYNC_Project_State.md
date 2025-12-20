@@ -30,6 +30,13 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Moment graph query helpers verification
+
+- **What:** Verified `get_dormant_moments` and `get_wait_triggers` are already
+  implemented in `engine/moment_graph/queries.py`.
+- **Why:** Repair task flagged incomplete implementations for issue #16.
+- **Impact:** No code changes; moment graph SYNC updated to record verification.
+
 ### 2025-12-20: Link Helper Accessors Verified
 
 - **What:** Verified `engine/models/links.py` helpers (`belief_intensity`, `is_present`, `has_item`, `is_here`) already have implementations; no code changes required for issue #16.
