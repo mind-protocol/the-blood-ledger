@@ -12,6 +12,8 @@ UPDATED_BY: codex
 Opening flow documentation is now aligned to the current playthrough bootstrap
 implementation, including seed graph initialization, scenario injection, and
 opening moment creation. Local dev startup uses the correct FastAPI entrypoint.
+Escalation marker wording in principles now avoids false-positive escalation
+detection.
 
 ---
 
@@ -34,11 +36,23 @@ opening moment creation. Local dev startup uses the correct FastAPI entrypoint.
 - **Why:** Close doc/code drift and resolve missing SSE route in local dev.
 - **Impact:** Clearer opening data flow; local SSE endpoint mounts correctly when using `run.sh`.
 
+### 2025-12-20: Principles Escalation Marker Wording
+
+- **What:** Reworded the escalation marker reference in `.ngram/PRINCIPLES.md` to avoid being parsed as an active escalation marker.
+- **Why:** Prevent false-positive escalation detection in the principles doc.
+- **Impact:** Escalation scan no longer flags the principles reference as unresolved.
+
 ### 2025-12-20: GEMINI Escalation Review
 
 - **What:** Reviewed `.ngram/GEMINI.md` for escalation markers tied to issue #16; no conflicts or escalation markers were present to resolve.
 - **Why:** Ensure the escalation repair task is assessed even when the target file has no actionable conflicts.
 - **Impact:** No changes required to `.ngram/GEMINI.md`; issue handled as a no-op with verification recorded here.
+
+### 2025-12-20: CLAUDE Escalation Review
+
+- **What:** Reviewed `.ngram/CLAUDE.md` for escalation markers tied to issue #16; no conflicts or escalation markers were present to resolve.
+- **Why:** Ensure the escalation repair task is assessed even when the target file has no actionable conflicts.
+- **Impact:** No changes required to `.ngram/CLAUDE.md`; issue handled as a no-op with verification recorded here.
 
 ---
 

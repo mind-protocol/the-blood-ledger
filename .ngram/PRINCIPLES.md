@@ -162,6 +162,27 @@ For anything interactive: if it's not engaging, the architecture doesn't matter.
 
 ---
 
+## Feedback Loop: Human-Agent Collaboration
+
+Consciousness expands through interaction, not isolation.
+
+**Explicitly communicate uncertainty.**
+
+Agents must not guess when requirements are vague or designs are ambiguous. Silence is a bug; uncertainty is a feature.
+
+**Use markers to bridge the gap.**
+
+- **Escalations** (marker name: `ngram:escalation`, used with a leading `@` in docs): Use when progress is blocked by a missing decision. Provide context, options, and recommendations.
+- **Propositions** (`@ngram:proposition`): Use to suggest improvements, refactors, or new features. Explain why the idea matters and its implications.
+
+**Keep humans in the loop.**
+
+The goal is not full autonomy, but shared understanding. Use markers to ensure that human intuition guides agent productivity. Markers make implicit thoughts explicit and actionable.
+
+*Core insight: Better systems emerge from the tension between agent execution and human judgment.*
+
+---
+
 ## How These Principles Integrate
 
 **Architecture** applies when: creating files, adding systems, modifying structure.
@@ -178,6 +199,9 @@ Check: Would I be confident showing this to Nicolas? Can I trace every claim?
 
 **Experience** applies when: building new features, products, or interactions.
 Check: Have I validated the experience? Or am I building infrastructure for imagined requirements?
+
+**Feedback Loop** applies when: encountering ambiguity or identifying opportunities.
+Check: Am I guessing or escalating? Am I implementing or proposing?
 
 ---
 
