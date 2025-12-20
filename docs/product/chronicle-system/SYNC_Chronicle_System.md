@@ -9,13 +9,12 @@ STATUS: CANONICAL
 The core concepts and initial implementation details of the Chronicle system are documented. This includes:
 *   The overall design philosophy and GTM integration (`PATTERNS_Chronicle_Flywheel.md`).
 *   The observable behaviors and structure of different Chronicle types (`BEHAVIORS_Chronicle_Types_And_Structure.md`).
-*   The technical pipeline for generation, TTS, and video composition (`IMPLEMENTATION_Chronicle_Technical_Pipeline.md`).
+*   The technical pipeline for generation, TTS, and video composition (`IMPLEMENTATION_Chronicle_System.md`).
 *   Validation invariants, metrics, and success criteria (`VALIDATION_Chronicle_Invariants.md`).
-*   The Chronicle system implementation overview now points to the canonical pipeline doc to avoid duplication (`IMPLEMENTATION_Chronicle_System.md`).
 
 ## Recent Changes
 
-*   2025-12-20: Consolidated implementation docs by pointing `IMPLEMENTATION_Chronicle_System.md` to `IMPLEMENTATION_Chronicle_Technical_Pipeline.md`.
+*   2025-12-20: Consolidated implementation docs into `IMPLEMENTATION_Chronicle_System.md` and converted `IMPLEMENTATION_Chronicle_Technical_Pipeline.md` into a pointer.
 *   2025-12-20: Consolidated Chronicle behaviors into `BEHAVIORS_Chronicle_Types_And_Structure.md` and converted `BEHAVIORS_Chronicle_Types.md` into a pointer to remove duplication.
 *   Initial documentation created from `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`.
 *   Consolidated the GTM integration patterns into `PATTERNS_Chronicle_Flywheel.md` and left a reference in `PATTERNS_Chronicle_GTM_Integration.md` to avoid duplication.
@@ -25,7 +24,7 @@ The core concepts and initial implementation details of the Chronicle system are
 
 **For next agent:**
 *   The Chronicle system is a core component. Any work related to marketing, content generation, or player retention should reference these documents.
-*   The `IMPLEMENTATION_Chronicle_Technical_Pipeline.md` could be further detailed with specific code examples or integration points once the codebase is explored.
+*   The `IMPLEMENTATION_Chronicle_System.md` could be further detailed with specific code examples or integration points once the codebase is explored.
 
 **For human:**
 *   Review the documented Chronicle system for accuracy and completeness.
@@ -56,6 +55,6 @@ The Blood Chronicle System presents a highly innovative and potentially disrupti
 
 PATTERNS:        ./PATTERNS_Chronicle_Flywheel.md
 BEHAVIORS:       ./BEHAVIORS_Chronicle_Types_And_Structure.md
-IMPLEMENTATION:  ./IMPLEMENTATION_Chronicle_Technical_Pipeline.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Chronicle_System.md
 VALIDATION:      ./VALIDATION_Chronicle_Invariants.md
 THIS:            ./SYNC_Chronicle_System.md

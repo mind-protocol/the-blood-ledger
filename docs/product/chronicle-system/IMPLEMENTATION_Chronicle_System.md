@@ -21,6 +21,7 @@ VALIDATION:     ./VALIDATION_Chronicle_Invariants.md
 THIS:           ./IMPLEMENTATION_Chronicle_System.md
 TEST:           ./TEST_Chronicle_System.md
 SYNC:           ./SYNC_Chronicle_System.md
+IMPL:           data/Distributed-Content-Generation-Network/Blood Chronicle System.md
 ```
 
 > Contract: Read docs before modifying. After changes: update IMPL or add TODO to SYNC. Run tests.
