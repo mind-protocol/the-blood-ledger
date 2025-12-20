@@ -75,7 +75,7 @@ that signals the map is interpretive rather than exact.
 | Module | Why We Depend On It |
 |--------|---------------------|
 | `engine/infrastructure/embeddings/**` | Provides query embeddings for semantic search. |
-| `engine/physics/graph/**` | Supplies graph queries for place and route records. |
+| Graph runtime (ngram repo) | Supplies graph queries for place and route records (see `data/ARCHITECTURE — Cybernetic Studio.md`). |
 | `docs/frontend/map/` | Defines canvas rendering and interaction contracts. |
 
 ---

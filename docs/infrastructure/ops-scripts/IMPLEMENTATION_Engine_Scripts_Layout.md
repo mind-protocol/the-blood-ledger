@@ -25,24 +25,24 @@ SYNC:            ./SYNC_Ops_Scripts.md
 
 | File | Role | Entry Point | Notes |
 |------|------|-------------|-------|
-| `engine/scripts/seed_moment_sample.py` | Seed sample moment YAML into FalkorDB | `main()` | Uses `engine/physics/graph/graph_ops.py` (`GraphOps`). |
-| `engine/scripts/generate_images_for_existing.py` | Backfill missing node images | `main()` | Uses `engine/physics/graph/graph_ops.py` (`GraphOps`) + `engine/physics/graph/graph_ops_image.py`. |
+| `engine/scripts/seed_moment_sample.py` | Seed sample moment YAML into FalkorDB | `main()` | Moved to ngram repo with graph runtime. |
+| `engine/scripts/generate_images_for_existing.py` | Backfill missing node images | `main()` | Moved to ngram repo with graph runtime. |
 | `engine/scripts/check_injection.py` | Injection queue hook reader | `main()` | Documented under `docs/infrastructure/async/`. |
-| `engine/scripts/inject_to_narrator.py` | Manual injection CLI | `main()` | Documented under `docs/infrastructure/async/`. |
+| `engine/scripts/inject_to_narrator.py` | Manual injection CLI | `main()` | Moved to ngram repo with graph runtime. |
 
 ---
 
 ## ENTRY POINTS
 
-- `engine/scripts/seed_moment_sample.py`
-- `engine/scripts/generate_images_for_existing.py`
+- `engine/scripts/seed_moment_sample.py` (moved to ngram repo)
+- `engine/scripts/generate_images_for_existing.py` (moved to ngram repo)
 - `engine/scripts/check_injection.py`
-- `engine/scripts/inject_to_narrator.py`
+- `engine/scripts/inject_to_narrator.py` (moved to ngram repo)
 
 ---
 
 ## DEPENDENCIES
 
-- `engine/physics/graph/graph_ops.py` for GraphOps apply behavior.
+- GraphOps runtime in ngram repo (see `data/ARCHITECTURE — Cybernetic Studio.md`).
 - `tools/image_generation` for image generation helpers.
 - FalkorDB connection settings for graph access.

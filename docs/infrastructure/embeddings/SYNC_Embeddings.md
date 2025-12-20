@@ -150,7 +150,7 @@ Revalidated the sync sections for repair #16 after the edit.
 | Indexing/search procedures | ./ALGORITHM/ALGORITHM_Overview.md |
 | Test invariants | ./VALIDATION_Embeddings.md |
 | Test cases | ./TEST/TEST_Overview.md |
-| Graph queries (has search) | engine/physics/graph/graph_queries.py |
+| Graph queries (has search) | Graph runtime in ngram repo (see `data/ARCHITECTURE — Cybernetic Studio.md`) |
 | History conversations | engine/infrastructure/history/conversations.py |
 
 

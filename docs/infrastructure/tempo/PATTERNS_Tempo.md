@@ -87,8 +87,8 @@ overwhelm the UI.
 
 | Module | Why We Depend On It |
 |--------|---------------------|
-| `engine/physics/` | Runs `GraphTick` to advance simulation |
-| `engine/physics/graph/` | `GraphQueries` to detect ready moments |
+| Physics runtime (ngram repo) | Runs `GraphTick` to advance simulation (see `data/ARCHITECTURE — Cybernetic Studio.md`) |
+| GraphQueries (ngram repo) | Detect ready moments (see `data/ARCHITECTURE — Cybernetic Studio.md`) |
 | `engine/infrastructure/canon/` | Records moments to canon + SSE |
 | `engine/infrastructure/api/` | SSE broadcast + tempo endpoints |
 | `frontend/components/SpeedControl.tsx` | User speed input + state display |

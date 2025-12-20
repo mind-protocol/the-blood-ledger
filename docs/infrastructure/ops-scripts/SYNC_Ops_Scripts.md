@@ -105,8 +105,8 @@ modules and update docs if new scripts are added.
 ### Tests to Run
 
 ```bash
-python engine/scripts/seed_moment_sample.py --help
-python engine/scripts/generate_images_for_existing.py --help
+python engine/scripts/seed_moment_sample.py --help  # moved to ngram repo
+python engine/scripts/generate_images_for_existing.py --help  # moved to ngram repo
 ```
 
 ---
@@ -114,7 +114,7 @@ python engine/scripts/generate_images_for_existing.py --help
 ## Review Observations
 
 ### Remarks
-- Implementation doc references now point to concrete `engine/physics/graph/*.py` files, resolving the broken-link warning without altering behaviors.
+- GraphOps/GraphQueries references now point to the ngram repo (see `data/ARCHITECTURE — Cybernetic Studio.md`).
 
 ### Suggestions
 - [ ] If operators need runnable command examples, consider adding them to `docs/infrastructure/ops-scripts/TEST_Operational_Scripts.md`.

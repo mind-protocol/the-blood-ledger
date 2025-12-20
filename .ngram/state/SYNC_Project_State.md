@@ -49,6 +49,12 @@ graph runtime documentation.
 - **Why:** Remove references to graph runtime paths that no longer live here.
 - **Impact:** Docs now point to `data/ARCHITECTURE — Cybernetic Studio.md`.
 
+### 2025-12-20: Clean remaining graph path references
+
+- **What:** Updated infrastructure/world docs to replace deleted graph runtime paths with ngram repo pointers.
+- **Why:** Remove stale references to `engine/physics/graph`, `engine/db/graph_*`, and `docs/physics/graph`.
+- **Impact:** Dependencies and ops-script docs now point to `data/ARCHITECTURE — Cybernetic Studio.md`.
+
 ---
 
 ## KNOWN ISSUES

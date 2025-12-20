@@ -1,6 +1,6 @@
 # Repository Map: the-blood-ledger
 
-*Generated: 2025-12-20 17:22*
+*Generated: 2025-12-20 17:38*
 
 - **Files:** 362
 - **Directories:** 107
@@ -99,7 +99,7 @@
 │   │   ├── SYNC_Frontend_archive_2025-12.md (3.4K)
 │   │   ├── TEST_Frontend_Coverage.md (1.7K)
 │   │   └── VALIDATION_Frontend_Invariants.md (4.2K)
-│   ├── infrastructure/ (420.6K)
+│   ├── infrastructure/ (421.1K)
 │   │   ├── async/ (76.6K)
 │   │   │   ├── ALGORITHM/ (20.4K)
 │   │   │   │   ├── ALGORITHM_Discussion_Trees.md (1.3K)
@@ -127,11 +127,11 @@
 │   │   │   ├── SYNC_Canon.md (1.7K)
 │   │   │   ├── TEST_Canon.md (3.5K)
 │   │   │   └── VALIDATION_Canon.md (6.1K)
-│   │   ├── cli-tools/ (35.0K)
+│   │   ├── cli-tools/ (35.1K)
 │   │   │   ├── ALGORITHM_CLI_Tool_Flows.md (4.8K)
 │   │   │   ├── BEHAVIORS_CLI_Streaming_And_Image_Output.md (4.9K)
 │   │   │   ├── IMPLEMENTATION_CLI_Tools_Architecture.md (7.3K)
-│   │   │   ├── PATTERNS_CLI_Agent_Utilities.md (5.4K)
+│   │   │   ├── PATTERNS_CLI_Agent_Utilities.md (5.5K)
 │   │   │   ├── SYNC_CLI_Tools.md (5.8K)
 │   │   │   ├── TEST_CLI_Tool_Coverage.md (2.9K)
 │   │   │   └── VALIDATION_CLI_Tool_Invariants.md (3.9K)
@@ -148,12 +148,12 @@
 │   │   │   ├── ALGORITHM_Embeddings.md (3.7K)
 │   │   │   ├── BEHAVIORS_Embeddings.md (5.5K)
 │   │   │   ├── IMPLEMENTATION_Embeddings.md (4.6K)
-│   │   │   ├── PATTERNS_Embeddings.md (5.8K)
-│   │   │   ├── SYNC_Embeddings.md (5.5K)
+│   │   │   ├── PATTERNS_Embeddings.md (5.9K)
+│   │   │   ├── SYNC_Embeddings.md (5.6K)
 │   │   │   ├── SYNC_Embeddings_archive_2025-12.md (10.6K)
 │   │   │   ├── TEST_Embeddings.md (3.6K)
 │   │   │   └── VALIDATION_Embeddings.md (7.1K)
-│   │   ├── history/ (62.2K)
+│   │   ├── history/ (62.3K)
 │   │   │   ├── ALGORITHM/ (6.3K)
 │   │   │   │   ├── ALGORITHM_Overview.md (1.2K)
 │   │   │   │   ├── ALGORITHM_Propagation_and_Beliefs.md (1.5K)
@@ -179,7 +179,7 @@
 │   │   │   ├── SYNC_Image_Generation.md (3.7K)
 │   │   │   ├── TEST_Image_Generation.md (877)
 │   │   │   └── VALIDATION_Image_Generation.md (856)
-│   │   ├── ops-scripts/ (13.0K)
+│   │   ├── ops-scripts/ (13.1K)
 │   │   │   ├── ALGORITHM_Seeding_And_Backfill_Flows.md (1.3K)
 │   │   │   ├── BEHAVIORS_Operational_Script_Runbooks.md (1.5K)
 │   │   │   ├── IMPLEMENTATION_Engine_Scripts_Layout.md (1.6K)
@@ -203,19 +203,19 @@
 │   │   │   ├── SYNC_Storms.md (2.6K)
 │   │   │   ├── TEST_Storms.md (1.6K)
 │   │   │   └── VALIDATION_Storm_Invariants.md (2.6K)
-│   │   ├── tempo/ (41.8K)
+│   │   ├── tempo/ (41.9K)
 │   │   │   ├── ALGORITHM_Tempo_Controller.md (12.3K)
 │   │   │   ├── BEHAVIORS_Tempo.md (3.3K)
 │   │   │   ├── IMPLEMENTATION_Tempo.md (10.2K)
-│   │   │   ├── PATTERNS_Tempo.md (3.8K)
+│   │   │   ├── PATTERNS_Tempo.md (3.9K)
 │   │   │   ├── SYNC_Tempo.md (6.1K)
 │   │   │   ├── TEST_Tempo.md (2.4K)
 │   │   │   └── VALIDATION_Tempo.md (3.7K)
-│   │   └── world-builder/ (34.8K)
+│   │   └── world-builder/ (34.9K)
 │   │       ├── ALGORITHM/ (3.8K)
 │   │       │   ├── ALGORITHM_Details.md (1.5K)
 │   │       │   └── ALGORITHM_Overview.md (2.3K)
-│   │       ├── IMPLEMENTATION/ (4.2K)
+│   │       ├── IMPLEMENTATION/ (4.3K)
 │   │       │   ├── IMPLEMENTATION_Flow.md (1.7K)
 │   │       │   └── IMPLEMENTATION_Overview.md (2.6K)
 │   │       ├── TEST/ (2.3K)
@@ -229,7 +229,7 @@
 │   │       ├── ALGORITHM_World_Builder.md (672)
 │   │       ├── BEHAVIORS_World_Builder.md (3.6K)
 │   │       ├── IMPLEMENTATION_World_Builder.md (672)
-│   │       ├── PATTERNS_World_Builder.md (4.1K)
+│   │       ├── PATTERNS_World_Builder.md (4.2K)
 │   │       ├── SYNC_World_Builder.md (4.5K)
 │   │       ├── SYNC_World_Builder_archive_2025-12.md (5.2K)
 │   │       ├── TEST_World_Builder.md (606)
@@ -339,7 +339,7 @@
 │   │   └── archive/ (504)
 │   │       └── SYNC_archive_2024-12.md (504)
 │   ├── world/ (79.7K)
-│   │   ├── map/ (35.3K)
+│   │   ├── map/ (35.4K)
 │   │   │   ├── ALGORITHM/ (2.3K)
 │   │   │   │   ├── places/ (765)
 │   │   │   │   │   └── ALGORITHM_Places.md (765)
@@ -352,7 +352,7 @@
 │   │   │   ├── ALGORITHM_Map.md (5.2K)
 │   │   │   ├── BEHAVIORS_Map.md (4.4K)
 │   │   │   ├── IMPLEMENTATION_Map_Code_Architecture.md (4.4K)
-│   │   │   ├── PATTERNS_Map.md (4.1K)
+│   │   │   ├── PATTERNS_Map.md (4.2K)
 │   │   │   ├── SYNC_Map.md (5.5K)
 │   │   │   ├── SYNC_Map_archive_2025-12.md (2.2K)
 │   │   │   ├── TEST_Map_Test_Coverage.md (3.3K)
@@ -366,7 +366,7 @@
 │   │       ├── SYNC_World_Scraping_archive_2025-12.md (6.1K)
 │   │       ├── TEST_World_Scraping.md (3.4K)
 │   │       └── VALIDATION_World_Scraping.md (5.8K)
-│   └── map.md (206.8K)
+│   └── map.md (207.1K)
 ├── engine/ (255.7K)
 │   ├── infrastructure/ (105.4K)
 │   │   ├── canon/ (14.5K)
@@ -503,7 +503,7 @@
 ├── Isomorphic_Architecture.md (20.1K)
 ├── README.md (1.2K)
 ├── create_project_files_pack_from_maps_and_repo.py (14.4K)
-├── map.md (206.8K)
+├── map.md (207.0K)
 ├── map_frontend.md (9.1K)
 ├── project_map.html (12.0K)
 └── run.sh (1.0K)
@@ -2048,12 +2048,11 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `engine/physics/graph/graph_ops.py`
-- `engine/physics/graph/graph_queries.py`
 - `tools/image_generation/generate_image.py`
 - `tools/stream_dialogue.py`
 
 **Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 - `tools/image_generation/README.md`
 
 **Sections:**
@@ -2069,10 +2068,11 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `engine/db/graph_ops.py`
-- `engine/db/graph_queries.py`
 - `tools/image_generation/generate_image.py`
 - `tools/stream_dialogue.py`
+
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 
 **Sections:**
 - # CLI Agent Utilities — Patterns: Agent-Invocable Command Line Tools
@@ -2258,6 +2258,9 @@
 - ## STATE MANAGEMENT
 - ## CONCURRENCY MODEL
 
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
+
 **Sections:**
 - # Embeddings — Patterns: Per-Field String Embedding
 - ## CHAIN
@@ -2275,6 +2278,7 @@
 
 **Doc refs:**
 - `archive/SYNC_archive_2024-12.md`
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 
 **Sections:**
 - # Embeddings — Sync: Current State
@@ -2485,6 +2489,9 @@
 - ## BIDIRECTIONAL LINKS
 - ## GAPS / IDEAS / QUESTIONS
 
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
+
 **Sections:**
 - # History — Patterns: Distributed Memory Through Narratives
 - ## CHAIN
@@ -2649,12 +2656,13 @@
 - ## OUTPUTS
 
 **Code refs:**
-- `engine/physics/graph/graph_ops.py`
-- `engine/physics/graph/graph_ops_image.py`
 - `engine/scripts/check_injection.py`
 - `engine/scripts/generate_images_for_existing.py`
 - `engine/scripts/inject_to_narrator.py`
 - `engine/scripts/seed_moment_sample.py`
+
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 
 **Sections:**
 - # Ops Scripts — Implementation: Engine Scripts Layout
@@ -2664,8 +2672,10 @@
 - ## DEPENDENCIES
 
 **Code refs:**
-- `engine/physics/graph/graph_ops.py`
 - `engine/scripts/seed_moment_sample.py`
+
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 
 **Sections:**
 - # Ops Scripts — Patterns: Operational Seeding And Backfill Scripts
@@ -2680,6 +2690,9 @@
 **Code refs:**
 - `engine/scripts/generate_images_for_existing.py`
 - `engine/scripts/seed_moment_sample.py`
+
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 
 **Sections:**
 - # Ops Scripts — Sync: Current State
@@ -2969,6 +2982,9 @@
 - `engine/infrastructure/tempo/tempo_controller.py`
 - `frontend/components/SpeedControl.tsx`
 
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
+
 **Sections:**
 - # Tempo Controller — Patterns: Speed-As-State-Machine
 - ## CHAIN
@@ -3090,6 +3106,9 @@
 - `sparsity.py`
 - `world_builder.py`
 
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
+
 **Sections:**
 - # World Builder — Implementation Overview
 - ## CHAIN
@@ -3165,6 +3184,9 @@
 - `engine/infrastructure/orchestration/agent_cli.py`
 - `engine/infrastructure/world_builder/query.py`
 - `engine/world/map/semantic.py`
+
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 
 **Sections:**
 - # World Builder — Patterns: Query Moments and Sparse Enrichment
@@ -4458,6 +4480,9 @@
 **Code refs:**
 - `engine/world/map/semantic.py`
 
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
+
 **Sections:**
 - # Map System — Patterns: Why This Design
 - ## CHAIN
@@ -5071,6 +5096,7 @@
 - `agents/world_runner/CLAUDE_PROMPT.md`
 - `archive/SYNC_History_archive_2025-12.md`
 - `archive/SYNC_archive_2024-12.md`
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 - `data/Distributed-Content-Generation-Network/ALGORITHM Character & Narrative Transposition Logic.md`
 - `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`
 - `data/Distributed-Content-Generation-Network/Blood Ledger — Billing Architecture.md`
@@ -6693,6 +6719,7 @@
 - `agents/world_runner/CLAUDE_PROMPT.md`
 - `archive/SYNC_History_archive_2025-12.md`
 - `archive/SYNC_archive_2024-12.md`
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 - `data/Distributed-Content-Generation-Network/ALGORITHM Character & Narrative Transposition Logic.md`
 - `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`
 - `data/Distributed-Content-Generation-Network/Blood Ledger — Billing Architecture.md`

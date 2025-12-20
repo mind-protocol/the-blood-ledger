@@ -143,7 +143,7 @@ Why this matters:
 
 | Module | Why We Depend On It |
 |--------|---------------------|
-| engine/db/graph_queries | Read nodes and links for indexing |
+| GraphQueries (ngram repo) | Read nodes and links for indexing (see `data/ARCHITECTURE — Cybernetic Studio.md`) |
 | engine/history/conversations | Read conversation sections |
 | FalkorDB vector index | Store and search embeddings |
 

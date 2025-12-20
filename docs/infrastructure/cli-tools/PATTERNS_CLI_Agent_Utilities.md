@@ -149,8 +149,8 @@ See `../image-generation/PATTERNS_Image_Generation.md` for full prompting guide.
 
 | Module | Why We Depend On It |
 |--------|---------------------|
-| `engine/db/graph_ops.py` | Creating moments and edges in graph |
-| `engine/db/graph_queries.py` | Querying player location, world tick |
+| GraphOps (ngram repo) | Creating moments and edges in graph (see `data/ARCHITECTURE — Cybernetic Studio.md`) |
+| GraphQueries (ngram repo) | Querying player location, world tick (see `data/ARCHITECTURE — Cybernetic Studio.md`) |
 | `playthroughs/{id}/stream.jsonl` | SSE event delivery |
 | Ideogram API | External image generation |
 

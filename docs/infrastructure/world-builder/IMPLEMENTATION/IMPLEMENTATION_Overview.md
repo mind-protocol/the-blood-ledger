@@ -54,7 +54,7 @@ engine/infrastructure/world_builder/
 
 ### Internal
 
-- `engine/physics/graph/**` for graph queries and writes
+- Graph runtime (ngram repo) for graph queries and writes (see `data/ARCHITECTURE — Cybernetic Studio.md`)
 - `engine/world/map/semantic.py` for semantic search
 - `engine/infrastructure/orchestration/agent_cli.py` for LLM calls
 

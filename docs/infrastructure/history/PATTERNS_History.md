@@ -103,7 +103,7 @@ Why this matters:
 
 | Module | Why We Depend On It |
 |--------|---------------------|
-| docs/physics/graph/ | Narratives and beliefs live in the graph |
+| Graph runtime docs (ngram repo) | Narratives and beliefs live in the graph (see `data/ARCHITECTURE — Cybernetic Studio.md`) |
 | docs/views/chronicle/ | Chronicle view assembles history from beliefs |
 | docs/agents/narrator/ | Narrator creates narratives during scenes |
 | docs/engine/orchestration/ | Runner creates narratives during world updates |

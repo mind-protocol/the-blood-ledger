@@ -86,7 +86,7 @@ moment. This preserves provenance and keeps the enrichment surface auditable.
 
 | Module | Why We Depend On It |
 |--------|---------------------|
-| `engine/physics/graph/**` | GraphQueries for node/link creation and semantic search |
+| Graph runtime (ngram repo) | GraphQueries for node/link creation and semantic search (see `data/ARCHITECTURE — Cybernetic Studio.md`) |
 | `engine/world/map/semantic.py` | Semantic search over embeddings |
 | `engine/infrastructure/embeddings/**` | Embedding helpers for sparsity detection |
 | `engine/infrastructure/orchestration/agent_cli.py` | LLM calls via agent CLI |

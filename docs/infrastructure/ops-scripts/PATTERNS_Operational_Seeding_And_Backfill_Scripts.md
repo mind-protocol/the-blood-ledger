@@ -63,7 +63,7 @@ confirm what changed without digging into the database.
 
 | Module | Why We Depend On It |
 |--------|---------------------|
-| `engine/physics/graph/graph_ops.py` | GraphOps entry point for applying YAML samples. |
+| GraphOps (ngram repo) | GraphOps entry point for applying YAML samples (see `data/ARCHITECTURE — Cybernetic Studio.md`). |
 | `tools/image_generation` | Image generator used by the backfill script. |
 | `docs/infrastructure/async` | Injection scripts live in the same folder but are documented there. |
 

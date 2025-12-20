@@ -76,7 +76,7 @@ tools/image_generation/README.md         # Usage and flags
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
 | CLI tools | CLI parsing, graph writes, stream file I/O, HTTP calls | Orchestrators and agents | `python3 tools/...` command interface |
-| Graph layer | `engine/physics/graph/` queries/ops | CLI scripts | `GraphOps`, `GraphQueries` |
+| Graph layer | Graph runtime (ngram repo) | CLI scripts | `GraphOps`, `GraphQueries` (see `data/ARCHITECTURE — Cybernetic Studio.md`) |
 | Image API | Ideogram API calls | CLI scripts | HTTP requests via `requests` |
 
 ---
@@ -141,8 +141,8 @@ tools/image_generation/README.md         # Usage and flags
 
 ```
 tools/stream_dialogue.py
-    └── imports → GraphOps (`engine/physics/graph/graph_ops.py`)
-    └── imports → GraphQueries (`engine/physics/graph/graph_queries.py`)
+    └── imports → GraphOps (ngram repo graph runtime)
+    └── imports → GraphQueries (ngram repo graph runtime)
 ```
 
 ### External Dependencies
