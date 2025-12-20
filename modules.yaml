@@ -51,26 +51,23 @@ modules:
 # YOUR MODULES
 # =============================================================================
 
-physics:
-  code: "engine/physics/**"
-  docs: "docs/physics/"
-  maturity: CANONICAL
-  owner: agent
-  notes: |
-    Living world simulation, energy flow, and narrative flips.
+# Uncomment and modify as you create modules:
 
-api:
-  code: "engine/infrastructure/api/**"
-  docs: "docs/infrastructure/api/"
-  maturity: CANONICAL
-  owner: agent
-  notes: |
-    FastAPI entry points and interaction loop.
+# types:
+#   code: "src/types/**"
+#   docs: "docs/core/types/"
+#   maturity: CANONICAL
+#   owner: human
+#   notes: |
+#     Core type definitions. Changes affect entire codebase.
 
-narrator:
-  code: "engine/infrastructure/orchestration/narrator.py"
-  docs: "docs/agents/narrator/"
-  maturity: CANONICAL
-  owner: agent
-  notes: |
-    Authorial intelligence and scene generation.
+# Add more modules as they emerge...
+
+  engine_models:
+    code: "engine/models/**"
+    docs: "docs/engine/models/"
+    maturity: DRAFT
+    owner: agent
+    notes: |
+      Pydantic models for all graph nodes, links, and tensions.
+      Defines the canonical data schema for the game world.
