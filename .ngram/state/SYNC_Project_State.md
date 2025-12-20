@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Models Base Repair Reconfirmed
+
+- **What:** Reconfirmed the `GameTimestamp` comparator implementations and noted the repair in `docs/engine/models/SYNC_Models.md`.
+- **Why:** Close out repair `10-INCOMPLETE_IMPL-models-base` with an explicit verification entry.
+- **Impact:** Documentation-only update; functionality unchanged.
+
 ### 2025-12-20: Graph Mutation Listener Repair Verification
 
 - **What:** Confirmed `add_mutation_listener` and `remove_mutation_listener` in `engine/physics/graph/graph_ops_events.py` are already implemented; documented the stale repair report as a resolved conflict.

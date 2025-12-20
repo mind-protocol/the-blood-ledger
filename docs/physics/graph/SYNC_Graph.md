@@ -155,6 +155,7 @@ VALIDATION: ./VALIDATION_Living_Graph.md
 - The mutation listener helpers already include guard checks to avoid duplicate registrations and safe removal.
 - Filled the graph behaviors template sections to eliminate drift warnings.
 - Re-verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py` during repair #16; no code changes needed.
+- Verified `SimilarNode.__str__` and `ApplyResult.success` are already implemented in `engine/physics/graph/graph_ops_types.py`; no code changes required for issue #16.
 
 ### Suggestions
 - [ ] Add a lightweight unit test for `emit_event` to cover listener registration/removal behavior.
