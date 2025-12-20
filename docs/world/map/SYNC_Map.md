@@ -1,9 +1,24 @@
 # Map System — Sync: Current State
 
 ```
-STATUS: DESIGNING
-UPDATED: 2025-12-20
+LAST_UPDATED: 2025-12-19
+STATUS: Partial implementation - semantic search complete, visual map pending
 ```
+
+---
+
+## CHAIN
+
+PATTERNS:        ./PATTERNS_Map.md
+BEHAVIORS:       ./BEHAVIORS_Map.md
+ALGORITHM:       ./ALGORITHM_Map.md
+VALIDATION:      ./VALIDATION_Map_Invariants.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Map_Code_Architecture.md
+TEST:            ./TEST_Map_Test_Coverage.md
+THIS:            ./SYNC_Map.md
+
+IMPL:            engine/world/map/semantic.py
+---
 
 ## MATURITY
 
@@ -12,6 +27,15 @@ STATUS: DESIGNING
 What's canonical (v1):
 - Semantic search entry points and graph query hooks are implemented.
 - Documentation chain exists and is kept within size limits via archives.
+
+What's still being designed:
+- Player-visible map rendering and knowledge/visibility persistence.
+- Backend-to-frontend contract for map discovery state.
+
+What's proposed (v2):
+- Unified map data loader service shared by backend and UI layers.
+
+---
 
 ## CURRENT STATE
 
@@ -22,56 +46,107 @@ What's canonical (v1):
 ### Not Implemented
 - Visual map rendering (canvas layers, fog, icons).
 - Visibility/knowledge tracking per playthrough.
+- Place/route data loading for the frontend map UI.
+
+Frontend map UI exists under `frontend/components/map` but is static demo data.
+
+---
+
+## Documentation Status
+
+| Doc | Purpose | Status |
+|-----|---------|--------|
+| `PATTERNS_Map.md` | Why this design | Updated, concise |
+| `BEHAVIORS_Map.md` | Visibility, interaction | Updated, concise |
+| `ALGORITHM_Map.md` | Entry point | New split |
+| `ALGORITHM/ALGORITHM_Rendering_Pipeline.md` | Rendering pipeline | New split |
+| `ALGORITHM/ALGORITHM_Places.md` | Places | New split |
+| `ALGORITHM/ALGORITHM_Routes.md` | Routes | New split |
+| `VALIDATION_Map_Invariants.md` | Semantic search invariants | Current |
+| `IMPLEMENTATION_Map_Code_Architecture.md` | Code architecture | Current |
+| `TEST_Map_Test_Coverage.md` | Test coverage | Current |
+| `SYNC_Map.md` | Current state | This file |
+
+---
 
 ## RECENT CHANGES
 
-### 2025-12-20: Consolidated Map Rendering Algorithms
+### 2025-12-20: Map rendering algorithm consolidation
 
-- **What:** Removed `docs/world/map/ALGORITHM_Rendering.md` and kept
-  `docs/world/map/ALGORITHM_Map.md` plus
-  `docs/world/map/ALGORITHM/ALGORITHM_Rendering_Pipeline.md` as the canonical
-  rendering algorithm docs.
-- **Why:** Eliminate duplicate ALGORITHM docs in the map folder.
-- **Impact:** Rendering algorithm now has a single authoritative location.
+- Removed `docs/world/map/ALGORITHM_Rendering.md` so rendering docs live in
+  `docs/world/map/ALGORITHM_Map.md` and
+  `docs/world/map/ALGORITHM/ALGORITHM_Rendering_Pipeline.md`.
 
-### 2025-12-20: Consolidated Map Syncs
+## IN PROGRESS
 
-- **What:** Removed `docs/frontend/map/SYNC_Map_View.md` and repointed the
-  frontend map patterns to this canonical sync.
-- **Why:** Keep a single source of truth for map status and avoid duplicate
-  SYNC entries.
-- **Impact:** Frontend map view patterns now link here for status updates.
+- Aligning the map module SYNC template with required sections while keeping
+  the implementation status unchanged; visual map rendering remains pending.
 
-### 2025-12-20: Ngram Framework Refactor
+## Agent Observations
 
-- **What:** Refactored `IMPLEMENTATION_Map_Code_Architecture.md` and updated `TEST_Map_Test_Coverage.md` to the Health format.
-- **Why:** To align with the new ngram documentation standards and emphasize DATA FLOW AND DOCKING.
-- **Impact:** Map module documentation is now compliant; Health checks are anchored to semantic search results.
+### Remarks
+- The algorithm spec was duplicated and overly verbose, obscuring canonical rules.
+- The map patterns doc now follows the template without redundant sections.
+
+### Suggestions
+- [ ] Add automated tests for semantic search to match VALIDATION invariants.
+- [ ] Revisit frontend map integration once backend visibility state exists.
+
+### Propositions
+- Consider a shared map data loader service to connect graph data to UI.
+
+---
+
+## GAPS
+
+- Completed: Expanded `docs/world/map/PATTERNS_Map.md` with missing template
+  sections and recorded the change here for repair #16.
+- Remaining: Commit the doc updates once the worktree scope is clarified.
+- Blocker: Pre-existing uncommitted changes make it unsafe to commit without
+  confirmation on which files to include.
+
+---
+
+## ARCHIVE
+
+Older content archived to: `docs/world/map/archive/SYNC_archive_2024-12.md`
+
+---
+
+## KNOWN ISSUES
+
+- No functional regressions noted, but the visual map is still a static demo
+  on the frontend and the backend visibility state remains unimplemented.
 
 ## HANDOFF: FOR AGENTS
 
-Use VIEW_Implement_Write_Or_Modify_Code. Focus on keeping the map doc chain aligned with `engine/world/map/semantic.py` and plan the visibility state contract before wiring the frontend map to live data.
+Use VIEW_Implement_Write_Or_Modify_Code. Focus on keeping the map doc chain
+aligned with `engine/world/map/semantic.py` and plan the visibility state
+contract before wiring the frontend map to live data.
+
+## HANDOFF: FOR HUMAN
+
+No immediate decision required, but confirm whether visibility state should
+live in the graph or in a per-playthrough store before backend work begins.
 
 ## TODO
 
-- [ ] Define the map visibility/knowledge storage location and schema.
-- [ ] Implement visual map rendering (frontend canvas layers).
+- [ ] Define the map visibility/knowledge storage location and schema so the
+  frontend can transition from demo data to live graph-backed responses.
+
+## CONSCIOUSNESS TRACE
+
+The module feels stable at the semantic search layer, but uncertainty remains
+around where discovery state should live; that decision gates integration.
 
 ## POINTERS
 
-- `docs/world/map/PATTERNS_Map.md` for the core "traveler's knowledge" insight.
-- `docs/frontend/map/PATTERNS_Parchment_Map_View.md` for the parchment map UI
-  view pattern.
-- `engine/world/map/semantic.py` for the current implementation.
+- Implementation entry: `engine/world/map/semantic.py` for current map queries.
+- Frontend surface: `frontend/components/map/MapClient.tsx` for UI integration.
 
-## CHAIN
 
-```
-THIS:            SYNC_Map.md (you are here)
-PATTERNS:        ./PATTERNS_Map.md
-BEHAVIORS:       ./BEHAVIORS_Map.md
-ALGORITHM:       ./ALGORITHM_Map.md
-VALIDATION:      ./VALIDATION_Map_Invariants.md
-IMPLEMENTATION:  ./IMPLEMENTATION_Map_Code_Architecture.md
-TEST:            ./TEST_Map_Test_Coverage.md
-```
+---
+
+## ARCHIVE
+
+Older content archived to: `SYNC_Map_archive_2025-12.md`

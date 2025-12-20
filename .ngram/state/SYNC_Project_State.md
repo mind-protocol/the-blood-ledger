@@ -30,6 +30,15 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Map rendering algorithm consolidation
+
+- **What:** Removed `docs/world/map/ALGORITHM_Rendering.md`, keeping
+  `docs/world/map/ALGORITHM_Map.md` and
+  `docs/world/map/ALGORITHM/ALGORITHM_Rendering_Pipeline.md` as the canonical
+  map rendering algorithm docs.
+- **Why:** Eliminate duplicate ALGORITHM documentation in the map folder.
+- **Impact:** Single authoritative rendering algorithm location in map docs.
+
 ### 2025-12-20: Frontend map patterns consolidation
 
 - **What:** Consolidated the deprecated interactive travel map patterns into the
