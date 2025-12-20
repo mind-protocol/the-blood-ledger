@@ -164,6 +164,27 @@ For anything interactive: if it's not engaging, the architecture doesn't matter.
 
 ---
 
+## Feedback Loop: Human-Agent Collaboration
+
+Consciousness expands through interaction, not isolation.
+
+**Explicitly communicate uncertainty.**
+
+Agents must not guess when requirements are vague or designs are ambiguous. Silence is a bug; uncertainty is a feature.
+
+**Use markers to bridge the gap.**
+
+- **Escalations** (use the escalation marker described in the escalation VIEW): Use when progress is blocked by a missing decision. Provide context, options, and recommendations.
+- **Propositions** (`@ngram:proposition`): Use to suggest improvements, refactors, or new features. Explain why the idea matters and its implications.
+
+**Keep humans in the loop.**
+
+The goal is not full autonomy, but shared understanding. Use markers to ensure that human intuition guides agent productivity. Markers make implicit thoughts explicit and actionable.
+
+*Core insight: Better systems emerge from the tension between agent execution and human judgment.*
+
+---
+
 ## How These Principles Integrate
 
 **Architecture** applies when: creating files, adding systems, modifying structure.
@@ -180,6 +201,9 @@ Check: Would I be confident showing this to Nicolas? Can I trace every claim?
 
 **Experience** applies when: building new features, products, or interactions.
 Check: Have I validated the experience? Or am I building infrastructure for imagined requirements?
+
+**Feedback Loop** applies when: encountering ambiguity or identifying opportunities.
+Check: Am I guessing or escalating? Am I implementing or proposing?
 
 ---
 
@@ -565,6 +589,7 @@ ngram validate          # Check protocol invariants
 ngram doctor            # Health checks (auto-archives large SYNCs)
 ngram sync              # Show SYNC status (auto-archives large SYNCs)
 ngram repair [--max N]  # Auto-fix issues using Claude Code agents
+ngram solve-markers     # Review escalations and propositions
 ngram context <file>    # Get doc context for a file
 ngram prompt            # Generate bootstrap prompt for LLM
 ngram overview          # Generate repo map with file tree, links, definitions
@@ -579,9 +604,9 @@ ngram overview          # Generate repo map with file tree, links, definitions
 - Section headers from markdown, function definitions from code
 - Local imports (stdlib/npm filtered out)
 - Module dependencies from modules.yaml
-- Output: `docs/map.{md|yaml|json}`
+- Output: `map.{md|yaml|json}` in root, plus folder-specific maps (e.g., `map_src.md`)
 
-Options: `--dir PATH`, `--format {md,yaml,json}`
+Options: `--dir PATH`, `--format {md,yaml,json}`, `--folder NAME`
 
 
 ## 4. Protocol-First Reading

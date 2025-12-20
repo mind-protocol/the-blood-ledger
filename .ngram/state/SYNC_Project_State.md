@@ -12,8 +12,8 @@ UPDATED_BY: codex
 Opening flow documentation is now aligned to the current playthrough bootstrap
 implementation, including seed graph initialization, scenario injection, and
 opening moment creation. Local dev startup uses the correct FastAPI entrypoint.
-Escalation marker wording in principles now avoids false-positive escalation
-detection.
+Escalation marker wording in principles and agent guidance now avoids
+false-positive escalation detection.
 
 ---
 
@@ -41,6 +41,12 @@ detection.
 - **What:** Reworded the escalation marker reference in `.ngram/PRINCIPLES.md` to avoid being parsed as an active escalation marker.
 - **Why:** Prevent false-positive escalation detection in the principles doc.
 - **Impact:** Escalation scan no longer flags the principles reference as unresolved.
+
+### 2025-12-20: Agents Escalation Marker Wording
+
+- **What:** Reworded the escalation marker reference in `AGENTS.md` to avoid being parsed as an active escalation marker.
+- **Why:** Prevent false-positive escalation detection in the agent guidance doc.
+- **Impact:** Escalation scan no longer flags the agent guidance reference as unresolved.
 
 ### 2025-12-20: GEMINI Escalation Review
 
