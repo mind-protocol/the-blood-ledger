@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Graph Ops Types Verification
+
+- **What:** Verified `SimilarNode.__str__` and `ApplyResult.success` are already implemented in `engine/physics/graph/graph_ops_types.py`.
+- **Why:** Repair task for issue #16 flagged these helpers as incomplete.
+- **Impact:** No code changes; graph SYNC updated to record verification.
+
 ### 2025-12-20: Models Base Repair Reconfirmed
 
 - **What:** Reconfirmed the `GameTimestamp` comparator implementations and noted the repair in `docs/engine/models/SYNC_Models.md`.
