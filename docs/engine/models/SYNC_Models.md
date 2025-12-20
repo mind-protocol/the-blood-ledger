@@ -34,7 +34,7 @@ The `engine/models/` module provides the core data structures for the game. All 
 ### 2025-12-20: Base Timestamp Comparators Verified
 
 - **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` in `engine/models/base.py` are fully implemented; no code changes required for issue #16.
-- **Why:** Repair task flagged empty implementations that are already present.
+- **Why:** Repair 10 (INCOMPLETE_IMPL-models-base) flagged empty implementations that are already present.
 - **Impact:** No functional changes; reconfirmed during repair `10-INCOMPLETE_IMPL-models-base`.
 
 ### 2025-12-20: Initial Ngram Documentation Creation
