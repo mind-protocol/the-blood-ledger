@@ -39,6 +39,12 @@ Shadow Feed is defined as a rumor cache for distant events. The module is docume
 - **Why:** Clarify safe reuse constraints for distant events.
 - **Files:** docs/network/shadow-feed/*
 
+### 2025-12-20: Added algorithm and health docs
+
+- **What:** Added `ALGORITHM_Shadow_Feed_Import.md` and `HEALTH_Shadow_Feed.md`.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** docs/network/shadow-feed/*
+
 ---
 
 ## KNOWN ISSUES

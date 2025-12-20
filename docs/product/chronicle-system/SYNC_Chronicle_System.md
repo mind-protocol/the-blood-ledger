@@ -16,6 +16,7 @@ The core concepts and initial implementation details of the Chronicle system are
 
 *   2025-12-20: Consolidated implementation docs into `IMPLEMENTATION_Chronicle_System.md` and converted `IMPLEMENTATION_Chronicle_Technical_Pipeline.md` into a pointer.
 *   2025-12-20: Consolidated Chronicle behaviors into `BEHAVIORS_Chronicle_Types_And_Structure.md` and converted `BEHAVIORS_Chronicle_Types.md` into a pointer to remove duplication.
+*   2025-12-20: Added `ALGORITHM_Chronicle_Generation_Pipeline.md` and `HEALTH_Chronicle_System.md`.
 *   Initial documentation created from `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`.
 *   Consolidated the GTM integration patterns into `PATTERNS_Chronicle_Flywheel.md` and left a reference in `PATTERNS_Chronicle_GTM_Integration.md` to avoid duplication.
 *   Consolidated validation metrics into `VALIDATION_Chronicle_Invariants.md` and left a reference in `VALIDATION_Chronicle_Metrics_And_Success.md`.
@@ -55,6 +56,8 @@ The Blood Chronicle System presents a highly innovative and potentially disrupti
 
 PATTERNS:        ./PATTERNS_Chronicle_Flywheel.md
 BEHAVIORS:       ./BEHAVIORS_Chronicle_Types_And_Structure.md
+ALGORITHM:       ./ALGORITHM_Chronicle_Generation_Pipeline.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Chronicle_System.md
 VALIDATION:      ./VALIDATION_Chronicle_Invariants.md
+HEALTH:          ./HEALTH_Chronicle_System.md
 THIS:            ./SYNC_Chronicle_System.md

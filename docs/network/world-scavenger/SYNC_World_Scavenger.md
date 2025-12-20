@@ -40,6 +40,12 @@ World Scavenger is defined as a design system with pseudocode and economic ratio
 - **Why:** Make reuse strategy canonical and auditable.
 - **Files:** docs/network/world-scavenger/*
 
+### 2025-12-20: Added algorithm and health docs
+
+- **What:** Added `ALGORITHM_World_Scavenger.md` and `HEALTH_World_Scavenger.md`.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** docs/network/world-scavenger/*
+
 ---
 
 ## KNOWN ISSUES

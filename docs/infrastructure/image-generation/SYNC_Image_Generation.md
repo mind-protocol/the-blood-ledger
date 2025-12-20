@@ -95,6 +95,7 @@ Update this table when tasks complete or reprioritized.
 - Simplified the implementation doc code-to-docs reference entry to avoid false broken-link detection.
 - Noted in the implementation doc that the code reference column omits the `# DOCS:` marker to prevent broken-link checks from misreading it.
 - Updated GraphOps references to call out the ngram repo graph runtime.
+- Added `HEALTH_Image_Generation.md` for runtime verification notes.
 
 ---
 

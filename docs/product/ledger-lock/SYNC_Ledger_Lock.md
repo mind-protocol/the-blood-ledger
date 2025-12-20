@@ -39,6 +39,12 @@ Ledger Lock is fully specified in UX terms; docs now capture trigger heuristics 
 - **Why:** Formalize conversion moment requirements.
 - **Files:** docs/product/ledger-lock/*
 
+### 2025-12-20: Added algorithm and health docs
+
+- **What:** Added `ALGORITHM_Ledger_Lock_Flow.md` and `HEALTH_Ledger_Lock.md`.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** docs/product/ledger-lock/*
+
 ---
 
 ## KNOWN ISSUES

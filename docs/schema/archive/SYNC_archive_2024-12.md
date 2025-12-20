@@ -9,3 +9,7 @@
 ## Rationale
 
 The module exceeded the size threshold. Content was consolidated into concise schema references and split into focused files.
+
+## Recent Changes
+
+- 2025-12-20: Added full doc chain (PATTERNS/BEHAVIORS/ALGORITHM/VALIDATION/IMPLEMENTATION/HEALTH) for archive module.

@@ -9,75 +9,36 @@ UPDATED_BY: codex
 
 ## CURRENT STATE
 
-Graph scope files listed in `data/graph_scope_classification.yaml` were removed
-from this repo. ngram was reinitialized and repo maps regenerated. Vision,
-opening, and README references were updated to point to the ngram repo for
-graph runtime documentation.
+Doc-chain completion work is active after `ngram init` reset the protocol files.
+The next step is to re-run validation/health checks and re-commit the doc chain
+additions that were in progress before re-init.
 
 ---
 
 ## ACTIVE WORK
 
-### Graph Reference Cleanup
+### Doc Chain Restoration
 
-- **Area:** docs/design + README
+- **Area:** `docs/`
 - **Status:** in progress
 - **Owner:** agent
-- **Context:** Remove or replace references to graph runtime paths that no longer exist here.
+- **Context:** Reapply doc-chain updates after `ngram init` reset the protocol state.
 
 ---
 
 ## RECENT CHANGES
 
-### 2025-12-20: Delete curated graph scope files
+### 2025-12-20: Protocol reset
 
-- **What:** Removed all existing files listed in `data/graph_scope_classification.yaml`.
-- **Why:** Graph-related files were transferred to the ngram repo per request.
-- **Impact:** 202 files deleted; 4 referenced paths already missing.
+- **What:** Ran `ngram init`, regenerated protocol scaffolding and maps.
+- **Why:** User requested init after doc chain work.
+- **Impact:** `SYNC_Project_State.md` reset; needs re-validation and commit.
 
-### 2025-12-20: Reinitialize ngram and regenerate maps
+### 2025-12-20: Removed VIEW directories
 
-- **What:** Ran `ngram init` and `ngram overview` (twice) to restore scaffolding and map.
-- **Why:** Rebuild protocol files after the curated deletion and doc updates.
-- **Impact:** `.ngram/` refreshed and `map.md` regenerated.
-
-### 2025-12-20: Update vision/opening docs after graph move
-
-- **What:** Updated `README.md`, `docs/design/ALGORITHM_Vision.md`,
-  `docs/design/SYNC_Vision.md`, `docs/design/opening/CLAUDE.md`,
-  and `docs/design/opening/IMPLEMENTATION_Opening.md`.
-- **Why:** Remove references to graph runtime paths that no longer live here.
-- **Impact:** Docs now point to `data/ARCHITECTURE — Cybernetic Studio.md`.
-
-### 2025-12-20: Clean remaining graph path references
-
-- **What:** Updated infrastructure/world docs to replace deleted graph runtime paths with ngram repo pointers.
-- **Why:** Remove stale references to `engine/physics/graph`, `engine/db/graph_*`, and `docs/physics/graph`.
-- **Impact:** Dependencies and ops-script docs now point to `data/ARCHITECTURE — Cybernetic Studio.md`.
-
-### 2025-12-20: Update agent instructions and module docs
-
-- **What:** Updated async/history/image-generation/map/scraping docs and agent instructions to note the ngram repo graph runtime.
-- **Why:** Ensure examples and invariants match the runtime split.
-- **Impact:** GraphOps/GraphQueries references now avoid pointing to removed local paths.
-
-### 2025-12-20: Health checks and validation run
-
-- **What:** Ran `ngram doctor` and `ngram validate`.
-- **Why:** Verify protocol health after doc updates.
-- **Impact:** Existing repo-wide issues remain (missing VIEW, missing HEALTH docs, broken CHAIN links). See `.ngram/state/SYNC_Project_Health.md` and validation output for details.
-
-### 2025-12-20: Add missing VIEW and HEALTH docs
-
-- **What:** Added `VIEW_Collaborate_Pair_Program_With_Human.md` and HEALTH docs for map, scraping, embeddings, and canon modules.
-- **Why:** Address missing VIEW and broken CHAIN links reported by `ngram validate`.
-- **Impact:** Validation should clear missing VIEW and chain link errors for those modules.
-
-### 2025-12-20: Re-run validation and health checks
-
-- **What:** Re-ran `ngram validate` and `ngram doctor`.
-- **Why:** Confirm doc chain fixes and update health state.
-- **Impact:** Missing VIEW and CHAIN link issues resolved; remaining gaps are missing HEALTH docs and undocumented modules.
+- **What:** Removed `.ngram/views`, `views`, and `.views` per instruction.
+- **Why:** Views are now managed as skills.
+- **Impact:** `ngram validate` fails VIEW checks because `.ngram/views` is removed.
 
 ---
 
@@ -85,53 +46,39 @@ graph runtime documentation.
 
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
-| Remaining graph references in other docs | medium | `docs/` | Need scan beyond vision/opening/README. |
+| Doc chain updates not re-validated | medium | `docs/` | Need to rerun `ngram validate` and `ngram doctor` after re-init. |
 
 ---
 
 ## HANDOFF: FOR AGENTS
 
-**Likely VIEW for continuing:** `VIEW_Analyze_Structural_Analysis.md`
+**Likely VIEW for continuing:** `VIEW_Document_Create_Module_Documentation.md`
 
-**Current focus:** Finish cleaning graph references after the graph runtime move.
+**Current focus:** Re-run protocol checks and re-commit doc-chain completions.
 
 **Key context:**
-Graph scope files were deleted; use ngram repo for graph runtime docs.
+`ngram init` reset SYNC state; doc-chain files added earlier may still be in the
+worktree and need validation/commit.
 
 **Watch out for:**
-Stale `engine/physics/graph`/`engine.db.graph_*` references outside design docs.
+Re-generated map/agents files may overwrite prior edits; re-check diff before commit.
 
 ---
 
 ## HANDOFF: FOR HUMAN
 
 **Executive summary:**
-Graph scope files were removed from this repo and documentation was updated to
-point to the ngram repo. ngram scaffolding and maps were regenerated.
+Protocol scaffolding was reinitialized; doc chain completion work needs re-verified
+and committed.
 
 **Decisions made recently:**
-Graph runtime documentation now lives in the ngram repo; this repo is cleaned
-to reflect that split.
+Proceed with re-validation after init.
 
 **Needs your input:**
-Whether to purge all remaining graph references in non-design docs or keep them
-as historical context.
+None.
 
 **Concerns:**
-Docs outside design/opening may still refer to deleted graph paths.
-
----
-
-## Agent Observations
-
-### Remarks
-- `map.md` still lists `engine/physics/graph/**` and `docs/physics/graph/**` because those directories still exist in this repo.
-
-### Suggestions
-- [ ] Decide whether the remaining graph directories should be deleted or intentionally retained; align docs and map accordingly.
-
-### Propositions
-- If graph runtime must stay external, add a single canonical pointer doc that lists the ngram repo locations and import guidance.
+Potential drift between regenerated scaffolding and recent doc edits.
 
 ---
 
@@ -139,24 +86,25 @@ Docs outside design/opening may still refer to deleted graph paths.
 
 ### High Priority
 
-- [ ] Decide scope of graph reference cleanup beyond design/opening/README.
+- [ ] Re-run `ngram validate` and `ngram doctor` after re-init.
+- [ ] Commit doc-chain additions and SYNC updates.
 
 ### Backlog
 
-- [ ] Re-run a full doc scan once cleanup scope is defined.
+- [ ] Triage `ngram doctor` critical issues (undocumented modules).
 
 ---
 
 ## CONSCIOUSNESS TRACE
 
 **Project momentum:**
-Cleanup is progressing; remaining work is mostly documentation alignment.
+Moving; protocol reset interrupted doc-chain validation but work is recoverable.
 
 **Architectural concerns:**
-Decoupling docs across repos risks drift if references are not consolidated.
+Doc coverage remains uneven across code modules (per `ngram doctor`).
 
 **Opportunities noticed:**
-Add a single pointer doc that enumerates where graph/runtime docs now live.
+Add module mappings to reduce undocumented module warnings.
 
 ---
 
@@ -164,7 +112,7 @@ Add a single pointer doc that enumerates where graph/runtime docs now live.
 
 | Area | Status | SYNC |
 |------|--------|------|
-| `docs/design/` | updating | `docs/design/SYNC_Vision.md` |
+| `docs/` | in progress | `docs/*/SYNC_*.md` |
 
 ---
 
@@ -178,4 +126,7 @@ Check `modules.yaml` (project root) for full manifest.
 | N/A | N/A | N/A | N/A |
 
 **Unmapped code:** (run `ngram validate` to check)
-- Not assessed after deletions.
+- Multiple directories flagged by `ngram doctor`.
+
+**Coverage notes:**
+Module mappings are still largely missing; need structured sweep.

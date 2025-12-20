@@ -16,6 +16,7 @@ BEHAVIORS:       ./BEHAVIORS_CLI_Streaming_And_Image_Output.md
 ALGORITHM:       ./ALGORITHM_CLI_Tool_Flows.md
 VALIDATION:      ./VALIDATION_CLI_Tool_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_CLI_Tools_Architecture.md
+HEALTH:          ./HEALTH_CLI_Tools.md
 TEST:            ./TEST_CLI_Tool_Coverage.md
 SYNC:            ./SYNC_CLI_Tools.md
 

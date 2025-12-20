@@ -14,6 +14,7 @@ BEHAVIORS:      ./BEHAVIORS_Test_Coverage_Layers.md
 ALGORITHM:      ./ALGORITHM_Test_Run_Flow.md
 VALIDATION:     ./VALIDATION_Test_Suite_Invariants.md
 IMPLEMENTATION: ./IMPLEMENTATION_Test_File_Layout.md
+HEALTH:         ./HEALTH_Engine_Test_Suite.md
 TEST:           ./TEST_Test_Suite_Coverage.md
 SYNC:           ./SYNC_Engine_Test_Suite.md
 THIS:           PATTERNS_Spec_Linked_Test_Suite.md (you are here)

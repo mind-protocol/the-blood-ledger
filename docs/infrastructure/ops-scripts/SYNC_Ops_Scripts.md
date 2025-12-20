@@ -51,6 +51,12 @@ assets. Injection-related scripts in the same directory are documented under
 
 ## RECENT CHANGES
 
+### 2025-12-20: Added ops-scripts health doc
+
+- **What:** Added `HEALTH_Operational_Scripts.md` for runtime verification notes.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Impact:** Ops-scripts module now has a HEALTH doc placeholder.
+
 ### 2025-12-19: Listed full ops-scripts entry points
 
 - **What:** Added the injection scripts to the implementation entry points list.

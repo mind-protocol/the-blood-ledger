@@ -15,6 +15,7 @@ BEHAVIORS:       ./BEHAVIORS_Operational_Script_Runbooks.md
 ALGORITHM:       ./ALGORITHM_Seeding_And_Backfill_Flows.md
 VALIDATION:      ./VALIDATION_Operational_Script_Safety.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Engine_Scripts_Layout.md
+HEALTH:          ./HEALTH_Operational_Scripts.md
 TEST:            ./TEST_Operational_Scripts.md
 SYNC:            ./SYNC_Ops_Scripts.md
 IMPL:            engine/scripts/seed_moment_sample.py

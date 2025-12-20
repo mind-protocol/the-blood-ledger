@@ -16,6 +16,7 @@ BEHAVIORS:       ./BEHAVIORS_Frontend_State_And_Interaction.md
 ALGORITHM:       ./ALGORITHM_Frontend_Data_Flow.md
 VALIDATION:      ./VALIDATION_Frontend_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Frontend_Code_Architecture.md
+HEALTH:          ./HEALTH_Frontend_Runtime.md
 TEST:            ./TEST_Frontend_Coverage.md
 SYNC:            ./SYNC_Frontend.md
 

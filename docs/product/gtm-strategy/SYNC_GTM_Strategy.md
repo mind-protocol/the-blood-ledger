@@ -39,6 +39,12 @@ GTM strategy is fully specified in narrative form and now mapped into a module c
 - **Why:** Formalize acquisition programs and metrics.
 - **Files:** docs/product/gtm-strategy/*
 
+### 2025-12-20: Added algorithm and health docs
+
+- **What:** Added `ALGORITHM_GTM_Flywheel.md` and `HEALTH_GTM_Strategy.md`.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** docs/product/gtm-strategy/*
+
 ---
 
 ## KNOWN ISSUES

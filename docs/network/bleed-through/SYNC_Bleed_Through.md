@@ -14,6 +14,7 @@ The Bleed-Through system, a core narrative and technical innovation of Blood Led
 ## Recent Changes
 
 *   Initial documentation created from `data/Distributed-Content-Generation-Network/Blood Ledger — The Bleed-Through.md`.
+*   2025-12-20: Added `ALGORITHM_Bleed_Through_Pipeline.md` and `HEALTH_Bleed_Through.md`.
 
 ## Handoffs
 
@@ -54,4 +55,6 @@ The Bleed-Through system, a core narrative and technical innovation of Blood Led
 
 PATTERNS:        ./PATTERNS_Scars_Cross_Worlds.md
 BEHAVIORS:       ./BEHAVIORS_Bleed_Reports.md
+ALGORITHM:       ./ALGORITHM_Bleed_Through_Pipeline.md
+HEALTH:          ./HEALTH_Bleed_Through.md
 THIS:            ./SYNC_Bleed_Through.md

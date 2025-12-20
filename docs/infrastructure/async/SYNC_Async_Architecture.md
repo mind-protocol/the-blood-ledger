@@ -48,6 +48,7 @@ remaining leaf paths.
 ## RECENT CHANGES
 
 - Updated GraphOps/GraphQueries references to note the ngram repo graph runtime.
+- Added `HEALTH_Async_Architecture.md` to capture async health signals.
 
 ---
 

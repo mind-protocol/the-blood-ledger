@@ -14,6 +14,7 @@ STATUS: Draft — validating with Nicolas
 - `docs/design/ALGORITHM_Vision.md` (system-level drivers for the vision)
 - `docs/design/VALIDATION_Vision.md` (proof and validation criteria)
 - `docs/design/IMPLEMENTATION_Vision.md` (doc architecture and ownership)
+- `docs/design/HEALTH_Vision_Doc_Integrity.md` (documentation health checks)
 - `docs/design/TEST_Vision.md` (vision validation checklist)
 - `docs/design/SYNC_Vision.md` (current state and handoffs)
 

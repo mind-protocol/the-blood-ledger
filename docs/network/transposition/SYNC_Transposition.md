@@ -40,6 +40,12 @@ Transposition documentation now exists as a dedicated module derived from the tr
 - **Why:** Make canon-preserving imports explicit and auditable.
 - **Files:** docs/network/transposition/*
 
+### 2025-12-20: Added health doc
+
+- **What:** Added `HEALTH_Transposition.md` for transposition health checks.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** docs/network/transposition/*
+
 ---
 
 ## KNOWN ISSUES

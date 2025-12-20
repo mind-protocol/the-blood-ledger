@@ -62,6 +62,7 @@ Both CLI tools are functional and actively used by agents:
 ### 2025-12-19: Normalize cli-tools implementation references
 
 - **What:** Updated cli-tools docs to reference GraphOps/GraphQueries in the ngram repo runtime instead of local paths
+- **What:** Added `HEALTH_CLI_Tools.md` to cover CLI stream health checks.
 - **Why:** Broken-link repair still flagged unqualified filenames as missing files
 - **Files:**
   - `docs/infrastructure/cli-tools/IMPLEMENTATION_CLI_Tools_Architecture.md`

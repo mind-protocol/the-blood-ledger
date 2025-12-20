@@ -114,6 +114,12 @@ None.
 
 ---
 
+## Recent Changes
+
+- Added `HEALTH_Tempo_Controller.md` for tempo health checks.
+
+---
+
 ## Files Changed This Session
 
 | File | Change |

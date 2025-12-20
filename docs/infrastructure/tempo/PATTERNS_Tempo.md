@@ -16,6 +16,7 @@ BEHAVIORS:       ./BEHAVIORS_Tempo.md
 ALGORITHM:       ./ALGORITHM_Tempo_Controller.md
 VALIDATION:      ./VALIDATION_Tempo.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Tempo.md
+HEALTH:          ./HEALTH_Tempo_Controller.md
 TEST:            ./TEST_Tempo.md
 SYNC:            ./SYNC_Tempo.md
 

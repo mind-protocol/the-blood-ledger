@@ -53,6 +53,12 @@ Voyager System docs now consolidate the Refugee System and Character Import prop
 - **Files:** docs/network/voyager-system/*
 - **Struggles/Insights:** Canon safety depends on explicit stripping rules and testable validation.
 
+### 2025-12-20: Added algorithm and health docs
+
+- **What:** Added `ALGORITHM_Voyager_Transposition.md` and `HEALTH_Voyager_System.md`.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** docs/network/voyager-system/*
+
 ---
 
 ## KNOWN ISSUES

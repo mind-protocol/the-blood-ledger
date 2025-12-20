@@ -62,6 +62,7 @@ tasks for the history service and conversation-thread workflows.
   expanded the in-progress note for repair #16. Ran `ngram validate`; failures
   remain pre-existing (missing VIEW and doc-chain gaps in other modules).
 - Updated GraphOps/GraphQueries references to note the ngram repo graph runtime.
+- Added `HEALTH_History_Service_Verification.md` to document runtime checks.
 
 ---
 

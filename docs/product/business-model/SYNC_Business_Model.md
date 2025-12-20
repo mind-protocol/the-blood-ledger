@@ -16,6 +16,7 @@ The comprehensive business model for Blood Ledger is documented, detailing the "
 
 *   Initial documentation created from `data/Distributed-Content-Generation-Network/Blood Ledger — Business Model Stress Test.md`.
 *   Consolidated business model behaviors into `BEHAVIORS_Retention_Mechanisms.md` and converted the other BEHAVIORS docs to pointers to remove duplication.
+*   2025-12-20: Added `HEALTH_Business_Model.md` to document monetization health checks.
 
 ## Handoffs
 
@@ -59,4 +60,5 @@ ALGORITHM:       ./ALGORITHM_Hallucination_Defense.md
 ALGORITHM:       ./ALGORITHM_World_Scavenger.md
 BEHAVIORS:       ./BEHAVIORS_Retention_Mechanisms.md
 PATTERNS:        ./PATTERNS_Market_Comparison.md
+HEALTH:          ./HEALTH_Business_Model.md
 THIS:            ./SYNC_Business_Model.md

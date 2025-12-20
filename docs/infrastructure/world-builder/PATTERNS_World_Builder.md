@@ -16,6 +16,7 @@ BEHAVIORS:       ./BEHAVIORS_World_Builder.md
 ALGORITHM:       ./ALGORITHM/ALGORITHM_Overview.md
 VALIDATION:      ./VALIDATION/VALIDATION_Overview.md
 IMPLEMENTATION:  ./IMPLEMENTATION/IMPLEMENTATION_Overview.md
+HEALTH:          ./HEALTH_World_Builder.md
 TEST:            ./TEST/TEST_Overview.md
 SYNC:            ./SYNC_World_Builder.md
 

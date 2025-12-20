@@ -1,17 +1,17 @@
 # Repository Map: the-blood-ledger
 
-*Generated: 2025-12-20 17:54*
+*Generated: 2025-12-20 18:28*
 
-- **Files:** 362
+- **Files:** 404
 - **Directories:** 107
-- **Total Size:** 2.2M
-- **Doc Files:** 282
+- **Total Size:** 2.3M
+- **Doc Files:** 324
 - **Code Files:** 76
 - **Areas:** 10 (docs/ subfolders)
 - **Modules:** 48 (subfolders in areas)
 - **DOCS Links:** 40 (0.53 avg per code file)
 
-- markdown: 282
+- markdown: 324
 - tsx: 33
 - python: 31
 - typescript: 9
@@ -27,12 +27,12 @@
 │   │   └── CLAUDE_old.md (32.9K)
 │   └── world-builder/ (12.6K)
 │       └── CLAUDE.md (12.6K)
-├── docs/ (1.3M)
+├── docs/ (1.4M)
 │   ├── concepts/ (3.5K)
 │   │   └── subjective-truth-and-rumor/ (3.5K)
 │   │       ├── CONCEPT_Subjective_Truth_And_Rumor.md (1.7K)
 │   │       └── TOUCHES_Subjective_Truth_And_Rumor.md (1.8K)
-│   ├── design/ (185.7K)
+│   ├── design/ (187.0K)
 │   │   ├── archive/ (905)
 │   │   │   └── SYNC_archive_2024-12.md (905)
 │   │   ├── opening/ (106.7K)
@@ -51,22 +51,24 @@
 │   │   │   └── README.md (10.3K)
 │   │   ├── ALGORITHM_Vision.md (13.4K)
 │   │   ├── BEHAVIORS_Vision.md (10.1K)
+│   │   ├── HEALTH_Vision_Doc_Integrity.md (1.2K)
 │   │   ├── IMPLEMENTATION_Vision.md (8.3K)
-│   │   ├── PATTERNS_Vision.md (11.9K)
-│   │   ├── SYNC_Vision.md (7.5K)
+│   │   ├── PATTERNS_Vision.md (12.0K)
+│   │   ├── SYNC_Vision.md (7.6K)
 │   │   ├── SYNC_Vision_archive_2025-12.md (3.5K)
 │   │   ├── TEST_Vision.md (3.2K)
 │   │   └── VALIDATION_Vision.md (10.0K)
-│   ├── engine/ (20.5K)
-│   │   └── tests/ (20.5K)
+│   ├── engine/ (22.0K)
+│   │   └── tests/ (22.0K)
 │   │       ├── ALGORITHM_Test_Run_Flow.md (1.7K)
 │   │       ├── BEHAVIORS_Test_Coverage_Layers.md (2.1K)
+│   │       ├── HEALTH_Engine_Test_Suite.md (1.2K)
 │   │       ├── IMPLEMENTATION_Test_File_Layout.md (4.4K)
-│   │       ├── PATTERNS_Spec_Linked_Test_Suite.md (3.8K)
-│   │       ├── SYNC_Engine_Test_Suite.md (5.1K)
+│   │       ├── PATTERNS_Spec_Linked_Test_Suite.md (3.9K)
+│   │       ├── SYNC_Engine_Test_Suite.md (5.3K)
 │   │       ├── TEST_Test_Suite_Coverage.md (1.8K)
 │   │       └── VALIDATION_Test_Suite_Invariants.md (1.5K)
-│   ├── frontend/ (100.4K)
+│   ├── frontend/ (102.0K)
 │   │   ├── IMPLEMENTATION_Frontend_Code_Architecture/ (5.2K)
 │   │   │   └── IMPLEMENTATION_Runtime_And_Config.md (5.2K)
 │   │   ├── archive/ (1.6K)
@@ -93,14 +95,15 @@
 │   │   │   └── VALIDATION_Scene.md (3.2K)
 │   │   ├── ALGORITHM_Frontend_Data_Flow.md (7.6K)
 │   │   ├── BEHAVIORS_Frontend_State_And_Interaction.md (4.1K)
+│   │   ├── HEALTH_Frontend_Runtime.md (1.3K)
 │   │   ├── IMPLEMENTATION_Frontend_Code_Architecture.md (1.7K)
-│   │   ├── PATTERNS_Presentation_Layer.md (6.0K)
-│   │   ├── SYNC_Frontend.md (7.9K)
-│   │   ├── SYNC_Frontend_archive_2025-12.md (3.4K)
+│   │   ├── PATTERNS_Presentation_Layer.md (6.1K)
+│   │   ├── SYNC_Frontend.md (6.2K)
+│   │   ├── SYNC_Frontend_archive_2025-12.md (5.3K)
 │   │   ├── TEST_Frontend_Coverage.md (1.7K)
 │   │   └── VALIDATION_Frontend_Invariants.md (4.2K)
-│   ├── infrastructure/ (421.8K)
-│   │   ├── async/ (76.8K)
+│   ├── infrastructure/ (446.4K)
+│   │   ├── async/ (78.3K)
 │   │   │   ├── ALGORITHM/ (20.4K)
 │   │   │   │   ├── ALGORITHM_Discussion_Trees.md (1.3K)
 │   │   │   │   ├── ALGORITHM_Graph_SSE.md (2.9K)
@@ -113,29 +116,32 @@
 │   │   │   │   └── SYNC_archive_2024-12.md (8.2K)
 │   │   │   ├── ALGORITHM_Async_Architecture.md (4.0K)
 │   │   │   ├── BEHAVIORS_Travel_Experience.md (5.1K)
+│   │   │   ├── HEALTH_Async_Architecture.md (1.4K)
 │   │   │   ├── IMPLEMENTATION_Async_Architecture.md (8.3K)
-│   │   │   ├── PATTERNS_Async_Architecture.md (9.0K)
-│   │   │   ├── SYNC_Async_Architecture.md (12.3K)
+│   │   │   ├── PATTERNS_Async_Architecture.md (9.1K)
+│   │   │   ├── SYNC_Async_Architecture.md (12.4K)
 │   │   │   ├── SYNC_Async_Architecture_archive_2025-12.md (4.4K)
 │   │   │   ├── TEST_Async_Architecture.md (3.8K)
 │   │   │   └── VALIDATION_Async_Architecture.md (1.2K)
-│   │   ├── canon/ (33.4K)
+│   │   ├── canon/ (38.2K)
 │   │   │   ├── ALGORITHM_Canon_Holder.md (7.4K)
 │   │   │   ├── BEHAVIORS_Canon.md (5.2K)
+│   │   │   ├── HEALTH_Canon.md (4.5K)
 │   │   │   ├── IMPLEMENTATION_Canon.md (5.2K)
 │   │   │   ├── PATTERNS_Canon.md (4.2K)
-│   │   │   ├── SYNC_Canon.md (1.7K)
+│   │   │   ├── SYNC_Canon.md (1.9K)
 │   │   │   ├── TEST_Canon.md (3.5K)
 │   │   │   └── VALIDATION_Canon.md (6.1K)
-│   │   ├── cli-tools/ (35.1K)
+│   │   ├── cli-tools/ (36.7K)
 │   │   │   ├── ALGORITHM_CLI_Tool_Flows.md (4.8K)
 │   │   │   ├── BEHAVIORS_CLI_Streaming_And_Image_Output.md (4.9K)
+│   │   │   ├── HEALTH_CLI_Tools.md (1.5K)
 │   │   │   ├── IMPLEMENTATION_CLI_Tools_Architecture.md (7.3K)
 │   │   │   ├── PATTERNS_CLI_Agent_Utilities.md (5.5K)
-│   │   │   ├── SYNC_CLI_Tools.md (5.7K)
+│   │   │   ├── SYNC_CLI_Tools.md (5.8K)
 │   │   │   ├── TEST_CLI_Tool_Coverage.md (2.9K)
 │   │   │   └── VALIDATION_CLI_Tool_Invariants.md (3.9K)
-│   │   ├── embeddings/ (60.5K)
+│   │   ├── embeddings/ (65.3K)
 │   │   │   ├── ALGORITHM/ (6.0K)
 │   │   │   │   ├── ALGORITHM_Indexing.md (2.4K)
 │   │   │   │   ├── ALGORITHM_Overview.md (1.8K)
@@ -147,13 +153,14 @@
 │   │   │   │   └── SYNC_archive_2024-12.md (3.1K)
 │   │   │   ├── ALGORITHM_Embeddings.md (3.7K)
 │   │   │   ├── BEHAVIORS_Embeddings.md (5.5K)
+│   │   │   ├── HEALTH_Embeddings.md (4.7K)
 │   │   │   ├── IMPLEMENTATION_Embeddings.md (4.6K)
 │   │   │   ├── PATTERNS_Embeddings.md (5.9K)
-│   │   │   ├── SYNC_Embeddings.md (5.6K)
+│   │   │   ├── SYNC_Embeddings.md (5.7K)
 │   │   │   ├── SYNC_Embeddings_archive_2025-12.md (10.6K)
 │   │   │   ├── TEST_Embeddings.md (3.6K)
 │   │   │   └── VALIDATION_Embeddings.md (7.1K)
-│   │   ├── history/ (62.4K)
+│   │   ├── history/ (64.2K)
 │   │   │   ├── ALGORITHM/ (6.3K)
 │   │   │   │   ├── ALGORITHM_Overview.md (1.2K)
 │   │   │   │   ├── ALGORITHM_Propagation_and_Beliefs.md (1.5K)
@@ -166,52 +173,60 @@
 │   │   │   │   └── SYNC_archive_2024-12.md (1.2K)
 │   │   │   ├── ALGORITHM_History.md (3.5K)
 │   │   │   ├── BEHAVIORS_History.md (7.1K)
+│   │   │   ├── HEALTH_History_Service_Verification.md (1.6K)
 │   │   │   ├── IMPLEMENTATION_History_Service_Architecture.md (11.3K)
-│   │   │   ├── PATTERNS_History.md (6.0K)
-│   │   │   ├── SYNC_History.md (7.2K)
+│   │   │   ├── PATTERNS_History.md (6.1K)
+│   │   │   ├── SYNC_History.md (7.3K)
 │   │   │   ├── TEST_History.md (543)
 │   │   │   └── VALIDATION_History.md (7.6K)
-│   │   ├── image-generation/ (26.4K)
+│   │   ├── image-generation/ (27.9K)
 │   │   │   ├── ALGORITHM_Image_Generation.md (1.2K)
 │   │   │   ├── BEHAVIORS_Image_Generation.md (1.2K)
+│   │   │   ├── HEALTH_Image_Generation.md (1.4K)
 │   │   │   ├── IMPLEMENTATION_Image_Generation.md (8.2K)
-│   │   │   ├── PATTERNS_Image_Generation.md (10.2K)
-│   │   │   ├── SYNC_Image_Generation.md (3.8K)
+│   │   │   ├── PATTERNS_Image_Generation.md (10.3K)
+│   │   │   ├── SYNC_Image_Generation.md (3.9K)
 │   │   │   ├── TEST_Image_Generation.md (904)
 │   │   │   └── VALIDATION_Image_Generation.md (856)
-│   │   ├── ops-scripts/ (13.2K)
+│   │   ├── ops-scripts/ (15.0K)
 │   │   │   ├── ALGORITHM_Seeding_And_Backfill_Flows.md (1.4K)
 │   │   │   ├── BEHAVIORS_Operational_Script_Runbooks.md (1.5K)
+│   │   │   ├── HEALTH_Operational_Scripts.md (1.5K)
 │   │   │   ├── IMPLEMENTATION_Engine_Scripts_Layout.md (1.6K)
-│   │   │   ├── PATTERNS_Operational_Seeding_And_Backfill_Scripts.md (2.5K)
-│   │   │   ├── SYNC_Ops_Scripts.md (4.0K)
+│   │   │   ├── PATTERNS_Operational_Seeding_And_Backfill_Scripts.md (2.6K)
+│   │   │   ├── SYNC_Ops_Scripts.md (4.3K)
 │   │   │   ├── TEST_Operational_Scripts.md (908)
 │   │   │   └── VALIDATION_Operational_Script_Safety.md (1.2K)
-│   │   ├── storm-loader/ (18.4K)
+│   │   ├── storm-loader/ (20.1K)
+│   │   │   ├── ALGORITHM_Storm_Loader_Pipeline.md (660)
 │   │   │   ├── BEHAVIORS_Storm_Loader_Mutations.md (2.5K)
+│   │   │   ├── HEALTH_Storm_Loader.md (857)
 │   │   │   ├── IMPLEMENTATION_Storm_Loader.md (3.3K)
 │   │   │   ├── MECHANISMS_Storm_Loader_Pipeline.md (2.6K)
 │   │   │   ├── PATTERNS_Storm_Loader_As_Diff.md (3.1K)
-│   │   │   ├── SYNC_Storm_Loader.md (2.5K)
+│   │   │   ├── SYNC_Storm_Loader.md (2.8K)
 │   │   │   ├── TEST_Storm_Loader.md (1.7K)
 │   │   │   └── VALIDATION_Storm_Loader_Invariants.md (2.6K)
-│   │   ├── storms/ (18.7K)
+│   │   ├── storms/ (20.4K)
+│   │   │   ├── ALGORITHM_Storm_Application.md (663)
 │   │   │   ├── BEHAVIORS_Storm_Overlay_Behavior.md (2.6K)
+│   │   │   ├── HEALTH_Storms.md (823)
 │   │   │   ├── IMPLEMENTATION_Storms.md (3.3K)
 │   │   │   ├── MECHANISMS_Storm_Application.md (2.9K)
 │   │   │   ├── PATTERNS_Storms_As_Crisis_Overlays.md (3.2K)
-│   │   │   ├── SYNC_Storms.md (2.6K)
+│   │   │   ├── SYNC_Storms.md (2.8K)
 │   │   │   ├── TEST_Storms.md (1.6K)
 │   │   │   └── VALIDATION_Storm_Invariants.md (2.6K)
-│   │   ├── tempo/ (42.0K)
+│   │   ├── tempo/ (43.5K)
 │   │   │   ├── ALGORITHM_Tempo_Controller.md (12.3K)
 │   │   │   ├── BEHAVIORS_Tempo.md (3.3K)
+│   │   │   ├── HEALTH_Tempo_Controller.md (1.4K)
 │   │   │   ├── IMPLEMENTATION_Tempo.md (10.3K)
 │   │   │   ├── PATTERNS_Tempo.md (3.9K)
-│   │   │   ├── SYNC_Tempo.md (6.1K)
+│   │   │   ├── SYNC_Tempo.md (6.2K)
 │   │   │   ├── TEST_Tempo.md (2.4K)
 │   │   │   └── VALIDATION_Tempo.md (3.7K)
-│   │   └── world-builder/ (34.8K)
+│   │   └── world-builder/ (36.6K)
 │   │       ├── ALGORITHM/ (3.8K)
 │   │       │   ├── ALGORITHM_Details.md (1.5K)
 │   │       │   └── ALGORITHM_Overview.md (2.3K)
@@ -228,76 +243,90 @@
 │   │       │   └── SYNC_archive_2024-12.md (1.3K)
 │   │       ├── ALGORITHM_World_Builder.md (672)
 │   │       ├── BEHAVIORS_World_Builder.md (3.6K)
+│   │       ├── HEALTH_World_Builder.md (1.6K)
 │   │       ├── IMPLEMENTATION_World_Builder.md (672)
 │   │       ├── PATTERNS_World_Builder.md (4.2K)
-│   │       ├── SYNC_World_Builder.md (4.5K)
+│   │       ├── SYNC_World_Builder.md (4.6K)
 │   │       ├── SYNC_World_Builder_archive_2025-12.md (5.2K)
 │   │       ├── TEST_World_Builder.md (606)
 │   │       └── VALIDATION_World_Builder.md (646)
-│   ├── network/ (139.5K)
-│   │   ├── bleed-through/ (26.3K)
+│   ├── network/ (149.7K)
+│   │   ├── bleed-through/ (28.1K)
+│   │   │   ├── ALGORITHM_Bleed_Through_Pipeline.md (711)
 │   │   │   ├── BEHAVIORS_Bleed_Reports.md (3.3K)
 │   │   │   ├── BEHAVIORS_Ghosts_Rumors_Reports.md (3.0K)
+│   │   │   ├── HEALTH_Bleed_Through.md (874)
 │   │   │   ├── IMPLEMENTATION_Bleed_Through.md (3.3K)
 │   │   │   ├── MECHANISMS_Bleed_Through_Pipeline.md (3.7K)
 │   │   │   ├── PATTERNS_Scars_Cross_Worlds.md (3.5K)
-│   │   │   ├── SYNC_Bleed_Through.md (4.9K)
+│   │   │   ├── SYNC_Bleed_Through.md (5.1K)
 │   │   │   ├── TEST_Bleed_Through.md (1.7K)
 │   │   │   └── VALIDATION_Bleed_Through_Safety.md (2.9K)
-│   │   ├── ghost-dialogue/ (18.6K)
+│   │   ├── ghost-dialogue/ (20.5K)
+│   │   │   ├── ALGORITHM_Ghost_Dialogue_Replay.md (770)
 │   │   │   ├── BEHAVIORS_Ghost_Dialogue_Replay.md (2.7K)
+│   │   │   ├── HEALTH_Ghost_Dialogue.md (877)
 │   │   │   ├── IMPLEMENTATION_Ghost_Dialogue.md (3.4K)
 │   │   │   ├── MECHANISMS_Dialogue_Index.md (2.8K)
 │   │   │   ├── PATTERNS_Ghost_Dialogue_Index.md (3.0K)
-│   │   │   ├── SYNC_Ghost_Dialogue.md (2.7K)
+│   │   │   ├── SYNC_Ghost_Dialogue.md (2.9K)
 │   │   │   ├── TEST_Ghost_Dialogue.md (1.7K)
 │   │   │   └── VALIDATION_Ghost_Dialogue_Safety.md (2.4K)
-│   │   ├── shadow-feed/ (18.6K)
+│   │   ├── shadow-feed/ (20.4K)
+│   │   │   ├── ALGORITHM_Shadow_Feed_Import.md (676)
 │   │   │   ├── BEHAVIORS_Rumor_Import.md (2.7K)
+│   │   │   ├── HEALTH_Shadow_Feed.md (847)
 │   │   │   ├── IMPLEMENTATION_Shadow_Feed.md (3.3K)
 │   │   │   ├── MECHANISMS_Shadow_Feed_Filtering.md (2.5K)
 │   │   │   ├── PATTERNS_Shadow_Feed_Rumor_Cache.md (3.1K)
-│   │   │   ├── SYNC_Shadow_Feed.md (2.6K)
+│   │   │   ├── SYNC_Shadow_Feed.md (2.9K)
 │   │   │   ├── TEST_Shadow_Feed.md (1.6K)
 │   │   │   └── VALIDATION_Shadow_Feed_Locks.md (2.7K)
-│   │   ├── transposition/ (31.1K)
+│   │   ├── transposition/ (32.2K)
 │   │   │   ├── ALGORITHM_Transposition_Pipeline.md (5.8K)
 │   │   │   ├── BEHAVIORS_Conflict_Resolution_Cascade.md (3.0K)
+│   │   │   ├── HEALTH_Transposition.md (913)
 │   │   │   ├── IMPLEMENTATION_Transposition.md (3.4K)
 │   │   │   ├── MECHANISMS_Transposition_Pipeline.md (3.4K)
 │   │   │   ├── PATTERNS_Local_Canon_Primary.md (2.8K)
-│   │   │   ├── SYNC_Transposition.md (3.0K)
+│   │   │   ├── SYNC_Transposition.md (3.2K)
 │   │   │   ├── SYNC_Transposition_Logic.md (5.2K)
 │   │   │   ├── TEST_Transposition.md (1.7K)
 │   │   │   └── VALIDATION_Transposition_Invariants.md (2.7K)
-│   │   ├── voyager-system/ (25.3K)
+│   │   ├── voyager-system/ (27.2K)
+│   │   │   ├── ALGORITHM_Voyager_Transposition.md (727)
 │   │   │   ├── BEHAVIORS_Voyager_Import_Experience.md (4.0K)
+│   │   │   ├── HEALTH_Voyager_System.md (852)
 │   │   │   ├── IMPLEMENTATION_Voyager_System.md (3.4K)
 │   │   │   ├── MECHANISMS_Export_Import_Transposition.md (4.4K)
 │   │   │   ├── PATTERNS_Trauma_Without_Memory.md (4.6K)
-│   │   │   ├── SYNC_Voyager_System.md (3.7K)
+│   │   │   ├── SYNC_Voyager_System.md (4.0K)
 │   │   │   ├── TEST_Voyager_System.md (1.7K)
 │   │   │   └── VALIDATION_Voyager_Invariants.md (3.6K)
-│   │   └── world-scavenger/ (19.5K)
+│   │   └── world-scavenger/ (21.4K)
+│   │       ├── ALGORITHM_World_Scavenger.md (753)
 │   │       ├── BEHAVIORS_Scavenger_Priority_Stack.md (2.7K)
+│   │       ├── HEALTH_World_Scavenger.md (863)
 │   │       ├── IMPLEMENTATION_World_Scavenger.md (3.3K)
 │   │       ├── MECHANISMS_Scavenger_Caches.md (3.1K)
 │   │       ├── PATTERNS_Scavenge_Before_Generate.md (3.2K)
-│   │       ├── SYNC_World_Scavenger.md (2.8K)
+│   │       ├── SYNC_World_Scavenger.md (3.0K)
 │   │       ├── TEST_World_Scavenger.md (1.7K)
 │   │       └── VALIDATION_Scavenger_Locks.md (2.7K)
-│   ├── product/ (140.6K)
-│   │   ├── billing/ (25.3K)
+│   ├── product/ (150.5K)
+│   │   ├── billing/ (27.4K)
 │   │   │   ├── BEHAVIORS_Metered_Billing_Experience.md (2.7K)
+│   │   │   ├── HEALTH_Billing.md (1.1K)
 │   │   │   ├── IMPLEMENTATION_Billing.md (3.3K)
 │   │   │   ├── IMPLEMENTATION_Billing_Technical_Stack.md (3.5K)
 │   │   │   ├── MECHANISMS_Billing_Metered_Stripe.md (2.4K)
 │   │   │   ├── PATTERNS_Pay_To_Preserve_History.md (2.2K)
-│   │   │   ├── SYNC_Billing.md (2.5K)
+│   │   │   ├── SYNC_Billing.md (2.7K)
 │   │   │   ├── SYNC_Billing_System.md (4.5K)
 │   │   │   ├── TEST_Billing.md (1.6K)
-│   │   │   └── VALIDATION_Billing_Invariants.md (2.6K)
-│   │   ├── business-model/ (45.9K)
+│   │   │   ├── VALIDATION_Billing_Invariants.md (2.6K)
+│   │   │   └── (..1 more files)
+│   │   ├── business-model/ (47.1K)
 │   │   │   ├── ALGORITHM_Hallucination_Defense.md (5.3K)
 │   │   │   ├── ALGORITHM_Semantic_Cache.md (3.3K)
 │   │   │   ├── ALGORITHM_World_Scavenger.md (3.5K)
@@ -306,40 +335,52 @@
 │   │   │   ├── MECHANISMS_Margin_Defense.md (2.4K)
 │   │   │   ├── PATTERNS_Market_Comparison.md (5.5K)
 │   │   │   ├── PATTERNS_Whale_Economics.md (4.0K)
-│   │   │   ├── SYNC_Business_Model.md (5.4K)
+│   │   │   ├── SYNC_Business_Model.md (5.6K)
 │   │   │   ├── VALIDATION_Business_Model_Invariants.md (2.4K)
-│   │   │   └── (..3 more files)
-│   │   ├── chronicle-system/ (33.4K)
+│   │   │   └── (..4 more files)
+│   │   ├── chronicle-system/ (35.8K)
+│   │   │   ├── ALGORITHM_Chronicle_Generation_Pipeline.md (890)
 │   │   │   ├── BEHAVIORS_Chronicle_Types_And_Structure.md (5.8K)
+│   │   │   ├── HEALTH_Chronicle_System.md (1.3K)
 │   │   │   ├── IMPLEMENTATION_Chronicle_System.md (9.8K)
 │   │   │   ├── IMPLEMENTATION_Chronicle_Technical_Pipeline.md (502)
 │   │   │   ├── MECHANISMS_Chronicle_Pipeline.md (2.7K)
 │   │   │   ├── PATTERNS_Chronicle_Flywheel.md (3.8K)
-│   │   │   ├── SYNC_Chronicle_System.md (4.8K)
+│   │   │   ├── SYNC_Chronicle_System.md (5.0K)
 │   │   │   ├── TEST_Chronicle_System.md (1.7K)
 │   │   │   ├── VALIDATION_Chronicle_Invariants.md (3.4K)
 │   │   │   └── (..3 more files)
-│   │   ├── gtm-strategy/ (17.9K)
+│   │   ├── gtm-strategy/ (20.0K)
+│   │   │   ├── ALGORITHM_GTM_Flywheel.md (776)
 │   │   │   ├── BEHAVIORS_Acquisition_Flywheel.md (2.4K)
+│   │   │   ├── HEALTH_GTM_Strategy.md (1.1K)
 │   │   │   ├── IMPLEMENTATION_GTM_Strategy.md (3.3K)
 │   │   │   ├── MECHANISMS_GTM_Programs.md (2.5K)
 │   │   │   ├── PATTERNS_Direct_Whale_Acquisition.md (3.0K)
-│   │   │   ├── SYNC_GTM_Strategy.md (2.6K)
+│   │   │   ├── SYNC_GTM_Strategy.md (2.9K)
 │   │   │   ├── TEST_GTM_Strategy.md (1.6K)
 │   │   │   └── VALIDATION_GTM_Invariants.md (2.4K)
-│   │   └── ledger-lock/ (18.1K)
+│   │   └── ledger-lock/ (20.2K)
+│   │       ├── ALGORITHM_Ledger_Lock_Flow.md (733)
 │   │       ├── BEHAVIORS_Ledger_Lock_Trigger.md (2.5K)
+│   │       ├── HEALTH_Ledger_Lock.md (1.1K)
 │   │       ├── IMPLEMENTATION_Ledger_Lock.md (3.3K)
 │   │       ├── MECHANISMS_Ledger_Lock_Flow.md (2.7K)
 │   │       ├── PATTERNS_Ledger_Lock_Crisis.md (3.0K)
-│   │       ├── SYNC_Ledger_Lock.md (2.5K)
+│   │       ├── SYNC_Ledger_Lock.md (2.7K)
 │   │       ├── TEST_Ledger_Lock.md (1.6K)
 │   │       └── VALIDATION_Ledger_Lock_Invariants.md (2.6K)
-│   ├── schema/ (504)
-│   │   └── archive/ (504)
-│   │       └── SYNC_archive_2024-12.md (504)
-│   ├── world/ (80.5K)
-│   │   ├── map/ (35.7K)
+│   ├── schema/ (6.5K)
+│   │   └── archive/ (6.5K)
+│   │       ├── ALGORITHM_Schema_Archive_Process.md (782)
+│   │       ├── BEHAVIORS_Schema_Archive_Notes.md (894)
+│   │       ├── HEALTH_Schema_Archive_Verification.md (1.4K)
+│   │       ├── IMPLEMENTATION_Schema_Archive_Notes.md (730)
+│   │       ├── PATTERNS_Schema_Archive_Retention.md (1.4K)
+│   │       ├── SYNC_archive_2024-12.md (643)
+│   │       └── VALIDATION_Schema_Archive_Invariants.md (721)
+│   ├── world/ (90.5K)
+│   │   ├── map/ (41.2K)
 │   │   │   ├── ALGORITHM/ (2.3K)
 │   │   │   │   ├── places/ (765)
 │   │   │   │   │   └── ALGORITHM_Places.md (765)
@@ -351,22 +392,24 @@
 │   │   │   │   └── (..1 more files)
 │   │   │   ├── ALGORITHM_Map.md (5.2K)
 │   │   │   ├── BEHAVIORS_Map.md (4.4K)
+│   │   │   ├── HEALTH_Map.md (5.2K)
 │   │   │   ├── IMPLEMENTATION_Map_Code_Architecture.md (4.4K)
 │   │   │   ├── PATTERNS_Map.md (4.2K)
-│   │   │   ├── SYNC_Map.md (5.8K)
+│   │   │   ├── SYNC_Map.md (6.1K)
 │   │   │   ├── SYNC_Map_archive_2025-12.md (2.2K)
 │   │   │   ├── TEST_Map_Test_Coverage.md (3.3K)
 │   │   │   └── VALIDATION_Map_Invariants.md (3.6K)
-│   │   └── scraping/ (44.8K)
+│   │   └── scraping/ (49.3K)
 │   │       ├── ALGORITHM_Pipeline.md (14.4K)
 │   │       ├── BEHAVIORS_World_Scraping.md (3.1K)
+│   │       ├── HEALTH_World_Scraping.md (4.3K)
 │   │       ├── IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md (5.1K)
 │   │       ├── PATTERNS_World_Scraping.md (4.8K)
-│   │       ├── SYNC_World_Scraping.md (2.0K)
+│   │       ├── SYNC_World_Scraping.md (2.2K)
 │   │       ├── SYNC_World_Scraping_archive_2025-12.md (6.1K)
 │   │       ├── TEST_World_Scraping.md (3.4K)
 │   │       └── VALIDATION_World_Scraping.md (5.8K)
-│   └── map.md (208.2K)
+│   └── map.md (211.9K)
 ├── engine/ (255.7K)
 │   ├── infrastructure/ (105.4K)
 │   │   ├── canon/ (14.5K)
@@ -499,11 +542,11 @@
 │   └── graph_scope_manual_classify.py (15.2K)
 ├── .gitignore (690)
 ├── .ngramignore (839)
-├── AGENTS.md (25.3K)
+├── AGENTS.md (26.0K)
 ├── Isomorphic_Architecture.md (20.1K)
 ├── README.md (1.2K)
 ├── create_project_files_pack_from_maps_and_repo.py (14.4K)
-├── map.md (208.2K)
+├── map.md (211.9K)
 ├── map_frontend.md (9.1K)
 ├── project_map.html (12.0K)
 └── run.sh (1.0K)
@@ -923,6 +966,15 @@
 - ## Metrics (Archived Summary)
 - ## GAPS / IDEAS / QUESTIONS
 
+**Sections:**
+- # Design Vision — Health: Documentation Integrity
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual: verify chain completeness
+
 **Doc refs:**
 - `docs/design/ALGORITHM_Vision.md`
 - `docs/design/BEHAVIORS_Vision.md`
@@ -963,6 +1015,7 @@
 **Doc refs:**
 - `docs/design/ALGORITHM_Vision.md`
 - `docs/design/BEHAVIORS_Vision.md`
+- `docs/design/HEALTH_Vision_Doc_Integrity.md`
 - `docs/design/IMPLEMENTATION_Vision.md`
 - `docs/design/PATTERNS_Vision.md`
 - `docs/design/SYNC_Vision.md`
@@ -1088,6 +1141,15 @@
 - ## OBSERVABLE BEHAVIOR
 - ## INPUTS AND OUTPUTS
 
+**Sections:**
+- # Engine Tests — Health: Test Suite Coverage
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- ## KNOWN GAPS
+
 **Code refs:**
 - `engine/tests/__init__.py`
 - `engine/tests/test_behaviors.py`
@@ -1132,6 +1194,7 @@
 - `docs/engine/SCHEMA.md`
 - `docs/engine/tests/ALGORITHM_Test_Run_Flow.md`
 - `docs/engine/tests/BEHAVIORS_Test_Coverage_Layers.md`
+- `docs/engine/tests/HEALTH_Engine_Test_Suite.md`
 - `docs/engine/tests/IMPLEMENTATION_Test_File_Layout.md`
 - `docs/engine/tests/PATTERNS_Spec_Linked_Test_Suite.md`
 - `docs/engine/tests/SYNC_Engine_Test_Suite.md`
@@ -1535,6 +1598,16 @@
 - ## ANTI-BEHAVIORS (SUMMARY)
 - ## GAPS / IDEAS / QUESTIONS
 
+**Sections:**
+- # Frontend — Health: UI Runtime Checks
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual: start frontend and confirm /start loads
+- ## KNOWN GAPS
+
 **Code refs:**
 - `frontend/app/page.ts`
 - `frontend/app/page.tsx`
@@ -1581,9 +1654,6 @@
 - `useGameState.ts`
 
 **Doc refs:**
-- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
-- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Code_Structure.md`
-- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md`
 - `docs/frontend/PATTERNS_Presentation_Layer.md`
 - `docs/frontend/SYNC_Frontend.md`
 - `docs/frontend/archive/SYNC_archive_2024-12.md`
@@ -1596,19 +1666,26 @@
 - ## CURRENT STATE
 - ## MATURITY
 - ## IN PROGRESS
-- ## RECENT CHANGES
 - ## KNOWN ISSUES
 - ## CONSCIOUSNESS TRACE
 - ## HANDOFF: FOR AGENTS
 - ## HANDOFF: FOR HUMAN
 - ## TODO
+- ## RECENT CHANGES
 - ## POINTERS
 - ## Agent Observations
 - ## GAPS
 - ## ARCHIVE
 - ## ARCHIVE
+- ## ARCHIVE
+
+**Code refs:**
+- `frontend/hooks/useGameState.ts`
 
 **Doc refs:**
+- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
+- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Code_Structure.md`
+- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md`
 - `docs/frontend/PATTERNS_Presentation_Layer.md`
 - `docs/frontend/SYNC_Frontend.md`
 - `docs/frontend/SYNC_Frontend_archive_2025-12.md`
@@ -1624,6 +1701,8 @@
 - ## TODO
 - ## CONSCIOUSNESS TRACE
 - ## POINTERS
+- # Archived: SYNC_Frontend.md
+- ## RECENT CHANGES
 - # Archived: SYNC_Frontend.md
 - ## RECENT CHANGES
 
@@ -1758,6 +1837,17 @@
 - ## ANTI-BEHAVIORS
 - ## Success Metrics
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Async Architecture — Health: Coordination Signals
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual: run narrator + runner concurrently and watch logs for latency warnings
+- # (no automated runner hook health check yet)
+- ## KNOWN GAPS
 
 **Code refs:**
 - `engine/infrastructure/api/app.py`
@@ -1946,6 +2036,23 @@
 
 **Code refs:**
 - `engine/infrastructure/canon/canon_holder.py`
+
+**Sections:**
+- # Canon Holder — Health: Canon Recording Verification
+- ## PURPOSE OF THIS FILE
+- ## WHY THIS PATTERN
+- ## CHAIN
+- ## FLOWS ANALYSIS (TRIGGERS + FREQUENCY)
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## CHECKER INDEX
+- ## INDICATOR: canon_recording_pipeline
+- ## HOW TO RUN
+- ## KNOWN GAPS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/infrastructure/canon/canon_holder.py`
 - `engine/infrastructure/canon/speaker.py`
 
 **Sections:**
@@ -2055,6 +2162,20 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `tools/image_generation/generate_image.py`
+- `tools/stream_dialogue.py`
+
+**Sections:**
+- # CLI Tools — Health: Stream and Mutation Verification
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual: run stream_dialogue with a short line and confirm SSE output
+- ## KNOWN GAPS
 
 **Code refs:**
 - `tools/image_generation/generate_image.py`
@@ -2252,6 +2373,23 @@
 
 **Code refs:**
 - `engine/infrastructure/embeddings/service.py`
+
+**Sections:**
+- # Embeddings — Health: Vector Service Verification
+- ## PURPOSE OF THIS FILE
+- ## WHY THIS PATTERN
+- ## CHAIN
+- ## FLOWS ANALYSIS (TRIGGERS + FREQUENCY)
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## CHECKER INDEX
+- ## INDICATOR: embedding_vector_shape
+- ## HOW TO RUN
+- ## KNOWN GAPS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/infrastructure/embeddings/service.py`
 - `service.py`
 
 **Sections:**
@@ -2294,6 +2432,7 @@
 - ## MATURITY
 - ## CURRENT STATE
 - ## IN PROGRESS
+- ## RECENT CHANGES
 - ## KNOWN ISSUES
 - ## HANDOFF: FOR AGENTS
 - ## HANDOFF: FOR HUMAN
@@ -2473,6 +2612,19 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
+- `engine/infrastructure/history/service.py`
+
+**Sections:**
+- # History — Health: Service Verification
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual smoke: record + query history
+- ## KNOWN GAPS
+
+**Code refs:**
 - `engine/infrastructure/history/__init__.py`
 - `engine/infrastructure/history/conversations.py`
 - `engine/infrastructure/history/service.py`
@@ -2576,6 +2728,19 @@
 **Code refs:**
 - `tools/image_generation/generate_image.py`
 
+**Sections:**
+- # Image Generation — Health: Pipeline Verification
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual: dry-run to verify prompt expansion and output path
+- ## KNOWN GAPS
+
+**Code refs:**
+- `tools/image_generation/generate_image.py`
+
 **Doc refs:**
 - `tools/image_generation/README.md`
 
@@ -2665,6 +2830,19 @@
 - ## OUTPUTS
 
 **Code refs:**
+- `engine/scripts/seed_moment_sample.py`
+
+**Sections:**
+- # Ops Scripts — Health: Seeding and Backfill Checks
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual: run a seed script and confirm no errors
+- ## KNOWN GAPS
+
+**Code refs:**
 - `engine/scripts/check_injection.py`
 - `engine/scripts/generate_images_for_existing.py`
 - `engine/scripts/inject_to_narrator.py`
@@ -2728,6 +2906,11 @@
 - ## FAILURE MODES
 
 **Sections:**
+- # Storm Loader — Algorithm: Mutation Intake
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
 - # Storm Loader — Behaviors: Mutation Application
 - ## CHAIN
 - ## BEHAVIORS
@@ -2735,6 +2918,12 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storm Loader — Health: Mutation Application
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## STATUS (RESULT INDICATOR)
 
 **Sections:**
 - # Storm Loader - Implementation: Code Architecture and Structure
@@ -2821,6 +3010,11 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
+- # Storms — Algorithm: Overlay Application
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
 - # Storms — Behaviors: Overlay Effects
 - ## CHAIN
 - ## BEHAVIORS
@@ -2828,6 +3022,12 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storms — Health: Overlay Activity
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## STATUS (RESULT INDICATOR)
 
 **Sections:**
 - # Storms - Implementation: Code Architecture and Structure
@@ -2965,6 +3165,19 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
+- `engine/infrastructure/tempo/tempo_controller.py`
+
+**Sections:**
+- # Tempo — Health: Tick and Query Verification
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual: run the tempo controller and confirm ticks increment
+- ## KNOWN GAPS
+
+**Code refs:**
 - `engine/infrastructure/tempo/__init__.py`
 - `engine/infrastructure/tempo/tempo_controller.py`
 
@@ -3032,6 +3245,7 @@
 - ## Implementation Summary
 - ## Architecture Clarification
 - ## Remaining Work
+- ## Recent Changes
 - ## Files Changed This Session
 - ## Recent Changes
 - ## Chain
@@ -3184,6 +3398,19 @@
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
 
+**Code refs:**
+- `engine/infrastructure/world_builder/query.py`
+
+**Sections:**
+- # World Builder — Health: Sparse Enrichment Verification
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual: run enrichment and confirm a YAML mutation is created
+- ## KNOWN GAPS
+
 **Sections:**
 - # World Builder — Implementation (Split)
 - ## CHAIN
@@ -3225,6 +3452,7 @@
 - ## Documentation Updates
 - ## Configuration
 - ## Next Steps
+- ## Recent Changes
 - ## Known Issues
 - ## Handoff Notes
 - ## Chain
@@ -3258,6 +3486,11 @@
 - ## Entry Point
 
 **Sections:**
+- # Bleed-Through — Algorithm: Cross-World Scars
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
 - # BEHAVIORS: Bleed Reports
 - ## Observable Effects
 - ## Bleed Reports — Your Character's Legacy
@@ -3275,6 +3508,12 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Bleed-Through — Health: Scar Injection Signals
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## STATUS (RESULT INDICATOR)
 
 **Sections:**
 - # Bleed-Through - Implementation: Code Architecture and Structure
@@ -3360,6 +3599,11 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
+- # Ghost Dialogue — Algorithm: Replay and Injection
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
 - # Ghost Dialogue — Behaviors: Replay of Lived Lines
 - ## CHAIN
 - ## BEHAVIORS
@@ -3367,6 +3611,12 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ghost Dialogue — Health: Replay Signals
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## STATUS (RESULT INDICATOR)
 
 **Sections:**
 - # Ghost Dialogue - Implementation: Code Architecture and Structure
@@ -3454,6 +3704,11 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
+- # Shadow Feed — Algorithm: Rumor Import
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
 - # Shadow Feed — Behaviors: Rumor Imports and Fog of War
 - ## CHAIN
 - ## BEHAVIORS
@@ -3461,6 +3716,12 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Shadow Feed — Health: Rumor Flow Signals
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## STATUS (RESULT INDICATOR)
 
 **Sections:**
 - # Shadow Feed - Implementation: Code Architecture and Structure
@@ -3565,6 +3826,12 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
+- # Transposition — Health: Conflict Resolution Signals
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## STATUS (RESULT INDICATOR)
+
+**Sections:**
 - # Transposition - Implementation: Code Architecture and Structure
 - ## CHAIN
 - ## CODE STRUCTURE
@@ -3657,6 +3924,11 @@
 - ## CHAIN
 
 **Sections:**
+- # Voyager System — Algorithm: Export/Import Flow
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
 - # Voyager System — Behaviors: Importing Trauma Without Breaking Canon
 - ## CHAIN
 - ## BEHAVIORS
@@ -3664,6 +3936,12 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Voyager System — Health: Import Signals
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## STATUS (RESULT INDICATOR)
 
 **Sections:**
 - # Voyager System - Implementation: Code Architecture and Structure
@@ -3754,6 +4032,11 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
+- # World Scavenger — Algorithm: Reuse Before Generate
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
 - # World Scavenger — Behaviors: Priority Stack Reuse
 - ## CHAIN
 - ## BEHAVIORS
@@ -3761,6 +4044,12 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # World Scavenger — Health: Cache Utilization
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## STATUS (RESULT INDICATOR)
 
 **Sections:**
 - # World Scavenger - Implementation: Code Architecture and Structure
@@ -3854,6 +4143,13 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Billing — Health: Metered Signals
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
 
 **Sections:**
 - # Billing - Implementation: Code Architecture and Structure
@@ -4091,6 +4387,11 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
+- # Chronicle System — Algorithm: Generation Pipeline
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
 - # BEHAVIORS: Chronicle Types and Structure
 - ## Observable Effects
 - ## Chronicle Types
@@ -4102,6 +4403,16 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Chronicle System — Health: Pipeline Signals
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual: verify chronicle output package is produced
+- # (no runtime pipeline implemented in this repo yet)
 
 **Sections:**
 - # IMPLEMENTATION: Chronicle System
@@ -4206,6 +4517,11 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
+- # GTM Strategy — Algorithm: Acquisition Flywheel
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
 - # GTM Strategy — Behaviors: Acquisition Flywheel
 - ## CHAIN
 - ## BEHAVIORS
@@ -4213,6 +4529,13 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # GTM Strategy — Health: Flywheel Signals
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
 
 **Sections:**
 - # GTM Strategy - Implementation: Code Architecture and Structure
@@ -4300,6 +4623,11 @@
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
+- # Ledger Lock — Algorithm: Lock and Release Flow
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
 - # Ledger Lock — Behaviors: Conversion Trigger
 - ## CHAIN
 - ## BEHAVIORS
@@ -4307,6 +4635,13 @@
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ledger Lock — Health: Lock State Signals
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
 
 **Sections:**
 - # Ledger Lock - Implementation: Code Architecture and Structure
@@ -4393,6 +4728,40 @@
 - ## SYNC STATUS
 - ## GAPS / IDEAS / QUESTIONS
 
+**Sections:**
+- # Schema Archive — Algorithm: Archiving Process
+- ## CHAIN
+- ## ALGORITHM
+
+**Sections:**
+- # Schema Archive — Behaviors: Archival Notes
+- ## CHAIN
+- ## BEHAVIORS
+
+**Sections:**
+- # Schema Archive — Health: Documentation Integrity
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## HOW TO RUN
+- # Manual inspection: verify archive note points to canonical schema
+
+**Doc refs:**
+- `docs/schema/archive/SYNC_archive_2024-12.md`
+
+**Sections:**
+- # Schema Archive — Implementation: Archive Notes
+- ## CHAIN
+- ## IMPLEMENTATION NOTES
+
+**Sections:**
+- # Schema Archive — Patterns: Retention and Scope
+- ## PURPOSE
+- ## DESIGN DECISIONS
+- ## SCOPE
+- ## CHAIN
+
 **Doc refs:**
 - `docs/schema/SCHEMA.md`
 - `docs/schema/SCHEMA_Moments.md`
@@ -4401,6 +4770,12 @@
 - # Schema Archive Notes (2024-12)
 - ## Summary
 - ## Rationale
+- ## Recent Changes
+
+**Sections:**
+- # Schema Archive — Validation: Invariants
+- ## CHAIN
+- ## INVARIANTS
 
 **Code refs:**
 - `engine/world/map/semantic.py`
@@ -4471,6 +4846,24 @@
 - ## Interaction Behaviors
 - ## Map Component Props (UI Contract)
 - ## Narrator Integration
+
+**Code refs:**
+- `engine/world/map/semantic.py`
+
+**Sections:**
+- # Map — Health: Semantic Search Verification
+- ## PURPOSE OF THIS FILE
+- ## WHY THIS PATTERN
+- ## CHAIN
+- ## FLOWS ANALYSIS (TRIGGERS + FREQUENCY)
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## CHECKER INDEX
+- ## INDICATOR: semantic_search_returns
+- ## HOW TO RUN
+- # Manual semantic search probe
+- ## KNOWN GAPS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `engine/world/map/semantic.py`
@@ -4632,6 +5025,23 @@
 - ## INPUTS / OUTPUTS
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `data/scripts/inject_world.py`
+
+**Sections:**
+- # World Scraping — Health: Seeding and Injection Verification
+- ## PURPOSE OF THIS FILE
+- ## WHY THIS PATTERN
+- ## CHAIN
+- ## FLOWS ANALYSIS (TRIGGERS + FREQUENCY)
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## CHECKER INDEX
+- ## INDICATOR: world_seeding_counts
+- ## HOW TO RUN
+- ## KNOWN GAPS
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
@@ -5338,6 +5748,7 @@
 - `docs/schema/SCHEMA_Moments/SCHEMA_Moments_Overview.md`
 - `docs/schema/VALIDATION_Graph.md`
 - `docs/schema/VALIDATION_Living_Graph.md`
+- `docs/schema/archive/SYNC_archive_2024-12.md`
 - `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`
 - `docs/schema/models/SYNC_Schema_Models.md`
 - `docs/world/map/ALGORITHM/ALGORITHM_Places.md`
@@ -6961,6 +7372,7 @@
 - `docs/schema/SCHEMA_Moments/SCHEMA_Moments_Overview.md`
 - `docs/schema/VALIDATION_Graph.md`
 - `docs/schema/VALIDATION_Living_Graph.md`
+- `docs/schema/archive/SYNC_archive_2024-12.md`
 - `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`
 - `docs/schema/models/SYNC_Schema_Models.md`
 - `docs/world/map/ALGORITHM/ALGORITHM_Places.md`

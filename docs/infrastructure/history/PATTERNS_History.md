@@ -15,6 +15,7 @@ BEHAVIORS:   ./BEHAVIORS_History.md
 ALGORITHM:   ./ALGORITHM/ALGORITHM_Overview.md
 VALIDATION:  ./VALIDATION_History.md
 IMPLEMENTATION: ./IMPLEMENTATION_History_Service_Architecture.md
+HEALTH:      ./HEALTH_History_Service_Verification.md
 TEST:        ./TEST/TEST_Overview.md
 SYNC:        ./SYNC_History.md
 ```

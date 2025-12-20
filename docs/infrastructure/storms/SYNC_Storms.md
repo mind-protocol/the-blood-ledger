@@ -39,6 +39,12 @@ Storms are documented as lightweight crisis overlays built on top of Scavenger a
 - **Why:** Establish a canonical storm overlay model.
 - **Files:** docs/infrastructure/storms/*
 
+### 2025-12-20: Added algorithm and health docs
+
+- **What:** Added `ALGORITHM_Storm_Application.md` and `HEALTH_Storms.md`.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** docs/infrastructure/storms/*
+
 ---
 
 ## KNOWN ISSUES

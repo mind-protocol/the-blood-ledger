@@ -39,6 +39,12 @@ Storm Loader is documented with a stepwise mutation pipeline; no engine implemen
 - **Why:** Capture loader invariants and mutation order.
 - **Files:** docs/infrastructure/storm-loader/*
 
+### 2025-12-20: Added algorithm and health docs
+
+- **What:** Added `ALGORITHM_Storm_Loader_Pipeline.md` and `HEALTH_Storm_Loader.md`.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** docs/infrastructure/storm-loader/*
+
 ---
 
 ## KNOWN ISSUES

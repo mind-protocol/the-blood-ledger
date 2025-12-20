@@ -67,6 +67,12 @@ No active work.
 - **Why:** Avoid broken implementation link checks on relative or glob-style references.
 - **Files:** `docs/engine/tests/IMPLEMENTATION_Test_File_Layout.md`, `docs/engine/tests/SYNC_Engine_Test_Suite.md`
 
+### 2025-12-20: Add health doc
+
+- **What:** Added `HEALTH_Engine_Test_Suite.md` for test suite health checks.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** `docs/engine/tests/HEALTH_Engine_Test_Suite.md`
+
 ---
 
 ## KNOWN ISSUES

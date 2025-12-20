@@ -39,6 +39,12 @@ Billing is defined in the architecture spec and now captured in a module chain. 
 - **Why:** Establish pay-to-preserve billing model.
 - **Files:** docs/product/billing/*
 
+### 2025-12-20: Added algorithm and health docs
+
+- **What:** Added `ALGORITHM_Billing_Metering.md` and `HEALTH_Billing.md`.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** docs/product/billing/*
+
 ---
 
 ## KNOWN ISSUES

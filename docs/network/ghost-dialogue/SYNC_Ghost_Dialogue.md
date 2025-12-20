@@ -39,6 +39,12 @@ Ghost Dialogue is defined in the feedback integration doc and now captured as a 
 - **Why:** Establish shared dialogue reuse and safety constraints.
 - **Files:** docs/network/ghost-dialogue/*
 
+### 2025-12-20: Added algorithm and health docs
+
+- **What:** Added `ALGORITHM_Ghost_Dialogue_Replay.md` and `HEALTH_Ghost_Dialogue.md`.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Files:** docs/network/ghost-dialogue/*
+
 ---
 
 ## KNOWN ISSUES

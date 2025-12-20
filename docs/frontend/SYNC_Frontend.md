@@ -16,6 +16,7 @@ BEHAVIORS:       ./BEHAVIORS_Frontend_State_And_Interaction.md
 ALGORITHM:       ./ALGORITHM_Frontend_Data_Flow.md
 VALIDATION:      ./VALIDATION_Frontend_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Frontend_Code_Architecture.md
+HEALTH:          ./HEALTH_Frontend_Runtime.md
 TEST:            ./TEST_Frontend_Coverage.md
 THIS:            SYNC_Frontend.md (you are here)
 
@@ -151,6 +152,12 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 - [ ] Set up test framework (Vitest/Jest)
 - [ ] Add unit tests for transform functions
 - IDEA: Add Playwright tests for key flows
+
+---
+
+## RECENT CHANGES
+
+- Added `HEALTH_Frontend_Runtime.md` for UI health checks.
 
 ---
 
