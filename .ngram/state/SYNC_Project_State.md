@@ -36,11 +36,25 @@ false-positive escalation detection.
 - **Why:** The repair task flagged empty implementations that are already filled.
 - **Impact:** Documentation updated to record the verification; functionality unchanged.
 
+### 2025-12-20: Moment Processor Repair Verification
+
+- **What:** Verified `engine/infrastructure/memory/moment_processor.py` already
+  implements the functions flagged by repair #16; logged verification in
+  `docs/infrastructure/scene-memory/SYNC_Scene_Memory.md`.
+- **Why:** Repair task targeted incomplete helpers that are already implemented.
+- **Impact:** No code changes; documentation now records the verification-only pass.
+
 ### 2025-12-20: Opening Flow Docs + Dev Startup Fix
 
 - **What:** Updated opening implementation/health docs to include seed graph init and clarified steps; fixed backend entrypoint in `run.sh`.
 - **Why:** Close doc/code drift and resolve missing SSE route in local dev.
 - **Impact:** Clearer opening data flow; local SSE endpoint mounts correctly when using `run.sh`.
+
+### 2025-12-20: MomentSurface implementation restored
+
+- **What:** Implemented missing `MomentSurface` in `engine/moment_graph/surface.py`.
+- **Why:** FastAPI boot failed when importing the moment graph module.
+- **Impact:** Backend can start; SSE and tempo endpoints can mount.
 
 ### 2025-12-20: Conversation Thread Helpers Verified
 
@@ -112,6 +126,7 @@ false-positive escalation detection.
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
 | SSE stream 404 when backend is started with the old module path | high | `run.sh` | Use `engine.infrastructure.api.app:app` so `/api/moments/stream/{id}` is mounted |
+| Backend import error for MomentSurface | high | `engine/moment_graph/surface.py` | Implemented class; restart backend to apply |
 
 ---
 

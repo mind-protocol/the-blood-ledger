@@ -1,7 +1,7 @@
 # Scene Memory System — Sync
 
 ```
-LAST_UPDATED: 2025-12-19
+LAST_UPDATED: 2025-12-20
 UPDATED_BY: Codex (repair agent)
 STATUS: CANONICAL
 ```
@@ -169,6 +169,12 @@ drifting into duplicate specifications.
 - Expanded `docs/infrastructure/scene-memory/BEHAVIORS_Scene_Memory.md` with
   the missing template sections (behaviors, inputs/outputs, anti-behaviors,
   gaps/questions) and lengthened legacy notes to resolve drift for repair #16.
+## REPAIR LOG (2025-12-20)
+===============================================================================
+
+- Verified `engine/infrastructure/memory/moment_processor.py` already implements
+  `_write_transcript`, `last_moment_id`, `transcript_line_count`, and
+  `get_moment_processor` for repair #16; no code changes required.
 ## OPEN QUESTIONS
 ===============================================================================
 
@@ -190,6 +196,8 @@ drifting into duplicate specifications.
   preserving references to the canonical Moment Graph validation docs.
 - The legacy behaviors doc now includes the full template headings so drift
   checks have explicit anchors for behaviors, inputs, and gaps.
+- The moment processor helper functions targeted by repair #16 are already
+  implemented; this repair was a verification-only pass.
 
 ### Suggestions
 - [ ] Consider moving remaining legacy Scene Memory docs into the archive folder
