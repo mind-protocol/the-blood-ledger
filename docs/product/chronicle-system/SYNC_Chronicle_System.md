@@ -11,9 +11,11 @@ The core concepts and initial implementation details of the Chronicle system are
 *   The observable behaviors and structure of different Chronicle types (`BEHAVIORS_Chronicle_Types_And_Structure.md`).
 *   The technical pipeline for generation, TTS, and video composition (`IMPLEMENTATION_Chronicle_Technical_Pipeline.md`).
 *   Validation invariants, metrics, and success criteria (`VALIDATION_Chronicle_Invariants.md`).
+*   The Chronicle system implementation overview now points to the canonical pipeline doc to avoid duplication (`IMPLEMENTATION_Chronicle_System.md`).
 
 ## Recent Changes
 
+*   2025-12-20: Consolidated implementation docs by pointing `IMPLEMENTATION_Chronicle_System.md` to `IMPLEMENTATION_Chronicle_Technical_Pipeline.md`.
 *   2025-12-20: Consolidated Chronicle behaviors into `BEHAVIORS_Chronicle_Types_And_Structure.md` and converted `BEHAVIORS_Chronicle_Types.md` into a pointer to remove duplication.
 *   Initial documentation created from `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`.
 *   Consolidated the GTM integration patterns into `PATTERNS_Chronicle_Flywheel.md` and left a reference in `PATTERNS_Chronicle_GTM_Integration.md` to avoid duplication.

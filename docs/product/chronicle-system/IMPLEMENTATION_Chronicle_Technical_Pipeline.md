@@ -1,5 +1,8 @@
 # IMPLEMENTATION: Chronicle Technical Pipeline
 
+Canonical implementation reference for the Chronicle system.
+`IMPLEMENTATION_Chronicle_System.md` points here to avoid duplication.
+
 ## Code Architecture
 
 The Chronicle system relies on a multi-stage technical pipeline to generate, compose, and render video content from player gameplay data.

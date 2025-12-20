@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Chronicle implementation doc consolidation
+
+- **What:** Pointed `docs/product/chronicle-system/IMPLEMENTATION_Chronicle_System.md` at `docs/product/chronicle-system/IMPLEMENTATION_Chronicle_Technical_Pipeline.md` and marked the technical pipeline doc as canonical.
+- **Why:** Remove duplicate IMPLEMENTATION documentation in the chronicle-system folder.
+- **Impact:** Single authoritative implementation reference; system doc is now a pointer.
+
 ### 2025-12-20: Chronicle behaviors doc consolidation
 
 - **What:** Merged Chronicle behavior details into `docs/product/chronicle-system/BEHAVIORS_Chronicle_Types_And_Structure.md` and turned `docs/product/chronicle-system/BEHAVIORS_Chronicle_Types.md` into a pointer.
