@@ -2,7 +2,7 @@
 
 ```
 STATUS: CANONICAL
-UPDATED: 2025-12-19
+UPDATED: 2025-12-20
 IMPL: engine/infrastructure/world_builder/
 ```
 
@@ -11,6 +11,9 @@ IMPL: engine/infrastructure/world_builder/
 ## Current State
 
 **World Builder is fully implemented.**
+
+2025-12-20: Verified `_hash_query` and `clear_cache` in `world_builder.py` already have concrete implementations; no code changes required for repair #16.
+2025-12-20: Re-verified for repair run 09-INCOMPLETE_IMPL-world_builder-world_builder; still no code changes required.
 
 All core files are complete and ready for integration testing:
 

@@ -30,6 +30,18 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Discussion Tree Branch Counting Fix
+
+- **What:** Updated discussion tree branch counting to track remaining leaf paths and documented helper behavior.
+- **Why:** Align regeneration thresholds with actual remaining branch paths.
+- **Impact:** Regeneration triggers now match discussion tree lifecycle expectations.
+
+### 2025-12-20: World Builder Cache Helpers Verified
+
+- **What:** Verified `_hash_query` and `clear_cache` in `engine/infrastructure/world_builder/world_builder.py` already have implementations; updated world-builder SYNC.
+- **Why:** Repair #16 flagged empty implementations that are already complete.
+- **Impact:** No code changes; documentation now records the verification.
+
 ### 2025-12-20: History Conversations Verification
 
 - **What:** Verified `ConversationThread` path helper methods are already implemented in `engine/infrastructure/history/conversations.py`; no code changes required for issue #16.
