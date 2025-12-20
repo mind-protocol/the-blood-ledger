@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Models Base Verification
+
+- **What:** Verified `engine/models/base.py` already implements `GameTimestamp.__str__`, `__le__`, and `__gt__`; logged the verification in `docs/engine/models/SYNC_Models.md`.
+- **Why:** Repair task flagged incomplete implementations for issue #16.
+- **Impact:** No code changes; documentation now reflects the verification-only repair.
+
 ### 2025-12-20: World Builder Cache Helpers Verification
 
 - **What:** Re-verified `_hash_query` and `clear_cache` in `engine/infrastructure/world_builder/world_builder.py` already have concrete implementations for issue #16; no code changes required.
