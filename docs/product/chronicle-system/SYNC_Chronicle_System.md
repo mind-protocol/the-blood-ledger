@@ -14,6 +14,7 @@ The core concepts and initial implementation details of the Chronicle system are
 
 ## Recent Changes
 
+*   2025-12-20: Consolidated Chronicle behaviors into `BEHAVIORS_Chronicle_Types_And_Structure.md` and converted `BEHAVIORS_Chronicle_Types.md` into a pointer to remove duplication.
 *   Initial documentation created from `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`.
 *   Consolidated the GTM integration patterns into `PATTERNS_Chronicle_Flywheel.md` and left a reference in `PATTERNS_Chronicle_GTM_Integration.md` to avoid duplication.
 *   Consolidated validation metrics into `VALIDATION_Chronicle_Invariants.md` and left a reference in `VALIDATION_Chronicle_Metrics_And_Success.md`.

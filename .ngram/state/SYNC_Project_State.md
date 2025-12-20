@@ -30,6 +30,18 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Chronicle behaviors doc consolidation
+
+- **What:** Merged Chronicle behavior details into `docs/product/chronicle-system/BEHAVIORS_Chronicle_Types_And_Structure.md` and turned `docs/product/chronicle-system/BEHAVIORS_Chronicle_Types.md` into a pointer.
+- **Why:** Remove duplicate BEHAVIORS docs in `docs/product/chronicle-system/`.
+- **Impact:** Single canonical behaviors doc with updated chain links.
+
+### 2025-12-20: Map algorithm doc subfolder split
+
+- **What:** Moved map algorithm subdocs into `docs/world/map/ALGORITHM/{places,routes,rendering}/` and updated references.
+- **Why:** Remove duplicate ALGORITHM docs within a single folder.
+- **Impact:** Map algorithm chain points to subfolder locations.
+
 ### 2025-12-20: Map Rendering Algorithm Consolidation
 
 - **What:** Consolidated map rendering algorithm details into the rendering pipeline doc and simplified the map algorithm overview to a pointer.
@@ -47,6 +59,12 @@ false-positive escalation detection.
 - **What:** Scene transforms now use `placeId` as the scene id and fallback uses `place_camp`.
 - **Why:** Scene ids are deprecated; moment fetches require place ids.
 - **Impact:** Frontend location lookups stay consistent.
+
+### 2025-12-20: Fix moment view query error
+
+- **What:** Reworked `get_current_view` spoken-location filter to avoid FalkorDB alias errors.
+- **Why:** Query failures returned empty moments, triggering "needs opening".
+- **Impact:** Moments load correctly after player input.
 
 ### 2025-12-20: Frontend map PATTERNS duplication check
 
