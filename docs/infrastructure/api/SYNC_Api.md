@@ -30,6 +30,12 @@ The API module hosts the FastAPI application, including playthrough endpoints, m
 - **Why:** To align with the new ngram documentation standards and emphasize DATA FLOW AND DOCKING.
 - **Impact:** API module documentation is now compliant; Health checks are anchored to concrete docking points.
 
+### 2025-12-20: Discussion Tree Branch Counting
+
+- **What:** Count discussion tree branches by remaining leaf paths and document the helper behavior.
+- **Why:** Ensure regeneration triggers reflect actual remaining branch paths.
+- **Impact:** Branch count now aligns with discussion tree lifecycle expectations.
+
 ## GAPS
 
 - [ ] Automated regression for SSE stream delivery under load.
@@ -58,5 +64,5 @@ BEHAVIORS:       ./BEHAVIORS_Api.md
 ALGORITHM:       ./ALGORITHM_Api.md
 VALIDATION:      ./VALIDATION_Api.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Api.md
-TEST:            ./TEST_Api.md
+HEALTH:          ./HEALTH_Api.md
 ```

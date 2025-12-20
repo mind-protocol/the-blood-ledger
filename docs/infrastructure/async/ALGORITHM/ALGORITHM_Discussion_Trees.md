@@ -29,6 +29,7 @@ Trees are generated in the background, consumed on use, and regenerated when low
 - **Store:** `playthroughs/default/discussion_trees/{char_id}.json`.
 - **Use:** Player selects a topic or companion initiates on idle; explored branches are deleted.
 - **Regenerate:** Automatically when remaining branches drop below threshold.
+- **Branch count:** Computed as the number of remaining leaf paths in the clickable tree.
 
 ## Detailed Reference
 

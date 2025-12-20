@@ -7,6 +7,7 @@ and discussion tree navigation.
 Extracted from app.py to reduce file size.
 
 Docs:
+- DOCS: docs/infrastructure/api/
 - docs/physics/IMPLEMENTATION_Physics.md — code architecture
 - docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md — async queues + injection flow
 """
@@ -144,20 +145,23 @@ def _opening_to_scene_tree(opening_template: dict, scenario: dict) -> dict:
 
 def _count_branches(topics: list) -> int:
     """Count total unexplored branches across all topics."""
-    def count_clickables(obj) -> int:
-        if isinstance(obj, dict):
-            clickable = obj.get("clickable", {})
-            total = len(clickable)
-            for v in clickable.values():
-                if isinstance(v, dict) and "response" in v:
-                    total += count_clickables(v["response"])
-            for v in obj.values():
-                if isinstance(v, (dict, list)) and v is not clickable:
-                    total += count_clickables(v)
-            return total
-        if isinstance(obj, list):
-            return sum(count_clickables(item) for item in obj)
-        return 0
+    def count_clickables(node: Any) -> int:
+        if not isinstance(node, dict):
+            return 0
+
+        clickable = node.get("clickable")
+        if not isinstance(clickable, dict) or not clickable:
+            return 0
+
+        total = 0
+        for branch in clickable.values():
+            response = branch.get("response") if isinstance(branch, dict) else None
+            if isinstance(response, dict):
+                branch_total = count_clickables(response)
+                total += branch_total if branch_total > 0 else 1
+            else:
+                total += 1
+        return total
 
     return sum(count_clickables(topic.get("opener", {})) for topic in topics)
 
@@ -319,20 +323,28 @@ def create_playthroughs_router(
 
             if opening_narration:
                 # Split narration into lines and create moments
-                # Create as 'possible' so it can surface without pre-marking as spoken.
-                # Canon Holder will record them to canon with proper THEN links
                 lines = [line.strip() for line in opening_narration.strip().split("\n") if line.strip()]
                 previous_moment_id = None
                 for i, line in enumerate(lines):
                     moment_id = f"opening_{playthrough_id[:8]}_{i}"
+                    
+                    # Resolve speaker if line starts with quote
+                    speaker = None
+                    if line.startswith('"') and companion_id:
+                        speaker = companion_id
+                        line = line.strip('"')
+
                     graph.add_moment(
                         id=moment_id,
                         text=line,
-                        type="narration",
+                        type="dialogue" if speaker else "narration",
+                        speaker=speaker,
                         tick=0,
                         place_id=location_id,
-                        status="possible",
+                        status="active", # Mark as active so they surface immediately
+                        weight=1.0 - (i * 0.01) # Slight weight gradient for ordering
                     )
+                    
                     # Create ATTACHED_TO link to location (presence_required=false for opening)
                     graph.query(
                         """
@@ -341,6 +353,17 @@ def create_playthroughs_router(
                         """,
                         params={"moment_id": moment_id, "place_id": location_id}
                     )
+                    
+                    # Link to previous moment via THEN (history)
+                    if previous_moment_id:
+                        graph.query(
+                            """
+                            MATCH (m1:Moment {id: $prev}), (m2:Moment {id: $curr})
+                            MERGE (m1)-[:THEN {tick: 0}]->(m2)
+                            """,
+                            params={"prev": previous_moment_id, "curr": moment_id}
+                        )
+                    
                     previous_moment_id = moment_id
                 logger.info(f"Created {len(lines)} opening moments for {playthrough_id}")
         except Exception as e:
@@ -383,6 +406,7 @@ def create_playthroughs_router(
     @router.post("/playthrough/scenario")
     async def create_scenario_playthrough(request: PlaythroughCreateRequest):
         """Alias for /playthrough/create to keep the API contract consistent."""
+        logger.info("Creating playthrough via /playthrough/scenario alias.")
         return await create_playthrough(request)
 
     # =========================================================================

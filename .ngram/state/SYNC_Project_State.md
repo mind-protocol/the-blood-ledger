@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: World Builder Cache Helpers Verification
+
+- **What:** Re-verified `_hash_query` and `clear_cache` in `engine/infrastructure/world_builder/world_builder.py` already have concrete implementations for issue #16; no code changes required.
+- **Why:** Repair run 09-INCOMPLETE_IMPL-world_builder-world_builder flagged empty implementations that are already complete.
+- **Impact:** Documentation-only update in world-builder SYNC; functionality unchanged.
+
 ### 2025-12-20: Discussion Tree Branch Counting Fix
 
 - **What:** Updated discussion tree branch counting to track remaining leaf paths and documented helper behavior.

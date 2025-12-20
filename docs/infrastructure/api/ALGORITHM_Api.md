@@ -50,6 +50,8 @@ folder creation and scene serialization are linear in payload size.
 Graph helpers cache GraphQueries/GraphOps instances per request context, health
 checks validate read/write access with lightweight queries, and debug SSE
 streams maintain per-client queues that emit events or keepalive pings.
+Discussion tree helpers count remaining leaf branches to determine when the
+background generator should refresh a companion's topics.
 
 ## INTERACTIONS
 

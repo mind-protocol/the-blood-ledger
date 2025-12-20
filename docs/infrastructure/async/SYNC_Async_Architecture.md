@@ -1,6 +1,6 @@
 # Async Architecture — State & Implementation Plan
 
-**Last Updated:** 2025-12-19
+**Last Updated:** 2025-12-20
 **Status:** DESIGNING
 **Version:** 2.0
 
@@ -28,6 +28,8 @@ Async architecture documentation is comprehensive and aligned to templates,
 with implementation gaps tracked in the capability tables below. The system
 is still in the planning phase with no code changes in this repair, but the
 SYNC now captures state, gaps, and handoffs explicitly.
+Discussion tree lifecycle notes now define branch counting in terms of
+remaining leaf paths.
 
 ---
 
