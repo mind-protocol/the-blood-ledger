@@ -34,8 +34,7 @@ The frontend is a Next.js App Router UI that renders the game state provided by 
 
 ## CONTENTS
 
-- `IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Code_Structure.md` — File layout, responsibilities, key dependencies
-- `IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md` — Entry points, runtime flow, configuration, and doc links
+- `IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md` — Entry points, code structure, runtime flow, configuration, and doc links
 
 ---
 

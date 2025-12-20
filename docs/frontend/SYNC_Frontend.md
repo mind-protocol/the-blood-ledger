@@ -1,8 +1,8 @@
 # Frontend — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
-UPDATED_BY: Codex (repair agent)
+LAST_UPDATED: 2025-12-20
+UPDATED_BY: codex
 STATUS: CANONICAL
 ```
 
@@ -83,6 +83,22 @@ What's proposed (v2):
 
 - Align frontend testing approach with backend CI constraints.
 - Track when the moment system can fully replace legacy scene state.
+
+---
+
+## RECENT CHANGES
+
+### 2025-12-20: Use placeId for moment fetches
+
+- **What:** CenterStage now passes `currentScene.placeId` as the location for moment fetches.
+- **Why:** Scene IDs are not place IDs; spoken moments were filtered out.
+- **Impact:** Player-sent moments surface in the chat after refresh/SSE.
+
+### 2025-12-20: Consolidated frontend implementation docs
+
+- **What:** Merged code structure details into `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md` and removed the duplicate `IMPLEMENTATION_Code_Structure.md`.
+- **Why:** Resolve documentation duplication in the frontend implementation folder.
+- **Files:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md`, `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`, `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Code_Structure.md`
 
 ---
 
