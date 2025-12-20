@@ -15,5 +15,5 @@ sync for the combined status and open work:
 
 ## Updates
 
-- 2025-12-20: Confirmed duplicate frontend map PATTERNS doc was removed; the
+- 2025-12-20: Confirmed duplicate frontend map PATTERNS doc was removed (repair 19); the
   parchment map view remains the sole canonical PATTERNS document.
