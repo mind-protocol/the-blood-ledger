@@ -12,3 +12,8 @@ Frontend map view status is tracked alongside the backend map system to avoid
 duplicate map-related SYNC data across modules. See the canonical map system
 sync for the combined status and open work:
 [Map System — Sync: Current State](../../world/map/SYNC_Map.md).
+
+## Updates
+
+- 2025-12-20: Confirmed duplicate frontend map PATTERNS doc was removed; the
+  parchment map view remains the sole canonical PATTERNS document.

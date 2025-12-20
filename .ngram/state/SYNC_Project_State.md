@@ -30,6 +30,13 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Frontend map PATTERNS duplication check
+
+- **What:** Confirmed the duplicate frontend map PATTERNS document was already removed; updated the map view SYNC to reflect the single canonical pattern doc.
+- **Why:** Keep the map documentation consolidated and avoid drift across duplicate PATTERNS files.
+- **Impact:** Documentation-only update; no behavior changes.
+
+
 ### 2025-12-20: Map rendering algorithm consolidation
 
 - **What:** Removed `docs/world/map/ALGORITHM_Rendering.md`, keeping
