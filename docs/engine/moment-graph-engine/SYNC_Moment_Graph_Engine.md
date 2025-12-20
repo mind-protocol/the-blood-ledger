@@ -139,6 +139,18 @@ pytest engine/tests/test_moment_graph.py -v
 pytest engine/tests/test_e2e_moment_graph.py -v -s
 ```
 
+## CONFLICTS
+
+### DECISION: moment graph module mapping drift
+- Conflict: `docs/engine/moment-graph-engine/SYNC_Moment_Graph_Engine.md` claims
+  the module is mapped in `modules.yaml`, but the manifest currently only lists
+  `engine_models`.
+- Resolution: Leave `modules.yaml` unchanged in this repair to keep scope on the
+  traversal helper verification; record the drift for follow-up.
+- Reasoning: The repair target is incomplete traversal helpers, and updating
+  module mapping would be a separate maintenance change.
+- Updated: `docs/engine/moment-graph-engine/SYNC_Moment_Graph_Engine.md`
+
 ## Agent Observations
 
 ### Remarks

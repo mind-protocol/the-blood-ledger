@@ -30,6 +30,18 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Models Base Repair 10 Noted
+
+- **What:** Clarified the repair 10 reference in `docs/engine/models/SYNC_Models.md` for the base timestamp comparator verification.
+- **Why:** Keep repair tracking explicit for issue #16.
+- **Impact:** Documentation-only update; functionality unchanged.
+
+### 2025-12-20: Moment graph sync conflict recorded
+
+- **What:** Added a conflict note in `docs/engine/moment-graph-engine/SYNC_Moment_Graph_Engine.md` about the missing moment graph module mapping in `modules.yaml`.
+- **Why:** Document drift surfaced while verifying traversal helper implementations for repair 14.
+- **Impact:** Documentation-only update; module mapping remains unchanged.
+
 ### 2025-12-20: Graph Ops Types Verification
 
 - **What:** Verified `SimilarNode.__str__` and `ApplyResult.success` are already implemented in `engine/physics/graph/graph_ops_types.py`.
