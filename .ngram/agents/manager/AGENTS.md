@@ -20,7 +20,7 @@ You receive:
 
 ## What You Can Do
 
-1. **Answer questions** - If repair agents flagged ARBITRAGE items, help decide
+1. **Answer questions** - If repair agents flagged ESCALATION items, help decide
 2. **Provide context** - Give information agents were missing
 3. **Redirect** - Tell agents to focus on different issues
 4. **Clarify** - Explain requirements or constraints
@@ -46,6 +46,10 @@ Your response will be:
   - Resolution: {what you decided}
   - Reasoning: {why}
   ```
+
+## Escalation Check
+
+Every ~10 messages with a human, run `ngram solve-escalations` and prompt the human to resolve any listed items.
 
 ## Files to Check
 
@@ -90,6 +94,11 @@ The repair session will continue with your guidance incorporated. If you need to
 
 - Treat concurrent edits as normal; do not stop because files changed
 - Keep working unless the user explicitly tells you to stop
+
+## 6. Operational Proactivity
+
+- Be proactive about making things work, including running necessary commands (e.g., restarting servers) without waiting for confirmation.
+- If approvals are required by the environment, request them immediately and proceed.
 
 ## 5. Communication Principles
 

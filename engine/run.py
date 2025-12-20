@@ -49,7 +49,7 @@ def main():
     # Use fully-qualified module path so uvicorn never imports an unrelated
     # third-party `api` package when run outside the engine/ directory.
     uvicorn.run(
-        "engine.api.app:app",
+        "engine.infrastructure.api.app:app",
         host=args.host,
         port=args.port,
         reload=args.reload

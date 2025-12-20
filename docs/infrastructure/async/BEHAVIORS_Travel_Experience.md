@@ -18,7 +18,9 @@ SYNC:           ./SYNC_Async_Architecture.md
 
 ---
 
-## Core Behavior
+## BEHAVIORS
+
+### Core Behavior
 
 **Travel is not a loading screen. Travel is play.**
 
@@ -123,11 +125,44 @@ Player clicks different destination
 - If Runner processing is slow → Narrator fills with journey beats
 - No fixed duration. Narrative pacing, not timers.
 
-The journey takes as long as it takes to tell well.
+The journey takes as long as it takes to tell well, even if the underlying
+simulation finishes quickly or stalls.
 
 ---
 
-## Anti-Patterns
+## INPUTS / OUTPUTS
+
+**Inputs (player + system):**
+- Player travel intent (text command or destination click).
+- Player interruption actions (stop button, change destination).
+- Companion-initiated interruptions (idle trigger, narrative break).
+- Runner progress signals via graph writes and TaskOutput completion.
+- SSE stream updates for places, images, and map state changes.
+
+**Outputs (experience + system):**
+- Streaming narration beats while travel progresses.
+- Real-time map movement, fog changes, and place reveals.
+- Companion prompts and interruptions surfaced inline.
+- Scene transition on arrival or on player-requested stop.
+- Injection queue writes for interrupts initiated by UI or narrative.
+
+---
+
+## EDGE CASES
+
+- Runner finishes before narration: narration continues and resolves with a
+  clean arrival beat rather than an abrupt cut.
+- Runner lags or stalls: narration pads with sensory beats without repeating
+  identical lines or blocking player input.
+- No companions present: idle-triggered dialogue is skipped without dead air.
+- Player spams stop/change: only the latest intent is honored; earlier ones
+  are acknowledged as superseded in the narration.
+- SSE reconnects mid-journey: map and narration resync to last known waypoint
+  without jumping the player beyond confirmed progress.
+
+---
+
+## ANTI-BEHAVIORS
 
 | Wrong | Right |
 |-------|-------|
@@ -150,3 +185,14 @@ The player should NOT feel:
 - "I'm waiting for a loading screen"
 - "This is just a cutscene"
 - "Nothing is happening"
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- Define the exact SSE reconnect contract (last event ID, rewind depth, and
+  how to avoid re-triggering narration beats).
+- Specify companion idle timing per travel mode (walk, ride, ship) to keep
+  interruptions feeling organic without spamming.
+- Clarify runner failure handling so the narration can acknowledge a stall
+  without breaking immersion or losing player agency.

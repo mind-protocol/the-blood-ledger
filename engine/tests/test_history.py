@@ -32,7 +32,9 @@ def temp_conversations_dir():
 @pytest.fixture
 def conversation_thread(temp_conversations_dir):
     """Create a ConversationThread instance with temp directory."""
-    return ConversationThread(temp_conversations_dir)
+    conv_dir = Path(temp_conversations_dir) / "conversations"
+    conv_dir.mkdir(exist_ok=True)
+    return ConversationThread(str(conv_dir))
 
 
 @pytest.fixture
@@ -60,7 +62,9 @@ The morning is cold. Frost on the grass.
 You: "We should reach York by nightfall."
 Aldric: "Aye. If the road holds."
 """
-    file_path = Path(temp_conversations_dir) / "aldric.md"
+    conv_dir = Path(temp_conversations_dir) / "conversations"
+    conv_dir.mkdir(exist_ok=True)
+    file_path = conv_dir / "aldric.md"
     file_path.write_text(content)
     return file_path
 
@@ -161,7 +165,7 @@ class TestConversationThread:
         assert result["section"] == "Day 1, Morning — The Camp"
 
         # File should exist
-        file_path = Path(temp_conversations_dir) / "aldric.md"
+        file_path = Path(temp_conversations_dir) / "conversations" / "aldric.md"
         assert file_path.exists()
 
         # Content should include header and section
@@ -188,12 +192,13 @@ class TestConversationThread:
             content="Second conversation."
         )
 
-        file_path = Path(temp_conversations_dir) / "aldric.md"
+        file_path = Path(temp_conversations_dir) / "conversations" / "aldric.md"
         content = file_path.read_text()
 
         assert "## Day 1, Morning — The Camp" in content
         assert "## Day 2, Night — York" in content
         assert "First conversation." in content
+        assert "Second conversation." in content
         assert "Second conversation." in content
 
     def test_read_section(self, conversation_thread, sample_conversation_file, temp_conversations_dir):
@@ -392,6 +397,11 @@ class TestHistoryServiceIntegration:
 
     def test_record_and_query_player_history(self, live_service, temp_conversations_dir):
         """Record player history and query it back."""
+        # Setup: Ensure characters exist
+        live_service.ops.add_character(id="player", name="Player")
+        live_service.ops.add_character(id="char_aldric", name="Aldric")
+        live_service.ops.add_place(id="place_camp", name="The Camp")
+
         # Record
         result = live_service.record_player_history(
             content="Aldric told me about his brother",

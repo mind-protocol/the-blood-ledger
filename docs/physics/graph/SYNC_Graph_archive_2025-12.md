@@ -693,3 +693,106 @@ Repeat
 
 
 ---
+
+
+---
+
+# Archived: SYNC_Graph.md
+
+Archived on: 2025-12-20
+Original file: SYNC_Graph.md
+
+---
+
+## What's Missing: ONE ENDPOINT
+
+### ⚠️ AGENT TASK: Add /api/action endpoint
+
+The Orchestrator is built. It calls tick, detects flips, triggers World Runner.
+**But no API endpoint calls it.**
+
+**Add this to `engine/infrastructure/api/app.py`:**
+
+```python
+@app.post("/api/action")
+async def player_action(request: ActionRequest):
+    """
+    Full game loop: narrator → tick → flips → world runner.
+    
+    This is the main gameplay endpoint. Use for:
+    - Free text input
+    - Clicking words that need narrator response
+    - Any action that should advance time
+    """
+    orchestrator = get_orchestrator(request.playthrough_id)
+    
+    if request.stream:
+        # TODO: SSE streaming version
+        pass
+    
+    result = orchestrator.process_action(
+        player_action=request.action,
+        player_id=request.player_id,
+        player_location=request.location
+    )
+    return result
+```
+
+**ActionRequest already exists in app.py:**
+```python
+class ActionRequest(BaseModel):
+    playthrough_id: str
+    action: str
+    player_id: str = "char_player"
+    location: Optional[str] = None
+    stream: bool = False
+```
+
+**After adding:**
+1. Test: `curl -X POST http://localhost:8000/api/action -d '{"playthrough_id":"test","action":"look around"}'`
+2. Verify tick runs (check logs for `[GraphTick]`)
+3. Verify flips trigger World Runner
+
+---
+
+
+## RECENT CHANGES
+
+### 2025-12-19
+- Normalized SYNC headings (MATURITY, CURRENT STATE, RECENT CHANGES, and
+  handoff sections) to match the required template labels for drift checks.
+- Expanded `docs/physics/graph/BEHAVIORS_Graph.md` with the missing template
+  sections (chain, behaviors, inputs/outputs, edge cases, anti-behaviors,
+  gaps) to resolve DOC_TEMPLATE_DRIFT for repair #16.
+- Filled missing SYNC template sections (maturity, state, handoffs, todo,
+  consciousness trace, pointers) to resolve DOC_TEMPLATE_DRIFT for repair #16.
+- Expanded `docs/physics/graph/VALIDATION_Living_Graph.md` with the required
+  template sections (chain, invariants, properties, error conditions, test
+  coverage, verification procedure, sync status, gaps) for repair #16.
+- Expanded `docs/physics/graph/ALGORITHM_Energy_Flow.md` with explicit
+  template sections (overview, data structures, algorithm entry point,
+  decisions, data flow, complexity, helpers, interactions, gaps) to resolve
+  DOC_TEMPLATE_DRIFT for repair #16.
+- Normalized the energy flow algorithm headings to the required template
+  labels (OVERVIEW, DATA STRUCTURES, ALGORITHM, KEY DECISIONS, and related).
+- Completed the missing template sections in
+  `docs/physics/graph/PATTERNS_Graph.md` (chain, problem, pattern, principles,
+  dependencies, inspirations, scope, gaps) for repair #16.
+- Recorded the PATTERNS template repair as the canonical graph patterns
+  update for this module so future agents can trace the doc alignment.
+- Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers (`get_narrative_moments`, `get_narratives_from_moment`, `get_available_transitions`, `get_clickable_words`) are fully implemented; repair task was stale.
+- Confirmed the `physics-graph` module mapping in `modules.yaml`, removed the duplicate entry, and verified the `graph_ops.py` DOCS reference.
+- Confirmed tick.py, orchestrator.py are complete
+- Identified gap: no API endpoint calls orchestrator.process_action()
+- Created task spec for agents to add endpoint
+- Verified mutation listener helpers in `engine/physics/graph/graph_ops_events.py` are already implemented; repair flagged as INCOMPLETE_IMPL is stale.
+- Verified `engine/physics/graph/graph_ops_types.py` helpers (`SimilarNode.__str__`, `ApplyResult.success`) are already implemented; repair flagged as INCOMPLETE_IMPL is stale.
+- Verified `engine/physics/graph/graph_queries_moments.py` moment query helpers are implemented; repair flagged as INCOMPLETE_IMPL is stale.
+- Removed duplicate graph algorithm doc by consolidating weight computation into `docs/physics/graph/ALGORITHM_Energy_Flow.md` and dropping `docs/physics/graph/ALGORITHM_Weight.md`.
+- Reconfirmed `engine/physics/graph/graph_ops_types.py` helper implementations for the current repair run; no code changes required.
+- Filled the missing template sections in `docs/physics/graph/SYNC_Graph_archive_2025-12.md` to align the archive with current SYNC requirements for repair #16.
+- Verified `docs/physics/graph/SYNC_Graph_archive_2025-12.md` remains template-complete; no further edits were needed for this repair pass.
+- Re-verified the archive SYNC template completeness for repair #16; no additional edits were required in this pass.
+
+---
+

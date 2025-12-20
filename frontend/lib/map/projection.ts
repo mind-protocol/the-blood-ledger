@@ -1,4 +1,4 @@
-// DOCS: docs/frontend/map/PATTERNS_Interactive_Travel_Map.md
+// DOCS: docs/frontend/map/PATTERNS_Parchment_Map_View.md
 /**
  * Map projection utilities for Northern England
  * Simple equirectangular projection

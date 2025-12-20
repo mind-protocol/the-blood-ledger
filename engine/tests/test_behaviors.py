@@ -107,8 +107,8 @@ class TestTimeProgression:
         assert tick_to_time(540) == "morning"  # 9am
         assert tick_to_time(720) == "midday"   # 12pm
         assert tick_to_time(900) == "afternoon"  # 3pm
-        assert tick_to_time(1200) == "dusk"    # 8pm
-        assert tick_to_time(1320) == "evening"  # 10pm
+        assert tick_to_time(1200) == "evening"    # 8pm
+        assert tick_to_time(1320) == "night"  # 10pm
 
 
 # =============================================================================

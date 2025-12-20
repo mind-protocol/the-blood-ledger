@@ -6,7 +6,7 @@ Specs:
 - docs/engine/moments/SYNC_Moments.md (Phase 5)
 
 Implementation:
-- engine/db/graph_ops.py (decay_moments, on_player_leaves_location, etc.)
+- engine/physics/graph/graph_ops.py (decay_moments, on_player_leaves_location, etc.)
 - engine/physics/tick.py (_process_moment_tick)
 
 Tests cover:
@@ -34,7 +34,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 @pytest.fixture
 def mock_graph_ops():
     """Create a GraphOps instance with mocked database connection."""
-    with patch('engine.db.graph_ops.FalkorDB') as mock_falkor:
+    with patch('engine.physics.graph.graph_ops.FalkorDB') as mock_falkor:
         mock_graph = MagicMock()
         mock_falkor.return_value.select_graph.return_value = mock_graph
 

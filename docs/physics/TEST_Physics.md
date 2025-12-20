@@ -1,757 +1,192 @@
-# Physics — Tests: Trace Scenarios
+# Physics — Health: Verification Mechanics and Coverage
 
 ```
+STATUS: STABLE
 CREATED: 2024-12-18
-STATUS: Canonical
+UPDATED: 2025-12-20
 ```
+
+---
+
+## PURPOSE OF THIS FILE
+
+This file defines the health checks and verification mechanics for the Physics module. It safeguards the "living world" metabolism, ensuring that energy flows correctly, narratives flip as intended, and the system remains near a critical threshold for dramatic interest.
+
+What it protects:
+- **Narrative Metabolism**: Correct energy flow and decay across the graph.
+- **Dramatic Momentum**: Proper flip detection and handler triggering.
+- **State Integrity**: Consistency of weight, energy, and status properties.
 
 ---
 
 ## CHAIN
 
 ```
-PATTERNS:       ./PATTERNS_Physics.md
-BEHAVIORS:      ./BEHAVIORS_Physics.md
-ALGORITHMS:     ./ALGORITHM_Physics.md
-SCHEMA:         ../schema/SCHEMA_Moments.md
-VALIDATION:     ./VALIDATION_Physics.md
-IMPLEMENTATION: ./IMPLEMENTATION_Physics.md
-THIS:           TEST_Physics.md (you are here)
-SYNC:           ./SYNC_Physics.md
-IMPL:           ../../engine/tests/test_moment_graph.py
+PATTERNS:        ./PATTERNS_Physics.md
+BEHAVIORS:       ./BEHAVIORS_Physics.md
+ALGORITHM:       ./ALGORITHM_Physics.md
+VALIDATION:      ./VALIDATION_Physics.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Physics.md
+THIS:            HEALTH_Physics.md
+SYNC:            ./SYNC_Physics.md
+
+IMPL:            engine/physics/tick.py
 ```
 
----
-
-## Trace Scenarios
-
-These traces walk through the complete system to verify behavior.
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
 
 ---
 
-## Trace 1: Simple Exchange
-
-**Player asks Aldric a question. Aldric responds.**
-
-### Initial State
+## FLOWS ANALYSIS (TRIGGERS + FREQUENCY)
 
 ```yaml
-Characters:
-  - char_player: AT place_camp
-  - char_aldric: AT place_camp, importance: 0.6
-
-Moments:
-  - moment_aldric_greeting:
-      text: "We should talk about the road ahead."
-      status: possible
-      weight: 0.5
-      ATTACHED_TO: char_aldric (presence_required: true)
-      CAN_SPEAK: char_aldric (weight: 1.0)
-```
-
-### Step 1: Player Input
-
-```
-Player types: "Aldric, what do you think about York?"
-```
-
-**Input Processing (Sequential):**
-1. Parse: Extract reference to "Aldric"
-2. Create moment:
-   ```yaml
-   moment_player_question:
-     text: "Aldric, what do you think about York?"
-     type: dialogue
-     status: spoken  # Player input is immediate canon
-     weight: 1.0
-   ```
-3. Create links:
-   - ATTACHED_TO: char_player
-   - ATTACHED_TO: char_aldric (heard)
-   - ATTACHED_TO: place_camp
-   - REFERENCES: char_aldric (direct address)
-   - CAN_SPEAK: char_player
-4. Inject energy:
-   - Aldric directly referenced → +0.5 energy to his moments
-   - moment_aldric_greeting weight: 0.5 + 0.5 = 1.0
-
-### Step 2: Physics Tick
-
-**Inject:** Characters receive energy (already done via input)
-
-**Decay:** 5% decay
-- moment_aldric_greeting: 1.0 * 0.95 = 0.95
-
-**Propagate:** Energy flows through links
-- (Minimal propagation needed — weight already high)
-
-**Detect:** Check flip threshold (0.8)
-- moment_aldric_greeting: 0.95 >= 0.8 → **FLIP**
-
-### Step 3: Handler Triggered
-
-Aldric's handler runs (triggered by moment_aldric_greeting flip).
-
-**Handler receives:**
-- Character: Aldric (beliefs, voice, relationships)
-- Location: camp
-- Present: [player, Aldric]
-- Recent history: [moment_player_question]
-- Trigger: moment_aldric_greeting
-
-**Handler produces:**
-```yaml
-moments:
-  - text: "York is dangerous. The Normans hold it tight."
-    type: dialogue
-  - text: "But if you're set on going, I'll follow."
-    type: dialogue
-links:
-  - CAN_LEAD_TO: moment_1 → moment_2
-```
-
-### Step 4: Canon Recording
-
-**Canon Holder records:**
-- moment_aldric_greeting → status: spoken
-- THEN link: moment_player_question → moment_aldric_greeting
-
-**Handler output injected:**
-- moment_aldric_response_1: weight 0.6 (relevance × importance)
-- moment_aldric_response_2: weight 0.4
-
-### Step 5: Next Physics Tick
-
-**Detect:**
-- moment_aldric_response_1: 0.6 < 0.8 → no flip yet
-
-**Inject:** Aldric still important and present
-- moment_aldric_response_1: 0.6 + 0.1 = 0.7
-
-(Continue until flip or decay)
-
-### Expected Outcome
-
-```
-Player: "Aldric, what do you think about York?"
-Aldric: "York is dangerous. The Normans hold it tight."
-(pause)
-Aldric: "But if you're set on going, I'll follow."
-```
-
-**THEN chain:**
-```
-moment_player_question → moment_aldric_greeting → moment_aldric_response_1 → moment_aldric_response_2
+flows_analysis:
+  - flow_id: physics_tick
+    purpose: Ensure the world metabolism is active and proportional.
+    triggers:
+      - type: schedule
+        source: Orchestrator.run
+        notes: Typically every 5+ game minutes.
+    frequency:
+      expected_rate: 1/min (real-time)
+      peak_rate: 10/min (during speed 3x)
+      burst_behavior: Ticks may be skipped if elapsed time is too small.
+    risks:
+      - Energy stagnation (no flips)
+      - Energy explosion (infinite runaway)
+      - Delayed consequences (broken cascades)
+    notes: Core metabolism of the system.
 ```
 
 ---
 
-## Trace 2: Silence
-
-**Player says something no one can respond to.**
-
-### Initial State
+## HEALTH INDICATORS SELECTED
 
 ```yaml
-Characters:
-  - char_player: AT place_camp
-  - char_aldric: AT place_camp
-
-Moments:
-  - moment_aldric_knows_sword:
-      text: "I know where to find a blacksmith."
-      ATTACHED_TO: char_aldric
-      weight: 0.4
-      # This is about blacksmiths, not about philosophy
+health_indicators:
+  - name: energy_momentum
+    flow_id: physics_tick
+    priority: high
+    rationale: If energy doesn't flow, the world feels dead.
+  - name: flip_consistency
+    flow_id: physics_tick
+    priority: high
+    rationale: Flips are the primary source of drama; missed flips mean missed story.
+  - name: decay_integrity
+    flow_id: physics_tick
+    priority: med
+    rationale: Prevents energy accumulation that causes "everything happening at once".
 ```
-
-### Step 1: Player Input
-
-```
-Player types: "What is the meaning of existence?"
-```
-
-**Input Processing:**
-- Create moment_player_philosophy
-- ATTACHED_TO: char_player, char_aldric (heard), place_camp
-- No direct reference to Aldric
-- Energy injection: distributed (0.5 * 0.3 = 0.15 to Aldric's moments)
-
-### Step 2: Physics Tick
-
-**Inject:**
-- moment_aldric_knows_sword: 0.4 + 0.15 = 0.55
-
-**Decay:**
-- moment_aldric_knows_sword: 0.55 * 0.95 = 0.52
-
-**Detect:**
-- 0.52 < 0.8 → no flip
-
-### Step 3: Energy Must Land
-
-After several ticks, no NPC moments flip.
-
-**Fallback:** Energy returns to player character.
-
-```python
-# Player character always has a handler
-# Handler runs with context: "silence"
-```
-
-**Player handler produces:**
-```yaml
-moment_player_observation:
-  text: "The silence stretches. No one meets your eye."
-  type: narration
-  weight: 0.7
-```
-
-### Step 4: Physics Tick
-
-**Detect:**
-- moment_player_observation: 0.7 < 0.8 → no flip yet
-
-**Inject:** Player character receives fallback energy
-- moment_player_observation: 0.7 + 0.15 = 0.85
-
-**Next tick detect:**
-- 0.85 >= 0.8 → **FLIP**
-
-### Expected Outcome
-
-```
-Player: "What is the meaning of existence?"
-(pause)
-"The silence stretches. No one meets your eye."
-```
-
-**Verified:** Energy always lands. There is no "nothing happens."
 
 ---
 
-## Trace 3: Multi-Party
-
-**Player asks the room. Multiple characters respond.**
-
-### Initial State
+## STATUS (RESULT INDICATOR)
 
 ```yaml
-Characters:
-  - char_player: AT place_camp
-  - char_aldric: AT place_camp, importance: 0.6
-  - char_mildred: AT place_camp, importance: 0.5
-  - char_godwin: AT place_camp, importance: 0.3
-
-Moments:
-  - moment_aldric_opinion:
-      text: "The north road is safer."
-      ATTACHED_TO: char_aldric
-      weight: 0.5
-  - moment_mildred_opinion:
-      text: "The coast road is faster."
-      ATTACHED_TO: char_mildred
-      weight: 0.45
-  - moment_godwin_opinion:
-      text: "Either way, we should leave at dawn."
-      ATTACHED_TO: char_godwin
-      weight: 0.35
+status:
+  stream_destination: stdout
+  result:
+    representation: tuple
+    value: {status: OK, score: 0.95}
+    updated_at: 2025-12-20T10:00:00Z
+    source: GraphTick.run
 ```
-
-### Step 1: Player Input
-
-```
-Player types: "Which road should we take?"
-```
-
-**Input Processing:**
-- No direct reference → player focus injection distributed
-- Each present character: +0.33 energy (1.0 / 3 characters)
-
-### Step 2: Physics Tick — Energy Flow
-
-**Character state after input:**
-- Aldric: energy 1.33 (was 1.0)
-- Mildred: energy 1.33 (was 1.0)
-- Godwin: energy 1.33 (was 1.0)
-
-**Pumping (characters → narratives):**
-Each character pumps 10% of energy into believed narratives.
-Narratives about travel routes receive energy.
-
-**Weight computation (derived from sources):**
-- moment_aldric_opinion: Aldric.energy × CAN_SPEAK.strength = 1.33 × 0.6 = 0.80
-- moment_mildred_opinion: Mildred.energy × CAN_SPEAK.strength = 1.33 × 0.5 = 0.67
-- moment_godwin_opinion: Godwin.energy × CAN_SPEAK.strength = 1.33 × 0.4 = 0.53
-
-### Step 3: Flip Detection
-
-**Threshold check (0.8):**
-- moment_aldric_opinion: 0.80 → **FLIP**
-- moment_mildred_opinion: 0.67 (below threshold)
-- moment_godwin_opinion: 0.53 (below threshold)
-
-### Step 4: Subsequent Ticks
-
-**Tick N+1:**
-- Actualization cost: Aldric loses 0.4 energy (0.80 × 0.5)
-- Aldric.energy: 0.93
-- Mildred keeps pumping, moment weight rises
-- moment_mildred_opinion: 0.81 → **FLIP**
-
-**Tick N+2:**
-- moment_godwin_opinion: may flip if Godwin keeps pumping and decay is low
-
-### Step 5: Handlers Triggered (Parallel)
-
-Aldric and Mildred flip in close succession.
-
-**Parallel execution:**
-- Aldric's handler runs
-- Mildred's handler runs
-
-Both produce follow-up potentials.
-
-### Step 6: Canon Recording
-
-**Canon Holder records in weight order:**
-1. moment_aldric_opinion (0.80)
-2. moment_mildred_opinion (0.81)
-
-### Expected Outcome
-
-```
-Player: "Which road should we take?"
-Aldric: "The north road is safer."
-Mildred: "The coast road is faster."
-(Godwin may or may not speak, depending on energy)
-```
-
-**Verified:** Multi-party conversation emerges naturally from weight ordering.
 
 ---
 
-## Trace 4: Cascade
+## DOCK TYPES (COMPLETE LIST)
 
-**One confession triggers a chain of reactions.**
+- `graph_ops` (graph operations or traversal)
+- `api` (HTTP/RPC boundary)
 
-### Initial State
+---
+
+## CHECKER INDEX
 
 ```yaml
-Characters:
-  - char_player: AT place_camp
-  - char_aldric: AT place_camp
-  - char_mildred: AT place_camp
-  - char_godwin: AT place_camp
-
-Moments:
-  - moment_aldric_confession:
-      text: "I killed Edmund. I had no choice."
-      ATTACHED_TO: char_aldric
-      weight: 0.85  # High weight, about to flip
-  - moment_mildred_shock:
-      text: "What? Edmund was... he was your brother!"
-      ATTACHED_TO: char_mildred
-      weight: 0.3
-      # Links to confession via energy propagation
-  - moment_godwin_anger:
-      text: "You've been lying to us this whole time."
-      ATTACHED_TO: char_godwin
-      weight: 0.25
+checkers:
+  - name: energy_balance_checker
+    purpose: Verify energy conservation and expected decay (I7).
+    status: active
+    priority: high
+  - name: flip_threshold_checker
+    purpose: Ensure flips occur at deterministic thresholds (I8).
+    status: active
+    priority: high
 ```
-
-### Step 1: Physics Tick
-
-**Detect:**
-- moment_aldric_confession: 0.85 >= 0.8 → **FLIP**
-
-**Canon records:** moment_aldric_confession
-
-**Energy propagation:** (from actualized moment)
-- Connected moments receive energy via CAN_LEAD_TO links
-- moment_mildred_shock: 0.3 + 0.4 = 0.7
-- moment_godwin_anger: 0.25 + 0.35 = 0.6
-
-### Step 2: Handler Triggered
-
-Aldric's handler runs (produced the confession).
-
-**Other characters receive energy** (they witnessed):
-- Mildred's moments boosted
-- Godwin's moments boosted
-
-### Step 3: Next Tick
-
-**Inject:**
-- moment_mildred_shock: 0.7 + (0.5 × 1.0) × 0.1 = 0.75
-- moment_godwin_anger: 0.6 + (0.3 × 1.0) × 0.1 = 0.63
-
-**Decay:**
-- moment_mildred_shock: 0.75 * 0.95 = 0.71
-
-**Propagation + injection continues...**
-
-**Tick N:**
-- moment_mildred_shock: 0.82 → **FLIP**
-
-**Tick N+1:**
-- Mildred's handler runs → produces more potentials
-- Energy propagates further
-
-**Tick N+2:**
-- moment_godwin_anger: 0.81 → **FLIP**
-
-### Expected Outcome
-
-```
-Aldric: "I killed Edmund. I had no choice."
-(beat)
-Mildred: "What? Edmund was... he was your brother!"
-(beat)
-Godwin: "You've been lying to us this whole time."
-(cascade continues...)
-```
-
-**Verified:** Cascade creates drama through natural energy propagation.
 
 ---
 
-## Trace 5: Action Conflict
+## INDICATOR: energy_momentum
 
-**Two characters try to grab the same sword.**
-
-### Initial State
+### VALUE TO CLIENTS & VALIDATION MAPPING
 
 ```yaml
-Characters:
-  - char_aldric: AT place_camp
-  - char_mildred: AT place_camp
-
-Things:
-  - thing_sword: AT place_camp
-
-Moments:
-  - moment_aldric_grab:
-      text: "Aldric reaches for the sword."
-      type: action
-      action: take
-      action_target: thing_sword
-      ATTACHED_TO: char_aldric
-      weight: 0.85
-  - moment_mildred_grab:
-      text: "Mildred lunges for the blade."
-      type: action
-      action: take
-      action_target: thing_sword
-      ATTACHED_TO: char_mildred
-      weight: 0.82
+value_and_validation:
+  indicator: energy_momentum
+  client_value: Ensures the world feels alive and responsive to player focus.
+  validation:
+    - validation_id: I7
+      criteria: Energy in = energy out + decay losses.
+    - validation_id: I2
+      criteria: Graph never stops thinking.
 ```
 
-### Step 1: Physics Tick
-
-**Detect:**
-- moment_aldric_grab: 0.85 >= 0.8 → **FLIP**
-- moment_mildred_grab: 0.82 >= 0.8 → **FLIP**
-
-**Both flip.** This is NOT mutex. This is drama.
-
-### Step 2: Canon Recording
-
-**Canon Holder records both** (in weight order):
-1. moment_aldric_grab (0.85)
-2. moment_mildred_grab (0.82)
-
-THEN links created for both.
-
-### Step 3: Action Processing (Sequential)
-
-**Action queue:**
-1. moment_aldric_grab (take sword)
-2. moment_mildred_grab (take sword)
-
-**Process moment_aldric_grab:**
-- Validate: sword at camp? Yes
-- Execute: sword.carried_by = char_aldric
-- Consequence: "Aldric's hand closes on the hilt."
-
-**Process moment_mildred_grab:**
-- Validate: sword available? **No** (Aldric has it)
-- **Validation fails**
-- Consequence: "Mildred's hand grasps empty air."
-
-### Step 4: Consequences Injected
+### HEALTH REPRESENTATION
 
 ```yaml
-moment_aldric_success:
-  text: "Aldric's hand closes on the hilt."
-  weight: 0.6
-
-moment_mildred_blocked:
-  text: "Mildred's hand grasps empty air."
-  weight: 0.6
-  ATTACHED_TO: char_mildred
+representation:
+  selected:
+    - float_0_1
+  semantics:
+    float_0_1: 1.0 = healthy flow, 0.0 = stagnant or exploded.
+  aggregation:
+    method: weighted_average
+    display: CLI
 ```
 
-### Step 5: Handler Triggered
-
-Mildred's handler runs (received blocked consequence).
-
-**Handler produces:**
-```yaml
-moment_mildred_frustration:
-  text: "She glares at Aldric. 'That was mine.'"
-  type: dialogue
-```
-
-### Expected Outcome
-
-```
-"Aldric reaches for the sword."
-"Mildred lunges for the blade."
-"Aldric's hand closes on the hilt."
-"Mildred's hand grasps empty air."
-(beat)
-Mildred: "She glares at Aldric. 'That was mine.'"
-```
-
-**Verified:** Simultaneous actions are drama. Action processing handles conflict naturally.
-
----
-
-## Trace 6: The Snap (3x to 1x)
-
-**Player at 3x speed. Interrupt triggers snap to 1x.**
-
-### Initial State
+### DOCKS SELECTED
 
 ```yaml
-Speed: 3x
-Characters:
-  - char_player: AT place_road (traveling)
-  - char_aldric: AT place_road
-  - char_enemy: approaching (will enter scene)
-
-Moments:
-  - moment_travel_1: "The road stretches." (weight: 0.3, montage)
-  - moment_travel_2: "Clouds gather." (weight: 0.3, montage)
-  - moment_enemy_attack:
-      text: "Bandits burst from the treeline!"
-      type: action
-      action: attack
-      action_target: char_player
-      weight: 0.2  # Building up
+docks:
+  input:
+    id: tick_input
+    method: engine.physics.tick.GraphTick.run
+    location: engine/physics/tick.py:68
+  output:
+    id: flip_output
+    method: engine.physics.tick.GraphTick.run
+    location: engine/physics/tick.py:126
 ```
-
-### Step 1: Fast Physics Ticks (3x)
-
-**Display:** Motion blur, streaming text
-**Canon:** All moments recorded normally
-
-**Tick N:**
-- moment_travel_1 flips → canon (not displayed, low weight)
-- moment_travel_2 flips → canon (not displayed)
-
-**Tick N+5:**
-- char_enemy enters scene → energy injected
-- moment_enemy_attack: 0.2 + 0.5 = 0.7
-
-**Tick N+6:**
-- moment_enemy_attack: 0.7 + 0.15 = 0.85 → **FLIP**
-
-### Step 2: Interrupt Detection
-
-```python
-is_interrupt(moment_enemy_attack):
-    # action: attack → combat initiated
-    return True  # INTERRUPT
-```
-
-### Step 3: The Snap
-
-**Phase 1: Running** (already in progress)
-- Motion blur
-- Muted colors
-
-**Phase 2: The Beat**
-- Screen freezes
-- 400ms silence
-- Tension builds
-
-**Phase 3: Arrival**
-- Speed → 1x
-- Full color, crystal clear
-- moment_enemy_attack displays prominently
-
-### Expected Outcome
-
-```
-[3x speed - blur, streaming]
-...road...clouds...dust...
-[FREEZE - 400ms silence]
-[1x speed - vivid]
-"Bandits burst from the treeline!"
-```
-
-**Verified:** Interrupt breaks through. The snap is visceral.
 
 ---
 
-## Trace 7: Journey Conversation (2x)
+## TRACE SCENARIOS (VERIFICATION)
 
-**Travel at 2x with conversation.**
+See original `TEST_Physics.md` for detailed walk-throughs of these scenarios.
 
-### Initial State
+### Trace 1: Simple Exchange
+- **Input:** Player question (energy injection).
+- **Expectation:** Target character's weight increases and flips.
+- **Verification:** `TickResult.flips` contains the expected moment.
 
-```yaml
-Speed: 2x
-Characters:
-  - char_player: traveling
-  - char_aldric: traveling with player
-
-Moments:
-  - moment_montage_1: "The road winds." (type: montage, weight: 0.3)
-  - moment_montage_2: "Sun sets." (type: montage, weight: 0.3)
-  - moment_aldric_personal:
-      text: "I never told you about my brother."
-      type: dialogue
-      weight: 0.6
-      ATTACHED_TO: char_aldric
-```
-
-### Step 1: Physics Ticks (2x rate)
-
-**Tick N:**
-- moment_montage_1: 0.3 → 0.4 → 0.5 → ... → 0.85 → **FLIP**
-- Display: muted, streaming
-
-**Tick N+2:**
-- moment_aldric_personal: 0.6 → 0.7 → 0.8 → 0.85 → **FLIP**
-- Display: **vivid, full color** (dialogue at 2x shows fully)
-
-**Tick N+4:**
-- moment_montage_2 flips
-- Display: muted, streaming
-
-### Step 2: Display Distinction
-
-```
-[muted, streaming] The road winds.
-[vivid, centered] "I never told you about my brother."
-[muted, streaming] Sun sets.
-```
-
-### Expected Outcome
-
-Travel and conversation interleaved. Time passes, but emotional beats preserved.
-
-**Verified:** Journey conversations work. Montage + dialogue coexist.
-
----
-
-## TEST STRATEGY
-
-Use narrative trace scenarios to validate end-to-end behavior while keeping
-unit tests focused on tick math, decay/propagation, and flip detection logic.
-Integration tests cover graph-backed queries and playthrough loops where a
-FalkorDB connection is available.
-
----
-
-## UNIT TESTS
-
-Current unit coverage concentrates in `engine/tests/test_moment_graph.py`,
-`engine/tests/test_moment.py`, and related helpers, exercising energy flow,
-moment lifecycle, and invariants without requiring full orchestration.
-
----
-
-## INTEGRATION TESTS
-
-Integration-level checks live in `engine/tests/test_e2e_moment_graph.py`,
-`engine/tests/test_integration_scenarios.py`, and
-`engine/tests/test_narrator_integration.py`, and may skip when external
-dependencies (database, agent runtime) are unavailable.
-
----
-
-## EDGE CASES
-
-Edge coverage should include zero-energy ticks, decay to `MIN_WEIGHT`,
-simultaneous flips in the same tick, empty graphs with no characters,
-presence-gated links with missing locations, and invalid action targets that
-should surface as blocked consequences.
-
----
-
-## TEST COVERAGE
-
-Trace scenarios below cover dialogue, silence fallback, multi-party dynamics,
-cascades, action conflicts, and speed snaps. Automated tests in
-`engine/tests/` currently validate core physics mechanics, but the file list
-later in this document is a target decomposition rather than an exact inventory.
+### Trace 2: Silence
+- **Input:** Irrelevant player input.
+- **Expectation:** Energy returns to player character.
+- **Verification:** Player character observation moment flips after N ticks.
 
 ---
 
 ## HOW TO RUN
 
-From the repo root, run `pytest engine/tests/test_moment_graph.py -v` for a
-focused physics pass, or `pytest engine/tests -v` for the broader suite.
-Integration tests may skip unless FalkorDB and agent services are running.
-
----
-
-## KNOWN TEST GAPS
-
-Dedicated tests for handler dispatch, canon ordering across multiple flips,
-action queue validation, and speed-controller display rules are still missing
-or only represented in trace scenarios.
-
----
-
-## FLAKY TESTS
-
-No flaky physics tests are currently tracked, but environment issues such as
-optional pytest plugins should be recorded here when they cause intermittent
-failures.
-
----
-
-## GAPS / IDEAS / QUESTIONS
-
-- Should trace scenarios be converted into executable integration tests?
-- Do we need deterministic seeds for energy propagation to make tests stable?
-- Which canon ordering rules should be asserted explicitly in test fixtures?
-
----
-
-## Test Coverage Summary
-
-| Trace | Tests |
-|-------|-------|
-| 1: Simple Exchange | Input → Physics → Handler → Canon → Display |
-| 2: Silence | Energy must land, player fallback |
-| 3: Multi-Party | Parallel handlers, weight ordering |
-| 4: Cascade | Energy propagation, chain reactions |
-| 5: Action Conflict | Simultaneous actions, sequential processing |
-| 6: The Snap | 3x speed, interrupt detection, transition |
-| 7: Journey | 2x speed, montage + dialogue display |
-
----
-
-## Implementation Test Files
-
-```
-engine/tests/
-├── test_physics.py        # Inject, decay, propagate, detect
-├── test_handlers.py       # Trigger, output, injection
-├── test_canon.py          # Recording, THEN links, ordering
-├── test_input.py          # Parsing, moment creation, energy
-├── test_actions.py        # Queue, validation, execution
-├── test_speed.py          # Display filtering, interrupts, snap
-├── test_traces.py         # Full trace scenarios above
-└── test_invariants.py     # All validation invariants
+```bash
+# Run physics tests (unit and integration)
+pytest engine/tests/test_moment_graph.py -v
 ```
 
 ---
 
-*"Traces prove the system works end-to-end."*
+## KNOWN GAPS
+
+- [ ] Automated check for "The Snap" transition display rules.
+- [ ] Real-time monitoring of energy levels across large graph clusters.

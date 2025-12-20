@@ -140,3 +140,140 @@ gaps, but the spec-vs-code alignment should be verified before execution.
 2. Add `index_world()` for batch indexing
 
 ---
+
+
+---
+
+# Archived: SYNC_Embeddings.md
+
+Archived on: 2025-12-20
+Original file: SYNC_Embeddings.md
+
+---
+
+## RECENT CHANGES
+
+### 2025-12-19: Restore maturity and consciousness trace
+
+- **What:** Added MATURITY and CONSCIOUSNESS TRACE sections and expanded the
+  IN PROGRESS entry for template alignment.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT warning for missing/short sections.
+- **Files:** `docs/infrastructure/embeddings/SYNC_Embeddings.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Re-verify algorithm entry template compliance
+
+- **What:** Re-checked that the embeddings algorithm entry includes the
+  required ALGORITHM and HELPER FUNCTIONS sections; no content edits were needed.
+- **Why:** Confirm the DOC_TEMPLATE_DRIFT target is satisfied in the current tree.
+- **Files:** `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Verify algorithm entry template completeness
+
+- **What:** Confirmed the embeddings algorithm entry already includes the
+  required ALGORITHM and HELPER FUNCTIONS sections.
+- **Why:** Close the DOC_TEMPLATE_DRIFT repair after verifying the entry-point
+  doc is template-compliant.
+- **Files:** `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
+- **Struggles/Insights:** None.
+
+
+### 2025-12-19: Fill archive SYNC template sections
+
+- **What:** Added the missing CURRENT STATE, IN PROGRESS, KNOWN ISSUES, handoffs,
+  TODO, consciousness trace, and pointers in the 2025-12 embeddings archive.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the archived snapshot while keeping
+  the live SYNC focused on active state.
+- **Files:** `docs/infrastructure/embeddings/SYNC_Embeddings_archive_2025-12.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Expand algorithm entry template sections
+
+- **What:** Added the missing ALGORITHM and HELPER FUNCTIONS sections plus
+  expanded overview/data flow content in the embeddings algorithm entry file.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for missing template headings and short
+  sections while keeping the sub-docs canonical.
+- **Files:** `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Add maturity and consciousness trace
+
+- **What:** Added MATURITY and CONSCIOUSNESS TRACE sections and expanded the
+  IN PROGRESS entry for template alignment.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT warning for missing/short sections.
+- **Files:** `docs/infrastructure/embeddings/SYNC_Embeddings.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Expand archive SYNC template sections
+
+- **What:** Filled missing CURRENT STATE, IN PROGRESS, KNOWN ISSUES, handoffs,
+  TODO, consciousness trace, and pointers in the embeddings archive SYNC.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the archive snapshot while keeping
+  the main SYNC focused on active state.
+- **Files:** `docs/infrastructure/embeddings/SYNC_Embeddings_archive_2025-12.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Restore missing template sections in archive
+
+- **What:** Added CURRENT STATE, IN PROGRESS, KNOWN ISSUES, handoffs, TODO,
+  consciousness trace, and pointers to the 2025-12 archive SYNC.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT warning for the embeddings archive.
+- **Files:** `docs/infrastructure/embeddings/SYNC_Embeddings_archive_2025-12.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Document implementation schema/logic/concurrency
+
+- **What:** Added SCHEMA, LOGIC CHAINS, and CONCURRENCY MODEL sections to the
+  embeddings implementation doc; expanded short template entries.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for missing sections in the implementation
+  template and keep structure aligned with other infrastructure modules.
+- **Files:** `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Fill missing SCOPE in patterns
+
+- **What:** Added the SCOPE section and updated the timestamp in the embeddings
+  patterns doc.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT warning for missing section and short
+  template content.
+- **Files:** `docs/infrastructure/embeddings/PATTERNS_Embeddings.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Split large algorithm/test docs
+
+- **What:** Split ALGORITHM and TEST docs into focused subfiles with concise overviews; moved detailed examples to archive.
+- **Why:** Reduce module doc size below threshold and keep entry points readable.
+- **Files:** `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`, `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Overview.md`, `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Indexing.md`, `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Search.md`, `docs/infrastructure/embeddings/TEST_Embeddings.md`, `docs/infrastructure/embeddings/TEST/TEST_Overview.md`, `docs/infrastructure/embeddings/TEST/TEST_Cases.md`, `docs/infrastructure/embeddings/archive/SYNC_archive_2024-12.md`
+- **Struggles/Insights:** Moved vector index details plus fixture/performance examples into the archive to keep the entry docs concise.
+
+### 2025-12-19: Verify doc size threshold
+
+- **What:** Recounted module docs after the split; total size is now under 50K characters.
+- **Why:** Close the LARGE_DOC_MODULE repair requirement for embeddings.
+- **Files:** `docs/infrastructure/embeddings/`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Normalize embeddings implementation references
+
+- **What:** Replaced method-only tokens with concrete file paths in the embeddings implementation doc.
+- **Why:** Resolve broken implementation links flagged for the embeddings module.
+- **Files:** `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Link module init to docs
+
+- **What:** Added a DOCS reference in the embeddings module initializer.
+- **Why:** Ensure `ngram context` resolves docs for `engine/infrastructure/embeddings/__init__.py`.
+- **Files:** `engine/infrastructure/embeddings/__init__.py`
+- **Struggles/Insights:** None.
+
+### 2025-12-19: Documentation mapping and DOCS linkage
+
+- **What:** Added modules.yaml mapping for embeddings and a DOCS reference in the service file.
+- **Why:** Connect existing embeddings docs to the code path for `ngram context` and validation coverage.
+- **Files:** `modules.yaml`, `engine/infrastructure/embeddings/service.py`
+- **Struggles/Insights:** None.
+
+---
+

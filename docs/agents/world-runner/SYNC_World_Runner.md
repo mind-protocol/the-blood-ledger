@@ -121,6 +121,19 @@ What's proposed (v2):
 
 ---
 
+## Review Observations
+
+### Remarks
+- `docs/agents/world-runner/BEHAVIORS_World_Runner.md` now repeats BEHAVIORS, INPUTS / OUTPUTS, EDGE CASES, ANTI-BEHAVIORS, and GAPS sections, which risks conflicting guidance over time.
+
+### Suggestions
+- [ ] Deduplicate the repeated sections in `docs/agents/world-runner/BEHAVIORS_World_Runner.md` so each required heading appears once.
+
+### Propositions
+- Consider merging the duplicate sections into a single canonical block near the top so future edits stay consistent.
+
+---
+
 ## CHAIN
 
 PATTERNS:        ./PATTERNS_World_Runner.md
@@ -157,12 +170,12 @@ current state. Review only if you want a single canonical schema artifact.
 
 ## GAPS
 
-- Completed: Added the missing FLAKY TESTS section in
-  `docs/agents/world-runner/TEST_World_Runner_Coverage.md` and logged the update
-  in this SYNC file.
-- Remaining: Commit the doc-template fix and project SYNC update for repair #16.
-- Blocker: Worktree contains unexpected pre-existing changes; need direction on
-  whether to commit only the world-runner doc updates or wait for cleanup.
+- Completed: Filled the missing BEHAVIORS template sections and expanded the
+  contract notes (inputs/outputs, edge cases, anti-behaviors) for repair #16.
+- Remaining: Commit the BEHAVIORS doc update and SYNC log once worktree
+  status is confirmed.
+- Blocker: Detected unexpected pre-existing changes in the worktree and need
+  guidance on whether to commit only the world-runner docs or wait.
 
 ## CONSCIOUSNESS TRACE
 
@@ -175,17 +188,3 @@ most salient risk is future drift if template expectations change again.
   `agents/world_runner/CLAUDE.md` for behavior and prompt contracts.
 - Archive context: `docs/agents/world-runner/archive/SYNC_archive_2024-12.md`
   for verbose schemas/examples kept out of the main chain.
-
----
-
-## GAPS
-
-What was completed:
-- Added a RECENT CHANGES note to affirm template coverage for repair #16.
-
-What remains:
-- Commit the SYNC and project state updates once worktree state is clarified.
-
-Why incomplete:
-- Detected unexpected, unrelated working tree changes that require guidance
-  before proceeding with a commit.

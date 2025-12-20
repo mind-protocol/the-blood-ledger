@@ -319,7 +319,7 @@ def create_playthroughs_router(
 
             if opening_narration:
                 # Split narration into lines and create moments
-                # Per SYNC I1: Create as 'possible' with energy, not 'active' with tick_spoken
+                # Create as 'possible' so it can surface without pre-marking as spoken.
                 # Canon Holder will record them to canon with proper THEN links
                 lines = [line.strip() for line in opening_narration.strip().split("\n") if line.strip()]
                 previous_moment_id = None
@@ -332,8 +332,6 @@ def create_playthroughs_router(
                         tick=0,
                         place_id=location_id,
                         status="possible",
-                        weight=1.0,
-                        energy=1.0
                     )
                     # Create ATTACHED_TO link to location (presence_required=false for opening)
                     graph.query(
@@ -381,6 +379,11 @@ def create_playthroughs_router(
             "scenario": request.scenario_id,
             "scene": scene
         }
+
+    @router.post("/playthrough/scenario")
+    async def create_scenario_playthrough(request: PlaythroughCreateRequest):
+        """Alias for /playthrough/create to keep the API contract consistent."""
+        return await create_playthrough(request)
 
     # =========================================================================
     # MOMENT ENDPOINT (Graph-based)

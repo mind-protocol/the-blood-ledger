@@ -20,8 +20,8 @@ VALIDATES:
     V5.3: "The world moved" — World Runner
 
 TESTS IMPLEMENTATIONS:
-    engine/db/graph_ops.py — Data write operations
-    engine/db/graph_queries.py — Data read operations
+    engine/physics/graph/graph_ops.py — Data write operations
+    engine/physics/graph/graph_queries.py — Data read operations
     engine/physics/tick.py — GraphTick class
     engine/orchestration/world_runner.py — World Runner
     engine/orchestration/narrator.py — Narrator
@@ -75,7 +75,7 @@ def db_connection():
 @pytest.fixture
 def graph_ops(db_connection):
     """
-    REQUIRES: engine/db/graph_ops.py fully implemented
+    REQUIRES: engine/physics/graph/graph_ops.py fully implemented
 
     Uses actual GraphOps API. Key methods:
     - add_character(id, name, type, ...)
@@ -98,7 +98,7 @@ def graph_ops(db_connection):
 @pytest.fixture
 def graph_queries(db_connection):
     """
-    REQUIRES: engine/db/graph_queries.py fully implemented
+    REQUIRES: engine/physics/graph/graph_queries.py fully implemented
     """
     try:
         from engine.physics.graph.graph_queries import GraphQueries
@@ -125,7 +125,7 @@ def test_world(graph_ops):
     Create a minimal test world with characters, places, narratives, tensions.
 
     REQUIRES: GraphOps.add_character, add_place, add_narrative, add_tension
-    Uses actual GraphOps API from engine/db/graph_ops.py
+    Uses actual GraphOps API from engine/physics/graph/graph_ops.py
     """
     # Characters
     graph_ops.add_character(
@@ -176,6 +176,7 @@ def test_world(graph_ops):
         name="Aldric's Oath",
         content="Aldric swore to protect Rolf",
         type="oath",
+        about_characters=["char_aldric", "char_player"],
         weight=0.8
     )
     graph_ops.add_narrative(
@@ -183,6 +184,7 @@ def test_world(graph_ops):
         name="The Betrayal",
         content="Edmund betrayed the family",
         type="memory",
+        about_characters=["char_edmund"],
         weight=0.7
     )
     graph_ops.add_narrative(
@@ -190,6 +192,7 @@ def test_world(graph_ops):
         name="Edmund Was Forced",
         content="Edmund was forced to betray us",
         type="rumor",
+        about_characters=["char_edmund"],
         weight=0.4,
         truth=0.0  # This is false
     )
@@ -211,7 +214,7 @@ def test_world(graph_ops):
     graph_ops.add_tension(
         id="tension_edmund",
         narratives=["narr_edmund_betrayal", "narr_edmund_forced"],
-        description="The truth about Edmund's betrayal",
+        description="Conflict between betrayal and coercion",
         pressure=0.5,
         breaking_point=0.9
     )
@@ -232,7 +235,7 @@ class TestGraphOpsImplementation:
     """
     Test that GraphOps correctly writes to the database.
 
-    REQUIRES: engine/db/graph_ops.py
+    REQUIRES: engine/physics/graph/graph_ops.py
     VALIDATES: Data can be written to FalkorDB
     """
 
@@ -356,7 +359,7 @@ class TestGraphQueriesImplementation:
         path = graph_queries.get_path_between("place_camp", "place_york")
 
         assert path is not None
-        assert 'travel_minutes' in path or 'distance_km' in path
+        assert 'path_distance' in path or 'distance_km' in path
 
     def test_get_tension_by_id(self, graph_queries, test_world):
         """
@@ -542,6 +545,7 @@ class TestTensionImplementation:
         graph_ops.add_tension(
             id="tension_about_to_flip",
             narratives=["narr_edmund_betrayal"],
+            description="About to flip",
             pressure=0.89,
             breaking_point=0.9
         )
@@ -561,6 +565,7 @@ class TestTensionImplementation:
         graph_ops.add_tension(
             id="tension_test_flip",
             narratives=["narr_edmund_betrayal", "narr_edmund_forced"],
+            description="Test flip",
             pressure=0.95,
             breaking_point=0.9
         )

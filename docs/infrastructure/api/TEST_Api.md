@@ -1,77 +1,171 @@
-# API — Test
+# API — Health: Verification Mechanics and Coverage
 
-## TEST STRATEGY
+```
+STATUS: STABLE
+CREATED: 2024-12-18
+UPDATED: 2025-12-20
+```
 
-Use a thin manual-first strategy: validate HTTP contracts with curl, confirm
-SSE streams deliver expected events, and sanity-check playthrough flows against
-documented behavior before adding automation.
+---
 
-## UNIT TESTS
+## PURPOSE OF THIS FILE
 
-No dedicated API unit test suite is documented yet; focus should be on router
-helpers (payload shaping, error mapping, queue behavior) once a test harness
-exists to isolate FastAPI dependencies.
+This file defines the health checks and verification mechanics for the API surface. It ensures that the entry points for player interaction, playthrough management, and debug streaming are responsive and structurally sound.
 
-## INTEGRATION TESTS
-
-Run the API server locally and exercise the health, playthrough, moment, and
-debug endpoints against a real graph connection; verify response shapes and SSE
-event ordering using manual curl sessions.
-
-## EDGE CASES
-
-- Missing or invalid playthrough IDs should return a stable 404 or 422 payload.
-- Graph connectivity failures should downgrade health to `503` without crashing.
-- SSE clients that disconnect abruptly should release their queue without leaks.
-
-## TEST COVERAGE
-
-Coverage is currently manual and endpoint-focused, with health and debug streams
-verified via curl; automated coverage for action routing and payload schemas is
-not yet established.
-
-## HOW TO RUN
-
-Start the API (per `engine/infrastructure/api/app.py`), then use curl against
-`/health`, `/api/playthrough/*`, `/api/moment/*`, and `/api/debug/stream` while
-FalkorDB is running to confirm the full integration path.
-
-## KNOWN TEST GAPS
-
-There is no automated regression suite for the API endpoints, no fixtures for
-graph-backed playthrough creation, and no load coverage for SSE backpressure or
-multi-client fan-out.
-
-## FLAKY TESTS
-
-No formal flaky tests are tracked yet, but SSE timing and debug stream pings can
-appear inconsistent if the server is under load or clients reconnect rapidly.
-
-## GAPS / IDEAS / QUESTIONS
-
-- [ ] Add pytest coverage for playthrough creation and action routing payloads.
-- [ ] Add a stub graph or recorded cassette to exercise endpoints offline.
-- Question: Should SSE queues expose metrics to validate fan-out behavior?
-
-## Health Check
-
-- Run `curl http://localhost:8000/health` and confirm `status=ok` with `details`.
-- Stop FalkorDB, re-run the request, and confirm a `503` with `status=degraded`.
-
-## Debug Mutation Stream
-
-- Connect: `curl -N http://localhost:8000/api/debug/stream`
-- Confirm an initial `connected` event and periodic `ping` events.
-- Apply a mutation and verify a mutation event is delivered.
+What it protects:
+- **Connectivity**: Availability of core API endpoints and graph database backends.
+- **Contract Integrity**: Consistency of request/response schemas for gameplay actions.
+- **Streaming Reliability**: Stability of SSE fan-out for real-time updates.
 
 ---
 
 ## CHAIN
 
-PATTERNS: ./PATTERNS_Api.md
-BEHAVIORS: ./BEHAVIORS_Api.md
-ALGORITHM: ./ALGORITHM_Api.md
-VALIDATION: ./VALIDATION_Api.md
-IMPLEMENTATION: ./IMPLEMENTATION_Api.md
-TEST: ./TEST_Api.md
-SYNC: ./SYNC_Api.md
+```
+PATTERNS:        ./PATTERNS_Api.md
+BEHAVIORS:       ./BEHAVIORS_Api.md
+ALGORITHM:       ./ALGORITHM_Api.md
+VALIDATION:      ./VALIDATION_Api.md
+IMPLEMENTATION:  ./IMPLEMENTATION_Api.md
+THIS:            TEST_Api.md
+SYNC:            ./SYNC_Api.md
+
+IMPL:            engine/infrastructure/api/app.py
+```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. Run HEALTH checks at throttled rates.
+
+---
+
+## FLOWS ANALYSIS (TRIGGERS + FREQUENCY)
+
+```yaml
+flows_analysis:
+  - flow_id: action_loop
+    purpose: Ensure player actions can be processed and returned.
+    triggers:
+      - type: manual
+        source: curl /api/action
+    frequency:
+      expected_rate: 2/min (per active player)
+      peak_rate: 20/min
+      burst_behavior: Rate limited at transport layer (planned).
+    risks:
+      - Timeout on narrator generation
+      - Broken SSE stream delivery
+    notes: Primary interaction loop.
+```
+
+---
+
+## HEALTH INDICATORS SELECTED
+
+```yaml
+health_indicators:
+  - name: api_availability
+    flow_id: action_loop
+    priority: high
+    rationale: If the API is down, the game is unplayable.
+  - name: graph_reachability
+    flow_id: action_loop
+    priority: high
+    rationale: API depends on FalkorDB for all state.
+```
+
+---
+
+## STATUS (RESULT INDICATOR)
+
+```yaml
+status:
+  stream_destination: stdout
+  result:
+    representation: enum
+    value: OK
+    updated_at: 2025-12-20T10:05:00Z
+    source: health_check
+```
+
+---
+
+## DOCK TYPES (COMPLETE LIST)
+
+- `api` (HTTP/RPC boundary)
+- `db` (database reachability)
+
+---
+
+## CHECKER INDEX
+
+```yaml
+checkers:
+  - name: connectivity_checker
+    purpose: Verify API and DB availability.
+    status: active
+    priority: high
+  - name: contract_checker
+    purpose: Verify response schema compliance.
+    status: pending
+    priority: med
+```
+
+---
+
+## INDICATOR: api_availability
+
+### VALUE TO CLIENTS & VALIDATION MAPPING
+
+```yaml
+value_and_validation:
+  indicator: api_availability
+  client_value: Ensures the UI can always reach the backend services.
+  validation:
+    - validation_id: V1 (Conceptual)
+      criteria: API returns 200 OK for /health.
+```
+
+### HEALTH REPRESENTATION
+
+```yaml
+representation:
+  selected:
+    - enum
+  semantics:
+    enum: OK, DEGRADED, DOWN
+  aggregation:
+    method: worst_case
+    display: Dashboard
+```
+
+### DOCKS SELECTED
+
+```yaml
+docks:
+  input:
+    id: action_input
+    method: engine.infrastructure.api.app.player_action
+    location: engine/infrastructure/api/app.py:120
+  output:
+    id: action_output
+    method: engine.infrastructure.api.app.player_action
+    location: engine/infrastructure/api/app.py:150
+```
+
+---
+
+## MANUAL RUN
+
+```bash
+# Verify API Health
+curl http://localhost:8000/health
+
+# Verify Action Loop
+curl -X POST http://localhost:8000/api/action -d '{"playthrough_id": "test", "action": "look"}'
+```
+
+---
+
+## KNOWN GAPS
+
+- [ ] Automated regression for SSE stream delivery under load.
+- [ ] Schema validation tests for all router endpoints.

@@ -98,13 +98,6 @@ class NewPlaythroughRequest(BaseModel):
     initial_goal: Optional[str] = None
 
 
-class ScenarioPlaythroughRequest(BaseModel):
-    """Request to create a playthrough from a scenario."""
-    scenario_id: str  # e.g. "thornwick_betrayed"
-    player_name: str
-    player_gender: str  # "male" or "female"
-
-
 class QueryRequest(BaseModel):
     """Request for semantic query."""
     query: str
@@ -302,100 +295,6 @@ def create_app(
             "playthrough_id": playthrough_id,
             "drive": request.drive,
             "companion": request.companion,
-            "status": "created"
-        }
-
-    @app.post("/api/playthrough/scenario")
-    async def create_scenario_playthrough(request: ScenarioPlaythroughRequest):
-        """
-        Create a new playthrough from a scenario.
-
-        1. Creates playthrough folder structure
-        2. Loads scenario YAML
-        3. Applies scenario nodes/links/tensions to graph
-        4. Saves player.yaml with character info
-        5. Creates initial scene.json from scenario opening
-        """
-        import uuid
-        import yaml
-
-        # Validate scenario exists
-        scenarios_dir = _project_root / "scenarios"
-        logger.info(f"Calculated scenarios_dir: {scenarios_dir}")
-        scenario_file = scenarios_dir / f"{request.scenario_id}.yaml"
-
-        if not scenario_file.exists():
-            raise HTTPException(status_code=404, detail=f"Scenario not found: {request.scenario_id}")
-
-        # Load scenario
-        scenario = yaml.safe_load(scenario_file.read_text())
-
-        # Generate playthrough ID
-        playthrough_id = f"pt_{uuid.uuid4().hex[:8]}"
-        playthrough_dir = _playthroughs_dir / playthrough_id
-        playthrough_dir.mkdir(parents=True, exist_ok=True)
-
-        # Create subdirectories
-        (playthrough_dir / "mutations").mkdir(exist_ok=True)
-        (playthrough_dir / "conversations").mkdir(exist_ok=True)
-
-        # Save player.yaml
-        player_data = {
-            "name": request.player_name,
-            "gender": request.player_gender,
-            "scenario": request.scenario_id,
-            "created": datetime.utcnow().isoformat(),
-            "graph_name": playthrough_id # Save the generated playthrough_id as the graph_name
-        }
-        (playthrough_dir / "player.yaml").write_text(yaml.dump(player_data))
-
-        # Apply scenario to graph
-        from engine.physics.graph import GraphOps
-        graph_ops = GraphOps(graph_name=playthrough_id, host=host, port=port)
-
-        # Update player node with name/gender in scenario data
-        for node in scenario.get("nodes", []):
-            if node.get("id") == "char_player":
-                node["name"] = request.player_name
-                node["gender"] = request.player_gender
-
-        # Apply nodes, links, tensions
-        try:
-            result = graph_ops.apply(data=scenario, playthrough=playthrough_id)
-            logger.info(f"Applied scenario {request.scenario_id}: {result}")
-        except Exception as e:
-            logger.error(f"Failed to apply scenario: {e}")
-            # Continue anyway - scenario may have partial success
-
-        # Create initial scene.json from scenario opening
-        opening = scenario.get("opening", {})
-        initial_scene = {
-            "id": f"scene_{request.scenario_id}_opening",
-            "location": {
-                "place": scenario.get("location", "place_unknown"),
-                "name": scenario.get("name", "Unknown"),
-                "region": "England",
-                "time": opening.get("time", "dawn")
-            },
-            "characters": opening.get("characters_present", []),
-            "atmosphere": [opening.get("weather", "")],
-            "narration": [
-                {"text": line.strip(), "clickable": {}}
-                for line in opening.get("narration", "").strip().split("\n")
-                if line.strip()
-            ],
-            "voices": []
-        }
-        (playthrough_dir / "scene.json").write_text(json.dumps(initial_scene, indent=2))
-
-        # Initialize orchestrator
-        get_orchestrator(playthrough_id)
-
-        return {
-            "playthrough_id": playthrough_id,
-            "scenario": request.scenario_id,
-            "player_name": request.player_name,
-            "player_gender": request.player_gender,
             "status": "created"
         }
 

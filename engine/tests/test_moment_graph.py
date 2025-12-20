@@ -8,8 +8,8 @@ Specs:
 - docs/engine/moments/ALGORITHM_Lifecycle.md
 
 Implementation:
-- engine/db/graph_ops.py
-- engine/db/graph_queries.py
+- engine/physics/graph/graph_ops.py
+- engine/physics/graph/graph_queries.py
 
 Tests cover:
 1. Schema/Node creation (add_moment, add_can_speak, add_attached_to, add_can_lead_to)
@@ -35,7 +35,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 @pytest.fixture
 def mock_graph_ops():
     """Create a GraphOps instance with mocked database connection."""
-    with patch('engine.db.graph_ops.FalkorDB') as mock_falkor:
+    with patch('engine.physics.graph.graph_ops.FalkorDB') as mock_falkor:
         mock_graph = MagicMock()
         mock_falkor.return_value.select_graph.return_value = mock_graph
 
@@ -58,7 +58,7 @@ def mock_graph_ops():
 @pytest.fixture
 def mock_graph_queries():
     """Create a GraphQueries instance with mocked database connection."""
-    with patch('engine.db.graph_queries.FalkorDB') as mock_falkor:
+    with patch('engine.physics.graph.graph_queries.FalkorDB') as mock_falkor:
         mock_graph = MagicMock()
         mock_falkor.return_value.select_graph.return_value = mock_graph
 

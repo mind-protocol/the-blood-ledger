@@ -3,7 +3,7 @@
 ```
 STATUS: STABLE
 CREATED: 2024-12-19
-UPDATED: 2025-12-19
+UPDATED: 2025-12-20
 ```
 
 ---
@@ -15,11 +15,11 @@ PATTERNS:        ./PATTERNS_Narrator.md
 BEHAVIORS:       ./BEHAVIORS_Narrator.md
 ALGORITHM:       ./ALGORITHM_Scene_Generation.md
 VALIDATION:      ./VALIDATION_Narrator.md
-THIS:            IMPLEMENTATION_Narrator.md (you are here)
+THIS:            IMPLEMENTATION_Narrator.md
 TEST:            ./TEST_Narrator.md
 SYNC:            ./SYNC_Narrator.md
 
-IMPL:            agents/narrator/CLAUDE.md
+IMPL:            engine/infrastructure/orchestration/narrator.py
 ```
 
 > **Contract:** Read docs before modifying. After changes: update IMPL or add TODO to SYNC. Run tests.
@@ -28,122 +28,181 @@ IMPL:            agents/narrator/CLAUDE.md
 
 ## CODE STRUCTURE
 
-The narrator is an AI agent configured by `agents/narrator/CLAUDE.md`, invoked by the orchestrator.
-
 ```
-agents/narrator/CLAUDE.md                 # Agent instructions
-agents/narrator/CLAUDE_old.md             # Archived legacy prompt
-agents/narrator/.claude/                  # CLI state directory
-engine/infrastructure/orchestration/agent_cli.py   # CLI wrapper
-engine/infrastructure/orchestration/narrator.py    # Caller + prompt builder
-engine/physics/graph/graph_ops.py         # Mutation apply
-engine/physics/graph/graph_queries.py     # Graph read
-tools/stream_dialogue.py                  # SSE streaming
+agents/narrator/
+├── CLAUDE.md             # Core agent instructions (System Prompt)
+├── .claude/              # Agent CLI state
+└── ...
+engine/infrastructure/orchestration/
+├── narrator.py           # Python entry point and prompt builder
+└── agent_cli.py          # CLI wrapper for agent invocation
 ```
 
 ### File Responsibilities
 
-| File | Purpose | Status |
-|------|---------|--------|
-| `agents/narrator/CLAUDE.md` | Agent instructions and behavior rules | OK |
-| `agents/narrator/CLAUDE_old.md` | Legacy prompt (unused) | Legacy |
-| `engine/infrastructure/orchestration/agent_cli.py` | Agent CLI wrapper | OK |
-| `engine/infrastructure/orchestration/narrator.py` | Narrator caller + prompt builder | OK |
-| `engine/physics/graph/graph_ops.py` | Graph mutation apply | OK |
-| `engine/physics/graph/graph_queries.py` | Graph read | OK |
-| `tools/stream_dialogue.py` | Stream dialogue chunks | OK |
+| File | Purpose | Key Functions/Classes | Lines | Status |
+|------|---------|----------------------|-------|--------|
+| `agents/narrator/CLAUDE.md` | Authorial intelligence rules | N/A | ~400 | OK |
+| `engine/infrastructure/orchestration/narrator.py` | Prompt construction and IO | `run_narrator` | ~300 | OK |
+| `engine/infrastructure/orchestration/agent_cli.py` | Subprocess management | `run_agent` | ~200 | OK |
 
 ---
 
-## ENTRY POINTS
+## DESIGN PATTERNS
 
-| Entry Point | File | Triggered By |
-|-------------|------|--------------|
-| Narrator invocation | `engine/infrastructure/orchestration/narrator.py` | Orchestrator on player action |
-| Streaming dialogue | `tools/stream_dialogue.py` | Narrator tool call |
-| Graph query | `engine/physics/graph/graph_queries.py` | Narrator tool call |
-| Mutation apply | `engine/physics/graph/graph_ops.py` | Narrator tool call |
+### Architecture Pattern
 
----
+**Pattern:** Agent-as-a-Service with CLI integration.
 
-## DATA FLOW (Condensed)
+**Why this pattern:** Decouples the authorial logic (prompt-driven) from the game engine (Python-driven). The CLI interface allows for thread persistence and easy testing.
 
-This is the high-level path for a narrator call, focusing on the concrete
-runtime touchpoints and the order they occur in the current service.
+### Code Patterns in Use
 
-1. Orchestrator builds prompt with scene context + world injection.
-2. `agent_cli.py` invokes the agent with `--continue` for thread memory.
-3. Narrator streams dialogue chunks via `tools/stream_dialogue.py`.
-4. Narrator queries the graph mid-stream for facts.
-5. Mutations are applied via `graph_ops.py`.
-6. Frontend receives SSE stream and any scene updates.
+| Pattern | Applied To | Purpose |
+|---------|------------|---------|
+| Prompt Builder | `narrator.py` | Dynamically assembles context for the LLM. |
+| Streaming | `stream_dialogue.py` | Delivers incremental output to the frontend via SSE. |
 
 ---
 
 ## SCHEMA
 
-The narrator returns a JSON object that matches the NarratorOutput contract,
-anchored by the SceneTree schema. The concrete shape lives in
-`docs/agents/narrator/INPUT_REFERENCE.md` and
-`docs/agents/narrator/TOOL_REFERENCE.md`, with scene, time_elapsed, mutations,
-and seeds forming the stable output envelope.
+### Narrator Output (JSON)
+
+```yaml
+NarratorOutput:
+  required:
+    - scene: object            # New scene tree or updates
+    - time_elapsed: int        # Game minutes passed
+  optional:
+    - mutations: list          # Graph updates to apply
+    - voice_lines: list        # Audio assets to trigger
+```
+
+---
+
+## ENTRY POINTS
+
+| Entry Point | File:Line | Triggered By |
+|-------------|-----------|--------------|
+| Narrator Call | `narrator.py:50` | Orchestrator.process_action |
+
+---
+
+## DATA FLOW AND DOCKING (FLOW-BY-FLOW)
+
+### Scene Generation: Action → Narrator → Graph
+
+This flow handles the transition from a player action to a newly authored scene, including any world-state changes (mutations).
+
+```yaml
+flow:
+  name: scene_generation
+  purpose: Author new story beats based on current graph state.
+  scope: Action -> LLM -> Graph Mutations -> Scene Response
+  steps:
+    - id: step_1_context
+      description: Orchestrator gathers graph context and world state.
+      file: engine/infrastructure/orchestration/narrator.py
+      function: build_prompt
+      input: playthrough_id, player_action
+      output: full_prompt_string
+      trigger: run_narrator call
+      side_effects: none
+    - id: step_2_author
+      description: Agent authors response using CLAUDE.md rules.
+      file: agents/narrator/CLAUDE.md
+      function: N/A (Agent Intelligence)
+      input: prompt
+      output: JSON payload
+      trigger: subprocess call
+      side_effects: none
+    - id: step_3_apply
+      description: Extract and apply graph mutations from output.
+      file: engine/physics/graph/graph_ops.py
+      function: apply_mutation
+      input: mutation_list
+      output: success_boolean
+      trigger: narrator.py parsing
+      side_effects: graph state changed
+  docking_points:
+    guidance:
+      include_when: narrative intent becomes concrete data
+    available:
+      - id: narrator_input
+        type: custom
+        direction: input
+        file: engine/infrastructure/orchestration/narrator.py
+        function: run_narrator
+        trigger: Orchestrator
+        payload: PromptContext
+        async_hook: optional
+        needs: none
+        notes: Context fed to the authorial intelligence
+      - id: narrator_output
+        type: custom
+        direction: output
+        file: engine/infrastructure/orchestration/narrator.py
+        function: run_narrator
+        trigger: return response
+        payload: NarratorOutput
+        async_hook: required
+        needs: none
+        notes: Raw output before filtering
+    health_recommended:
+      - dock_id: narrator_output
+        reason: Verification of authorial coherence and schema adherence.
+```
 
 ---
 
 ## LOGIC CHAINS
 
-Request flow chains through the orchestrator: a player action triggers the
-call in `engine/infrastructure/orchestration/narrator.py`, the prompt is built
-from scene_context/world_injection, the CLI returns JSON, and the response is
-parsed and streamed while optional graph queries and mutations happen in-band.
+### LC1: Invention to Canon
+
+**Purpose:** Ensure LLM inventions are persisted correctly.
+
+```
+Agent authored "fact"
+  → narrator.py extracts mutations
+    → graph_ops.py applies to FalkorDB
+      → fact is now queryable by physics/other agents
+```
+
+---
+
+## MODULE DEPENDENCIES
+
+### Internal Dependencies
+
+```
+engine/infrastructure/orchestration/narrator.py
+    ├── imports → engine/physics/graph
+    └── imports → engine/moment_graph
+```
+
+---
+
+## STATE MANAGEMENT
+
+### Where State Lives
+
+| State | Location | Scope | Lifecycle |
+|-------|----------|-------|-----------|
+| Thread History | `.claude/` | thread | per-playthrough session |
 
 ---
 
 ## CONCURRENCY MODEL
 
-Narrator calls are synchronous within a single service instance: `run_agent`
-blocks until the CLI returns, and `session_started` tracks the conversation
-thread for that instance. Parallel playthroughs should use separate service
-instances or request contexts to avoid shared session state.
+| Component | Model | Notes |
+|-----------|-------|-------|
+| Narrator CLI | Sync/Subprocess | Blocks worker thread during generation |
 
 ---
 
 ## CONFIGURATION
 
-Configuration is intentionally minimal; the narrator is driven by the prompt
-builder and agent CLI defaults, with only a few environment hooks exposed.
-
-| Config | Location | Default |
-|--------|----------|---------|
-| Agent instructions | `agents/narrator/CLAUDE.md` | N/A |
-| Agent provider | `AGENTS_MODEL` env | `claude` |
-| Streaming tool | `tools/stream_dialogue.py` | graph-native |
-
----
-
-## BIDIRECTIONAL LINKS
-
-### Code → Docs
-
-| File | Reference |
-|------|-----------|
-| `agents/narrator/CLAUDE.md` | References `TOOL_REFERENCE.md`, `INPUT_REFERENCE.md` |
-| `engine/infrastructure/orchestration/narrator.py` | Docstring references narrator docs |
-
-### Docs → Code
-
-| Doc Section | Implemented In |
-|-------------|----------------|
-| ALGORITHM: two modes | `agents/narrator/CLAUDE.md` ("The Two Paths") |
-| BEHAVIORS: DialogueChunk | `tools/stream_dialogue.py` |
-| BEHAVIORS: GraphMutation | `agents/narrator/CLAUDE.md` ("Invention Is Creation") |
-| PATTERNS: pre-baked trees | `agents/narrator/CLAUDE.md` ("What You Produce") |
-| VALIDATION: V1 classification | `agents/narrator/CLAUDE.md` |
-
----
-
-## GAPS / IDEAS / QUESTIONS
-
-- [ ] No automated tests for narrator output quality or schema drift detection
-- [ ] Voice consistency checking not implemented across scenes and sessions
-- [ ] No regression tests for behavior changes across playthrough resets
+| Config | Location | Default | Description |
+|--------|----------|---------|-------------|
+| `AGENTS_MODEL` | env | `claude` | Model provider for narrator |

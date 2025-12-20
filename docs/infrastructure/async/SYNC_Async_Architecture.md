@@ -6,9 +6,58 @@
 
 ---
 
+## MATURITY
+
+**What's canonical (v1):**
+- Async architecture scope and component boundaries are documented with the
+  graph as coordinator and hook interruptions scoped to travel only.
+
+**What's still being designed:**
+- SSE event payload formats, injection queue lifecycle, and discussion tree
+  persistence rules remain in flux while implementation planning continues.
+
+**What's proposed (v2):**
+- Expanded orchestration for non-travel async flows and richer map rendering
+  decisions are sketched but not committed to v1.
+
+---
+
+## CURRENT STATE
+
+Async architecture documentation is comprehensive and aligned to templates,
+with implementation gaps tracked in the capability tables below. The system
+is still in the planning phase with no code changes in this repair, but the
+SYNC now captures state, gaps, and handoffs explicitly.
+
+---
+
+## IN PROGRESS
+
+### Sync Template Repair (DOC_TEMPLATE_DRIFT #16)
+
+- **Started:** 2025-12-19
+- **By:** Codex (repair agent)
+- **Status:** in progress
+- **Context:** Filling missing SYNC template sections ensures future agents
+  can read the async state without reverse engineering.
+
+---
+
 ## Overview
 
 This document tracks what exists, what needs to be built, and the implementation path for the async architecture.
+
+---
+
+## Maturity
+
+STATUS: DESIGNING
+
+What's canonical (v1): Core framing is stable: graph-as-orchestrator, SSE-first updates, TaskOutput for completion, and hook-driven interruptions only.
+
+What's still being designed: The exact queue formats, reconnection semantics, and multi-runner conflict resolution remain open.
+
+What's proposed (v2): Dedicated queue broker, richer interruption prioritization, and a unified event bus spanning API + scripts.
 
 ---
 
@@ -23,6 +72,18 @@ IMPLEMENTATION: ./IMPLEMENTATION_Async_Architecture.md
 TEST:           ./TEST_Async_Architecture.md
 THIS:           SYNC_Async_Architecture.md
 ```
+
+---
+
+## CURRENT STATE
+
+Async architecture is documented and partially scaffolded, but real-time SSE emission, background Runner execution, and injection queue handling are not implemented in the runtime code paths.
+
+---
+
+## IN PROGRESS
+
+The immediate focus is stabilizing the async architecture docs and reconciling queue format drift so later implementation work can proceed without ambiguity.
 
 ---
 
@@ -131,19 +192,114 @@ This unlocks real-time updates for all other phases.
 
 ---
 
-## Recent Changes
+## KNOWN ISSUES
 
-- Expanded the async algorithm entry point with full template sections (overview,
-  data structures, primary algorithm steps, decisions, data flow, complexity,
-  helpers, interactions, gaps) to resolve DOC_TEMPLATE_DRIFT for repair #16.
-- Verified the async implementation doc already lists the `engine/scripts/inject_to_narrator.py` code-to-docs link and aligned the hook-script path in this SYNC table.
-- Updated async implementation doc to replace runtime-only file references with configured script paths so all references point to tracked files.
-- Refreshed the async implementation doc to match current queue file formats/paths (JSONL default queue, JSON array per playthrough) and updated entry point lines and config table; noted the playthrough initialization mismatch as a gap.
-- Reverified `IMPLEMENTATION_Async_Architecture.md` after the broken-link report; no additional path corrections were needed.
-- Split async algorithm docs into `docs/infrastructure/async/ALGORITHM/` with an overview and focused parts (Runner, Hook, Graph SSE, Waypoints/Fog, Image Generation, Discussion Trees), added `ALGORITHM_Async_Architecture.md` as the entry point, and updated CHAIN references.
-- Added `IMPLEMENTATION_Async_Architecture.md`, linked CHAIN references, and added DOCS pointer in `engine/scripts/check_injection.py`.
-- Added DOCS pointer in `engine/scripts/inject_to_narrator.py` so the manual injector resolves to the async implementation chain.
-- Archived verbose discussion tree details and the data flow diagram to `docs/infrastructure/async/archive/SYNC_archive_2024-12.md` to keep module docs under size limits.
+### Injection queue format mismatch
+
+- **Severity:** medium
+- **Symptom:** Hook readers consume JSONL while some manual tooling expects
+  a JSON array, causing confusion and divergent tooling paths.
+- **Suspected cause:** Legacy scripts and newer async hooks evolved separately
+  without consolidation into a single queue contract.
+- **Attempted:** Documented the split and flagged follow-up in TODO to unify
+  or retire legacy paths before implementation begins.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+**Your likely VIEW:** VIEW_Implement_Write_Or_Modify_Code
+
+**Where I stopped:** Updated the SYNC to restore missing sections and left
+the capability tables intact for implementation planning.
+
+**What you need to understand:**
+The async system is still design-only; no code changes are part of this repair.
+Use the capability tables and the injection queue decision as the source of
+truth until implementation begins.
+
+**Watch out for:**
+Do not treat `injection_queue.json` and `.jsonl` as interchangeable; the
+hook scripts and API currently expect JSONL.
+
+**Open questions I had:**
+Should the legacy JSON array queue be deprecated or migrated to JSONL before
+frontend wiring starts?
+
+---
+
+## HANDOFF: FOR HUMAN
+
+**Executive summary:**
+This repair fills missing SYNC template sections for async architecture so the
+module state is explicit and compliant. No code changes were made; the doc
+now spells out maturity, handoffs, and known issues.
+
+**Decisions made:**
+None beyond documenting existing queue format mismatch and aligning SYNC
+headings with the template requirements.
+
+**Needs your input:**
+Confirm whether we should deprecate the legacy JSON array queue or migrate it
+to JSONL as the canonical format before implementation.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+**Mental state when stopping:**
+Focused and confident once the missing sections were enumerated; primary
+concern is keeping the detailed tables without losing template compliance.
+
+**Threads I was holding:**
+The queue format mismatch, SSE schema needs, and how to stage implementation
+without violating the async design principles.
+
+**Intuitions:**
+Resolve the queue format early to avoid compounding tool divergence later.
+
+**What I wish I'd known at the start:**
+That the SYNC template expects explicit handoff and TODO sections even when
+the document already contains detailed planning tables.
+
+---
+
+## Known Issues
+
+- Queue format drift persists across hook scripts and API endpoints; the JSONL vs JSON split still needs reconciliation to avoid runtime confusion.
+- SSE emission remains unimplemented, so real-time state updates are documented but not yet proven in runtime behavior.
+
+---
+
+## HANDOFF: FOR AGENTS
+
+Likely VIEW: VIEW_Implement_Write_Or_Modify_Code. Focus on aligning queue formats and adding SSE emissions; verify changes against PATTERNS/ALGORITHM/IMPLEMENTATION before touching runtime code.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+Async travel remains a design-first architecture; no runtime SSE or injection queue wiring is complete, so implementation sequencing needs product confirmation before execution.
+
+---
+
+## TODO
+
+- [ ] Reconcile injection queue format (JSONL vs JSON array) across scripts and API endpoints.
+- [ ] Define SSE reconnection and replay semantics before implementation work begins.
+
+---
+
+## CONSCIOUSNESS TRACE
+
+This update fills missing SYNC template sections to keep the async architecture audit trail consistent and to reduce drift between design docs and implementation intent.
+
+---
+
+## POINTERS
+
+- `docs/infrastructure/async/ALGORITHM_Async_Architecture.md` for procedural flow and decision points.
+- `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md` for file paths and runtime expectations.
 
 ---
 
@@ -175,3 +331,10 @@ Older content archived to:
 
 ### Propositions
 - A dedicated `docs/infrastructure/async/diagrams/` folder could host future visual assets without bloating core docs.
+
+
+---
+
+## ARCHIVE
+
+Older content archived to: `SYNC_Async_Architecture_archive_2025-12.md`

@@ -19,11 +19,6 @@ VALIDATION:     ./VALIDATION_Physics.md
 IMPLEMENTATION: ./IMPLEMENTATION_Physics.md
 TEST:           ./TEST_Physics.md
 SYNC:           ./SYNC_Physics.md
-IMPL:           ../../engine/physics/energy.py, ../../engine/physics/tick.py,
-                ../../engine/canon/holder.py, ../../engine/handlers/,
-                ../../engine/orchestration/orchestrator.py, ../../engine/api/moments.py,
-                ../../engine/orchestration/speed.py
-```
 
 ---
 

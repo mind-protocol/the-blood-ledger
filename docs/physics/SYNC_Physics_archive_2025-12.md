@@ -203,3 +203,204 @@ traceability without altering runtime behavior.
 ---
 
 *"There is no scene. There is only the graph."*
+
+
+---
+
+# Archived: SYNC_Physics.md
+
+Archived on: 2025-12-20
+Original file: SYNC_Physics.md
+
+---
+
+## RECENT CHANGES
+
+### 2025-12-19: Expanded physics implementation design patterns
+
+- **What:** Added an anti-pattern note about hidden writes in query helpers to keep
+  the DESIGN PATTERNS section explicit about read/write separation.
+- **Why:** Keep the implementation doc aligned with template expectations and clarity.
+- **Files:** `docs/physics/IMPLEMENTATION_Physics.md`
+
+### 2025-12-19: Updated physics patterns template sections
+
+- **What:** Filled the missing PATTERNS sections (problem, pattern,
+  principles, dependencies, inspirations, scope, gaps) and aligned the core
+  principle text to the template guidance.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics patterns doc.
+- **Files:** `docs/physics/PATTERNS_Physics.md`
+
+### 2025-12-19: Filled validation template sections
+
+- **What:** Expanded validation sections (invariants, properties, error
+  conditions, test coverage, verification procedure, sync status) in
+  `docs/physics/VALIDATION_Physics.md` to meet template guidance and add
+  clearer verification notes.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics validation doc.
+- **Files:** `docs/physics/VALIDATION_Physics.md`
+
+### 2025-12-19: Verified physics patterns template coverage
+
+- **What:** Rechecked `docs/physics/PATTERNS_Physics.md` to confirm the
+  required template sections are present and sufficiently detailed.
+- **Why:** Close the active DOC_TEMPLATE_DRIFT report for the patterns doc.
+- **Files:** `docs/physics/PATTERNS_Physics.md`
+
+### 2025-12-19: Added physics implementation design patterns
+
+- **What:** Added the DESIGN PATTERNS section (architecture, code patterns, anti-patterns, boundaries) to `docs/physics/IMPLEMENTATION_Physics.md`.
+- **Why:** Resolve the missing template section and align the implementation doc with the standard structure.
+- **Files:** `docs/physics/IMPLEMENTATION_Physics.md`
+
+### 2025-12-19: Completed archive SYNC template sections
+
+- **What:** Expanded the archived physics SYNC with full handoff, TODO,
+  consciousness trace, and pointers sections to satisfy the sync template.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the archive snapshot while keeping
+  the live physics SYNC unchanged.
+- **Files:** `docs/physics/SYNC_Physics_archive_2025-12.md`
+
+### 2025-12-19: Expanded physics patterns template sections
+
+- **What:** Added missing PATTERNS template sections (problem, pattern,
+  principles, dependencies, inspirations, scope, gaps) and expanded the core
+  principle text to meet template length guidance.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for `docs/physics/PATTERNS_Physics.md`.
+- **Files:** `docs/physics/PATTERNS_Physics.md`
+
+### 2025-12-19: Added implementation design patterns section
+
+- **What:** Added the missing DESIGN PATTERNS section to
+  `docs/physics/IMPLEMENTATION_Physics.md` and expanded it to template length.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics implementation doc.
+- **Files:** `docs/physics/IMPLEMENTATION_Physics.md`
+
+### 2025-12-19: Completed physics algorithm template compliance
+
+- **What:** Added missing template sections (overview, data structures,
+  algorithm summary, decisions, data flow, complexity, helpers, interactions,
+  gaps) to `docs/physics/ALGORITHM_Physics.md`.
+- **Why:** Resolve doc-template drift for the physics algorithm doc.
+- **Files:** `docs/physics/ALGORITHM_Physics.md`
+
+### 2025-12-19: Expanded physics test template sections
+
+- **What:** Added missing test strategy, coverage, execution guidance, and gap
+  tracking sections to `docs/physics/TEST_Physics.md`.
+- **Why:** Resolve doc-template drift for physics test documentation.
+- **Files:** `docs/physics/TEST_Physics.md`
+
+### 2025-12-19: Restored missing SYNC template sections
+
+- **What:** Added required template sections (maturity, current state, in
+  progress, known issues, handoffs, todo, consciousness trace, pointers) and
+  expanded short entries to meet length guidance.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics SYNC file.
+- **Files:** `docs/physics/SYNC_Physics.md`
+
+### 2025-12-19: Completed physics behaviors template sections
+
+- **What:** Filled BEHAVIORS, INPUTS/OUTPUTS, EDGE CASES, ANTI-BEHAVIORS, and
+  GAPS/IDEAS/QUESTIONS sections in `docs/physics/BEHAVIORS_Physics.md`.
+- **Why:** Resolve doc-template drift for the physics behaviors spec.
+- **Files:** `docs/physics/BEHAVIORS_Physics.md`
+
+### 2025-12-19: Completed physics algorithm template sections
+
+- **What:** Added missing template sections (overview, data structures, primary
+  algorithm, decisions, data flow, complexity, helpers, interactions, gaps) in
+  `docs/physics/ALGORITHM_Physics.md`.
+- **Why:** Resolve doc-template drift for the physics algorithm document.
+- **Files:** `docs/physics/ALGORITHM_Physics.md`
+
+### 2025-12-19: Expanded physics validation template sections
+
+- **What:** Added the required validation sections (invariants, properties,
+  error conditions, test coverage, verification procedure, sync status, gaps)
+  and expanded them to meet template length guidance in
+  `docs/physics/VALIDATION_Physics.md`.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the physics validation doc.
+- **Files:** `docs/physics/VALIDATION_Physics.md`
+
+### 2025-12-19: Completed physics tick energy flow for repair 13
+
+- **What:** Normalized belief-based injection and enforced zero-sum propagation with supersedes drain, clamping to `MIN_WEIGHT`.
+- **Why:** Close the incomplete-impl gap for physics tick energy flow and align with the documented algorithm.
+- **Files:** `engine/physics/tick.py:300`, `engine/physics/tick.py:342`, `docs/physics/IMPLEMENTATION_Physics.md`
+
+### 2025-12-19: Documented physics module mapping
+
+- **What:** Added `modules.yaml` entry for `engine/physics/**` and linked `engine/physics/tick.py` to the physics doc chain.
+- **Why:** Close the undocumented module gap and make `ngram context` resolve physics docs.
+- **Files:** `modules.yaml`, `engine/physics/tick.py`
+
+
+## Agent Observations
+
+### Remarks
+- `ngram validate` still reports the pre-existing missing VIEW and doc-chain gaps outside physics (schema/network/product/storms).
+- Verified `docs/physics/BEHAVIORS_Physics.md` already includes the required template sections for repair #16.
+- `pytest engine/tests/test_behaviors.py -q` failed: missing `pytest_xprocess` (anchorpy plugin import).
+- `ngram validate` still reports pre-existing doc gaps and broken CHAIN links (schema/tempo/world-builder).
+- Filled the missing algorithm template sections in `docs/physics/ALGORITHM_Physics.md` for repair #16.
+- Expanded `docs/physics/VALIDATION_Physics.md` to include all required validation template sections for repair #16.
+- Refined validation guidance notes (invariants/procedure/sync status) for repair #16.
+- Expanded `docs/physics/PATTERNS_Physics.md` with the missing template sections for repair #16.
+- Reverified `docs/physics/PATTERNS_Physics.md` template coverage for repair #16.
+- Logged the physics patterns template update in RECENT CHANGES for this repair.
+
+### Suggestions
+- [ ] Install `pytest_xprocess` (or disable the anchorpy pytest plugin) to run the physics behavior tests.
+
+### Propositions
+- None.
+
+---
+
+
+---
+
+
+
+---
+
+# Archived: SYNC_Physics.md
+
+Archived on: 2025-12-20
+Original file: SYNC_Physics.md
+
+---
+
+## CHAIN
+
+
+
+```
+
+THIS:            SYNC_Physics.md (you are here)
+
+PATTERNS:        ./PATTERNS_Physics.md
+
+BEHAVIORS:       ./BEHAVIORS_Physics.md
+
+ALGORITHMS:      ./ALGORITHM_Physics.md (consolidated: energy, tick, canon, handlers, input, actions, QA, speed)
+
+SCHEMA:          ../schema/SCHEMA_Moments.md
+
+API:             ./API_Physics.md
+
+VALIDATION:      ./VALIDATION_Physics.md
+
+IMPLEMENTATION:  ./IMPLEMENTATION_Physics.md (+ Runtime Patterns from INFRASTRUCTURE.md)
+
+HEALTH:          ./HEALTH_Physics.md
+
+IMPL (existing): ../../engine/physics/tick.py, ../../engine/physics/graph/
+
+IMPL (planned):  ../../engine/handlers/, ../../engine/canon/, ../../engine/infrastructure/orchestration/speed.py
+
+```
+
+---
+

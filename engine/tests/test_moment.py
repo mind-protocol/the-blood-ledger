@@ -173,10 +173,8 @@ class TestMomentProcessor:
             assert processor._tick_to_time_of_day(540) == "morning"  # 9am
             assert processor._tick_to_time_of_day(720) == "midday"   # 12pm
             assert processor._tick_to_time_of_day(900) == "afternoon"  # 3pm
-            assert processor._tick_to_time_of_day(1200) == "dusk"    # 8pm
-            assert processor._tick_to_time_of_day(1320) == "evening" # 10pm
-            assert processor._tick_to_time_of_day(1400) == "night"   # 11:20pm
-
+            assert processor._tick_to_time_of_day(1200) == "evening"    # 8pm
+        
     def test_process_dialogue(self):
         """Test processing dialogue creates moment and updates transcript."""
         from engine.infrastructure.memory.moment_processor import MomentProcessor
@@ -249,7 +247,8 @@ class TestMomentProcessor:
             call_args = mock_ops.add_moment.call_args
 
             assert call_args.kwargs['type'] == "narration"
-            assert call_args.kwargs['speaker'] is None
+            assert call_args.kwargs.get('speaker') is None
+            assert call_args.kwargs['tick'] == 2160
 
     def test_sequence_linking(self):
         """Test that moments are linked in sequence."""

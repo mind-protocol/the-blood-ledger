@@ -1,88 +1,23 @@
 # Repository Map: the-blood-ledger
 
-*Generated: 2025-12-19 10:53*
+*Generated: 2025-12-20 01:10*
 
-- **Files:** 327
-- **Directories:** 90
-- **Total Size:** 3.0M
-- **Doc Files:** 204
+- **Files:** 494
+- **Directories:** 132
+- **Total Size:** 3.3M
+- **Doc Files:** 371
 - **Code Files:** 118
-- **Areas:** 8 (docs/ subfolders)
-- **Modules:** 28 (subfolders in areas)
-- **DOCS Links:** 58 (0.49 avg per code file)
+- **Areas:** 10 (docs/ subfolders)
+- **Modules:** 47 (subfolders in areas)
+- **DOCS Links:** 60 (0.51 avg per code file)
 
-- markdown: 204
+- markdown: 371
 - python: 73
 - tsx: 33
 - typescript: 9
 - css: 1
 - html: 1
 - shell: 1
-
-```mermaid
-graph TD
-    design_vision[design-vision]
-    moment_graph[moment-graph]
-    world_map[world-map]
-    graph_health[graph-health]
-    world_scraping[world-scraping]
-    world_runner[world-runner]
-    scene_memory[scene-memory]
-    async_architecture[async-architecture]
-    cli_tools[cli-tools]
-    history[history]
-    canon[canon]
-    image_generation[image-generation]
-    embeddings[embeddings]
-    infrastructure_async[infrastructure-async]
-    infrastructure_api[infrastructure-api]
-    ops_scripts[ops-scripts]
-    frontend[frontend]
-    frontend_types[frontend-types]
-    frontend_right_panel[frontend-right-panel]
-    frontend_moment_components[frontend-moment-components]
-    frontend_minimap[frontend-minimap]
-    frontend_map[frontend-map]
-    frontend_scenarios[frontend-scenarios]
-    frontend_scene[frontend-scene]
-    schema_models[schema-models]
-    moment_graph_engine[moment-graph-engine]
-    engine_test_suite[engine-test-suite]
-    physics[physics]
-    physics_graph[physics-graph]
-```
-
-| Module | Code | Docs | Lines | Files | Dependencies |
-|--------|------|------|-------|-------|--------------|
-| design-vision | `docs/design/**` | `docs/design/` | 0 | 0 | - |
-| moment-graph | `engine/moments/**` | `docs/engine/moments/` | 25 | 1 | - |
-| world-map | `engine/world/map/**` | `docs/world/map/` | 267 | 2 | - |
-| graph-health | `engine/graph/health/**` | `docs/schema/graph-health/` | 1393 | 3 | - |
-| world-scraping | `data/scripts/scrape/**` | `docs/world/scraping/` | 2070 | 5 | - |
-| world-runner | `engine/infrastructure/orchestration/world_runner.py` | `docs/agents/world-runner/` | 127 | 1 | - |
-| scene-memory | `engine/infrastructure/memory/**` | `docs/infrastructure/scene-memory/` | 512 | 2 | - |
-| async-architecture | `engine/scripts/check_injection.py` | `docs/infrastructure/async/` | 40 | 1 | - |
-| cli-tools | `tools/**` | `docs/infrastructure/cli-tools/` | 579 | 2 | - |
-| history | `engine/infrastructure/history/**` | `docs/infrastructure/history/` | 688 | 3 | - |
-| canon | `engine/infrastructure/canon/**` | `docs/infrastructure/canon/` | 389 | 3 | - |
-| image-generation | `tools/image_generation/**` | `docs/infrastructure/image-generation/` | 247 | 1 | - |
-| embeddings | `engine/infrastructure/embeddings/**` | `docs/infrastructure/embeddings/` | 150 | 2 | - |
-| infrastructure-async | `engine/infrastructure/api/playthroughs.py` | `docs/infrastructure/async/` | 477 | 1 | - |
-| infrastructure-api | `engine/infrastructure/api/**` | `docs/infrastructure/api/` | 1831 | 6 | - |
-| ops-scripts | `engine/scripts/**` | `docs/infrastructure/ops-scripts/` | 414 | 4 | - |
-| frontend | `frontend/**` | `docs/frontend/` | 3007511 | 14081 | - |
-| frontend-types | `frontend/types/**` | `docs/frontend/` | 485 | 3 | - |
-| frontend-right-panel | `frontend/components/panel/**` | `docs/frontend/right-panel/` | 239 | 4 | - |
-| frontend-moment-components | `frontend/components/moment/**` | `docs/frontend/scene/` | 632 | 5 | - |
-| frontend-minimap | `frontend/components/minimap/**` | `docs/frontend/minimap/` | 213 | 2 | - |
-| frontend-map | `frontend/components/map/**` | `docs/frontend/map/` | 828 | 3 | - |
-| frontend-scenarios | `frontend/app/scenarios/**` | `docs/frontend/scenarios/` | 194 | 1 | - |
-| frontend-scene | `frontend/components/scene/**` | `docs/frontend/scene/` | 1051 | 12 | - |
-| schema-models | `engine/models/**` | `docs/schema/models/` | 965 | 5 | - |
-| moment-graph-engine | `engine/moment_graph/**` | `docs/engine/moment-graph-engine/` | 858 | 4 | - |
-| engine-test-suite | `engine/tests/**` | `docs/engine/tests/` | 5517 | 14 | - |
-| physics | `engine/physics/**` | `docs/physics/` | 4897 | 15 | - |
-| physics-graph | `engine/physics/graph/**` | `docs/physics/graph/` | 4361 | 12 | - |
 
 ```
 ├── agents/ (85.9K)
@@ -95,57 +30,68 @@ graph TD
 │   │   └── CLAUDE.md (12.4K)
 │   └── world_runner/ (23.9K)
 │       └── CLAUDE.md (23.9K)
-├── docs/ (1.7M)
-│   ├── agents/ (187.5K)
-│   │   ├── narrator/ (102.1K)
-│   │   │   ├── ALGORITHM_Scene_Generation.md (28.3K)
-│   │   │   ├── BEHAVIORS_Narrator.md (9.1K)
-│   │   │   ├── HANDOFF_Rolling_Window_Architecture.md (6.8K)
-│   │   │   ├── IMPLEMENTATION_Narrator.md (12.1K)
-│   │   │   ├── INPUT_REFERENCE.md (6.8K)
-│   │   │   ├── PATTERNS_Narrator.md (2.1K)
-│   │   │   ├── SYNC_Narrator.md (4.5K)
-│   │   │   ├── TEST_Narrator.md (9.0K)
-│   │   │   ├── TOOL_REFERENCE.md (12.6K)
-│   │   │   ├── VALIDATION_Narrator.md (7.5K)
-│   │   │   └── (..2 more files)
-│   │   └── world-runner/ (85.4K)
-│   │       ├── ALGORITHM_World_Runner.md (19.4K)
-│   │       ├── BEHAVIORS_World_Runner.md (14.4K)
+├── docs/ (2.0M)
+│   ├── agents/ (127.1K)
+│   │   ├── narrator/ (60.9K)
+│   │   │   ├── archive/ (14.8K)
+│   │   │   │   └── SYNC_archive_2024-12.md (14.8K)
+│   │   │   ├── ALGORITHM_Scene_Generation.md (5.9K)
+│   │   │   ├── BEHAVIORS_Narrator.md (4.2K)
+│   │   │   ├── IMPLEMENTATION_Narrator.md (5.7K)
+│   │   │   ├── PATTERNS_Narrator.md (4.6K)
+│   │   │   ├── SYNC_Narrator.md (1.7K)
+│   │   │   ├── SYNC_Narrator_archive_2025-12.md (8.4K)
+│   │   │   ├── TEMPLATE_Player_Notes.md (1.8K)
+│   │   │   ├── TEST_Narrator.md (3.5K)
+│   │   │   ├── TOOL_REFERENCE.md (3.2K)
+│   │   │   ├── VALIDATION_Narrator.md (3.6K)
+│   │   │   └── (..3 more files)
+│   │   └── world-runner/ (66.2K)
+│   │       ├── archive/ (19.2K)
+│   │       │   └── SYNC_archive_2024-12.md (19.2K)
+│   │       ├── ALGORITHM_World_Runner.md (6.5K)
+│   │       ├── BEHAVIORS_World_Runner.md (6.1K)
 │   │       ├── IMPLEMENTATION_World_Runner_Service_Architecture.md (9.1K)
-│   │       ├── INPUT_REFERENCE.md (6.6K)
-│   │       ├── PATTERNS_World_Runner.md (8.9K)
-│   │       ├── SYNC_World_Runner.md (3.8K)
-│   │       ├── TEST_World_Runner_Coverage.md (2.2K)
-│   │       ├── TOOL_REFERENCE.md (17.0K)
+│   │       ├── INPUT_REFERENCE.md (1.8K)
+│   │       ├── PATTERNS_World_Runner.md (5.4K)
+│   │       ├── SYNC_World_Runner.md (7.4K)
+│   │       ├── TEST_World_Runner_Coverage.md (2.4K)
+│   │       ├── TOOL_REFERENCE.md (4.3K)
 │   │       └── VALIDATION_World_Runner_Invariants.md (3.8K)
-│   ├── design/ (142.9K)
-│   │   ├── opening/ (70.5K)
-│   │   │   ├── ALGORITHM_Opening.md (915)
-│   │   │   ├── BEHAVIORS_Opening.md (6.8K)
+│   ├── concepts/ (3.5K)
+│   │   └── subjective-truth-and-rumor/ (3.5K)
+│   │       ├── CONCEPT_Subjective_Truth_And_Rumor.md (1.7K)
+│   │       └── TOUCHES_Subjective_Truth_And_Rumor.md (1.8K)
+│   ├── design/ (167.3K)
+│   │   ├── archive/ (905)
+│   │   │   └── SYNC_archive_2024-12.md (905)
+│   │   ├── opening/ (88.5K)
+│   │   │   ├── ALGORITHM_Opening.md (3.8K)
+│   │   │   ├── BEHAVIORS_Opening.md (8.7K)
 │   │   │   ├── CLAUDE.md (26.2K)
 │   │   │   ├── CONTENT.md (10.2K)
 │   │   │   ├── GUIDE.md (9.5K)
-│   │   │   ├── PATTERNS_Opening.md (6.9K)
-│   │   │   ├── SYNC_Opening.md (2.2K)
-│   │   │   ├── TEST_Opening.md (627)
-│   │   │   └── VALIDATION_Opening.md (7.2K)
+│   │   │   ├── PATTERNS_Opening.md (10.8K)
+│   │   │   ├── SYNC_Opening.md (5.9K)
+│   │   │   ├── TEST_Opening.md (2.7K)
+│   │   │   └── VALIDATION_Opening.md (10.7K)
 │   │   ├── scenarios/ (10.3K)
 │   │   │   └── README.md (10.3K)
-│   │   ├── ALGORITHM_Vision.md (12.5K)
-│   │   ├── BEHAVIORS_Vision.md (17.2K)
-│   │   ├── IMPLEMENTATION_Vision.md (7.3K)
-│   │   ├── PATTERNS_Vision.md (13.9K)
-│   │   ├── SYNC_Vision.md (3.9K)
-│   │   ├── TEST_Vision.md (1.0K)
-│   │   └── VALIDATION_Vision.md (6.2K)
-│   ├── engine/ (46.7K)
-│   │   ├── moment-graph-engine/ (18.3K)
+│   │   ├── ALGORITHM_Vision.md (13.2K)
+│   │   ├── BEHAVIORS_Vision.md (10.1K)
+│   │   ├── IMPLEMENTATION_Vision.md (8.3K)
+│   │   ├── PATTERNS_Vision.md (11.9K)
+│   │   ├── SYNC_Vision.md (7.4K)
+│   │   ├── SYNC_Vision_archive_2025-12.md (3.5K)
+│   │   ├── TEST_Vision.md (3.2K)
+│   │   └── VALIDATION_Vision.md (10.0K)
+│   ├── engine/ (51.7K)
+│   │   ├── moment-graph-engine/ (19.4K)
 │   │   │   ├── ALGORITHM_Click_Wait_Surfacing.md (3.1K)
 │   │   │   ├── BEHAVIORS_Traversal_And_Surfacing.md (2.4K)
 │   │   │   ├── IMPLEMENTATION_Moment_Graph_Runtime_Layout.md (2.4K)
 │   │   │   ├── PATTERNS_Instant_Traversal_Moment_Graph.md (3.7K)
-│   │   │   ├── SYNC_Moment_Graph_Engine.md (2.7K)
+│   │   │   ├── SYNC_Moment_Graph_Engine.md (3.9K)
 │   │   │   ├── TEST_Moment_Graph_Runtime_Coverage.md (1.8K)
 │   │   │   └── VALIDATION_Moment_Traversal_Invariants.md (2.2K)
 │   │   ├── moments/ (11.8K)
@@ -156,176 +102,377 @@ graph TD
 │   │   │   ├── SYNC_Moments.md (2.1K)
 │   │   │   ├── TEST_Moment_Graph_Coverage.md (1.3K)
 │   │   │   └── VALIDATION_Moment_Graph_Invariants.md (1.1K)
-│   │   └── tests/ (16.6K)
+│   │   └── tests/ (20.5K)
 │   │       ├── ALGORITHM_Test_Run_Flow.md (1.7K)
 │   │       ├── BEHAVIORS_Test_Coverage_Layers.md (2.1K)
-│   │       ├── IMPLEMENTATION_Test_File_Layout.md (1.9K)
+│   │       ├── IMPLEMENTATION_Test_File_Layout.md (4.4K)
 │   │       ├── PATTERNS_Spec_Linked_Test_Suite.md (3.8K)
-│   │       ├── SYNC_Engine_Test_Suite.md (3.7K)
+│   │       ├── SYNC_Engine_Test_Suite.md (5.1K)
 │   │       ├── TEST_Test_Suite_Coverage.md (1.8K)
 │   │       └── VALIDATION_Test_Suite_Invariants.md (1.5K)
-│   ├── frontend/ (85.5K)
-│   │   ├── map/ (6.6K)
-│   │   │   ├── PATTERNS_Interactive_Travel_Map.md (1.9K)
-│   │   │   ├── PATTERNS_Parchment_Map_View.md (1.9K)
-│   │   │   └── SYNC_Map_View.md (2.8K)
-│   │   ├── minimap/ (3.6K)
-│   │   │   ├── PATTERNS_Discovered_Location_Minimap.md (1.8K)
-│   │   │   └── SYNC_Minimap.md (1.8K)
-│   │   ├── right-panel/ (3.7K)
-│   │   │   ├── PATTERNS_Tabbed_Right_Panel.md (2.0K)
-│   │   │   └── SYNC_Right_Panel.md (1.7K)
-│   │   ├── scenarios/ (3.7K)
-│   │   │   ├── PATTERNS_Scenario_Selection.md (1.8K)
-│   │   │   └── SYNC_Scenario_Selection.md (1.8K)
-│   │   ├── scene/ (15.6K)
-│   │   │   ├── ALGORITHM_Scene.md (1.3K)
-│   │   │   ├── BEHAVIORS_Scene.md (1.3K)
-│   │   │   ├── PATTERNS_Scene.md (5.7K)
-│   │   │   ├── SYNC_Scene.md (5.5K)
-│   │   │   ├── TEST_Scene.md (839)
-│   │   │   └── VALIDATION_Scene.md (1.0K)
-│   │   ├── ALGORITHM_Frontend_Data_Flow.md (4.2K)
-│   │   ├── BEHAVIORS_Frontend_State_And_Interaction.md (6.6K)
-│   │   ├── IMPLEMENTATION_Frontend_Code_Architecture.md (14.1K)
-│   │   ├── PATTERNS_Presentation_Layer.md (4.5K)
-│   │   ├── SYNC_Frontend.md (9.0K)
+│   ├── frontend/ (102.9K)
+│   │   ├── IMPLEMENTATION_Frontend_Code_Architecture/ (5.8K)
+│   │   │   ├── IMPLEMENTATION_Code_Structure.md (3.2K)
+│   │   │   └── IMPLEMENTATION_Runtime_And_Config.md (2.5K)
+│   │   ├── archive/ (1.6K)
+│   │   │   └── SYNC_archive_2024-12.md (1.6K)
+│   │   ├── map/ (7.2K)
+│   │   │   ├── PATTERNS_Interactive_Travel_Map.md (2.2K)
+│   │   │   ├── PATTERNS_Parchment_Map_View.md (2.7K)
+│   │   │   └── SYNC_Map_View.md (2.2K)
+│   │   ├── minimap/ (6.2K)
+│   │   │   ├── PATTERNS_Discovered_Location_Minimap.md (2.4K)
+│   │   │   └── SYNC_Minimap.md (3.9K)
+│   │   ├── right-panel/ (6.7K)
+│   │   │   ├── PATTERNS_Tabbed_Right_Panel.md (2.8K)
+│   │   │   └── SYNC_Right_Panel.md (4.0K)
+│   │   ├── scenarios/ (7.5K)
+│   │   │   ├── PATTERNS_Scenario_Selection.md (3.7K)
+│   │   │   └── SYNC_Scenario_Selection.md (3.8K)
+│   │   ├── scene/ (33.0K)
+│   │   │   ├── ALGORITHM_Scene.md (4.6K)
+│   │   │   ├── BEHAVIORS_Scene.md (3.4K)
+│   │   │   ├── PATTERNS_Scene.md (7.4K)
+│   │   │   ├── SYNC_Scene.md (5.3K)
+│   │   │   ├── SYNC_Scene_archive_2025-12.md (5.5K)
+│   │   │   ├── TEST_Scene.md (3.6K)
+│   │   │   └── VALIDATION_Scene.md (3.2K)
+│   │   ├── ALGORITHM_Frontend_Data_Flow.md (7.6K)
+│   │   ├── BEHAVIORS_Frontend_State_And_Interaction.md (4.1K)
+│   │   ├── IMPLEMENTATION_Frontend_Code_Architecture.md (1.8K)
+│   │   ├── PATTERNS_Presentation_Layer.md (6.0K)
+│   │   ├── SYNC_Frontend.md (6.0K)
 │   │   ├── SYNC_Frontend_archive_2025-12.md (3.4K)
-│   │   ├── TEST_Frontend_Coverage.md (4.9K)
-│   │   └── VALIDATION_Frontend_Invariants.md (5.7K)
-│   ├── infrastructure/ (484.8K)
-│   │   ├── api/ (26.3K)
-│   │   │   ├── ALGORITHM_Api.md (14.4K)
-│   │   │   ├── BEHAVIORS_Api.md (711)
-│   │   │   ├── IMPLEMENTATION_Api.md (1.9K)
-│   │   │   ├── PATTERNS_Api.md (784)
-│   │   │   ├── SYNC_Api.md (6.8K)
-│   │   │   ├── TEST_Api.md (627)
-│   │   │   ├── VALIDATION_Api.md (716)
-│   │   │   └── (..1 more files)
-│   │   ├── async/ (54.0K)
-│   │   │   ├── ALGORITHM_Async_Architecture.md (23.5K)
-│   │   │   ├── BEHAVIORS_Travel_Experience.md (3.3K)
-│   │   │   ├── IMPLEMENTATION_Async_Architecture.md (7.5K)
-│   │   │   ├── PATTERNS_Async_Architecture.md (11.3K)
-│   │   │   ├── SYNC_Async_Architecture.md (6.2K)
-│   │   │   ├── TEST_Async_Architecture.md (1.1K)
+│   │   ├── TEST_Frontend_Coverage.md (1.7K)
+│   │   └── VALIDATION_Frontend_Invariants.md (4.2K)
+│   ├── infrastructure/ (551.2K)
+│   │   ├── api/ (59.9K)
+│   │   │   ├── ALGORITHM_Api.md (19.7K)
+│   │   │   ├── ALGORITHM_Playthrough_Creation.md (5.8K)
+│   │   │   ├── BEHAVIORS_Api.md (2.1K)
+│   │   │   ├── IMPLEMENTATION_Api.md (7.8K)
+│   │   │   ├── PATTERNS_Api.md (2.8K)
+│   │   │   ├── SYNC_Api.md (1.8K)
+│   │   │   ├── SYNC_Api_archive_2025-12.md (13.9K)
+│   │   │   ├── TEST_Api.md (3.7K)
+│   │   │   └── VALIDATION_Api.md (2.3K)
+│   │   ├── async/ (76.4K)
+│   │   │   ├── ALGORITHM/ (20.3K)
+│   │   │   │   ├── ALGORITHM_Discussion_Trees.md (1.2K)
+│   │   │   │   ├── ALGORITHM_Graph_SSE.md (2.9K)
+│   │   │   │   ├── ALGORITHM_Hook_Injection.md (4.0K)
+│   │   │   │   ├── ALGORITHM_Image_Generation.md (2.8K)
+│   │   │   │   ├── ALGORITHM_Overview.md (992)
+│   │   │   │   ├── ALGORITHM_Runner_Protocol.md (3.9K)
+│   │   │   │   └── ALGORITHM_Waypoints_And_Fog.md (4.5K)
+│   │   │   ├── archive/ (8.2K)
+│   │   │   │   └── SYNC_archive_2024-12.md (8.2K)
+│   │   │   ├── ALGORITHM_Async_Architecture.md (4.0K)
+│   │   │   ├── BEHAVIORS_Travel_Experience.md (5.1K)
+│   │   │   ├── IMPLEMENTATION_Async_Architecture.md (8.3K)
+│   │   │   ├── PATTERNS_Async_Architecture.md (9.0K)
+│   │   │   ├── SYNC_Async_Architecture.md (12.1K)
+│   │   │   ├── SYNC_Async_Architecture_archive_2025-12.md (4.4K)
+│   │   │   ├── TEST_Async_Architecture.md (3.8K)
 │   │   │   └── VALIDATION_Async_Architecture.md (1.1K)
-│   │   ├── canon/ (48.5K)
+│   │   ├── canon/ (48.8K)
 │   │   │   ├── ALGORITHM_Canon_Holder.md (7.4K)
 │   │   │   ├── BEHAVIORS_Canon.md (5.2K)
 │   │   │   ├── IMPLEMENTATION_Canon.md (11.6K)
 │   │   │   ├── PATTERNS_Canon.md (4.2K)
-│   │   │   ├── SYNC_Canon.md (5.0K)
+│   │   │   ├── SYNC_Canon.md (5.3K)
 │   │   │   ├── TEST_Canon.md (8.9K)
 │   │   │   └── VALIDATION_Canon.md (6.1K)
-│   │   ├── cli-tools/ (33.9K)
+│   │   ├── cli-tools/ (35.0K)
 │   │   │   ├── ALGORITHM_CLI_Tool_Flows.md (4.8K)
 │   │   │   ├── BEHAVIORS_CLI_Streaming_And_Image_Output.md (4.9K)
 │   │   │   ├── IMPLEMENTATION_CLI_Tools_Architecture.md (7.3K)
 │   │   │   ├── PATTERNS_CLI_Agent_Utilities.md (5.4K)
-│   │   │   ├── SYNC_CLI_Tools.md (4.7K)
+│   │   │   ├── SYNC_CLI_Tools.md (5.8K)
 │   │   │   ├── TEST_CLI_Tool_Coverage.md (2.9K)
 │   │   │   └── VALIDATION_CLI_Tool_Invariants.md (3.9K)
-│   │   ├── embeddings/ (50.3K)
-│   │   │   ├── ALGORITHM_Embeddings.md (8.3K)
-│   │   │   ├── BEHAVIORS_Embeddings.md (6.5K)
-│   │   │   ├── IMPLEMENTATION_Embeddings.md (5.9K)
-│   │   │   ├── PATTERNS_Embeddings.md (6.1K)
-│   │   │   ├── SYNC_Embeddings.md (5.1K)
-│   │   │   ├── SYNC_Embeddings_archive_2025-12.md (2.5K)
-│   │   │   ├── TEST_Embeddings.md (8.8K)
+│   │   ├── embeddings/ (61.3K)
+│   │   │   ├── ALGORITHM/ (6.0K)
+│   │   │   │   ├── ALGORITHM_Indexing.md (2.4K)
+│   │   │   │   ├── ALGORITHM_Overview.md (1.8K)
+│   │   │   │   └── ALGORITHM_Search.md (1.7K)
+│   │   │   ├── TEST/ (4.9K)
+│   │   │   │   ├── TEST_Cases.md (3.3K)
+│   │   │   │   └── TEST_Overview.md (1.6K)
+│   │   │   ├── archive/ (3.1K)
+│   │   │   │   └── SYNC_archive_2024-12.md (3.1K)
+│   │   │   ├── ALGORITHM_Embeddings.md (3.7K)
+│   │   │   ├── BEHAVIORS_Embeddings.md (5.5K)
+│   │   │   ├── IMPLEMENTATION_Embeddings.md (8.4K)
+│   │   │   ├── PATTERNS_Embeddings.md (5.8K)
+│   │   │   ├── SYNC_Embeddings.md (5.5K)
+│   │   │   ├── SYNC_Embeddings_archive_2025-12.md (10.6K)
+│   │   │   ├── TEST_Embeddings.md (699)
 │   │   │   └── VALIDATION_Embeddings.md (7.1K)
-│   │   ├── history/ (58.8K)
-│   │   │   ├── ALGORITHM_History.md (10.6K)
+│   │   ├── history/ (62.1K)
+│   │   │   ├── ALGORITHM/ (6.3K)
+│   │   │   │   ├── ALGORITHM_Overview.md (1.2K)
+│   │   │   │   ├── ALGORITHM_Propagation_and_Beliefs.md (1.5K)
+│   │   │   │   └── ALGORITHM_Query_and_Record.md (3.6K)
+│   │   │   ├── TEST/ (3.9K)
+│   │   │   │   ├── TEST_Cases.md (2.8K)
+│   │   │   │   └── TEST_Overview.md (1.1K)
+│   │   │   ├── archive/ (8.9K)
+│   │   │   │   ├── SYNC_History_archive_2025-12.md (7.7K)
+│   │   │   │   └── SYNC_archive_2024-12.md (1.2K)
+│   │   │   ├── ALGORITHM_History.md (3.5K)
 │   │   │   ├── BEHAVIORS_History.md (7.1K)
-│   │   │   ├── IMPLEMENTATION_History_Service_Architecture.md (6.5K)
-│   │   │   ├── PATTERNS_History.md (5.6K)
-│   │   │   ├── SYNC_History.md (5.6K)
-│   │   │   ├── SYNC_History_archive_2025-12.md (6.1K)
-│   │   │   ├── TEST_History.md (9.6K)
+│   │   │   ├── IMPLEMENTATION_History_Service_Architecture.md (11.3K)
+│   │   │   ├── PATTERNS_History.md (6.0K)
+│   │   │   ├── SYNC_History.md (6.9K)
+│   │   │   ├── TEST_History.md (543)
 │   │   │   └── VALIDATION_History.md (7.6K)
-│   │   ├── image-generation/ (25.8K)
+│   │   ├── image-generation/ (26.2K)
 │   │   │   ├── ALGORITHM_Image_Generation.md (1.2K)
 │   │   │   ├── BEHAVIORS_Image_Generation.md (1.2K)
-│   │   │   ├── IMPLEMENTATION_Image_Generation.md (8.1K)
+│   │   │   ├── IMPLEMENTATION_Image_Generation.md (8.2K)
 │   │   │   ├── PATTERNS_Image_Generation.md (10.2K)
-│   │   │   ├── SYNC_Image_Generation.md (3.4K)
+│   │   │   ├── SYNC_Image_Generation.md (3.7K)
 │   │   │   ├── TEST_Image_Generation.md (877)
 │   │   │   └── VALIDATION_Image_Generation.md (856)
-│   │   ├── ops-scripts/ (11.9K)
+│   │   ├── ops-scripts/ (13.0K)
 │   │   │   ├── ALGORITHM_Seeding_And_Backfill_Flows.md (1.3K)
 │   │   │   ├── BEHAVIORS_Operational_Script_Runbooks.md (1.5K)
-│   │   │   ├── IMPLEMENTATION_Engine_Scripts_Layout.md (1.5K)
+│   │   │   ├── IMPLEMENTATION_Engine_Scripts_Layout.md (1.6K)
 │   │   │   ├── PATTERNS_Operational_Seeding_And_Backfill_Scripts.md (2.5K)
-│   │   │   ├── SYNC_Ops_Scripts.md (3.0K)
+│   │   │   ├── SYNC_Ops_Scripts.md (4.0K)
 │   │   │   ├── TEST_Operational_Scripts.md (887)
 │   │   │   └── VALIDATION_Operational_Script_Safety.md (1.2K)
-│   │   ├── scene-memory/ (82.0K)
-│   │   │   ├── ALGORITHM_Scene_Memory.md (18.9K)
-│   │   │   ├── BEHAVIORS_Scene_Memory.md (12.5K)
-│   │   │   ├── IMPLEMENTATION_Scene_Memory.md (8.7K)
-│   │   │   ├── PATTERNS_Scene_Memory.md (6.7K)
-│   │   │   ├── SYNC_Scene_Memory.md (7.9K)
-│   │   │   ├── SYNC_Scene_Memory_archive_2025-12.md (3.3K)
+│   │   ├── scene-memory/ (55.1K)
+│   │   │   ├── archive/ (2.5K)
+│   │   │   │   └── SYNC_archive_2024-12.md (2.5K)
+│   │   │   ├── ALGORITHM_Scene_Memory.md (8.5K)
+│   │   │   ├── BEHAVIORS_Scene_Memory.md (5.0K)
+│   │   │   ├── IMPLEMENTATION_Scene_Memory.md (5.5K)
+│   │   │   ├── PATTERNS_Scene_Memory.md (4.7K)
+│   │   │   ├── SYNC_Scene_Memory.md (9.7K)
+│   │   │   ├── SYNC_Scene_Memory_archive_2025-12.md (10.8K)
 │   │   │   ├── TEST_Scene_Memory.md (3.3K)
-│   │   │   └── VALIDATION_Scene_Memory.md (20.7K)
-│   │   ├── tempo/ (26.7K)
+│   │   │   └── VALIDATION_Scene_Memory.md (5.2K)
+│   │   ├── storm-loader/ (18.4K)
+│   │   │   ├── BEHAVIORS_Storm_Loader_Mutations.md (2.5K)
+│   │   │   ├── IMPLEMENTATION_Storm_Loader.md (3.3K)
+│   │   │   ├── MECHANISMS_Storm_Loader_Pipeline.md (2.6K)
+│   │   │   ├── PATTERNS_Storm_Loader_As_Diff.md (3.1K)
+│   │   │   ├── SYNC_Storm_Loader.md (2.5K)
+│   │   │   ├── TEST_Storm_Loader.md (1.7K)
+│   │   │   └── VALIDATION_Storm_Loader_Invariants.md (2.6K)
+│   │   ├── storms/ (18.7K)
+│   │   │   ├── BEHAVIORS_Storm_Overlay_Behavior.md (2.6K)
+│   │   │   ├── IMPLEMENTATION_Storms.md (3.3K)
+│   │   │   ├── MECHANISMS_Storm_Application.md (2.9K)
+│   │   │   ├── PATTERNS_Storms_As_Crisis_Overlays.md (3.2K)
+│   │   │   ├── SYNC_Storms.md (2.6K)
+│   │   │   ├── TEST_Storms.md (1.6K)
+│   │   │   └── VALIDATION_Storm_Invariants.md (2.6K)
+│   │   ├── tempo/ (41.8K)
 │   │   │   ├── ALGORITHM_Tempo_Controller.md (12.3K)
-│   │   │   ├── IMPLEMENTATION_Tempo.md (9.6K)
-│   │   │   └── SYNC_Tempo.md (4.8K)
-│   │   └── world-builder/ (66.5K)
-│   │       ├── ALGORITHM_World_Builder.md (16.4K)
-│   │       ├── IMPLEMENTATION_World_Builder.md (23.1K)
-│   │       ├── SYNC_World_Builder.md (6.0K)
-│   │       ├── TEST_World_Builder.md (11.0K)
-│   │       └── VALIDATION_World_Builder.md (10.0K)
-│   ├── physics/ (333.5K)
-│   │   ├── graph/ (91.9K)
-│   │   │   ├── ALGORITHM_Energy_Flow.md (15.3K)
-│   │   │   ├── BEHAVIORS_Graph.md (6.6K)
-│   │   │   ├── PATTERNS_Graph.md (2.3K)
-│   │   │   ├── SYNC_Graph.md (3.5K)
-│   │   │   ├── SYNC_Graph_archive_2025-12.md (23.8K)
-│   │   │   └── VALIDATION_Living_Graph.md (40.3K)
-│   │   ├── ALGORITHM_Physics.md (138.7K)
+│   │   │   ├── BEHAVIORS_Tempo.md (3.3K)
+│   │   │   ├── IMPLEMENTATION_Tempo.md (10.2K)
+│   │   │   ├── PATTERNS_Tempo.md (3.8K)
+│   │   │   ├── SYNC_Tempo.md (6.1K)
+│   │   │   ├── TEST_Tempo.md (2.4K)
+│   │   │   └── VALIDATION_Tempo.md (3.7K)
+│   │   └── world-builder/ (34.5K)
+│   │       ├── ALGORITHM/ (3.8K)
+│   │       │   ├── ALGORITHM_Details.md (1.5K)
+│   │       │   └── ALGORITHM_Overview.md (2.3K)
+│   │       ├── IMPLEMENTATION/ (4.2K)
+│   │       │   ├── IMPLEMENTATION_Flow.md (1.7K)
+│   │       │   └── IMPLEMENTATION_Overview.md (2.6K)
+│   │       ├── TEST/ (2.3K)
+│   │       │   ├── TEST_Cases.md (985)
+│   │       │   └── TEST_Overview.md (1.4K)
+│   │       ├── VALIDATION/ (3.0K)
+│   │       │   ├── VALIDATION_Checks.md (1.2K)
+│   │       │   └── VALIDATION_Overview.md (1.9K)
+│   │       ├── archive/ (1.3K)
+│   │       │   └── SYNC_archive_2024-12.md (1.3K)
+│   │       ├── ALGORITHM_World_Builder.md (672)
+│   │       ├── BEHAVIORS_World_Builder.md (3.6K)
+│   │       ├── IMPLEMENTATION_World_Builder.md (672)
+│   │       ├── PATTERNS_World_Builder.md (4.1K)
+│   │       ├── SYNC_World_Builder.md (4.2K)
+│   │       ├── SYNC_World_Builder_archive_2025-12.md (5.2K)
+│   │       ├── TEST_World_Builder.md (606)
+│   │       └── VALIDATION_World_Builder.md (646)
+│   ├── network/ (139.5K)
+│   │   ├── bleed-through/ (26.3K)
+│   │   │   ├── BEHAVIORS_Bleed_Reports.md (3.3K)
+│   │   │   ├── BEHAVIORS_Ghosts_Rumors_Reports.md (3.0K)
+│   │   │   ├── IMPLEMENTATION_Bleed_Through.md (3.3K)
+│   │   │   ├── MECHANISMS_Bleed_Through_Pipeline.md (3.7K)
+│   │   │   ├── PATTERNS_Scars_Cross_Worlds.md (3.5K)
+│   │   │   ├── SYNC_Bleed_Through.md (4.9K)
+│   │   │   ├── TEST_Bleed_Through.md (1.7K)
+│   │   │   └── VALIDATION_Bleed_Through_Safety.md (2.9K)
+│   │   ├── ghost-dialogue/ (18.6K)
+│   │   │   ├── BEHAVIORS_Ghost_Dialogue_Replay.md (2.7K)
+│   │   │   ├── IMPLEMENTATION_Ghost_Dialogue.md (3.4K)
+│   │   │   ├── MECHANISMS_Dialogue_Index.md (2.8K)
+│   │   │   ├── PATTERNS_Ghost_Dialogue_Index.md (3.0K)
+│   │   │   ├── SYNC_Ghost_Dialogue.md (2.7K)
+│   │   │   ├── TEST_Ghost_Dialogue.md (1.7K)
+│   │   │   └── VALIDATION_Ghost_Dialogue_Safety.md (2.4K)
+│   │   ├── shadow-feed/ (18.6K)
+│   │   │   ├── BEHAVIORS_Rumor_Import.md (2.7K)
+│   │   │   ├── IMPLEMENTATION_Shadow_Feed.md (3.3K)
+│   │   │   ├── MECHANISMS_Shadow_Feed_Filtering.md (2.5K)
+│   │   │   ├── PATTERNS_Shadow_Feed_Rumor_Cache.md (3.1K)
+│   │   │   ├── SYNC_Shadow_Feed.md (2.6K)
+│   │   │   ├── TEST_Shadow_Feed.md (1.6K)
+│   │   │   └── VALIDATION_Shadow_Feed_Locks.md (2.7K)
+│   │   ├── transposition/ (31.1K)
+│   │   │   ├── ALGORITHM_Transposition_Pipeline.md (5.8K)
+│   │   │   ├── BEHAVIORS_Conflict_Resolution_Cascade.md (3.0K)
+│   │   │   ├── IMPLEMENTATION_Transposition.md (3.4K)
+│   │   │   ├── MECHANISMS_Transposition_Pipeline.md (3.4K)
+│   │   │   ├── PATTERNS_Local_Canon_Primary.md (2.8K)
+│   │   │   ├── SYNC_Transposition.md (3.0K)
+│   │   │   ├── SYNC_Transposition_Logic.md (5.2K)
+│   │   │   ├── TEST_Transposition.md (1.7K)
+│   │   │   └── VALIDATION_Transposition_Invariants.md (2.7K)
+│   │   ├── voyager-system/ (25.3K)
+│   │   │   ├── BEHAVIORS_Voyager_Import_Experience.md (4.0K)
+│   │   │   ├── IMPLEMENTATION_Voyager_System.md (3.4K)
+│   │   │   ├── MECHANISMS_Export_Import_Transposition.md (4.4K)
+│   │   │   ├── PATTERNS_Trauma_Without_Memory.md (4.6K)
+│   │   │   ├── SYNC_Voyager_System.md (3.7K)
+│   │   │   ├── TEST_Voyager_System.md (1.7K)
+│   │   │   └── VALIDATION_Voyager_Invariants.md (3.6K)
+│   │   └── world-scavenger/ (19.5K)
+│   │       ├── BEHAVIORS_Scavenger_Priority_Stack.md (2.7K)
+│   │       ├── IMPLEMENTATION_World_Scavenger.md (3.3K)
+│   │       ├── MECHANISMS_Scavenger_Caches.md (3.1K)
+│   │       ├── PATTERNS_Scavenge_Before_Generate.md (3.2K)
+│   │       ├── SYNC_World_Scavenger.md (2.8K)
+│   │       ├── TEST_World_Scavenger.md (1.7K)
+│   │       └── VALIDATION_Scavenger_Locks.md (2.7K)
+│   ├── physics/ (337.7K)
+│   │   ├── graph/ (111.1K)
+│   │   │   ├── archive/ (17.9K)
+│   │   │   │   └── ALGORITHM_Energy_Flow_archived_2025-12-20.md (17.9K)
+│   │   │   ├── BEHAVIORS_Graph.md (8.5K)
+│   │   │   ├── PATTERNS_Graph.md (5.0K)
+│   │   │   ├── SYNC_Graph.md (4.8K)
+│   │   │   ├── SYNC_Graph_archive_2025-12.md (30.8K)
+│   │   │   └── VALIDATION_Living_Graph.md (44.1K)
+│   │   ├── ALGORITHM_Physics.md (141.5K)
 │   │   ├── API_Physics.md (6.9K)
-│   │   ├── BEHAVIORS_Physics.md (11.5K)
-│   │   ├── IMPLEMENTATION_Physics.md (35.7K)
-│   │   ├── PATTERNS_Physics.md (6.6K)
-│   │   ├── SYNC_Physics.md (4.8K)
-│   │   ├── SYNC_Physics_archive_2025-12.md (7.1K)
-│   │   ├── TEST_Physics.md (16.6K)
-│   │   └── VALIDATION_Physics.md (13.8K)
-│   ├── schema/ (87.0K)
-│   │   ├── graph-health/ (6.6K)
-│   │   │   ├── PATTERNS_Graph_Health_Validation.md (2.8K)
-│   │   │   └── SYNC_Graph_Health.md (3.8K)
-│   │   ├── models/ (10.0K)
-│   │   │   ├── PATTERNS_Pydantic_Schema_Models.md (2.1K)
-│   │   │   └── SYNC_Schema_Models.md (7.9K)
-│   │   ├── SCHEMA.md (48.2K)
-│   │   ├── SCHEMA_Moments.md (22.0K)
-│   │   └── (..1 more files)
-│   ├── world/ (122.5K)
-│   │   ├── map/ (95.3K)
-│   │   │   ├── ALGORITHM_Rendering.md (57.6K)
-│   │   │   ├── BEHAVIORS_Map.md (13.8K)
-│   │   │   ├── IMPLEMENTATION_Map_Code_Architecture.md (7.5K)
-│   │   │   ├── PATTERNS_Map.md (6.7K)
-│   │   │   ├── SYNC_Map.md (3.7K)
+│   │   ├── BEHAVIORS_Physics.md (13.4K)
+│   │   ├── IMPLEMENTATION_Physics.md (10.4K)
+│   │   ├── PATTERNS_Physics.md (9.3K)
+│   │   ├── SYNC_Physics.md (4.1K)
+│   │   ├── SYNC_Physics_archive_2025-12.md (17.8K)
+│   │   ├── TEST_Physics.md (4.7K)
+│   │   └── VALIDATION_Physics.md (18.5K)
+│   ├── product/ (141.6K)
+│   │   ├── billing/ (25.3K)
+│   │   │   ├── BEHAVIORS_Metered_Billing_Experience.md (2.7K)
+│   │   │   ├── IMPLEMENTATION_Billing.md (3.3K)
+│   │   │   ├── IMPLEMENTATION_Billing_Technical_Stack.md (3.5K)
+│   │   │   ├── MECHANISMS_Billing_Metered_Stripe.md (2.4K)
+│   │   │   ├── PATTERNS_Pay_To_Preserve_History.md (2.2K)
+│   │   │   ├── SYNC_Billing.md (2.5K)
+│   │   │   ├── SYNC_Billing_System.md (4.5K)
+│   │   │   ├── TEST_Billing.md (1.6K)
+│   │   │   └── VALIDATION_Billing_Invariants.md (2.6K)
+│   │   ├── business-model/ (44.6K)
+│   │   │   ├── ALGORITHM_Hallucination_Defense.md (5.3K)
+│   │   │   ├── ALGORITHM_Semantic_Cache.md (3.3K)
+│   │   │   ├── ALGORITHM_World_Scavenger.md (3.5K)
+│   │   │   ├── BEHAVIORS_Conversion_Funnel_And_Ledger_Lock.md (3.7K)
+│   │   │   ├── BEHAVIORS_Retention_Mechanisms.md (3.7K)
+│   │   │   ├── IMPLEMENTATION_Business_Model.md (3.4K)
+│   │   │   ├── PATTERNS_Market_Comparison.md (3.5K)
+│   │   │   ├── PATTERNS_Whale_Economics.md (4.0K)
+│   │   │   ├── SYNC_Business_Model.md (5.4K)
+│   │   │   ├── VALIDATION_Business_Model_Invariants.md (2.4K)
+│   │   │   └── (..3 more files)
+│   │   ├── chronicle-system/ (35.7K)
+│   │   │   ├── BEHAVIORS_Chronicle_Types.md (2.5K)
+│   │   │   ├── BEHAVIORS_Chronicle_Types_And_Structure.md (3.8K)
+│   │   │   ├── IMPLEMENTATION_Chronicle_System.md (3.3K)
+│   │   │   ├── IMPLEMENTATION_Chronicle_Technical_Pipeline.md (6.6K)
+│   │   │   ├── MECHANISMS_Chronicle_Pipeline.md (2.7K)
+│   │   │   ├── PATTERNS_Chronicle_Flywheel.md (2.4K)
+│   │   │   ├── PATTERNS_Chronicle_GTM_Integration.md (4.5K)
+│   │   │   ├── SYNC_Chronicle_System.md (4.2K)
+│   │   │   ├── TEST_Chronicle_System.md (1.7K)
+│   │   │   ├── VALIDATION_Chronicle_Invariants.md (2.4K)
+│   │   │   └── (..1 more files)
+│   │   ├── gtm-strategy/ (17.9K)
+│   │   │   ├── BEHAVIORS_Acquisition_Flywheel.md (2.4K)
+│   │   │   ├── IMPLEMENTATION_GTM_Strategy.md (3.3K)
+│   │   │   ├── MECHANISMS_GTM_Programs.md (2.5K)
+│   │   │   ├── PATTERNS_Direct_Whale_Acquisition.md (3.0K)
+│   │   │   ├── SYNC_GTM_Strategy.md (2.6K)
+│   │   │   ├── TEST_GTM_Strategy.md (1.6K)
+│   │   │   └── VALIDATION_GTM_Invariants.md (2.4K)
+│   │   └── ledger-lock/ (18.1K)
+│   │       ├── BEHAVIORS_Ledger_Lock_Trigger.md (2.5K)
+│   │       ├── IMPLEMENTATION_Ledger_Lock.md (3.3K)
+│   │       ├── MECHANISMS_Ledger_Lock_Flow.md (2.7K)
+│   │       ├── PATTERNS_Ledger_Lock_Crisis.md (3.0K)
+│   │       ├── SYNC_Ledger_Lock.md (2.5K)
+│   │       ├── TEST_Ledger_Lock.md (1.6K)
+│   │       └── VALIDATION_Ledger_Lock_Invariants.md (2.6K)
+│   ├── schema/ (55.0K)
+│   │   ├── SCHEMA/ (5.7K)
+│   │   │   ├── SCHEMA_Links.md (1.2K)
+│   │   │   ├── SCHEMA_Nodes.md (2.5K)
+│   │   │   ├── SCHEMA_Overview.md (901)
+│   │   │   └── SCHEMA_Tensions.md (1.1K)
+│   │   ├── SCHEMA_Moments/ (3.3K)
+│   │   │   ├── SCHEMA_Moments_Links.md (1.2K)
+│   │   │   ├── SCHEMA_Moments_Node.md (893)
+│   │   │   ├── SCHEMA_Moments_Overview.md (784)
+│   │   │   └── (..1 more files)
+│   │   ├── archive/ (504)
+│   │   │   └── SYNC_archive_2024-12.md (504)
+│   │   ├── graph-health/ (11.2K)
+│   │   │   ├── PATTERNS_Graph_Health_Validation.md (3.7K)
+│   │   │   ├── SYNC_Graph_Health.md (3.6K)
+│   │   │   └── SYNC_Graph_Health_archive_2025-12.md (4.0K)
+│   │   ├── models/ (30.3K)
+│   │   │   ├── PATTERNS_Pydantic_Schema_Models.md (3.2K)
+│   │   │   ├── SYNC_Schema_Models.md (2.7K)
+│   │   │   └── SYNC_Schema_Models_archive_2025-12.md (24.4K)
+│   │   ├── VALIDATION_Graph.md (3.2K)
+│   │   └── (..2 more files)
+│   ├── world/ (97.2K)
+│   │   ├── map/ (42.0K)
+│   │   │   ├── ALGORITHM/ (7.3K)
+│   │   │   │   ├── ALGORITHM_Places.md (2.4K)
+│   │   │   │   ├── ALGORITHM_Rendering_Pipeline.md (2.6K)
+│   │   │   │   └── ALGORITHM_Routes.md (2.3K)
+│   │   │   ├── archive/ (384)
+│   │   │   │   └── (..1 more files)
+│   │   │   ├── ALGORITHM_Map.md (2.1K)
+│   │   │   ├── ALGORITHM_Rendering.md (3.5K)
+│   │   │   ├── BEHAVIORS_Map.md (4.4K)
+│   │   │   ├── IMPLEMENTATION_Map_Code_Architecture.md (7.6K)
+│   │   │   ├── PATTERNS_Map.md (4.1K)
+│   │   │   ├── SYNC_Map.md (4.4K)
+│   │   │   ├── SYNC_Map_archive_2025-12.md (2.1K)
 │   │   │   ├── TEST_Map_Test_Coverage.md (2.5K)
 │   │   │   └── VALIDATION_Map_Invariants.md (3.6K)
-│   │   └── scraping/ (27.2K)
-│   │       ├── ALGORITHM_Pipeline.md (8.8K)
-│   │       ├── BEHAVIORS_World_Scraping.md (1.2K)
-│   │       ├── IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md (5.1K)
-│   │       ├── PATTERNS_World_Scraping.md (3.0K)
-│   │       ├── SYNC_World_Scraping.md (5.2K)
-│   │       ├── TEST_World_Scraping.md (932)
-│   │       └── VALIDATION_World_Scraping.md (2.9K)
-│   └── map.md (224.5K)
-├── engine/ (922.9K)
+│   │   └── scraping/ (55.2K)
+│   │       ├── ALGORITHM_Pipeline.md (14.4K)
+│   │       ├── BEHAVIORS_World_Scraping.md (3.1K)
+│   │       ├── IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md (10.1K)
+│   │       ├── PATTERNS_World_Scraping.md (4.8K)
+│   │       ├── SYNC_World_Scraping.md (7.2K)
+│   │       ├── SYNC_World_Scraping_archive_2025-12.md (6.1K)
+│   │       ├── TEST_World_Scraping.md (3.7K)
+│   │       └── VALIDATION_World_Scraping.md (5.8K)
+│   └── map.md (265.4K)
+├── engine/ (920.9K)
 │   ├── graph/ (119.2K)
 │   │   └── health/ (119.2K)
 │   │       ├── README.md (3.4K)
@@ -335,11 +482,11 @@ graph TD
 │   │       ├── query_outputs.md (23.3K)
 │   │       ├── query_results.md (16.2K)
 │   │       └── test_schema.py (29.3K)
-│   ├── infrastructure/ (248.2K)
-│   │   ├── api/ (80.1K)
-│   │   │   ├── app.py (30.6K) →
+│   ├── infrastructure/ (244.6K)
+│   │   ├── api/ (76.4K)
+│   │   │   ├── app.py (26.8K) →
 │   │   │   ├── moments.py (17.3K)
-│   │   │   ├── playthroughs.py (22.5K)
+│   │   │   ├── playthroughs.py (22.7K)
 │   │   │   ├── sse_broadcast.py (2.8K)
 │   │   │   ├── tempo.py (6.7K) →
 │   │   │   └── (..1 more files)
@@ -358,10 +505,10 @@ graph TD
 │   │   ├── memory/ (19.6K)
 │   │   │   ├── moment_processor.py (19.4K) →
 │   │   │   └── (..1 more files)
-│   │   ├── orchestration/ (37.1K)
+│   │   ├── orchestration/ (37.2K)
 │   │   │   ├── __init__.py (522)
 │   │   │   ├── agent_cli.py (6.2K)
-│   │   │   ├── narrator.py (6.5K)
+│   │   │   ├── narrator.py (6.6K) →
 │   │   │   ├── orchestrator.py (19.2K)
 │   │   │   └── world_runner.py (4.7K) →
 │   │   ├── tempo/ (14.4K)
@@ -388,7 +535,7 @@ graph TD
 │   │   └── traversal.py (7.7K)
 │   ├── moments/ (896)
 │   │   └── __init__.py (896) →
-│   ├── physics/ (200.2K)
+│   ├── physics/ (200.8K)
 │   │   ├── graph/ (178.2K)
 │   │   │   ├── graph_ops.py (28.6K) →
 │   │   │   ├── graph_ops_apply.py (30.4K)
@@ -402,22 +549,22 @@ graph TD
 │   │   │   ├── graph_query_utils.py (8.7K) →
 │   │   │   └── (..2 more files)
 │   │   ├── constants.py (3.7K)
-│   │   ├── tick.py (17.7K) →
+│   │   ├── tick.py (18.4K) →
 │   │   └── (..1 more files)
 │   ├── scripts/ (18.4K)
 │   │   ├── check_injection.py (1.4K) →
 │   │   ├── generate_images_for_existing.py (11.4K) →
 │   │   ├── inject_to_narrator.py (3.6K) →
 │   │   └── seed_moment_sample.py (1.9K) →
-│   ├── tests/ (243.1K)
+│   ├── tests/ (244.0K)
 │   │   ├── test_behaviors.py (18.3K)
 │   │   ├── test_e2e_moment_graph.py (16.7K)
-│   │   ├── test_history.py (15.1K)
-│   │   ├── test_implementation.py (28.9K)
+│   │   ├── test_history.py (15.6K)
+│   │   ├── test_implementation.py (29.2K)
 │   │   ├── test_integration_scenarios.py (19.9K)
 │   │   ├── test_models.py (28.6K)
 │   │   ├── test_moment_graph.py (33.3K)
-│   │   ├── test_moments_api.py (15.5K)
+│   │   ├── test_moments_api.py (15.6K)
 │   │   ├── test_narrator_integration.py (16.5K)
 │   │   ├── test_spec_consistency.py (18.7K)
 │   │   └── (..4 more files)
@@ -443,7 +590,7 @@ graph TD
 │   │   ├── globals.css (1.6K)
 │   │   ├── layout.tsx (916) →
 │   │   └── page.tsx (778) →
-│   ├── components/ (135.5K)
+│   ├── components/ (135.6K)
 │   │   ├── chronicle/ (4.3K)
 │   │   │   └── ChroniclePanel.tsx (4.3K) →
 │   │   ├── debug/ (13.1K)
@@ -484,16 +631,16 @@ graph TD
 │   │   │   └── Voices.tsx (1.7K) →
 │   │   ├── GameClient.tsx (3.7K)
 │   │   ├── GameLayout.tsx (2.9K)
-│   │   ├── SpeedControl.tsx (3.5K)
+│   │   ├── SpeedControl.tsx (3.6K) →
 │   │   └── (..1 more files)
-│   ├── hooks/ (23.2K)
+│   ├── hooks/ (23.3K)
 │   │   ├── useGameState.ts (15.0K) →
 │   │   ├── useMoments.ts (5.5K) →
-│   │   └── useTempo.ts (2.7K) →
+│   │   └── useTempo.ts (2.8K) →
 │   ├── lib/ (15.1K)
 │   │   ├── map/ (3.6K)
 │   │   │   ├── projection.ts (2.7K) →
-│   │   │   ├── random.ts (781) →
+│   │   │   ├── random.ts (777) →
 │   │   │   └── (..1 more files)
 │   │   └── api.ts (11.5K) →
 │   ├── types/ (15.9K)
@@ -508,7 +655,7 @@ graph TD
 │       ├── canon/ (17.6K)
 │       │   ├── test_canon_holder.py (17.5K) →
 │       │   └── (..1 more files)
-│       └── world_builder/ (33.2K)
+│       └── world_builder/ (33.3K)
 │           ├── test_world_builder.py (33.2K) →
 │           └── (..1 more files)
 ├── tools/ (25.2K)
@@ -518,7 +665,7 @@ graph TD
 │   └── stream_dialogue.py (13.7K) →
 ├── .gitignore (690)
 ├── .ngramignore (806)
-├── AGENTS.md (22.0K)
+├── AGENTS.md (22.3K)
 ├── CLAUDE.md (4.0K)
 ├── README.md (1.6K)
 ├── project_map.html (12.0K)
@@ -682,63 +829,15 @@ graph TD
 - ## Modifiers
 - ## Moment Links
 
-**Sections:**
-- # Narrator — Algorithm: Scene Generation
-- ## CHAIN
-- ## Purpose
-- ## The Orchestration
-- ## File Locations
-- ## Prompt Structure
-- ## World Injection Block
-- ## Scene Context Block
-- ## Generation Instructions
-- ## Required Output Schema
-- ## Time Elapsed Guidelines
-- ## Handling Different Injection Types
-- ## Orchestrator Pseudocode
-- # 1. Check for world injection
-- # 2. Build prompt
-- # 3. Call narrator (--continue maintains thread)
-- # 4. Parse output
-- # 5. Apply mutations to graph
-- # 6. Clear injection (consumed)
-- # 7. Trigger graph tick with time_elapsed
-- # 8. If flips, run World Runner
-- # 9. Return scene for frontend
-- ## Two Generation Modes
-- ## Input: Scene Context
-- ## Conversational Generation
-- ## Significant Generation
-- ## SceneTree Structure
-- ## Character Voice Guidelines
-- ## Voice Generation
-- ## Clickable Word Selection
-- ## Invention Guidelines
-- ## Background Generation
-- ## Rolling Window Generation
-- ## Thread Continuity
-- # First scene of playthrough
-- # All subsequent scenes
-- ## Quality Control
-
-**Sections:**
-- # Narrator — Behaviors: What the Narrator Produces
-- ## Two Response Modes
-- ## Dialogue Chunks
-- ## Graph Mutations
-- ## Scene Package (Significant Actions Only)
-- ## Complete Output Schema
-- ## time_elapsed Guidelines
-- ## Input: World Injection
-- ## Quality Indicators
-- ## Example: Conversational Response
-
 **Doc refs:**
 - `agents/narrator/CLAUDE.md`
 - `docs/agents/narrator/HANDOFF_Rolling_Window_Architecture.md`
 
 **Sections:**
-- # Handoff — Rolling Window Architecture
+- # Narrator Archive - 2024-12
+- ## Archived Sections (2025-12-19)
+- ## HANDOFF_Rolling_Window_Architecture (Full Detail)
+- # Handoff - Rolling Window Architecture
 - ## The Problem
 - ## The Solution: Rolling Window
 - ## Why SSE (Not WebSocket)
@@ -756,192 +855,197 @@ graph TD
 - ## Open Questions
 - ## Files Changed
 - ## Next Steps
+- ## TOOL_REFERENCE: Complete Example + JSON Schema (Archived)
+- ## INPUT_REFERENCE: Complete Example Input (Archived)
+
+**Sections:**
+- # Narrator — Algorithm: Scene Generation
+- ## CHAIN
+- ## Purpose
+- ## Overview
+- ## High-Level Flow
+- ## Inputs and Outputs
+- ## Two Modes
+- ## Data Structures
+- ## Core Steps (Algorithm)
+- ## Algorithm: generate_scene_output
+- ## Rolling Window (Summary)
+- ## Thread Continuity (Summary)
+- ## Key Decisions
+- ## Data Flow
+- ## Complexity
+- ## Helper Functions
+- ## Interactions
+- ## Quality Checks (Minimum)
+- ## Gaps / Ideas / Questions
+
+**Doc refs:**
+- `docs/agents/narrator/INPUT_REFERENCE.md`
+- `docs/agents/narrator/TOOL_REFERENCE.md`
+
+**Sections:**
+- # Narrator — Behaviors: What the Narrator Produces
+- ## CHAIN
+- ## Two Response Modes
+- ## Dialogue Chunks
+- ## Graph Mutations
+- ## SceneTree (Significant Actions)
+- ## time_elapsed Rules
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+- ## World Injection Handling
+- ## Quality Indicators
 
 **Code refs:**
-- `engine/infrastructure/api/playthroughs.py`
 - `engine/infrastructure/orchestration/agent_cli.py`
 - `engine/infrastructure/orchestration/narrator.py`
-- `engine/physics/graph/graph_ops.py`
-- `engine/physics/graph/graph_queries.py`
-- `narrator_prompt.py`
-- `tools/stream_dialogue.py`
+- `narrator.py`
+- `stream_dialogue.py`
 
 **Doc refs:**
 - `agents/narrator/CLAUDE.md`
-- `playthroughs/kl/PROFILE_NOTES.md`
 
 **Sections:**
 - # Narrator — Implementation: Code Architecture and Structure
 - ## CHAIN
 - ## CODE STRUCTURE
 - ## DESIGN PATTERNS
+- ## SCHEMA
 - ## ENTRY POINTS
-- ## DATA FLOW
+- ## DATA FLOW AND DOCKING (FLOW-BY-FLOW)
+- ## LOGIC CHAINS
 - ## MODULE DEPENDENCIES
 - ## STATE MANAGEMENT
-- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
 - ## CONFIGURATION
-- ## BIDIRECTIONAL LINKS
-- ## GAPS / IDEAS / QUESTIONS
 
-**Sections:**
-- # Narrator Input Reference
-- ## Script Locations
-- ## Prompt Structure
-- ## Scene Context (Always Provided)
-- ## World Injection (If Flips Occurred)
-- ## Complete Example Input
-- ## Handling World Injection
-- ## Query Patterns
+**Code refs:**
+- `engine/infrastructure/orchestration/narrator.py`
+- `engine/physics/graph/graph_ops.py`
+- `engine/physics/graph/graph_queries.py`
 
 **Doc refs:**
+- `agents/narrator/CLAUDE.md`
 - `docs/agents/narrator/HANDOFF_Rolling_Window_Architecture.md`
 
 **Sections:**
 - # Narrator — Patterns: Why This Design
 - ## Core Insight
+- ## The Problem
+- ## The Pattern
 - ## Design Principles
+- ## Principles
 - ## Pre-Generation Model
 - ## What the Narrator Controls
 - ## Free Input (Exception)
 - ## Workflow (High Level)
+- ## Dependencies
+- ## Inspirations
+- ## Scope
+- ## Gaps / Ideas / Questions
+- ## CHAIN
+
+**Doc refs:**
+- `agents/narrator/CLAUDE.md`
+- `docs/agents/narrator/IMPLEMENTATION_Narrator.md`
+- `docs/agents/narrator/PATTERNS_Narrator.md`
+- `docs/schema/SCHEMA.md`
+
+**Sections:**
+- # Narrator — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+- ## POINTERS
 - ## CHAIN
 
 **Code refs:**
 - `engine/infrastructure/orchestration/agent_cli.py`
 - `engine/infrastructure/orchestration/narrator.py`
-- `engine/physics/graph_tick.py`
 
 **Doc refs:**
+- `agents/narrator/CLAUDE_old.md`
 - `docs/agents/narrator/ALGORITHM_Scene_Generation.md`
+- `docs/agents/narrator/BEHAVIORS_Narrator.md`
+- `docs/agents/narrator/HANDOFF_Rolling_Window_Architecture.md`
 - `docs/agents/narrator/IMPLEMENTATION_Narrator.md`
+- `docs/agents/narrator/INPUT_REFERENCE.md`
+- `docs/agents/narrator/PATTERNS_Narrator.md`
 - `docs/agents/narrator/PATTERNS_World_Building.md`
 - `docs/agents/narrator/SYNC_Narrator.md`
 - `docs/agents/narrator/TEST_Narrator.md`
+- `docs/agents/narrator/TOOL_REFERENCE.md`
 - `docs/agents/narrator/VALIDATION_Narrator.md`
+- `docs/agents/narrator/archive/SYNC_archive_2024-12.md`
 
 **Sections:**
-- # Narrator — Current State
-- ## CHAIN
-- ## Documentation Status
+- # Archived: SYNC_Narrator.md
 - ## RECENT CHANGES
-- ## Recent Updates
-- ## Open Questions (Resolved)
-- ## Remaining Work
-- ## ARCHIVE
+
+**Sections:**
+- # Player Notes — {playthrough_id}
+- ## Player Setup
+- ## Current Understanding
+- ## Session Observations
+- ## Emerging Patterns
+- ## Narrator Adjustments
+- ## Open Questions
 
 **Code refs:**
 - `engine/tests/test_narrator_integration.py`
 
 **Sections:**
-- # Narrator — Test: Test Cases and Coverage
+- # Narrator — Health: Verification Mechanics and Coverage
+- ## PURPOSE OF THIS FILE
 - ## CHAIN
-- ## TEST STRATEGY
-- ## UNIT TESTS
-- ## INTEGRATION TESTS
-- ## BEHAVIORAL TESTS
-- ## EDGE CASES
-- ## TEST COVERAGE
+- ## FLOWS ANALYSIS (TRIGGERS + FREQUENCY)
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## DOCK TYPES (COMPLETE LIST)
+- ## CHECKER INDEX
+- ## INDICATOR: author_coherence
 - ## HOW TO RUN
-- # Run narrator integration tests
-- # Run with coverage
-- # Run schema validation tests
-- # Manual test: invoke narrator directly
-- ## KNOWN TEST GAPS
-- ## FLAKY TESTS
-- ## GOLD STANDARD SESSIONS
-- ## GAPS / IDEAS / QUESTIONS
+- # Run narrator integration checks
+- ## KNOWN GAPS
+
+**Doc refs:**
+- `docs/schema/SCHEMA.md`
 
 **Sections:**
 - # Narrator Tool Reference
 - ## How To Use
-- # First call (starts persistent session)
+- # First call (starts session)
 - # Subsequent calls (continues session)
-- # Test with a scene context
-- # Parse Narrator output
-- # Validate mutations
-- # Validate against Pydantic model
-- # ...
-- ## Complete Output Schema
-- ## Scene Package
-- ## Time Elapsed
+- ## Output Schema (NarratorOutput)
+- ## SceneTree (Significant Actions)
+- ## Dialogue Chunks (Conversational Actions)
 - ## Graph Mutations
-- ## Seeds
-- ## Complete Example
-- ## Validation Rules
-- ## JSON Schema (for programmatic validation)
+- ## Time Elapsed
+- ## Validation Rules (Minimum)
 
 **Sections:**
 - # Narrator — Validation: Behavioral Invariants and Output Verification
 - ## CHAIN
-- ## INVARIANTS
-- ## PROPERTIES
-- ## ERROR CONDITIONS
-- ## TEST COVERAGE
+- ## INVARIANTS (Must Always Hold)
 - ## VERIFICATION PROCEDURE
-- # Run narrator integration tests
-- # Validate mutation schemas
-- # Load narrator output and validate
-- # Check clickable validity
-- ## EXPERIENCE VALIDATION
-- ## QUALITY GATES
+- ## TEST COVERAGE (Snapshot)
+- ## SYNC STATUS
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
-- # World Runner — Algorithm: How It Works
-- ## Core Principle: Runner Owns the Tick Loop
-- # Run one graph tick (5 min)
-- # Check for flips
-- # Interrupt — something happened TO THE PLAYER
-- # Process non-player flips (world keeps moving)
-- # Completed without interruption
-- ## Graph Ticks vs Narrative Flips
-- ## The Full Flow
-- ## The Trigger
-- ## Player Context
-- # Calculate position along path based on tick
-- ## affects_player() — The Load-Bearing Function
-- # Spatial: flip at player's current location?
-- # Direct: flip involves player character?
-- # Companion: flip involves someone traveling with player?
-- # High-stakes: flip is critical enough to reach player?
-- ## Stateless Between Calls
-- ## Graph Ticks vs Narrative Flips
-- ## Step 1: Energy Flow
-- ## Step 2: Identify Breaks
-- ## Step 3: Process Breaks
-- ## Step 4: Cascade Resolution
-- # Check if break created new unstable tensions
-- # Check if belief changes destabilized anything
-- ## Step 5: News Propagation
-- # Calculate spread distance based on time and significance
-- # News may mutate as it travels
-- # Characters at location may hear
-- ## Step 6: Build and Return Injection
-- ## Time Scale: Tick Count
-- ## Player Intersection Detection
-- ## Implementation Architecture
-- # 1. Run graph tick (mechanical, no LLM)
-- # 2. Check for player-affecting flips
-- # INTERRUPT - call LLM to generate event
-- # 3. Process non-player flips (world moves)
-- # 4. Propagate news
-- # Completed without interruption
-- ## What Triggers the Runner?
-- # Narrator spawns Runner as background task
-- # Narrator continues (or waits for result)
-- ## Flip Context: The Cluster
-- # The flipped tension itself
-- # Narratives in the tension
-- # Characters who believe those narratives
-- # Places involved
-- # Connected narratives (1 hop)
-- ## CHAIN
-
-**Sections:**
-- # World Runner — Behaviors: What It Produces
-- ## The Injection Interface
-- ## Injection: Interrupted
+- # World Runner — Archive (2024-12)
+- ## Purpose
+- ## Archived From TOOL_REFERENCE.md
+- ## Complete Example
+- ## Validation Rules
+- ## Processing Order
+- ## JSON Schema (for programmatic validation)
+- ## Archived From BEHAVIORS_World_Runner.md
 - ## Injection as Markdown (Narrator Input)
 - # WORLD INJECTION
 - ## Status: INTERRUPTED
@@ -955,16 +1059,48 @@ graph TD
 - ## WORLD CHANGES (While You Traveled)
 - ## NEWS AVAILABLE
 - ## ARRIVAL: York
-- ## Injection Queue (In-Scene Events)
-- ## INJECTION QUEUE
-- ## Event (For Interrupts)
-- ## WorldChange (For Background Events)
-- ## News (What Player Could Hear)
-- ## Time Estimates (for Narrator)
-- ## Graph Mutations (Applied During Run)
-- ## Output by Duration
-- ## The Resume Pattern
+- ## Archived From INPUT_REFERENCE.md
+- ## Complete Example Input
+- ## Processing Guidance
 - ## CHAIN
+
+**Sections:**
+- # World Runner — Algorithm: How It Works
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## Core Principle: Runner Owns the Tick Loop
+- ## ALGORITHM: run_world
+- ## Player Intersection (`affects_player`)
+- ## Algorithm Steps (Condensed)
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## Stateless Between Calls
+- ## Cluster Context for Flips
+- ## GAPS / IDEAS / QUESTIONS
+- ## CHAIN
+
+**Sections:**
+- # World Runner — Behaviors: What It Produces
+- ## Injection Interface
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## OUTPUTS
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## Interrupted Injection
+- ## Completed Injection
+- ## Injection Queue (In-Scene Events)
+- ## Event / WorldChange / News
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+- ## Resume Pattern (Narrator)
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
 - ## CHAIN
 
 **Code refs:**
@@ -994,48 +1130,65 @@ graph TD
 - # World Runner Input Reference
 - ## Script Location
 - ## Prompt Structure
-- ## Flip Context (Why You're Called)
-- ## Graph Context (What You Need to Know)
-- ## Player Context (Where Player Is)
-- ## Complete Example Input
-- ## Processing Guidance
-- ## CHAIN
-
-**Sections:**
-- # World Runner — Patterns: Why This Shape
-- ## The Core Insight
-- ## The Interrupt/Resume Pattern
-- ## Stateless vs Persistent
-- ## Why Separation Matters
-- ## When Does Runner Run?
-- ## What The World Runner Is NOT
-- ## The Injection Contract
-- ## Urgency Becomes Real
-- ## Connection to Energy/Weight
-- ## The Player Experience
-- ## The Critical Function: affects_player()
-- # Spatial: Is the flip at player's current location?
-- # Direct: Does the flip involve the player?
-- # Companion: Does it involve someone WITH the player?
-- # Critical urgency reaching player's area?
-- ## CHAIN
+- ## Flip Context
+- ## Graph Context
+- ## Player Context
+- ## Processing Guidance (Short)
 - ## CHAIN
 
 **Code refs:**
 - `engine/infrastructure/orchestration/world_runner.py`
-- `engine/orchestration/world_runner.py`
+- `engine/physics/graph/graph_ops.py`
+- `engine/physics/graph/graph_queries.py`
 
 **Doc refs:**
 - `agents/world_runner/CLAUDE.md`
 
 **Sections:**
+- # World Runner — Patterns: Why This Shape
+- ## The Core Insight
+- ## The Problem
+- ## The Pattern
+- ## Design Principles
+- ## Principles
+- ## Interrupt/Resume Pattern
+- ## Stateless Runner
+- ## What the Runner Is Not
+- ## Player Impact Threshold
+- ## Why Separation Matters
+- ## Dependencies
+- ## Inspirations
+- ## Scope
+- ## Gaps / Ideas / Questions
+- ## CHAIN
+
+**Code refs:**
+- `engine/infrastructure/orchestration/world_runner.py`
+
+**Doc refs:**
+- `agents/world_runner/CLAUDE.md`
+- `archive/SYNC_archive_2024-12.md`
+
+**Sections:**
 - # World Runner — Sync: Current State
-- ## Current State
+- ## MATURITY
+- ## CURRENT STATE
 - ## Documentation Status
 - ## Integration
 - ## Notes
+- ## IN PROGRESS
+- ## RECENT CHANGES
 - ## Updates
+- ## Agent Observations
+- ## Review Observations
 - ## CHAIN
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## GAPS
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 
 **Sections:**
 - # World Runner — Test: Coverage and Gaps
@@ -1050,18 +1203,18 @@ graph TD
 - # Proposed location:
 - # pytest tests/agents/world_runner/
 - ## KNOWN TEST GAPS
+- ## FLAKY TESTS
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # World Runner Tool Reference
-- ## Complete Output Schema
-- ## CHAIN
+- ## WorldRunnerOutput
 - ## Graph Mutations
 - ## World Injection
-- ## Complete Example
-- ## Validation Rules
+- ## Validation Rules (Summary)
 - ## Processing Order
-- ## JSON Schema (for programmatic validation)
+- ## Archive Note
+- ## CHAIN
 
 **Code refs:**
 - `engine/infrastructure/orchestration/world_runner.py`
@@ -1079,16 +1232,60 @@ graph TD
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
+- # CONCEPT: Subjective Truth & Rumor — Canon vs Belief
+- ## WHAT IT IS
+- ## WHY IT EXISTS
+- ## KEY PROPERTIES
+- ## RELATIONSHIPS TO OTHER CONCEPTS
+- ## THE CORE INSIGHT
+- ## COMMON MISUNDERSTANDINGS
+- ## SEE ALSO
+
+**Doc refs:**
+- `docs/network/transposition/PATTERNS_Local_Canon_Primary.md`
+
+**Sections:**
+- # TOUCHES: Where Subjective Truth & Rumor Appears in the System
+- ## MODULES THAT IMPLEMENT
+- ## INTERFACES
+- ## DEPENDENCIES
+- ## INVARIANTS ACROSS MODULES
+- ## CONFLICTS / TENSIONS
+- ## SYNC
+- ## WHEN TO UPDATE THIS FILE
+
+**Sections:**
+- # Vision Archive — 2024-12
+- ## Archived: Market Validation (CK3)
+- ## Archived: Octalysis Mapping
+- ## Archived: Engagement Levers
+
+**Code refs:**
+- `engine/infrastructure/api/playthroughs.py`
+
+**Sections:**
 - # The Opening — Algorithm
 - ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: _opening_to_scene_tree
+- ## Primary Flow
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # The Opening — Behaviors: Player Experience
 - ## CHAIN
+- ## BEHAVIORS
 - ## WHAT THE PLAYER EXPERIENCES
-- ## INPUT / OUTPUT
+- ## INPUTS / OUTPUTS
 - ## OBSERVABLE BEHAVIORS
 - ## EDGE CASES
+- ## ANTI-BEHAVIORS
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
@@ -1153,6 +1350,12 @@ graph TD
 **Sections:**
 - # The Opening — Pattern
 - ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
 - ## THE INSIGHT
 - ## THE DESIGN PHILOSOPHY
 - ## WHY THIS WORKS
@@ -1164,27 +1367,60 @@ graph TD
 - `engine/infrastructure/orchestration/opening.py`
 - `engine/orchestration/opening.py`
 
+**Doc refs:**
+- `docs/design/opening/CONTENT.md`
+
 **Sections:**
 - # The Opening — Sync
 - ## Chain Reference
-- ## Current State
+- ## MATURITY
+- ## CURRENT STATE
 - ## Code Locations
+- ## IN PROGRESS
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 - ## Upcoming Work
 - ## Notes
+- ## Agent Observations
 
 **Sections:**
 - # The Opening — Tests
 - ## CHAIN
 - ## Planned Checks
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/infrastructure/api/playthroughs.py`
+
+**Doc refs:**
+- `docs/design/opening/TEST_Opening.md`
 
 **Sections:**
 - # The Opening — Validation
 - ## CHAIN
 - ## SUCCESS CRITERIA
 - ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
 - ## METRICS (if we instrument)
 - ## TEST SCENARIOS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
 - ## POST-OPENING VERIFICATION
+- ## SYNC STATUS
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
@@ -1230,45 +1466,69 @@ graph TD
 - ## Adding New Scenarios
 - ## Design Principles
 
-**Sections:**
-- # Vision — Algorithm: Systems That Create Engagement
-- ## Purpose
-- ## Architecture: Two Layers
-- ## Engine Systems (Preliminary)
-- ## Presentation Systems (Preliminary)
-- ## What's Missing?
-- ## Systems → Drives (Preliminary Mapping)
-- ## Implementation Thinking (Very Preliminary)
-- ## Links to Detailed Documentation
-- ## My Current Uncertainties
-- ## Evolution Notes
-
-**Sections:**
-- # Vision — Behaviors: The Player Experience
-- ## What the Player Does
-- ## The Arc of a Playthrough
-- ## Observable Behaviors by View
-- ## Key Experience Moments
-- ## Core Drives: Octalysis Framework
-- ## Anti-Patterns to Avoid
-- ## Grounding: Beyond Text
-- ## Engagement Levers
-- ## Metrics (If We Could Measure)
-
 **Doc refs:**
 - `docs/design/ALGORITHM_Vision.md`
-- `docs/design/BEHAVIORS_Drives_And_Metrics.md`
 - `docs/design/BEHAVIORS_Vision.md`
 - `docs/design/IMPLEMENTATION_Vision.md`
 - `docs/design/PATTERNS_Vision.md`
 - `docs/design/SYNC_Vision.md`
 - `docs/design/TEST_Vision.md`
 - `docs/design/VALIDATION_Vision.md`
+
+**Sections:**
+- # Vision — Algorithm: Systems That Create Engagement
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: map_vision_systems
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## Purpose
+- ## Architecture: Two Layers
+- ## Engine Systems (Preliminary)
+- ## Presentation Systems (Preliminary)
+- ## What's Missing (Summary)
+- ## Systems → Drives (Preliminary Mapping)
+- ## Implementation Thinking (Summary)
+- ## My Current Uncertainties
+- ## Evolution Notes
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `docs/design/archive/SYNC_archive_2024-12.md`
+
+**Sections:**
+- # Vision — Behaviors: The Player Experience
+- ## CHAIN
+- ## BEHAVIORS
+- ## What the Player Does
+- ## The Arc of a Playthrough
+- ## Observable Behaviors by View
+- ## Key Experience Moments
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## Core Drives (Archived Summary)
+- ## ANTI-BEHAVIORS
+- ## Grounding (Summary)
+- ## Engagement Levers (Archived Summary)
+- ## Metrics (Archived Summary)
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `docs/design/ALGORITHM_Vision.md`
+- `docs/design/BEHAVIORS_Vision.md`
+- `docs/design/IMPLEMENTATION_Vision.md`
+- `docs/design/PATTERNS_Vision.md`
+- `docs/design/SYNC_Vision.md`
+- `docs/design/TEST_Vision.md`
+- `docs/design/VALIDATION_Vision.md`
+- `docs/design/archive/SYNC_archive_2024-12.md`
 - `docs/design/opening/ALGORITHM_Opening.md`
 - `docs/design/opening/BEHAVIORS_Opening.md`
 - `docs/design/opening/CLAUDE.md`
-- `docs/design/opening/CLAUDE_Core_Loop.md`
-- `docs/design/opening/CLAUDE_Tool_Reference.md`
 - `docs/design/opening/CONTENT.md`
 - `docs/design/opening/GUIDE.md`
 - `docs/design/opening/PATTERNS_Opening.md`
@@ -1284,6 +1544,8 @@ graph TD
 - ## DESIGN PATTERNS
 - ## ENTRY POINTS
 - ## DATA FLOW
+- ## SCHEMA
+- ## LOGIC CHAINS
 - ## MODULE DEPENDENCIES
 - ## STATE MANAGEMENT
 - ## RUNTIME BEHAVIOR
@@ -1292,13 +1554,31 @@ graph TD
 - ## BIDIRECTIONAL LINKS
 - ## GAPS / IDEAS / QUESTIONS
 
+**Doc refs:**
+- `docs/design/ALGORITHM_Vision.md`
+- `docs/design/BEHAVIORS_Vision.md`
+- `docs/design/IMPLEMENTATION_Vision.md`
+- `docs/design/PATTERNS_Vision.md`
+- `docs/design/SYNC_Vision.md`
+- `docs/design/TEST_Vision.md`
+- `docs/design/VALIDATION_Vision.md`
+- `docs/design/archive/SYNC_archive_2024-12.md`
+
 **Sections:**
 - # Vision — Patterns: Why This Design
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
 - ## The Core Insight
 - ## The One-Sentence Pitch
 - ## The Player Fantasy
 - ## Reference Points
-- ## Market Validation: What CK3 Players Actually Want
+- ## Market Validation (Archived Summary)
 - ## Design Principles
 - ## The Technical Bet
 - ## The Central Risk
@@ -1306,9 +1586,23 @@ graph TD
 - ## Answered Questions
 - ## Open Questions
 
+**Doc refs:**
+- `docs/design/BEHAVIORS_Vision.md`
+- `docs/design/IMPLEMENTATION_Vision.md`
+- `docs/design/PATTERNS_Vision.md`
+- `docs/design/archive/SYNC_archive_2024-12.md`
+
 **Sections:**
 - # Vision — Sync: Current State
-- ## Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 - ## What's Been Established
 - ## Answered Questions
 - ## Clarified Success Metric
@@ -1316,6 +1610,17 @@ graph TD
 - ## Decisions Needed
 - ## Next Steps
 - ## Handoff Notes
+- ## Agent Observations
+- ## ARCHIVE
+
+**Doc refs:**
+- `docs/design/BEHAVIORS_Vision.md`
+- `docs/design/archive/SYNC_archive_2024-12.md`
+
+**Sections:**
+- # Archived: SYNC_Vision.md
+- ## RECENT CHANGES
+- ## Agent Observations
 
 **Doc refs:**
 - `docs/design/opening/CONTENT.md`
@@ -1325,14 +1630,35 @@ graph TD
 - ## CHAIN
 - ## Experience Metrics
 - ## Build Verification
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `docs/design/SYNC_Vision.md`
+- `docs/design/TEST_Vision.md`
 
 **Sections:**
 - # Vision — Validation: How We Know It's Working
+- ## CHAIN
 - ## The Core Question
 - ## Validation by Layer
 - ## Proof of Concept Milestones
 - ## Red Flags to Watch
 - ## The Ultimate Test
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `engine/moment_graph/traversal.py`
@@ -1386,6 +1712,8 @@ graph TD
 
 **Code refs:**
 - `engine/moment_graph/__init__.py`
+- `engine/moment_graph/queries.py`
+- `engine/moment_graph/traversal.py`
 
 **Sections:**
 - # Moment Graph Engine — Sync: Current State
@@ -1395,6 +1723,7 @@ graph TD
 - ## RECENT CHANGES
 - ## HANDOFF: FOR AGENTS
 - ## TODO
+- ## Agent Observations
 
 **Code refs:**
 - `engine/moment_graph/traversal.py`
@@ -1533,15 +1862,25 @@ graph TD
 
 **Code refs:**
 - `engine/tests/__init__.py`
-- `test_behaviors.py`
-- `test_implementation.py`
-- `test_integration_scenarios.py`
-- `test_spec_consistency.py`
+- `engine/tests/test_behaviors.py`
+- `engine/tests/test_e2e_moment_graph.py`
+- `engine/tests/test_history.py`
+- `engine/tests/test_implementation.py`
+- `engine/tests/test_integration_scenarios.py`
+- `engine/tests/test_models.py`
+- `engine/tests/test_moment.py`
+- `engine/tests/test_moment_graph.py`
+- `engine/tests/test_moment_lifecycle.py`
+- `engine/tests/test_moment_standalone.py`
+- `engine/tests/test_moments_api.py`
+- `engine/tests/test_narrator_integration.py`
+- `engine/tests/test_spec_consistency.py`
 
 **Sections:**
 - # Engine Test Suite — Implementation: File Layout
 - ## CHAIN
 - ## DIRECTORY STRUCTURE
+- ## FILE RESPONSIBILITIES
 - ## ENTRY POINTS
 
 **Code refs:**
@@ -1614,15 +1953,65 @@ graph TD
 - # Verify integration tests fail fast or skip when DB is missing
 
 **Code refs:**
+- `MomentDisplay.tsx`
+- `frontend/app/page.ts`
+- `frontend/app/page.tsx`
+- `frontend/components/GameClient.tsx`
+- `frontend/components/GameLayout.tsx`
+- `frontend/components/moment/MomentDebugPanel.tsx`
+- `frontend/components/scene/CenterStage.tsx`
+- `frontend/hooks/useGameState.ts`
+- `frontend/hooks/useMoments.ts`
+- `frontend/lib/api.ts`
+- `frontend/types/game.ts`
+
+**Sections:**
+- # Frontend — Implementation: Code Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## MODULE DEPENDENCIES (INTERNAL)
+- ## EXTERNAL DEPENDENCIES
+
+**Code refs:**
+- `frontend/app/page.ts`
+- `frontend/app/page.tsx`
+- `frontend/components/scene/CenterStage.tsx`
+- `frontend/hooks/useGameState.ts`
+- `frontend/hooks/useMoments.ts`
+- `frontend/lib/api.ts`
+
+**Doc refs:**
+- `docs/frontend/ALGORITHM_Frontend_Data_Flow.md`
+- `docs/frontend/PATTERNS_Presentation_Layer.md`
+
+**Sections:**
+- # Frontend — Implementation: Runtime and Configuration
+- ## CHAIN
+- ## ENTRY POINTS
+- ## DATA FLOW (SUMMARY)
+- ## STATE MANAGEMENT
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Archived: SYNC_Frontend.md (Condensed)
+- ## MATURITY
+- ## RECENT CHANGES (ARCHIVED SUMMARY)
+- ## NOTES
+
+**Code refs:**
 - `frontend/components/map/MapClient.ts`
 
 **Sections:**
-- # Map View — Patterns: Interactive Travel Map
+- # Interactive Travel Map — Patterns (Deprecated)
 - ## CHAIN
 - ## THE PROBLEM
 - ## THE PATTERN
+- ## SCOPE
 - ## PRINCIPLES
 - ## DEPENDENCIES
+- ## INSPIRATIONS
 - ## WHAT THIS DOES NOT SOLVE
 - ## GAPS / IDEAS / QUESTIONS
 
@@ -1634,31 +2023,31 @@ graph TD
 - ## CHAIN
 - ## THE PROBLEM
 - ## THE PATTERN
+- ## SCOPE
 - ## PRINCIPLES
 - ## DEPENDENCIES
+- ## INSPIRATIONS
 - ## WHAT THIS DOES NOT SOLVE
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `frontend/app/map/page.tsx`
 - `frontend/components/map/MapClient.ts`
-- `frontend/components/map/MapClient.tsx`
-- `frontend/lib/map/index.ts`
-- `frontend/lib/map/projection.ts`
-- `frontend/lib/map/random.ts`
 
 **Doc refs:**
 - `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
-- `docs/frontend/map/SYNC_Map_View.md`
+- `docs/frontend/map/PATTERNS_Parchment_Map_View.md`
+- `docs/world/map/SYNC_Map.md`
+- `world/map/SYNC_Map.md`
 
 **Sections:**
 - # Map View — Sync: Current State
 - ## CHAIN
-- ## MATURITY
-- ## CURRENT STATE
-- ## RECENT CHANGES
-- ## HANDOFF: FOR AGENTS
-- ## TODO
+- ## IN PROGRESS
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR HUMAN
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+- ## Updates
 
 **Code refs:**
 - `frontend/components/minimap/Minimap.ts`
@@ -1668,8 +2057,10 @@ graph TD
 - ## CHAIN
 - ## THE PROBLEM
 - ## THE PATTERN
+- ## SCOPE
 - ## PRINCIPLES
 - ## DEPENDENCIES
+- ## INSPIRATIONS
 - ## WHAT THIS DOES NOT SOLVE
 - ## GAPS / IDEAS / QUESTIONS
 
@@ -1686,9 +2077,15 @@ graph TD
 - ## CHAIN
 - ## MATURITY
 - ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
 - ## RECENT CHANGES
 - ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## AGENT OBSERVATIONS
 - ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 
 **Code refs:**
 - `frontend/components/panel/ChronicleTab.tsx`
@@ -1701,6 +2098,8 @@ graph TD
 - ## CHAIN
 - ## THE PROBLEM
 - ## THE PATTERN
+- ## SCOPE
+- ## INSPIRATIONS
 - ## PRINCIPLES
 - ## DEPENDENCIES
 - ## WHAT THIS DOES NOT SOLVE
@@ -1710,14 +2109,23 @@ graph TD
 - `frontend/components/panel/RightPanel.ts`
 - `frontend/components/panel/RightPanel.tsx`
 
+**Doc refs:**
+- `docs/frontend/SYNC_Frontend.md`
+
 **Sections:**
 - # Right Panel — Sync: Current State
 - ## CHAIN
 - ## MATURITY
 - ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
 - ## RECENT CHANGES
 - ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
 - ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+- ## AGENT OBSERVATIONS
 
 **Code refs:**
 - `frontend/app/scenarios/page.ts`
@@ -1727,8 +2135,12 @@ graph TD
 - ## CHAIN
 - ## THE PROBLEM
 - ## THE PATTERN
+- ## SCOPE
+- ## INSPIRATIONS
 - ## PRINCIPLES
 - ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
 - ## WHAT THIS DOES NOT SOLVE
 - ## GAPS / IDEAS / QUESTIONS
 
@@ -1746,16 +2158,45 @@ graph TD
 - ## MATURITY
 - ## CURRENT STATE
 - ## RECENT CHANGES
+- ## IN PROGRESS
+- ## KNOWN ISSUES
 - ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
 - ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+- ## Agent Observations
+
+**Code refs:**
+- `frontend/lib/api.ts`
 
 **Sections:**
 - # Scene View — Algorithm
 - ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: RenderSceneView
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # Scene View — Behaviors
 - ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `frontend/components/scene/CenterStage.tsx`
+- `frontend/components/scene/SceneBanner.tsx`
+- `frontend/components/scene/SceneView.ts`
+- `frontend/hooks/useMoments.ts`
 
 **Doc refs:**
 - `data/init/BLOOD_LEDGER_DESIGN_DOCUMENT.md`
@@ -1764,10 +2205,17 @@ graph TD
 
 **Sections:**
 - # Scene View — Patterns: Design Philosophy
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
 - ## Purpose
 - ## The Core Question
-- ## Design Principles for Scene
+- ## PRINCIPLES
+- ## SCOPE
+- ## DEPENDENCIES
+- ## INSPIRATIONS
 - ## What We Don't Know Yet
+- ## GAPS / IDEAS / QUESTIONS
 - ## What We're Testing
 - ## Reference: Scene Structure (from Design Doc)
 - ## My Current Thinking
@@ -1786,8 +2234,6 @@ graph TD
 - `SceneImage.tsx`
 - `SceneView.tsx`
 - `SettingStrip.tsx`
-- `frontend/components/moment/index.ts`
-- `frontend/components/scene/SceneView.tsx`
 - `frontend/hooks/useMoments.ts`
 - `frontend/types/game.ts`
 
@@ -1798,27 +2244,70 @@ graph TD
 
 **Sections:**
 - # Scene View — Sync: Current State
-- ## MATURITY
 - ## CURRENT STATE
-- ## RECENT CHANGES
+- ## IN PROGRESS
+- ## KNOWN ISSUES
+- ## TODO
 - ## DESIGN QUESTIONS (from PATTERNS)
 - ## INTEGRATION
 - ## HANDOFF: FOR AGENTS
 - ## HANDOFF: FOR HUMAN
-- ## RECENT CHANGES
 - ## POINTERS
+- ## Agent Observations
+- ## CONSCIOUSNESS TRACE
+- ## ARCHIVE
+
+**Code refs:**
+- `SceneView.tsx`
+- `frontend/components/moment/index.ts`
+- `frontend/components/scene/SceneView.tsx`
+
+**Doc refs:**
+- `docs/frontend/scene/ALGORITHM_Scene.md`
+- `docs/frontend/scene/BEHAVIORS_Scene.md`
+- `docs/frontend/scene/PATTERNS_Scene.md`
+- `docs/frontend/scene/SYNC_Scene.md`
+- `docs/frontend/scene/TEST_Scene.md`
+- `docs/frontend/scene/VALIDATION_Scene.md`
+
+**Sections:**
+- # Archived: SYNC_Scene.md
+- ## MATURITY
+- ## RECENT CHANGES
+- ## RECENT CHANGES
+
+**Code refs:**
+- `CenterStage.tsx`
+- `SceneActions.tsx`
+- `SceneBanner.tsx`
+- `SceneView.tsx`
 
 **Sections:**
 - # Scene View — Tests
 - ## CHAIN
-- ## Planned Suites
-- ## Coverage Gaps
+- ## PLANNED SUITES
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # No automated tests are wired yet for the scene module.
+- # Expected commands once suites exist:
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # Scene View — Validation
 - ## CHAIN
-- ## Invariants
-- ## Checks
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `engine/infrastructure/api/moments.py`
@@ -1826,22 +2315,23 @@ graph TD
 - `frontend/hooks/useGameState.ts`
 - `frontend/lib/api.ts`
 
-**Doc refs:**
-- `docs/frontend/BEHAVIORS_Frontend_State_And_Interaction.md`
-- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
-- `docs/frontend/PATTERNS_Frontend.md`
-- `docs/frontend/SYNC_Frontend.md`
-
 **Sections:**
 - # Frontend Data Flow — Algorithm
-- ## Overview
-- ## Two Paths
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: ProcessFrontendDataFlow
+- ## KEY DECISIONS
+- ## DATA FLOW
 - ## Moment Updates: Current vs Desired
 - ## SSE Event Types
 - ## Implementation Checklist
 - ## Migration Path
 - ## Files
-- ## Chain
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `frontend/app/page.ts`
@@ -1851,55 +2341,23 @@ graph TD
 - ## CHAIN
 - ## BEHAVIORS
 - ## INPUTS / OUTPUTS
-- ## EDGE CASES
-- ## ANTI-BEHAVIORS
+- ## EDGE CASES (SUMMARY)
+- ## ANTI-BEHAVIORS (SUMMARY)
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `frontend/app/page.ts`
 - `frontend/app/page.tsx`
 - `frontend/components/GameClient.tsx`
-- `frontend/components/GameLayout.tsx`
-- `frontend/components/moment/ClickableText.tsx`
-- `frontend/components/moment/MomentDebugPanel.tsx`
-- `frontend/components/moment/MomentDisplay.tsx`
-- `frontend/components/moment/MomentStream.tsx`
-- `frontend/components/scene/Atmosphere.tsx`
-- `frontend/components/scene/CenterStage.tsx`
-- `frontend/components/scene/CharacterRow.tsx`
-- `frontend/components/scene/Hotspot.tsx`
-- `frontend/components/scene/HotspotRow.tsx`
-- `frontend/components/scene/ObjectRow.tsx`
-- `frontend/components/scene/SceneActions.tsx`
-- `frontend/components/scene/SceneBanner.tsx`
-- `frontend/components/scene/SceneHeader.tsx`
-- `frontend/components/scene/SceneImage.tsx`
-- `frontend/components/scene/SceneView.tsx`
-- `frontend/components/scene/SettingStrip.tsx`
 - `frontend/hooks/useGameState.ts`
-- `frontend/hooks/useMoments.ts`
-- `frontend/lib/api.ts`
-- `frontend/types/game.ts`
-- `frontend/types/map.ts`
-- `frontend/types/moment.ts`
-
-**Doc refs:**
-- `docs/frontend/PATTERNS_Presentation_Layer.md`
 
 **Sections:**
-- # Frontend — Implementation: Code Architecture and Structure
+- # Frontend — Implementation: Code Architecture (Overview)
 - ## CHAIN
-- ## CODE STRUCTURE
-- ## DESIGN PATTERNS
-- ## SCHEMA
-- ## ENTRY POINTS
-- ## DATA FLOW
-- ## MODULE DEPENDENCIES
-- ## STATE MANAGEMENT
-- ## RUNTIME BEHAVIOR
-- ## CONFIGURATION
-- ## BIDIRECTIONAL LINKS
-- ## GAPS / IDEAS / QUESTIONS
+- ## SUMMARY
+- ## CONTENTS
+- ## LOGIC CHAINS
+- ## CONCURRENCY MODEL
 
 **Code refs:**
 - `engine/api/moments.py`
@@ -1913,11 +2371,12 @@ graph TD
 - ## PRINCIPLES
 - ## DEPENDENCIES
 - ## INSPIRATIONS
+- ## SCOPE
 - ## WHAT THIS DOES NOT SOLVE
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `frontend/app/layout.tsx`
+- `api.ts`
 - `frontend/app/map/page.tsx`
 - `frontend/app/page.ts`
 - `frontend/app/page.tsx`
@@ -1925,73 +2384,61 @@ graph TD
 - `frontend/app/start/page.tsx`
 - `frontend/components/GameClient.tsx`
 - `frontend/components/GameLayout.tsx`
-- `frontend/components/SpeedControl.tsx`
-- `frontend/components/chronicle/ChroniclePanel.tsx`
-- `frontend/components/ui/Toast.tsx`
 - `frontend/hooks/useGameState.ts`
 - `frontend/hooks/useMoments.ts`
-- `frontend/hooks/useTempo.ts`
 - `frontend/lib/api.ts`
 - `frontend/types/game.ts`
-- `frontend/types/map.ts`
-- `frontend/types/moment.ts`
+- `useGameState.ts`
 
 **Doc refs:**
-- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
+- `docs/frontend/PATTERNS_Presentation_Layer.md`
+- `docs/frontend/SYNC_Frontend.md`
+- `docs/frontend/archive/SYNC_archive_2024-12.md`
+- `docs/frontend/scenarios/SYNC_Scenario_Selection.md`
 - `docs/physics/API_Physics.md`
 
 **Sections:**
 - # Frontend — Sync: Current State
 - ## CHAIN
 - ## CURRENT STATE
-- ## RECENT CHANGES
+- ## MATURITY
+- ## IN PROGRESS
 - ## KNOWN ISSUES
+- ## CONSCIOUSNESS TRACE
 - ## HANDOFF: FOR AGENTS
 - ## HANDOFF: FOR HUMAN
 - ## TODO
 - ## POINTERS
+- ## Agent Observations
+- ## GAPS
+- ## ARCHIVE
 - ## ARCHIVE
 
-**Code refs:**
-- `frontend/components/chronicle/ChroniclePanel.tsx`
-- `frontend/components/debug/DebugPanel.tsx`
-- `frontend/components/scene/CenterStage.tsx`
-- `frontend/components/voices/Voices.tsx`
-- `frontend/hooks/useGameState.ts`
-
 **Doc refs:**
-- `docs/frontend/ALGORITHM_Frontend_Data_Flow.md`
 - `docs/frontend/PATTERNS_Presentation_Layer.md`
 - `docs/frontend/SYNC_Frontend.md`
+- `docs/frontend/SYNC_Frontend_archive_2025-12.md`
+- `docs/frontend/archive/SYNC_archive_2024-12.md`
 
 **Sections:**
+- # Frontend — Sync Archive: 2025-12
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 - # Archived: SYNC_Frontend.md
-- ## MATURITY
 - ## RECENT CHANGES
-
-**Code refs:**
-- `hooks/useGameState.ts`
-- `hooks/useMoments.ts`
-- `lib/api.ts`
 
 **Sections:**
 - # Frontend — Test: Test Cases and Coverage
 - ## CHAIN
 - ## TEST STRATEGY
-- ## UNIT TESTS
-- ## INTEGRATION TESTS
-- ## E2E TESTS
-- ## EDGE CASES
-- ## TEST COVERAGE
-- ## HOW TO RUN
-- # Currently no test suite configured
-- # Future commands:
-- # Run all tests
-- # Run with coverage
-- # Run E2E tests
-- ## KNOWN TEST GAPS
-- ## FLAKY TESTS
-- ## RECOMMENDED IMPLEMENTATION ORDER
+- ## PLANNED COVERAGE
+- ## RUNNING TESTS
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
@@ -2001,13 +2448,9 @@ graph TD
 - # Frontend — Validation: Invariants and Verification
 - ## CHAIN
 - ## INVARIANTS
-- ## PROPERTIES
 - ## ERROR CONDITIONS
 - ## TEST COVERAGE
 - ## VERIFICATION PROCEDURE
-- # Build (type checking)
-- # Lint
-- # No dedicated test suite yet (see TEST doc)
 - ## SYNC STATUS
 - ## GAPS / IDEAS / QUESTIONS
 
@@ -2021,32 +2464,108 @@ graph TD
 
 **Sections:**
 - # API — Algorithm
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: create_scenario_playthrough
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
 - ## Graph Helpers
 - ## Health Check
 - ## Debug Mutation Stream
 - ## Playthrough Creation
 - ## CHAIN
 
-**Sections:**
-- # API — Behaviors
-- ## Health Check
-- ## Debug Mutation Stream
-- ## CHAIN
+**Code refs:**
+- `engine/infrastructure/api/playthroughs.py`
+
+**Doc refs:**
+- `docs/infrastructure/api/ALGORITHM_Api.md`
 
 **Sections:**
-- # API — Implementation
-- ## Graph Access Helpers
+- # API — Algorithm: Playthrough Creation (Legacy Alias)
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: create_playthrough
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # API — Behaviors
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
 - ## Health Check
 - ## Debug Mutation Stream
-- ## Action Endpoint
-- ## Playthrough Creation
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
 - ## CHAIN
+
+**Code refs:**
+- `app.py`
+- `engine/infrastructure/api/app.py`
+- `engine/infrastructure/api/moments.py`
+- `engine/infrastructure/api/playthroughs.py`
+- `engine/infrastructure/api/sse_broadcast.py`
+- `engine/infrastructure/api/tempo.py`
+- `moments.py`
+- `playthroughs.py`
+- `sse_broadcast.py`
+- `views.py`
+
+**Sections:**
+- # API — Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW AND DOCKING (FLOW-BY-FLOW)
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # API — Patterns
-- ## App Factory First
-- ## Lightweight Health Checks
-- ## SSE Debug Streams
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
+- ## CHAIN
+
+**Code refs:**
+- `app.py`
+- `engine/infrastructure/api/app.py`
+
+**Doc refs:**
+- `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+- `docs/infrastructure/api/PATTERNS_Api.md`
+
+**Sections:**
+- # API — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## GAPS
+- ## HANDOFF: FOR AGENTS
+- ## TODO
+- ## POINTERS
 - ## CHAIN
 
 **Code refs:**
@@ -2058,54 +2577,91 @@ graph TD
 - `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`
 - `docs/infrastructure/api/BEHAVIORS_Api.md`
 - `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+- `docs/infrastructure/api/PATTERNS_Api.md`
+- `docs/infrastructure/api/SYNC_Api.md`
+- `docs/infrastructure/api/TEST_Api.md`
+- `docs/infrastructure/api/VALIDATION_Api.md`
+
+**Sections:**
+- # Archived: SYNC_Api.md
+- ## RECENT CHANGES
+
+**Code refs:**
+- `engine/infrastructure/api/app.py`
+
+**Sections:**
+- # API — Health: Verification Mechanics and Coverage
+- ## PURPOSE OF THIS FILE
+- ## CHAIN
+- ## FLOWS ANALYSIS (TRIGGERS + FREQUENCY)
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## DOCK TYPES (COMPLETE LIST)
+- ## CHECKER INDEX
+- ## INDICATOR: api_availability
+- ## MANUAL RUN
+- # Verify API Health
+- # Verify Action Loop
+- ## KNOWN GAPS
+
+**Doc refs:**
 - `docs/infrastructure/api/SYNC_Api.md`
 
 **Sections:**
-- # API — Sync: Current State
-- ## CURRENT STATE
-- ## RECENT CHANGES
-- ## AGENT OBSERVATIONS
-- ## CHAIN
-
-**Sections:**
-- # API — Test
-- ## Health Check
-- ## Debug Mutation Stream
-- ## CHAIN
-
-**Sections:**
 - # API — Validation
-- ## Invariants
-- ## Failure Modes
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
 - ## CHAIN
 
-**Code refs:**
-- `engine/scripts/check_injection.py`
+**Doc refs:**
+- `docs/infrastructure/async/archive/SYNC_archive_2024-12.md`
 
 **Sections:**
-- # Async Architecture — Algorithm
+- # Async Architecture - Algorithm: Discussion Trees
 - ## CHAIN
-- ## Runner Protocol
-- # May need to re-spawn Runner for remaining journey
-- ## Hook Injection
-- # Take first injection
-- # Rewrite file with remaining injections
-- # Return to Claude Code
-- # No injection
-- # In Narrator's context
-- # Insert dialogue, then continue
-- # Generate stop scene at current position
+- ## Principle
+- ## Lifecycle Summary
+- ## Detailed Reference
+
+**Sections:**
+- # Async Architecture - Algorithm: Graph SSE
+- ## CHAIN
 - ## Graph SSE
 - # Write to graph
 - # Emit SSE
 - # Update graph
 - # Emit SSE
-- ## Waypoint Creation
-- # Write to graph (triggers SSE + image generation)
-- ## Fog of War
-- # Update position
-- # Reveal place
-- # SSE broadcast handled by graph
+
+**Code refs:**
+- `engine/scripts/check_injection.py`
+
+**Sections:**
+- # Async Architecture - Algorithm: Hook Injection
+- ## CHAIN
+- ## Principle
+- ## Injection File
+- ## Writers
+- ## Hook Script
+- # Take first injection
+- # Rewrite file with remaining injections
+- # Return to Claude Code
+- # No injection
+- ## Narrator Receives
+- # In Narrator's context
+- # Insert dialogue, then continue
+- # Generate stop scene at current position
+- ## Injection Types
+- ## When Character Activation Triggers Hook
+- ## Key Clarifications
+
+**Sections:**
+- # Async Architecture - Algorithm: Image Generation
+- ## CHAIN
 - ## Image Generation
 - # Generate image (async)
 - # Save to disk
@@ -2113,33 +2669,76 @@ graph TD
 - # SSE broadcast happens automatically from graph
 - # Broadcast place_created (no image yet)
 - # Queue image generation
-- ## Discussion Trees
+
+**Sections:**
+- # Async Architecture - Algorithm Overview
+- ## CHAIN
+- ## Parts
+
+**Sections:**
+- # Async Architecture - Algorithm: Runner Protocol
+- ## CHAIN
+- ## Runner Protocol
+- # May need to re-spawn Runner for remaining journey
+
+**Sections:**
+- # Async Architecture - Algorithm: Waypoints and Fog
+- ## CHAIN
+- ## Waypoint Creation
+- # Write to graph (triggers SSE + image generation)
+- ## Fog of War
+- # Update position
+- # Reveal place
+- # SSE broadcast handled by graph
+
+**Sections:**
+- # Async Architecture - Archive (2024-12)
+- ## Discussion Trees (Archived Detail)
 - # Delete the explored branch
 - # Save updated tree
 - # Check if regeneration needed
+- ## Data Flow Diagram (Archived Detail)
+
+**Doc refs:**
+- `docs/infrastructure/async/ALGORITHM/ALGORITHM_Overview.md`
+
+**Sections:**
+- # Async Architecture - Algorithm
+- ## CHAIN
+- ## Index
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: Coordinate_Async_Travel
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # Travel Experience — Behaviors
 - ## CHAIN
-- ## Core Behavior
+- ## BEHAVIORS
 - ## What the Player Sees
 - ## Player Input During Travel
 - ## Duration
-- ## Anti-Patterns
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
 - ## Success Metrics
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `check_injection.py`
 - `engine/infrastructure/api/app.py`
-- `engine/infrastructure/api/injection_queue.py`
 - `engine/infrastructure/api/playthroughs.py`
 - `engine/scripts/check_injection.py`
 - `engine/scripts/inject_to_narrator.py`
-- `inject_to_narrator.py`
 
 **Doc refs:**
 - `agents/narrator/CLAUDE.md`
 - `agents/world_runner/CLAUDE.md`
+- `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`
 
 **Sections:**
 - # Async Architecture - Implementation: Injection Hooks and Queue Integration
@@ -2156,12 +2755,21 @@ graph TD
 - ## BIDIRECTIONAL LINKS
 - ## GAPS / IDEAS / QUESTIONS
 
+**Doc refs:**
+- `docs/infrastructure/async/archive/SYNC_archive_2024-12.md`
+
 **Sections:**
 - # Async Architecture — Design Patterns
 - ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
 - ## Core Principle
 - ## The Architecture in One Sentence
-- ## CHAIN
 - ## Component Responsibilities
 - ## Data Flow Diagram
 - ## Key Design Decisions
@@ -2171,7 +2779,6 @@ graph TD
 - ## Related Documents
 
 **Code refs:**
-- `check_injection.py`
 - `engine/infrastructure/api/playthroughs.py`
 - `engine/scripts/check_injection.py`
 - `engine/scripts/inject_to_narrator.py`
@@ -2183,20 +2790,58 @@ graph TD
 - `world_runner.py`
 
 **Doc refs:**
+- `docs/infrastructure/async/ALGORITHM_Async_Architecture.md`
 - `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`
 - `docs/infrastructure/async/SYNC_Async_Architecture.md`
+- `docs/infrastructure/async/SYNC_Async_Architecture_archive_2025-12.md`
+- `docs/infrastructure/async/archive/SYNC_archive_2024-12.md`
 
 **Sections:**
 - # Async Architecture — State & Implementation Plan
+- ## MATURITY
+- ## CURRENT STATE
+- ## IN PROGRESS
 - ## Overview
+- ## Maturity
 - ## CHAIN
+- ## CURRENT STATE
+- ## IN PROGRESS
 - ## Current State vs Target State
 - ## Key Decisions Made
 - ## Open Questions
 - ## Next Action
-- ## Recent Changes
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## CONSCIOUSNESS TRACE
+- ## Known Issues
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 - ## CONFLICTS
 - ## ARCHIVE
+- ## Agent Observations
+- ## ARCHIVE
+
+**Code refs:**
+- `engine/scripts/check_injection.py`
+- `engine/scripts/inject_to_narrator.py`
+
+**Doc refs:**
+- `docs/infrastructure/async/ALGORITHM_Async_Architecture.md`
+- `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`
+- `docs/infrastructure/async/PATTERNS_Async_Architecture.md`
+- `docs/infrastructure/async/SYNC_Async_Architecture.md`
+- `docs/infrastructure/async/TEST_Async_Architecture.md`
+- `docs/infrastructure/async/archive/SYNC_archive_2024-12.md`
+
+**Sections:**
+- # Archived: SYNC_Async_Architecture.md
+- ## RECENT CHANGES
+- ## TODO
+- ## POINTERS
 
 **Code refs:**
 - `tests/async/test_hook_injection.py`
@@ -2207,8 +2852,17 @@ graph TD
 - # Async Architecture — Tests
 - ## CHAIN
 - ## Planned Coverage
+- ## Test Strategy
+- ## Unit Tests
+- ## Integration Tests
+- ## Edge Cases
+- ## Test Coverage
+- ## How To Run
 - ## Manual Verification
+- ## Known Test Gaps
+- ## Flaky Tests
 - ## Gaps
+- ## Gaps / Ideas / Questions
 
 **Sections:**
 - # Async Architecture — Validation
@@ -2403,10 +3057,9 @@ graph TD
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `generate_image.py`
-- `stream_dialogue.py`
+- `engine/physics/graph/graph_ops.py`
+- `engine/physics/graph/graph_queries.py`
 - `tools/image_generation/generate_image.py`
-- `tools/stream_clickables.py`
 - `tools/stream_dialogue.py`
 
 **Doc refs:**
@@ -2499,34 +3152,87 @@ graph TD
 - `engine/infrastructure/embeddings/service.py`
 
 **Sections:**
-- # Embeddings — Algorithm: Indexing and Search Procedures
+- # Embeddings — Algorithm: Indexing
+- ## CHAIN
+- ## ALGORITHM: index_node()
+- ## ALGORITHM: index_link()
+- ## ALGORITHM: index_world()
+- ## ALGORITHM: on_scene_end()
+- ## KEY DECISIONS
+
+**Code refs:**
+- `engine/infrastructure/embeddings/service.py`
+
+**Doc refs:**
+- `archive/SYNC_archive_2024-12.md`
+
+**Sections:**
+- # Embeddings — Algorithm Overview
 - ## CHAIN
 - ## OVERVIEW
 - ## DATA STRUCTURES
-- # Source reference
-- # For links: what nodes it connects
-- # For conversations (not in graph)
-- # Link-specific
-- # Conversation-specific
-- ## ALGORITHM: index_node()
-- # Prefer detail, fallback to name
-- # Update in graph:
-- # MATCH (n {id: $id}) SET n.embedding = $vector
-- ## ALGORITHM: index_link()
-- # Update in graph:
-- # MATCH ()-[r {id: $id}]->() SET r.embedding = $vector
+- ## DOCUMENT SPLIT
+
+**Code refs:**
+- `engine/infrastructure/embeddings/service.py`
+
+**Sections:**
+- # Embeddings — Algorithm: Search
+- ## CHAIN
 - ## ALGORITHM: search()
-- # Search all embeddings (FalkorDB vector index)
-- # Keep best match per source
-- ## ALGORITHM: index_world()
-- # Index all nodes
-- # Index all links
-- ## ALGORITHM: on_scene_end()
-- # Index new/updated nodes
+- ## KEY DECISIONS
+
+**Code refs:**
+- `engine/infrastructure/embeddings/service.py`
+
+**Sections:**
+- # Embeddings — Test Cases
+- ## CHAIN
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## KNOWN TEST GAPS
+
+**Code refs:**
+- `engine/infrastructure/embeddings/service.py`
+
+**Doc refs:**
+- `archive/SYNC_archive_2024-12.md`
+
+**Sections:**
+- # Embeddings — Test Overview
+- ## CHAIN
+- ## TEST STRATEGY
+- ## CORE UNIT TESTS (Planned)
+- ## INTEGRATION TESTS (Planned)
+- ## HOW TO RUN
+- ## ARCHIVED DETAILS
+
+**Sections:**
+- # Embeddings — Archive (2024-12)
+- ## ALGORITHM: STORAGE AND QUERY DETAILS (ARCHIVED)
+- ## BEHAVIORS: QUERY EXAMPLES (ARCHIVED)
+- # Expected matches include character, link, and conversation sources.
+- # Expected matches include link and narrative sources.
+- # Expected matches include place sources.
+- ## PATTERNS: SCALE ESTIMATES (ARCHIVED)
+- ## TESTS: FIXTURES AND PERFORMANCE EXAMPLES (ARCHIVED)
+
+**Code refs:**
+- `engine/infrastructure/embeddings/service.py`
+
+**Sections:**
+- # Embeddings — Algorithm (Entry Point)
+- ## CHAIN
+- ## ENTRY
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: Embeddings Documentation Entry
 - ## KEY DECISIONS
 - ## DATA FLOW
 - ## COMPLEXITY
-- ## VECTOR STORAGE IN FALKORDB
+- ## HELPER FUNCTIONS
 - ## INTERACTIONS
 - ## GAPS / IDEAS / QUESTIONS
 
@@ -2542,22 +3248,11 @@ graph TD
 - # For conversations
 - ## EDGE CASES
 - ## ANTI-BEHAVIORS
-- ## QUERY EXAMPLES
-- # Expected matches:
-- # - character/char_aldric: "Watched his brother die at Stamford..."
-- # - link/BELIEVES: "Aldric told me by the fire, voice breaking..."
-- # - conversation: "I was fifty yards away. Couldn't reach him."
-- # Expected matches:
-- # - link/CARRIES: "Pulled from father's hand as he died..."
-- # - narrative/narr_father_death: "Father died in the burning..."
-- # Expected matches:
-- # - place/place_moors: "Wind howls. Men disappear here..."
-- # - place/place_humber: "Norman patrols check travelers..."
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
+- `engine/infrastructure/embeddings/__init__.py`
 - `engine/infrastructure/embeddings/service.py`
-- `service.py`
 
 **Sections:**
 - # Embeddings - Implementation: Embedding Service Architecture
@@ -2566,8 +3261,11 @@ graph TD
 - ## DESIGN PATTERNS
 - ## ENTRY POINTS
 - ## DATA FLOW
+- ## SCHEMA
+- ## LOGIC CHAINS
 - ## MODULE DEPENDENCIES
 - ## STATE MANAGEMENT
+- ## CONCURRENCY MODEL
 - ## RUNTIME BEHAVIOR
 - ## CONFIGURATION
 - ## BIDIRECTIONAL LINKS
@@ -2581,64 +3279,72 @@ graph TD
 - ## PRINCIPLES
 - ## DEPENDENCIES
 - ## INSPIRATIONS
+- ## SCOPE
 - ## WHAT THIS DOES NOT SOLVE
-- ## SCALE ESTIMATES
 - ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/infrastructure/embeddings/service.py`
+
+**Doc refs:**
+- `archive/SYNC_archive_2024-12.md`
+
+**Sections:**
+- # Embeddings — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+- ## ARCHIVE
+- ## Agent Observations
+- ## ARCHIVE
 
 **Code refs:**
 - `engine/infrastructure/embeddings/__init__.py`
 - `engine/infrastructure/embeddings/service.py`
 
-**Sections:**
-- # Embeddings — Sync: Current State
-- ## CURRENT STATE
-- ## IN PROGRESS
-- ## RECENT CHANGES
-- ## KNOWN ISSUES
-- ## HANDOFF: FOR AGENTS
-- ## HANDOFF: FOR HUMAN
-- ## TODO
-- ## POINTERS
-- ## ARCHIVE
+**Doc refs:**
+- `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Indexing.md`
+- `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Overview.md`
+- `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Search.md`
+- `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
+- `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md`
+- `docs/infrastructure/embeddings/PATTERNS_Embeddings.md`
+- `docs/infrastructure/embeddings/SYNC_Embeddings.md`
+- `docs/infrastructure/embeddings/SYNC_Embeddings_archive_2025-12.md`
+- `docs/infrastructure/embeddings/TEST/TEST_Cases.md`
+- `docs/infrastructure/embeddings/TEST/TEST_Overview.md`
+- `docs/infrastructure/embeddings/TEST_Embeddings.md`
+- `docs/infrastructure/embeddings/archive/SYNC_archive_2024-12.md`
 
 **Sections:**
 - # Archived: SYNC_Embeddings.md
 - ## MATURITY
 - ## RECENT CHANGES
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 - ## IMPLEMENTATION PLAN
+- # Archived: SYNC_Embeddings.md
+- ## RECENT CHANGES
 
 **Code refs:**
 - `engine/infrastructure/embeddings/service.py`
 
 **Sections:**
-- # Embeddings — Test: Test Cases and Coverage
+- # Embeddings — Test (Entry Point)
 - ## CHAIN
-- ## TEST STRATEGY
-- ## UNIT TESTS
-- ## INTEGRATION TESTS
-- ## EDGE CASES
-- ## TEST FIXTURES
-- # Deterministic fake embedding based on text hash
-- # detail > 20: uses detail for embedding
-- # Expected: embedding from detail
-- # detail < 20, name > 20: falls back to name
-- # Expected: embedding from name
-- # Both < 20: no embedding
-- # Expected: None
-- # detail > 20: uses detail
-- # Expected: embedding from detail
-- ## TEST COVERAGE
-- ## HOW TO RUN
-- # Run all embedding tests
-- # Run with real model (slow)
-- # Run only unit tests (fast, mocked)
-- # Run with coverage
-- # Run specific test
-- ## KNOWN TEST GAPS
-- ## FLAKY TESTS
-- ## PERFORMANCE TESTS
-- # ... index some content first ...
-- ## GAPS / IDEAS / QUESTIONS
+- ## ENTRY
 
 **Code refs:**
 - `engine/infrastructure/embeddings/service.py`
@@ -2660,24 +3366,93 @@ graph TD
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
-- # History — Algorithm: Retrieval and Recording Procedures
+- # History — Algorithm Overview
 - ## CHAIN
 - ## OVERVIEW
+- ## WHERE TO LOOK NEXT
+- ## ARCHIVED DETAIL
+
+**Sections:**
+- # History — Algorithm: Propagation and Beliefs
+- ## CHAIN
+- ## PROPAGATION OVERVIEW
+- ## CONFIDENCE GUIDELINES
+- ## DATA FLOW
+- ## ARCHIVED DETAIL
+
+**Sections:**
+- # History — Algorithm: Query and Record
+- ## CHAIN
 - ## DATA STRUCTURES
 - # Conversations with {Character}
 - ## Day 4, Night — The Camp
-- ## Day 7, Morning — The Road
 - ## ALGORITHM: query_history()
 - ## ALGORITHM: record_player_history()
 - ## ALGORITHM: record_world_history()
-- # Characters at origin place learn immediately
-- # Characters in connected places learn over time
+- ## KEY DECISIONS
+
+**Sections:**
+- # History — Test Cases
+- ## CHAIN
+- ## UNIT TESTS
+- ## INTEGRATION TESTS (SUMMARY)
+- ## TEST COVERAGE
+- ## KNOWN TEST GAPS
+
+**Sections:**
+- # History — Test Overview
+- ## CHAIN
+- ## TEST STRATEGY
+- ## HOW TO RUN
+- ## ARCHIVED DETAIL
+
+**Code refs:**
+- `engine/infrastructure/history/conversations.py`
+
+**Doc refs:**
+- `docs/infrastructure/history/SYNC_History.md`
+
+**Sections:**
+- # Archived: SYNC_History.md
+- ## MATURITY
+- ## RECENT CHANGES
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+- # Archived: SYNC_History.md
+- ## RECENT CHANGES
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Sections:**
+- # History — Archive (2024-12)
+- ## ARCHIVED ALGORITHM DETAILS (CONDENSED)
+- ## ARCHIVED TEST DETAILS (CONDENSED)
+- ## NOTE
+
+**Sections:**
+- # History — Algorithm (Entry Point)
+- ## CHAIN
+- ## ENTRY
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: History Documentation Entry
 - ## KEY DECISIONS
 - ## DATA FLOW
 - ## COMPLEXITY
 - ## HELPER FUNCTIONS
 - ## INTERACTIONS
-- ## COMMON QUERIES
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
@@ -2690,15 +3465,12 @@ graph TD
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `conversations.py`
 - `engine/infrastructure/history/__init__.py`
 - `engine/infrastructure/history/conversations.py`
-- `engine/infrastructure/history/queries.py`
-- `engine/infrastructure/history/recording.py`
 - `engine/infrastructure/history/service.py`
-- `service.py`
 
 **Doc refs:**
+- `docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md`
 - `engine/infrastructure/history/README.md`
 
 **Sections:**
@@ -2708,8 +3480,12 @@ graph TD
 - ## DESIGN PATTERNS
 - ## ENTRY POINTS
 - ## DATA FLOW
+- ## SCHEMA
+- ## LOGIC CHAINS
 - ## MODULE DEPENDENCIES
 - ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
 - ## CONFIGURATION
 - ## BIDIRECTIONAL LINKS
 - ## GAPS / IDEAS / QUESTIONS
@@ -2722,21 +3498,28 @@ graph TD
 - ## PRINCIPLES
 - ## DEPENDENCIES
 - ## INSPIRATIONS
+- ## SCOPE
 - ## WHAT THIS DOES NOT SOLVE
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `engine/infrastructure/history/conversations.py`
-- `engine/infrastructure/history/service.py`
 
 **Doc refs:**
+- `archive/SYNC_History_archive_2025-12.md`
+- `archive/SYNC_archive_2024-12.md`
+- `docs/infrastructure/history/ALGORITHM_History.md`
+- `docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md`
+- `docs/infrastructure/history/PATTERNS_History.md`
 - `docs/infrastructure/history/SYNC_History.md`
-- `docs/schema/SCHEMA_Moments.md`
+- `docs/infrastructure/history/archive/SYNC_History_archive_2025-12.md`
 
 **Sections:**
 - # History — Sync: Current State
+- ## MATURITY
 - ## CURRENT STATE
 - ## IN PROGRESS
+- ## RECENT CHANGES
 - ## KNOWN ISSUES
 - ## CONFLICTS
 - ## HANDOFF: FOR AGENTS
@@ -2745,48 +3528,12 @@ graph TD
 - ## POINTERS
 - ## CHAIN
 - ## Agent Observations
+- ## CONSCIOUSNESS TRACE
 - ## ARCHIVE
-- ## ARCHIVE
-- ## ARCHIVE
-
-**Code refs:**
-- `engine/infrastructure/history/conversations.py`
-
-**Doc refs:**
-- `docs/infrastructure/history/SYNC_History.md`
 
 **Sections:**
-- # Archived: SYNC_History.md
-- ## MATURITY
-- ## RECENT CHANGES
-- # Archived: SYNC_History.md
-- ## MATURITY
-- ## RECENT CHANGES
-- # Archived: SYNC_History.md
-- ## RECENT CHANGES
-
-**Sections:**
-- # History — Test: Test Cases and Coverage
+- # History — Tests (Entry Point)
 - ## CHAIN
-- ## TEST STRATEGY
-- ## UNIT TESTS
-- ## INTEGRATION TESTS
-- ## EDGE CASES
-- ## TEST FIXTURES
-- # Player, Edmund, Aldric, Mildred
-- # The Betrayal vs The Salvation narratives
-- # Conflicting beliefs
-- ## Day 4, Night — The Camp
-- ## TEST COVERAGE
-- ## HOW TO RUN
-- # Run all history tests
-- # Run specific test category
-- # Run with coverage
-- # Run integration tests only
-- ## KNOWN TEST GAPS
-- ## FLAKY TESTS
-- ## EXPERIENCE TESTS (MANUAL)
-- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # History — Validation: Invariants and Verification
@@ -2908,6 +3655,7 @@ graph TD
 
 **Code refs:**
 - `engine/physics/graph/graph_ops.py`
+- `engine/physics/graph/graph_ops_image.py`
 - `engine/scripts/check_injection.py`
 - `engine/scripts/generate_images_for_existing.py`
 - `engine/scripts/inject_to_narrator.py`
@@ -2946,6 +3694,7 @@ graph TD
 - ## RECENT CHANGES
 - ## HANDOFF: FOR AGENTS
 - ## TODO
+- ## Review Observations
 
 **Sections:**
 - # Ops Scripts — Tests: Operational Scripts
@@ -2962,103 +3711,76 @@ graph TD
 - ## FAILURE MODES
 
 **Sections:**
-- # Scene Memory System — Algorithm
+- # Scene Memory System — Legacy Archive (2024-12)
+- ## PURPOSE
+- ## LEGACY SUMMARY
+- ## CANONICAL REFERENCES
+- ## NOTE ON REMOVALS
+
+**Code refs:**
+- `engine/infrastructure/memory/transcript.py`
+- `engine/models/nodes.py`
+- `engine/physics/graph/graph_ops.py`
+
+**Sections:**
+- # Scene Memory System — Algorithm (Legacy)
 - ## CHAIN
+- ## STATUS
+- ## LEGACY ALGORITHM OUTLINE
 - ## OVERVIEW
-- ## NAME EXPANSION
-- # Build prefix from scene context
-- # Parse "Day 5, dusk" → "d5", "dusk"
-- # → "crossing_d5_dusk"
-- # Track used names for collision detection
-- # Collision: append incrementing suffix
-- # Expand narration element names
-- # Expand clickable hint names
-- # Expand player input names
-- ## SCENE PROCESSING
-- # 1. Store scene node
-- # 2. Create Moment nodes for each narration element
-- # Link scene to moment
-- # Link moment to place
-- # Link dialogue to speaker
-- # Link to previous moment (sequence)
-- # Create moments for clickable hints
-- # 3. Process mutations - create narratives with FROM links
-- # Link scene to narrative
-- # Create FROM links to source moments
-- # Auto-create beliefs for all present
-- # → "scene_d5_dusk_crossing"
-- # Link to place
-- # Link to present characters
-- # Embed if sufficient text
-- ## PLAYER INPUT PROCESSING
-- # Determine moment type from input type
-- # Build moment text
-- # Link to place
-- # Link to player character
-- ## NARRATIVE CREATION
-- # Add detail and embedding if provided
-- # Create ABOUT links if specified (for key things)
-- # Note: FROM links to moments are created in process_narrator_output()
-- ## BELIEF CREATION
-- ## EMBEDDING
-- ## QUERIES
-- ## THE FULL CHAIN
+- ## DATA STRUCTURES
+- ## ALGORITHM: process_scene_memory (legacy)
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+- ## CANONICAL REFERENCES
 - ## NEXT IN CHAIN
 
 **Sections:**
-- # Scene Memory System — Behavior
+- # Scene Memory System — Behavior (Legacy)
 - ## CHAIN
-- ## OVERVIEW
-- ## ACTORS
-- ## INPUT: NARRATOR OUTPUT
-- ## INPUT: PLAYER ACTIONS
-- ## OUTPUT: MOMENT NODES
-- ## OUTPUT: STORED SCENE
-- ## OUTPUT: STORED NARRATIVES
-- ## OUTPUT: AUTOMATIC BELIEFS
-- ## OUTPUT: EMBEDDINGS
-- ## QUERYABLE BEHAVIORS
-- ## INVARIANTS
-- ## EDGE CASES
+- ## STATUS
+- ## LEGACY BEHAVIOR SUMMARY
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+- ## LEGACY EDGE CASES
 - ## NEXT IN CHAIN
 
 **Code refs:**
 - `engine/infrastructure/memory/__init__.py`
-- `engine/infrastructure/memory/moment_ids.py`
 - `engine/infrastructure/memory/moment_processor.py`
-- `engine/infrastructure/memory/transcript_store.py`
-- `moment_processor.py`
 
 **Sections:**
 - # Scene Memory System — Implementation: Moment Processing Architecture
 - ## CHAIN
 - ## CODE STRUCTURE
-- ## DESIGN PATTERNS
-- ## SCHEMA
 - ## ENTRY POINTS
-- ## DATA FLOW
+- ## DATA FLOW (SUMMARY)
+- ## LOGIC CHAINS
+- ## CONCURRENCY MODEL
 - ## MODULE DEPENDENCIES
-- ## STATE MANAGEMENT
-- ## RUNTIME BEHAVIOR
-- ## CONFIGURATION
 - ## BIDIRECTIONAL LINKS
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
-- # Scene Memory System — Pattern
+- # Scene Memory System — Pattern (Legacy)
 - ## CHAIN
-- ## THE PROBLEM
-- ## THE PATTERN
-- ## CORE PRINCIPLES
-- ## WHY THIS SHAPE
-- ## WHAT THIS ENABLES
-- ## RELATIONSHIP TO OTHER SYSTEMS
-- ## GAPS / IDEAS / QUESTIONS
+- ## STATUS
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## LEGACY PATTERN SUMMARY
+- ## LEGACY LIMITS
 - ## NEXT IN CHAIN
 
 **Code refs:**
 - `engine/infrastructure/api/moments.py`
-- `engine/infrastructure/memory/__init__.py`
 - `engine/infrastructure/memory/moment_processor.py`
 - `engine/physics/graph/graph_ops_moments.py`
 - `engine/physics/graph/graph_queries_moments.py`
@@ -3068,22 +3790,38 @@ graph TD
 - ## DOCUMENT CHAIN
 - ## ARCHITECTURE EVOLUTION
 - ## IMPLEMENTATION STATUS
-- ## LINK TYPES (IMPLEMENTED)
-- ## INTEGRATION POINTS
-- ## DECISIONS MADE (HISTORICAL)
+- ## MATURITY
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+- ## REPAIR LOG (2025-12-19)
 - ## OPEN QUESTIONS
-- ## CONFLICTS
 - ## Agent Observations
-- ## RECENT CHANGES
-- ## ARCHIVE
 
 **Code refs:**
+- `engine/infrastructure/memory/__init__.py`
 - `engine/infrastructure/memory/moment_processor.py`
 - `engine/models/nodes.py`
+- `engine/tests/test_moment.py`
 - `moment_processor.py`
 
 **Sections:**
 - # Archived: SYNC_Scene_Memory.md
+- ## Maturity
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 - ## MOMENT NODE TYPE
 - # Moment Graph fields
 - # Tick tracking
@@ -3093,6 +3831,8 @@ graph TD
 - # Potential moments (graph only)
 - # Links
 - ## CHANGELOG
+- # Archived: SYNC_Scene_Memory.md
+- ## RECENT CHANGES
 
 **Code refs:**
 - `engine/tests/test_e2e_moment_graph.py`
@@ -3117,40 +3857,203 @@ graph TD
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
-- # Scene Memory System — Validation
+- # Scene Memory System — Validation (Legacy)
+- ## CHAIN
+- ## STATUS
+- ## LEGACY INVARIANTS (SUMMARY)
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## LEGACY TEST NOTES
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## GAPS / IDEAS / QUESTIONS
+- ## NEXT IN CHAIN
+
+**Sections:**
+- # Storm Loader — Behaviors: Mutation Application
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storm Loader - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storm Loader — Mechanisms: Application Pipeline
 - ## CHAIN
 - ## OVERVIEW
-- ## INVARIANTS
-- # Expected: crossing_d5_dusk_test, crossing_d5_dusk_test_2, crossing_d5_dusk_test_3
-- # Check moments
-- # Check narratives
+- ## DATA STRUCTURES
+- ## MECHANISM: Load and Apply
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storm Loader — Patterns: Declarative Diff Application
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/IMPLEMENTATION_Storm_Loader.md`
+
+**Sections:**
+- # Storm Loader — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Code refs:**
+- `tests/infrastructure/test_storm_loader.py`
+
+**Sections:**
+- # Storm Loader - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
 - ## UNIT TESTS
-- # Both characters should have beliefs
-- # ... setup ...
 - ## INTEGRATION TESTS
-- # 1. Narrator outputs scene
-- # 2. Verify narrative sources are expanded
-- # 3. Verify beliefs created
-- # 4. Verify scene stored with embedding
-- # 5. Player clicks blade
-- # 6. Verify traceability query works
-- # Scene 1: Morning
-- # Scene 2: Dusk - narrative references both scenes
-- # Verify cross-scene sources
-- ## QUERY TESTS
-- # Setup: create narrative with known source
-- # ...
-- # Setup: create narrative with known sources
-- # ...
-- # Setup: create scene with present characters
-- # ...
-- # Setup: create scene about sword
-- # ...
-- ## PERFORMANCE TESTS
-- # Assume graph has been populated
-- ## MANUAL VERIFICATION
-- ## RED FLAGS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storm Loader — Validation: Loader Guarantees
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
 - ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storms — Behaviors: Overlay Effects
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storms - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storms — Mechanisms: Crisis Injection
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Apply Storm
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storms — Patterns: Crisis Overlays
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Storms.md`
+
+**Sections:**
+- # Storms — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Code refs:**
+- `tests/infrastructure/test_storms.py`
+
+**Sections:**
+- # Storms - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Storms — Validation: Overlay Integrity
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # Tempo Controller — Algorithm
@@ -3192,9 +4095,23 @@ graph TD
 - ## Future UI: Minimap + Sun Arc
 
 **Code refs:**
-- `__init__.py`
 - `engine/infrastructure/tempo/tempo_controller.py`
-- `tempo_controller.py`
+
+**Sections:**
+- # Tempo Controller — Behaviors: Speed-Driven Surfacing
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/infrastructure/tempo/__init__.py`
+- `engine/infrastructure/tempo/tempo_controller.py`
+
+**Doc refs:**
+- `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md`
 
 **Sections:**
 - # Tempo Controller — Implementation: Code Architecture
@@ -3210,6 +4127,21 @@ graph TD
 - ## CONCURRENCY MODEL
 - ## CONFIGURATION
 - ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/infrastructure/tempo/tempo_controller.py`
+- `frontend/components/SpeedControl.tsx`
+
+**Sections:**
+- # Tempo Controller — Patterns: Speed-As-State-Machine
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
 - ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
@@ -3240,153 +4172,15 @@ graph TD
 - ## Architecture Clarification
 - ## Remaining Work
 - ## Files Changed This Session
-- ## Chain
-- ## Agent Observations
-
-**Sections:**
-- # World Builder — Algorithm
-- ## Overview
-- ## Core Insight: Attention IS Energy
-- ## Core Flow
-- ## Every Query Is A Moment
-- # 1. Record query as moment (this IS the energy source)
-- # 2. Execute query (embeddings use 'detail' or 'name' field)
-- # 3. Link moment to results (weight=similarity, physics will flow energy)
-- # 4. Check sparsity
-- # Apply and link back to query moment
-- # Re-query
-- # Link new results
-- ## Sparsity Detection
-- # 1. Proximity - are results semantically close to query?
-- # 2. Cluster size - how many results?
-- # 3. Diversity - are results varied or all the same?
-- # 4. Connectedness - do results link to other things?
-- # Sparse if any dimension is weak
-- ## World Builder Enrichment
-- ## Apply Enrichment
-- # Characters
-- # Places
-- # Things
-- # Narratives
-- # Links
-- # Link ALL created nodes back to query moment
-- # Moments - always type "thought"
-- # Link to speaker
-- # Link to place
-- # Link enriched moment back to query moment
-- ## Integration
-- # Record
-- # Execute
-- # Link results
-- # Enrich if sparse
-- # Re-query
-- ## Caching / Rate Limiting
-- # Skip if recently enriched
-- # Prevent recursion
-- ## Chain
-- ## Summary
-- ## Gaps / Questions
-
-**Code refs:**
-- `engine/infrastructure/orchestration/agent_cli.py`
-- `enrichment.py`
-- `query.py`
-- `query_moment.py`
-- `sparsity.py`
-- `world_builder.py`
-
-**Sections:**
-- # World Builder — Implementation
-- ## CHAIN
-- ## CORE INSIGHT
-- ## CODE STRUCTURE
-- ## SCHEMA
-- ## KEY FUNCTIONS
-- # engine/infrastructure/world_builder/query.py
-- # 1. Record query as thought moment (this IS the energy source)
-- # 2. Execute semantic search (embeddings use 'detail' or 'name')
-- # 3. Link moment to results (weight=similarity, physics flows energy)
-- # 4. Check sparsity
-- # 5. Enrich
-- # 6. Apply enrichment (links back to query moment)
-- # 7. Re-query
-- # Link new results
-- # engine/infrastructure/world_builder/query_moment.py
-- # Create moment node
-- # Link to character (they can voice this thought)
-- # Link to place
-- # engine/infrastructure/world_builder/sparsity.py
-- # Get query embedding
-- # Get result embeddings (uses 'detail' or 'name' - already implemented)
-- # Fallback: compute embeddings
-- # Proximity: best match to query
-- # Cluster size
-- # Diversity: average pairwise distance
-- # Connectedness: average outgoing links per result
-- # Determine sparsity
-- # engine/infrastructure/world_builder/world_builder.py
-- # Skip if recently enriched
-- # Prevent recursion
-- # Parse YAML from response
-- # engine/infrastructure/world_builder/enrichment.py
-- # Characters
-- # Places
-- # Things
-- # Narratives
-- # Links (just weight, physics handles energy)
-- # Link ALL created nodes back to query moment
-- # Moments - always type "thought"
-- # Link to speaker
-- # Link to place
-- # Link back to query moment
-- # engine/infrastructure/world_builder/enrichment.py
-- ## DATA FLOW
-- ## MODULE DEPENDENCIES
-- ## CONFIGURATION
-- ## INTEGRATION
-- # Old - bypasses recording and enrichment
-- # New - recorded as thought, enriched if sparse, energy flows via physics
-- ## TESTS
-- # Should have created new content
-- # Should include enriched nodes
-- ## GAPS / TODO
-
-**Code refs:**
-- `__init__.py`
-- `engine/infrastructure/orchestration/agent_cli.py`
-- `engine/infrastructure/world_builder/world_builder.py`
-- `enrichment.py`
-- `query.py`
-- `query_moment.py`
-- `sparsity.py`
-- `tests/infrastructure/world_builder/test_world_builder.py`
-- `world_builder.py`
-
-**Sections:**
-- # World Builder — SYNC
-- ## Current State
 - ## Recent Changes
-- ## Integration Points
-- ## Usage Example
-- # Async with enrichment (creates content if sparse)
-- # Sync without enrichment (just search + record)
-- ## Configuration
-- ## Next Steps
-- ## Known Issues
-- ## Handoff Notes
 - ## Chain
 - ## Agent Observations
 
 **Code refs:**
-- `enrichment.py`
-- `query.py`
-- `query_moment.py`
-- `sparsity.py`
-- `tests/infrastructure/test_world_builder.py`
-- `world_builder.py`
+- `engine/tests/test_tempo.py`
 
 **Sections:**
-- # World Builder — Test: Test Cases and Coverage
+- # Tempo Controller — Test: Coverage Plan
 - ## CHAIN
 - ## TEST STRATEGY
 - ## UNIT TESTS
@@ -3394,35 +4188,809 @@ graph TD
 - ## EDGE CASES
 - ## TEST COVERAGE
 - ## HOW TO RUN
-- # Run all world builder tests
-- # Run with coverage
-- # Run specific test category
-- # Run integration tests only (requires FalkorDB)
-- ## TEST FIXTURES
-- # Cleanup test data
+- # No automated tests yet for tempo.
+- # Planned:
 - ## KNOWN TEST GAPS
 - ## FLAKY TESTS
 - ## GAPS / IDEAS / QUESTIONS
 
+**Code refs:**
+- `engine/infrastructure/tempo/tempo_controller.py`
+
 **Sections:**
-- # World Builder — Validation: Invariants and Verification
+- # Tempo Controller — Validation: Pacing Invariants
 - ## CHAIN
 - ## INVARIANTS
 - ## PROPERTIES
 - ## ERROR CONDITIONS
 - ## TEST COVERAGE
 - ## VERIFICATION PROCEDURE
-- # Run world builder tests
-- # Run with coverage
-- # Run sparsity tests only
+- # No automated tests yet for tempo.
+- # Planned: pytest engine/tests/test_tempo.py
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # World Builder — Algorithm Details
+- ## CHAIN
+- ## Sparsity Result Shape
+- ## Enrichment Output Shape (Summary)
+- ## Linking Rules
+- ## Archive Note
+
+**Sections:**
+- # World Builder — Algorithm Overview
+- ## CHAIN
+- ## Overview
+- ## Core Flow
+- ## Query Moment Rules
+- ## Sparsity Decision (Thresholds)
+- ## Enrichment Application
+- ## Caching / Guardrails
+- ## Archive Note
+
+**Code refs:**
+- `enrichment.py`
+- `query.py`
+- `query_moment.py`
+- `sparsity.py`
+- `world_builder.py`
+
+**Sections:**
+- # World Builder — Implementation Flow
+- ## CHAIN
+- ## Query Flow (Module Boundaries)
+- ## Enrichment Application Notes
+- ## Error Handling Summary
+- ## Archive Note
+
+**Code refs:**
+- `__init__.py`
+- `engine/infrastructure/orchestration/agent_cli.py`
+- `engine/world/map/semantic.py`
+- `enrichment.py`
+- `query.py`
+- `query_moment.py`
+- `sparsity.py`
+- `world_builder.py`
+
+**Sections:**
+- # World Builder — Implementation Overview
+- ## CHAIN
+- ## Code Structure
+- ## Dependencies
+- ## Configuration (Key Settings)
+- ## Archive Note
+
+**Code refs:**
+- `tests/infrastructure/world_builder/test_world_builder.py`
+
+**Sections:**
+- # World Builder — Test Cases (Summary)
+- ## CHAIN
+- ## Representative Cases
+- ## Notes
+
+**Code refs:**
+- `tests/infrastructure/world_builder/test_world_builder.py`
+
+**Sections:**
+- # World Builder — Test Overview
+- ## CHAIN
+- ## Test Strategy
+- ## Suites (High-Level)
+- ## How To Run
+- ## Known Gaps
+- ## Archive Note
+
+**Sections:**
+- # World Builder — Validation Checks
+- ## CHAIN
+- ## Manual Checklist
+- ## Automated Verification
+- ## Archive Note
+
+**Sections:**
+- # World Builder — Validation Overview
+- ## CHAIN
+- ## Invariants
+- ## Properties
+- ## Error Conditions
+- ## Archive Note
+
+**Sections:**
+- # World Builder — Archive Summary (2024-12)
+- ## Archived Sections (Condensed)
+- ## Notes
+
+**Sections:**
+- # World Builder — Algorithm (Split)
+- ## CHAIN
+- ## Entry Point
+
+**Code refs:**
+- `engine/infrastructure/world_builder/query.py`
+
+**Sections:**
+- # World Builder — Behaviors: Query Moments, Sparse Enrichment, and Cache Guards
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # World Builder — Implementation (Split)
+- ## CHAIN
+- ## Entry Point
+
+**Code refs:**
+- `engine/infrastructure/orchestration/agent_cli.py`
+- `engine/infrastructure/world_builder/query.py`
+- `engine/world/map/semantic.py`
+
+**Sections:**
+- # World Builder — Patterns: Query Moments and Sparse Enrichment
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `__init__.py`
+- `enrichment.py`
+- `query.py`
+- `query_moment.py`
+- `sparsity.py`
+- `world_builder.py`
+
+**Doc refs:**
+- `archive/SYNC_archive_2024-12.md`
+
+**Sections:**
+- # World Builder — SYNC
+- ## Current State
+- ## Documentation Updates
+- ## Configuration
+- ## Next Steps
+- ## Known Issues
+- ## Handoff Notes
+- ## Chain
+- ## Agent Observations
+- ## ARCHIVE
+
+**Code refs:**
+- `__init__.py`
+- `engine/infrastructure/orchestration/agent_cli.py`
+- `engine/infrastructure/world_builder/world_builder.py`
+- `engine/world/map/semantic.py`
+- `tests/infrastructure/world_builder/__init__.py`
+- `tests/infrastructure/world_builder/test_world_builder.py`
+
+**Sections:**
+- # Archived: SYNC_World_Builder.md
+- ## Recent Changes
+- ## Integration Points
+- ## Usage Example
+- # Async with enrichment (creates content if sparse)
+- # Sync without enrichment (just search + record)
+
+**Sections:**
+- # World Builder — Test (Split)
+- ## CHAIN
+- ## Entry Point
+
+**Sections:**
+- # World Builder — Validation (Split)
+- ## CHAIN
+- ## Entry Point
+
+**Sections:**
+- # BEHAVIORS: Bleed Reports
+- ## Observable Effects
+- ## Bleed Reports — Your Character's Legacy
+- ## Why This Is Retention Gold
+- ## The Whale Hook: Digital Immortality
+- ## Steam Page Copy / Marketing Language
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # Bleed-Through — Behaviors: Ghosts, Rumors, Reports
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Bleed-Through - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Bleed-Through — Mechanisms: Ghosts, Rumors, Reports
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Ghost Injection
+- ## MECHANISM: Rumor Bleed
+- ## MECHANISM: Bleed Reports
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # PATTERNS: Scars Cross Worlds
+- ## Why This Design Exists
+- ## Core Insight: AI as Actor, Not Author
+- ## Strategic Position and Rationale
+- ## Public Features of Bleed-Through
+- ## Marketing and Vocabulary
+- ## Maturity
+- ## CHAIN
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Ledger — The Bleed-Through.md`
+- `docs/network/transposition/ALGORITHM_Transposition_Pipeline.md`
+
+**Sections:**
+- # SYNC: Bleed-Through System
+- ## Maturity
+- ## Current State
+- ## Recent Changes
+- ## Handoffs
+- ## Agent's Analysis (Gemini, 2025-12-19)
+- ## CHAIN
+
+**Code refs:**
+- `tests/network/test_bleed_through.py`
+
+**Sections:**
+- # Bleed-Through - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
 - ## INTEGRATION TESTS
-- ## PERFORMANCE BENCHMARKS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Bleed-Through — Validation: Canon Safety and Messaging
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ghost Dialogue — Behaviors: Replay of Lived Lines
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ghost Dialogue - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ghost Dialogue — Mechanisms: Dialogue Index and Retrieval
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Indexing
+- ## MECHANISM: Retrieval
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ghost Dialogue — Patterns: Real Lines Beat Prompts
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Feedback Integration.md`
+
+**Sections:**
+- # Ghost Dialogue — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Code refs:**
+- `tests/network/test_ghost_dialogue.py`
+
+**Sections:**
+- # Ghost Dialogue - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ghost Dialogue — Validation: Quality and Safety
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Shadow Feed — Behaviors: Rumor Imports and Fog of War
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Shadow Feed - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Shadow Feed — Mechanisms: Safe Import Filtering
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Import Filter
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Shadow Feed — Patterns: Rumor Cache for Distant Events
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Cluster State Cache.md`
+
+**Sections:**
+- # Shadow Feed — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Code refs:**
+- `tests/network/test_shadow_feed.py`
+
+**Sections:**
+- # Shadow Feed - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Shadow Feed — Validation: Causality and Canon Locks
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # ALGORITHM: Transposition Pipeline
+- ## Procedures
+- ## 2. The Transposition Pipeline: An Overview
+- ## 3. Algorithm: Conflict Detection
+- ## 4. Algorithm: Conflict Resolution Strategies
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # Transposition — Behaviors: Conflict Resolution Cascade
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Transposition - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Transposition — Mechanisms: Conflict Detection & Resolution
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Conflict Detection
+- ## MECHANISM: Conflict Resolution Cascade
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # PATTERNS: Local Canon Primary
+- ## Why This Design Exists
+- ## Core Principle: The Primacy of Local Canon
+- ## The Bleed-Through Mandate
+- ## Foundational Terms
+- ## Maturity
+- ## CHAIN
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/ALGORITHM Character & Narrative Transposition Logic.md`
+
+**Sections:**
+- # Transposition — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/ALGORITHM Character & Narrative Transposition Logic.md`
+
+**Sections:**
+- # SYNC: Transposition Logic
+- ## Maturity
+- ## Current State
+- ## Recent Changes
+- ## Handoffs
+- ## Agent's Analysis (Gemini, 2025-12-19)
+- ## CHAIN
+
+**Code refs:**
+- `tests/network/test_transposition.py`
+
+**Sections:**
+- # Transposition - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # VALIDATION: Transposition Invariants
+- ## Invariants
+- ## 5. Algorithm: Safety Locks on Ground Truth
+- ## Overall Purpose
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # Voyager System — Behaviors: Importing Trauma Without Breaking Canon
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Voyager System - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Voyager System — Mechanisms: Export/Import Transposition
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Export Capsule
+- ## MECHANISM: Import Capsule
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Voyager System — Patterns: Trauma Without Memory
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Character Import.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Refugee System.md`
+
+**Sections:**
+- # Voyager System — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Code refs:**
+- `tests/network/test_voyager_system.py`
+
+**Sections:**
+- # Voyager System - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Voyager System — Validation: Canon-Safe Imports
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- # Placeholder tests (not implemented yet)
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # World Scavenger — Behaviors: Priority Stack Reuse
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # World Scavenger - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # World Scavenger — Mechanisms: Cache and Ghost Reuse
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Priority Stack
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # World Scavenger — Patterns: Scavenge Before Generate
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Ledger — World Scavenger.md`
+
+**Sections:**
+- # World Scavenger — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Code refs:**
+- `tests/network/test_world_scavenger.py`
+
+**Sections:**
+- # World Scavenger - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # World Scavenger — Validation: Reuse Safety Locks
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
 - ## SYNC STATUS
 - ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # Graph — Algorithm: Energy Flow
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: graph_tick
 - ## Per-Tick Processing
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
 - ## Step 1: Compute Character Energies
 - # Relationship intensity: how much player cares
 - # Geographical proximity
@@ -3490,7 +5058,9 @@ graph TD
 
 **Sections:**
 - # Graph — Behaviors: What Should Happen
+- ## CHAIN
 - ## Overview
+- ## BEHAVIORS
 - ## Behavior: Companions Matter More
 - ## Behavior: Contradictions Intensify Together
 - ## Behavior: Support Clusters Rise and Fall Together
@@ -3501,9 +5071,26 @@ graph TD
 - ## Behavior: System Stays Near Criticality
 - ## Behavior: Agents Update Links, Not Energy
 - ## Summary: What To Expect
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/physics/tick.py`
+
+**Doc refs:**
+- `docs/schema/SCHEMA_Moments.md`
 
 **Sections:**
 - # Graph — Patterns: Why This Shape
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
 - ## The Core Insight
 - ## Energy As Attention
 - ## Computed, Not Declared
@@ -3511,48 +5098,74 @@ graph TD
 - ## The Graph Breathes
 - ## Criticality
 - ## What Agents Never Do
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `engine/infrastructure/api/app.py`
+- `engine/infrastructure/canon/canon_holder.py`
 - `engine/infrastructure/orchestration/narrator.py`
 - `engine/infrastructure/orchestration/orchestrator.py`
 - `engine/infrastructure/orchestration/world_runner.py`
 - `engine/physics/graph/graph_ops_events.py`
 - `engine/physics/graph/graph_ops_types.py`
-- `engine/physics/graph/graph_queries_moments.py`
 - `engine/physics/tick.py`
-- `graph_ops.py`
 - `graph_ops_events.py`
+- `graph_ops_types.py`
 - `orchestrator.py`
 - `tick.py`
 
 **Doc refs:**
 - `docs/physics/graph/ALGORITHM_Energy_Flow.md`
-- `docs/physics/graph/ALGORITHM_Weight.md`
+- `docs/physics/graph/BEHAVIORS_Graph.md`
 
 **Sections:**
 - # Graph — Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
 - ## What Exists ✓
-- ## What's Missing: ONE ENDPOINT
-- # TODO: SSE streaming version
 - ## Two Paths (Both Valid)
 - ## Known False Positives
-- ## Recent Changes
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+- ## Agent Observations
+- ## Agent Observations
+- ## ARCHIVE
 
 **Code refs:**
 - `engine/graph/health/check_health.py`
+- `engine/infrastructure/api/app.py`
 - `engine/physics/graph/graph_ops_events.py`
 - `engine/physics/graph/graph_ops_types.py`
 - `engine/physics/graph/graph_queries_moments.py`
 - `engine/physics/graph/graph_queries_search.py`
+- `graph_ops.py`
 
 **Doc refs:**
 - `docs/physics/graph/ALGORITHM_Energy_Flow.md`
 - `docs/physics/graph/ALGORITHM_Weight.md`
+- `docs/physics/graph/BEHAVIORS_Graph.md`
+- `docs/physics/graph/PATTERNS_Graph.md`
 - `docs/physics/graph/SYNC_Graph.md`
+- `docs/physics/graph/SYNC_Graph_archive_2025-12.md`
+- `docs/physics/graph/VALIDATION_Living_Graph.md`
 
 **Sections:**
 - # Archived: SYNC_Graph.md
+- ## Maturity
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 - ## Key Design Decisions
 - ## The Full Energy Cycle
 - ## Next Steps
@@ -3574,6 +5187,13 @@ graph TD
 - ## Next Steps
 - ## CONFLICTS
 - ## Agent Observations
+- # Archived: SYNC_Graph.md
+- ## What's Missing: ONE ENDPOINT
+- # TODO: SSE streaming version
+- ## RECENT CHANGES
+
+**Doc refs:**
+- `docs/physics/graph/SYNC_Graph.md`
 
 **Sections:**
 - # THE BLOOD LEDGER — Validation Specification
@@ -3581,6 +5201,34 @@ graph TD
 - # =============================================================================
 - # PURPOSE
 - # =============================================================================
+- # =============================================================================
+- # CHAIN
+- # =============================================================================
+- ## CHAIN
+- # =============================================================================
+- # INVARIANTS
+- # =============================================================================
+- ## INVARIANTS
+- # =============================================================================
+- # PROPERTIES
+- # =============================================================================
+- ## PROPERTIES
+- # =============================================================================
+- # ERROR CONDITIONS
+- # =============================================================================
+- ## ERROR CONDITIONS
+- # =============================================================================
+- # TEST COVERAGE
+- # =============================================================================
+- ## TEST COVERAGE
+- # =============================================================================
+- # VERIFICATION PROCEDURE
+- # =============================================================================
+- ## VERIFICATION PROCEDURE
+- # =============================================================================
+- # SYNC STATUS
+- # =============================================================================
+- ## SYNC STATUS
 - # =============================================================================
 - # GRAPH INTEGRITY RULES
 - # =============================================================================
@@ -3657,14 +5305,21 @@ graph TD
 - # =============================================================================
 - # SUMMARY
 - # =============================================================================
-
-**Code refs:**
-- `engine/physics/energy.py`
+- ## GAPS / IDEAS / QUESTIONS
 
 **Sections:**
 - # Physics — Algorithm: System Overview
 - ## CHAIN
 - ## Consolidation Note
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: Physics Tick Cycle
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
 - ## Energy Mechanics
 - ## NODE TYPES
 - ## LINK TYPES
@@ -3976,6 +5631,7 @@ graph TD
 - # Physics — Behaviors: What Should Happen
 - ## CHAIN
 - ## Overview
+- ## BEHAVIORS
 - ## B1: Instant Display, Eventual Depth
 - ## B2: Conversations Are Multi-Participant
 - ## B3: Characters Think Unprompted
@@ -3988,38 +5644,32 @@ graph TD
 - ## B10: The World Continues Elsewhere
 - ## B11: The Snap
 - ## B12: Journey Conversations
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
 - ## Summary: What To Expect
 
 **Code refs:**
-- `engine/infrastructure/api/app.py`
-- `engine/infrastructure/api/moments.py`
-- `engine/infrastructure/orchestration/narrator.py`
-- `engine/infrastructure/orchestration/orchestrator.py`
-- `engine/infrastructure/orchestration/world_runner.py`
-- `engine/moment_graph/queries.py`
-- `engine/moment_graph/surface.py`
+- `engine/infrastructure/orchestration/speed.py`
+- `engine/models/base.py`
 - `engine/moment_graph/traversal.py`
 - `engine/physics/constants.py`
 - `engine/physics/graph/graph_ops.py`
-- `engine/physics/graph/graph_ops_apply.py`
 - `engine/physics/graph/graph_ops_events.py`
-- `engine/physics/graph/graph_ops_image.py`
-- `engine/physics/graph/graph_ops_links.py`
-- `engine/physics/graph/graph_ops_moments.py`
-- `engine/physics/graph/graph_ops_types.py`
 - `engine/physics/graph/graph_queries.py`
-- `engine/physics/graph/graph_queries_moments.py`
-- `engine/physics/graph/graph_queries_search.py`
-- `engine/physics/graph/graph_query_utils.py`
 - `engine/physics/tick.py`
+- `graph_ops.py`
+- `graph_queries_narratives.py`
 
 **Sections:**
 - # Physics — Implementation: Code Architecture and Structure
 - ## CHAIN
 - ## CODE STRUCTURE
+- ## DESIGN PATTERNS
 - ## SCHEMA
 - ## ENTRY POINTS
-- ## DATA FLOW
+- ## DATA FLOW AND DOCKING (FLOW-BY-FLOW)
 - ## LOGIC CHAINS
 - ## MODULE DEPENDENCIES
 - ## STATE MANAGEMENT
@@ -4027,33 +5677,21 @@ graph TD
 - ## CONCURRENCY MODEL
 - ## CONFIGURATION
 - ## BIDIRECTIONAL LINKS
-- ## IMPLEMENTATION PRIORITIES
 - ## GAPS / IDEAS / QUESTIONS
-- # RUNTIME PATTERNS
-- ## SCENE AS QUERY
-- ## TIME PASSAGE
-- # Conversation takes time
-- # Tick the world
-- # Check for scheduled events
-- # Check for time-of-day transitions
-- # Update character states (tiredness, hunger if tracked)
-- ## CHARACTER MOVEMENT
-- # This moment IS an action
-- # Update location state
-- # Find arrival moments for this character
-- ## CHARACTER INTRODUCTION PATTERNS
-- ## QUERY MOMENTS (Backstory Generation)
-- # Create the narrative
-- # Create memory moments, linked to the wondering
-- # What has Aldric wondered about?
-- # Full trace: wondering → answer → narrative
-- ## FLASHBACK PATTERN
-- ## FORWARD-ONLY CITIZENS
-- ## IMPLEMENTATION CHECKLIST (Runtime Patterns)
+- ## RUNTIME PATTERNS (Infrastructure)
+
+**Doc refs:**
+- `docs/schema/SCHEMA_Moments.md`
 
 **Sections:**
 - # Physics — Patterns: Why This Shape
 - ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
 - ## Core Principle
 - ## P1: Potential vs Actual
 - ## P2: The Graph Is Alive
@@ -4067,21 +5705,32 @@ graph TD
 - ## P10: Simultaneous Actions Are Drama
 - ## What This Pattern Does NOT Solve
 - ## The Philosophy
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
-- `engine/moment_graph/queries.py`
+- `engine/infrastructure/canon/canon_holder.py`
+- `engine/infrastructure/orchestration/speed.py`
 - `engine/physics/tick.py`
+
+**Doc refs:**
+- `docs/physics/ALGORITHM_Physics.md`
+- `docs/physics/IMPLEMENTATION_Physics.md`
 
 **Sections:**
 - # Physics — Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
 - ## GAPS
-- ## Recent Changes
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 - ## CHAIN
 - ## Architecture Summary
-- ## Open Questions
-- ## Next Steps
 - ## Handoff Notes
-- ## ARCHIVE
 
 **Code refs:**
 - `engine/handlers/base.py`
@@ -4099,40 +5748,65 @@ graph TD
 
 **Doc refs:**
 - `docs/physics/ALGORITHM_Physics.md`
+- `docs/physics/BEHAVIORS_Physics.md`
+- `docs/physics/IMPLEMENTATION_Physics.md`
+- `docs/physics/PATTERNS_Physics.md`
+- `docs/physics/SYNC_Physics.md`
+- `docs/physics/SYNC_Physics_archive_2025-12.md`
+- `docs/physics/TEST_Physics.md`
+- `docs/physics/VALIDATION_Physics.md`
 
 **Sections:**
 - # Archived: SYNC_Physics.md
-- ## Recent Changes
+- ## MATURITY
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
 - ## Agent Observations
+- # Archived: SYNC_Physics.md
+- ## RECENT CHANGES
+- ## Agent Observations
+- # Archived: SYNC_Physics.md
+- ## CHAIN
 
 **Code refs:**
-- `engine/tests/test_moment_graph.py`
+- `engine/physics/tick.py`
 
 **Sections:**
-- # Physics — Tests: Trace Scenarios
+- # Physics — Health: Verification Mechanics and Coverage
+- ## PURPOSE OF THIS FILE
 - ## CHAIN
-- ## Trace Scenarios
-- ## Trace 1: Simple Exchange
-- ## Trace 2: Silence
-- # This is about blacksmiths, not about philosophy
-- # Player character always has a handler
-- # Handler runs with context: "silence"
-- ## Trace 3: Multi-Party
-- ## Trace 4: Cascade
-- # Links to confession via energy propagation
-- ## Trace 5: Action Conflict
-- ## Trace 6: The Snap (3x to 1x)
-- # action: attack → combat initiated
-- ## Trace 7: Journey Conversation (2x)
-- ## Test Coverage Summary
-- ## Implementation Test Files
+- ## FLOWS ANALYSIS (TRIGGERS + FREQUENCY)
+- ## HEALTH INDICATORS SELECTED
+- ## STATUS (RESULT INDICATOR)
+- ## DOCK TYPES (COMPLETE LIST)
+- ## CHECKER INDEX
+- ## INDICATOR: energy_momentum
+- ## TRACE SCENARIOS (VERIFICATION)
+- ## HOW TO RUN
+- # Run physics tests (unit and integration)
+- ## KNOWN GAPS
 
-**Code refs:**
-- `engine/tests/test_moment_graph.py`
+**Doc refs:**
+- `docs/physics/ALGORITHM_Physics.md`
+- `docs/physics/SYNC_Physics.md`
+- `docs/physics/TEST_Physics.md`
 
 **Sections:**
 - # Physics — Validation: How To Verify
 - ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
 - ## Core Invariants
 - # No state stored outside graph
 - # (This is architectural, not queryable)
@@ -4218,6 +5892,640 @@ graph TD
 - # 4 characters flip simultaneously
 - # Should be ~1 LLM call time, not 4
 - ## Verification Checklist
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Billing — Behaviors: Metered Experience
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Billing - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `tick.py`
+
+**Sections:**
+- # IMPLEMENTATION: Billing Technical Stack
+- ## Code Architecture
+- ## Stack
+- ## Components
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # Billing — Mechanisms: Metered Stripe Flow
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Usage Tracking
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # PATTERNS: Pay To Preserve History
+- ## Why This Design Exists
+- ## Executive Summary
+- ## Why This Model Fits Blood Ledger
+- ## Maturity
+- ## CHAIN
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Billing Architecture.md`
+
+**Sections:**
+- # Billing — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Billing Architecture.md`
+
+**Sections:**
+- # SYNC: Billing System
+- ## Maturity
+- ## Current State
+- ## Recent Changes
+- ## Handoffs
+- ## Agent's Analysis (Gemini, 2025-12-19)
+- ## CHAIN
+
+**Code refs:**
+- `tests/product/test_billing.py`
+
+**Sections:**
+- # Billing - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Billing — Validation: Metered Integrity
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `tick.py`
+
+**Sections:**
+- # ALGORITHM: Hallucination Defense
+- ## Procedures
+- ## The Problem with AI Narrative
+- ## Our Architecture: Generation vs Canonization
+- ## Algorithm Steps
+- ## The Cost and Value
+- ## The AI as Actor Model
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # ALGORITHM: Semantic Cache
+- ## Procedures
+- ## The Problem
+- ## The Solution
+- ## Algorithm Steps
+- # BEFORE: Temporal cache (60 seconds)
+- # AFTER: Semantic cache
+- # 1. Extract the THEME of the request
+- # 2. Query the graph for EVERYTHING related
+- # 3. If content exists, respect it
+- # 4. If new, generate AND tag for future
+- ## Metadata Tagging
+- ## Result
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # ALGORITHM: World Scavenger
+- ## Procedures
+- ## Paradigm Shift: Scavenge Before Generate
+- ## The Scavenger Priority Stack
+- ## Three Scavenging Systems
+- ## Inverse Cost Curve
+- ## Advantages of Scavenging
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # BEHAVIORS: Conversion Funnel and Ledger Lock
+- ## Observable Effects
+- ## The Conversion Funnel
+- ## Funnel Metrics to Track
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # BEHAVIORS: Retention Mechanisms
+- ## Observable Effects
+- ## Retention Mechanism 1: The Growing Graph
+- ## Retention Mechanism 2: The Chronicle Promise
+- ## Retention Mechanism 3: The Multi-Life Model
+- ## Retention Mechanism 4: The "Missed Events" Drive
+- ## Churn Prevention Triggers
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # Business Model - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # PATTERNS: Market Comparison
+- ## Why This Design Exists
+- ## Not a Game, a Service
+- ## Strategic Market Comparisons
+- ## Lifetime Value (LTV) Comparison
+- ## Blue Ocean Market Position
+- ## Maturity
+- ## CHAIN
+
+**Code refs:**
+- `tick.py`
+
+**Sections:**
+- # PATTERNS: Whale Economics
+- ## Why This Design Exists
+- ## The Core Insight: Simulation Is Free
+- ## Cost Per Moment Type
+- ## The "Grandmother Query" Economics
+- ## The "Nothing Happening" Subsidy
+- ## Margin Defense Table
+- ## Worst-Case Stress Test
+- ## Maturity
+- ## CHAIN
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Business Model Stress Test.md`
+
+**Sections:**
+- # SYNC: Business Model
+- ## Maturity
+- ## Current State
+- ## Recent Changes
+- ## Handoffs
+- ## Agent's Analysis (Gemini, 2025-12-19)
+- ## CHAIN
+
+**Sections:**
+- # Business Model — Validation: Margin Viability
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Chronicle System — Behaviors: Session, Weekly, Life
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # BEHAVIORS: Chronicle Types and Structure
+- ## Observable Effects
+- ## Chronicle Types
+- ## Sharing & Distribution Behaviors
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # Chronicle System - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # IMPLEMENTATION: Chronicle Technical Pipeline
+- ## Code Architecture
+- ## Generation Flow
+- ## LLM Prompt for Script Generation
+- ## COLD_OPEN
+- ## THE_WEIGHT
+- ## THE_MOMENT
+- ## THE_SHADOW
+- ## END_CARD
+- ## TTS Integration
+- # Voice mapping
+- # ... character-specific voices
+- ## Video Composition
+- # Cold open
+- # The Weight — Ledger pages
+- # ... continue for each section
+- # Render
+- ## Cost Breakdown
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # Chronicle System — Mechanisms: Generation Pipeline
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Generate Chronicle
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `docs/network/transposition/ALGORITHM_Transposition_Pipeline.md`
+- `docs/product/billing/PATTERNS_Pay_To_Preserve_History.md`
+
+**Sections:**
+- # PATTERNS: Chronicle Flywheel
+- ## Why This Design Exists
+- ## The Flywheel Concept
+- ## Key Design Decisions & Rationale
+- ## What's In Scope
+- ## What's Out of Scope (and Where it Lives Instead)
+- ## Maturity
+- ## CHAIN
+
+**Sections:**
+- # PATTERNS: Chronicle Go-To-Market Integration
+- ## Why This Design Exists
+- ## The Acquisition Flywheel
+- ## Chronicle as CAC Reducer
+- ## Seeding Strategy (Initial Launch)
+- ## Viral Hooks in Chronicle Design
+- ## Email Integration
+- ## Maturity
+- ## CHAIN
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`
+
+**Sections:**
+- # SYNC: Chronicle System
+- ## Maturity
+- ## Current State
+- ## Recent Changes
+- ## Handoffs
+- ## Agent's Analysis (Gemini, 2025-12-19)
+- ## CHAIN
+
+**Code refs:**
+- `tests/product/test_chronicle_system.py`
+
+**Sections:**
+- # Chronicle System - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Chronicle System — Validation: Output Quality
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # GTM Strategy — Behaviors: Acquisition Flywheel
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # GTM Strategy - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # GTM Strategy — Mechanisms: Programs and Channels
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Chronicle Flywheel
+- ## MECHANISM: Weekly Storm Program
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # GTM Strategy — Patterns: Direct Whale Acquisition
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Go-To-Market Strategy.md`
+
+**Sections:**
+- # GTM Strategy — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Code refs:**
+- `tests/product/test_gtm_strategy.py`
+
+**Sections:**
+- # GTM Strategy - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # GTM Strategy — Validation: Program Health
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ledger Lock — Behaviors: Conversion Trigger
+- ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ledger Lock - Implementation: Code Architecture and Structure
+- ## CHAIN
+- ## CODE STRUCTURE
+- ## DESIGN PATTERNS
+- ## SCHEMA
+- ## ENTRY POINTS
+- ## DATA FLOW
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ledger Lock — Mechanisms: Trigger and Payment Flow
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## MECHANISM: Trigger
+- ## MECHANISM: Payment Flow
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ledger Lock — Patterns: Crisis of Memory
+- ## CHAIN
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `data/Distributed-Content-Generation-Network/UX Design The Ledger Lock.md`
+
+**Sections:**
+- # Ledger Lock — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## RECENT CHANGES
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+
+**Code refs:**
+- `tests/product/test_ledger_lock.py`
+
+**Sections:**
+- # Ledger Lock - Test: Test Cases and Coverage
+- ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Run all tests for this module
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Ledger Lock — Validation: Conversion Integrity
+- ## CHAIN
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Sections:**
+- # Schema Links
+- ## NARRATIVE -> NARRATIVE
+- ## CHARACTER -> PLACE (Presence)
+- ## CHARACTER -> THING (Possession)
+- ## THING -> PLACE (Location)
+- ## PLACE -> PLACE (Containment)
+- ## PLACE -> PLACE (Route)
+
+**Sections:**
+- # Schema Nodes
+- ## CHARACTER
+- ## PLACE
+- ## THING
+- ## NARRATIVE
+
+**Doc refs:**
+- `docs/schema/SCHEMA_Moments/SCHEMA_Moments_Overview.md`
+
+**Sections:**
+- # Schema Overview
+- ## CHAIN
+- ## Scope
+- ## Core Principles (Concise)
+
+**Sections:**
+- # Schema Tensions
+- # Gradual
+- # Scheduled
+- # Hybrid
+
+**Sections:**
+- # Moment Links
+- ## CHARACTER -> MOMENT (SAID)
+- ## MOMENT -> PLACE (AT)
+- ## MOMENT -> MOMENT (THEN)
+- ## MOMENT -> TARGET (ATTACHED_TO)
+- ## MOMENT -> MOMENT (CAN_LEAD_TO)
+- ## MOMENT -> TARGET (REFERENCES)
+- ## MOMENT -> TARGET (TARGETS)
+- ## MOMENT -> TARGET (ANSWERED_BY)
+- ## MOMENT -> CHARACTER (THREATENS)
+
+**Sections:**
+- # Moment Node Schema
+
+**Code refs:**
+- `engine/db/graph_ops.py`
+
+**Doc refs:**
+- `docs/schema/SCHEMA/SCHEMA_Links.md`
+- `docs/schema/SCHEMA/SCHEMA_Nodes.md`
+
+**Sections:**
+- # Moments Schema Overview
+- ## CHAIN
+- ## Scope
+
+**Doc refs:**
+- `docs/schema/SCHEMA.md`
+- `docs/schema/SCHEMA_Moments.md`
+
+**Sections:**
+- # Schema Archive Notes (2024-12)
+- ## Summary
+- ## Rationale
 
 **Code refs:**
 - `check_health.py`
@@ -4232,6 +6540,7 @@ graph TD
 - ## PRINCIPLES
 - ## DEPENDENCIES
 - ## INSPIRATIONS
+- ## SCOPE
 - ## WHAT THIS DOES NOT SOLVE
 - ## GAPS / IDEAS / QUESTIONS
 
@@ -4247,11 +6556,22 @@ graph TD
 - ## CHAIN
 - ## MATURITY
 - ## CURRENT STATE
-- ## RECENT CHANGES
+- ## IN PROGRESS
+- ## KNOWN ISSUES
 - ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
 - ## TODO
+- ## CONSCIOUSNESS TRACE
 - ## POINTERS
 - ## Agent Observations
+- ## ARCHIVE
+
+**Code refs:**
+- `engine/graph/health/check_health.py`
+
+**Sections:**
+- # Archived: SYNC_Graph_Health.md
+- ## RECENT CHANGES
 
 **Code refs:**
 - `__init__.py`
@@ -4272,8 +6592,32 @@ graph TD
 - ## THE PATTERN
 - ## PRINCIPLES
 - ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
 - ## WHAT THIS DOES NOT SOLVE
 - ## GAPS / IDEAS / QUESTIONS
+
+**Code refs:**
+- `engine/models/__init__.py`
+- `engine/models/base.py`
+- `engine/tests/test_models.py`
+
+**Doc refs:**
+- `docs/schema/SCHEMA.md`
+- `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`
+
+**Sections:**
+- # Schema Models — Sync: Current State
+- ## MATURITY
+- ## CURRENT STATE
+- ## IN PROGRESS
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+- ## ARCHIVE
 
 **Code refs:**
 - `engine/models/__init__.py`
@@ -4283,486 +6627,112 @@ graph TD
 - `engine/tests/test_models.py`
 
 **Doc refs:**
-- `docs/schema/SCHEMA.md`
 - `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`
 - `docs/schema/models/SYNC_Schema_Models.md`
 
 **Sections:**
-- # Schema Models — Sync: Current State
-- ## MATURITY
-- ## CURRENT STATE
+- # Archived: SYNC_Schema_Models.md
 - ## RECENT CHANGES
-- ## HANDOFF: FOR AGENTS
-- ## TODO
+- ## Agent Observations
+- # Archived: SYNC_Schema_Models.md
+- ## RECENT CHANGES
 - ## Agent Observations
 
-**Sections:**
-- # THE BLOOD LEDGER — Complete Schema
-- # Version: 5.1
-- # =============================================================================
-- # PHILOSOPHY
-- # =============================================================================
-- # The Core Insight
-- # ----------------
-- # The game is a web of narratives under tension, not a simulation of characters.
-- # We simulate STORIES — narratives that exist, connect, contradict, and break.
-- # Characters are how stories express themselves.
-- # This matters because:
-- # - Relationships become real: Not "trust: 0.65" but "the oath he swore,
-- # the doubt seeded when he heard Edmund's version, the loyalty tested."
-- # - Memory becomes structural: The graph remembers. That promise in hour one
-- # is a narrative with weight — it will speak when relevant, break when pressured.
-- # - Consequences become inevitable: Tension accumulates. What cannot hold, breaks.
-- # =============================================================================
-- # NODES (4 Types)
-- # =============================================================================
-- # ---------------------------------------------------------------------------
-- # CHARACTER
-- # ---------------------------------------------------------------------------
-- # -------------------------------------------------------------------------
-- # ROLE IN THE EXPERIENCE
-- # -------------------------------------------------------------------------
-- # Characters are how the player experiences relationships.
-- # The goal: "I know them" — the player can predict what Aldric would do.
-- # Characters feel real because they ARE real — consistent beliefs, voice, history.
-- # Key moments characters create:
-- # - "They remembered" — character references something from sessions ago
-- # - "I can rely on them" — Player sends companion on mission, confident they'll succeed
-- # - "They became real" — Character reveals depth beyond their role
-- # Characters are NOT stat blocks. They are people with:
-- # - Beliefs (narratives they hold)
-- # - Voice (how they speak)
-- # - History (backstory that informs behavior)
-- # - Agency (they act based on their beliefs, not player commands)
-- # -------------------------------------------------------------------------
-- # DYNAMICS
-- # -------------------------------------------------------------------------
-- # - Characters BELIEVE narratives → beliefs drive behavior
-- # - Characters SPREAD narratives → news travels through people
-- # - Characters MOVE through places → proximity affects tension pressure
-- # - Characters ACT when tensions break → World Runner determines what they do
-- # - Companions are NEEDED → player can't do everything alone
-- # ---------------------------------------------------------------------------
-- # PLACE
-- # ---------------------------------------------------------------------------
-- # -------------------------------------------------------------------------
-- # ROLE IN THE EXPERIENCE
-- # -------------------------------------------------------------------------
-- # Places ground the player in the world.
-- # The goal: "I know this place" — some locations become THEIRS.
-- # Key moments places create:
-- # - "I know this place well" — Familiarity creates ownership, home
-- # - "The world moved" — Player arrives and learns events happened here without them
-- # - Atmosphere shapes mood — the same place feels different at night, in rain, after battle
-- # Places are NOT just containers. They have:
-- # - Atmosphere (mood, weather, sensory details)
-- # - Geography (connections to other places, travel time)
-- # - Memory (events that happened here become narratives)
-- # -------------------------------------------------------------------------
-- # DYNAMICS
-- # -------------------------------------------------------------------------
-- # - Places CONTAIN characters → proximity enables interaction
-- # - Travel TIME matters → distance creates urgency, cost
-- # - Atmosphere SHIFTS → same place, different feel
-- # - Events HAPPEN at places → location becomes part of the story
-- # - Geography determines what's possible → blocked paths, dangerous roads
-- # ---------------------------------------------------------------------------
-- # THING
-- # ---------------------------------------------------------------------------
-- # -------------------------------------------------------------------------
-- # ROLE IN THE EXPERIENCE
-- # -------------------------------------------------------------------------
-- # Things create ownership and stakes.
-- # The goal: Objects become meaningful through their history and contested nature.
-- # Key moments things create:
-- # - "This was his" — An object carries emotional weight from its history
-- # - "They want it" — Contested ownership creates tension
-- # - "I gave my word" — A token represents an oath or bond
-- # Things are NOT inventory items. They are:
-- # - Story anchors (the sword that killed the father)
-- # - Relationship tokens (the ring she gave you)
-- # - Stakes (the land Edmund took)
-- # -------------------------------------------------------------------------
-- # DYNAMICS
-- # -------------------------------------------------------------------------
-- # - Possession is GROUND TRUTH → they have it or they don't
-- # - Ownership is NARRATIVE → who SHOULD have it is a story
-- # - Things can be CONTESTED → creates tension
-- # - Things carry SIGNIFICANCE → mundane vs legendary affects weight
-- # - Transfer creates STORY → giving, stealing, finding all spawn narratives
-- # ---------------------------------------------------------------------------
-- # NARRATIVE
-- # ---------------------------------------------------------------------------
-- # -------------------------------------------------------------------------
-- # ROLE IN THE EXPERIENCE
-- # -------------------------------------------------------------------------
-- # NARRATIVES ARE THE GAME.
-- # Everything — relationships, reputation, memory, knowledge — is narrative.
-- # Key moments narratives create:
-- # - "They remembered" — A narrative from sessions ago surfaces
-- # - "My past speaks" — Player's oaths and debts pull in different directions
-- # - "I was wrong" — Player discovers their foundational belief was mistaken
-- # - "Everything led here" — Accumulated narratives converge in climactic moment
-- # What narratives ARE:
-- # - "Aldric is loyal" is a narrative, not a stat
-- # - "Edmund betrayed me" is a narrative, not a flag
-- # - "We are brothers" is a narrative, not a relationship type
-- # Characters don't have relationships — they have stories they tell themselves
-- # about relationships. The player's beliefs may be WRONG. Truth is director-only.
-- # -------------------------------------------------------------------------
-- # DYNAMICS
-- # -------------------------------------------------------------------------
-- # - Narratives have WEIGHT → high-weight narratives speak louder, appear more
-- # - Narratives can CONTRADICT → contradiction under pressure creates tension
-- # - Narratives SPREAD → characters tell each other stories
-- # - Narratives become VOICES → they speak to the player in scenes
-- # - Narratives have TRUTH (director-only) → player beliefs can be mistaken
-- # - Narratives CLUSTER into tensions → when tension breaks, story advances
-- # - Old narratives can be SUPERSEDED → the world evolves
-- # About events
-- # About characters
-- # About relationships
-- # About things
-- # About places
-- # Meta
-- # System fields
-- # Director only
-- # =============================================================================
-- # DEFINITIONS
-- # =============================================================================
-- # character
-- # place
-- # thing
-- # =============================================================================
-- # LINKS (6 Types)
-- # =============================================================================
-- # ---------------------------------------------------------------------------
-- # CHARACTER → NARRATIVE (Belief)
-- # ---------------------------------------------------------------------------
-- # -------------------------------------------------------------------------
-- # ROLE IN THE EXPERIENCE
-- # -------------------------------------------------------------------------
-- # Beliefs create DRAMA. Characters don't know facts — they believe stories.
-- # Key moments beliefs create:
-- # - "They don't know" — Character acts on incomplete information
-- # - "They believe a lie" — Character's actions based on false narrative
-- # - "Secrets emerge" — Hidden beliefs surface under pressure
-- # - "News travels" — Belief spreads from character to character
-- # -------------------------------------------------------------------------
-- # DYNAMICS
-- # -------------------------------------------------------------------------
-- # - heard + believes = character acts as if true
-- # - heard + denies = character actively rejects (creates conflict)
-- # - heard + doubts = character is uncertain (can be swayed)
-- # - hides = knows but won't share (secret keeping)
-- # - spreads = actively telling others (news propagation)
-- # - High doubt + high belief = CONFLICTED (internal tension)
-- # Belief propagation:
-- # - Characters in same place can share narratives
-- # - Trust affects whether beliefs are accepted
-- # - Contradicting beliefs create tension
-- # Knowledge (0-1) — how much do they know/believe?
-- # Action (0-1) — what are they doing with this knowledge?
-- # Origin
-- # Metadata — how did they learn?
-- # ---------------------------------------------------------------------------
-- # NARRATIVE → NARRATIVE (Story Relationships)
-- # ---------------------------------------------------------------------------
-- # -------------------------------------------------------------------------
-- # ROLE IN THE EXPERIENCE
-- # -------------------------------------------------------------------------
-- # Story relationships create STRUCTURE and CONFLICT.
-- # Key moments narrative relationships create:
-- # - "They can't both be true" — Contradicting narratives force resolution
-- # - "It all connects" — Supporting narratives create coherent worldview
-- # - "Things have changed" — Superseding narrative replaces old understanding
-- # -------------------------------------------------------------------------
-- # DYNAMICS
-- # -------------------------------------------------------------------------
-- # - CONTRADICTS → These narratives cannot both be true. Creates tension.
-- # When believers of both are in proximity, pressure builds.
-- # - SUPPORTS → These narratives reinforce each other. Creates clusters.
-- # Believing one makes you more likely to believe the other.
-- # - SUPERSEDES → New information replaces old. The world evolves.
-- # "Edmund is dead" supersedes "Edmund is my enemy"
-- # - ELABORATES → Adds detail without conflict.
-- # - SUBSUMES → Specific case of broader pattern.
-- # ---------------------------------------------------------------------------
-- # CHARACTER → PLACE (Physical Presence)
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # CHARACTER → THING (Physical Possession)
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # THING → PLACE (Physical Location)
-- # ---------------------------------------------------------------------------
-- # ---------------------------------------------------------------------------
-- # PLACE → PLACE (Geography)
-- # ---------------------------------------------------------------------------
-- # Two link types: CONTAINS (hierarchy) and ROUTE (travel)
-- # -------------------------------------------------------------------------
-- # HIERARCHY EXAMPLE
-- # -------------------------------------------------------------------------
-- # place_york (settlement)
-- # ├── CONTAINS → place_york_market (district)
-- # │                 └── CONTAINS → place_merchants_hall (building)
-- # │                                    └── CONTAINS → place_back_room (room)
-- # └── CONTAINS → place_york_minster (building)
-- # -------------------------------------------------------------------------
-- # ROUTE IS FOR INTER-SETTLEMENT TRAVEL ONLY
-- # -------------------------------------------------------------------------
-- # place_york ──[ROUTE]──> place_durham
-- # place_york ──[ROUTE]──> place_scarborough
-- # NOT for:
-- # place_york_market ──[ROUTE]──> place_york_minster  # NO! Same settlement
-- # Computed at link creation from waypoints + road_type
-- # =============================================================================
-- # TENSIONS
-- # =============================================================================
-- # ===========================================================================
-- # ROLE IN THE EXPERIENCE
-- # ===========================================================================
-- # Tensions are HOW THE WORLD MOVES.
-- # They create the feeling: "The world moved without me."
-- # Key moments tensions create:
-- # - "The world moved" — Player arrives and learns a tension broke while they were away
-- # - "I could have prevented this" — If player had been faster, things would differ
-- # - "Something is happening elsewhere" — Player senses tensions building beyond their view
-- # - "This happened because of that" — Every break traces to accumulated pressure
-- # Tensions are NOT scripted events. They are:
-- # - Pressure that accumulates over TIME
-- # - Contradictions that MUST eventually resolve
-- # - Emergent drama, not authored triggers
-- # ===========================================================================
-- # DYNAMICS
-- # ===========================================================================
-- # THE TENSION LOOP:
-- # 1. Time passes → pressure accumulates (mechanical, no LLM)
-- # 2. Pressure exceeds breaking_point → FLIP detected
-- # 3. World Runner called → determines WHAT specifically happened
-- # 4. New narratives created → graph updated
-- # 5. Cascades checked → did this destabilize other tensions?
-- # PRESSURE SOURCES:
-- # - Time (gradual accumulation via base_rate)
-- # - Proximity (believers of contradicting narratives in same place)
-- # - Events (direct pressure from player actions or other breaks)
-- # - Deadlines (scheduled pressure floors)
-- # WHY THIS MATTERS:
-- # The player is NOT the center. While they talk to Aldric for 30 minutes,
-- # Edmund gets 30 minutes closer to York. Tensions tick. The world moves.
-- # For gradual
-- # For scheduled/hybrid
-- # =============================================================================
-- # MOMENT
-- # =============================================================================
-- # -------------------------------------------------------------------------
-- # ROLE IN THE EXPERIENCE
-- # -------------------------------------------------------------------------
-- # Moments enable:
-- # - Semantic search across all game content ("when did Aldric mention his sister?")
-- # - Temporal queries ("what happened yesterday?")
-- # - Source attribution for narratives
-- # - Full transcript preservation
-- # -------------------------------------------------------------------------
-- # DYNAMICS
-- # -------------------------------------------------------------------------
-- # - Every dialogue line → Moment
-- # - Every narration line → Moment
-- # - Every player action → Moment
-- # - Every hint/voice → Moment
-- # - Moments link to Place (where), Character (who said), Narrative (source for)
-- # NOTE: Speaker is NOT an attribute. Use SAID link: Character -[SAID]-> Moment
-- # =============================================================================
-- # NARRATOR NOTES
-- # =============================================================================
-
 **Code refs:**
-- `engine/db/graph_ops.py`
+- `engine/graph/health/test_schema.py`
+- `engine/tests/test_spec_consistency.py`
 
 **Sections:**
-- # Moments — Schema Reference
+- # Graph Validation
 - ## CHAIN
-- ## How This Document Works
-- # NODES
-- ## CHARACTER
-- # For type: group
-- # Identity (optional, enriches handler context)
-- ## PLACE
-- ## THING
-- ## NARRATIVE
-- # Tension detection fields (tension is computed, not stored)
-- ## MOMENT
-- # Target is expressed via TARGETS link
-- # LINKS
-- ## Character Links
-- # Energy mechanics
-- # Knowledge state (how much they know/believe)
-- # Action state (what they do with it)
-- # Provenance
-- ## Place Links
-- # No attributes — relationship is binary
-- ## Thing Links
-- ## Narrative Links
-- # No attributes — just the connection
-- # No attributes — traces source
-- ## Moment Links
-- # 0.5 = mention ("...like Aldric said")
-- # No attributes — the link itself indicates target
-- # No attributes
-- # EXAMPLE: Creating a Scene
+- ## INVARIANTS
+- ## PROPERTIES
+- ## ERROR CONDITIONS
+- ## TEST COVERAGE
+- ## VERIFICATION PROCEDURE
+- ## SYNC STATUS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `engine/world/map/semantic.py`
 
 **Sections:**
-- # Map System — Algorithm: Rendering, Places, Routes
+- # Map System — Algorithm: Places
 - ## CHAIN
-- ## Canvas Layers
+- ## Role in the Map
+- ## Place Schema
+- ## CONTAINS Link (Hierarchy)
+- ## Creation Flow
+- ## Coordinate System
+- ## Scale-Based Defaults
+- ## Embedding Detail
+- ## Data File (Seed)
+
+**Code refs:**
+- `engine/world/map/semantic.py`
+
+**Sections:**
+- # Map System — Algorithm: Rendering Pipeline
+- ## CHAIN
+- ## Canvas Layers (Draw Order)
 - ## Projection
-- ## Layer 0: Parchment Background
-- ## Layer 1: Coastline + Water
-- ## Layer 2: Routes
-- ## Layer 3: Fog of War
-- ## Layer 4: Place Icons + Labels
-- ## Layer 5: Dynamic Markers
-- ## Layer 6: UI Overlay
+- ## Layer Details (Concise)
 - ## Seeded Random
 - ## Hit Detection
-- ## Performance Optimization
-- ## Place Schema
-- ## Scale Levels
-- # region can contain settlement
-- # settlement can contain district
-- # district can contain building
-- # building can contain room
-- # room contains nothing
-- ## Place Types
-- ## CONTAINS Link (Hierarchy)
-- ## Creating Places
-- # Required fields
-- # ID format
-- # Coordinates
-- # Scale
-- ## Example Places
-- ## Coordinate System
-- ## Scale-Based Defaults
-- ## Embedding Detail
-- # Get all places with embeddings
-- # Compute similarities
-- # Return top-k
-- ## Data File
-- # Regions
-- # Settlements
-- # Districts
+- ## Performance
+
+**Code refs:**
+- `engine/world/map/semantic.py`
+
+**Sections:**
+- # Map System — Algorithm: Routes
+- ## CHAIN
+- ## Role in the Map
 - ## ROUTE Link Schema
-- # Stored (traced input)
-- # Computed at creation
-- # Optional
-- ## Route Types
 - ## Distance Computation
-- ## Travel Time Computation
-- ## Creating Routes
-- # Result:
-- # {
-- # "from": "place_york",
-- # "to": "place_durham",
-- # "waypoints": [...],
-- # "road_type": "roman",
-- # "distance_km": 96.5,
-- # "travel_minutes": 1158,  # ~19.3 hours
-- # "difficulty": "easy",
-- # "detail": "The old Roman road north..."
-- # }
-- ## Graph Storage
-- # Forward
-- # Reverse (swap endpoints, reverse waypoints)
-- # Downstream (fast)
-- # Upstream (slower - 3 km/h instead of 8)
+- ## Travel Time
+- ## Creation Flow
 - ## Movement Rules
-- # Same place
-- # Get parents
-- # Same parent → use scale-based default
-- # Different parents → check for route at settlement level
-- # Same settlement, different districts
-- # Different settlements → need route
-- # No direct route
 - ## Route Queries
 - ## Position Along Route
-- # Interpolate within segment
-- # At end
-- ## Data File
-- # York to Durham (Roman road)
-- # York to Scarborough (track)
-- # York to Whitby (path through moors)
+- ## Data File (Seed)
 - ## Route Tracing Tool
-- ## Places
-- ## Place Schema
-- ## Scale Levels
-- # region can contain settlement
-- # settlement can contain district
-- # district can contain building
-- # building can contain room
-- # room contains nothing
-- ## Place Types
-- ## CONTAINS Link (Hierarchy)
-- ## Creating Places
-- # Required fields
-- # ID format
-- # Coordinates
-- # Scale
-- ## Example Places
-- ## Coordinate System
-- ## Scale-Based Defaults
-- ## Embedding Detail
-- # Get all places with embeddings
-- # Compute similarities
-- # Return top-k
-- ## Data File
-- # Regions
-- # Settlements
-- # Districts
-- ## Routes
-- ## ROUTE Link Schema
-- # Stored (traced input)
-- # Computed at creation
-- # Optional
-- ## Route Types
-- ## Distance Computation
-- ## Travel Time Computation
-- ## Creating Routes
-- # Result:
-- # {
-- # "from": "place_york",
-- # "to": "place_durham",
-- # "waypoints": [...],
-- # "road_type": "roman",
-- # "distance_km": 96.5,
-- # "travel_minutes": 1158,  # ~19.3 hours
-- # "difficulty": "easy",
-- # "detail": "The old Roman road north..."
-- # }
-- ## Graph Storage
-- # Forward
-- # Reverse (swap endpoints, reverse waypoints)
-- # Downstream (fast)
-- # Upstream (slower - 3 km/h instead of 8)
-- ## Movement Rules
-- # Same place
-- # Get parents
-- # Same parent → use scale-based default
-- # Different parents → check for route at settlement level
-- # Same settlement, different districts
-- # Different settlements → need route
-- # No direct route
-- ## Route Queries
-- ## Position Along Route
-- # Interpolate within segment
-- # At end
-- ## Data File
-- # York to Durham (Roman road)
-- # York to Scarborough (track)
-- # York to Whitby (path through moors)
-- ## Route Tracing Tool
+
+**Code refs:**
+- `engine/world/map/semantic.py`
+
+**Doc refs:**
+- `docs/world/map/ALGORITHM/ALGORITHM_Places.md`
+- `docs/world/map/ALGORITHM/ALGORITHM_Rendering_Pipeline.md`
+- `docs/world/map/ALGORITHM/ALGORITHM_Routes.md`
+
+**Sections:**
+- # Map System — Algorithm: Overview
+- ## CHAIN
+- ## Purpose
+- ## Rendering Summary
+- ## Places and Routes Summary
+- ## Inputs and Outputs
+- ## Constraints
+
+**Code refs:**
+- `engine/world/map/semantic.py`
+
+**Doc refs:**
+- `docs/world/map/ALGORITHM/ALGORITHM_Rendering_Pipeline.md`
+
+**Sections:**
+- # Map System — Algorithm: Rendering
+- ## CHAIN
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: RenderMapFrame
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `engine/world/map/semantic.py`
@@ -4770,36 +6740,19 @@ graph TD
 **Sections:**
 - # Map System — Behaviors: Visibility & Interaction
 - ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
 - ## Visibility System
 - ## PlayerVisibility Schema
-- # playthroughs/{id}/visibility.yaml
 - ## Visibility Update Rules
-- # Visiting makes it familiar
-- # Passing through while traveling → at least known
-- # Hearing about it → rumored if unknown
-- # Seeing on a physical map → rumored
-- # Detailed description from someone who's been there → known
 - ## Route Visibility
-- # Both ends must be known
-- # Route-specific visibility
-- # If route itself is known, show it
-- # If both ends are at least rumored, show as rumored
-- ## What Shows at Each Level
-- ## Position Uncertainty
-- # Add random offset (consistent per place)
-- # Convert to degrees (~111 km per degree lat, ~70 km per degree lng at this latitude)
+- ## Display Rules
 - ## Interaction Behaviors
-- ## Map Component Props
-- ## Visibility Changes During Play
-- # "I've heard of a monastery to the north..."
-- # "Whitby is two days north along the coast..."
-- # Destination becomes familiar
-- # Route becomes familiar
-- # Places passed through become known
-- ## Map Interaction Flow
-- ## Discovery Moments
-- ## Integration with Narrator
-- # In Narrator's graph_mutations
+- ## Map Component Props (UI Contract)
+- ## Narrator Integration
 
 **Code refs:**
 - `engine/world/map/__init__.py`
@@ -4831,26 +6784,58 @@ graph TD
 **Sections:**
 - # Map System — Patterns: Why This Design
 - ## CHAIN
-- ## The Core Insight
-- ## What the Map Does
-- ## Design Principles
-- ## Why These Choices
-- ## Connection to Other Systems
-- ## What the Map Is NOT
-- ## Player Experience
+- ## Core Insight
+- ## THE PROBLEM
+- ## THE PATTERN
+- ## PRINCIPLES
+- ## DEPENDENCIES
+- ## INSPIRATIONS
+- ## SCOPE
+- ## What the Map Is Not
+- ## System Boundaries
+- ## Summary
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `engine/world/map/semantic.py`
+- `frontend/components/map/MapClient.tsx`
+
+**Doc refs:**
+- `docs/world/map/PATTERNS_Map.md`
+- `docs/world/map/archive/SYNC_archive_2024-12.md`
 
 **Sections:**
 - # Map System — Sync: Current State
 - ## CHAIN
-- ## Current State
-- ## What's Implemented
-- ## What's NOT Implemented
+- ## MATURITY
+- ## CURRENT STATE
 - ## Documentation Status
-- ## Dependencies for Visual Map
+- ## IN PROGRESS
+- ## Agent Observations
+- ## GAPS
 - ## ARCHIVE
+- ## KNOWN ISSUES
+- ## HANDOFF: FOR AGENTS
+- ## HANDOFF: FOR HUMAN
+- ## TODO
+- ## CONSCIOUSNESS TRACE
+- ## POINTERS
+- ## ARCHIVE
+
+**Doc refs:**
+- `docs/world/map/ALGORITHM/ALGORITHM_Places.md`
+- `docs/world/map/ALGORITHM/ALGORITHM_Rendering_Pipeline.md`
+- `docs/world/map/ALGORITHM/ALGORITHM_Routes.md`
+- `docs/world/map/ALGORITHM_Map.md`
+- `docs/world/map/ALGORITHM_Rendering.md`
+- `docs/world/map/BEHAVIORS_Map.md`
+- `docs/world/map/PATTERNS_Map.md`
+- `docs/world/map/SYNC_Map.md`
+- `docs/world/map/TEST_Map_Test_Coverage.md`
+
+**Sections:**
+- # Archived: SYNC_Map.md
+- ## RECENT CHANGES
 
 **Code refs:**
 - `tests/world/test_map_semantic.py`
@@ -4886,10 +6871,26 @@ graph TD
 - ## SYNC STATUS
 - ## GAPS / IDEAS / QUESTIONS
 
+**Code refs:**
+- `data/scripts/inject_world.py`
+- `data/scripts/scrape/phase1_geography.py`
+- `data/scripts/scrape/phase2_political.py`
+- `data/scripts/scrape/phase3_events.py`
+- `data/scripts/scrape/phase4_narratives.py`
+- `data/scripts/scrape/phase5_tensions.py`
+
 **Sections:**
 - # Scraping Pipeline — Algorithm
 - ## CHAIN
-- ## Overview
+- ## OVERVIEW
+- ## DATA STRUCTURES
+- ## ALGORITHM: run_scraping_pipeline
+- ## KEY DECISIONS
+- ## DATA FLOW
+- ## COMPLEXITY
+- ## HELPER FUNCTIONS
+- ## INTERACTIONS
+- ## GAPS / IDEAS / QUESTIONS
 - ## Phases
 - ## Phase 1: Geography
 - # scripts/scrape/phase1_geography.py
@@ -4916,18 +6917,20 @@ graph TD
 **Sections:**
 - # World Scraping — Behaviors
 - ## CHAIN
+- ## BEHAVIORS
+- ## INPUTS / OUTPUTS
+- ## EDGE CASES
+- ## ANTI-BEHAVIORS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
 - `data/scripts/inject_world.py`
-- `data/scripts/scrape/narrative_rules.py`
-- `data/scripts/scrape/osm_utils.py`
 - `data/scripts/scrape/phase1_geography.py`
 - `data/scripts/scrape/phase2_political.py`
 - `data/scripts/scrape/phase3_events.py`
 - `data/scripts/scrape/phase4_narratives.py`
 - `data/scripts/scrape/phase5_tensions.py`
-- `engine/db/graph_ops.py`
-- `inject_world.py`
+- `engine/physics/graph/graph_ops.py`
 
 **Sections:**
 - # World Scraping — Implementation (Pipeline Architecture)
@@ -4936,43 +6939,89 @@ graph TD
 - ## FILE RESPONSIBILITIES
 - ## ENTRY POINTS
 - ## DATA FLOW
+- ## SCHEMA
+- ## LOGIC CHAINS
+- ## MODULE DEPENDENCIES
+- ## STATE MANAGEMENT
+- ## RUNTIME BEHAVIOR
+- ## CONCURRENCY MODEL
+- ## CONFIGURATION
+- ## BIDIRECTIONAL LINKS
 - ## DESIGN PATTERNS
 - ## EXTERNAL DEPENDENCIES
-- ## GAPS
+- ## GAPS / IDEAS / QUESTIONS
 
 **Code refs:**
+- `data/scripts/inject_world.py`
 - `data/scripts/scrape/phase1_geography.py`
 
 **Sections:**
 - # World Scraping — Design Patterns
 - ## CHAIN
 - ## Core Principle
+- ## The Problem
+- ## The Pattern
+- ## Principles
+- ## Dependencies
+- ## Inspirations
+- ## Scope
+- ## Gaps / Ideas / Questions
 - ## Pattern: Authentic England 1067
 - ## Behaviors: What The Player Experiences
 - ## Target Density
 - ## Related Documents
 
+**Code refs:**
+- `data/scripts/inject_world.py`
+
 **Doc refs:**
 - `docs/world/scraping/ALGORITHM_Pipeline.md`
 - `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
-- `docs/world/scraping/PATTERNS_World_Scraping.md`
 
 **Sections:**
 - # World Scraping — State & Progress
 - ## CHAIN
+- ## Maturity
+- ## Current State
+- ## In Progress
 - ## Phase Status
 - ## Current Counts (YAML)
 - ## New Content: Characters
 - ## New Content: Tensions
 - ## Narrative Breakdown (Updated)
 - ## Data Sources
-- ## Recent Changes
 - ## Blockers Resolved
 - ## Optional Expansion
+- ## Known Issues
+- ## Handoff: For Agents
+- ## Handoff: For Human
+- ## TODO
+- ## Consciousness Trace
+- ## Pointers
 - ## Updates
+- ## Agent Observations
+- ## ARCHIVE
 - ## ARCHIVE
 
 **Code refs:**
+- `data/scripts/inject_world.py`
+
+**Doc refs:**
+- `docs/world/scraping/ALGORITHM_Pipeline.md`
+- `docs/world/scraping/BEHAVIORS_World_Scraping.md`
+- `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
+- `docs/world/scraping/PATTERNS_World_Scraping.md`
+- `docs/world/scraping/SYNC_World_Scraping.md`
+- `docs/world/scraping/TEST_World_Scraping.md`
+- `docs/world/scraping/VALIDATION_World_Scraping.md`
+
+**Sections:**
+- # Archived: SYNC_World_Scraping.md
+- ## Recent Changes
+- ## Agent Observations
+
+**Code refs:**
+- `data/scripts/inject_world.py`
 - `tests/world/test_narratives.py`
 - `tests/world/test_pipeline.py`
 - `tests/world/test_positions.py`
@@ -4981,11 +7030,30 @@ graph TD
 **Sections:**
 - # World Scraping — Tests
 - ## CHAIN
+- ## TEST STRATEGY
+- ## UNIT TESTS
+- ## INTEGRATION TESTS
+- ## EDGE CASES
+- ## TEST COVERAGE
+- ## HOW TO RUN
+- # Tests are not implemented yet.
+- # Suggested structure once files exist:
+- ## KNOWN TEST GAPS
+- ## FLAKY TESTS
+- ## GAPS / IDEAS / QUESTIONS
+
+**Doc refs:**
+- `docs/world/scraping/SYNC_World_Scraping.md`
 
 **Sections:**
 - # World Scraping — Validation
 - ## CHAIN
 - ## How We Know It Works
+- ## Invariants
+- ## Properties
+- ## Error Conditions
+- ## Test Coverage
+- ## Verification Procedure
 - ## Geography Tests
 - # Sample routes, compare to Google Maps walking
 - ## Political Tests
@@ -4993,6 +7061,8 @@ graph TD
 - ## Tension Tests
 - ## Density Tests
 - ## Playtest Checklist
+- ## Sync Status
+- ## Gaps / Ideas / Questions
 
 **Code refs:**
 - `Atmosphere.tsx`
@@ -5014,8 +7084,11 @@ graph TD
 - `SettingStrip.tsx`
 - `SpeedControl.tsx`
 - `__init__.py`
+- `agent_cli.py`
+- `api.ts`
 - `api/app.py`
 - `api/moments.py`
+- `app.py`
 - `app/page.tsx`
 - `base.py`
 - `canon/holder.py`
@@ -5068,8 +7141,12 @@ graph TD
 - `engine/infrastructure/api/app.py`
 - `engine/infrastructure/api/injection_queue.py`
 - `engine/infrastructure/api/moments.py`
+- `engine/infrastructure/api/moments_sse.py`
 - `engine/infrastructure/api/playthroughs.py`
+- `engine/infrastructure/api/playthroughs_opening.py`
+- `engine/infrastructure/api/sse_broadcast.py`
 - `engine/infrastructure/api/tempo.py`
+- `engine/infrastructure/api/views.py`
 - `engine/infrastructure/canon/__init__.py`
 - `engine/infrastructure/canon/canon_holder.py`
 - `engine/infrastructure/canon/speaker.py`
@@ -5083,6 +7160,7 @@ graph TD
 - `engine/infrastructure/memory/__init__.py`
 - `engine/infrastructure/memory/moment_ids.py`
 - `engine/infrastructure/memory/moment_processor.py`
+- `engine/infrastructure/memory/transcript.py`
 - `engine/infrastructure/memory/transcript_store.py`
 - `engine/infrastructure/orchestration/agent_cli.py`
 - `engine/infrastructure/orchestration/narrator.py`
@@ -5093,6 +7171,11 @@ graph TD
 - `engine/infrastructure/orchestration/world_runner.py`
 - `engine/infrastructure/tempo/__init__.py`
 - `engine/infrastructure/tempo/tempo_controller.py`
+- `engine/infrastructure/world_builder/__init__.py`
+- `engine/infrastructure/world_builder/enrichment.py`
+- `engine/infrastructure/world_builder/query.py`
+- `engine/infrastructure/world_builder/query_moment.py`
+- `engine/infrastructure/world_builder/sparsity.py`
 - `engine/infrastructure/world_builder/world_builder.py`
 - `engine/init_db.py`
 - `engine/memory/moment_processor.py`
@@ -5147,6 +7230,7 @@ graph TD
 - `engine/tests/test_moments_api.py`
 - `engine/tests/test_narrator_integration.py`
 - `engine/tests/test_spec_consistency.py`
+- `engine/tests/test_tempo.py`
 - `engine/world/map/__init__.py`
 - `engine/world/map/semantic.py`
 - `enrichment.py`
@@ -5191,6 +7275,7 @@ graph TD
 - `frontend/components/scene/SceneBanner.tsx`
 - `frontend/components/scene/SceneHeader.tsx`
 - `frontend/components/scene/SceneImage.tsx`
+- `frontend/components/scene/SceneView.ts`
 - `frontend/components/scene/SceneView.tsx`
 - `frontend/components/scene/SettingStrip.tsx`
 - `frontend/components/ui/Toast.tsx`
@@ -5229,6 +7314,7 @@ graph TD
 - `moment_graph/queries.py`
 - `moment_graph/traversal.py`
 - `moment_processor.py`
+- `moments.py`
 - `narrator.py`
 - `narrator_prompt.py`
 - `nodes.py`
@@ -5251,6 +7337,7 @@ graph TD
 - `service.py`
 - `sparsity.py`
 - `speaker.py`
+- `sse_broadcast.py`
 - `stream_dialogue.py`
 - `strength.py`
 - `tempo.py`
@@ -5271,8 +7358,21 @@ graph TD
 - `tests/async/test_sse_queue.py`
 - `tests/infrastructure/canon/__init__.py`
 - `tests/infrastructure/canon/test_canon_holder.py`
+- `tests/infrastructure/test_storm_loader.py`
+- `tests/infrastructure/test_storms.py`
 - `tests/infrastructure/test_world_builder.py`
+- `tests/infrastructure/world_builder/__init__.py`
 - `tests/infrastructure/world_builder/test_world_builder.py`
+- `tests/network/test_bleed_through.py`
+- `tests/network/test_ghost_dialogue.py`
+- `tests/network/test_shadow_feed.py`
+- `tests/network/test_transposition.py`
+- `tests/network/test_voyager_system.py`
+- `tests/network/test_world_scavenger.py`
+- `tests/product/test_billing.py`
+- `tests/product/test_chronicle_system.py`
+- `tests/product/test_gtm_strategy.py`
+- `tests/product/test_ledger_lock.py`
 - `tests/tools/test_generate_image.py`
 - `tests/tools/test_graphops_images.py`
 - `tests/tools/test_retry_policy.py`
@@ -5289,14 +7389,32 @@ graph TD
 - `types/game.ts`
 - `types/map.ts`
 - `types/moment.ts`
+- `useGameState.ts`
 - `world_builder.py`
 - `world_runner.py`
 
 **Doc refs:**
 - `agents/developer/CLAUDE.md`
 - `agents/narrator/CLAUDE.md`
+- `agents/narrator/CLAUDE_old.md`
 - `agents/world_runner/CLAUDE.md`
 - `agents/world_runner/CLAUDE_PROMPT.md`
+- `archive/SYNC_History_archive_2025-12.md`
+- `archive/SYNC_archive_2024-12.md`
+- `data/Distributed-Content-Generation-Network/ALGORITHM Character & Narrative Transposition Logic.md`
+- `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Billing Architecture.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Business Model Stress Test.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Character Import.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Cluster State Cache.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Feedback Integration.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Go-To-Market Strategy.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Refugee System.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — Storms.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — The Bleed-Through.md`
+- `data/Distributed-Content-Generation-Network/Blood Ledger — World Scavenger.md`
+- `data/Distributed-Content-Generation-Network/IMPLEMENTATION_Storm_Loader.md`
+- `data/Distributed-Content-Generation-Network/UX Design The Ledger Lock.md`
 - `data/init/BLOOD_LEDGER_DESIGN_DOCUMENT.md`
 - `docs/agents/narrator/ALGORITHM_Prompt_Structure.md`
 - `docs/agents/narrator/ALGORITHM_Rolling_Window.md`
@@ -5325,6 +7443,7 @@ graph TD
 - `docs/agents/narrator/TEST_Narrator.md`
 - `docs/agents/narrator/TOOL_REFERENCE.md`
 - `docs/agents/narrator/VALIDATION_Narrator.md`
+- `docs/agents/narrator/archive/SYNC_archive_2024-12.md`
 - `docs/design/ALGORITHM_Vision.md`
 - `docs/design/BEHAVIORS_Drives_And_Metrics.md`
 - `docs/design/BEHAVIORS_Vision.md`
@@ -5333,6 +7452,7 @@ graph TD
 - `docs/design/SYNC_Vision.md`
 - `docs/design/TEST_Vision.md`
 - `docs/design/VALIDATION_Vision.md`
+- `docs/design/archive/SYNC_archive_2024-12.md`
 - `docs/design/opening/ALGORITHM_Opening.md`
 - `docs/design/opening/BEHAVIORS_Opening.md`
 - `docs/design/opening/CLAUDE.md`
@@ -5385,10 +7505,14 @@ graph TD
 - `docs/frontend/ALGORITHM_Frontend_Data_Flow.md`
 - `docs/frontend/BEHAVIORS_Frontend_State_And_Interaction.md`
 - `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`
+- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Overview.md`
 - `docs/frontend/PATTERNS_Frontend.md`
 - `docs/frontend/PATTERNS_Presentation_Layer.md`
 - `docs/frontend/SYNC_Frontend.md`
+- `docs/frontend/SYNC_Frontend_archive_2025-12.md`
+- `docs/frontend/archive/SYNC_archive_2024-12.md`
 - `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
+- `docs/frontend/map/PATTERNS_Parchment_Map_View.md`
 - `docs/frontend/map/SYNC_Map_View.md`
 - `docs/frontend/minimap/PATTERNS_Discovered_Location_Minimap.md`
 - `docs/frontend/minimap/SYNC_Minimap.md`
@@ -5405,7 +7529,12 @@ graph TD
 - `docs/infrastructure/api/ALGORITHM_Playthrough_Creation.md`
 - `docs/infrastructure/api/BEHAVIORS_Api.md`
 - `docs/infrastructure/api/IMPLEMENTATION_Api.md`
+- `docs/infrastructure/api/PATTERNS_Api.md`
 - `docs/infrastructure/api/SYNC_Api.md`
+- `docs/infrastructure/api/TEST_Api.md`
+- `docs/infrastructure/api/VALIDATION_Api.md`
+- `docs/infrastructure/async/ALGORITHM/ALGORITHM_Overview.md`
+- `docs/infrastructure/async/ALGORITHM_Async_Architecture.md`
 - `docs/infrastructure/async/ALGORITHM_Discussion_Trees.md`
 - `docs/infrastructure/async/ALGORITHM_Fog_Of_War.md`
 - `docs/infrastructure/async/ALGORITHM_Graph_SSE.md`
@@ -5417,6 +7546,9 @@ graph TD
 - `docs/infrastructure/async/IMPLEMENTATION_Async_Architecture.md`
 - `docs/infrastructure/async/PATTERNS_Async_Architecture.md`
 - `docs/infrastructure/async/SYNC_Async_Architecture.md`
+- `docs/infrastructure/async/SYNC_Async_Architecture_archive_2025-12.md`
+- `docs/infrastructure/async/TEST_Async_Architecture.md`
+- `docs/infrastructure/async/archive/SYNC_archive_2024-12.md`
 - `docs/infrastructure/canon/ALGORITHM_Canon_Holder.md`
 - `docs/infrastructure/canon/BEHAVIORS_Canon.md`
 - `docs/infrastructure/canon/IMPLEMENTATION_Canon.md`
@@ -5424,12 +7556,20 @@ graph TD
 - `docs/infrastructure/canon/SYNC_Canon.md`
 - `docs/infrastructure/canon/TEST_Canon.md`
 - `docs/infrastructure/canon/VALIDATION_Canon.md`
+- `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Indexing.md`
+- `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Overview.md`
+- `docs/infrastructure/embeddings/ALGORITHM/ALGORITHM_Search.md`
 - `docs/infrastructure/embeddings/ALGORITHM_Embeddings.md`
 - `docs/infrastructure/embeddings/BEHAVIORS_Embeddings.md`
+- `docs/infrastructure/embeddings/IMPLEMENTATION_Embeddings.md`
 - `docs/infrastructure/embeddings/PATTERNS_Embeddings.md`
 - `docs/infrastructure/embeddings/SYNC_Embeddings.md`
+- `docs/infrastructure/embeddings/SYNC_Embeddings_archive_2025-12.md`
+- `docs/infrastructure/embeddings/TEST/TEST_Cases.md`
+- `docs/infrastructure/embeddings/TEST/TEST_Overview.md`
 - `docs/infrastructure/embeddings/TEST_Embeddings.md`
 - `docs/infrastructure/embeddings/VALIDATION_Embeddings.md`
+- `docs/infrastructure/embeddings/archive/SYNC_archive_2024-12.md`
 - `docs/infrastructure/history/ALGORITHM_History.md`
 - `docs/infrastructure/history/BEHAVIORS_History.md`
 - `docs/infrastructure/history/IMPLEMENTATION_History_Service_Architecture.md`
@@ -5437,12 +7577,15 @@ graph TD
 - `docs/infrastructure/history/SYNC_History.md`
 - `docs/infrastructure/history/TEST_History.md`
 - `docs/infrastructure/history/VALIDATION_History.md`
+- `docs/infrastructure/history/archive/SYNC_History_archive_2025-12.md`
 - `docs/infrastructure/tempo/ALGORITHM_Tempo_Controller.md`
 - `docs/infrastructure/tempo/BEHAVIORS_Tempo.md`
 - `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md`
 - `docs/infrastructure/tempo/PATTERNS_Tempo.md`
 - `docs/infrastructure/tempo/TEST_Tempo.md`
 - `docs/infrastructure/tempo/VALIDATION_Tempo.md`
+- `docs/network/transposition/ALGORITHM_Transposition_Pipeline.md`
+- `docs/network/transposition/PATTERNS_Local_Canon_Primary.md`
 - `docs/physics/ALGORITHM_Actions.md`
 - `docs/physics/ALGORITHM_Canon.md`
 - `docs/physics/ALGORITHM_Energy.md`
@@ -5460,6 +7603,7 @@ graph TD
 - `docs/physics/PATTERNS_Physics.md`
 - `docs/physics/SCHEMA_Moments.md`
 - `docs/physics/SYNC_Physics.md`
+- `docs/physics/SYNC_Physics_archive_2025-12.md`
 - `docs/physics/TEST_Moments.md`
 - `docs/physics/TEST_Physics.md`
 - `docs/physics/VALIDATION_Moments.md`
@@ -5470,19 +7614,27 @@ graph TD
 - `docs/physics/graph/BEHAVIORS_Graph.md`
 - `docs/physics/graph/PATTERNS_Graph.md`
 - `docs/physics/graph/SYNC_Graph.md`
+- `docs/physics/graph/SYNC_Graph_archive_2025-12.md`
 - `docs/physics/graph/VALIDATION.md`
 - `docs/physics/graph/VALIDATION_Living_Graph.md`
+- `docs/product/billing/PATTERNS_Pay_To_Preserve_History.md`
 - `docs/scenarios/README.md`
 - `docs/schema/SCHEMA.md`
+- `docs/schema/SCHEMA/SCHEMA_Links.md`
+- `docs/schema/SCHEMA/SCHEMA_Nodes.md`
 - `docs/schema/SCHEMA_Moments.md`
+- `docs/schema/SCHEMA_Moments/SCHEMA_Moments_Overview.md`
 - `docs/schema/VALIDATION_Graph.md`
 - `docs/schema/VALIDATION_Living_Graph.md`
 - `docs/schema/models/PATTERNS_Pydantic_Schema_Models.md`
 - `docs/schema/models/SYNC_Schema_Models.md`
-- `docs/world/map/ALGORITHM_Places.md`
+- `docs/world/map/ALGORITHM/ALGORITHM_Places.md`
+- `docs/world/map/ALGORITHM/ALGORITHM_Rendering_Pipeline.md`
+- `docs/world/map/ALGORITHM/ALGORITHM_Routes.md`
+- `docs/world/map/ALGORITHM_Map.md`
 - `docs/world/map/ALGORITHM_Rendering.md`
-- `docs/world/map/ALGORITHM_Routes.md`
 - `docs/world/map/BEHAVIORS_Map.md`
+- `docs/world/map/IMPLEMENTATION_Map_Code_Architecture.md`
 - `docs/world/map/PATTERNS_Map.md`
 - `docs/world/map/SYNC_Map.md`
 - `docs/world/map/SYNC_Map_archive_2025-12.md`
@@ -5496,6 +7648,8 @@ graph TD
 - `docs/world/map/SYNC_Map_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12.md`
 - `docs/world/map/SYNC_Map_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12.md`
 - `docs/world/map/SYNC_Map_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12_archive_2025-12.md`
+- `docs/world/map/TEST_Map_Test_Coverage.md`
+- `docs/world/map/archive/SYNC_archive_2024-12.md`
 - `docs/world/scraping/ALGORITHM_Events.md`
 - `docs/world/scraping/ALGORITHM_Geography.md`
 - `docs/world/scraping/ALGORITHM_Narratives.md`
@@ -5506,6 +7660,7 @@ graph TD
 - `docs/world/scraping/IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md`
 - `docs/world/scraping/PATTERNS_World_Scraping.md`
 - `docs/world/scraping/SYNC_World_Scraping.md`
+- `docs/world/scraping/TEST_World_Scraping.md`
 - `docs/world/scraping/VALIDATION_World_Scraping.md`
 - `engine/history/README.md`
 - `engine/infrastructure/history/README.md`
@@ -5518,6 +7673,7 @@ graph TD
 - `views/VIEW_Debug_Investigate_And_Fix_Issues.md`
 - `views/VIEW_Document_Create_Module_Documentation.md`
 - `views/VIEW_Extend_Add_Features_To_Existing.md`
+- `views/VIEW_Health_Define_Health_Checks_And_Verify.md`
 - `views/VIEW_Implement_Write_Or_Modify_Code.md`
 - `views/VIEW_Ingest_Process_Raw_Data_Sources.md`
 - `views/VIEW_Onboard_Understand_Existing_Codebase.md`
@@ -5525,6 +7681,7 @@ graph TD
 - `views/VIEW_Review_Evaluate_Changes.md`
 - `views/VIEW_Specify_Design_Vision_And_Architecture.md`
 - `views/VIEW_Test_Write_Tests_And_Verify.md`
+- `world/map/SYNC_Map.md`
 
 **Sections:**
 - # Repository Map: the-blood-ledger
@@ -5663,7 +7820,6 @@ graph TD
 - `class SceneResponse`
 - `class DialogueChunk`
 - `class NewPlaythroughRequest`
-- `class ScenarioPlaythroughRequest`
 - `class QueryRequest`
 - `def create_app()`
 - `def _mutation_event_handler()`
@@ -5673,7 +7829,6 @@ graph TD
 - `def get_graph_ops()`
 - `async def health_check()`
 - `async def create_playthrough()`
-- `async def create_scenario_playthrough()`
 - `async def player_action()`
 - `async def get_playthrough()`
 - `class MomentClickRequest`
@@ -5726,6 +7881,7 @@ graph TD
 - `def create_playthroughs_router()`
 - `def _get_playthrough_queries()`
 - `async def create_playthrough()`
+- `async def create_scenario_playthrough()`
 - `async def send_moment()`
 - `def dummy_embed()`
 - `async def get_discussion_topics()`
@@ -5891,6 +8047,8 @@ graph TD
 - `def _strip_code_fence()`
 - `def parse_codex_stream_output()`
 
+**Docs:** `docs/agents/narrator/`
+
 **Definitions:**
 - `class NarratorService`
 - `def __init__()`
@@ -5955,9 +8113,9 @@ graph TD
 - `def _create_player_moment()`
 - `def _broadcast_speed_change()`
 
-**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md`
 
-**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md`
 
 **Definitions:**
 - `def build_enrichment_prompt()`
@@ -5973,7 +8131,7 @@ graph TD
 - `def _link_moment_to_place()`
 - `def _link_to_query_moment()`
 
-**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md`
 
 **Definitions:**
 - `async def query()`
@@ -5983,7 +8141,7 @@ graph TD
 - `def count_links()`
 - `def _build_enrichment_context()`
 
-**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md`
 
 **Definitions:**
 - `def record_query_moment()`
@@ -5991,7 +8149,7 @@ graph TD
 - `def _link_to_character()`
 - `def _link_to_place()`
 
-**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md`
 
 **Definitions:**
 - `class SparsityResult`
@@ -6000,7 +8158,7 @@ graph TD
 - `def is_sparse()`
 - `def _default_embed()`
 
-**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION_World_Builder.md`
+**Docs:** `docs/infrastructure/world-builder/IMPLEMENTATION/IMPLEMENTATION_Overview.md`
 
 **Definitions:**
 - `class WorldBuilder`
@@ -6886,7 +9044,7 @@ graph TD
 - `drawUILayer()`
 - `MapCanvas()`
 
-**Docs:** `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
+**Docs:** `docs/frontend/map/PATTERNS_Parchment_Map_View.md`
 
 **Definitions:**
 - `MapClient()`
@@ -7008,6 +9166,8 @@ graph TD
 **Definitions:**
 - `GameLayout()`
 
+**Docs:** `docs/infrastructure/tempo/IMPLEMENTATION_Tempo.md`
+
 **Definitions:**
 - `SpeedControl()`
 - `fetchSpeed()`
@@ -7036,7 +9196,7 @@ graph TD
 - `useTempo()`
 - `fetchState()`
 
-**Docs:** `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
+**Docs:** `docs/frontend/map/PATTERNS_Parchment_Map_View.md`
 
 **Definitions:**
 - `project()`
@@ -7053,7 +9213,7 @@ graph TD
 - `getPositionAtProgress()`
 - `t()`
 
-**Docs:** `docs/frontend/map/PATTERNS_Interactive_Travel_Map.md`
+**Docs:** `docs/frontend/map/PATTERNS_Parchment_Map_View.md`
 
 **Definitions:**
 - `seededRandom()`
@@ -7137,7 +9297,7 @@ graph TD
 - `def test_energy_formula()`
 - `def mock_query()`
 
-**Docs:** `docs/infrastructure/world-builder/TEST_World_Builder.md`
+**Docs:** `docs/infrastructure/world-builder/TEST/TEST_Overview.md`
 
 **Definitions:**
 - `def mock_graph()`
@@ -7244,13 +9404,13 @@ graph TD
 - `views/VIEW_Debug_Investigate_And_Fix_Issues.md`
 - `views/VIEW_Document_Create_Module_Documentation.md`
 - `views/VIEW_Extend_Add_Features_To_Existing.md`
+- `views/VIEW_Health_Define_Health_Checks_And_Verify.md`
 - `views/VIEW_Implement_Write_Or_Modify_Code.md`
 - `views/VIEW_Ingest_Process_Raw_Data_Sources.md`
 - `views/VIEW_Onboard_Understand_Existing_Codebase.md`
 - `views/VIEW_Refactor_Improve_Code_Structure.md`
 - `views/VIEW_Review_Evaluate_Changes.md`
 - `views/VIEW_Specify_Design_Vision_And_Architecture.md`
-- `views/VIEW_Test_Write_Tests_And_Verify.md`
 
 **Sections:**
 - # ngram
@@ -7279,6 +9439,7 @@ graph TD
 - ## CLI Commands
 - ## 4. Protocol-First Reading
 - ## 5. Parallel Work Awareness
+- ## 6. Operational Proactivity
 - ## 5. Communication Principles
 
 **Sections:**

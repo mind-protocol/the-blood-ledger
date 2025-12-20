@@ -1,7 +1,7 @@
 """
 Tests for Moment Graph API Endpoints.
 
-Tests the FastAPI endpoints in engine/api/moments.py:
+Tests the FastAPI endpoints in engine/infrastructure/api/moments.py:
 - GET /api/moments/current/{playthrough_id}
 - POST /api/moments/click
 - GET /api/moments/{moment_id}
@@ -31,7 +31,7 @@ from fastapi.testclient import TestClient
 @pytest.fixture
 def mock_moment_queries():
     """Create mocked MomentQueries."""
-    with patch('engine.api.moments.MomentQueries') as mock_class:
+    with patch('engine.infrastructure.api.moments.MomentQueries') as mock_class:
         mock_instance = MagicMock()
         mock_class.return_value = mock_instance
 
@@ -74,7 +74,7 @@ def mock_moment_queries():
 @pytest.fixture
 def mock_moment_traversal():
     """Create mocked MomentTraversal."""
-    with patch('engine.api.moments.MomentTraversal') as mock_class:
+    with patch('engine.infrastructure.api.moments.MomentTraversal') as mock_class:
         mock_instance = MagicMock()
         mock_class.return_value = mock_instance
 
@@ -96,7 +96,7 @@ def mock_moment_traversal():
 @pytest.fixture
 def mock_moment_surface():
     """Create mocked MomentSurface."""
-    with patch('engine.api.moments.MomentSurface') as mock_class:
+    with patch('engine.infrastructure.api.moments.MomentSurface') as mock_class:
         mock_instance = MagicMock()
         mock_class.return_value = mock_instance
 
@@ -116,7 +116,7 @@ def mock_moment_surface():
 @pytest.fixture
 def mock_graph_queries():
     """Create mocked GraphQueries."""
-    with patch('engine.api.moments.GraphQueries') as mock_class:
+    with patch('engine.infrastructure.api.moments.GraphQueries') as mock_class:
         mock_instance = MagicMock()
         mock_class.return_value = mock_instance
 
@@ -285,7 +285,7 @@ class TestGetMoment:
 
     def test_get_moment_exists(self, test_client, mock_moment_queries):
         """Test getting an existing moment."""
-        response = test_client.get("/api/moments/moment_test_1")
+        response = test_client.get("/api/moments/pt_test123/moment_test_1")
 
         assert response.status_code == 200
         data = response.json()
@@ -297,7 +297,7 @@ class TestGetMoment:
         """Test getting a non-existent moment."""
         mock_moment_queries.get_moment_by_id.return_value = None
 
-        response = test_client.get("/api/moments/nonexistent")
+        response = test_client.get("/api/moments/pt_test123/nonexistent")
 
         assert response.status_code == 404
 
@@ -339,7 +339,7 @@ class TestMomentStats:
 
     def test_get_stats(self, test_client, mock_moment_surface):
         """Test getting moment statistics."""
-        response = test_client.get("/api/moments/stats")
+        response = test_client.get("/api/moments/stats/pt_test123")
 
         assert response.status_code == 200
         data = response.json()

@@ -20,7 +20,6 @@ THIS:           VALIDATION_Physics.md (you are here)
 IMPLEMENTATION: ./IMPLEMENTATION_Physics.md
 TEST:           ./TEST_Physics.md
 SYNC:           ./SYNC_Physics.md
-IMPL:           ../../engine/tests/test_moment_graph.py
 ```
 
 ---

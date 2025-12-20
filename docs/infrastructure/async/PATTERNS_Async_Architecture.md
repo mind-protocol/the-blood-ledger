@@ -20,6 +20,64 @@ THIS:           PATTERNS_Async_Architecture.md (you are here)
 
 ---
 
+## THE PROBLEM
+
+Travel currently feels like a blocking orchestration step: a single process
+owns all state, the frontend waits for a response, and the system has no
+coherent way to surface mid-journey events or player interruptions.
+
+---
+
+## THE PATTERN
+
+Shift coordination to the graph and use asynchronous hooks for interruptions:
+Runner writes state, Frontend reacts via SSE, Narrator streams immediately, and
+hooks handle only urgent player or character interrupts.
+
+---
+
+## PRINCIPLES
+
+- Graph is the single source of truth, not a cache or secondary mirror.
+- Runner completion is read via TaskOutput, not hook injection.
+- Hooks signal interruptions only; everything else is regular data flow.
+- Streaming UX is primary: narration starts before background work finishes.
+- Travel is gameplay, so world generation must be visible and continuous.
+
+---
+
+## DEPENDENCIES
+
+- FalkorDB graph store and GraphOps/GraphQueries APIs.
+- SSE or equivalent stream transport between graph writes and frontend.
+- Background task execution for Runner with TaskOutput access.
+- Injection queue file I/O used by hook scripts and UI actions.
+
+---
+
+## INSPIRATIONS
+
+- Live-world sandboxes where travel reveals content in real time.
+- Event-sourced systems that push updates instead of polling.
+- Narrative engines that treat interruptions as explicit signals.
+
+---
+
+## SCOPE
+
+This pattern applies to travel and asynchronous world simulation where
+frontends must stay responsive while the graph evolves in the background.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- Define reconnection semantics for SSE and injection queue replay.
+- Decide how Runner failures surface without reintroducing orchestration.
+- Clarify how multiple concurrent Runners avoid conflicting writes.
+
+---
+
 ## Core Principle
 
 **Travel is not a loading screen. Travel is play.**
