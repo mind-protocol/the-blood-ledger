@@ -80,6 +80,7 @@ Confidence in the model definitions themselves is high, as Pydantic handles much
 ### Remarks
 - Base timestamp helper methods are already implemented; repair was verification-only.
 - Link helper accessors are already implemented; repair was verification-only.
+- Node helper properties in `nodes.py` are already implemented; repair was verification-only.
 - Node helper properties are already implemented; repair was verification-only.
 
 ### Suggestions
