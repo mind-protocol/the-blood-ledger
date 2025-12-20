@@ -28,6 +28,7 @@ Physics documentation is consolidated in `docs/physics/`, the algorithm is canon
 - **What:** Verified `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` already contain concrete implementations.
 - **Why:** Repair #16 flagged these helpers as empty; confirmed they are implemented and align with the physics algorithm.
 - **Impact:** No code changes required; verification recorded to prevent repeat repairs.
+- **Repair run:** `18-INCOMPLETE_IMPL-physics-tick`.
 
 ### 2025-12-20: Ngram Framework Refactor
 

@@ -47,6 +47,7 @@ false-positive escalation detection.
 - **What:** Verified the four energy-flow helpers in `engine/physics/tick.py` are already implemented; updated `docs/physics/SYNC_Physics.md`.
 - **Why:** Repair #16 flagged empty implementations; confirmed they are present to close the repair loop.
 - **Impact:** Documentation-only update; functionality unchanged.
+- **Repair run:** `18-INCOMPLETE_IMPL-physics-tick`.
 
 ### 2025-12-20: Moment graph sync conflict recorded
 
