@@ -45,6 +45,9 @@ make inspection repeatable.
 Repair issue #16 confirmed `check_health.py` already implements the health
 report helpers; no code changes were required.
 
+Re-verified during the 05-INCOMPLETE_IMPL-health-check_health repair pass;
+the helpers remain implemented with no adjustments needed.
+
 ## IN PROGRESS
 
 No active implementation work is underway for graph health; the current effort

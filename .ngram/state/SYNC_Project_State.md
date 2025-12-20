@@ -36,6 +36,12 @@ false-positive escalation detection.
 - **Why:** Close doc/code drift and resolve missing SSE route in local dev.
 - **Impact:** Clearer opening data flow; local SSE endpoint mounts correctly when using `run.sh`.
 
+### 2025-12-20: Graph Health Repair Verification
+
+- **What:** Re-verified `engine/graph/health/check_health.py` helper implementations for issue #16; no code edits required.
+- **Why:** Confirm the incomplete-impl report is stale and note the verification in project state.
+- **Impact:** Repair is documentation-only; code remains unchanged.
+
 ### 2025-12-20: Principles Escalation Marker Wording
 
 - **What:** Reworded the escalation marker reference in `.ngram/PRINCIPLES.md` to avoid being parsed as an active escalation marker.
