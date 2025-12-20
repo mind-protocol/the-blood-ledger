@@ -33,8 +33,8 @@ false-positive escalation detection.
 ### 2025-12-20: Link Helper Accessors Verified
 
 - **What:** Verified `engine/models/links.py` helpers (`belief_intensity`, `is_present`, `has_item`, `is_here`) already have implementations; no code changes required for issue #16.
-- **Why:** Repair task flagged empty implementations that are already complete.
-- **Impact:** Documentation-only update in models SYNC; functionality unchanged.
+- **Why:** Repair 11 (INCOMPLETE_IMPL-models-links) flagged empty implementations that are already complete.
+- **Impact:** Documentation-only update in `docs/engine/models/SYNC_Models.md`; functionality unchanged.
 
 ### 2025-12-20: Models Base Verification
 
@@ -70,7 +70,7 @@ false-positive escalation detection.
 
 - **What:** Verified `GameTimestamp.__str__`, `__le__`, and `__gt__` are already implemented in `engine/models/base.py`; no code changes required for issue #16.
 - **Why:** The INCOMPLETE_IMPL repair flagged empty implementations that are already present.
-- **Impact:** Documentation updated to record the verification; functionality unchanged.
+- **Impact:** Documentation updated to record the verification; reconfirmed during repair `10-INCOMPLETE_IMPL-models-base`.
 
 ### 2025-12-20: Moment Processor Repair Verification
 

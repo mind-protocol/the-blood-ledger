@@ -19,10 +19,16 @@ The `engine/models/` module provides the core data structures for the game. All 
 
 ## RECENT CHANGES
 
-### 2025-12-20: Link Helper Accessors Verified
+### 2025-12-20: Node Helper Properties Verified
+
+- **What:** Verified `is_core_type`, `tick`, `should_embed`, `is_active`, `is_spoken`, and `can_surface` in `engine/models/nodes.py` already have concrete implementations; no code changes required for issue #16.
+- **Why:** Repair task flagged these helpers as incomplete.
+- **Impact:** No functional changes; logged verification to prevent repeat flags.
+
+### 2025-12-20: Link Helper Accessors Verified (Repair 11)
 
 - **What:** Verified `belief_intensity`, `is_present`, `has_item`, and `is_here` in `engine/models/links.py` already have concrete implementations; no code changes required for issue #16.
-- **Why:** Repair task flagged these accessors as incomplete.
+- **Why:** Repair 11 (INCOMPLETE_IMPL-models-links) flagged these accessors as incomplete.
 - **Impact:** No functional changes; logged verification to prevent repeat flags.
 
 ### 2025-12-20: Base Timestamp Comparators Verified
