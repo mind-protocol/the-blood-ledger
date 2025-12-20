@@ -1,7 +1,7 @@
 # History — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
+LAST_UPDATED: 2025-12-20
 UPDATED_BY: Codex (repair agent)
 STATUS: CANONICAL
 ```
@@ -56,6 +56,8 @@ tasks for the history service and conversation-thread workflows.
 
 ## RECENT CHANGES
 
+- Verified `ConversationThread` path helpers in `engine/infrastructure/history/conversations.py`
+  are already implemented; no code changes needed for repair #16.
 - Filled missing SYNC template sections (maturity, recent changes, trace) and
   expanded the in-progress note for repair #16. Ran `ngram validate`; failures
   remain pre-existing (missing VIEW and doc-chain gaps in other modules).

@@ -30,6 +30,12 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: History Conversations Verification
+
+- **What:** Verified `ConversationThread` path helper methods are already implemented in `engine/infrastructure/history/conversations.py`; no code changes required for issue #16.
+- **Why:** The repair task flagged empty implementations that are already filled.
+- **Impact:** Documentation updated to record the verification; functionality unchanged.
+
 ### 2025-12-20: Opening Flow Docs + Dev Startup Fix
 
 - **What:** Updated opening implementation/health docs to include seed graph init and clarified steps; fixed backend entrypoint in `run.sh`.
