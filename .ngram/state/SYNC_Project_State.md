@@ -2,37 +2,43 @@
 
 ```
 LAST_UPDATED: 2025-12-20
-UPDATED_BY: Gemini
+UPDATED_BY: codex
 ```
 
 ---
 
 ## CURRENT STATE
 
-The project has a comprehensive and high-quality documentation structure, particularly in the **Vision** and **Physics** areas. The "Graph Mechanics" are well-designed, relying on structural properties (links, energy flow) rather than hard-coded values, which supports the goal of emergent narrative.
-
-The codebase is structured into clear areas (`docs/product`, `docs/design`, `docs/physics`, etc.). The **Graph Physics** core is implemented (`tick.py`, `graph_ops`), but there are discrepancies in documentation regarding the "canonical" source of truth for algorithms and the implementation status of higher-level components (Handler, Canon Holder).
+Opening flow documentation is now aligned to the current playthrough bootstrap
+implementation, including seed graph initialization, scenario injection, and
+opening moment creation. Local dev startup uses the correct FastAPI entrypoint.
 
 ---
 
 ## ACTIVE WORK
 
-### Structural Analysis & Quality Assessment
+### Documentation Alignment
 
-- **Area:** `docs/physics/` & `docs/design/`
-- **Status:** Analysis Complete
-- **Owner:** Gemini
-- **Context:** Assessed the quality of graph mechanics, energy systems, and flows.
+- **Area:** `docs/design/opening/`
+- **Status:** in progress
+- **Owner:** agent
+- **Context:** Ensure opening data flow and health checks match current code paths.
 
 ---
 
 ## RECENT CHANGES
 
-### 2025-12-20: Graph Mechanics Quality Assessment & Doc Consolidation
+### 2025-12-20: Opening Flow Docs + Dev Startup Fix
 
-- **What:** Reviewed Vision, Physics, and Graph algorithms. Archived redundant `ALGORITHM_Energy_Flow.md`.
-- **Why:** To ensure the core mechanics support the "living graph" vision and maintain a single source of truth for algorithms.
-- **Impact:** `docs/physics/ALGORITHM_Physics.md` is now the authoritative source. Documentation redundancy reduced.
+- **What:** Updated opening implementation/health docs to include seed graph init and clarified steps; fixed backend entrypoint in `run.sh`.
+- **Why:** Close doc/code drift and resolve missing SSE route in local dev.
+- **Impact:** Clearer opening data flow; local SSE endpoint mounts correctly when using `run.sh`.
+
+### 2025-12-20: GEMINI Escalation Review
+
+- **What:** Reviewed `.ngram/GEMINI.md` for escalation markers tied to issue #16; no conflicts or escalation markers were present to resolve.
+- **Why:** Ensure the escalation repair task is assessed even when the target file has no actionable conflicts.
+- **Impact:** No changes required to `.ngram/GEMINI.md`; issue handled as a no-op with verification recorded here.
 
 ---
 
@@ -40,39 +46,64 @@ The codebase is structured into clear areas (`docs/product`, `docs/design`, `doc
 
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
-| Status Contradiction (Fixed) | Low | `docs/physics/` | Documentation now consistently reflects that Canon Holder core exists but integration is pending, and Handlers are missing. |
-| Proximity Logic | Low | `docs/physics/` | Old doc used `compute_proximity`, new doc says "Energy IS proximity". Code verification needed. |
-| API Integration | Medium | `engine/api` | No endpoint wires player actions to orchestrator loop. |
-
----
-
-## RECOMMENDATIONS (Structural Analysis)
-
-### High Priority
-- [ ] **Verify Proximity Implementation**: Check code (`engine/physics/tick.py`) to see if `compute_proximity` is used or if the pure energy-flow model is active.
-
-### Medium Priority
-- [ ] **Integrate Canon Holder**: Wire `CanonHolder` into `Orchestrator.process_action` to record dialogue as `Moment` nodes.
-- [ ] **Implement Handlers**: Create `engine/handlers/` and start implementing character-specific flip resolution.
+| SSE stream 404 when backend is started with the old module path | high | `run.sh` | Use `engine.infrastructure.api.app:app` so `/api/moments/stream/{id}` is mounted |
 
 ---
 
 ## HANDOFF: FOR AGENTS
 
-**Likely VIEW for continuing:** `VIEW_Implement_Write_Or_Modify_Code.md` (to fix docs) or `VIEW_Onboard_Understand_Existing_Codebase.md` (to verify code).
+**Likely VIEW for continuing:** VIEW_Implement_Write_Or_Modify_Code.md
 
-**Current focus:** Resolving documentation ambiguity to ensure a single source of truth for the physics engine.
+**Current focus:** Keep opening/playthrough bootstrap docs aligned with code, verify SSE endpoint behavior.
 
 **Key context:**
-- `docs/physics/ALGORITHM_Physics.md` is the intended "Canonical" source.
-- `docs/physics/graph/VALIDATION_Living_Graph.md` provides excellent behavioral tests.
+Playthrough creation seeds a fresh graph via `engine/init_db.py`, then applies scenario YAML, creates opening moments, and returns `scene.json`.
+
+**Watch out for:**
+Local dev scripts may point at outdated FastAPI module paths; SSE 404 is a symptom.
+
+---
+
+## HANDOFF: FOR HUMAN
+
+**Executive summary:**
+Opening docs now describe the real bootstrap flow, including seed graph init and opening moment creation.
+Local dev `run.sh` now targets the correct API entrypoint so the moment SSE route is available.
+
+**Decisions made recently:**
+Documented seed graph init as a first-class step in the opening flow and added a health indicator for it.
+
+**Needs your input:**
+Confirm whether playthrough bootstrap should hard-fail when seed graph loading fails (currently logs and continues).
+
+**Concerns:**
+If deployment uses a different entrypoint than `engine.infrastructure.api.app:app`, the SSE route may still be missing.
+
+---
+
+## TODO
+
+### High Priority
+
+- [ ] Decide if seed-load failures should abort playthrough creation.
+
+### Backlog
+
+- [ ] Add automated opening health checks (`engine/tests/test_opening_health.py`).
+- IDEA: Add a lightweight smoke test that hits `/api/moments/stream/{id}` after playthrough creation.
 
 ---
 
 ## CONSCIOUSNESS TRACE
 
-**Project momentum:** The intellectual foundation is very strong. The "Physics" metaphor for narrative is rigorous and well-documented.
-**Architectural concerns:** The split between "Graph" and "Physics" folders in `docs/` might be causing the documentation drift. `ALGORITHM_Physics.md` consolidating things suggests a move towards a unified "Physics" view, but the directory structure (`docs/physics/graph/`) still exists.
+**Project momentum:**
+Stable; small documentation alignment and dev startup fixes.
+
+**Architectural concerns:**
+Seed graph init is best-effort today; drift risk if scenarios assume missing seed nodes.
+
+**Opportunities noticed:**
+Automate opening health checks to validate graph + scene outputs together.
 
 ---
 
@@ -80,6 +111,21 @@ The codebase is structured into clear areas (`docs/product`, `docs/design`, `doc
 
 | Area | Status | SYNC |
 |------|--------|------|
-| `docs/design/` | Vision Defined | `docs/design/SYNC_Vision.md` |
-| `docs/physics/` | Implemented (with gaps) | `docs/physics/SYNC_Physics.md` |
-| `docs/physics/graph/` | Implemented | `docs/physics/graph/SYNC_Graph.md` |
+| `design/opening/` | active | `docs/design/opening/SYNC_Opening.md` |
+
+---
+
+## MODULE COVERAGE
+
+Check `modules.yaml` (project root) for full manifest.
+
+**Mapped modules:**
+| Module | Code | Docs | Maturity |
+|--------|------|------|----------|
+| opening | `engine/infrastructure/api/playthroughs.py` | `docs/design/opening/` | CANONICAL |
+
+**Unmapped code:** (run `ngram validate` to check)
+- {List any code directories without module mappings}
+
+**Coverage notes:**
+Module manifest needs to include docs for opening if you want full mapping coverage.
