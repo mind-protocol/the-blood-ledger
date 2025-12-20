@@ -42,6 +42,12 @@ false-positive escalation detection.
 - **Why:** Prevent false-positive escalation detection in the principles doc.
 - **Impact:** Escalation scan no longer flags the principles reference as unresolved.
 
+### 2025-12-20: Escalation View Marker Escaped
+
+- **What:** Escaped the escalation marker example in `.ngram/views/VIEW_Escalation_How_To_Handle_Vague_Tasks_Missing_Information_And_Complex_Non-Obvious_Problems.md`.
+- **Why:** Prevent the example from being parsed as a live escalation marker.
+- **Impact:** Escalation scans no longer flag the view's example block as unresolved.
+
 ### 2025-12-20: Agents Escalation Marker Wording
 
 - **What:** Reworded the escalation marker reference in `AGENTS.md` to avoid being parsed as an active escalation marker.
