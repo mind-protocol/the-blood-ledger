@@ -72,6 +72,12 @@ false-positive escalation detection.
 - **Why:** Keep the map documentation consolidated and avoid drift across duplicate PATTERNS files.
 - **Impact:** Documentation-only update; no behavior changes.
 
+### 2025-12-20: Map algorithm duplication verification
+
+- **What:** Confirmed map algorithm content now lives in `docs/world/map/ALGORITHM_Map.md` with part docs pointing to the canonical overview.
+- **Why:** Close the ALGORITHM duplication repair for issue #16.
+- **Impact:** Map algorithm documentation has a single authoritative source.
+
 
 ### 2025-12-20: Map rendering algorithm consolidation
 
