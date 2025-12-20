@@ -30,6 +30,13 @@ false-positive escalation detection.
 
 ## RECENT CHANGES
 
+### 2025-12-20: Frontend map patterns consolidation
+
+- **What:** Consolidated the deprecated interactive travel map patterns into the
+  parchment map view and removed the duplicate PATTERNS doc in `docs/frontend/map/`.
+- **Why:** Eliminate duplicate PATTERNS docs in the frontend map module.
+- **Impact:** Single canonical frontend map patterns doc; duplicate removed.
+
 ### 2025-12-20: Physics Tick Energy Helpers Verified
 
 - **What:** Recorded verification that `_flow_energy_to_narratives`, `_propagate_energy`, `_decay_energy`, and `_update_narrative_weights` in `engine/physics/tick.py` are already implemented.

@@ -90,6 +90,8 @@ keeping the map focused on exploration.
 ## GAPS / IDEAS / QUESTIONS
 
 - [ ] Replace sample data with backend-provided map state once APIs are ready.
+- [ ] If travel actions return to the map, keep them secondary to map scanning
+  and require explicit confirmation before committing travel state.
 - [ ] Wire travel actions into the real playthrough flow with confirmations.
 - [ ] Decide how map zoom/pan should behave for large regions or continents.
 - [ ] Confirm visibility radius tuning for rumored vs known places in playtests.
