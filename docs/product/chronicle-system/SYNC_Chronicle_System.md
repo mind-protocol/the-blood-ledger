@@ -7,7 +7,7 @@ STATUS: CANONICAL
 ## Current State
 
 The core concepts and initial implementation details of the Chronicle system are documented. This includes:
-*   The overall design philosophy and GTM integration (`PATTERNS_Chronicle_Flywheel.md`, `PATTERNS_Chronicle_GTM_Integration.md`).
+*   The overall design philosophy and GTM integration (`PATTERNS_Chronicle_Flywheel.md`).
 *   The observable behaviors and structure of different Chronicle types (`BEHAVIORS_Chronicle_Types_And_Structure.md`).
 *   The technical pipeline for generation, TTS, and video composition (`IMPLEMENTATION_Chronicle_Technical_Pipeline.md`).
 *   Key metrics and success criteria (`VALIDATION_Chronicle_Metrics_And_Success.md`).
@@ -15,6 +15,7 @@ The core concepts and initial implementation details of the Chronicle system are
 ## Recent Changes
 
 *   Initial documentation created from `data/Distributed-Content-Generation-Network/Blood Chronicle System.md`.
+*   Consolidated the GTM integration patterns into `PATTERNS_Chronicle_Flywheel.md` and left a reference in `PATTERNS_Chronicle_GTM_Integration.md` to avoid duplication.
 
 ## Handoffs
 

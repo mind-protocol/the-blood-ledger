@@ -20,6 +20,42 @@ This model aims for near-zero Customer Acquisition Cost (CAC) and high organic r
 *   **Automated Generation:** Using LLMs, TTS, and video composition tools to automatically generate cinematic recaps minimizes player effort for content creation.
 *   **Phased Implementation:** Starting with an MVP (Session Chronicle) and progressively adding features (sharing, polish, viral elements) allows for iterative development and feedback.
 
+## Go-To-Market Integration
+
+The Chronicle system is the GTM engine, not a peripheral feature. The acquisition
+loop integrates product, distribution, and conversion:
+
+```
+Chronicles on YouTube → Viewer click-through → Download + demo →
+Ledger Lock conversion → Player creates Chronicle → Upload → Repeat
+```
+
+### CAC Reduction Targets
+
+*   **Chronicle viral goal:** Target ~$0.05 CAC with scalable organic reach.
+*   **Flywheel math:** Early cohorts should show that a small set of uploads can
+    yield new paid players, accelerating as more players publish.
+
+### Seeding Strategy (Initial Launch)
+
+1.  **Developer Chronicles:** Seed the channel with in-house playthroughs.
+2.  **Creator keys:** Give beta access to creators with a "we make the video for you" pitch.
+3.  **Early curation:** Manually feature the best early Chronicles to set quality expectations.
+
+### Viral Hooks In Chronicle Design
+
+*   **Tragedy:** Short, brutal lives.
+*   **Justice:** Betrayal and revenge arcs.
+*   **Mystery:** Teases that hint at deeper lore.
+*   **Relatability:** Tiny choices with cascading consequences.
+*   **Worldbuilding:** Deep lore reveals in life Chronicles.
+*   **Competition:** Fastest death, longest life, most dramatic fall.
+
+### Retention + Re-Engagement
+
+Automated email digests ("your week in blood — and theirs") re-engage players and
+promote both personal and community Chronicles.
+
 ## What's In Scope
 
 *   Generation of Session, Weekly, and Life Chronicles.
