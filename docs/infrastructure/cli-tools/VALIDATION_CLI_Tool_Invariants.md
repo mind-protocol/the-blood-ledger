@@ -116,7 +116,7 @@ SYMPTOM: "IDEOGRAM_API_KEY not found" message
 ```
 [ ] Run: python3 tools/stream_dialogue.py -p default -t dialogue "Hello"
 [ ] Confirm stream.jsonl appended in playthroughs/default/
-[ ] Confirm created moments in graph (GraphOps query)
+[ ] Confirm created moments in graph (GraphOps query, ngram repo runtime)
 [ ] Run: python3 tools/image_generation/generate_image.py --type scene_banner --prompt "Camp" --no-save
 [ ] Confirm URL printed without local file
 ```

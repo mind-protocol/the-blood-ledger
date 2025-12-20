@@ -61,6 +61,7 @@ tasks for the history service and conversation-thread workflows.
 - Filled missing SYNC template sections (maturity, recent changes, trace) and
   expanded the in-progress note for repair #16. Ran `ngram validate`; failures
   remain pre-existing (missing VIEW and doc-chain gaps in other modules).
+- Updated GraphOps/GraphQueries references to note the ngram repo graph runtime.
 
 ---
 

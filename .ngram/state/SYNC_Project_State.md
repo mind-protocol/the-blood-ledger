@@ -55,6 +55,30 @@ graph runtime documentation.
 - **Why:** Remove stale references to `engine/physics/graph`, `engine/db/graph_*`, and `docs/physics/graph`.
 - **Impact:** Dependencies and ops-script docs now point to `data/ARCHITECTURE — Cybernetic Studio.md`.
 
+### 2025-12-20: Update agent instructions and module docs
+
+- **What:** Updated async/history/image-generation/map/scraping docs and agent instructions to note the ngram repo graph runtime.
+- **Why:** Ensure examples and invariants match the runtime split.
+- **Impact:** GraphOps/GraphQueries references now avoid pointing to removed local paths.
+
+### 2025-12-20: Health checks and validation run
+
+- **What:** Ran `ngram doctor` and `ngram validate`.
+- **Why:** Verify protocol health after doc updates.
+- **Impact:** Existing repo-wide issues remain (missing VIEW, missing HEALTH docs, broken CHAIN links). See `.ngram/state/SYNC_Project_Health.md` and validation output for details.
+
+### 2025-12-20: Add missing VIEW and HEALTH docs
+
+- **What:** Added `VIEW_Collaborate_Pair_Program_With_Human.md` and HEALTH docs for map, scraping, embeddings, and canon modules.
+- **Why:** Address missing VIEW and broken CHAIN links reported by `ngram validate`.
+- **Impact:** Validation should clear missing VIEW and chain link errors for those modules.
+
+### 2025-12-20: Re-run validation and health checks
+
+- **What:** Re-ran `ngram validate` and `ngram doctor`.
+- **Why:** Confirm doc chain fixes and update health state.
+- **Impact:** Missing VIEW and CHAIN link issues resolved; remaining gaps are missing HEALTH docs and undocumented modules.
+
 ---
 
 ## KNOWN ISSUES
@@ -95,6 +119,19 @@ as historical context.
 
 **Concerns:**
 Docs outside design/opening may still refer to deleted graph paths.
+
+---
+
+## Agent Observations
+
+### Remarks
+- `map.md` still lists `engine/physics/graph/**` and `docs/physics/graph/**` because those directories still exist in this repo.
+
+### Suggestions
+- [ ] Decide whether the remaining graph directories should be deleted or intentionally retained; align docs and map accordingly.
+
+### Propositions
+- If graph runtime must stay external, add a single canonical pointer doc that lists the ngram repo locations and import guidance.
 
 ---
 

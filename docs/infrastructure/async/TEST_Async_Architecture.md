@@ -84,7 +84,7 @@ access. Manual runs should include the narrator and runner logs for timing.
 
 - Launch narrator and runner concurrently; inspect logs for stuck tasks, hook
   interrupts, and duplicate TaskOutput reads during travel completion.
-- Fire mock webhooks (see `ALGORITHM_Async_Architecture.md`) and confirm GraphOps
+- Fire mock webhooks (see `ALGORITHM_Async_Architecture.md`) and confirm GraphOps (ngram repo graph runtime)
   mutations apply once and emit an SSE event without queue stalls.
 
 ---

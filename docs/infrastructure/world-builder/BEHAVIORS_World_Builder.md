@@ -69,7 +69,7 @@ THEN:   enrichment is skipped and an empty response is returned
 | `char_id` | `str \| None` | Optional character context |
 | `place_id` | `str \| None` | Optional place context |
 | `enrich` | `bool` | Whether to enrich when sparse |
-| `graph` | `GraphQueries \| None` | Graph interface (defaults to shared instance) |
+| `graph` | `GraphQueries \| None` | Graph interface (ngram repo runtime) |
 | `world_builder` | `WorldBuilder \| None` | Enrichment service (defaults to shared instance) |
 
 **Outputs:**

@@ -26,8 +26,8 @@ SYNC:            ./SYNC_Ops_Scripts.md
 1. Parse CLI arguments (graph name, host, port, sample path, playthrough).
 2. Resolve the sample file path relative to project root.
 3. Fail fast if the sample file is missing.
-4. Initialize GraphOps with the target graph connection.
-5. Apply the YAML sample via GraphOps.
+4. Initialize GraphOps with the target graph connection (ngram repo runtime).
+5. Apply the YAML sample via GraphOps (ngram repo runtime).
 6. Print persisted, duplicate, and error counts.
 
 ---
@@ -35,7 +35,7 @@ SYNC:            ./SYNC_Ops_Scripts.md
 ## GENERATE IMAGES FOR EXISTING
 
 1. Parse CLI arguments (playthrough, host, port, dry-run).
-2. Connect to FalkorDB via GraphOps.
+2. Connect to FalkorDB via GraphOps (ngram repo runtime).
 3. Query for Character nodes missing `image_path`.
 4. Build prompts from node attributes and log a preview.
 5. If not dry-run, write `image_prompt`, generate image, and persist `image_path`.

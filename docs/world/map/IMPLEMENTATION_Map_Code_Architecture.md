@@ -50,7 +50,7 @@ engine/
 
 **Pattern:** Adapter.
 
-**Why this pattern:** Wraps GraphQueries and EmbeddingService behind a map-specific API, isolating the search logic from the underlying storage and vector compute implementations.
+**Why this pattern:** Wraps GraphQueries (ngram repo graph runtime) and EmbeddingService behind a map-specific API, isolating the search logic from the underlying storage and vector compute implementations.
 
 ---
 

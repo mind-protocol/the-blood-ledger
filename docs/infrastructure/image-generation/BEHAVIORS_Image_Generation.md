@@ -38,7 +38,7 @@ THEN:   File lands under `frontend/public/playthroughs/{pt}/images/{type}/{id}.p
 ### B3: Graph Attachment
 ```
 GIVEN:  An image path exists
-WHEN:   GraphOps finishes
+WHEN:   GraphOps (ngram repo graph runtime) finishes
 THEN:   The node receives `image_path` + `image_generated_at` fields
 ```
 

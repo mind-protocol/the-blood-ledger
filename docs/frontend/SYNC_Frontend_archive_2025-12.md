@@ -111,3 +111,42 @@ Original file: SYNC_Frontend.md
 
 ---
 
+
+
+---
+
+# Archived: SYNC_Frontend.md
+
+Archived on: 2025-12-20
+Original file: SYNC_Frontend.md
+
+---
+
+## RECENT CHANGES
+
+### 2025-12-21: Resume SSE subscription for default playthrough
+
+- **What:** `frontend/hooks/useGameState.ts` now subscribes to `/api/moments/stream/{playthrough_id}` whenever a playthrough ID is available, including the default `'beorn'` dev playthrough.
+- **Why:** The demo/default path previously hit the guard that skipped SSE, so player input never triggered `moment_spoken`/`moment_activated` refreshes. Energy/canon documentation underlines that action → energy → canon should always flow through the stream.
+- **Impact:** Sending messages on the default playthrough now triggers the documented SSE-driven refresh, closing the "no response" experience loop.
+
+### 2025-12-20: Use placeId for moment fetches
+
+- **What:** CenterStage now passes `currentScene.placeId` as the location for moment fetches.
+- **Why:** Scene IDs are not place IDs; spoken moments were filtered out.
+- **Impact:** Player-sent moments surface in the chat after refresh/SSE.
+
+### 2025-12-20: Stop using deprecated scene ids
+
+- **What:** Scene `id` now defaults to `placeId` in view/narrator transforms and fallback scenes.
+- **Why:** Scene IDs are deprecated; downstream logic expects place ids.
+- **Impact:** Moment fetches and scene references stay aligned.
+
+### 2025-12-20: Consolidated frontend implementation docs
+
+- **What:** Merged code structure details into `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md` and removed the duplicate `IMPLEMENTATION_Code_Structure.md`.
+- **Why:** Resolve documentation duplication in the frontend implementation folder.
+- **Files:** `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md`, `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture.md`, `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Code_Structure.md`
+
+---
+

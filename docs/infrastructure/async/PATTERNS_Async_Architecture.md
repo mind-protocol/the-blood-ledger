@@ -48,7 +48,7 @@ hooks handle only urgent player or character interrupts.
 
 ## DEPENDENCIES
 
-- FalkorDB graph store and GraphOps/GraphQueries APIs.
+- FalkorDB graph store and GraphOps/GraphQueries APIs (ngram repo graph runtime).
 - SSE or equivalent stream transport between graph writes and frontend.
 - Background task execution for Runner with TaskOutput access.
 - Injection queue file I/O used by hook scripts and UI actions.

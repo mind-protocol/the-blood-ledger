@@ -172,7 +172,7 @@ Speed:
 
 ```
 engine/infrastructure/tempo/tempo_controller.py
-    └── imports → GraphQueries (engine.physics.graph)
+    └── imports → GraphQueries (ngram repo graph runtime)
     └── imports → GraphTick (engine.physics)
     └── imports → CanonHolder (engine.infrastructure.canon)
     └── lazy imports → sse_broadcast (engine.infrastructure.api)
@@ -222,7 +222,7 @@ pause ──set_speed('1x')──▶ 1x
 
 ```
 1. API creates TempoController(playthrough_id)
-2. Controller connects to graph (GraphQueries, GraphTick, CanonHolder)
+2. Controller connects to graph (GraphQueries, GraphTick, CanonHolder from ngram repo)
 3. asyncio.create_task(tempo.run()) starts main loop
 4. Default speed: 1x
 ```

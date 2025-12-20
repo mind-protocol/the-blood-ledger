@@ -45,6 +45,12 @@ remaining leaf paths.
 
 ---
 
+## RECENT CHANGES
+
+- Updated GraphOps/GraphQueries references to note the ngram repo graph runtime.
+
+---
+
 ## Overview
 
 This document tracks what exists, what needs to be built, and the implementation path for the async architecture.

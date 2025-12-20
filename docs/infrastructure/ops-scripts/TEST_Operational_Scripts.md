@@ -38,5 +38,5 @@ python engine/scripts/generate_images_for_existing.py --help
 
 ## GAPS
 
-- No integration test to validate GraphOps seeding against a local FalkorDB.
+- No integration test to validate GraphOps seeding against a local FalkorDB (ngram repo runtime).
 - No test harness for image backfill dry-run versus write modes.

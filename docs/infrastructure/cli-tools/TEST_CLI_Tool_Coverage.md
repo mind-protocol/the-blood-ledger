@@ -51,7 +51,7 @@ Use narrator integration tests for parsing and moment creation coverage. Validat
 ```
 GIVEN:  narrator integration tests in engine/tests/test_narrator_integration.py
 WHEN:   create_moment_with_clickables is invoked with mocked graph ops
-THEN:   GraphOps.add_moment + add_can_lead_to are called with expected values
+THEN:   GraphOps.add_moment + add_can_lead_to are called with expected values (ngram repo runtime)
 STATUS: existing
 ```
 

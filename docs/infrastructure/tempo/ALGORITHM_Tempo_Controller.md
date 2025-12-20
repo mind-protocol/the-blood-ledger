@@ -392,7 +392,7 @@ tempo.running = False
 |-----------|-------------------|
 | `GraphTick` | Calls `tick()` for physics simulation |
 | `CanonHolder` | Calls `record_to_canon()` for surfacing |
-| `GraphQueries` | Q1, Q2 for detecting ready moments |
+| `GraphQueries` | Q1, Q2 for detecting ready moments (ngram repo runtime) |
 | `SSE Broadcast` | Sends events to frontend |
 | Frontend | Speed selector, display filtering |
 

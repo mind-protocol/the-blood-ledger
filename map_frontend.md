@@ -1,6 +1,6 @@
 # Repository Map: the-blood-ledger/frontend
 
-*Generated: 2025-12-20 17:38*
+*Generated: 2025-12-20 17:54*
 
 ## Statistics
 

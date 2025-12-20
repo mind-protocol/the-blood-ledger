@@ -176,7 +176,7 @@ CLI args
     ↓
 stream_dialogue.py
     ↓
-GraphOps + stream.jsonl
+GraphOps (ngram repo runtime) + stream.jsonl
     ↓
 Frontend SSE + graph storage
 ```
@@ -209,7 +209,7 @@ frontend/public/playthroughs/{id}/images
 
 | Module | What We Call | What We Get |
 |--------|--------------|-------------|
-| engine.physics.graph.graph_ops | `GraphOps.add_moment`, `add_can_lead_to` | Moment + link creation |
+| GraphOps (ngram repo) | `GraphOps.add_moment`, `add_can_lead_to` | Moment + link creation |
 | engine.physics.graph.graph_queries | `get_player_location`, `_query` | Tick/place context |
 | Ideogram API | `POST /v1/ideogram-v3/generate` | Image URL + metadata |
 

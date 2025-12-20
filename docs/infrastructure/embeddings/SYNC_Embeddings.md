@@ -53,6 +53,10 @@ updated IMPL paths.
 No active work on embeddings module, but the next planned step is aligning
 runtime indexing behavior with the documented detail-first embedding spec.
 
+## RECENT CHANGES
+
+- Added `HEALTH_Embeddings.md` to document runtime verification and gaps.
+
 ## KNOWN ISSUES
 
 ### Implementation Doesn't Match New Spec

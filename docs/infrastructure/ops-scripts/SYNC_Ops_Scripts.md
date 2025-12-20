@@ -42,7 +42,7 @@ IMPL:            engine/scripts/seed_moment_sample.py
 ## CURRENT STATE
 
 `engine/scripts/seed_moment_sample.py` seeds a YAML sample into FalkorDB using
-GraphOps. `engine/scripts/generate_images_for_existing.py` scans for nodes
+GraphOps (ngram repo runtime). `engine/scripts/generate_images_for_existing.py` scans for nodes
 missing `image_path` and uses the image-generation utilities to backfill
 assets. Injection-related scripts in the same directory are documented under
 `docs/infrastructure/async/` to avoid duplicating their behavior docs.

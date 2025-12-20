@@ -267,7 +267,7 @@ None (all files <400 lines).
 
 ### Missing Implementation
 
-- [ ] GraphOps integration for `image_path` persistence (tracked in SYNC).
+- [ ] GraphOps integration (ngram repo graph runtime) for `image_path` persistence (tracked in SYNC).
 
 ### Ideas
 

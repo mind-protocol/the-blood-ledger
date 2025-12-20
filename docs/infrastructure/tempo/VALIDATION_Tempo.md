@@ -85,7 +85,7 @@ FORALL queue_size:
 ### E1: Graph Query Failure
 
 ```
-WHEN:    GraphQueries.query throws
+WHEN:    GraphQueries.query throws (ngram repo runtime)
 THEN:    ready list is empty and a warning is logged
 SYMPTOM: ticks continue without surfacing new moments
 ```

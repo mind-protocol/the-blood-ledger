@@ -173,7 +173,9 @@ Use these to orient your authorship decisions.
 Query the graph directly using `GraphQueries`:
 
 ```python
-from engine.db.graph_queries import GraphQueries
+# GraphQueries lives in the ngram repo graph runtime.
+# See data/ARCHITECTURE — Cybernetic Studio.md for the authoritative import path.
+from <graph_runtime> import GraphQueries
 read = GraphQueries(graph_name="blood_ledger")
 
 # Get tension details and involved narratives
@@ -197,7 +199,9 @@ read.search("Who is involved with Edmund?")
 ### Applying Changes
 
 ```python
-from engine.db.graph_ops import GraphOps
+# GraphOps lives in the ngram repo graph runtime.
+# See data/ARCHITECTURE — Cybernetic Studio.md for the authoritative import path.
+from <graph_runtime> import GraphOps
 write = GraphOps(graph_name="blood_ledger")
 
 result = write.apply(path="mutations/wr_{flip_id}.yaml")

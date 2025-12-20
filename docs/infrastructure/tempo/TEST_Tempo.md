@@ -63,7 +63,7 @@ STATUS: pending
 
 | Case | Test | Status |
 |------|------|--------|
-| Graph query failure | mock GraphQueries.query to raise | pending |
+| Graph query failure | mock GraphQueries.query to raise (ngram repo runtime) | pending |
 | Player input at 3x | set_speed('3x') then input | pending |
 
 ---

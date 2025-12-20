@@ -23,7 +23,7 @@ SYNC:        ./SYNC_Async_Architecture.md
 
 ## Invariants
 
-1. **Single Source of Truth** — Graph mutations executed through GraphOps only; async hooks never bypass.
+1. **Single Source of Truth** — Graph mutations executed through GraphOps (ngram repo graph runtime) only; async hooks never bypass.
 2. **Bounded Queues** — Event buses (moment stream, travel updates) cap queue lengths and drop oldest entries with warning.
 3. **Idempotent Actions** — Runner hooks repeatable without duplicating nodes/links.
 4. **Latency Budget** — Async hooks respond within 200ms for UI-critical updates.

@@ -60,7 +60,9 @@ world_builder.enrich(
 ### 1. Query for More Context (if needed)
 
 ```python
-from engine.physics.graph.graph_queries import GraphQueries
+# GraphQueries lives in the ngram repo graph runtime.
+# See data/ARCHITECTURE — Cybernetic Studio.md for the authoritative import path.
+from <graph_runtime> import GraphQueries
 from engine.physics.embeddings import get_embedding
 
 read = GraphQueries(graph_name="default")
@@ -293,7 +295,9 @@ links:
 **Step 2:** Apply the mutation
 
 ```python
-from engine.physics.graph.graph_ops import GraphOps
+# GraphOps lives in the ngram repo graph runtime.
+# See data/ARCHITECTURE — Cybernetic Studio.md for the authoritative import path.
+from <graph_runtime> import GraphOps
 
 write = GraphOps(graph_name="default")
 

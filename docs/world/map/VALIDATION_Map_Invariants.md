@@ -95,7 +95,7 @@ SYMPTOM: Warning log emitted, results still returned
 ### E2: Graph Query Failure
 
 ```
-WHEN:    GraphQueries fails in _fallback_search or _get_node_with_embedding
+WHEN:    GraphQueries (ngram repo graph runtime) fails in _fallback_search or _get_node_with_embedding
 THEN:    Return [] or None without raising
 SYMPTOM: Empty results, no crash
 ```

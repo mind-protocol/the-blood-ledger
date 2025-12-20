@@ -54,7 +54,7 @@ engine/tests/test_spec_consistency.py
 | `engine/tests/test_implementation.py` | Integration stubs requiring running systems and FalkorDB. |
 | `engine/tests/test_integration_scenarios.py` | Structural integration tests over models and relationships. |
 | `engine/tests/test_models.py` | Pydantic schema validation for nodes, links, and tensions. |
-| `engine/tests/test_moment.py` | Moment model, GraphOps/GraphQueries helpers, processor, transcript handling. |
+| `engine/tests/test_moment.py` | Moment model, GraphOps/GraphQueries helpers (ngram repo), processor, transcript handling. |
 | `engine/tests/test_moment_graph.py` | Moment graph schema, view queries, click handling, scene tree mapping. |
 | `engine/tests/test_moment_lifecycle.py` | Moment lifecycle operations (decay, dormancy, reactivation, GC). |
 | `engine/tests/test_moment_standalone.py` | Standalone moment model/helper checks without pytest. |

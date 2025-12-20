@@ -1,6 +1,6 @@
 # Repository Map: the-blood-ledger
 
-*Generated: 2025-12-20 17:38*
+*Generated: 2025-12-20 17:54*
 
 - **Files:** 362
 - **Directories:** 107
@@ -20,13 +20,13 @@
 - shell: 1
 
 ```
-├── agents/ (52.2K)
+├── agents/ (51.8K)
 │   ├── developer/ (6.4K)
 │   │   └── CLAUDE.md (6.4K)
-│   ├── narrator/ (33.5K)
-│   │   └── CLAUDE_old.md (33.5K)
-│   └── world-builder/ (12.4K)
-│       └── CLAUDE.md (12.4K)
+│   ├── narrator/ (32.9K)
+│   │   └── CLAUDE_old.md (32.9K)
+│   └── world-builder/ (12.6K)
+│       └── CLAUDE.md (12.6K)
 ├── docs/ (1.3M)
 │   ├── concepts/ (3.5K)
 │   │   └── subjective-truth-and-rumor/ (3.5K)
@@ -99,8 +99,8 @@
 │   │   ├── SYNC_Frontend_archive_2025-12.md (3.4K)
 │   │   ├── TEST_Frontend_Coverage.md (1.7K)
 │   │   └── VALIDATION_Frontend_Invariants.md (4.2K)
-│   ├── infrastructure/ (421.1K)
-│   │   ├── async/ (76.6K)
+│   ├── infrastructure/ (421.8K)
+│   │   ├── async/ (76.8K)
 │   │   │   ├── ALGORITHM/ (20.4K)
 │   │   │   │   ├── ALGORITHM_Discussion_Trees.md (1.3K)
 │   │   │   │   ├── ALGORITHM_Graph_SSE.md (2.9K)
@@ -115,10 +115,10 @@
 │   │   │   ├── BEHAVIORS_Travel_Experience.md (5.1K)
 │   │   │   ├── IMPLEMENTATION_Async_Architecture.md (8.3K)
 │   │   │   ├── PATTERNS_Async_Architecture.md (9.0K)
-│   │   │   ├── SYNC_Async_Architecture.md (12.2K)
+│   │   │   ├── SYNC_Async_Architecture.md (12.3K)
 │   │   │   ├── SYNC_Async_Architecture_archive_2025-12.md (4.4K)
 │   │   │   ├── TEST_Async_Architecture.md (3.8K)
-│   │   │   └── VALIDATION_Async_Architecture.md (1.1K)
+│   │   │   └── VALIDATION_Async_Architecture.md (1.2K)
 │   │   ├── canon/ (33.4K)
 │   │   │   ├── ALGORITHM_Canon_Holder.md (7.4K)
 │   │   │   ├── BEHAVIORS_Canon.md (5.2K)
@@ -132,7 +132,7 @@
 │   │   │   ├── BEHAVIORS_CLI_Streaming_And_Image_Output.md (4.9K)
 │   │   │   ├── IMPLEMENTATION_CLI_Tools_Architecture.md (7.3K)
 │   │   │   ├── PATTERNS_CLI_Agent_Utilities.md (5.5K)
-│   │   │   ├── SYNC_CLI_Tools.md (5.8K)
+│   │   │   ├── SYNC_CLI_Tools.md (5.7K)
 │   │   │   ├── TEST_CLI_Tool_Coverage.md (2.9K)
 │   │   │   └── VALIDATION_CLI_Tool_Invariants.md (3.9K)
 │   │   ├── embeddings/ (60.5K)
@@ -153,7 +153,7 @@
 │   │   │   ├── SYNC_Embeddings_archive_2025-12.md (10.6K)
 │   │   │   ├── TEST_Embeddings.md (3.6K)
 │   │   │   └── VALIDATION_Embeddings.md (7.1K)
-│   │   ├── history/ (62.3K)
+│   │   ├── history/ (62.4K)
 │   │   │   ├── ALGORITHM/ (6.3K)
 │   │   │   │   ├── ALGORITHM_Overview.md (1.2K)
 │   │   │   │   ├── ALGORITHM_Propagation_and_Beliefs.md (1.5K)
@@ -168,24 +168,24 @@
 │   │   │   ├── BEHAVIORS_History.md (7.1K)
 │   │   │   ├── IMPLEMENTATION_History_Service_Architecture.md (11.3K)
 │   │   │   ├── PATTERNS_History.md (6.0K)
-│   │   │   ├── SYNC_History.md (7.1K)
+│   │   │   ├── SYNC_History.md (7.2K)
 │   │   │   ├── TEST_History.md (543)
 │   │   │   └── VALIDATION_History.md (7.6K)
-│   │   ├── image-generation/ (26.2K)
+│   │   ├── image-generation/ (26.4K)
 │   │   │   ├── ALGORITHM_Image_Generation.md (1.2K)
 │   │   │   ├── BEHAVIORS_Image_Generation.md (1.2K)
 │   │   │   ├── IMPLEMENTATION_Image_Generation.md (8.2K)
 │   │   │   ├── PATTERNS_Image_Generation.md (10.2K)
-│   │   │   ├── SYNC_Image_Generation.md (3.7K)
-│   │   │   ├── TEST_Image_Generation.md (877)
+│   │   │   ├── SYNC_Image_Generation.md (3.8K)
+│   │   │   ├── TEST_Image_Generation.md (904)
 │   │   │   └── VALIDATION_Image_Generation.md (856)
-│   │   ├── ops-scripts/ (13.1K)
-│   │   │   ├── ALGORITHM_Seeding_And_Backfill_Flows.md (1.3K)
+│   │   ├── ops-scripts/ (13.2K)
+│   │   │   ├── ALGORITHM_Seeding_And_Backfill_Flows.md (1.4K)
 │   │   │   ├── BEHAVIORS_Operational_Script_Runbooks.md (1.5K)
 │   │   │   ├── IMPLEMENTATION_Engine_Scripts_Layout.md (1.6K)
 │   │   │   ├── PATTERNS_Operational_Seeding_And_Backfill_Scripts.md (2.5K)
 │   │   │   ├── SYNC_Ops_Scripts.md (4.0K)
-│   │   │   ├── TEST_Operational_Scripts.md (887)
+│   │   │   ├── TEST_Operational_Scripts.md (908)
 │   │   │   └── VALIDATION_Operational_Script_Safety.md (1.2K)
 │   │   ├── storm-loader/ (18.4K)
 │   │   │   ├── BEHAVIORS_Storm_Loader_Mutations.md (2.5K)
@@ -203,15 +203,15 @@
 │   │   │   ├── SYNC_Storms.md (2.6K)
 │   │   │   ├── TEST_Storms.md (1.6K)
 │   │   │   └── VALIDATION_Storm_Invariants.md (2.6K)
-│   │   ├── tempo/ (41.9K)
+│   │   ├── tempo/ (42.0K)
 │   │   │   ├── ALGORITHM_Tempo_Controller.md (12.3K)
 │   │   │   ├── BEHAVIORS_Tempo.md (3.3K)
-│   │   │   ├── IMPLEMENTATION_Tempo.md (10.2K)
+│   │   │   ├── IMPLEMENTATION_Tempo.md (10.3K)
 │   │   │   ├── PATTERNS_Tempo.md (3.9K)
 │   │   │   ├── SYNC_Tempo.md (6.1K)
 │   │   │   ├── TEST_Tempo.md (2.4K)
 │   │   │   └── VALIDATION_Tempo.md (3.7K)
-│   │   └── world-builder/ (34.9K)
+│   │   └── world-builder/ (34.8K)
 │   │       ├── ALGORITHM/ (3.8K)
 │   │       │   ├── ALGORITHM_Details.md (1.5K)
 │   │       │   └── ALGORITHM_Overview.md (2.3K)
@@ -338,8 +338,8 @@
 │   ├── schema/ (504)
 │   │   └── archive/ (504)
 │   │       └── SYNC_archive_2024-12.md (504)
-│   ├── world/ (79.7K)
-│   │   ├── map/ (35.4K)
+│   ├── world/ (80.5K)
+│   │   ├── map/ (35.7K)
 │   │   │   ├── ALGORITHM/ (2.3K)
 │   │   │   │   ├── places/ (765)
 │   │   │   │   │   └── ALGORITHM_Places.md (765)
@@ -353,20 +353,20 @@
 │   │   │   ├── BEHAVIORS_Map.md (4.4K)
 │   │   │   ├── IMPLEMENTATION_Map_Code_Architecture.md (4.4K)
 │   │   │   ├── PATTERNS_Map.md (4.2K)
-│   │   │   ├── SYNC_Map.md (5.5K)
+│   │   │   ├── SYNC_Map.md (5.8K)
 │   │   │   ├── SYNC_Map_archive_2025-12.md (2.2K)
 │   │   │   ├── TEST_Map_Test_Coverage.md (3.3K)
 │   │   │   └── VALIDATION_Map_Invariants.md (3.6K)
-│   │   └── scraping/ (44.3K)
+│   │   └── scraping/ (44.8K)
 │   │       ├── ALGORITHM_Pipeline.md (14.4K)
 │   │       ├── BEHAVIORS_World_Scraping.md (3.1K)
-│   │       ├── IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md (4.9K)
+│   │       ├── IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md (5.1K)
 │   │       ├── PATTERNS_World_Scraping.md (4.8K)
-│   │       ├── SYNC_World_Scraping.md (1.7K)
+│   │       ├── SYNC_World_Scraping.md (2.0K)
 │   │       ├── SYNC_World_Scraping_archive_2025-12.md (6.1K)
 │   │       ├── TEST_World_Scraping.md (3.4K)
 │   │       └── VALIDATION_World_Scraping.md (5.8K)
-│   └── map.md (207.1K)
+│   └── map.md (208.2K)
 ├── engine/ (255.7K)
 │   ├── infrastructure/ (105.4K)
 │   │   ├── canon/ (14.5K)
@@ -503,7 +503,7 @@
 ├── Isomorphic_Architecture.md (20.1K)
 ├── README.md (1.2K)
 ├── create_project_files_pack_from_maps_and_repo.py (14.4K)
-├── map.md (207.0K)
+├── map.md (208.2K)
 ├── map_frontend.md (9.1K)
 ├── project_map.html (12.0K)
 └── run.sh (1.0K)
@@ -530,6 +530,8 @@
 **Sections:**
 - # Narrator Agent
 - ## Quick Reference
+- # GraphOps/GraphQueries live in the ngram repo graph runtime.
+- # See data/ARCHITECTURE — Cybernetic Studio.md for the authoritative import path.
 - # Query with natural language
 - # Persist mutations
 - ## 1. Execution Interface
@@ -538,6 +540,8 @@
 - # Signal time elapsed (significant actions only)
 - # Signal completion
 - # LEGACY MODE (not recommended) — Use --legacy-mode to write to scene.json
+- # GraphOps lives in the ngram repo graph runtime.
+- # See data/ARCHITECTURE — Cybernetic Studio.md for the authoritative import path.
 - ## 2. The Two Paths
 - # First read PROFILE_NOTES.md for player context
 - ## 3. What You Produce
@@ -562,6 +566,8 @@
 - ## Core Insight
 - ## When You're Called
 - ## Tool Calls
+- # GraphQueries lives in the ngram repo graph runtime.
+- # See data/ARCHITECTURE — Cybernetic Studio.md for the authoritative import path.
 - # Get character info
 - # Direct Cypher
 - # playthroughs/default/mutations/enrich_aldric_relatives.yaml
@@ -576,6 +582,8 @@
 - # CAN_SPEAK links
 - # ATTACHED_TO links
 - # ABOUT links (connect all created content to query moment)
+- # GraphOps lives in the ngram repo graph runtime.
+- # See data/ARCHITECTURE — Cybernetic Studio.md for the authoritative import path.
 - ## Schema Reference
 - # CHARACTER
 - # PLACE
@@ -1823,6 +1831,7 @@
 - ## MATURITY
 - ## CURRENT STATE
 - ## IN PROGRESS
+- ## RECENT CHANGES
 - ## Overview
 - ## Maturity
 - ## CHAIN
@@ -4629,6 +4638,9 @@
 - `data/scripts/inject_world.py`
 - `data/scripts/scrape/phase1_geography.py`
 - `data/scripts/scrape/phase2_political.py`
+
+**Doc refs:**
+- `data/ARCHITECTURE — Cybernetic Studio.md`
 
 **Sections:**
 - # World Scraping — Implementation: Pipeline Architecture and Data Flow

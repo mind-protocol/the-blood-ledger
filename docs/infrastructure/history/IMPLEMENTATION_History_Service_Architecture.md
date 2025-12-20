@@ -200,7 +200,7 @@ record_world_history(content, detail, ...)
   -> return narrative_id + belief ids
 ```
 
-These chains describe the current orchestration order; GraphOps is responsible
+These chains describe the current orchestration order; GraphOps (ngram repo graph runtime) is responsible
 for transaction boundaries and persistence guarantees during writes.
 
 ---
@@ -274,7 +274,7 @@ serialized by the caller or by the process model of the runtime. Conversation
 sections are appended to Markdown files using standard file append semantics;
 concurrent writes could interleave, so high-concurrency usage should add a
 queue or per-thread file lock in the caller if needed. Graph writes execute
-via the provided GraphOps/GraphQueries objects and assume the database
+via the provided GraphOps/GraphQueries objects (ngram repo graph runtime) and assume the database
 connection handles transaction isolation.
 Reads can race with writes and may return partial sections if callers do not
 serialize per-playthrough history recording.

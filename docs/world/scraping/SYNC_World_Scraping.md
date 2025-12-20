@@ -17,6 +17,18 @@ Pipeline phases 1–6 are complete, YAML outputs are present in `data/world/`, a
 
 ## RECENT CHANGES
 
+### 2025-12-20: Graph runtime location noted
+
+- **What:** Updated GraphOps references to call out the ngram repo graph runtime.
+- **Why:** The graph runtime was moved out of this repo.
+- **Impact:** Scraping docs now point to the authoritative runtime location.
+
+### 2025-12-20: Add HEALTH doc for seeding checks
+
+- **What:** Added `HEALTH_World_Scraping.md` for injection verification.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Impact:** Scraping module now has a HEALTH doc placeholder with manual checks.
+
 ### 2025-12-20: Ngram Framework Refactor
 
 - **What:** Refactored `IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md` and updated `TEST_World_Scraping.md` to the Health format.

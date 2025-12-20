@@ -26,7 +26,7 @@ SYNC:        ./SYNC_Image_Generation.md
 | Test | Target | Description |
 |------|--------|-------------|
 | `tests/tools/test_generate_image.py` | CLI wrapper | Ensures prompts expand + files saved |
-| `tests/tools/test_graphops_images.py` | GraphOps integration | Confirms image metadata persisted |
+| `tests/tools/test_graphops_images.py` | GraphOps integration (ngram repo graph runtime) | Confirms image metadata persisted |
 | `tests/tools/test_retry_policy.py` | Error handling | Simulates API failure + retry log |
 
 ---

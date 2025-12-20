@@ -25,6 +25,12 @@ The Canon Holder is fully functional. It serves as the primary gatekeeper for th
 - **Why:** To align with the new ngram documentation standards and emphasize DATA FLOW AND DOCKING.
 - **Impact:** Canon module documentation is now compliant; Health checks are anchored to the recording and broadcast flow.
 
+### 2025-12-20: Add HEALTH doc for canon recording
+
+- **What:** Added `HEALTH_Canon.md` with manual verification guidance.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Impact:** Canon module now has a HEALTH doc placeholder for runtime checks.
+
 ## HANDOFF: FOR AGENTS
 
 Use VIEW_Implement_Write_Or_Modify_Code for recording logic changes. Ensure any new moment types are reflected in `speaker.py` and the Health indicators.

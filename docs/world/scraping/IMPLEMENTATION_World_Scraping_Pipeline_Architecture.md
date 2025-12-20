@@ -50,7 +50,7 @@ data/
 |------|---------|----------------------|-------|--------|
 | `data/scripts/scrape/phase1_geography.py` | Geodata collection | `fetch_osm`, `build_routes` | ~435 | WATCH |
 | `data/scripts/scrape/phase2_political.py` | Actor seeding | `seed_characters` | ~792 | SPLIT |
-| `data/scripts/inject_world.py` | FalkorDB loader | `inject_all` | ~476 | WATCH |
+| `data/scripts/inject_world.py` | FalkorDB loader | `inject_all` | ~476 | WATCH (graph runtime moved to ngram repo) |
 
 ---
 
@@ -109,7 +109,7 @@ flow:
       trigger: Manual execution
       side_effects: local filesystem writes
     - id: step_2_inject
-      description: Load YAML records into FalkorDB via GraphOps.
+      description: Load YAML records into FalkorDB via GraphOps (ngram repo graph runtime).
       file: data/scripts/inject_world.py
       function: inject_all
       input: data/world/*.yaml
@@ -135,7 +135,7 @@ flow:
         direction: input
         file: data/scripts/inject_world.py
         function: inject_places
-        trigger: GraphOps.add_place
+        trigger: GraphOps.add_place (ngram repo graph runtime)
         payload: PlaceRecord
         async_hook: required
         needs: none
@@ -155,7 +155,7 @@ flow:
 
 ```
 data/scripts/inject_world.py
-    └── imports → engine.physics.graph.graph_ops
+    └── imports → GraphOps (ngram repo graph runtime; see `data/ARCHITECTURE — Cybernetic Studio.md`)
 ```
 
 ---

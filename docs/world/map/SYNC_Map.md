@@ -41,7 +41,7 @@ What's proposed (v2):
 
 ### Implemented
 - **Semantic search** via `engine/world/map/semantic.py`.
-- **FalkorDB integration** through GraphQueries.
+- **FalkorDB integration** through GraphQueries (ngram repo graph runtime).
 
 ### Not Implemented
 - Visual map rendering (canvas layers, fog, icons).
@@ -70,6 +70,18 @@ Frontend map UI exists under `frontend/components/map` but is static demo data.
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-20: Note graph runtime location in map docs
+
+- **What:** Updated GraphQueries references to call out the ngram repo graph runtime.
+- **Why:** The graph runtime was moved out of this repo.
+- **Impact:** Map docs now reference the authoritative runtime location.
+
+### 2025-12-20: Add HEALTH doc for semantic search
+
+- **What:** Added `HEALTH_Map.md` for semantic search verification.
+- **Why:** Close the doc chain gap flagged by `ngram validate`.
+- **Impact:** Map module now has a HEALTH doc placeholder with manual checks.
 
 ### 2025-12-20: Reorganized map algorithm subdocs
 

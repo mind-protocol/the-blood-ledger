@@ -48,8 +48,10 @@ Task(subagent_type="world-runner", prompt=f"Playthrough: {id}\nTime: {elapsed}\n
 
 **Graph Operations:**
 ```python
-from engine.db.graph_ops import GraphOps
-from engine.db.graph_queries import GraphQueries
+# GraphOps/GraphQueries live in the ngram repo graph runtime.
+# See data/ARCHITECTURE — Cybernetic Studio.md for the authoritative import path.
+from <graph_runtime> import GraphOps
+from <graph_runtime> import GraphQueries
 
 read = GraphQueries(graph_name="blood_ledger")
 write = GraphOps(graph_name="blood_ledger")
@@ -168,7 +170,9 @@ links:
 EOF
 
 python3 -c "
-from engine.db.graph_ops import GraphOps
+# GraphOps lives in the ngram repo graph runtime.
+# See data/ARCHITECTURE — Cybernetic Studio.md for the authoritative import path.
+from <graph_runtime> import GraphOps
 write = GraphOps(graph_name='blood_ledger')
 write.apply(path='playthroughs/default/mutations/char_edda.yaml')
 "

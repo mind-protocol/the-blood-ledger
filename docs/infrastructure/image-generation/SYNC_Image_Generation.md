@@ -79,7 +79,7 @@ Must include:
 | Task | Owner | Notes |
 |------|-------|-------|
 | Automate prompt generation from place metadata | Tools | Use place YAML + weather to build the 8-part prompt |
-| Hook GraphOps to trigger generation when new place appears | Backend | Tie into Async Architecture Phase 1 |
+| Hook GraphOps (ngram repo graph runtime) to trigger generation when new place appears | Backend | Tie into Async Architecture Phase 1 |
 | Define portrait pipeline | Art | Decide on style + moderation rules for characters |
 | Regional vegetation map | Narrative | Map place IDs → vegetation/time defaults |
 
@@ -94,6 +94,7 @@ Update this table when tasks complete or reprioritized.
 - Replaced the HTML DOCS comment in `tools/image_generation/README.md` with a `# DOCS:` line to standardize the marker; `ngram context` still does not resolve markdown files.
 - Simplified the implementation doc code-to-docs reference entry to avoid false broken-link detection.
 - Noted in the implementation doc that the code reference column omits the `# DOCS:` marker to prevent broken-link checks from misreading it.
+- Updated GraphOps references to call out the ngram repo graph runtime.
 
 ---
 
