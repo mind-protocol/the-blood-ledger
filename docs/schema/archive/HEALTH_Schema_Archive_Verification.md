@@ -26,8 +26,17 @@ IMPLEMENTATION:  ./IMPLEMENTATION_Schema_Archive_Notes.md
 THIS:            HEALTH_Schema_Archive_Verification.md
 SYNC:            ./SYNC_archive_2024-12.md
 
-IMPL:            none
+IMPL:            tools/health/check_schema_archive.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented schema archive health checker
+Implement `tools/health/check_schema_archive.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for archive integrity
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/day in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

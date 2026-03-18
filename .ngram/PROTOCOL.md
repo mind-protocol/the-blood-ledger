@@ -36,7 +36,7 @@ Read PRINCIPLES.md and internalize it. Then use this file for navigation.
 
 Documentation isn't an archive. It's navigation.
 
-Every module has a chain: PATTERNS → BEHAVIORS → ALGORITHM → VALIDATION → IMPLEMENTATION → HEALTH → SYNC.
+Every module has a chain: OBJECTIFS → BEHAVIORS → PATTERNS → ALGORITHM → VALIDATION → IMPLEMENTATION → HEALTH → SYNC.
 Each file explains something different. You load what you need for your task.
 
 SYNC files track current state. They're how you understand what's happening and how you communicate to the next agent (or yourself in a future session).
@@ -100,6 +100,7 @@ After changes, update SYNC files:
 
 | Pattern | Purpose | When to Load |
 |---------|---------|--------------|
+| `OBJECTIFS_*.md` | Ranked goals & tradeoffs — WHAT we optimize | Before deciding tradeoffs |
 | `PATTERNS_*.md` | Design philosophy & scope — WHY this shape, WHAT's in/out | Before modifying module |
 | `BEHAVIORS_*.md` | Observable effects — WHAT it should do | When behavior unclear |
 | `ALGORITHM_*.md` | Procedures — HOW it works (pseudocode) | When logic unclear |

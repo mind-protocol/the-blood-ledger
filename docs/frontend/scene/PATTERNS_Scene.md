@@ -15,7 +15,7 @@ LINKS_TO:
 ```
 THIS:  PATTERNS_Scene.md
 SYNC:  ./SYNC_Scene.md
-IMPL:  frontend/components/scene/SceneView.tsx
+IMPL:  frontend/components/scene/SceneView.tsx, frontend/components/moment/index.ts
 ```
 
 ---

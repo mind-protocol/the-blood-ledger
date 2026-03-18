@@ -48,6 +48,15 @@ signals, and an LLM layer that can interpret contradictions into scenes.
 
 ---
 
+## DATA
+
+The vision assumes narratives, beliefs, and moments are stored in a graph
+model that can be queried for salience, tension, and relationship context. The
+data layer must preserve who believes what, where moments happened, and how
+those moments connect over time.
+
+---
+
 ## INSPIRATIONS
 
 Primary reference points include Game of Thrones, Crusader Kings 3, and The

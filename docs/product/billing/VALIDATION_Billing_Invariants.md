@@ -81,6 +81,14 @@ SYMPTOM: missing invoice entries
 
 ---
 
+## HEALTH COVERAGE
+
+Documentation health checks live in `docs/product/billing/HEALTH_Billing.md`
+and focus on billing chain completeness and IMPL/TEST references staying
+aligned with the Stripe meter design.
+
+---
+
 ## TEST COVERAGE
 
 | Requirement | Test(s) | Status |

@@ -17,6 +17,8 @@ Pipeline phases 1–6 are complete, YAML outputs are present in `data/world/`, a
 
 ## RECENT CHANGES
 
+- 2025-12-21: Normalized implementation doc references and notes to match current repo state.
+
 ### 2025-12-20: Graph runtime location noted
 
 - **What:** Updated GraphOps references to call out the ngram repo graph runtime.

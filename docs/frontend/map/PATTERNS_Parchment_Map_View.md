@@ -12,7 +12,7 @@ CREATED: 2025-12-19
 ```
 THIS:  PATTERNS_Parchment_Map_View.md
 SYNC:  ../../world/map/SYNC_Map.md
-IMPL:  frontend/components/map/MapClient.tsx
+IMPL:  frontend/components/map/MapClient.tsx, frontend/components/map/MapCanvas.tsx, frontend/lib/map/index.ts, frontend/lib/map/projection.ts, frontend/lib/map/random.ts
 ```
 
 ---
@@ -30,6 +30,8 @@ provide spatial context for travel or regional relationships.
 Render an atmospheric parchment map on a canvas with layered terrain, routes,
 places, and fog of war. Use visibility levels to control what is revealed and
 provide hover/select affordances for place detail without mutating game state.
+
+**Implementation entry point:** `frontend/app/map/page.tsx`
 
 ---
 

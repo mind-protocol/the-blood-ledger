@@ -34,8 +34,17 @@ IMPLEMENTATION:  ./IMPLEMENTATION_Canon.md
 THIS:            HEALTH_Canon.md
 SYNC:            ./SYNC_Canon.md
 
-IMPL:            engine/infrastructure/canon/canon_holder.py
+IMPL:            tools/health/check_canon.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented canon health checker
+Implement `tools/health/check_canon.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria V1-V2
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

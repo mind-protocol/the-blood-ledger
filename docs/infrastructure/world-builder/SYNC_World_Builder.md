@@ -71,6 +71,9 @@ All core files are complete and ready for integration testing:
 
 ## Recent Changes
 
+- Added `OBJECTIFS_World_Builder.md` to define high-level vision and objectives.
+- Fixed broken CHAIN links in implementation docs by normalizing wrapper file paths.
+- Added world-builder test __init__ to the test overview IMPL list for doc-link integrity.
 - Added `HEALTH_World_Builder.md` for enrichment verification.
 
 ---
@@ -78,7 +81,6 @@ All core files are complete and ready for integration testing:
 ## Known Issues
 
 - Test run failed locally: missing `pytest_xprocess` plugin (pytest bootstrap error).
-- `ngram validate` reports missing VIEW and doc chain gaps in other modules (not world-builder specific).
 
 ---
 
@@ -106,13 +108,14 @@ Doc chain entry points now live under `docs/infrastructure/world-builder/ALGORIT
 ## Chain
 
 ```
+OBJECTIFS:       ./OBJECTIFS_World_Builder.md
 PATTERNS:        ./PATTERNS_World_Builder.md
 BEHAVIORS:       ./BEHAVIORS_World_Builder.md
-ALGORITHM:       ./ALGORITHM/ALGORITHM_Overview.md
-VALIDATION:      ./VALIDATION/VALIDATION_Overview.md
-IMPLEMENTATION:  ./IMPLEMENTATION/IMPLEMENTATION_Overview.md
+ALGORITHM:       ./ALGORITHM_World_Builder.md
+VALIDATION:      ./VALIDATION_World_Builder.md
+IMPLEMENTATION:  ./IMPLEMENTATION_World_Builder.md
 HEALTH:          ./HEALTH_World_Builder.md
-TEST:            ./TEST/TEST_Overview.md
+TEST:            ./TEST_World_Builder.md
 THIS:            SYNC_World_Builder.md
 ```
 

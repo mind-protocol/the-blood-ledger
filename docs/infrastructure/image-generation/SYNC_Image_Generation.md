@@ -16,6 +16,10 @@ TEST:           ./TEST_Image_Generation.md
 THIS:           SYNC_Image_Generation.md (you are here)
 ```
 
+## Recent Changes
+
+- 2025-12-21: Moved image generation defaults into `tools/image_generation/config.py` and added env overrides.
+
 ## What's Canonical (v2)
 
 - Ideogram 3.0 API integration via `tools/image_generation/generate_image.py`

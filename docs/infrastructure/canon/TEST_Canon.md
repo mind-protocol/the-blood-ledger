@@ -30,10 +30,16 @@ IMPLEMENTATION:  ./IMPLEMENTATION_Canon.md
 THIS:            TEST_Canon.md
 SYNC:            ./SYNC_Canon.md
 
-IMPL:            engine/infrastructure/canon/canon_holder.py
+IMPL:            engine/infrastructure/canon/canon_holder.py, tests/infrastructure/canon/__init__.py
 ```
 
 > **Contract:** HEALTH checks verify the transition from active to spoken status and the resulting notification.
+
+---
+
+## Test Files
+
+- `tests/infrastructure/canon/test_canon_holder.py`
 
 ---
 

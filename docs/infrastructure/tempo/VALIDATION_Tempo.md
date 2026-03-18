@@ -118,6 +118,14 @@ SYMPTOM: log warning, backpressure remains stable
 
 ---
 
+## HEALTH COVERAGE
+
+Tempo health checks are tracked in `docs/infrastructure/tempo/HEALTH_Tempo.md`,
+focusing on tick cadence, interrupt handling, and queue size stability. Manual
+verification is still required until automated tests exist.
+
+---
+
 ## VERIFICATION PROCEDURE
 
 ### Manual Checklist

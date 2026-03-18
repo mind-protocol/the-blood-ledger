@@ -10,8 +10,10 @@ CREATED: {DATE}
 ## CHAIN
 
 ```
-PATTERNS:       ./PATTERNS_{name}.md
+OBJECTIFS:      ./OBJECTIFS_{name}.md
 BEHAVIORS:      ./BEHAVIORS_{name}.md
+PATTERNS:       ./PATTERNS_{name}.md
+MECHANISMS:     ./MECHANISMS_{name}.md (if applicable)
 ALGORITHM:      ./ALGORITHM_{name}.md
 VALIDATION:     ./VALIDATION_{name}.md
 THIS:           IMPLEMENTATION_{name}.md
@@ -49,7 +51,7 @@ IMPL:           {path/to/main/source/file.py}
 - **WATCH** (400-700 lines): Getting large, consider extraction opportunities
 - **SPLIT** (>700 lines): Too large, must split before adding more code
 
-> When a file reaches WATCH status, identify extraction candidates in the GAPS section below.
+> When a file reaches WATCH status, identify extraction candidates in the EXTRACTION CANDIDATES section below.
 > When a file reaches SPLIT status, splitting becomes the next task before any feature work.
 
 ---
@@ -324,9 +326,7 @@ Files that reference this documentation:
 
 ---
 
-## GAPS / IDEAS / QUESTIONS
-
-### Extraction Candidates
+## EXTRACTION CANDIDATES
 
 Files approaching WATCH/SPLIT status - identify what can be extracted:
 
@@ -334,17 +334,12 @@ Files approaching WATCH/SPLIT status - identify what can be extracted:
 |------|---------|--------|------------|--------------|
 | `{file}` | ~{n}L | <400L | `{new_file}` | {functions/classes to extract} |
 
-### Missing Implementation
+---
 
-- [ ] {Missing feature}
-- [ ] {Technical debt}
+## MARKERS
 
-### Ideas
+> See PRINCIPLES.md "Feedback Loop" section for marker format and usage.
 
-- IDEA: {Architecture improvement}
-- IDEA: {Pattern to apply}
-
-### Questions
-
-- QUESTION: {Design uncertainty}
-- QUESTION: {Pattern choice}
+<!-- @ngram:todo {Missing feature or technical debt} -->
+<!-- @ngram:proposition {Architecture improvement or pattern to apply} -->
+<!-- @ngram:escalation {Design uncertainty or pattern choice needing decision} -->

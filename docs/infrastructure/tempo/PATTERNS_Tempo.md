@@ -96,6 +96,14 @@ overwhelm the UI.
 
 ---
 
+## DATA
+
+Tempo state is stored per playthrough as in-memory controller fields (speed,
+tick_count, running, queue size). The only persisted outputs are canon moments,
+SSE events, and optional debug logs.
+
+---
+
 ## INSPIRATIONS
 
 - Real-time narrative games with speed controls (pause, fast travel).

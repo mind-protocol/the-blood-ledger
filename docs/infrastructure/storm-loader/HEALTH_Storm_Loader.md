@@ -24,7 +24,18 @@ VALIDATION:      ./VALIDATION_Storm_Loader_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Storm_Loader.md
 THIS:            HEALTH_Storm_Loader.md
 SYNC:            ./SYNC_Storm_Loader.md
+
+IMPL:            tools/health/check_storm_loader.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented storm loader health checker
+Implement `tools/health/check_storm_loader.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for storm mutation application
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

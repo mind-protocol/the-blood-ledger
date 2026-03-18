@@ -18,7 +18,7 @@ THIS:           IMPLEMENTATION_CLI_Tools_Architecture.md (you are here)
 TEST:           ./TEST_CLI_Tool_Coverage.md
 SYNC:           ./SYNC_CLI_Tools.md
 
-IMPL:           tools/stream_dialogue.py
+IMPL:           tools/stream_dialogue
                 tools/image_generation/generate_image.py
 ```
 
@@ -29,7 +29,7 @@ IMPL:           tools/stream_dialogue.py
 ## CODE STRUCTURE
 
 ```
-tools/stream_dialogue.py                # CLI stream events + graph moments
+tools/stream_dialogue                # CLI stream events + graph moments
 tools/image_generation/generate_image.py # Ideogram API client + file save
 tools/image_generation/README.md         # Usage and flags
 ```
@@ -38,7 +38,7 @@ tools/image_generation/README.md         # Usage and flags
 
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|----------------------|-------|--------|
-| `tools/stream_dialogue.py` | Stream dialogue, narration, scene, mutation events + graph moments | `create_moment_with_clickables`, `parse_inline_clickables`, `stream_event`, `main` | ~400 | WATCH |
+| `tools/stream_dialogue` | Stream dialogue, narration, scene, mutation events + graph moments | `create_moment_with_clickables`, `parse_inline_clickables`, `stream_event`, `main` | ~400 | WATCH |
 | `tools/image_generation/generate_image.py` | Generate images via Ideogram API and save assets | `generate_image`, `main` | ~288 | OK |
 | `tools/image_generation/README.md` | Usage and CLI options | - | ~79 | OK |
 
@@ -61,13 +61,13 @@ tools/image_generation/README.md         # Usage and flags
 
 | Pattern | Applied To | Purpose |
 |---------|------------|---------|
-| Adapter | `tools/stream_dialogue.py` | Adapts CLI input into GraphOps + stream file writes |
+| Adapter | `tools/stream_dialogue` | Adapts CLI input into GraphOps + stream file writes |
 | Data-driven config | `tools/image_generation/generate_image.py:IMAGE_TYPES` | Encodes image presets without branching logic |
 | Command-style entry point | `main()` in each script | Parses CLI args and triggers workflow |
 
 ### Anti-Patterns to Avoid
 
-- **God Script:** Avoid adding unrelated workflows to `tools/stream_dialogue.py` or `tools/image_generation/generate_image.py`. Create a new CLI script instead.
+- **God Script:** Avoid adding unrelated workflows to `tools/stream_dialogue` or `tools/image_generation/generate_image.py`. Create a new CLI script instead.
 - **Hidden Side Effects:** Keep file paths and graph writes explicit; avoid implicit globals beyond PROJECT_ROOT.
 - **Premature Abstraction:** Extract helpers only when there are multiple call sites.
 
@@ -85,7 +85,7 @@ tools/image_generation/README.md         # Usage and flags
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| `main()` | `tools/stream_dialogue.py` | Agent or orchestrator CLI call |
+| `main()` | `tools/stream_dialogue` | Agent or orchestrator CLI call |
 | `main()` | `tools/image_generation/generate_image.py` | Agent or tool invocation |
 
 ---
@@ -101,7 +101,7 @@ tools/image_generation/README.md         # Usage and flags
          │ args
          ▼
 ┌────────────────────┐
-│ tools/stream_dialogue.py │ ← parse clickables + resolve tick/place
+│ tools/stream_dialogue │ ← parse clickables + resolve tick/place
 └────────┬───────────┘
          │ graph writes
          ▼
@@ -140,7 +140,7 @@ tools/image_generation/README.md         # Usage and flags
 ### Internal Dependencies
 
 ```
-tools/stream_dialogue.py
+tools/stream_dialogue
     └── imports → GraphOps (ngram repo graph runtime)
     └── imports → GraphQueries (ngram repo graph runtime)
 ```
@@ -151,7 +151,7 @@ tools/stream_dialogue.py
 |---------|----------|-------------|
 | `requests` | HTTP calls to Ideogram | `tools/image_generation/generate_image.py` |
 | `dotenv` | Load `.env` API key | `tools/image_generation/generate_image.py` |
-| `yaml` | Playthrough graph lookup | `tools/stream_dialogue.py` |
+| `yaml` | Playthrough graph lookup | `tools/stream_dialogue` |
 
 ---
 
@@ -170,17 +170,17 @@ tools/stream_dialogue.py
 
 | File | Line | Reference |
 |------|------|-----------|
-| `tools/stream_dialogue.py` | 2 | `docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md` |
+| `tools/stream_dialogue` | 2 | `docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md` |
 | `tools/image_generation/generate_image.py` | 4 | `docs/infrastructure/cli-tools/PATTERNS_CLI_Agent_Utilities.md` |
 
 ### Docs -> Code
 
 | Doc Section | Implemented In |
 |-------------|----------------|
-| Algorithm A1 | `tools/stream_dialogue.py:create_moment_with_clickables` |
-| Algorithm A2 | `tools/stream_dialogue.py:main` |
+| Algorithm A1 | `tools/stream_dialogue:create_moment_with_clickables` |
+| Algorithm A2 | `tools/stream_dialogue:main` |
 | Algorithm A3 | `tools/image_generation/generate_image.py:generate_image` |
-| Behavior B1 | `tools/stream_dialogue.py:create_moment_with_clickables` |
+| Behavior B1 | `tools/stream_dialogue:create_moment_with_clickables` |
 | Behavior B3 | `tools/image_generation/generate_image.py:generate_image` |
 
 ---
@@ -191,7 +191,7 @@ tools/stream_dialogue.py
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `tools/stream_dialogue.py` | ~400L | <400L | clickables helper module (planned) | `parse_inline_clickables`, clickable parsing helpers |
+| `tools/stream_dialogue` | ~400L | <400L | clickables helper module (planned) | `parse_inline_clickables`, clickable parsing helpers |
 
 ### Ideas
 

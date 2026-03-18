@@ -24,7 +24,18 @@ VALIDATION:      ./VALIDATION_Scavenger_Locks.md
 IMPLEMENTATION:  ./IMPLEMENTATION_World_Scavenger.md
 THIS:            HEALTH_World_Scavenger.md
 SYNC:            ./SYNC_World_Scavenger.md
+
+IMPL:            tools/health/check_world_scavenger.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented world scavenger health checker
+Implement `tools/health/check_world_scavenger.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for cache utilization
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

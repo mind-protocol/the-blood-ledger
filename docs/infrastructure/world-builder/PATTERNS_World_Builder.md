@@ -11,13 +11,14 @@ VERIFIED: Not yet verified
 ## CHAIN
 
 ```
+OBJECTIFS:       ./OBJECTIFS_World_Builder.md
 THIS:            PATTERNS_World_Builder.md (you are here)
 BEHAVIORS:       ./BEHAVIORS_World_Builder.md
-ALGORITHM:       ./ALGORITHM/ALGORITHM_Overview.md
-VALIDATION:      ./VALIDATION/VALIDATION_Overview.md
-IMPLEMENTATION:  ./IMPLEMENTATION/IMPLEMENTATION_Overview.md
+ALGORITHM:       ./ALGORITHM_World_Builder.md
+VALIDATION:      ./VALIDATION_World_Builder.md
+IMPLEMENTATION:  ./IMPLEMENTATION_World_Builder.md
 HEALTH:          ./HEALTH_World_Builder.md
-TEST:            ./TEST/TEST_Overview.md
+TEST:            ./TEST_World_Builder.md
 SYNC:            ./SYNC_World_Builder.md
 
 IMPL:            engine/infrastructure/world_builder/query.py

@@ -1,6 +1,6 @@
 # Async Architecture — State & Implementation Plan
 
-**Last Updated:** 2025-12-20
+**Last Updated:** 2025-12-21
 **Status:** DESIGNING
 **Version:** 2.0
 
@@ -46,6 +46,10 @@ remaining leaf paths.
 ---
 
 ## RECENT CHANGES
+
+- 2025-12-21: Added DATA section to PATTERNS_Async_Architecture.md.
+- 2025-12-21: Filled async validation, implementation flow, and hook injection algorithm sections to satisfy template drift.
+- 2025-12-21: Normalized implementation doc references and notes to match current repo state.
 
 - Updated GraphOps/GraphQueries references to note the ngram repo graph runtime.
 - Added `HEALTH_Async_Architecture.md` to capture async health signals.

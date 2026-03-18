@@ -1,7 +1,7 @@
 # Billing — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
+LAST_UPDATED: 2025-12-21
 UPDATED_BY: Codex
 STATUS: DESIGNING
 ```
@@ -32,6 +32,9 @@ Billing is defined in the architecture spec and now captured in a module chain. 
 ---
 
 ## RECENT CHANGES
+
+- 2025-12-21: Normalized implementation doc references and notes to match current repo state.
+- 2025-12-21: Added HEALTH COVERAGE to `VALIDATION_Billing_Invariants.md`.
 
 ### 2025-12-19: Billing docs created
 

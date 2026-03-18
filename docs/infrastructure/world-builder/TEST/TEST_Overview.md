@@ -20,7 +20,7 @@ THIS:            TEST_Overview.md (you are here)
 DETAILS:         ./TEST_Cases.md
 SYNC:            ../SYNC_World_Builder.md
 
-IMPL:            tests/infrastructure/world_builder/test_world_builder.py
+IMPL:            tests/infrastructure/world_builder/test_world_builder.py, tests/infrastructure/world_builder/__init__.py
 ```
 
 ---

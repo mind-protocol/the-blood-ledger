@@ -1,7 +1,7 @@
 # GTM Strategy — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
+LAST_UPDATED: 2025-12-21
 UPDATED_BY: Codex
 STATUS: DESIGNING
 ```
@@ -32,6 +32,12 @@ GTM strategy is fully specified in narrative form and now mapped into a module c
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-21: Added health coverage to validation
+
+- **What:** Added HEALTH COVERAGE section to `VALIDATION_GTM_Invariants.md`.
+- **Why:** Resolve doc template drift warning.
+- **Files:** docs/product/gtm-strategy/VALIDATION_GTM_Invariants.md
 
 ### 2025-12-19: GTM docs created
 

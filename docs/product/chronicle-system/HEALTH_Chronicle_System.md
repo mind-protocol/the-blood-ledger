@@ -25,7 +25,18 @@ VALIDATION:      ./VALIDATION_Chronicle_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Chronicle_System.md
 THIS:            HEALTH_Chronicle_System.md
 SYNC:            ./SYNC_Chronicle_System.md
+
+IMPL:            tools/health/check_chronicle.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented chronicle health checker
+Implement `tools/health/check_chronicle.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for chronicle generation
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

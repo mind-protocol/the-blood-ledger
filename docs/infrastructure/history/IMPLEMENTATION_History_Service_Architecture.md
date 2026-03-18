@@ -139,7 +139,7 @@ Narrator query
 | `narrative_type` | `str` | Narrative | Defaults to `"memory"` unless overridden |
 | `occurred_at` | `str` | Narrative | `"Day N, time"` string used for ordering |
 | `occurred_where` | `str` | Narrative | Place ID used to link `OCCURRED_AT` |
-| `source_file` | `str` | Narrative | Relative path like `conversations/aldric.md` |
+| `source_file` | `str` | Narrative | Relative path like conversations/aldric.md (example; file not in repo) |
 | `source_section` | `str` | Narrative | Section header for conversation lookup |
 | `detail` | `str` | Narrative | World-generated detail text (no convo) |
 | `about_characters` | `list[str]` | Narrative | Character IDs referenced by the memory |

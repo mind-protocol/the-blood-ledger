@@ -1,3 +1,5 @@
+// DOCS: docs/frontend/map/PATTERNS_Parchment_Map_View.md
+
 'use client';
 
 import { useRef, useEffect, useCallback, useState } from 'react';

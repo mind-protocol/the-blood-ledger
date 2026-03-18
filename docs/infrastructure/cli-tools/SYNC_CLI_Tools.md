@@ -1,7 +1,7 @@
 # CLI Tools — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
+LAST_UPDATED: 2025-12-21
 UPDATED_BY: Codex (repair agent)
 STATUS: CANONICAL
 ```
@@ -51,6 +51,23 @@ Both CLI tools are functional and actively used by agents:
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-21: Restore stream_dialogue implementation
+
+- **What:** Added `tools/stream_dialogue.py` and removed the missing-implementation todo from the CLI tools implementation doc.
+- **Why:** Restore the primary agent streaming utility referenced across CLI docs and health checks.
+- **Files:** `tools/stream_dialogue.py`, `docs/infrastructure/cli-tools/IMPLEMENTATION_CLI_Tools_Architecture.md`
+
+### 2025-12-21: Stream dialogue ASCII cleanup
+
+- **What:** Normalized inline examples in `tools/stream_dialogue.py` to ASCII-only text.
+- **Why:** Keep new CLI script consistent with the repo's ASCII-first editing rule.
+- **Files:** `tools/stream_dialogue.py`
+
+### 2025-12-21: Doc normalization
+
+- **What:** Normalized implementation doc references and notes to match current repo state.
+- **Why:** Keep CLI tool docs aligned with current code structure.
 
 ### 2025-12-19: Refresh cli-tools implementation file metadata
 

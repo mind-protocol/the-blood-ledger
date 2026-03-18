@@ -33,8 +33,17 @@ IMPLEMENTATION:  ./IMPLEMENTATION_World_Scraping_Pipeline_Architecture.md
 THIS:            HEALTH_World_Scraping.md
 SYNC:            ./SYNC_World_Scraping.md
 
-IMPL:            data/scripts/inject_world.py
+IMPL:            tools/health/check_world_scraping.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented world scraping health checker
+Implement `tools/health/check_world_scraping.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for seeding
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/day in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

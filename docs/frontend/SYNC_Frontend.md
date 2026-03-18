@@ -1,7 +1,7 @@
 # Frontend — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-20
+LAST_UPDATED: 2025-12-21
 UPDATED_BY: codex
 STATUS: CANONICAL
 ```
@@ -157,6 +157,10 @@ Frontend is a working Next.js app that renders the game. It connects to the Pyth
 
 ## RECENT CHANGES
 
+- 2025-12-21: Expanded presentation-layer IMPL list to include layout, globals, API, types, and core UI utilities referenced by DOCS headers.
+- 2025-12-21: Moved Saxon name lists to `frontend/data/saxon_names.ts` and refreshed frontend doc references.
+- 2025-12-21: Moved scenario metadata to `frontend/data/scenarios.ts`.
+- 2025-12-21: Normalized implementation doc references and notes to match current repo state.
 - Added `HEALTH_Frontend_Runtime.md` for UI health checks.
 
 ---

@@ -13,7 +13,7 @@ VERIFIED: 2025-12-19 against data/Distributed-Content-Generation-Network/Blood L
 ```
 PATTERNS:        ./PATTERNS_Scars_Cross_Worlds.md
 BEHAVIORS:       ./BEHAVIORS_Ghosts_Rumors_Reports.md
-MECHANISMS:      ./MECHANISMS_Bleed_Through_Pipeline.md
+ALGORITHM:       ./ALGORITHM_Bleed_Through_Pipeline.md
 THIS:            VALIDATION_Bleed_Through_Safety.md (you are here)
 IMPLEMENTATION:  ./IMPLEMENTATION_Bleed_Through.md
 TEST:            ./TEST_Bleed_Through.md

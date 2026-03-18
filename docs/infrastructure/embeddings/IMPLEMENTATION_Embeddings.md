@@ -29,17 +29,15 @@ IMPL:           engine/infrastructure/embeddings/service.py
 ## CODE STRUCTURE
 
 ```
-engine/infrastructure/
-└── embeddings/
-    ├── __init__.py      # Exports EmbeddingService facade
-    └── service.py       # Sentence-transformers wrapper
+engine/infrastructure/embeddings/__init__.py  # Exports EmbeddingService facade
+engine/infrastructure/embeddings/service.py  # Embedding service + fallback
 ```
 
 ### File Responsibilities
 
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|----------------------|-------|--------|
-| `engine/infrastructure/embeddings/service.py` | Vector generation | `EmbeddingService` | ~173 | OK |
+| engine/infrastructure/embeddings/service.py | Vector generation | EmbeddingService | ~120 | OK |
 
 ---
 
@@ -71,8 +69,8 @@ Embedding:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| embed | `service.py:48` | Graph indexers / Search queries |
-| embed_node | `service.py:84` | World seeding / mutations |
+| embed | engine/infrastructure/embeddings/service.py | Graph indexers / Search queries |
+| embed_many | engine/infrastructure/embeddings/service.py | Batch ingestion |
 
 ---
 
@@ -143,10 +141,9 @@ flow:
 
 ```
 Node (Character/Place/Thing)
-  → service.py:_node_to_text()
-    → Joined string of name + backstory + significance
-      → service.py:embed()
-        → vector
+  → caller assembles a flattened text string
+    → EmbeddingService.embed
+      → vector
 ```
 
 ---
@@ -161,8 +158,8 @@ None. The service is a leaf-node in the dependency graph.
 
 | Package | Used For | Imported By |
 |---------|----------|-------------|
-| sentence-transformers | Embedding model and encoding | `service.py` |
-| numpy | Similarity math | `service.py` |
+| sentence-transformers | Embedding model and encoding (optional) | engine/infrastructure/embeddings/service.py |
+| hashlib | Fallback vector hashing | engine/infrastructure/embeddings/service.py |
 
 ---
 
@@ -172,7 +169,7 @@ None. The service is a leaf-node in the dependency graph.
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| Transformer Model | `EmbeddingService.model` | process | created once, kept in memory |
+| Transformer Model | EmbeddingService model | process | created once, kept in memory |
 
 ---
 
@@ -182,3 +179,9 @@ None. The service is a leaf-node in the dependency graph.
 |-----------|-------|-------|
 | Model Load | Sync/Lazy | Idempotent load on first call |
 | Inference | Sync | Model.encode is typically CPU/GPU bound |
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- @ngram:todo Update health checks to cover fallback hash embeddings when sentence-transformers is unavailable.

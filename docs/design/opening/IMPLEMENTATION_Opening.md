@@ -18,7 +18,7 @@ THIS:           IMPLEMENTATION_Opening.md (you are here)
 HEALTH:         ./HEALTH_Opening.md
 SYNC:           ./SYNC_Opening.md
 
-IMPL:           engine/infrastructure/api/playthroughs.py
+IMPL:           engine/infrastructure/api/playthroughs
 ```
 
 > **Contract:** Read docs before modifying. After changes: update IMPL or add TODO to SYNC. Run tests.
@@ -29,14 +29,14 @@ IMPL:           engine/infrastructure/api/playthroughs.py
 
 ```
 engine/infrastructure/api/
-├── playthroughs.py          # Exports create_playthrough endpoint
+├── playthroughs          # Exports create_playthrough endpoint
 ```
 
 ### File Responsibilities
 
 | File | Purpose | Key Functions/Classes | Lines | Status |
 |------|---------|----------------------|-------|--------|
-| `engine/infrastructure/api/playthroughs.py` | Playthrough creation and opening handling | `create_playthrough`, `_opening_to_scene_tree` | ~450 | WATCH |
+| `engine/infrastructure/api/playthroughs` | Playthrough creation and opening handling | `create_playthrough`, `_opening_to_scene_tree` | ~450 | WATCH |
 
 **Size Thresholds:**
 - **OK** (<400 lines): Healthy size, easy to understand
@@ -54,31 +54,31 @@ engine/infrastructure/api/
 
 **Pattern:** Pipeline / Template Method
 
-**Why this pattern:** The opening sequence is a deterministic transformation of a static template (`opening.json`) combined with dynamic scenario data. It follows a strict sequence: Load -> Transform -> Persist.
+**Why this pattern:** The opening sequence is a deterministic transformation of a static template (`docs/design/opening/opening.json`) combined with dynamic scenario data. It follows a strict sequence: Load -> Transform -> Persist.
 
 ### Code Patterns in Use
 
 | Pattern | Applied To | Purpose |
 |---------|------------|---------|
-| Template Method | `_opening_to_scene_tree` | Defines the skeleton of the scene tree generation, letting the `opening.json` provide the specific steps. |
+| Template Method | `_opening_to_scene_tree` | Defines the skeleton of the scene tree generation, letting the `docs/design/opening/opening.json` provide the specific steps. |
 | Recursion | `build_beat_narration` | Handles the nested structure of beats and questions (chains of "then"). |
 
 ### Anti-Patterns to Avoid
 
-- **Hardcoded Strings**: Avoid embedding narration text in Python code. Use `opening.json` or `CONTENT.md`.
+- **Hardcoded Strings**: Avoid embedding narration text in Python code. Use `docs/design/opening/opening.json` or `docs/design/opening/CONTENT.md`.
 - **Dynamic Question Generation**: Do not generate questions at runtime via LLM for the opening. The sequence must be deterministic to establish the companion's voice correctly.
 
 ### Boundaries
 
 | Boundary | Inside | Outside | Interface |
 |----------|--------|---------|-----------|
-| Opening Module | Template processing, SceneTree generation | Graph state, Player input | `create_playthrough`, `scene.json` |
+| Opening Module | Template processing, SceneTree generation | Graph state, Player input | `create_playthrough`, `playthroughs/default/scene.json` |
 
 ---
 
 ## SCHEMA
 
-### Opening Template (`opening.json`)
+### Opening Template (`docs/design/opening/opening.json`)
 
 ```yaml
 OpeningTemplate:
@@ -124,7 +124,7 @@ SceneTree:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| `create_playthrough` | `engine/infrastructure/api/playthroughs.py:192` | `POST /api/playthrough/create` or `/api/playthrough/scenario` |
+| `create_playthrough` | `engine/infrastructure/api/playthroughs:192` | `POST /api/playthrough/create` or `/api/playthrough/scenario` |
 
 ---
 
@@ -142,7 +142,7 @@ flow:
   steps:
     - id: step_1
       description: Generate playthrough ID and filesystem structure.
-      file: engine/infrastructure/api/playthroughs.py
+      file: engine/infrastructure/api/playthroughs
       function: create_playthrough
       input: PlaythroughCreateRequest
       output: Playthrough ID & Dir
@@ -150,7 +150,7 @@ flow:
       side_effects: creates directories, writes player.yaml, initializes queue files
     - id: step_2
       description: Seed a new graph for the playthrough with base world data.
-      file: engine/infrastructure/api/playthroughs.py
+      file: engine/infrastructure/api/playthroughs
       function: create_playthrough (calls engine.init_db.load_initial_state)
       input: Seed data from data/world/ and engine/data/init/initial_state.yaml
       output: Base graph in FalkorDB (graph name == playthrough_id)
@@ -158,7 +158,7 @@ flow:
       side_effects: writes nodes/links to FalkorDB
     - id: step_3
       description: Load and inject scenario into the graph.
-      file: engine/infrastructure/api/playthroughs.py
+      file: engine/infrastructure/api/playthroughs
       function: create_playthrough (calls GraphOps.apply in ngram repo)
       input: Scenario YAML (nodes + links)
       output: Graph Mutation Result
@@ -166,23 +166,23 @@ flow:
       side_effects: writes nodes/links to FalkorDB
     - id: step_4
       description: Create opening moments in the graph and attach to location.
-      file: engine/infrastructure/api/playthroughs.py
+      file: engine/infrastructure/api/playthroughs
       function: create_playthrough (calls GraphOps.add_moment in ngram repo)
       input: Scenario Opening Narration
       output: Moment IDs
       trigger: step_3
       side_effects: writes moments + THEN/ATTACHED_TO links to FalkorDB
     - id: step_5
-      description: Generate SceneTree from opening template and write scene.json.
-      file: engine/infrastructure/api/playthroughs.py
+      description: Generate SceneTree from opening template and write playthroughs/default/scene.json.
+      file: engine/infrastructure/api/playthroughs
       function: _opening_to_scene_tree
-      input: opening.json, Scenario Data
+      input: docs/design/opening/opening.json, Scenario Data
       output: SceneTree Dict
       trigger: step_4
-      side_effects: writes scene.json
+      side_effects: writes playthroughs/default/scene.json
     - id: step_6
       description: Return playthrough payload to the client.
-      file: engine/infrastructure/api/playthroughs.py
+      file: engine/infrastructure/api/playthroughs
       function: create_playthrough
       input: SceneTree Dict
       output: HTTP response {status, playthrough_id, scenario, scene}
@@ -197,7 +197,7 @@ flow:
       - id: seed_graph
         type: graph_ops
         direction: output
-        file: engine/infrastructure/api/playthroughs.py
+        file: engine/infrastructure/api/playthroughs
         function: create_playthrough
         trigger: step_2
         payload: Base world seed data
@@ -207,7 +207,7 @@ flow:
       - id: scenario_injection
         type: graph_ops
         direction: output
-        file: engine/infrastructure/api/playthroughs.py
+        file: engine/infrastructure/api/playthroughs
         function: create_playthrough
         trigger: step_2
         payload: Scenario Data
@@ -217,7 +217,7 @@ flow:
       - id: scene_generation
         type: file
         direction: output
-        file: engine/infrastructure/api/playthroughs.py
+        file: engine/infrastructure/api/playthroughs
         function: create_playthrough
         trigger: step_4
         payload: SceneTree
@@ -242,7 +242,7 @@ flow:
 **Purpose:** Transform static template into dynamic SceneTree.
 
 ```
-{opening.json, scenario_data}
+{docs/design/opening/opening.json, scenario_data}
   → _opening_to_scene_tree()
     → build_beat_narration(0)
       → build_beat_narration(1) ... (Recursion)
@@ -261,7 +261,7 @@ flow:
 ### Internal Dependencies
 
 ```
-engine/infrastructure/api/playthroughs.py
+engine/infrastructure/api/playthroughs
     └── imports → GraphOps/GraphQueries (ngram repo graph runtime)
     └── imports → engine/init_db.py
 ```
@@ -270,8 +270,8 @@ engine/infrastructure/api/playthroughs.py
 
 | Package | Used For | Imported By |
 |---------|----------|-------------|
-| `yaml` | Parsing scenario/player files | `playthroughs.py` |
-| `pydantic` | Request validation | `playthroughs.py` |
+| `yaml` | Parsing scenario/player files | `playthroughs module` |
+| `pydantic` | Request validation | `playthroughs module` |
 
 ---
 
@@ -281,8 +281,8 @@ engine/infrastructure/api/playthroughs.py
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| Playthrough Config | `playthroughs/{id}/player.yaml` | File | Created at start, immutable |
-| Current Scene | `playthroughs/{id}/scene.json` | File | Mutable, updates per action |
+| Playthrough Config | playthroughs/{id}/player.yaml | File | Created at start, immutable |
+| Current Scene | playthroughs/{id}/scene.json | File | Mutable, updates per action |
 | Graph State | FalkorDB | Database | Persistent, mutable |
 
 ---
@@ -299,7 +299,7 @@ engine/infrastructure/api/playthroughs.py
 
 | Config | Location | Default | Description |
 |--------|----------|---------|-------------|
-| `DEFAULT_PLAYTHROUGH` | `frontend/hooks/useGameState.ts` | 'beorn' | Dev default playthrough (`playthroughs/beorn`) that keeps SSE active for the demo. |
+| `DEFAULT_PLAYTHROUGH` | `frontend/hooks/useGameState.ts` | 'beorn' | Dev default playthrough (playthroughs/beorn) that keeps SSE active for the demo. |
 
 ---
 
@@ -309,7 +309,7 @@ engine/infrastructure/api/playthroughs.py
 
 | File | Line | Reference |
 |------|------|-----------|
-| `engine/infrastructure/api/playthroughs.py` | 1 | `# DOCS: docs/design/opening/IMPLEMENTATION_Opening.md` (Needs update) |
+| `engine/infrastructure/api/playthroughs` | 1 | `docs/design/opening/IMPLEMENTATION_Opening.md` (Needs update) |
 
 ### Docs → Code
 
@@ -326,13 +326,13 @@ engine/infrastructure/api/playthroughs.py
 
 | File | Current | Target | Extract To | What to Move |
 |------|---------|--------|------------|--------------|
-| `engine/infrastructure/api/playthroughs.py` | ~450L | <400L | `engine/infrastructure/opening/generator.py` | Opening generation logic (`_opening_to_scene_tree`, `build_beat_narration`) |
+| `engine/infrastructure/api/playthroughs` | ~450L | <400L | `engine/infrastructure/opening/generator (planned)` | Opening generation logic (`_opening_to_scene_tree`, `build_beat_narration`) |
 
 ### Missing Implementation
 
-- [ ] `CONTENT.md` alignment check.
-- [ ] Explicit error handling for malformed `opening.json`.
+- [ ] `docs/design/opening/CONTENT.md` alignment check.
+- [ ] Explicit error handling for malformed `docs/design/opening/opening.json`.
 
 ### Questions
 
-- QUESTION: Should `opening.json` be localized per scenario, or is one template truly sufficient?
+- QUESTION: Should `docs/design/opening/opening.json` be localized per scenario, or is one template truly sufficient?

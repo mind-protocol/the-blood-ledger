@@ -1,8 +1,8 @@
 # Scenario Selection - Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
-UPDATED_BY: Codex (repair agent)
+LAST_UPDATED: 2025-12-21
+UPDATED_BY: codex
 STATUS: DESIGNING
 ```
 
@@ -42,6 +42,18 @@ selected scenario before triggering playthrough creation.
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-21: Externalized scenario list data
+
+- **What:** Moved SCENARIOS into `frontend/data/scenarios.ts` and updated the patterns doc to match.
+- **Why:** Address hardcoded configuration warning and keep docs aligned.
+- **Files:** `frontend/data/scenarios.ts`, `frontend/app/scenarios/page.tsx`, `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md`
+
+### 2025-12-20: Align scenario selection docs with current UI
+
+- **What:** Noted session-storage gating and visual tone details in the patterns doc.
+- **Why:** Resolve code/doc drift warning for the scenario selection entrypoint.
+- **Files:** `docs/frontend/scenarios/PATTERNS_Scenario_Selection.md`
 
 ### 2025-12-19: Documented scenario selection module
 

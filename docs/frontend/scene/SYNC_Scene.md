@@ -1,8 +1,8 @@
 # Scene View — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
-UPDATED_BY: ngram repair agent
+LAST_UPDATED: 2025-12-21
+UPDATED_BY: codex
 STATUS: CANONICAL
 ```
 
@@ -54,6 +54,13 @@ No active functional bugs are tracked for SceneView; the only known issue was do
 ## TODO
 
 Add basic component tests for SceneView and SceneBanner once a frontend test harness is settled, and confirm action button wiring as backend APIs evolve.
+
+---
+
+## RECENT CHANGES
+
+- 2025-12-21: Added moment component index to the scene patterns IMPL list for doc-link integrity.
+- 2025-12-21: Refreshed SceneView documentation sync after UI adjustments.
 
 ---
 

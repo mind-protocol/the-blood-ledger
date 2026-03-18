@@ -30,6 +30,77 @@ Hook fires when:
 - A character in the player's group is activated via narrative
 - Player uses UI (stop button, location click, portrait click)
 
+---
+
+## OVERVIEW
+
+Hook injection uses a file-backed JSONL queue to feed interrupt events into the Narrator via PostToolUse. Writers append to the queue, the hook consumes the oldest entry, and the Narrator receives the payload as additional context.
+
+---
+
+## DATA STRUCTURES
+
+- Injection entry: `{type, character?, trigger?, prompt?, current_position?}` as a single JSON object per line.
+- Queue file: `playthroughs/default/injection_queue.jsonl` containing FIFO entries.
+- Hook payload: `additionalContext` JSON string passed back to the Narrator.
+
+---
+
+## ALGORITHM: Process_Hook_Injection
+
+Primary function name: `Process_Hook_Injection`
+
+1. Check for the injection queue file at the configured path.
+2. If the file exists, read all lines into memory.
+3. If at least one line exists, parse the first JSON object.
+4. Rewrite the queue file without the consumed line.
+5. Emit the parsed object as hook `additionalContext`.
+6. If no lines exist, return an empty hook decision.
+
+---
+
+## KEY DECISIONS
+
+- Use JSONL for simple FIFO semantics without a DB dependency.
+- Limit hook scope to interruptions only; completion and state updates use other channels.
+- Keep the hook reader stateless to avoid long-lived processes in the hook lifecycle.
+
+---
+
+## DATA FLOW
+
+Writer -> JSONL append -> hook reader -> additionalContext -> Narrator handling -> UI update.
+
+---
+
+## COMPLEXITY
+
+Queue operations are `O(n)` for file rewrite per hook invocation; the queue is intentionally small so this stays acceptable.
+
+---
+
+## HELPER FUNCTIONS
+
+- `append_jsonl(path, payload)` — append a JSON object per line.
+- `read_first_line(path)` — return oldest entry for hook processing.
+- `rewrite_without_first(path)` — persist remaining entries in the queue.
+
+---
+
+## INTERACTIONS
+
+- Frontend or Runner writes to the queue via `/api/inject` or internal calls.
+- Hook script consumes queue entries and emits payloads to the Narrator.
+- Narrator interprets payload types and adjusts the narrative stream.
+
+---
+
+## GAPS / IDEAS / QUESTIONS
+
+- Gap: no locking for concurrent writers; may need file locks if writers increase.
+- Idea: add structured logging around queue reads and hook latency.
+- Question: should per-playthrough queues replace the default queue path?
+
 ## Injection File
 
 ```

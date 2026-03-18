@@ -111,6 +111,15 @@ Why this matters:
 
 ---
 
+## DATA
+
+History lives in two places: graph narratives/beliefs for what is known, and
+conversation markdown files for what was said. Narrative nodes hold structured
+fields (content, detail, occurred_at, occurred_where) while belief edges track
+who knows and how they learned it.
+
+---
+
 ## INSPIRATIONS
 
 **Rashomon Effect**

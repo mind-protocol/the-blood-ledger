@@ -81,6 +81,13 @@ SYMPTOM: partial mutation or silent failures
 
 ---
 
+## HEALTH COVERAGE
+
+Documentation health checks live in `docs/infrastructure/storms/HEALTH_Storms.md`
+and focus on storm chain integrity and validation tooling readiness.
+
+---
+
 ## TEST COVERAGE
 
 | Requirement | Test(s) | Status |

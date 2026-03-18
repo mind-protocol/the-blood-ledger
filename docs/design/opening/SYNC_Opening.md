@@ -1,7 +1,7 @@
 # The Opening — Sync
 
 ```
-LAST_UPDATED: 2025-12-20
+LAST_UPDATED: 2025-12-21
 UPDATED_BY: codex
 STATUS: Scripted transcript active
 MATURITY: CANONICAL
@@ -75,6 +75,8 @@ to avoid drift warnings in the doc health checks.
 ---
 
 ## RECENT CHANGES
+
+- 2025-12-21: Normalized implementation doc references and notes to match current repo state.
 
 - 2025-12-20: Updated IMPLEMENTATION_Opening.md data flow to include seed graph
   initialization, scenario injection ordering, and opening moment creation.

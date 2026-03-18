@@ -41,6 +41,10 @@ Ideogram tries to render **every word literally**. If you write "a man by the fi
 
 ---
 
+## Related Files
+
+- `tools/image_generation/README.md` — CLI usage and setup notes.
+
 ## Scene Banner Philosophy
 
 **Banners show ONLY the location — not the objects or characters.**

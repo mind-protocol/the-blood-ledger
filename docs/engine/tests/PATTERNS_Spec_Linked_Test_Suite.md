@@ -76,6 +76,29 @@ spec clauses it covers, and how to run it.
 | data/init/BLOOD_LEDGER_DESIGN_DOCUMENT.md | Design spec referenced in tests |
 
 ===============================================================================
+## DATA
+===============================================================================
+
+Test metadata lives in docstrings and module headers. Assertions reference
+spec IDs, invariant names, or doc sections so failures can be traced back to
+the design contract without reverse engineering the test intent.
+
+===============================================================================
+## INSPIRATIONS
+===============================================================================
+
+- Spec-driven testing practices where every assertion cites a requirement.
+- Layered test pyramids that keep fast unit tests separate from slow I/O runs.
+
+===============================================================================
+## SCOPE
+===============================================================================
+
+In scope: engine test organization, spec-linked assertions, and skip behavior
+for external dependencies. Out of scope: frontend tests, load tests, and full
+CI orchestration.
+
+===============================================================================
 ## WHAT THIS DOES NOT SOLVE
 ===============================================================================
 

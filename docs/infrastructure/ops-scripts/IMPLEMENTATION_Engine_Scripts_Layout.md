@@ -25,19 +25,20 @@ SYNC:            ./SYNC_Ops_Scripts.md
 
 | File | Role | Entry Point | Notes |
 |------|------|-------------|-------|
-| `engine/scripts/seed_moment_sample.py` | Seed sample moment YAML into FalkorDB | `main()` | Moved to ngram repo with graph runtime. |
 | `engine/scripts/generate_images_for_existing.py` | Backfill missing node images | `main()` | Moved to ngram repo with graph runtime. |
 | `engine/scripts/check_injection.py` | Injection queue hook reader | `main()` | Documented under `docs/infrastructure/async/`. |
-| `engine/scripts/inject_to_narrator.py` | Manual injection CLI | `main()` | Moved to ngram repo with graph runtime. |
 
 ---
 
 ## ENTRY POINTS
 
-- `engine/scripts/seed_moment_sample.py` (moved to ngram repo)
 - `engine/scripts/generate_images_for_existing.py` (moved to ngram repo)
 - `engine/scripts/check_injection.py`
-- `engine/scripts/inject_to_narrator.py` (moved to ngram repo)
+
+## EXTERNAL SCRIPTS (NGAM REPO)
+
+- seed_moment_sample (moved to ngram repo with graph runtime)
+- inject_to_narrator (moved to ngram repo with graph runtime)
 
 ---
 

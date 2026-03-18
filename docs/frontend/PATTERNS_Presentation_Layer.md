@@ -20,7 +20,7 @@ HEALTH:          ./HEALTH_Frontend_Runtime.md
 TEST:            ./TEST_Frontend_Coverage.md
 SYNC:            ./SYNC_Frontend.md
 
-IMPL:            frontend/app/page.tsx
+IMPL:            frontend/app/page.tsx, frontend/app/layout.tsx, frontend/app/globals.css, frontend/lib/api.ts, frontend/types/game.ts, frontend/types/map.ts, frontend/components/ui/Toast.tsx, frontend/components/voices/Voices.tsx
 ```
 
 ### Bidirectional Contract
@@ -105,6 +105,7 @@ Each component handles one responsibility. Scene components don't know about map
 - `components/map/` — Map canvas, fog of war
 - `components/panel/` — Right panel tabs (chronicle, ledger, conversations)
 - `components/voices/` — Internal thoughts display
+- `frontend/types/moment.ts` — TypeScript contracts for moment payloads
 
 ---
 

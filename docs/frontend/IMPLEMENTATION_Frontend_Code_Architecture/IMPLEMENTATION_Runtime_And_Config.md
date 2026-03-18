@@ -37,40 +37,32 @@ IMPL:            frontend/app/page.tsx
 ## CODE STRUCTURE
 
 ```
-frontend/
-├── app/               # App Router entry points
-│   ├── page.tsx
-│   ├── layout.tsx
-│   ├── start/page.tsx
-│   ├── map/page.tsx
-│   └── scenarios/page.tsx
-├── components/        # UI composition
-│   ├── GameClient.tsx
-│   ├── GameLayout.tsx
-│   ├── Providers.tsx
-│   ├── scene/
-│   ├── moment/
-│   ├── map/
-│   ├── panel/
-│   ├── voices/
-│   ├── chronicle/
-│   ├── minimap/
-│   ├── debug/
-│   └── ui/
-├── hooks/             # State management hooks
-│   ├── useGameState.ts
-│   └── useMoments.ts
-├── lib/               # API + utilities
-│   ├── api.ts
-│   └── map/
-├── types/             # Shared TypeScript types
-│   ├── game.ts
-│   ├── moment.ts
-│   └── map.ts
-├── data/              # Fallback static data
-│   └── game-state.json
-└── public/            # Static assets
-    └── playthroughs/
+frontend/app/page.tsx
+frontend/app/layout.tsx
+frontend/app/start/page.tsx
+frontend/app/map/page.tsx
+frontend/app/scenarios/page.tsx
+frontend/components/GameClient.tsx
+frontend/components/GameLayout.tsx
+frontend/components/Providers.tsx
+frontend/components/scene/
+frontend/components/moment/
+frontend/components/map/
+frontend/components/panel/
+frontend/components/voices/
+frontend/components/chronicle/
+frontend/components/minimap/
+frontend/components/debug/
+frontend/components/ui/
+frontend/hooks/useGameState.ts
+frontend/hooks/useMoments.ts
+frontend/lib/api.ts
+frontend/lib/map/
+frontend/types/game.ts
+frontend/types/moment.ts
+frontend/types/map.ts
+frontend/data/game-state.json
+frontend/public/playthroughs/
 ```
 
 ### File Responsibilities
@@ -90,7 +82,8 @@ frontend/
 ### Component Inventory (Highlights)
 
 - **Scene UI:** `frontend/components/scene/CenterStage.tsx` (~435L, WATCH) and related scene components.
-- **Moment UI:** `frontend/components/moment/MomentDebugPanel.tsx` (~221L), `MomentDisplay.tsx` (~201L).
+- **Moment UI:** `frontend/components/moment/MomentDebugPanel.tsx` (~221L), `frontend/components/moment/MomentDisplay.tsx` (~201L).
+- **Chronicle UI:** `frontend/components/chronicle/ChroniclePanel.tsx` (~200L).
 - Detailed component docs live under `docs/frontend/scene/`.
 
 ---
@@ -121,7 +114,7 @@ frontend/app/page.tsx
 ## DATA FLOW (SUMMARY)
 
 - **Initial load:** `GameClient` → `useGameState` → `frontend/lib/api.ts` → transformed `GameState` → `GameLayout`.
-- **Moment click:** `ClickableText` → `useMoments.clickWord` → API → update active/spoken state.
+- **Moment click:** `ClickableText` → `useMoments#clickWord` → API → update active/spoken state.
 - **Streaming:** `useMoments` subscribes to SSE; events trigger state updates.
 
 See `docs/frontend/ALGORITHM_Frontend_Data_Flow.md` for the full data-flow algorithm and event types.

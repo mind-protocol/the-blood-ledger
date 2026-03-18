@@ -24,7 +24,18 @@ VALIDATION:      ./VALIDATION_Voyager_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Voyager_System.md
 THIS:            HEALTH_Voyager_System.md
 SYNC:            ./SYNC_Voyager_System.md
+
+IMPL:            tools/health/check_voyager.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented voyager health checker
+Implement `tools/health/check_voyager.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for voyager imports
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

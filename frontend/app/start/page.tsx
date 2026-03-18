@@ -4,19 +4,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
-// Saxon name lists for random generation
-const SAXON_NAMES_MALE = [
-  'Wulfric', 'Aldric', 'Godwin', 'Leofric', 'Aethelred', 'Osric', 'Eadric',
-  'Siward', 'Morcar', 'Tostig', 'Harold', 'Beorn', 'Aelfric', 'Ordgar',
-  'Wulfstan', 'Cuthbert', 'Dunstan', 'Aethelwulf', 'Eadmund', 'Oswulf'
-];
-
-const SAXON_NAMES_FEMALE = [
-  'Aelfgifu', 'Eadgyth', 'Godgifu', 'Hild', 'Wulfhild', 'Aethelflaed',
-  'Cwenburh', 'Ealdgyth', 'Leofrun', 'Mildred', 'Osgifu', 'Wynflaed',
-  'Aelswith', 'Cyneburh', 'Eadburh', 'Frithugyth', 'Gunnhild', 'Sigrid'
-];
+import { SAXON_NAMES_FEMALE, SAXON_NAMES_MALE } from '@/data/saxon_names';
 
 export default function StartPage() {
   const router = useRouter();

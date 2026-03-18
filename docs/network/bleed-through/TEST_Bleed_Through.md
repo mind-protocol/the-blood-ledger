@@ -12,7 +12,7 @@ CREATED: 2025-12-19
 ```
 PATTERNS:        ./PATTERNS_Scars_Cross_Worlds.md
 BEHAVIORS:       ./BEHAVIORS_Ghosts_Rumors_Reports.md
-MECHANISMS:      ./MECHANISMS_Bleed_Through_Pipeline.md
+ALGORITHM:       ./ALGORITHM_Bleed_Through_Pipeline.md
 VALIDATION:      ./VALIDATION_Bleed_Through_Safety.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Bleed_Through.md
 THIS:            TEST_Bleed_Through.md

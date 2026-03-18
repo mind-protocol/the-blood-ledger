@@ -25,7 +25,18 @@ VALIDATION:      ./VALIDATION_Vision.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Vision.md
 THIS:            HEALTH_Vision_Doc_Integrity.md
 SYNC:            ./SYNC_Vision.md
+
+IMPL:            tools/health/check_vision_docs.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented vision docs health checker
+Implement `tools/health/check_vision_docs.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for vision doc integrity
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/day in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

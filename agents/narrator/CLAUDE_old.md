@@ -879,3 +879,254 @@ difficulty: string
 ---
 
 *"Talk first. Query as you speak. Invent when the graph is silent."*
+
+---
+
+## Simulated Query Output (Example)
+
+Query (natural language):
+`"Mais que s'est il passé ici"`
+
+Simulated search result (2 clusters, 3-4 nodes, 3-6 links each):
+
+Linking summary:
+- Cluster 1: `char_aldric` is AT `place_york_market` and BELIEVES `narr_market_violence`; `mom_york_market_dawn_blood` is ATTACHED_TO the place and REFERENCES the character.
+- Cluster 2: `char_mildred` is AT `place_river_docks` and BELIEVES `narr_dock_alarm`; `mom_river_docks_whisper` is ATTACHED_TO the place and REFERENCES the character.
+
+```yaml
+cluster_1:
+  nodes:
+    - type: place
+      id: place_york_market
+      name: York Market
+      historical_name: Jorvik Market
+      type: district
+      scale: district
+      coordinates: [53.959, -1.081]
+      atmosphere:
+        weather: [cold, drizzle]
+        mood: tense
+        details: [shuttered_stalls, smeared_blood, silent_crowd]
+      modifiers: []
+      detail: "A market square gone quiet after violence."
+      image_prompt: "rainy medieval market, blood on stones, shuttered stalls"
+
+    - type: narrative
+      id: narr_market_violence
+      name: The Market Bloodshed
+      content: "A patrol cut down three men near the well at dawn."
+      interpretation: "The Normans are tightening their grip."
+      type: account
+      about:
+        characters: []
+        places: [place_york_market]
+        things: []
+        relationships: []
+      tone: cold
+      weight: 0.6
+      focus: 1.2
+      truth: 0.5
+      narrator_notes: "Rumor, not confirmed. Useful for tension."
+      occurred_at: "Day 3, dawn"
+      detail: "Witness accounts are inconsistent."
+
+    - type: character
+      id: char_aldric
+      name: Aldric
+      type: companion
+      gender: male
+      alive: true
+      face: weathered
+      voice:
+        tone: low
+        style: blunt
+      personality:
+        approach: direct
+        values: [loyalty, survival]
+        flaw: stubborn
+      backstory:
+        family: "Lost his brother in the north."
+        childhood: "Raised on a tenant farm."
+        wound: "Betrayed by a lord he served."
+        why_here: "Tracking a debt."
+      skills:
+        fighting: 0.8
+        tracking: 0.6
+        healing: 0.2
+        persuading: 0.4
+        sneaking: 0.3
+        riding: 0.5
+        reading: 0.1
+        leading: 0.6
+      modifiers: []
+      detail: "Keeps his eyes on exits."
+      image_prompt: "older saxon warrior, scarred, hard gaze"
+
+    - type: moment
+      id: mom_york_market_dawn_blood
+      text: "The stones are still wet where it happened."
+      type: narration
+      status: active
+      weight: 0.82
+      tone: tense
+      duration: 1
+      tick_created: 128
+      tick_spoken: 0
+      tick_decayed: 0
+      line: 1
+
+  links:
+    - type: AT
+      from: char_aldric
+      to: place_york_market
+      present: 1.0
+      visible: 1.0
+      traveling_to: ""
+      travel_progress: 0.0
+      travel_eta_hours: 0.0
+
+    - type: BELIEVES
+      from: char_aldric
+      to: narr_market_violence
+      heard: 1.0
+      believes: 0.7
+      doubts: 0.2
+      denies: 0.0
+      hides: 0.0
+      spreads: 0.1
+      originated: 0.0
+      source: told
+      from_whom: "char_market_woman"
+      when: "1067-04-03T06:30:00Z"
+      where: "York Market"
+
+    - type: ATTACHED_TO
+      from: mom_york_market_dawn_blood
+      to: place_york_market
+      presence_required: true
+      persistent: true
+      dies_with_target: false
+
+    - type: REFERENCES
+      from: mom_york_market_dawn_blood
+      to: char_aldric
+      strength: 0.5
+
+cluster_2:
+  nodes:
+    - type: place
+      id: place_river_docks
+      name: River Docks
+      historical_name: Jorvik Docks
+      type: district
+      scale: district
+      coordinates: [53.962, -1.074]
+      atmosphere:
+        weather: [mist, chill]
+        mood: wary
+        details: [tied_barges, creaking_piers, muffled_shouts]
+      modifiers: []
+      detail: "Whispers travel faster than the boats."
+      image_prompt: "misty medieval docks, tied barges, gray river"
+
+    - type: narrative
+      id: narr_dock_alarm
+      name: The Dockside Alarm
+      content: "A horn was blown when a cart of bodies rolled through."
+      interpretation: "Someone wants the killings seen."
+      type: rumor
+      about:
+        characters: []
+        places: [place_river_docks]
+        things: []
+        relationships: []
+      tone: uneasy
+      weight: 0.55
+      focus: 1.0
+      truth: 0.4
+      narrator_notes: "Secondhand; timing shifts with each telling."
+      occurred_at: "Day 3, midmorning"
+      detail: "No one agrees who blew the horn."
+
+    - type: character
+      id: char_mildred
+      name: Mildred
+      type: major
+      gender: female
+      alive: true
+      face: hard
+      voice:
+        tone: sharp
+        style: clipped
+      personality:
+        approach: skeptical
+        values: [truth, independence]
+        flaw: guarded
+      backstory:
+        family: "Estranged from her sister."
+        childhood: "Grew up near the river docks."
+        wound: "Saw her village burned."
+        why_here: "Watching the patrols."
+      skills:
+        fighting: 0.5
+        tracking: 0.4
+        healing: 0.3
+        persuading: 0.6
+        sneaking: 0.7
+        riding: 0.2
+        reading: 0.5
+        leading: 0.4
+      modifiers: []
+      detail: "Keeps her hood low."
+      image_prompt: "saxon scout, hooded, steady eyes"
+
+    - type: moment
+      id: mom_river_docks_whisper
+      text: "She lowers her voice when the patrol passes."
+      type: narration
+      status: active
+      weight: 0.7
+      tone: wary
+      duration: 1
+      tick_created: 130
+      tick_spoken: 0
+      tick_decayed: 0
+      line: 1
+
+  links:
+    - type: AT
+      from: char_mildred
+      to: place_river_docks
+      present: 1.0
+      visible: 1.0
+      traveling_to: ""
+      travel_progress: 0.0
+      travel_eta_hours: 0.0
+
+    - type: BELIEVES
+      from: char_mildred
+      to: narr_dock_alarm
+      heard: 1.0
+      believes: 0.4
+      doubts: 0.5
+      denies: 0.1
+      hides: 0.0
+      spreads: 0.2
+      originated: 0.0
+      source: heard
+      from_whom: "char_dockhand"
+      when: "1067-04-03T09:20:00Z"
+      where: "River Docks"
+
+    - type: ATTACHED_TO
+      from: mom_river_docks_whisper
+      to: place_river_docks
+      presence_required: true
+      persistent: true
+      dies_with_target: false
+
+    - type: REFERENCES
+      from: mom_river_docks_whisper
+      to: char_mildred
+      strength: 0.5
+```

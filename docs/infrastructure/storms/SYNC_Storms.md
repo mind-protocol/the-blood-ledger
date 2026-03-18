@@ -1,7 +1,7 @@
 # Storms — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
+LAST_UPDATED: 2025-12-21
 UPDATED_BY: Codex
 STATUS: DESIGNING
 ```
@@ -31,7 +31,20 @@ Storms are documented as lightweight crisis overlays built on top of Scavenger a
 
 ---
 
+## IN PROGRESS
+
+- Reviewing storm validation requirements to align with `HEALTH_Storms.md`.
+- Updating validation docs to include health coverage and verification expectations.
+
+---
+
 ## RECENT CHANGES
+
+### 2025-12-21: Validation template updates
+
+- **What:** Added HEALTH COVERAGE to `VALIDATION_Storm_Invariants.md`.
+- **Why:** Resolve doc template drift warning.
+- **Files:** docs/infrastructure/storms/VALIDATION_Storm_Invariants.md
 
 ### 2025-12-19: Storm docs created
 

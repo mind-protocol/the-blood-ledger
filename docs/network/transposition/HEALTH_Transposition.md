@@ -25,7 +25,18 @@ VALIDATION:      ./VALIDATION_Transposition_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Transposition.md
 THIS:            HEALTH_Transposition.md
 SYNC:            ./SYNC_Transposition.md
+
+IMPL:            tools/health/check_transposition.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented transposition health checker
+Implement `tools/health/check_transposition.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for conflict resolution
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

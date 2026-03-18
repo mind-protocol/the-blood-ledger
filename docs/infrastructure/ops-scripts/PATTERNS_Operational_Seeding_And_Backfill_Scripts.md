@@ -18,7 +18,7 @@ IMPLEMENTATION:  ./IMPLEMENTATION_Engine_Scripts_Layout.md
 HEALTH:          ./HEALTH_Operational_Scripts.md
 TEST:            ./TEST_Operational_Scripts.md
 SYNC:            ./SYNC_Ops_Scripts.md
-IMPL:            engine/scripts/seed_moment_sample.py
+IMPL:            engine/scripts/seed_moment_sample.py, engine/scripts/generate_images_for_existing.py
 ```
 
 ---

@@ -29,19 +29,14 @@ IMPL:            data/scripts/scrape/phase1_geography.py
 ## CODE STRUCTURE
 
 ```
-data/
-├── scripts/
-│   ├── inject_world.py          # Database injection logic
-│   └── scrape/
-│       ├── phase1_geography.py  # Geography layer
-│       ├── phase2_political.py  # Actors & holdings
-│       ├── phase3_events.py     # Historical timeline
-│       ├── phase4_narratives.py # Knowledge graph
-│       └── phase5_tensions.py   # Conflict layer
-└── world/
-    ├── places.yaml              # Canonical YAML artifacts
-    ├── routes.yaml
-    └── ...
+data/scripts/inject_world.py
+data/scripts/scrape/phase1_geography.py
+data/scripts/scrape/phase2_political.py
+data/scripts/scrape/phase3_events.py
+data/scripts/scrape/phase4_narratives.py
+data/scripts/scrape/phase5_tensions.py
+data/world/places.yaml
+data/world/routes.yaml
 ```
 
 ### File Responsibilities
@@ -83,8 +78,8 @@ Place:
 
 | Entry Point | File:Line | Triggered By |
 |-------------|-----------|--------------|
-| World Injection | `inject_world.py:100` | Manual CLI Command |
-| Pipeline Start | `phase1_geography.py:10` | Manual CLI Command |
+| World Injection | `data/scripts/inject_world.py:100` | Manual CLI Command |
+| Pipeline Start | `data/scripts/scrape/phase1_geography.py:10` | Manual CLI Command |
 
 ---
 
@@ -105,14 +100,14 @@ flow:
       file: data/scripts/scrape/phase1_geography.py
       function: main
       input: External APIs (OSM, Domesday)
-      output: data/world/places.yaml, routes.yaml
+      output: data/world/places.yaml, data/world/routes.yaml
       trigger: Manual execution
       side_effects: local filesystem writes
     - id: step_2_inject
       description: Load YAML records into FalkorDB via GraphOps (ngram repo graph runtime).
       file: data/scripts/inject_world.py
       function: inject_all
-      input: data/world/*.yaml
+      input: data/world/places.yaml, data/world/routes.yaml
       output: Graph nodes and edges
       trigger: Manual execution
       side_effects: FalkorDB state modified
@@ -166,7 +161,7 @@ data/scripts/inject_world.py
 
 | State | Location | Scope | Lifecycle |
 |-------|----------|-------|-----------|
-| Canonical Data | `data/world/*.yaml` | filesystem | persistent artifacts |
+| Canonical Data | data/world/places.yaml, data/world/routes.yaml | filesystem | persistent artifacts |
 
 ---
 

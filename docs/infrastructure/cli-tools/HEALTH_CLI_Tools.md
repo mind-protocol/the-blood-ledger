@@ -26,9 +26,17 @@ IMPLEMENTATION:  ./IMPLEMENTATION_CLI_Tools_Architecture.md
 THIS:            HEALTH_CLI_Tools.md
 SYNC:            ./SYNC_CLI_Tools.md
 
-IMPL:            tools/stream_dialogue.py
-IMPL:            tools/image_generation/generate_image.py
+IMPL:            tools/health/check_cli_tools.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented CLI tools health checker
+Implement `tools/health/check_cli_tools.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for CLI streaming
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

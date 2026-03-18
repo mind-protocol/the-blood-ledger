@@ -34,8 +34,17 @@ IMPLEMENTATION:  ./IMPLEMENTATION_Map_Code_Architecture.md
 THIS:            HEALTH_Map.md
 SYNC:            ./SYNC_Map.md
 
-IMPL:            engine/world/map/semantic.py
+IMPL:            tools/health/check_map.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented map health checker
+Implement `tools/health/check_map.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for map search
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

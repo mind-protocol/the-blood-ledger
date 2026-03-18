@@ -1,7 +1,7 @@
 # Embeddings — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
+LAST_UPDATED: 2025-12-21
 UPDATED_BY: Codex (repair agent)
 STATUS: CANONICAL
 ```
@@ -54,6 +54,9 @@ No active work on embeddings module, but the next planned step is aligning
 runtime indexing behavior with the documented detail-first embedding spec.
 
 ## RECENT CHANGES
+
+- 2025-12-21: Added DATA section to PATTERNS_Embeddings.md to describe embedding storage.
+- 2025-12-21: Normalized implementation doc references and notes to match current repo state.
 
 - Added `HEALTH_Embeddings.md` to document runtime verification and gaps.
 

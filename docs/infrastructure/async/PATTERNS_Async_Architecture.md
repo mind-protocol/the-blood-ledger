@@ -56,6 +56,15 @@ hooks handle only urgent player or character interrupts.
 
 ---
 
+## DATA
+
+Async orchestration relies on graph state as the source of truth plus
+file-backed queues (`playthroughs/*/injection_queue.jsonl`) for interrupt
+payloads. Runner output is returned as JSON via TaskOutput rather than stored
+in transient memory.
+
+---
+
 ## INSPIRATIONS
 
 - Live-world sandboxes where travel reveals content in real time.

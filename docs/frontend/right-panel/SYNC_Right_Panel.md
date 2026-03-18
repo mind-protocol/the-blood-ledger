@@ -57,6 +57,12 @@ tabs or rendering rules change without updating the doc chain.
 
 ## RECENT CHANGES
 
+### 2025-12-21: Add DATA section to patterns
+
+- **What:** Added a DATA section to the right-panel patterns doc.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for the module.
+- **Files:** `docs/frontend/right-panel/PATTERNS_Tabbed_Right_Panel.md`
+
 ### 2025-12-19: Expanded patterns gaps framing
 
 - **What:** Clarified gaps text around tab persistence and unread indicators.

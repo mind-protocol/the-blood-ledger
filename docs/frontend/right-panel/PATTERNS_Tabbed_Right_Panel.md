@@ -79,6 +79,14 @@ state owners.
 
 ---
 
+## DATA
+
+The panel consumes read-only slices of game state passed from the parent
+layout: chronicle entries, conversation summaries, and ledger obligations.
+No panel-local persistence exists beyond the currently selected tab.
+
+---
+
 ## WHAT THIS DOES NOT SOLVE
 
 - Authoring or mutating chronicle, conversations, or ledger entries.

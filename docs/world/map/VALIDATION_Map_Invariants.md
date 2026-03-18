@@ -104,6 +104,14 @@ SYMPTOM: Empty results, no crash
 
 ---
 
+## HEALTH COVERAGE
+
+Documentation health checks live in `docs/world/map/HEALTH_Map.md` and
+track coverage for semantic search behavior, fallbacks, and doc chain
+continuity.
+
+---
+
 ## TEST COVERAGE
 
 | Requirement | Test(s) | Status |

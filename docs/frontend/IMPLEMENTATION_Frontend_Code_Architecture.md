@@ -19,7 +19,7 @@ THIS:            IMPLEMENTATION_Frontend_Code_Architecture.md (you are here)
 TEST:            ./TEST_Frontend_Coverage.md
 SYNC:            ./SYNC_Frontend.md
 
-IMPL:            frontend/app/page.tsx
+IMPL:            frontend/app/page.tsx, frontend/hooks/useMoments.ts, frontend/components/debug/DebugPanel.tsx
 ```
 
 > **Contract:** Read docs before modifying. After changes: update IMPL or add TODO to SYNC. Run tests.
@@ -30,11 +30,14 @@ IMPL:            frontend/app/page.tsx
 
 The frontend is a Next.js App Router UI that renders the game state provided by the backend. State logic lives in hooks, while components focus on presentation and interaction.
 
+**Key components:**
+- `frontend/components/chronicle/ChroniclePanel.tsx` — Chronicle entry list and write flow.
+
 ---
 
 ## CONTENTS
 
-- `IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md` — Entry points, code structure, runtime flow, configuration, and doc links
+- `docs/frontend/IMPLEMENTATION_Frontend_Code_Architecture/IMPLEMENTATION_Runtime_And_Config.md` — Entry points, code structure, runtime flow, configuration, and doc links
 
 ---
 

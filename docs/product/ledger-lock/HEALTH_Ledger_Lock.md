@@ -25,7 +25,18 @@ VALIDATION:      ./VALIDATION_Ledger_Lock_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Ledger_Lock.md
 THIS:            HEALTH_Ledger_Lock.md
 SYNC:            ./SYNC_Ledger_Lock.md
+
+IMPL:            tools/health/check_ledger_lock.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented ledger lock health checker
+Implement `tools/health/check_ledger_lock.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for lock transitions
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

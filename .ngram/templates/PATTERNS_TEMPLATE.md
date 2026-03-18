@@ -11,11 +11,14 @@ VERIFIED: {DATE} against {COMMIT}
 ## CHAIN
 
 ```
+OBJECTIFS:      ./OBJECTIFS_{name}.md
+BEHAVIORS:      ./BEHAVIORS_*.md
 THIS:            PATTERNS_*.md (you are here)
-BEHAVIORS:       ./BEHAVIORS_*.md
+MECHANISMS:     ./MECHANISMS_*.md (if applicable)
 ALGORITHM:       ./ALGORITHM_*.md
 VALIDATION:      ./VALIDATION_{name}.md
 HEALTH:          ./HEALTH_{name}.md
+IMPLEMENTATION:  ./IMPLEMENTATION_{name}.md
 SYNC:            ./SYNC_{name}.md
 
 IMPL:            {path/to/main/source/file.py}
@@ -52,6 +55,17 @@ IMPL:            {path/to/main/source/file.py}
 {What is the core design approach?}
 {What shape does the solution take?}
 {What's the key insight that makes this work?}
+
+---
+
+## BEHAVIORS SUPPORTED
+
+- {Behavior ID} — {short explanation of how this pattern enables it}
+- {Behavior ID} — {short explanation}
+
+## BEHAVIORS PREVENTED
+
+- {Anti-behavior ID} — {short explanation of how this pattern blocks it}
 
 ---
 
@@ -117,9 +131,10 @@ IMPL:            {path/to/main/source/file.py}
 
 ---
 
-## GAPS / IDEAS / QUESTIONS
+## MARKERS
 
-- [ ] {Open question or todo}
-- [ ] {Another item}
-- IDEA: {Future possibility}
-- QUESTION: {Unresolved uncertainty}
+> See PRINCIPLES.md "Feedback Loop" section for marker format and usage.
+
+<!-- @ngram:todo {Actionable task that needs doing} -->
+<!-- @ngram:proposition {Improvement idea or future possibility} -->
+<!-- @ngram:escalation {Blocker or decision needed from human} -->

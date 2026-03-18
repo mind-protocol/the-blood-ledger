@@ -33,8 +33,17 @@ IMPLEMENTATION:  ./IMPLEMENTATION_Embeddings.md
 THIS:            HEALTH_Embeddings.md
 SYNC:            ./SYNC_Embeddings.md
 
-IMPL:            engine/infrastructure/embeddings/service.py
+IMPL:            tools/health/check_embeddings.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented embeddings health checker
+Implement `tools/health/check_embeddings.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria V1-V5
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

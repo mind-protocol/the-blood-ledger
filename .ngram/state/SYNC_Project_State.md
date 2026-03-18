@@ -1,44 +1,36 @@
 # Project — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-20
-UPDATED_BY: codex
+LAST_UPDATED: {DATE}
+UPDATED_BY: {AGENT/HUMAN}
 ```
 
 ---
 
 ## CURRENT STATE
 
-Doc-chain completion work is active after `ngram init` reset the protocol files.
-The next step is to re-run validation/health checks and re-commit the doc chain
-additions that were in progress before re-init.
+{Narrative of the project's current state. Not a feature list — the story of where things are.}
 
 ---
 
 ## ACTIVE WORK
 
-### Doc Chain Restoration
+### {Work Stream}
 
-- **Area:** `docs/`
-- **Status:** in progress
-- **Owner:** agent
-- **Context:** Reapply doc-chain updates after `ngram init` reset the protocol state.
+- **Area:** `{area}/`
+- **Status:** {in progress / blocked}
+- **Owner:** {agent/human}
+- **Context:** {what's happening, why it matters}
 
 ---
 
 ## RECENT CHANGES
 
-### 2025-12-20: Protocol reset
+### {DATE}: {Summary}
 
-- **What:** Ran `ngram init`, regenerated protocol scaffolding and maps.
-- **Why:** User requested init after doc chain work.
-- **Impact:** `SYNC_Project_State.md` reset; needs re-validation and commit.
-
-### 2025-12-20: Removed VIEW directories
-
-- **What:** Removed `.ngram/views`, `views`, and `.views` per instruction.
-- **Why:** Views are now managed as skills.
-- **Impact:** `ngram validate` fails VIEW checks because `.ngram/views` is removed.
+- **What:** {description}
+- **Why:** {motivation}
+- **Impact:** {what this affects}
 
 ---
 
@@ -46,39 +38,37 @@ additions that were in progress before re-init.
 
 | Issue | Severity | Area | Notes |
 |-------|----------|------|-------|
-| Doc chain updates not re-validated | medium | `docs/` | Need to rerun `ngram validate` and `ngram doctor` after re-init. |
+| {description} | {level} | `{area}/` | {context} |
 
 ---
 
 ## HANDOFF: FOR AGENTS
 
-**Likely VIEW for continuing:** `VIEW_Document_Create_Module_Documentation.md`
+**Likely VIEW for continuing:** {which VIEW}
 
-**Current focus:** Re-run protocol checks and re-commit doc-chain completions.
+**Current focus:** {what the project is working toward right now}
 
 **Key context:**
-`ngram init` reset SYNC state; doc-chain files added earlier may still be in the
-worktree and need validation/commit.
+{The things an agent needs to know that aren't obvious from the code/docs}
 
 **Watch out for:**
-Re-generated map/agents files may overwrite prior edits; re-check diff before commit.
+{Project-level gotchas}
 
 ---
 
 ## HANDOFF: FOR HUMAN
 
 **Executive summary:**
-Protocol scaffolding was reinitialized; doc chain completion work needs re-verified
-and committed.
+{2-3 sentences on project state}
 
 **Decisions made recently:**
-Proceed with re-validation after init.
+{Key choices with rationale}
 
 **Needs your input:**
-None.
+{Blocked items, strategic questions}
 
 **Concerns:**
-Potential drift between regenerated scaffolding and recent doc edits.
+{Things that might be problems, flagged for awareness}
 
 ---
 
@@ -86,25 +76,25 @@ Potential drift between regenerated scaffolding and recent doc edits.
 
 ### High Priority
 
-- [ ] Re-run `ngram validate` and `ngram doctor` after re-init.
-- [ ] Commit doc-chain additions and SYNC updates.
+- [ ] {Must do}
 
 ### Backlog
 
-- [ ] Triage `ngram doctor` critical issues (undocumented modules).
+- [ ] {Should do}
+- IDEA: {Possibility}
 
 ---
 
 ## CONSCIOUSNESS TRACE
 
 **Project momentum:**
-Moving; protocol reset interrupted doc-chain validation but work is recoverable.
+{Is the project moving well? Stuck? What's the energy like?}
 
 **Architectural concerns:**
-Doc coverage remains uneven across code modules (per `ngram doctor`).
+{Things that feel like they might become problems}
 
 **Opportunities noticed:**
-Add module mappings to reduce undocumented module warnings.
+{Ideas that came up during work}
 
 ---
 
@@ -112,7 +102,7 @@ Add module mappings to reduce undocumented module warnings.
 
 | Area | Status | SYNC |
 |------|--------|------|
-| `docs/` | in progress | `docs/*/SYNC_*.md` |
+| `{area}/` | {status} | `docs/{area}/SYNC_*.md` |
 
 ---
 
@@ -123,10 +113,10 @@ Check `modules.yaml` (project root) for full manifest.
 **Mapped modules:**
 | Module | Code | Docs | Maturity |
 |--------|------|------|----------|
-| N/A | N/A | N/A | N/A |
+| {module} | `{code_path}` | `{docs_path}` | {status} |
 
 **Unmapped code:** (run `ngram validate` to check)
-- Multiple directories flagged by `ngram doctor`.
+- {List any code directories without module mappings}
 
 **Coverage notes:**
-Module mappings are still largely missing; need structured sweep.
+{Any notes about why certain code isn't mapped, or plans to add mappings}

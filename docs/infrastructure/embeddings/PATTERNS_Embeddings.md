@@ -149,6 +149,15 @@ Why this matters:
 
 ---
 
+## DATA
+
+Embeddings are stored directly on nodes and links as a fixed-length float
+vector attribute (`embedding`). The vector represents the semantic summary of
+`detail` (preferred) or `name` (fallback), and is used by the map semantic
+search layer to rank results by similarity.
+
+---
+
 ## INSPIRATIONS
 
 **RAG (Retrieval-Augmented Generation)**

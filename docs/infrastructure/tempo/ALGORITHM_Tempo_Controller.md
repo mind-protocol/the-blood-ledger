@@ -453,3 +453,4 @@ At 2x/3x speeds, emphasize passage of time visually:
 - Day = 288 ticks (24 hours)
 - Sun position = (world_tick % 288) / 288
 - Frontend calculates arc position from tempo state tick count
+- Sun arc rendering lives in `frontend/components/minimap/SunArc.tsx`

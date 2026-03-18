@@ -25,7 +25,18 @@ VALIDATION:      ./VALIDATION_GTM_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_GTM_Strategy.md
 THIS:            HEALTH_GTM_Strategy.md
 SYNC:            ./SYNC_GTM_Strategy.md
+
+IMPL:            tools/health/check_gtm.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented GTM health checker
+Implement `tools/health/check_gtm.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for GTM flywheel
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/day in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

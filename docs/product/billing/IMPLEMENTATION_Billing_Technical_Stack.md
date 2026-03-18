@@ -15,7 +15,7 @@ The billing system integrates several components to track player usage and proce
                       ▼
 ┌─────────────────────────────────────────────────────────┐
 │                   GAME SERVER                           │
-│         (Python — tick.py, narrator, etc.)              │
+│         (Python — engine/physics/embeddings.py, narrator, etc.)              │
 │                                                         │
 │  ┌─────────────────────────────────────────────────┐   │
 │  │              USAGE TRACKER                       │   │
@@ -39,7 +39,7 @@ The billing system integrates several components to track player usage and proce
 *   **Role:** Handles the player-facing game interface.
 
 ### Game Server
-*   **Platform:** Python (e.g., `tick.py`, narrator services).
+*   **Platform:** Python (e.g., `engine/physics/embeddings.py`, narrator services).
 *   **Usage Tracker:**
     *   Counts every "Moment" generated or saved by the player.
     *   Tags each interaction with its type (e.g., dialogue, action, world-building).

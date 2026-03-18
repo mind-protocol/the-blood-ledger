@@ -26,8 +26,17 @@ IMPLEMENTATION:  ./IMPLEMENTATION_Engine_Scripts_Layout.md
 THIS:            HEALTH_Operational_Scripts.md
 SYNC:            ./SYNC_Ops_Scripts.md
 
-IMPL:            engine/scripts/seed_moment_sample.py
+IMPL:            tools/health/check_ops_scripts.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented ops scripts health checker
+Implement `tools/health/check_ops_scripts.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for ops scripts
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

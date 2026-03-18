@@ -26,8 +26,17 @@ IMPLEMENTATION:  ./IMPLEMENTATION_Image_Generation.md
 THIS:            HEALTH_Image_Generation.md
 SYNC:            ./SYNC_Image_Generation.md
 
-IMPL:            tools/image_generation/generate_image.py
+IMPL:            tools/health/check_image_generation.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented image generation health checker
+Implement `tools/health/check_image_generation.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for image pipeline
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

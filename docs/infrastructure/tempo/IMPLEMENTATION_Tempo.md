@@ -34,6 +34,12 @@ engine/infrastructure/tempo/
 └── engine/infrastructure/tempo/tempo_controller.py    # Main loop and speed management
 ```
 
+Frontend integration:
+```
+frontend/hooks/useTempo.ts          # Tempo state + SSE listener + speed setter
+frontend/components/SpeedControl.tsx # Tempo UI controls and API wiring
+```
+
 ### File Responsibilities
 
 | File | Purpose | Key Functions/Classes | Lines | Status |
@@ -103,6 +109,12 @@ Speed:
 | `TempoController.run()` | `engine/infrastructure/tempo/tempo_controller.py:69` | asyncio.create_task() |
 | `TempoController.on_player_input()` | `engine/infrastructure/tempo/tempo_controller.py:104` | `/api/tempo/input` |
 | `TempoController.set_speed()` | `engine/infrastructure/tempo/tempo_controller.py:90` | `/api/tempo/speed` |
+
+### Frontend Entry Points
+
+| Entry Point | File | Triggered By |
+|-------------|------|--------------|
+| `useTempo()` | `frontend/hooks/useTempo.ts` | Tempo UI subscriptions + speed controls |
 
 ---
 

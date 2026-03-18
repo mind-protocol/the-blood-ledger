@@ -1,7 +1,7 @@
 # Engine Test Suite — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
+LAST_UPDATED: 2025-12-21
 UPDATED_BY: Codex (repair agent)
 STATUS: DESIGNING
 ```
@@ -39,6 +39,9 @@ No active work.
 ---
 
 ## RECENT CHANGES
+
+- 2025-12-21: Added DATA/INSPIRATIONS/SCOPE sections to PATTERNS_Spec_Linked_Test_Suite.md.
+- 2025-12-21: Normalized implementation doc references and notes to match current repo state.
 
 ### 2025-12-19: Expand test file responsibilities
 

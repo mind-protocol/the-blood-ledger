@@ -127,6 +127,14 @@ Everything else is in service of this. If we build all the systems and the answe
 
 ---
 
+## HEALTH COVERAGE
+
+Documentation health checks live in `docs/design/HEALTH_Vision_Doc_Integrity.md`
+and focus on keeping the vision chain linked, complete, and free of stale
+references as revisions land.
+
+---
+
 ## Proof of Concept Milestones
 
 What we need to prove at each stage:

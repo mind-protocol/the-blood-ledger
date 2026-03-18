@@ -73,6 +73,14 @@ SYMPTOM: flywheel stalls
 
 ---
 
+## HEALTH COVERAGE
+
+Documentation health checks live in `docs/product/gtm-strategy/HEALTH_GTM_Strategy.md`
+and focus on keeping GTM chain artifacts current and traceable to the strategy
+source document.
+
+---
+
 ## TEST COVERAGE
 
 | Requirement | Test(s) | Status |

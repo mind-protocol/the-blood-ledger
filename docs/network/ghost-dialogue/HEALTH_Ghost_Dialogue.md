@@ -25,7 +25,18 @@ VALIDATION:      ./VALIDATION_Ghost_Dialogue_Safety.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Ghost_Dialogue.md
 THIS:            HEALTH_Ghost_Dialogue.md
 SYNC:            ./SYNC_Ghost_Dialogue.md
+
+IMPL:            tools/health/check_ghost_dialogue.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented ghost dialogue health checker
+Implement `tools/health/check_ghost_dialogue.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for ghost replay
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

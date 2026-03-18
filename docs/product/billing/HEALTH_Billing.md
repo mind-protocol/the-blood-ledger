@@ -25,7 +25,18 @@ VALIDATION:      ./VALIDATION_Billing_Invariants.md
 IMPLEMENTATION:  ./IMPLEMENTATION_Billing.md
 THIS:            HEALTH_Billing.md
 SYNC:            ./SYNC_Billing.md
+
+IMPL:            tools/health/check_billing.py
 ```
+
+> **Contract:** HEALTH checks verify input/output against VALIDATION with minimal or no code changes. After changes: update IMPL or add TODO to SYNC. Run HEALTH checks at throttled rates.
+
+@ngram:done: Implemented billing health checker
+Implement `tools/health/check_billing.py` checker script that:
+- Executes dock-based verification against VALIDATION criteria for billing metering
+- Updates `status.result.value` in this file
+- Runs throttled (max 1/hour in production)
+- Integrates with `ngram doctor` for aggregated reporting
 
 ---
 

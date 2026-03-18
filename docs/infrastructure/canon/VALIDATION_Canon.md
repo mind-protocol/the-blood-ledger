@@ -210,6 +210,14 @@ SYMPTOM: Backlog of active moments
 
 ---
 
+## HEALTH COVERAGE
+
+Health checks are documented in `docs/infrastructure/canon/HEALTH_Canon.md` and
+focus on THEN-chain continuity, broadcast delivery, and canonical state
+transitions during playback.
+
+---
+
 ## VERIFICATION PROCEDURE
 
 ### Manual Checklist
@@ -230,6 +238,13 @@ SYMPTOM: Backlog of active moments
 pytest tests/infrastructure/canon/test_canon_holder.py
 pytest tests/infrastructure/canon/test_canon_holder.py --cov=engine/infrastructure/canon
 ```
+
+---
+
+## SYNC STATUS
+
+Last validation sync is tracked in `docs/infrastructure/canon/SYNC_Canon.md`.
+Update the SYNC file after any invariants change or new tests are added.
 
 ---
 

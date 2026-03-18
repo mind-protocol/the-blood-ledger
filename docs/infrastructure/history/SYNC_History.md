@@ -1,7 +1,7 @@
 # History — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-20
+LAST_UPDATED: 2025-12-21
 UPDATED_BY: Codex (repair agent)
 STATUS: CANONICAL
 ```
@@ -55,6 +55,9 @@ No active work in progress; awaiting follow-on test coverage and integration
 tasks for the history service and conversation-thread workflows.
 
 ## RECENT CHANGES
+
+- 2025-12-21: Added DATA section to PATTERNS_History.md.
+- 2025-12-21: Normalized implementation doc references and notes to match current repo state.
 
 - Verified `ConversationThread` path helpers in `engine/infrastructure/history/conversations.py`
   are already implemented; no code changes needed for repair #16.

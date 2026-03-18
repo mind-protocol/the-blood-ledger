@@ -1,7 +1,7 @@
 # Map System — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
+LAST_UPDATED: 2025-12-21
 STATUS: Partial implementation - semantic search complete, visual map pending
 ```
 
@@ -70,6 +70,12 @@ Frontend map UI exists under `frontend/components/map` but is static demo data.
 ---
 
 ## RECENT CHANGES
+
+### 2025-12-21: Added health coverage to validation
+
+- **What:** Added HEALTH COVERAGE section to `VALIDATION_Map_Invariants.md`.
+- **Why:** Resolve doc template drift warning.
+- **Files:** docs/world/map/VALIDATION_Map_Invariants.md
 
 ### 2025-12-20: Note graph runtime location in map docs
 

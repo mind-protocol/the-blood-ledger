@@ -27,9 +27,13 @@ playthrough creation is deterministic.
 
 ## THE PATTERN
 
-Maintain a static, curated scenario list in the selection page, render a
-left-column chooser with a right-column preview, and hand the selected scenario
-ID to the playthrough creation API.
+Maintain a static, curated scenario list in `frontend/data/scenarios.ts`,
+render a left-column chooser with a right-column preview, and hand the selected
+scenario ID to the playthrough creation API.
+
+The UI loads player identity from session storage, redirects to `/start` if
+identity is missing, and uses a text-forward layout with a stone palette and
+low-contrast noise overlay to keep the choice screen grounded in tone.
 
 ---
 

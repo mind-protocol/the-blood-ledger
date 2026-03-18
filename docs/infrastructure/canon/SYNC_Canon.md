@@ -2,7 +2,7 @@
 
 ```
 STATUS: CANONICAL
-UPDATED: 2025-12-20
+UPDATED: 2025-12-21
 ```
 
 ## MATURITY
@@ -18,6 +18,24 @@ What's canonical (v1):
 The Canon Holder is fully functional. It serves as the primary gatekeeper for the game's history, ensuring all spoken moments are correctly linked and broadcast.
 
 ## RECENT CHANGES
+
+### 2025-12-21: Linked canon test file
+
+- **What:** Added `tests/infrastructure/canon/test_canon_holder.py` to `docs/infrastructure/canon/TEST_Canon.md`.
+- **Why:** Fix doc link integrity for canon tests.
+- **Impact:** Canon test docs now reference the implementation file explicitly.
+
+### 2025-12-21: Add canon test __init__ reference
+
+- **What:** Added `tests/infrastructure/canon/__init__.py` to the TEST_Canon IMPL line.
+- **Why:** Resolve doc link integrity for canon test package metadata.
+- **Impact:** Canon test docs now reference the test package entrypoint.
+
+### 2025-12-21: Canon validation template coverage
+
+- **What:** Added HEALTH COVERAGE and SYNC STATUS sections to `VALIDATION_Canon.md`.
+- **Why:** Resolve DOC_TEMPLATE_DRIFT for canon validation docs.
+- **Impact:** Canon validation doc now meets required template sections.
 
 ### 2025-12-20: Ngram Framework Refactor
 

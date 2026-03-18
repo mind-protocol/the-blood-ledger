@@ -1,44 +1,52 @@
 # Repository Map: the-blood-ledger/frontend
 
-*Generated: 2025-12-20 18:28*
+*Generated: 2026-03-12 08:47*
 
 ## Statistics
 
-- **Files:** 43
-- **Directories:** 19
-- **Total Size:** 206.5K
+- **Files:** 48
+- **Directories:** 25
+- **Total Size:** 225.7K
 - **Doc Files:** 0
-- **Code Files:** 43
+- **Code Files:** 48
 - **Areas:** 10 (docs/ subfolders)
 - **Modules:** 48 (subfolders in areas)
-- **DOCS Links:** 23 (0.53 avg per code file)
+- **DOCS Links:** 24 (0.5 avg per code file)
 
 ### By Language
 
 - tsx: 33
-- typescript: 9
+- typescript: 14
 - css: 1
 
 ## File Tree
 
 ```
-├── app/ (17.4K)
+├── app/ (25.2K)
+│   ├── api/ (9.6K)
+│   │   ├── playthroughs/ (8.3K)
+│   │   │   └── route.ts (8.3K)
+│   │   └── scenarios/ (1.3K)
+│   │       └── route.ts (1.3K)
 │   ├── map/ (182)
 │   │   └── (..1 more files)
-│   ├── scenarios/ (7.1K)
-│   │   └── page.tsx (7.1K) →
-│   ├── start/ (6.7K)
-│   │   └── page.tsx (6.7K) →
+│   ├── playthroughs/ (440)
+│   │   └── [id]/ (440)
+│   │       └── (..1 more files)
+│   ├── scenarios/ (5.4K)
+│   │   └── page.tsx (5.4K) →
+│   ├── start/ (6.2K)
+│   │   └── page.tsx (6.2K) →
 │   ├── globals.css (1.6K)
 │   ├── layout.tsx (916) →
 │   └── page.tsx (885) →
-├── components/ (136.6K)
+├── components/ (136.7K)
 │   ├── chronicle/ (4.3K)
 │   │   └── ChroniclePanel.tsx (4.3K) →
 │   ├── debug/ (13.1K)
 │   │   └── DebugPanel.tsx (13.1K) →
-│   ├── map/ (27.4K)
-│   │   ├── MapCanvas.tsx (22.7K)
+│   ├── map/ (27.5K)
+│   │   ├── MapCanvas.tsx (22.7K) →
 │   │   ├── MapClient.tsx (4.7K) →
 │   │   └── (..1 more files)
 │   ├── minimap/ (7.8K)
@@ -75,6 +83,10 @@
 │   ├── GameLayout.tsx (2.9K)
 │   ├── SpeedControl.tsx (3.6K) →
 │   └── (..1 more files)
+├── data/ (11.8K)
+│   ├── map-data.ts (9.5K)
+│   ├── saxon_names.ts (511)
+│   └── scenarios.ts (1.8K)
 ├── hooks/ (23.7K)
 │   ├── useGameState.ts (15.3K) →
 │   ├── useMoments.ts (5.7K) →
@@ -92,6 +104,19 @@
 ```
 
 ## File Details
+
+### `app/api/playthroughs/route.ts`
+
+**Definitions:**
+- `POST()`
+- `GET()`
+- `injectNode()`
+- `injectLink()`
+
+### `app/api/scenarios/route.ts`
+
+**Definitions:**
+- `GET()`
 
 ### `app/scenarios/page.tsx`
 
@@ -140,6 +165,8 @@
 - `formatEventSummary()`
 
 ### `components/map/MapCanvas.tsx`
+
+**Docs:** `docs/frontend/map/PATTERNS_Parchment_Map_View.md`
 
 **Definitions:**
 - `getPlaceVisibility()`

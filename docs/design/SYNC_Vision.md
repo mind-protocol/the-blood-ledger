@@ -1,7 +1,7 @@
 # Vision — Sync: Current State
 
 ```
-LAST_UPDATED: 2025-12-19
+LAST_UPDATED: 2025-12-21
 UPDATED_BY: Codex (repair agent)
 ```
 
@@ -40,6 +40,9 @@ All documents ready for validation, pending human review and decisions.
 
 ### 2025-12-20 Update
 - Added `HEALTH_Vision_Doc_Integrity.md` to capture documentation health checks.
+
+### 2025-12-21 Update
+- Added DATA section to PATTERNS_Vision.md to clarify the graph-layer data assumptions.
 
 ### 2025-12-19 Update
 - Fixed broken file references in `docs/design/IMPLEMENTATION_Vision.md` by listing concrete paths and removing placeholder target filenames so link validation resolves cleanly.
